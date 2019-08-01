@@ -571,13 +571,13 @@ max  eCDF diff........ 0.07
 
 var ratio (Tr/Co)..... 1.0606 
 T-test p-value........ 0.022421 
-KS Bootstrap p-value.. < 2.22e-16 
+KS Bootstrap p-value.. 0.3 
 KS Naive p-value...... 0.10646 
 KS Statistic.......... 0.07 
 
 
 Before Matching Minimum p.value: < 2.22e-16 
-Variable Name(s): age smokeintensity smokeyrs wt71  Number(s): 3 8 9 14 
+Variable Name(s): age smokeintensity smokeyrs  Number(s): 3 8 9 
 ```
 
 If the absolute value of the standardized mean difference is greater than 10% then this indicates a serious imbalance.  For example, sex has an absolute standardized mean difference of $|-16.022|=16.022$ indicating serious imbalance between the groups in males and females.

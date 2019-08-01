@@ -368,7 +368,7 @@ If $X \sim N(0,1)$ and $W \sim \chi^2_n$ then the distribution of $\frac{X}{\sqr
 
 Let $X_1, X_2, ...$ is an independent sequence of identically distributed random variables that have a $N(0,1)$ distribution. The distribution of 
 
-$$ \frac{{\bar X}-\mu }{\frac {S}{\sqrt n}} \sim t_{n-1},$$ 
+$$\frac{{\bar X}-\mu }{\frac {S}{\sqrt n}} \sim t_{n-1},$$ 
 
 where $S^2=\sum_{i = 1}^{n}(X_i-{\bar X})^2/(n-1)$.  This follows since $\bar X$ and $S^2$ are independent.
 
