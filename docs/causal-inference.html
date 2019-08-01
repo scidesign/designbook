@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Causal Inference | Design of Experiments and Observational Studies</title>
+  <meta name="description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Causal Inference | Design of Experiments and Observational Studies" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="github-repo" content="scidesign/designbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Causal Inference | Design of Experiments and Observational Studies" />
+  
+  <meta name="twitter:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  
+
+<meta name="author" content="Nathan Taback" />
+
+
+<meta name="date" content="2019-07-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="how-many-experimental-units-are-required-to-compare-two-treatments.html">
+<link rel="next" href="completely-randomized-designs-comparing-more-than-two-treatments.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-design-scientific-studies"><i class="fa fa-check"></i><b>2.1</b> Why Design Scientific Studies?</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#big-data-and-designing-scientific-studies"><i class="fa fa-check"></i><b>2.2</b> Big Data and Designing Scientific Studies</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#what-is-big-data-and-why-does-it-matter"><i class="fa fa-check"></i><b>2.2.1</b> What is Big data and why does it matter?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction.html"><a href="introduction.html#is-statistical-sampling-and-randomization-still-relevant-in-the-era-of-big-data"><i class="fa fa-check"></i><b>2.2.2</b> Is statistical sampling and randomization still relevant in the era of Big Data?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html"><i class="fa fa-check"></i><b>3</b> Review of Mathematical Statistics</a><ul>
+<li class="chapter" data-level="3.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#data"><i class="fa fa-check"></i><b>3.1</b> Data</a></li>
+<li class="chapter" data-level="3.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#distributions"><i class="fa fa-check"></i><b>3.2</b> Distributions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Continuous Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#randomness"><i class="fa fa-check"></i><b>3.3</b> Randomness</a></li>
+<li class="chapter" data-level="3.4" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#parameters-and-statistics"><i class="fa fa-check"></i><b>3.4</b> Parameters and Statistics</a></li>
+<li class="chapter" data-level="3.5" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#residuals-and-degress-of-freedom"><i class="fa fa-check"></i><b>3.5</b> Residuals and Degress of Freedom</a></li>
+<li class="chapter" data-level="3.6" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#the-normal-distribution"><i class="fa fa-check"></i><b>3.6</b> The Normal Distribution</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises"><i class="fa fa-check"></i><b>3.6.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
+<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
+<li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#questions"><i class="fa fa-check"></i><b>3.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html"><i class="fa fa-check"></i><b>4</b> Completely Randomized Designs: Comparing Two Treatments</a><ul>
+<li class="chapter" data-level="4.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#comparing-two-treatments"><i class="fa fa-check"></i><b>4.1</b> Comparing Two Treatments</a></li>
+<li class="chapter" data-level="4.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#treatment-assignment-mechanism-and-propensity-score"><i class="fa fa-check"></i><b>4.2</b> Treatment Assignment Mechanism and Propensity Score</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#propensity-score"><i class="fa fa-check"></i><b>4.2.1</b> Propensity Score</a></li>
+<li class="chapter" data-level="4.2.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#assignment-mechanism"><i class="fa fa-check"></i><b>4.2.2</b> Assignment Mechanism</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#completely-randomized-experiment"><i class="fa fa-check"></i><b>4.3</b> Completely Randomized Experiment</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#example"><i class="fa fa-check"></i><b>4.3.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-distribution"><i class="fa fa-check"></i><b>4.4</b> The Randomization Distribution</a></li>
+<li class="chapter" data-level="4.5" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-p-value"><i class="fa fa-check"></i><b>4.5</b> The Randomization p-value</a></li>
+<li class="chapter" data-level="4.6" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#two-sided-randomization-p-value"><i class="fa fa-check"></i><b>4.6</b> Two-Sided Randomization P value</a></li>
+<li class="chapter" data-level="4.7" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#other-test-statistics"><i class="fa fa-check"></i><b>4.7</b> Other Test Statistics</a></li>
+<li class="chapter" data-level="4.8" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#calculating-the-randomization-p-value-using-monte-carlo-sampling"><i class="fa fa-check"></i><b>4.8</b> Calculating the Randomization P-value using Monte Carlo Sampling</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#does-caffeine-have-an-effect-on-reaction-time"><i class="fa fa-check"></i><b>4.8.1</b> Does Caffeine Have an Effect on Reaction Time?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#properties-of-the-randomization-test"><i class="fa fa-check"></i><b>4.9</b> Properties of the Randomization Test</a></li>
+<li class="chapter" data-level="4.10" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-two-sample-t-test"><i class="fa fa-check"></i><b>4.10</b> The two-sample t-test</a></li>
+<li class="chapter" data-level="4.11" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#randomized-paired-comparison"><i class="fa fa-check"></i><b>4.11</b> Randomized paired comparison</a></li>
+<li class="chapter" data-level="4.12" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-test-for-a-randomized-paired-design"><i class="fa fa-check"></i><b>4.12</b> The Randomization Test for a Randomized Paired Design</a></li>
+<li class="chapter" data-level="4.13" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#paired-t-test"><i class="fa fa-check"></i><b>4.13</b> Paired t-test</a></li>
+<li class="chapter" data-level="4.14" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#questions-1"><i class="fa fa-check"></i><b>4.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html"><i class="fa fa-check"></i><b>5</b> How Many Experimental Units are Required to Compare Two Treatments?</a><ul>
+<li class="chapter" data-level="5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#clinical-trials"><i class="fa fa-check"></i><b>5.1</b> Clinical Trials</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#phases-of-clinical-trials"><i class="fa fa-check"></i><b>5.1.1</b> Phases of clinical trials</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
+<li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.4.1</b> Calculating the Power of the One Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-two-sample-t-test"><i class="fa fa-check"></i><b>5.5</b> Power of two sample t test</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-two-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.5.1</b> Calculating the Power of the Two Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#effect-size"><i class="fa fa-check"></i><b>5.6</b> Effect size</a></li>
+<li class="chapter" data-level="5.7" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-equal-allocation"><i class="fa fa-check"></i><b>5.7</b> Sample size - known variance and equal allocation</a></li>
+<li class="chapter" data-level="5.8" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-unequal-allocation"><i class="fa fa-check"></i><b>5.8</b> Sample size - known variance and unequal allocation</a></li>
+<li class="chapter" data-level="5.9" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#comparing-proportions-for-binary-outcomes"><i class="fa fa-check"></i><b>5.9</b> Comparing Proportions for Binary Outcomes</a></li>
+<li class="chapter" data-level="5.10" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-power-by-simulation"><i class="fa fa-check"></i><b>5.10</b> Calculating Power by simulation</a></li>
+<li class="chapter" data-level="5.11" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#questions-2"><i class="fa fa-check"></i><b>5.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.1</b> The Fundemental Problem of Causal Inference</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="causal-inference.html"><a href="causal-inference.html#example-of-the-fundemental-problem"><i class="fa fa-check"></i><b>6.1.1</b> Example of the fundemental problem</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#randomized-experiments-as-a-solution-to-the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.2</b> Randomized experiments as a solution to the fundemental problem of causal inference</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#average-causal-effects-and-randomized-experiments"><i class="fa fa-check"></i><b>6.3</b> Average causal effects and randomized experiments</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="causal-inference.html"><a href="causal-inference.html#stable-unit-treatment-value-assignment"><i class="fa fa-check"></i><b>6.3.1</b> Stable Unit Treatment Value Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#ignorable-assignment-mechanisims"><i class="fa fa-check"></i><b>6.4</b> Ignorable Assignment Mechanisims</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="causal-inference.html"><a href="causal-inference.html#the-perfect-doctor-example"><i class="fa fa-check"></i><b>6.4.1</b> The Perfect Doctor Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#questions-3"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html"><i class="fa fa-check"></i><b>7</b> Completely Randomized Designs: Comparing More Than Two Treatments</a><ul>
+<li class="chapter" data-level="7.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova---comparing-more-than-two-groups"><i class="fa fa-check"></i><b>7.1</b> ANOVA - Comparing more than two groups</a></li>
+<li class="chapter" data-level="7.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#analysis-of-variance-anova-table"><i class="fa fa-check"></i><b>7.2</b> Analysis of Variance (ANOVA) table</a></li>
+<li class="chapter" data-level="7.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-anova-identity"><i class="fa fa-check"></i><b>7.3</b> The ANOVA identity</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---blood-coagulation-study"><i class="fa fa-check"></i><b>7.3.1</b> Example - Blood coagulation study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#general-anova"><i class="fa fa-check"></i><b>7.4</b> General ANOVA</a></li>
+<li class="chapter" data-level="7.5" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova-assumptions"><i class="fa fa-check"></i><b>7.5</b> ANOVA Assumptions</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---checking-the-assumptions-in-the-blood-coagualtion-study"><i class="fa fa-check"></i><b>7.5.1</b> Example - checking the assumptions in the blood coagualtion study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#coding-qualitative-predictors-in-regression-models"><i class="fa fa-check"></i><b>7.6</b> Coding Qualitative Predictors in Regression Models</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#dummy-coding"><i class="fa fa-check"></i><b>7.6.1</b> Dummy Coding</a></li>
+<li class="chapter" data-level="7.6.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#deviation-coding"><i class="fa fa-check"></i><b>7.6.2</b> Deviation Coding</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#estimating-treatment-effects-using-least-squares"><i class="fa fa-check"></i><b>7.7</b> Estimating Treatment Effects using Least Squares</a></li>
+<li class="chapter" data-level="7.8" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#using-the-lm-function-in-r-to-estimate-treatment-effects"><i class="fa fa-check"></i><b>7.8</b> Using the <code>lm()</code> Function in R to Estimate Treatment Effects</a></li>
+<li class="chapter" data-level="7.9" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#multiple-comparisons"><i class="fa fa-check"></i><b>7.9</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-bonferroni-method"><i class="fa fa-check"></i><b>7.9.1</b> The Bonferroni Method</a></li>
+<li class="chapter" data-level="7.9.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-tukey-method"><i class="fa fa-check"></i><b>7.9.2</b> The Tukey Method</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#sample-size-for-anova---designing-a-study-to-compare-more-than-two-treatments"><i class="fa fa-check"></i><b>7.10</b> Sample size for ANOVA - Designing a study to compare more than two treatments</a><ul>
+<li class="chapter" data-level="7.10.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#direct-calculation-of-power-using-r"><i class="fa fa-check"></i><b>7.10.1</b> Direct calculation of Power using R</a></li>
+<li class="chapter" data-level="7.10.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-and-sample-size-using-the-pwr-library-in-r"><i class="fa fa-check"></i><b>7.10.2</b> Calculating Power and Sample Size using the <code>pwr</code> library in R</a></li>
+<li class="chapter" data-level="7.10.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-using-using-simulation"><i class="fa fa-check"></i><b>7.10.3</b> Calculating Power using using Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#questions-4"><i class="fa fa-check"></i><b>7.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html"><i class="fa fa-check"></i><b>8</b> Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#anova-table-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.1</b> ANOVA Table for Randomized Block Designs</a></li>
+<li class="chapter" data-level="8.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-anova-identity-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.2</b> The ANOVA identity for Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#degrees-of-freedom"><i class="fa fa-check"></i><b>8.2.1</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="8.2.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#penicillin-manufacturing-example"><i class="fa fa-check"></i><b>8.2.2</b> Penicillin Manufacturing Example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-linear-model-for-randomized-block-design"><i class="fa fa-check"></i><b>8.3</b> The Linear Model for Randomized Block Design</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#checking-statistical-assumptions"><i class="fa fa-check"></i><b>8.3.1</b> Checking statistical assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#application-of-blocking-to-achieve-balanced-randomization-permuted-block-randomization"><i class="fa fa-check"></i><b>8.4</b> Application of Blocking to Achieve Balanced Randomization: Permuted Block Randomization</a></li>
+<li class="chapter" data-level="8.5" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#latin-square-designs"><i class="fa fa-check"></i><b>8.5</b> Latin square designs</a></li>
+<li class="chapter" data-level="8.6" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#general-latin-square-designs"><i class="fa fa-check"></i><b>8.6</b> General Latin Square Designs</a></li>
+<li class="chapter" data-level="8.7" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.7</b> Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#hyper-graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.8</b> Hyper-Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.9" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#balanced-incomplete-block-designs"><i class="fa fa-check"></i><b>8.9</b> Balanced incomplete block designs</a></li>
+<li class="chapter" data-level="8.10" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#questions-5"><i class="fa fa-check"></i><b>8.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html"><i class="fa fa-check"></i><b>9</b> Factorial Designs at Two Levels - <span class="math inline">\(2^k\)</span> Designs</a><ul>
+<li class="chapter" data-level="9.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#difference-between-anova-and-factorial-designs"><i class="fa fa-check"></i><b>9.1</b> Difference between ANOVA and Factorial Designs</a></li>
+<li class="chapter" data-level="9.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#performing-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.2</b> Performing a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#cube-plots"><i class="fa fa-check"></i><b>9.3</b> Cube plots</a></li>
+<li class="chapter" data-level="9.4" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#factorial-effects"><i class="fa fa-check"></i><b>9.4</b> Factorial effects</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#main-effects"><i class="fa fa-check"></i><b>9.4.1</b> Main effects</a></li>
+<li class="chapter" data-level="9.4.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-effects"><i class="fa fa-check"></i><b>9.4.2</b> Interaction effects</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#replication-in-factorial-designs"><i class="fa fa-check"></i><b>9.5</b> Replication in factorial designs</a></li>
+<li class="chapter" data-level="9.6" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#estimate-of-the-error-variance-and-standard-error-of-effects-from-replicated-runs"><i class="fa fa-check"></i><b>9.6</b> Estimate of the error variance and standard error of effects from replicated runs</a></li>
+<li class="chapter" data-level="9.7" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interpretation-of-results"><i class="fa fa-check"></i><b>9.7</b> Interpretation of results</a></li>
+<li class="chapter" data-level="9.8" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-plots"><i class="fa fa-check"></i><b>9.8</b> Interaction plots</a></li>
+<li class="chapter" data-level="9.9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#linear-model-for-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.9</b> Linear Model for a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.10" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#advantages-of-factorial-designs-over-one-factor-at-a-time-designs"><i class="fa fa-check"></i><b>9.10</b> Advantages of factorial designs over one-factor-at-a-time designs</a></li>
+<li class="chapter" data-level="9.11" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#normal-plots-in-unreplicated-factorial-designs"><i class="fa fa-check"></i><b>9.11</b> Normal Plots in Unreplicated Factorial Designs</a><ul>
+<li class="chapter" data-level="9.11.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#review-of-normal-quantile-plots"><i class="fa fa-check"></i><b>9.11.1</b> Review of Normal Quantile Plots</a></li>
+<li class="chapter" data-level="9.11.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#example---24-design-for-studying-a-chemical-reaction"><i class="fa fa-check"></i><b>9.11.2</b> Example - <span class="math inline">\(2^4\)</span> design for studying a chemical reaction</a></li>
+</ul></li>
+<li class="chapter" data-level="9.12" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#half-normal-plots"><i class="fa fa-check"></i><b>9.12</b> Half-Normal Plots</a></li>
+<li class="chapter" data-level="9.13" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#lenths-method-testing-significance-for-experiments-without-variance-estimates"><i class="fa fa-check"></i><b>9.13</b> Lenth’s method: testing significance for experiments without variance estimates</a></li>
+<li class="chapter" data-level="9.14" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#blocking-factorial-designs"><i class="fa fa-check"></i><b>9.14</b> Blocking Factorial Designs</a><ul>
+<li class="chapter" data-level="9.14.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#effect-hierarchy-principle"><i class="fa fa-check"></i><b>9.14.1</b> Effect hierarchy principle</a></li>
+<li class="chapter" data-level="9.14.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generation-of-orthogonal-blocks"><i class="fa fa-check"></i><b>9.14.2</b> Generation of Orthogonal Blocks</a></li>
+<li class="chapter" data-level="9.14.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#an-example-of-how-not-to-block"><i class="fa fa-check"></i><b>9.14.3</b> An example of how not to block</a></li>
+</ul></li>
+<li class="chapter" data-level="9.15" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generators-and-defining-relations"><i class="fa fa-check"></i><b>9.15</b> Generators and Defining Relations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html"><i class="fa fa-check"></i><b>10</b> Fractional factorial designs</a><ul>
+<li class="chapter" data-level="10.1" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---effect-of-five-factors-on-six-properties-of-film-in-eight-runs"><i class="fa fa-check"></i><b>10.1</b> Example - Effect of five factors on six properties of film in eight runs</a></li>
+<li class="chapter" data-level="10.2" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#effect-aliasing-and-design-resolution"><i class="fa fa-check"></i><b>10.2</b> Effect Aliasing and Design Resolution</a></li>
+<li class="chapter" data-level="10.3" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---leaf-spring-experiment"><i class="fa fa-check"></i><b>10.3</b> Example - Leaf Spring Experiment</a></li>
+<li class="chapter" data-level="10.4" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---baking-cookies"><i class="fa fa-check"></i><b>10.4</b> Example - Baking Cookies</a></li>
+<li class="chapter" data-level="10.5" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#questions-6"><i class="fa fa-check"></i><b>10.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="split-plot-designs.html"><a href="split-plot-designs.html"><i class="fa fa-check"></i><b>11</b> Split-Plot Designs</a><ul>
+<li class="chapter" data-level="11.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#anova-table-for-split-plot-experiment"><i class="fa fa-check"></i><b>11.1</b> ANOVA table for split plot experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-not-to-do-it"><i class="fa fa-check"></i><b>11.2</b> Split plot ANOVA - How not to do it</a></li>
+<li class="chapter" data-level="11.3" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-to-do-it"><i class="fa fa-check"></i><b>11.3</b> Split plot ANOVA - How to do it</a></li>
+<li class="chapter" data-level="11.4" data-path="split-plot-designs.html"><a href="split-plot-designs.html#so-what-is-a-split-plot"><i class="fa fa-check"></i><b>11.4</b> So, what is a split plot?</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#randomizing-a-split-plot-experiment"><i class="fa fa-check"></i><b>11.4.1</b> Randomizing a Split Plot experiment</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="split-plot-designs.html"><a href="split-plot-designs.html#questions-7"><i class="fa fa-check"></i><b>11.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html"><i class="fa fa-check"></i><b>12</b> Design of Observational Studies</a><ul>
+<li class="chapter" data-level="12.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#what-is-an-observational-study"><i class="fa fa-check"></i><b>12.1</b> What is an observational study?</a></li>
+<li class="chapter" data-level="12.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#designing-and-observational-study"><i class="fa fa-check"></i><b>12.2</b> Designing and Observational Study</a></li>
+<li class="chapter" data-level="12.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example---epidemiologic-follow-up-study"><i class="fa fa-check"></i><b>12.3</b> Example - Epidemiologic Follow-up Study</a></li>
+<li class="chapter" data-level="12.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-1"><i class="fa fa-check"></i><b>12.4</b> Propensity Score</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-examples"><i class="fa fa-check"></i><b>12.4.1</b> Propensity Score Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#estimating-the-propensity-score-in-an-observational-study"><i class="fa fa-check"></i><b>12.5</b> Estimating the propensity score in an observational study</a></li>
+<li class="chapter" data-level="12.6" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#the-balancing-property-of-the-propensity-score"><i class="fa fa-check"></i><b>12.6</b> The balancing property of the propensity score</a></li>
+<li class="chapter" data-level="12.7" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#imbalance-versus-overlap"><i class="fa fa-check"></i><b>12.7</b> Imbalance versus Overlap</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example-from-the-nhefs"><i class="fa fa-check"></i><b>12.7.1</b> Example from the NHEFS</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-and-ignorable-treatment-assignment"><i class="fa fa-check"></i><b>12.8</b> Propensity Score and Ignorable Treatment Assignment</a></li>
+<li class="chapter" data-level="12.9" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-methods-to-reduce-bias-in-observational-studies"><i class="fa fa-check"></i><b>12.9</b> Propensity Score Methods to Reduce Bias in Observational Studies</a><ul>
+<li class="chapter" data-level="12.9.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-matching-matching"><i class="fa fa-check"></i><b>12.9.1</b> Propensity Score Matching Matching</a></li>
+<li class="chapter" data-level="12.9.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-stratification"><i class="fa fa-check"></i><b>12.9.2</b> Propensity score stratification</a></li>
+<li class="chapter" data-level="12.9.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#multivariate-adjustment-using-the-propensity-score"><i class="fa fa-check"></i><b>12.9.3</b> Multivariate adjustment using the propensity score</a></li>
+<li class="chapter" data-level="12.9.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#comparing-the-three-methods"><i class="fa fa-check"></i><b>12.9.4</b> Comparing the three methods</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#questions-8"><i class="fa fa-check"></i><b>12.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Design of Experiments and Observational Studies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="causal-inference" class="section level1">
+<h1><span class="header-section-number">6</span> Causal Inference</h1>
+<div id="the-fundemental-problem-of-causal-inference" class="section level2">
+<h2><span class="header-section-number">6.1</span> The Fundemental Problem of Causal Inference</h2>
+<p>The following is adapted from <span class="citation">Imbens and Rubin (<a href="#ref-imbens2015">2015</a>)</span> :</p>
+<p>Suppose Bob, at a particular point in time, is contemplating whether or not to take an aspirin for a headache. There are two treatment levels, taking an aspirin, and not taking an aspirin. If Bob takes the aspirin, his headache may be gone, or it may remain, say, an hour later; we denote this outcome, which can be either “Headache” or “No Headache,” by <span class="math inline">\(y^1\)</span>. (We could use a finer measure of the status of my headache an hour later, for example, rating my headache on a ten-point scale, but that does not alter the fundamental issues involved here.) Similarly, if Bob does not take the aspirin, his headache may remain an hour later, or it may not; we denote this potential outcome by <span class="math inline">\(y^0\)</span>, which also can be either “Headache,” or “No Headache.” There are therefore two potential outcomes, <span class="math inline">\(y^1\)</span> and <span class="math inline">\(y^0\)</span>, one for each level of the treatment. The causal effect of the treatment involves the comparison of these two potential outcomes.</p>
+<p>Because in this example each potential outcome can take on only two values, the unit- level causal effect – the comparison of these two outcomes for the same unit – involves one of four (two by two) possibilities:</p>
+<ol style="list-style-type: decimal">
+<li>Headache gone only with aspirin: <span class="math inline">\(y^1\)</span> = No Headache, <span class="math inline">\(y^0\)</span> = Headache</li>
+<li>No effect of aspirin, with a headache in both cases: <span class="math inline">\(y^1\)</span> = Headache, <span class="math inline">\(y^0\)</span> = Headache</li>
+<li>No effect of aspirin, with the headache gone in both cases: <span class="math inline">\(y^1\)</span> = No Headache, <span class="math inline">\(y^0\)</span> = No Headache</li>
+<li>Headache gone only without aspirin: <span class="math inline">\(y^1\)</span> = Headache, <span class="math inline">\(y^0\)</span> = No Headache</li>
+</ol>
+<p>There are two important aspects of this definition of a causal effect.</p>
+<ol style="list-style-type: decimal">
+<li><p>The definition of the causal effect depends on the potential outcomes, but it does not depend on which outcome is actually observed. Specifically, whether Bob takes an aspirin (and am therefore unable to observe the state of my headache with no aspirin) or do not take an aspirin (and am thus unable to observe the outcome with an aspirin) does not affect the definition of the causal effect.</p></li>
+<li><p>The causal effect is the comparison of potential outcomes, for the same unit, at the same moment in time post-treatment. In particular, the causal effect is not defined in terms of comparisons of outcomes at different times, as in a before-and-after comparison of my headache before and after deciding to take or not to take the aspirin. <span class="citation">Holland (<a href="#ref-holland1986">1986</a>)</span> states that “The fundamental problem of causal inference” is therefore the problem that at most one of the potential outcomes can be realized and thus observed. If the action you take is Aspirin, you observe <span class="math inline">\(y^1\)</span> and will never know the value of <span class="math inline">\(y^0\)</span> because you cannot go back in time. Similarly, if your action is No Aspirin, you observe <span class="math inline">\(y^0\)</span> but cannot know the value of <span class="math inline">\(y^1\)</span>. In general, therefore, even though the unit-level causal effect (the comparison of the two potential outcomes) may be well defined, by definition we cannot learn its value from just the single realized potential outcome.</p></li>
+</ol>
+<p>The outcomes that would be observed under control and treatment conditions are often called <strong>counterfactuals or potential outcomes</strong>.</p>
+<p>If Bob took aspirin for his headache then then <span class="math inline">\(y^1\)</span> is observed and <span class="math inline">\(y^0\)</span> is the unobserved counterfactual outcome—it represents what would have happened to Bob if he had no taken aspirin. Conversely, if Bob had not taken aspirin then <span class="math inline">\(y^0\)</span> is observed and <span class="math inline">\(y^1\)</span> is counterfactual. In either case, a simple treatment effect for Bob can be defined as <span class="math display">\[ \mbox{treatment effect for Bob }= y^1-y^0.\]</span></p>
+<div id="example-of-the-fundemental-problem" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Example of the fundemental problem</h3>
+<p>The table below shows hypothetical data for an experiment with 100 units (200 potential outcomes). The table shows what the data that is required to determine causal effects for each person in the data set—that is, it includes both potential outcomes for each person. Let <span class="math inline">\(y_i^0\)</span> be the potential outcome for unit <span class="math inline">\(i\)</span> when <span class="math inline">\(T_i = 0\)</span> and <span class="math inline">\(y_i^1\)</span> be the potential outcome for unit <span class="math inline">\(i\)</span> when <span class="math inline">\(T_i = 1\)</span>. <span class="math inline">\(X_i\)</span> is a pre-treatment characteristic or covariate for each unit.</p>
+<table style="width:69%;">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="12%" />
+<col width="13%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Unit</th>
+<th><span class="math inline">\(T_i\)</span></th>
+<th><span class="math inline">\(y_i^0\)</span></th>
+<th align="left"><span class="math inline">\(y_i^1\)</span></th>
+<th align="left"><span class="math inline">\(y_i^0 -y_i^1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td>0</td>
+<td><strong>69</strong></td>
+<td align="left">75</td>
+<td align="left">-6</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td>1</td>
+<td>80</td>
+<td align="left"><strong>76</strong></td>
+<td align="left">4</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td>1</td>
+<td>71</td>
+<td align="left"><strong>69</strong></td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td></td>
+<td></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">100</td>
+<td>0</td>
+<td><strong>81</strong></td>
+<td align="left">78</td>
+<td align="left">3</td>
+</tr>
+</tbody>
+</table>
+<p>The observed data is actually</p>
+<table style="width:71%;">
+<colgroup>
+<col width="13%" />
+<col width="9%" />
+<col width="12%" />
+<col width="13%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Unit</th>
+<th><span class="math inline">\(T_i\)</span></th>
+<th><span class="math inline">\(y_i^0\)</span></th>
+<th align="left"><span class="math inline">\(y_i^1\)</span></th>
+<th align="left"><span class="math inline">\(y_i^0 -y_i^1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td>0</td>
+<td><strong>69</strong></td>
+<td align="left">?</td>
+<td align="left">?</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td>1</td>
+<td>?</td>
+<td align="left"><strong>76</strong></td>
+<td align="left">?</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td>1</td>
+<td>?</td>
+<td align="left"><strong>69</strong></td>
+<td align="left">?</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td></td>
+<td></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">100</td>
+<td>0</td>
+<td><strong>81</strong></td>
+<td align="left">?</td>
+<td align="left">?</td>
+</tr>
+</tbody>
+</table>
+<p>The fundamental problem of causal inference is that at most one of these two potential outcomes, <span class="math inline">\(y_i^0\)</span> and <span class="math inline">\(y_i^1\)</span>, can be observed for each unit <span class="math inline">\(i\)</span>. The bottom table displays the data that can actually be observed. The <span class="math inline">\(y_i^1\)</span> values are “missing” for those in the control group and the <span class="math inline">\(y_i^0\)</span> values are “missing” for those in the treatment group. (pg. 170-171, <span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>)</p>
+<p>We cannot observe both what happens to an individual after taking the treatment (at a particular point in time) and what happens to that same individual after not taking the treatment (at the same point in time). Thus we can never measure a causal effect directly.</p>
+</div>
+</div>
+<div id="randomized-experiments-as-a-solution-to-the-fundemental-problem-of-causal-inference" class="section level2">
+<h2><span class="header-section-number">6.2</span> Randomized experiments as a solution to the fundemental problem of causal inference</h2>
+<p>Randomization and experimentation is one approach to dealing with the fundamental problem of causal inference. Outcomes are observed on a sample of units to learn about the distribution of outcomes in the population. The fundamental problem states that we cannot compare treatment and control outcomes for the same units, so we try to compare them on similar units. Similarity can be attained by using randomization to decide which units are assigned to the treatment group and which units are assigned to the control group.</p>
+<p>Other approaches to dealing with the problem is statistical adjustment via regression modelling and finding close substitutes to the units that did not receive treatment (see <span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>).</p>
+<p>Suppose that in an experiment units are randomly assigned to receive treatment and control, and also that the units are a random sample from a population of interest. The random sampling and random treatment assignment allow us to estimate the average causal effect of the treatment in the population, and regression modeling can be used to refine this estimate.</p>
+</div>
+<div id="average-causal-effects-and-randomized-experiments" class="section level2">
+<h2><span class="header-section-number">6.3</span> Average causal effects and randomized experiments</h2>
+<p>In this section average causal effects will be described in terms of a control group - a group that does not receive treatment, although the group could have received another treatment instead of no treatment.</p>
+<p>In most practical situations it’s impossible to estimate individual-level causal effects but, we can design studies to estimate the population average treatment effect:</p>
+<p><span class="math display">\[ \mbox{average treatment effect} = {\bar y}^1-{\bar y}^0,\]</span></p>
+<p>where <span class="math inline">\({\bar y}^1 = \sum_{i = 1}^{n_1} y_i^1/n_1\)</span> and <span class="math inline">\({\bar y}^0 = \sum_{i = 1}^{n_0} y_i^0/n_0\)</span>.</p>
+<p>The control group is a group of units that could have ended up in the treatment group, but due to chance they just happened not to get the treatment. Therefore, on average, their outcomes represent what would have happened to the treated units had they not been treated; similarly, the treatment group outcomes represent what might have happened to the control group had they been treated.</p>
+<p>If <span class="math inline">\(n_0\)</span> units are selected at random from the population and given the control, and <span class="math inline">\(n_1\)</span> other units are randomly selected and given the treatment, then the observed sample averages of <span class="math inline">\(y\)</span> for the treated and control units can be used to estimate the corresponding population quantities, <span class="math inline">\({\bar y}^1\)</span> and <span class="math inline">\({\bar y}^0\)</span>, with their difference estimating the average treatment effect (and with standard error <span class="math inline">\(\sqrt{S^2_0/n_0+S^2_1/n_1}\)</span>). This works because the <span class="math inline">\(y_i^0\)</span> for the control group are a random sample of the values in the entire population. Similarly, the <span class="math inline">\(y_i^1\)</span> for the treatment group are a random sample of the <span class="math inline">\(y_i^1\)</span>’s in the population.</p>
+<p>Equivalently, if we select <span class="math inline">\(n_0 + n_1\)</span> units at random from the population, and then randomly assign <span class="math inline">\(n_0\)</span> of them to the control and <span class="math inline">\(n_1\)</span> to the treatment, we can think of each of the sample groups as representing the corresponding population of control or treated units. Therefore the control group mean can act as a counterfactual for the treatment group (and vice versa).</p>
+<p>In medical studies such as clinical trials it is common to select <span class="math inline">\(n_0 + n_1\)</span> units nonrandomly from the population but then the treatment is assigned at random within this sample. Causal inferences are still justified, but the inferences no longer generalize to the entire population (<span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>).</p>
+<div id="stable-unit-treatment-value-assignment" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Stable Unit Treatment Value Assignment</h3>
+<p><strong>The assumption.</strong> The potential outcomes for any unit do not vary with the treatments assigned to other units, and, for each unit, there are no different forms or versions of each treatment level, which lead to different potential outcomes.</p>
+<p>The stable unit treatment value assumption involves assuming that treatments applied to one unit do not affect the outcome for another unit. For example, if Adam and Oliver are in different locations and have no contact with each other, it would appear reasonable to assume that if Oliver takes an an aspirin for his headache then his behaviour has no effect on the status of Adam’s headache. This assumption might not hold if Adam and Oliver are in the same location, and Adam’s behavior, affects Oliver’s behaviour. SUTVA incorporates the idea that Adam and Oliver do not interfere with one another and the idea that for each unit there is only a single version of each treatment level (e.g., there is only one dose of aspirin). <span class="citation">(Imbens and Rubin <a href="#ref-imbens2015">2015</a>)</span></p>
+<p>The causal effect of aspirin on headaches can be estimated if we are able to exclude the possibility that your taking or not taking aspirin has any effect on my headache, and that that the aspirin tablets available to me are of different strengths. These are assumptions that rely on previously acquired knowledge of the subject matter for their justification. Causal inference is generally impossible without such assumptions, and thus it is critical to be explicit about their content and their justifications. <span class="citation">(Imbens and Rubin <a href="#ref-imbens2015">2015</a>)</span></p>
+</div>
+</div>
+<div id="ignorable-assignment-mechanisims" class="section level2">
+<h2><span class="header-section-number">6.4</span> Ignorable Assignment Mechanisims</h2>
+<p>A <strong>covariate</strong> is a pre-treatment characteristic of an experimental unit that is not affected by treatment. In many studies the age and sex of a subject would be considered a covariate.</p>
+<p>The <strong>assignment mechanism</strong> is the process for deciding which units receive treatment and which receive control.</p>
+<p>A treatment assignment is <strong>(strongly) ignorable</strong> if:</p>
+<ol style="list-style-type: decimal">
+<li><p>the probability of a unit receiving treatment is strictly between zero and one; and</p></li>
+<li><p>treatment assignment is independent of potential outcomes conditional on all observed and unobserved covariates. If a treatment assignment is not strongly ignorable then it is said to be non-ignorable</p></li>
+</ol>
+<p>Strongly ignorable treatment assignment can also be expressed in terms of conditional independence. If treatment assignment <span class="math inline">\(T\)</span> is conditionally independent of <span class="math inline">\(y^0, y^1\)</span> given confounding covariates <span class="math inline">\(X\)</span> and <span class="math inline">\(0&lt;P(T = 1|y^0,y^1,X)&lt;1\)</span> then the treatment assignment is said to be <strong>strongly ignorable</strong>. Symbolically this is represented as</p>
+<p><span class="math display">\[y^0,y^1 \bot T | X.\]</span></p>
+<p>This means that the conditional distribution of potential responses is the same across levels of the treatment variable once we condition on the confounding covariates <span class="math inline">\(X\)</span>.</p>
+<p>Another way to view ignorability is:</p>
+<p><span class="math display">\[P(T = 1|y^0,y^1,X)=P(T = 1|X).\]</span></p>
+<p>If treatments were assigned by the flip of a coin then the coin flips may depend on the covariates but not on the potential responses.</p>
+<p>When the treatment assignment mechanism is random, say, using a coin toss then the assignment mechanism is strongly ignorable. This is why the treatment effects in randomized experiments can be estimated using a simple difference in means to estimate the average causal effect without conditioning on pre-treatment covariates. In later chapters we will see how blocking can be used to satisfy the strongly ignorable condition.</p>
+<div id="the-perfect-doctor-example" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> The Perfect Doctor Example</h3>
+<p>The following example is adapted from Donald Rubin (add ref.).</p>
+<ul>
+<li>Suppose that a doctor prescribes surgery (labeled 1) or drug (labeled 0) for a certain condition.<br />
+</li>
+<li>The doctor knows enough about the potential outcomes of the patients so assigns each patient the treatment that is more beneficial to that patient.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>unit</th>
+<th><span class="math inline">\(y^0_i\)</span></th>
+<th><span class="math inline">\(y^1_i\)</span></th>
+<th><span class="math inline">\(y^1_i - y^0_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>patient #1</td>
+<td>1</td>
+<td>7</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>patient #2</td>
+<td>6</td>
+<td>5</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td>patient #3</td>
+<td>1</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>patient #4</td>
+<td>8</td>
+<td>7</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td>Average</td>
+<td>4</td>
+<td>6</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(y\)</span> is years of post-treatment survival.</p>
+<ul>
+<li>Patients receiving surgery on average live 2 years longer.</li>
+<li>Patients 1 and 3 will receive surgery and patients 2 and 4 will receive drug treatment.</li>
+<li>The observed treatments and outcomes are in this table, where <span class="math display">\[T_i =
+\left\{
+\begin{array}{ll}
+    1  &amp; \mbox{if surgery is assigned } \\
+    0 &amp; \mbox{if drug is assigned }
+\end{array}
+\right.\]</span></li>
+</ul>
+<p>and</p>
+<p><span class="math display">\[y_i^{obs} =
+\left\{
+    \begin{array}{ll}
+        y_i^1  &amp; \mbox{if surgery is assigned } \\
+        y_i^0 &amp; \mbox{if drug is assigned }
+    \end{array}
+\right.\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>unit</th>
+<th><span class="math inline">\(T_i\)</span></th>
+<th><span class="math inline">\(y_i^{obs}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>patient #1</td>
+<td>1</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>patient #2</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>patient #3</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>patient #4</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td><strong>Average Drug</strong></td>
+<td></td>
+<td><strong>7</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Average Surg</strong></td>
+<td></td>
+<td><strong>6</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The observed data tells us that patients receiving drug live, on average, one year longer.</li>
+<li><p>This shows that we can reach invalid conclusions if we look at the observed values of potential outcomes without considering how the treatments were assigned.</p></li>
+<li><p>In order to study causal effects the probability of a treatment assignment must be strictly between 0 and 1.</p></li>
+<li><p>The assignment mechanism depended on the potential outcomes and was therefore nonignorable.</p></li>
+<li><p>The observed difference in means is misleading in this situation. The biggest problem when using the difference of sample means in this example is that we have effectively pretended that we had an ignorable treatment assignment when in fact we did not.</p></li>
+</ul>
+</div>
+</div>
+<div id="questions-3" class="section level2">
+<h2><span class="header-section-number">6.5</span> Questions</h2>
+<ol style="list-style-type: decimal">
+<li><p>(Adapted from <span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>, Chapter 9) Suppose you are interested in the effect of the presence of vending machines in schools on childhood obesity. What randomized experiment would you want to do (in a perfect world) to evaluate this question?</p></li>
+<li><p>What is the definition of ignorable treatment assignment?</p></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Give an example of a study where the treatment assignment is strongly ignorable.</p></li>
+<li><p>Give an example of a study where the treatment assignment is non-ignorable.</p></li>
+</ol>
+<ol start="3" style="list-style-type: decimal">
+<li>(Adapted from <span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>, Chapter 9) The table below describes a hypothetical experiment on 2400 persons. Each row of the table specifies a category of person, as defined by his or her pre-treatment predictor <span class="math inline">\(x\)</span>, treatment indicator <span class="math inline">\(T\)</span> , and potential outcomes <span class="math inline">\(Y(0)\)</span>, <span class="math inline">\(Y(1)\)</span>. (For simplicity, we assume unrealistically that all the people in this experiment fit into these eight categories.)</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Category</th>
+<th>persons in category</th>
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(T\)</span></th>
+<th><span class="math inline">\(Y(0)\)</span></th>
+<th><span class="math inline">\(Y(1)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>300</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>300</td>
+<td>1</td>
+<td>0</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>500</td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>500</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>200</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>200</td>
+<td>1</td>
+<td>0</td>
+<td>10</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>200</td>
+<td>0</td>
+<td>1</td>
+<td>10</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>200</td>
+<td>1</td>
+<td>1</td>
+<td>10</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>In making the table we are assuming omniscience, so that we know both <span class="math inline">\(Y(0)\)</span> and <span class="math inline">\(Y(1)\)</span> for all observations. But the (non omniscient) investigator would only observe <span class="math inline">\(x\)</span>, <span class="math inline">\(T\)</span>, and <span class="math inline">\(Y(T)\)</span> for each unit. (For example, a person in category 1 would have <span class="math inline">\(x = 0\)</span>,<span class="math inline">\(T = 0\)</span>,<span class="math inline">\(Y(0)=4\)</span>, and a person in category 3 would have <span class="math inline">\(x = 0\)</span>,<span class="math inline">\(T = 1\)</span>,<span class="math inline">\(Y(1)=6\)</span>.)</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Give an example of a context for this study. Define <span class="math inline">\(x, T, Y(0), Y(1)\)</span>.</p></li>
+<li><p>What is the average treatment effect in this population of 2400 persons?</p></li>
+<li><p>Is it plausible to believe that these data came from a randomized experiment? Defend your answer.</p></li>
+<li><p>Another population quantity is the mean of <span class="math inline">\(Y\)</span> for those who received the treatment minus the mean of <span class="math inline">\(Y\)</span> for those who did not. What is the relation between this quantity and the average treatment effect?</p></li>
+<li><p>For these data, is it plausible to believe that treatment assignment is strongly ignorable given the covariate <span class="math inline">\(x\)</span>? Defend your answer.</p></li>
+</ol>
+<ol start="4" style="list-style-type: decimal">
+<li>(Adapted from <span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>, Chapter 9) An observational study to evaluate the effectiveness of supplementing a reading program with a television show was conducted in several schools in grade 4. Some classroom teachers chose to supplement their reading program with the television show and some teachers chose not to supplement their reading program. Some teachers chose to supplement if they felt that it would help their class improve their reading scores. The study collected data on a large number of student and teacher covariates measured before the teachers chose to supplement or not supplement their reading program. The outcome measure of interest is student reading scores.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Describe how this study could have been conducted as a randomized experiment.</p></li>
+<li><p>Is it plausible to assume that supplementing the reading program is ignorable in this observational study?</p></li>
+</ol>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-gelman2006">
+<p>Gelman, Andrew, and Jennifer Hill. 2006. <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-holland1986">
+<p>Holland, Paul W. 1986. “Statistics and Causal Inference.” <em>Journal of the American Statistical Association</em> 81 (396). Taylor &amp;amp; Francis: 945–60.</p>
+</div>
+<div id="ref-imbens2015">
+<p>Imbens, Guido W, and Donald B Rubin. 2015. <em>Causal Inference in Statistics, Social, and Biomedical Sciences</em>. Cambridge University Press.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="how-many-experimental-units-are-required-to-compare-two-treatments.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="completely-randomized-designs-comparing-more-than-two-treatments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

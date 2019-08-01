@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Completely Randomized Designs: Comparing More Than Two Treatments | Design of Experiments and Observational Studies</title>
+  <meta name="description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Completely Randomized Designs: Comparing More Than Two Treatments | Design of Experiments and Observational Studies" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="github-repo" content="scidesign/designbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Completely Randomized Designs: Comparing More Than Two Treatments | Design of Experiments and Observational Studies" />
+  
+  <meta name="twitter:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  
+
+<meta name="author" content="Nathan Taback" />
+
+
+<meta name="date" content="2019-07-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="causal-inference.html">
+<link rel="next" href="randomized-block-designs.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-design-scientific-studies"><i class="fa fa-check"></i><b>2.1</b> Why Design Scientific Studies?</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#big-data-and-designing-scientific-studies"><i class="fa fa-check"></i><b>2.2</b> Big Data and Designing Scientific Studies</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#what-is-big-data-and-why-does-it-matter"><i class="fa fa-check"></i><b>2.2.1</b> What is Big data and why does it matter?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction.html"><a href="introduction.html#is-statistical-sampling-and-randomization-still-relevant-in-the-era-of-big-data"><i class="fa fa-check"></i><b>2.2.2</b> Is statistical sampling and randomization still relevant in the era of Big Data?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html"><i class="fa fa-check"></i><b>3</b> Review of Mathematical Statistics</a><ul>
+<li class="chapter" data-level="3.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#data"><i class="fa fa-check"></i><b>3.1</b> Data</a></li>
+<li class="chapter" data-level="3.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#distributions"><i class="fa fa-check"></i><b>3.2</b> Distributions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Continuous Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#randomness"><i class="fa fa-check"></i><b>3.3</b> Randomness</a></li>
+<li class="chapter" data-level="3.4" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#parameters-and-statistics"><i class="fa fa-check"></i><b>3.4</b> Parameters and Statistics</a></li>
+<li class="chapter" data-level="3.5" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#residuals-and-degress-of-freedom"><i class="fa fa-check"></i><b>3.5</b> Residuals and Degress of Freedom</a></li>
+<li class="chapter" data-level="3.6" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#the-normal-distribution"><i class="fa fa-check"></i><b>3.6</b> The Normal Distribution</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises"><i class="fa fa-check"></i><b>3.6.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
+<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
+<li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#questions"><i class="fa fa-check"></i><b>3.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html"><i class="fa fa-check"></i><b>4</b> Completely Randomized Designs: Comparing Two Treatments</a><ul>
+<li class="chapter" data-level="4.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#comparing-two-treatments"><i class="fa fa-check"></i><b>4.1</b> Comparing Two Treatments</a></li>
+<li class="chapter" data-level="4.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#treatment-assignment-mechanism-and-propensity-score"><i class="fa fa-check"></i><b>4.2</b> Treatment Assignment Mechanism and Propensity Score</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#propensity-score"><i class="fa fa-check"></i><b>4.2.1</b> Propensity Score</a></li>
+<li class="chapter" data-level="4.2.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#assignment-mechanism"><i class="fa fa-check"></i><b>4.2.2</b> Assignment Mechanism</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#completely-randomized-experiment"><i class="fa fa-check"></i><b>4.3</b> Completely Randomized Experiment</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#example"><i class="fa fa-check"></i><b>4.3.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-distribution"><i class="fa fa-check"></i><b>4.4</b> The Randomization Distribution</a></li>
+<li class="chapter" data-level="4.5" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-p-value"><i class="fa fa-check"></i><b>4.5</b> The Randomization p-value</a></li>
+<li class="chapter" data-level="4.6" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#two-sided-randomization-p-value"><i class="fa fa-check"></i><b>4.6</b> Two-Sided Randomization P value</a></li>
+<li class="chapter" data-level="4.7" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#other-test-statistics"><i class="fa fa-check"></i><b>4.7</b> Other Test Statistics</a></li>
+<li class="chapter" data-level="4.8" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#calculating-the-randomization-p-value-using-monte-carlo-sampling"><i class="fa fa-check"></i><b>4.8</b> Calculating the Randomization P-value using Monte Carlo Sampling</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#does-caffeine-have-an-effect-on-reaction-time"><i class="fa fa-check"></i><b>4.8.1</b> Does Caffeine Have an Effect on Reaction Time?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#properties-of-the-randomization-test"><i class="fa fa-check"></i><b>4.9</b> Properties of the Randomization Test</a></li>
+<li class="chapter" data-level="4.10" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-two-sample-t-test"><i class="fa fa-check"></i><b>4.10</b> The two-sample t-test</a></li>
+<li class="chapter" data-level="4.11" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#randomized-paired-comparison"><i class="fa fa-check"></i><b>4.11</b> Randomized paired comparison</a></li>
+<li class="chapter" data-level="4.12" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-test-for-a-randomized-paired-design"><i class="fa fa-check"></i><b>4.12</b> The Randomization Test for a Randomized Paired Design</a></li>
+<li class="chapter" data-level="4.13" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#paired-t-test"><i class="fa fa-check"></i><b>4.13</b> Paired t-test</a></li>
+<li class="chapter" data-level="4.14" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#questions-1"><i class="fa fa-check"></i><b>4.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html"><i class="fa fa-check"></i><b>5</b> How Many Experimental Units are Required to Compare Two Treatments?</a><ul>
+<li class="chapter" data-level="5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#clinical-trials"><i class="fa fa-check"></i><b>5.1</b> Clinical Trials</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#phases-of-clinical-trials"><i class="fa fa-check"></i><b>5.1.1</b> Phases of clinical trials</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
+<li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.4.1</b> Calculating the Power of the One Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-two-sample-t-test"><i class="fa fa-check"></i><b>5.5</b> Power of two sample t test</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-two-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.5.1</b> Calculating the Power of the Two Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#effect-size"><i class="fa fa-check"></i><b>5.6</b> Effect size</a></li>
+<li class="chapter" data-level="5.7" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-equal-allocation"><i class="fa fa-check"></i><b>5.7</b> Sample size - known variance and equal allocation</a></li>
+<li class="chapter" data-level="5.8" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-unequal-allocation"><i class="fa fa-check"></i><b>5.8</b> Sample size - known variance and unequal allocation</a></li>
+<li class="chapter" data-level="5.9" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#comparing-proportions-for-binary-outcomes"><i class="fa fa-check"></i><b>5.9</b> Comparing Proportions for Binary Outcomes</a></li>
+<li class="chapter" data-level="5.10" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-power-by-simulation"><i class="fa fa-check"></i><b>5.10</b> Calculating Power by simulation</a></li>
+<li class="chapter" data-level="5.11" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#questions-2"><i class="fa fa-check"></i><b>5.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.1</b> The Fundemental Problem of Causal Inference</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="causal-inference.html"><a href="causal-inference.html#example-of-the-fundemental-problem"><i class="fa fa-check"></i><b>6.1.1</b> Example of the fundemental problem</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#randomized-experiments-as-a-solution-to-the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.2</b> Randomized experiments as a solution to the fundemental problem of causal inference</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#average-causal-effects-and-randomized-experiments"><i class="fa fa-check"></i><b>6.3</b> Average causal effects and randomized experiments</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="causal-inference.html"><a href="causal-inference.html#stable-unit-treatment-value-assignment"><i class="fa fa-check"></i><b>6.3.1</b> Stable Unit Treatment Value Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#ignorable-assignment-mechanisims"><i class="fa fa-check"></i><b>6.4</b> Ignorable Assignment Mechanisims</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="causal-inference.html"><a href="causal-inference.html#the-perfect-doctor-example"><i class="fa fa-check"></i><b>6.4.1</b> The Perfect Doctor Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#questions-3"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html"><i class="fa fa-check"></i><b>7</b> Completely Randomized Designs: Comparing More Than Two Treatments</a><ul>
+<li class="chapter" data-level="7.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova---comparing-more-than-two-groups"><i class="fa fa-check"></i><b>7.1</b> ANOVA - Comparing more than two groups</a></li>
+<li class="chapter" data-level="7.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#analysis-of-variance-anova-table"><i class="fa fa-check"></i><b>7.2</b> Analysis of Variance (ANOVA) table</a></li>
+<li class="chapter" data-level="7.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-anova-identity"><i class="fa fa-check"></i><b>7.3</b> The ANOVA identity</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---blood-coagulation-study"><i class="fa fa-check"></i><b>7.3.1</b> Example - Blood coagulation study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#general-anova"><i class="fa fa-check"></i><b>7.4</b> General ANOVA</a></li>
+<li class="chapter" data-level="7.5" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova-assumptions"><i class="fa fa-check"></i><b>7.5</b> ANOVA Assumptions</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---checking-the-assumptions-in-the-blood-coagualtion-study"><i class="fa fa-check"></i><b>7.5.1</b> Example - checking the assumptions in the blood coagualtion study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#coding-qualitative-predictors-in-regression-models"><i class="fa fa-check"></i><b>7.6</b> Coding Qualitative Predictors in Regression Models</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#dummy-coding"><i class="fa fa-check"></i><b>7.6.1</b> Dummy Coding</a></li>
+<li class="chapter" data-level="7.6.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#deviation-coding"><i class="fa fa-check"></i><b>7.6.2</b> Deviation Coding</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#estimating-treatment-effects-using-least-squares"><i class="fa fa-check"></i><b>7.7</b> Estimating Treatment Effects using Least Squares</a></li>
+<li class="chapter" data-level="7.8" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#using-the-lm-function-in-r-to-estimate-treatment-effects"><i class="fa fa-check"></i><b>7.8</b> Using the <code>lm()</code> Function in R to Estimate Treatment Effects</a></li>
+<li class="chapter" data-level="7.9" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#multiple-comparisons"><i class="fa fa-check"></i><b>7.9</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-bonferroni-method"><i class="fa fa-check"></i><b>7.9.1</b> The Bonferroni Method</a></li>
+<li class="chapter" data-level="7.9.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-tukey-method"><i class="fa fa-check"></i><b>7.9.2</b> The Tukey Method</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#sample-size-for-anova---designing-a-study-to-compare-more-than-two-treatments"><i class="fa fa-check"></i><b>7.10</b> Sample size for ANOVA - Designing a study to compare more than two treatments</a><ul>
+<li class="chapter" data-level="7.10.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#direct-calculation-of-power-using-r"><i class="fa fa-check"></i><b>7.10.1</b> Direct calculation of Power using R</a></li>
+<li class="chapter" data-level="7.10.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-and-sample-size-using-the-pwr-library-in-r"><i class="fa fa-check"></i><b>7.10.2</b> Calculating Power and Sample Size using the <code>pwr</code> library in R</a></li>
+<li class="chapter" data-level="7.10.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-using-using-simulation"><i class="fa fa-check"></i><b>7.10.3</b> Calculating Power using using Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#questions-4"><i class="fa fa-check"></i><b>7.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html"><i class="fa fa-check"></i><b>8</b> Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#anova-table-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.1</b> ANOVA Table for Randomized Block Designs</a></li>
+<li class="chapter" data-level="8.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-anova-identity-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.2</b> The ANOVA identity for Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#degrees-of-freedom"><i class="fa fa-check"></i><b>8.2.1</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="8.2.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#penicillin-manufacturing-example"><i class="fa fa-check"></i><b>8.2.2</b> Penicillin Manufacturing Example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-linear-model-for-randomized-block-design"><i class="fa fa-check"></i><b>8.3</b> The Linear Model for Randomized Block Design</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#checking-statistical-assumptions"><i class="fa fa-check"></i><b>8.3.1</b> Checking statistical assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#application-of-blocking-to-achieve-balanced-randomization-permuted-block-randomization"><i class="fa fa-check"></i><b>8.4</b> Application of Blocking to Achieve Balanced Randomization: Permuted Block Randomization</a></li>
+<li class="chapter" data-level="8.5" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#latin-square-designs"><i class="fa fa-check"></i><b>8.5</b> Latin square designs</a></li>
+<li class="chapter" data-level="8.6" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#general-latin-square-designs"><i class="fa fa-check"></i><b>8.6</b> General Latin Square Designs</a></li>
+<li class="chapter" data-level="8.7" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.7</b> Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#hyper-graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.8</b> Hyper-Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.9" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#balanced-incomplete-block-designs"><i class="fa fa-check"></i><b>8.9</b> Balanced incomplete block designs</a></li>
+<li class="chapter" data-level="8.10" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#questions-5"><i class="fa fa-check"></i><b>8.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html"><i class="fa fa-check"></i><b>9</b> Factorial Designs at Two Levels - <span class="math inline">\(2^k\)</span> Designs</a><ul>
+<li class="chapter" data-level="9.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#difference-between-anova-and-factorial-designs"><i class="fa fa-check"></i><b>9.1</b> Difference between ANOVA and Factorial Designs</a></li>
+<li class="chapter" data-level="9.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#performing-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.2</b> Performing a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#cube-plots"><i class="fa fa-check"></i><b>9.3</b> Cube plots</a></li>
+<li class="chapter" data-level="9.4" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#factorial-effects"><i class="fa fa-check"></i><b>9.4</b> Factorial effects</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#main-effects"><i class="fa fa-check"></i><b>9.4.1</b> Main effects</a></li>
+<li class="chapter" data-level="9.4.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-effects"><i class="fa fa-check"></i><b>9.4.2</b> Interaction effects</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#replication-in-factorial-designs"><i class="fa fa-check"></i><b>9.5</b> Replication in factorial designs</a></li>
+<li class="chapter" data-level="9.6" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#estimate-of-the-error-variance-and-standard-error-of-effects-from-replicated-runs"><i class="fa fa-check"></i><b>9.6</b> Estimate of the error variance and standard error of effects from replicated runs</a></li>
+<li class="chapter" data-level="9.7" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interpretation-of-results"><i class="fa fa-check"></i><b>9.7</b> Interpretation of results</a></li>
+<li class="chapter" data-level="9.8" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-plots"><i class="fa fa-check"></i><b>9.8</b> Interaction plots</a></li>
+<li class="chapter" data-level="9.9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#linear-model-for-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.9</b> Linear Model for a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.10" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#advantages-of-factorial-designs-over-one-factor-at-a-time-designs"><i class="fa fa-check"></i><b>9.10</b> Advantages of factorial designs over one-factor-at-a-time designs</a></li>
+<li class="chapter" data-level="9.11" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#normal-plots-in-unreplicated-factorial-designs"><i class="fa fa-check"></i><b>9.11</b> Normal Plots in Unreplicated Factorial Designs</a><ul>
+<li class="chapter" data-level="9.11.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#review-of-normal-quantile-plots"><i class="fa fa-check"></i><b>9.11.1</b> Review of Normal Quantile Plots</a></li>
+<li class="chapter" data-level="9.11.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#example---24-design-for-studying-a-chemical-reaction"><i class="fa fa-check"></i><b>9.11.2</b> Example - <span class="math inline">\(2^4\)</span> design for studying a chemical reaction</a></li>
+</ul></li>
+<li class="chapter" data-level="9.12" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#half-normal-plots"><i class="fa fa-check"></i><b>9.12</b> Half-Normal Plots</a></li>
+<li class="chapter" data-level="9.13" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#lenths-method-testing-significance-for-experiments-without-variance-estimates"><i class="fa fa-check"></i><b>9.13</b> Lenth’s method: testing significance for experiments without variance estimates</a></li>
+<li class="chapter" data-level="9.14" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#blocking-factorial-designs"><i class="fa fa-check"></i><b>9.14</b> Blocking Factorial Designs</a><ul>
+<li class="chapter" data-level="9.14.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#effect-hierarchy-principle"><i class="fa fa-check"></i><b>9.14.1</b> Effect hierarchy principle</a></li>
+<li class="chapter" data-level="9.14.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generation-of-orthogonal-blocks"><i class="fa fa-check"></i><b>9.14.2</b> Generation of Orthogonal Blocks</a></li>
+<li class="chapter" data-level="9.14.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#an-example-of-how-not-to-block"><i class="fa fa-check"></i><b>9.14.3</b> An example of how not to block</a></li>
+</ul></li>
+<li class="chapter" data-level="9.15" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generators-and-defining-relations"><i class="fa fa-check"></i><b>9.15</b> Generators and Defining Relations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html"><i class="fa fa-check"></i><b>10</b> Fractional factorial designs</a><ul>
+<li class="chapter" data-level="10.1" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---effect-of-five-factors-on-six-properties-of-film-in-eight-runs"><i class="fa fa-check"></i><b>10.1</b> Example - Effect of five factors on six properties of film in eight runs</a></li>
+<li class="chapter" data-level="10.2" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#effect-aliasing-and-design-resolution"><i class="fa fa-check"></i><b>10.2</b> Effect Aliasing and Design Resolution</a></li>
+<li class="chapter" data-level="10.3" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---leaf-spring-experiment"><i class="fa fa-check"></i><b>10.3</b> Example - Leaf Spring Experiment</a></li>
+<li class="chapter" data-level="10.4" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---baking-cookies"><i class="fa fa-check"></i><b>10.4</b> Example - Baking Cookies</a></li>
+<li class="chapter" data-level="10.5" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#questions-6"><i class="fa fa-check"></i><b>10.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="split-plot-designs.html"><a href="split-plot-designs.html"><i class="fa fa-check"></i><b>11</b> Split-Plot Designs</a><ul>
+<li class="chapter" data-level="11.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#anova-table-for-split-plot-experiment"><i class="fa fa-check"></i><b>11.1</b> ANOVA table for split plot experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-not-to-do-it"><i class="fa fa-check"></i><b>11.2</b> Split plot ANOVA - How not to do it</a></li>
+<li class="chapter" data-level="11.3" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-to-do-it"><i class="fa fa-check"></i><b>11.3</b> Split plot ANOVA - How to do it</a></li>
+<li class="chapter" data-level="11.4" data-path="split-plot-designs.html"><a href="split-plot-designs.html#so-what-is-a-split-plot"><i class="fa fa-check"></i><b>11.4</b> So, what is a split plot?</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#randomizing-a-split-plot-experiment"><i class="fa fa-check"></i><b>11.4.1</b> Randomizing a Split Plot experiment</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="split-plot-designs.html"><a href="split-plot-designs.html#questions-7"><i class="fa fa-check"></i><b>11.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html"><i class="fa fa-check"></i><b>12</b> Design of Observational Studies</a><ul>
+<li class="chapter" data-level="12.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#what-is-an-observational-study"><i class="fa fa-check"></i><b>12.1</b> What is an observational study?</a></li>
+<li class="chapter" data-level="12.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#designing-and-observational-study"><i class="fa fa-check"></i><b>12.2</b> Designing and Observational Study</a></li>
+<li class="chapter" data-level="12.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example---epidemiologic-follow-up-study"><i class="fa fa-check"></i><b>12.3</b> Example - Epidemiologic Follow-up Study</a></li>
+<li class="chapter" data-level="12.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-1"><i class="fa fa-check"></i><b>12.4</b> Propensity Score</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-examples"><i class="fa fa-check"></i><b>12.4.1</b> Propensity Score Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#estimating-the-propensity-score-in-an-observational-study"><i class="fa fa-check"></i><b>12.5</b> Estimating the propensity score in an observational study</a></li>
+<li class="chapter" data-level="12.6" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#the-balancing-property-of-the-propensity-score"><i class="fa fa-check"></i><b>12.6</b> The balancing property of the propensity score</a></li>
+<li class="chapter" data-level="12.7" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#imbalance-versus-overlap"><i class="fa fa-check"></i><b>12.7</b> Imbalance versus Overlap</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example-from-the-nhefs"><i class="fa fa-check"></i><b>12.7.1</b> Example from the NHEFS</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-and-ignorable-treatment-assignment"><i class="fa fa-check"></i><b>12.8</b> Propensity Score and Ignorable Treatment Assignment</a></li>
+<li class="chapter" data-level="12.9" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-methods-to-reduce-bias-in-observational-studies"><i class="fa fa-check"></i><b>12.9</b> Propensity Score Methods to Reduce Bias in Observational Studies</a><ul>
+<li class="chapter" data-level="12.9.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-matching-matching"><i class="fa fa-check"></i><b>12.9.1</b> Propensity Score Matching Matching</a></li>
+<li class="chapter" data-level="12.9.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-stratification"><i class="fa fa-check"></i><b>12.9.2</b> Propensity score stratification</a></li>
+<li class="chapter" data-level="12.9.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#multivariate-adjustment-using-the-propensity-score"><i class="fa fa-check"></i><b>12.9.3</b> Multivariate adjustment using the propensity score</a></li>
+<li class="chapter" data-level="12.9.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#comparing-the-three-methods"><i class="fa fa-check"></i><b>12.9.4</b> Comparing the three methods</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#questions-8"><i class="fa fa-check"></i><b>12.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Design of Experiments and Observational Studies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="completely-randomized-designs-comparing-more-than-two-treatments" class="section level1">
+<h1><span class="header-section-number">7</span> Completely Randomized Designs: Comparing More Than Two Treatments</h1>
+<div id="anova---comparing-more-than-two-groups" class="section level2">
+<h2><span class="header-section-number">7.1</span> ANOVA - Comparing more than two groups</h2>
+<p>The following example is taken from Chapter 4 <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span>. The table below gives coagulation times for blood samples drawn from 24 animals receiving four different diets A, B, C, and D.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+<th align="right">D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td align="right">60</td>
+<td align="right">65</td>
+<td align="right">71</td>
+<td align="right">62</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="right">63</td>
+<td align="right">66</td>
+<td align="right">66</td>
+<td align="right">60</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="right">59</td>
+<td align="right">67</td>
+<td align="right">68</td>
+<td align="right">61</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="right">63</td>
+<td align="right">63</td>
+<td align="right">68</td>
+<td align="right">64</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="right">62</td>
+<td align="right">64</td>
+<td align="right">67</td>
+<td align="right">63</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="right">59</td>
+<td align="right">71</td>
+<td align="right">68</td>
+<td align="right">56</td>
+</tr>
+<tr class="odd">
+<td>Treatment Average</td>
+<td align="right">61</td>
+<td align="right">66</td>
+<td align="right">68</td>
+<td align="right">61</td>
+</tr>
+<tr class="even">
+<td>Grand Average</td>
+<td align="right">64</td>
+<td align="right">64</td>
+<td align="right">64</td>
+<td align="right">64</td>
+</tr>
+<tr class="odd">
+<td>Difference</td>
+<td align="right">-3</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">-3</td>
+</tr>
+</tbody>
+</table>
+<p>Boxplots of the data are shown below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401,<span class="dt">xlab =</span> <span class="st">&quot;Diets&quot;</span>,
+        <span class="dt">ylab =</span> <span class="st">&quot;Coagulation time&quot;</span>,
+        <span class="dt">main =</span> <span class="st">&quot;Coagulation time from 24 </span><span class="ch">\n</span><span class="st"> animals randomly allocated to four diets&quot;</span>)</code></pre></div>
+<p><img src="06-anova_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><strong>Question:</strong> Is there evidence to indicate a difference in mean coagulation times for the four different diets?</p>
+<p>An idea due to Fisher is to compare the variation in mean coagulation times <em>between</em> the diets to the variation of coagulation times <em>within</em> a diet. These two measures of variation are often summarized in an analysis of variance (ANOVA) table.</p>
+</div>
+<div id="analysis-of-variance-anova-table" class="section level2">
+<h2><span class="header-section-number">7.2</span> Analysis of Variance (ANOVA) table</h2>
+<p>The between treatments variation and within treatment variation are two components of the total variation in the response.</p>
+<p>In the coagulation study data we can break up each observation’s deviation from the grand mean into two components: treatment deviations; and residuals within treatment deviations.</p>
+<p><span class="math display">\[y_{ij}-{\bar y}_{\cdot \cdot}=\left(y_{i \cdot}-{\bar y}_{\cdot \cdot}\right)+\left(y_{ij}-{\bar y}_{i \cdot}\right)\]</span></p>
+<p>Let <span class="math inline">\(y_{ij}\)</span> be the <span class="math inline">\(jth\)</span> observation taken under treatment <span class="math inline">\(i = 1,...,a\)</span>. <span class="math display">\[E(y_{ij})=\mu_i=\mu+\tau_i,\]</span> and <span class="math inline">\(Var(y_{ij})=\sigma^2\)</span> and the observations are mutually independent. The parameter <span class="math inline">\(\tau_i\)</span> is the <span class="math inline">\(ith\)</span> treatment effect.</p>
+<p>We are interested in testing if the <span class="math inline">\(a\)</span> treatment means are equal.</p>
+<p><span class="math display">\[H_0: \mu_1=\cdots=\mu_a \hspace{0.5cm}\text{vs.}\hspace{0.5cm}  H_1: \mu_i \ne \mu_j, \thinspace i \ne j.\]</span></p>
+<p>There will be <span class="math inline">\(n\)</span> observations under the <span class="math inline">\(ith\)</span> treatment.</p>
+<p><span class="math display">\[ y_{i\cdot}=\sum_{j = 1}^n y_{ij}, \hspace{1cm} {\bar y}_{i\cdot}=y_{i\cdot}/n,\]</span></p>
+<p><span class="math display">\[ y_{\cdot \cdot}=\sum_{i = 1}^a \sum_{j = 1}^n y_{ij}, \hspace{1cm} {\bar y}_{\cdot \cdot}=y_{\cdot \cdot}/N,\]</span></p>
+<p>where <span class="math inline">\(N = an\)</span> is the total number of observations. The “dot” subscript notation means sum over the subscript that it replaces.</p>
+</div>
+<div id="the-anova-identity" class="section level2">
+<h2><span class="header-section-number">7.3</span> The ANOVA identity</h2>
+<p>The total sum of squares <span class="math inline">\(SS_{T}= \sum_{i = 1}^a \sum_{j = 1}^n \left(y_{ij}- {\bar y}_{\cdot \cdot}\right)^2\)</span> can be written as</p>
+<p><span class="math display">\[ \sum_{i = 1}^a \sum_{j = 1}^n \left[({\bar y}_{i\cdot} - {\bar y}_{\cdot \cdot}) + (y_{ij}- {\bar y}_{i \cdot})\right]^2\]</span></p>
+<p>by adding and subtracting <span class="math inline">\({\bar y}_{i\cdot}\)</span> to <span class="math inline">\(SS_T\)</span>.</p>
+<p>It can be shown that</p>
+<p><span class="math display">\[ \begin{aligned}
+SS_T = \sum_{i = 1}^a \sum_{j = 1}^n \left(y_{ij}-{\bar y}_{\cdot \cdot}\right)^2 &amp;= \underbrace{n\sum_{i = 1}^a \left(\bar{y_{i \cdot}}-{\bar y}_{\cdot \cdot}\right)^2}_{\text{Sum of Squares Due to Treatment}} + \underbrace{\sum_{i = 1}^a \sum_{j = 1}^n \left(y_{ij}-{\bar y}_{i \cdot} \right)^2}_{\text{Sum of Squares Due to Error}} \label{eq1} \\
+   &amp;= SS_{Treat} + SS_E.
+\end{aligned}\]</span></p>
+<p>This is sometimes called the analysis of variance identity. It shows how the total sum of squares can be split into two sum of squares: one part that is due to differences between treatments; and one part due to differences within treatments.</p>
+<p>For example, the decomposition of the first observation <span class="math inline">\(y_{11}=60\)</span> in diet A is</p>
+<p><span class="math display">\[\begin{aligned}
+y_{11}-{\bar y}_{\cdot \cdot}&amp;=\left(y_{1 \cdot}-{\bar y}_{\cdot \cdot}\right)+\left(y_{11}-{\bar y}_{1 \cdot}\right) \\
+60-64&amp;=(61-64)+(60-61)\\
+-4 &amp;=-3+-1
+\end{aligned}\]</span></p>
+<div id="example---blood-coagulation-study" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> Example - Blood coagulation study</h3>
+<p>The deviations from the grand average <span class="math inline">\(\left(y_{ij}-{\bar y}_{\cdot \cdot}\right)\)</span> are in the table below:</p>
+<pre><code>  A  B C  D
+ -4  1 7 -2
+ -1  2 2 -4
+ -5  3 4 -3
+ -1 -1 4  0
+ -2  0 3 -1
+ -5  7 4 -8</code></pre>
+<p>The total sum of squares is obtained by squaring all the entries in this table and summing: <span class="math inline">\(SS_T=(-4)^2+(-1)^2 + \cdots + (-8)^2=\)</span> 340.</p>
+<p>The between treatment deviations <span class="math inline">\(\left(y_{i \cdot}-{\bar y}_{\cdot \cdot}\right)\)</span> are in the table below:</p>
+<pre><code>  A B C  D
+ -3 2 4 -3
+ -3 2 4 -3
+ -3 2 4 -3
+ -3 2 4 -3
+ -3 2 4 -3
+ -3 2 4 -3</code></pre>
+<p>The sum of squares due to treatment is obtained by squaring all the entries in this table and summing: <span class="math inline">\(SS_{Treat} = (-3)^2 + (2)^2 + \cdots +(-3)^2=\)</span> 228.</p>
+<p>The within treatment deviations <span class="math inline">\(\left(y_{ij}-{\bar y}_{i \cdot} \right)\)</span> are in the table below:</p>
+<pre><code>  A  B  C  D
+ -1 -1  3  1
+  2  0 -2 -1
+ -2  1  0  0
+  2 -3  0  3
+  1 -2 -1  2
+ -2  5  0 -5</code></pre>
+<p>The sum of squares due to error <span class="math inline">\(\left(y_{ij}-{\bar y}_{i \cdot} \right)\)</span> is obtained by squaring the entries in this table and summing: <span class="math inline">\(SS_E=(-1)^2+(2)^2+\cdots+(-5)^2=\)</span> 112.</p>
+<p><span class="math display">\[\underbrace{340}_{SS_T} =\underbrace{228}_{SS_{Treat}}+\underbrace{112}_{SS_E}.\]</span></p>
+<p>Which illustrates the ANOVA identity for the blood coagulation study.</p>
+<p>The deviations</p>
+<ul>
+<li><span class="math inline">\(SS_{Treat}\)</span> is called the sum of squares due to treatments (i.e., between treatments), and <span class="math inline">\(SS_E\)</span> is called the sum of squares due to error (i.e., within treatments).</li>
+<li>There are <span class="math inline">\(an = N\)</span> total observations. So <span class="math inline">\(SS_T\)</span> has <span class="math inline">\(N-1\)</span> degrees of freedom.</li>
+<li>There are <span class="math inline">\(a\)</span> treatment levels so <span class="math inline">\(SS_{Treat}\)</span> has <span class="math inline">\(a-1\)</span> degrees of freedom.</li>
+<li>Within each treatment there are <span class="math inline">\(n\)</span> replicates with <span class="math inline">\(n-1\)</span> degrees of freedom. There are <span class="math inline">\(a\)</span> treatments. So, there are <span class="math inline">\(a(n-1)=an-a = N-a\)</span> degrees of freedom for error.</li>
+</ul>
+<p><span class="math display">\[SS_E= \sum_{i = 1}^a \left[\sum_{j = 1}^n \left(y_{ij}-{\bar y}_{i \cdot} \right)^2\right]\]</span></p>
+<p>If the term inside the brackets is divided by <span class="math inline">\(n-1\)</span> then it is the sample variance for the <span class="math inline">\(ith\)</span> treatment</p>
+<p><span class="math display">\[S_i^2=\frac{\sum_{j = 1}^n \left(y_{ij}-{\bar y}_{i \cdot} \right)^2}{n-1}, \hspace{1cm} 1 = 1,...,a.\]</span></p>
+<p>Combining these <span class="math inline">\(a\)</span> variances to give a single estimate of the common population variance</p>
+<p><span class="math display">\[\frac{(n-1)S_1^2+ \cdots + (n-1)S_a^2}{(n-1)+ \cdots + (n-1)}=\frac{SS_E}{N-a}.\]</span></p>
+<p>Thus, <span class="math inline">\(SS_E\)</span> is a pooled estimate of the common variance <span class="math inline">\(\sigma^2\)</span> within each of the <span class="math inline">\(a\)</span> treatments.</p>
+<p>If there were no differences between the <span class="math inline">\(a\)</span> treatment means <span class="math inline">\({\bar y}_{i \cdot}\)</span> we could use the variation of the treatment averages from the grand average to estimate <span class="math inline">\(\sigma^2\)</span>.</p>
+<p><span class="math display">\[\frac{SS_{Treat}}{a-1}\]</span></p>
+<p>is an estimate of <span class="math inline">\(\sigma^2\)</span> when the treatment means are all equal.</p>
+<p>The analysis of variance identity gives two estimates of <span class="math inline">\(\sigma^2\)</span>. One is based on the variability within treatments and one based on the variability between treatments. If there are no differences in the treatment means then these two estimates should be similar. If these estimates are different then this could be evidence that the difference is due to differences in the treatment means.</p>
+<p>The mean square for treatment is defined as</p>
+<p><span class="math display">\[MS_{Treat}=\frac{SS_{Treat}}{a-1}\]</span></p>
+<p>and the mean square for error is defined as</p>
+<p><span class="math display">\[MS_E=\frac{SS_E}{N-a}.\]</span></p>
+<p><span class="math inline">\(SS_{Treat}\)</span> and <span class="math inline">\(SS_E\)</span> are independent and it can be shown that <span class="math inline">\(SS_{Treat}/\sigma^2 \sim \chi^2_{a-1}\)</span> and <span class="math inline">\(SS_E/\sigma^2 \sim \chi^2_{N-a}\)</span>. Thus, if <span class="math inline">\(H_0: \mu_1=\cdots=\mu_a\)</span> is true then the ratio</p>
+<p><span class="math display">\[ F= \frac{MS_{Treat}}{MS_E} \sim F_{a-1,N-a}.\]</span></p>
+<p>The ANOVA table for the coagulation data can be calculated in R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aov.diets &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401)
+<span class="kw">summary</span>(aov.diets)</code></pre></div>
+<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+diets        3    228    76.0   13.57 4.66e-05 ***
+Residuals   20    112     5.6                     
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>In this example <span class="math inline">\(a-1 = 3, N-a = 20, SS_{Treat}=228, SS_E = 112, MS_{Treat}=228/3 = 76.0,MS_E112/20 = 5.6, F = 76/5.6 = 13.57.\)</span></p>
+<p>The observed <span class="math inline">\(F\)</span> value of 13.57 is shown on the <span class="math inline">\(F_{3,20}\)</span> distribution. The p-value of the test is the area under the density to the right of 13.57 (red line). The 95% critical value of the <span class="math inline">\(F_{3,20}\)</span> is 3.10 (blue line). In other words, <span class="math inline">\(P(F_{3,20}&gt;3.10)=0.05\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dt">by =</span> <span class="fl">0.01</span>)
+<span class="kw">plot</span>(x,<span class="kw">df</span>(<span class="dt">x =</span> x,<span class="dt">df1 =</span> <span class="dv">3</span>,<span class="dt">df2 =</span> <span class="dv">20</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;F(3,20) Density&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;F(3,20) Distribution&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v =</span> <span class="fl">13.57</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">qf</span>(<span class="dt">p =</span> <span class="fl">0.95</span>,<span class="dv">3</span>,<span class="dv">20</span>),<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><img src="06-anova_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>The p-value could also be calculated directly using the cdf of the <span class="math inline">\(F_{3,20}\)</span> distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="fl">13.57</span>,<span class="dt">df1 =</span> <span class="dv">3</span>,<span class="dt">df2 =</span> <span class="dv">20</span>)</code></pre></div>
+<pre><code>[1] 4.66169e-05</code></pre>
+<p>The small p-value indicates that the difference between at least one pair of the treatment means is significantly different from 0.</p>
+</div>
+</div>
+<div id="general-anova" class="section level2">
+<h2><span class="header-section-number">7.4</span> General ANOVA</h2>
+<p>The general form of the ANOVA table is</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source of variation</th>
+<th>Degrees of freedom</th>
+<th>Sum of squares</th>
+<th>Mean square</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Between treatments</td>
+<td><span class="math inline">\(a-1\)</span></td>
+<td><span class="math inline">\(SS_{Treat}\)</span></td>
+<td><span class="math inline">\(MS_{Treat}\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Within treatments</td>
+<td><span class="math inline">\(N-a\)</span></td>
+<td><span class="math inline">\(SS_E\)</span></td>
+<td><span class="math inline">\(MS_E\)</span></td>
+<td><span class="math inline">\(F=\frac{MS_{Treat}}{MS_E}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="anova-assumptions" class="section level2">
+<h2><span class="header-section-number">7.5</span> ANOVA Assumptions</h2>
+<p>The calculations that make up an ANOVA table require no assumptions. You could write 24 numbers in the ANOVA table and complete the table using the ANOVA identity and definitions of mean square and F statistic. However, using these numbers to make inferences about differences in treatment means will require certain assumptions.</p>
+<ol style="list-style-type: decimal">
+<li>Additive model.</li>
+</ol>
+<p><span class="math display">\[y_{ij}=\mu+\tau_i+\epsilon_{ij}.\]</span></p>
+<p>The parameters <span class="math inline">\(\tau_i\)</span> are interpreted as the treatment effect of the <span class="math inline">\(i^{th}\)</span> mean. That is, if <span class="math inline">\(\mu_i\)</span> is the mean of <span class="math inline">\(i^{th}\)</span> group and <span class="math inline">\(\mu\)</span> is the overall mean then <span class="math inline">\(\tau_i=\mu_i-\mu\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Under the assumption that the errors <span class="math inline">\(\epsilon_{ij}\)</span> are independent and identically distributed (iid) with common variance <span class="math inline">\(Var(\epsilon_{ij})=\sigma^2\)</span>, for all <span class="math inline">\(i,j\)</span> then</li>
+</ol>
+<p><span class="math display">\[E(MS_{Treat})=\sum_{i = 1}^a \tau_i^2 + \sigma^2, \hspace{1cm} E(MS_E)=\sigma^2.\]</span></p>
+<p>If there are no differences between the treatment means then <span class="math inline">\(\tau_1=\cdots=\tau_4 = 0\)</span> and <span class="math inline">\(\sum_{i = 1}^a \tau_i^2 = 0\)</span> then both <span class="math inline">\(MS_{treat}\)</span> and <span class="math inline">\(MS_E\)</span> would be estimates <span class="math inline">\(\sigma^2\)</span>.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>If <span class="math inline">\(\epsilon_{ij} \sim N(0,\sigma^2)\)</span> then <span class="math inline">\(MS_{Treat}\)</span> and <span class="math inline">\(MS_E\)</span> are independent. Under the null hypothesis that <span class="math inline">\(\sum_{i = 1}^a \tau_i^2 = 0\)</span> the ratio <span class="math inline">\(F=\frac{MS_{Treat}}{MS_E}\)</span> is the ratio of two independent estimates of <span class="math inline">\(\sigma^2\)</span>. Therefore, <span class="math inline">\(\frac{MS_{Treat}}{MS_E} \sim F_{a-1,N-a}.\)</span></li>
+</ol>
+<div id="example---checking-the-assumptions-in-the-blood-coagualtion-study" class="section level3">
+<h3><span class="header-section-number">7.5.1</span> Example - checking the assumptions in the blood coagualtion study</h3>
+<ol style="list-style-type: decimal">
+<li><p>The additive model assumption seems plausible since the observations from each diet can be viewed as the sum of a common mean plus a random error term.</p></li>
+<li><p>The common variance assumption can be investigated by plotting the residuals versus the fitted values of the ANOVA model. A plot of the residuals versus fitted values can be used to investigate the assumption that the residuals are randomly distributed and have constant variance. Ideally, the points should fall randomly on both sides of 0, with no recognizable patterns in the points.In the R this can be done using the following commands.</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(aov.diets<span class="op">$</span>fitted.values,aov.diets<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,
+     <span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Blood coagualtion study&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</code></pre></div>
+<p><img src="06-anova_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>The assumption of constant variance is satisfied for the blood coagulation study.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>The normality of the residuals can be investigated using a normal quantile-quantile plot.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(aov.diets<span class="op">$</span>residuals, <span class="dt">main =</span> <span class="st">&quot;Normal Q-Q Plot for blood coagulation study&quot;</span>)
+<span class="kw">qqline</span>(aov.diets<span class="op">$</span>residuals)</code></pre></div>
+<p><img src="06-anova_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>The normality assumptions is satisfied.</p>
+</div>
+</div>
+<div id="coding-qualitative-predictors-in-regression-models" class="section level2">
+<h2><span class="header-section-number">7.6</span> Coding Qualitative Predictors in Regression Models</h2>
+<p>A dummy or indicator variable in a regression takes on a finite number of values so that different categories of a nominal variable can be identified. The term dummy reflects the fact that the values taken on by such variables (e.g., 0, 1, -1) do not indicate meaningful measurements but rather categories of interest. (Kleinbaum et al., 1998)</p>
+<p>Examples of dummy variables are:</p>
+<p><span class="math display">\[X =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if treatment A } \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p><span class="math display">\[Y =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if subject is male } \\
+     -1 &amp; \mbox{if subject is female}
+    \end{array}
+\right.\]</span></p>
+<p>The variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are nominal variables describing treatment group and sex respectively.</p>
+<p>The following rule should be applied to avoid collinearity in defining a dummy variable for regression analysis: if the nominal independent variable of interest has <span class="math inline">\(k\)</span> categories then exactly <span class="math inline">\(k-1\)</span> dummy variables should be defined to index the categories if the regression model contains an intercept term.</p>
+<div id="dummy-coding" class="section level3">
+<h3><span class="header-section-number">7.6.1</span> Dummy Coding</h3>
+<p>Dummy coding compares each level to the reference level. The intercept is the mean of the reference group.</p>
+<p>Smarties is a candy that comes in several different colours such as yellow, purple, green, and pink. Suppose that we would like to compare the mean number of candy colours in each box. The data from 3 smarties boxes are below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">count &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>)
+colour &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;Yellow&quot;</span>,<span class="dv">3</span>),<span class="kw">rep</span>(<span class="st">&quot;Purple&quot;</span>,<span class="dv">3</span>),
+                      <span class="kw">rep</span>(<span class="st">&quot;Green&quot;</span>,<span class="dv">3</span>),<span class="kw">rep</span>(<span class="st">&quot;Pink&quot;</span>,<span class="dv">3</span>)))</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">colour</th>
+<th align="right">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Yellow</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Yellow</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Yellow</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Purple</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Purple</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Purple</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">Green</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Green</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="left">Green</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Pink</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Pink</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Pink</td>
+<td align="right">4</td>
+</tr>
+</tbody>
+</table>
+<p>The average number of candies in each colour is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Get means for each flavour</span>
+<span class="kw">sapply</span>(<span class="kw">split</span>(count,colour),mean)</code></pre></div>
+<pre><code>   Green     Pink   Purple   Yellow 
+2.666667 2.333333 2.666667 3.666667 </code></pre>
+<p>Dummy coding is the default in R and the most common coding scheme. It compares each level of the categorical variable to a fixed reference level.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dv">4</span>)
+<span class="kw">contrasts</span>(colour)  <span class="co"># print dummy coding - base is Green</span></code></pre></div>
+<pre><code>       2 3 4
+Green  0 0 0
+Pink   1 0 0
+Purple 0 1 0
+Yellow 0 0 1</code></pre>
+<p>Green is the reference category. The first column compares Pink to Green, the second column compares Purple to Green, and the third column compares Yellow to Green. The the three columns define three dummy variables:</p>
+<p><span class="math display">\[X_1 =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if smartie is pink } \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p><span class="math display">\[X_2 =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if smartie is purple } \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p><span class="math display">\[X_3 =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if smartie is yellow } \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p>If <span class="math inline">\(X_1 = X_2 = X_3 = 0\)</span> then the colour of the smartie is green - the reference category. This shows that we only require 3 dummy variables to define a nominal variable with 4 categories.</p>
+<p>To change the reference level change the value of base in <code>contr.treatment()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dv">4</span>,<span class="dt">base =</span> <span class="dv">2</span>) <span class="co"># Now reference is pink</span>
+<span class="kw">contrasts</span>(colour)  </code></pre></div>
+<pre><code>       1 3 4
+Green  1 0 0
+Pink   0 0 0
+Purple 0 1 0
+Yellow 0 0 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dv">4</span>,<span class="dt">base =</span> <span class="dv">3</span>) <span class="co"># Now reference is purple</span>
+<span class="kw">contrasts</span>(colour)  </code></pre></div>
+<pre><code>       1 2 4
+Green  1 0 0
+Pink   0 1 0
+Purple 0 0 0
+Yellow 0 0 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dv">4</span>,<span class="dt">base =</span> <span class="dv">4</span>) <span class="co"># Now reference is yellow</span>
+<span class="kw">contrasts</span>(colour)  </code></pre></div>
+<pre><code>       1 2 3
+Green  1 0 0
+Pink   0 1 0
+Purple 0 0 1
+Yellow 0 0 0</code></pre>
+</div>
+<div id="deviation-coding" class="section level3">
+<h3><span class="header-section-number">7.6.2</span> Deviation Coding</h3>
+<p>This coding system compares the mean of the dependent variable for a given level to the overall mean of the dependent variable. Consider the dummy variables</p>
+<p>The the three columns define three dummy variables:</p>
+<p><span class="math display">\[X_1 =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if smartie is green } \\
+        -1 &amp; \mbox{if smartie is yellow} \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p><span class="math display">\[X_2 =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if smartie is pink } \\
+        -1 &amp; \mbox{if smartie is yellow} \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p><span class="math display">\[X_3 =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if smartie is purple } \\
+        -1 &amp; \mbox{if smartie is yellow} \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p>1 is used to compare a level to all other levels and -1 is assigned to yellow because it’s the level that will never be compared to the other levels.</p>
+<p>In R the variables can be created using the <code>contr.sum()</code> function. The argument of 4 in <code>contr.sum(4)</code> indicates the number of levels of the factor.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.sum</span>(<span class="dv">4</span>)
+<span class="kw">contrasts</span>(colour)  </code></pre></div>
+<pre><code>       [,1] [,2] [,3]
+Green     1    0    0
+Pink      0    1    0
+Purple    0    0    1
+Yellow   -1   -1   -1</code></pre>
+</div>
+</div>
+<div id="estimating-treatment-effects-using-least-squares" class="section level2">
+<h2><span class="header-section-number">7.7</span> Estimating Treatment Effects using Least Squares</h2>
+<p>Let <span class="math inline">\(y_{ij}\)</span> be the <span class="math inline">\(j^{th}\)</span> observation under the <span class="math inline">\(i^{th}\)</span> treatment, and <span class="math inline">\(\mu\)</span> be the overall mean. The model for diet <span class="math display">\[y_{ij}=\mu+\tau_i+\epsilon_{ij}\]</span>, <span class="math inline">\(\epsilon_{ij} \sim N(0,\sigma^2)\)</span>$ can be written in terms of the dummy variables <span class="math inline">\(X_1, X_2, X_3\)</span> as:</p>
+<p><span class="math display">\[ y_{ij}=\mu+\tau_1X_{i1}+\tau_2X_{i2}+\tau_3X_{i3}+\epsilon_{ij},\]</span></p>
+<p>where,</p>
+<p><span class="math display">\[X_{1j} =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if jth unit recieves diet 2 } \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p><span class="math display">\[X_{2j} =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if jth unit recieves diet 3 } \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p><span class="math display">\[X_{3j} =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if jth unit recieves diet 4 } \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p>It follows that <span class="math inline">\(E(y_{Aj})=\mu_A=\mu\)</span> is the mean of diet A so</p>
+<p><span class="math display">\[\begin{aligned}
+E(y_{Bj})=\mu_B=\mu_A+\tau_1 &amp;\Rightarrow \tau_1=\mu_B-\mu_A \\ 
+E(y_{Cj})=\mu_C=\mu_A+\tau_2 &amp;\Rightarrow \tau_2=\mu_C-\mu_A \\ 
+E(y_{Dj})=\mu_D=\mu_A+\tau_3 &amp;\Rightarrow \tau_3=\mu_D-\mu_A   
+\end{aligned}\]</span></p>
+<p>The least squares estimates are:</p>
+<p><span class="math display">\[\begin{aligned}
+{\hat \mu}&amp;={\bar y}_{1 \cdot}, \\
+{\hat \tau_1}&amp;={\bar y}_{2 \cdot}-{\bar y}_{1 \cdot}, \\
+{\hat \tau_2}&amp;={\bar y}_{3 \cdot }-{\bar y}_{1 \cdot}, \\
+{\hat \tau_3}&amp;={\bar y}_{3 \cdot }-{\bar y}_{1 \cdot}.
+\end{aligned}\]</span></p>
+<p>This model can also be written in matrix notation <span class="math inline">\(y = X\beta+\epsilon\)</span>, where <span class="math inline">\(\beta=\left(\mu,\tau_1,\tau_2,\tau3 \right), X=({\bf 1},X_{i1},X_{i2},X_{i3})\)</span>, and <span class="math inline">\(\epsilon=(\epsilon_{ij})\)</span>. <span class="math inline">\(X\)</span> is an <span class="math inline">\(30 \times 4\)</span> design matrix with <span class="math inline">\({\bf 1}\)</span> is a <span class="math inline">\(30\times 1\)</span> column vector of 1s, and <span class="math inline">\(\epsilon\)</span> is an <span class="math inline">\(30 \times 1\)</span> column vector. Note that <span class="math inline">\(\tau_4\)</span> corresponding to the 4th treatment is implicitly set to 0. It is used as a constraint so that that <span class="math inline">\((X&#39;X)^{-1}\)</span> exists.</p>
+</div>
+<div id="using-the-lm-function-in-r-to-estimate-treatment-effects" class="section level2">
+<h2><span class="header-section-number">7.8</span> Using the <code>lm()</code> Function in R to Estimate Treatment Effects</h2>
+<p>Let’s return to the blood coagulation study. The table below gives coagulation times for blood samples drawn from 24 animals receiving four different diets A, B, C, and D.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+<th align="right">D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td align="right">60</td>
+<td align="right">65</td>
+<td align="right">71</td>
+<td align="right">62</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="right">63</td>
+<td align="right">66</td>
+<td align="right">66</td>
+<td align="right">60</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="right">59</td>
+<td align="right">67</td>
+<td align="right">68</td>
+<td align="right">61</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="right">63</td>
+<td align="right">63</td>
+<td align="right">68</td>
+<td align="right">64</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="right">62</td>
+<td align="right">64</td>
+<td align="right">67</td>
+<td align="right">63</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="right">59</td>
+<td align="right">71</td>
+<td align="right">68</td>
+<td align="right">56</td>
+</tr>
+<tr class="odd">
+<td>Treatment Average</td>
+<td align="right">61</td>
+<td align="right">66</td>
+<td align="right">68</td>
+<td align="right">61</td>
+</tr>
+<tr class="even">
+<td>Grand Average</td>
+<td align="right">64</td>
+<td align="right">64</td>
+<td align="right">64</td>
+<td align="right">64</td>
+</tr>
+<tr class="odd">
+<td>Difference</td>
+<td align="right">-3</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">-3</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attach</span>(tab0401)
+<span class="kw">contrasts</span>(diets)</code></pre></div>
+<pre><code>  B C D
+A 0 0 0
+B 1 0 0
+C 0 1 0
+D 0 0 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm.diets &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401)
+<span class="kw">summary</span>(lm.diets)</code></pre></div>
+<pre><code>
+Call:
+lm(formula = y ~ diets, data = tab0401)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+ -5.00  -1.25   0.00   1.25   5.00 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  6.100e+01  9.661e-01  63.141  &lt; 2e-16 ***
+dietsB       5.000e+00  1.366e+00   3.660  0.00156 ** 
+dietsC       7.000e+00  1.366e+00   5.123 5.18e-05 ***
+dietsD      -9.999e-15  1.366e+00   0.000  1.00000    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.366 on 20 degrees of freedom
+Multiple R-squared:  0.6706,    Adjusted R-squared:  0.6212 
+F-statistic: 13.57 on 3 and 20 DF,  p-value: 4.658e-05</code></pre>
+<p>The design matrix is</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">model.matrix</span>(lm.diets)</code></pre></div>
+<pre><code>   (Intercept) dietsB dietsC dietsD
+1            1      0      0      0
+2            1      0      0      0
+3            1      0      0      0
+4            1      0      0      0
+5            1      0      0      0
+6            1      0      0      0
+7            1      1      0      0
+8            1      1      0      0
+9            1      1      0      0
+10           1      1      0      0
+11           1      1      0      0
+12           1      1      0      0
+13           1      0      1      0
+14           1      0      1      0
+15           1      0      1      0
+16           1      0      1      0
+17           1      0      1      0
+18           1      0      1      0
+19           1      0      0      1
+20           1      0      0      1
+21           1      0      0      1
+22           1      0      0      1
+23           1      0      0      1
+24           1      0      0      1
+attr(,&quot;assign&quot;)
+[1] 0 1 1 1
+attr(,&quot;contrasts&quot;)
+attr(,&quot;contrasts&quot;)$diets
+[1] &quot;contr.treatment&quot;</code></pre>
+<p>The default dummy coding was used.</p>
+<p>The averages for each of the four diets are in the table below.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Diet</th>
+<th>A (<span class="math inline">\(j = 1\)</span>)</th>
+<th>B (<span class="math inline">\(j = 2\)</span>)</th>
+<th>C (<span class="math inline">\(j = 3\)</span>)</th>
+<th>D (<span class="math inline">\(j = 4\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Average (<span class="math inline">\({\bar y}_{j \cdot})\)</span></td>
+<td>61</td>
+<td>66</td>
+<td>68</td>
+<td>61</td>
+</tr>
+</tbody>
+</table>
+<p>So we can verify that the least-squares estimates are differences of the treatment averages.</p>
+<p><span class="math display">\[\begin{aligned}
+{\bar y}_{1 \cdot}&amp;=61, \\ 
+{\hat \tau_1}&amp;={\bar y}_{2 \cdot}-{\bar y}_{1 \cdot}=5 \\ 
+{\hat \tau_2}&amp;={\bar y}_{3 \cdot }-{\bar y}_{1 \cdot}=7 \\ 
+{\hat \tau_3}&amp;={\bar y}_{3 \cdot }-{\bar y}_{1 \cdot}=-9.9 \times 10^{-15}.
+\end{aligned}\]</span></p>
+<p>If deviation coding was used then the parameter estimates would represent different treatment effects. In the regression model the dummy variables would be defined as</p>
+<p><span class="math display">\[X_1 =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if diet is A } \\
+        -1 &amp; \mbox{if diet is D} \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p><span class="math display">\[X_2 =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if diet is B } \\
+        -1 &amp; \mbox{if diet is D} \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p><span class="math display">\[X_3 =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if diet is C } \\
+        -1 &amp; \mbox{if diet is D} \\
+        0 &amp; \mbox{otherwise}
+    \end{array}
+\right.\]</span></p>
+<p>It follows that</p>
+<p><span class="math display">\[\begin{aligned}
+E(y_{Aj})&amp;=\mu_A=\tau_0+\tau_1 \\
+E(y_{Bj})&amp;=\mu_B=\tau_0+\tau_2 \\
+E(y_{Cj})&amp;=\mu_C=\tau_0+\tau_3 \\
+E(y_{Dj})&amp;=\mu_D=\tau_0-\tau_1-\tau_2-\tau_3
+\end{aligned}\]</span></p>
+<p>So,</p>
+<p><span class="math display">\[\begin{aligned}
+\tau_0 &amp;= \frac{\mu_A+\mu_B+\mu_C+\mu_D}{4} \\
+\tau_1 &amp;= \mu_A - \frac{\mu_A+\mu_B+\mu_C+\mu_D}{4} \\
+\tau_2 &amp;= \mu_B - \frac{\mu_A+\mu_B+\mu_C+\mu_D}{4} \\
+\tau_3 &amp;= \mu_C - \frac{\mu_A+\mu_B+\mu_C+\mu_D}{4} \\
+\end{aligned}\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contrasts</span>(tab0401<span class="op">$</span>diets) &lt;-<span class="st"> </span><span class="kw">contr.sum</span>(<span class="dv">4</span>)
+lm.diets &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401)
+<span class="kw">summary</span>(lm.diets)</code></pre></div>
+<pre><code>
+Call:
+lm(formula = y ~ diets, data = tab0401)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+ -5.00  -1.25   0.00   1.25   5.00 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  64.0000     0.4830 132.493  &lt; 2e-16 ***
+diets1       -3.0000     0.8367  -3.586 0.001849 ** 
+diets2        2.0000     0.8367   2.390 0.026781 *  
+diets3        4.0000     0.8367   4.781 0.000114 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.366 on 20 degrees of freedom
+Multiple R-squared:  0.6706,    Adjusted R-squared:  0.6212 
+F-statistic: 13.57 on 3 and 20 DF,  p-value: 4.658e-05</code></pre>
+<p>The estimate of the intercept <span class="math inline">\(\hat \tau_0\)</span> is the grand average, and the slope estimates <span class="math inline">\(\hat{\tau_1}, \hat{\tau_2}, \hat{\tau_3}\)</span> are the differences between the treatment averages and grand average for diets A, B, C, D.</p>
+</div>
+<div id="multiple-comparisons" class="section level2">
+<h2><span class="header-section-number">7.9</span> Multiple Comparisons</h2>
+<p>Suppose that experimental units were randomly assigned to three treatment groups. The hypothesis of interest is:</p>
+<p><span class="math display">\[H_0: \mu_1=\mu_2 =\mu_3 \thinspace {\text  vs. } \thinspace H_1: \mu_i \ne\mu_j.\]</span></p>
+<p>Now, suppose that we reject <span class="math inline">\(H_0\)</span> at level <span class="math inline">\(\alpha\)</span>. Which pairs of means are significantly different from each other at level <span class="math inline">\(\alpha\)</span>? There are <span class="math inline">\({3 \choose 2}=3\)</span> possibilities.</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mu_1 \ne \mu_2\)</span></li>
+<li><span class="math inline">\(\mu_1 \ne \mu_3\)</span></li>
+<li><span class="math inline">\(\mu_2 \ne \mu_3\)</span></li>
+</ol>
+<p>Suppose that <span class="math inline">\(k = 3\)</span> separate (independent) hypothesis level <span class="math inline">\(\alpha\)</span> tests are conducted</p>
+<p><span class="math display">\[H_{0_k}: \mu_i=\mu_j  \thinspace {\text  vs. } \thinspace H_{1_k}: \mu_i \ne\mu_j,\]</span></p>
+<p>When <span class="math inline">\(H_0\)</span> is true, <span class="math inline">\(P\left(\text{reject } H_0 \right)=\alpha \Rightarrow 1- P\left(\text{do not reject } H_0 \right)=1-\alpha\)</span>. So, if <span class="math inline">\(H_0\)</span> is true then</p>
+<p><span class="math display">\[\begin{aligned}
+P\left(\text{reject at least one } H_{0_k} \right) &amp;= 1- P\left(\text{do not reject any } H_{0_k} \right) \\
+                                               &amp;= 1- P\left(\text{do not reject } H_{0_1} \text{and } \text{do not reject } H_{0_2} \text{and } \text{do not reject } H_{0_3}  \right) \\
+                                               &amp;= 1- P\left(\text{do not reject } H_{0_1}\right)P\left(\text{do not reject } H_{0_2}\right)P\left(\text{do not reject } H_{0_3}\right) \hspace{0.3cm} \\
+                                               &amp;= 1-(1-\alpha)^{3}
+\end{aligned}\]</span></p>
+<p>If <span class="math inline">\(\alpha = 0.05\)</span> then the probability that at least one <span class="math inline">\(H_0\)</span> will be falsely rejected is <span class="math inline">\(1-(1-.05)^3 = 0.14\)</span>, which is almost three times the type I error rate.</p>
+<p>In general if <span class="math display">\[H_0: \mu_1=\mu_2 = \cdots =\mu_k \thinspace {\text  vs. } \thinspace H_1: \mu_i \ne\mu_j.\]</span></p>
+<p>If <span class="math inline">\(c\)</span> independent hypotheses are conducted then the probability</p>
+<p><span class="math display">\[P\left(\text{reject at least one } H_{0_k} \right) = 1-(1-\alpha)^c\]</span></p>
+<p>is called the <strong>family-wise error rate</strong>.</p>
+<p>The <strong>pairwise error rate</strong> is <span class="math inline">\(P\left(\text{reject } H_{0_k} \right)=\alpha\)</span> for any <span class="math inline">\(c\)</span>.</p>
+<p>The multiple comparison problem is that multiple hypotheses are tested level <span class="math inline">\(\alpha\)</span> which increases the probability that at least one of the hypotheses will be falsely rejected (family-wise error rate).</p>
+<p>When groups are significantly different from ANOVA researchers often wish to explore where the differences lie. Is it appropriate to test for differences looking at all pairwise comparisons?</p>
+<ul>
+<li>Testing all possible pairs increases the type I error rate.</li>
+<li>This means the chance that there is a higher probability, beyond the pre-stated type I error rate (e.g. 0.05), that that a significant difference is detected when the truth is that no difference exists.</li>
+</ul>
+<div id="the-bonferroni-method" class="section level3">
+<h3><span class="header-section-number">7.9.1</span> The Bonferroni Method</h3>
+<p>To test for the difference between the <span class="math inline">\(ith\)</span> and <span class="math inline">\(jth\)</span> treatments, it is common to use the two-sample <span class="math inline">\(t\)</span> test. The two-sample <span class="math inline">\(t\)</span> statistic is</p>
+<p><span class="math display">\[ t_{ij}= \frac{\bar{y_{j \cdot}}-\bar{y_{i \cdot}} } {\hat{\sigma}\sqrt{1/n_j+1/n_i}},\]</span></p>
+<p>where <span class="math inline">\(\bar{y_{j \cdot}}\)</span> is the average of the <span class="math inline">\(n_i\)</span> observations for treatment <span class="math inline">\(j\)</span> and <span class="math inline">\(\hat{\sigma}\)</span> is <span class="math inline">\(\sqrt{MS_E}\)</span> from the ANOVA table.</p>
+<p>Treatments <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are declared significantly different at level <span class="math inline">\(\alpha\)</span> if</p>
+<p><span class="math display">\[|t_{ij}|&gt;t_{N-k,\alpha/2},\]</span></p>
+<p>where <span class="math inline">\(t_{N-k,\alpha/2}\)</span> is the upper <span class="math inline">\(\alpha/2\)</span> percentile of a <span class="math inline">\(t_{N-k}\)</span>.</p>
+<p>The total number of pairs of treatment means that can be tested is <span class="math display">\[c={k \choose 2}=\frac{k(k-1)}{2}.\]</span></p>
+<p>The Bonferroni method for testing <span class="math inline">\(H_0:\mu_i=\mu_j\)</span> vs. <span class="math inline">\(H_0:\mu_i \ne \mu_j\)</span> rejects <span class="math inline">\(H_0\)</span> at level <span class="math inline">\(\alpha\)</span> if</p>
+<p><span class="math display">\[|t_{ij}|&gt;t_{N-k,\alpha/2c},\]</span></p>
+<p>where <span class="math inline">\(c\)</span> denotes the number of pairs being tested.</p>
+<p>In R the function <code>pairwise.t.test()</code> can be used to compute Bonferroni adjusted p-values.</p>
+<p>This is illustrated below for the blood coagulation study.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairwise.t.test</span>(tab0401<span class="op">$</span>y,tab0401<span class="op">$</span>diets,<span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</code></pre></div>
+<pre><code>
+    Pairwise comparisons using t tests with pooled SD 
+
+data:  tab0401$y and tab0401$diets 
+
+  A       B       C      
+B 0.00934 -       -      
+C 0.00031 0.95266 -      
+D 1.00000 0.00934 0.00031
+
+P value adjustment method: bonferroni </code></pre>
+<p>There are significant differences at the 5% level between diets A and B, A and C, B and D, and C and D using the Bonferroni method.</p>
+<p>For comparison the unadjusted p-values are also calculated.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairwise.t.test</span>(tab0401<span class="op">$</span>y,tab0401<span class="op">$</span>diets,<span class="dt">p.adjust.method =</span> <span class="st">&quot;none&quot;</span>)</code></pre></div>
+<pre><code>
+    Pairwise comparisons using t tests with pooled SD 
+
+data:  tab0401$y and tab0401$diets 
+
+  A       B      C      
+B 0.0016  -      -      
+C 5.2e-05 0.1588 -      
+D 1.0000  0.0016 5.2e-05
+
+P value adjustment method: none </code></pre>
+<p>The significant differences are the same using the unadjusted p-values but the p-values are larger then the p-values adjusted using the Bonferroni method.</p>
+<p>A 100<span class="math inline">\((1-\alpha)\)</span>% simultaneous confidence interval for <span class="math inline">\(c\)</span> pairs <span class="math inline">\(\mu_i-\mu_j\)</span> is</p>
+<p><span class="math display">\[\bar{y_{j \cdot}}-\bar{y_{i \cdot}} \pm t_{N-k,\alpha/2c}\hat{\sigma}\sqrt{1/n_j+1/n_i}.\]</span></p>
+<p>After identifying which pairs are different, the confidence interval quantifies the range of plausible values for the differences.</p>
+<p>The treatment means can be obtained from the table below.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+<th align="right">D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td align="right">60</td>
+<td align="right">65</td>
+<td align="right">71</td>
+<td align="right">62</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="right">63</td>
+<td align="right">66</td>
+<td align="right">66</td>
+<td align="right">60</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="right">59</td>
+<td align="right">67</td>
+<td align="right">68</td>
+<td align="right">61</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="right">63</td>
+<td align="right">63</td>
+<td align="right">68</td>
+<td align="right">64</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="right">62</td>
+<td align="right">64</td>
+<td align="right">67</td>
+<td align="right">63</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="right">59</td>
+<td align="right">71</td>
+<td align="right">68</td>
+<td align="right">56</td>
+</tr>
+<tr class="odd">
+<td>Treatment Average</td>
+<td align="right">61</td>
+<td align="right">66</td>
+<td align="right">68</td>
+<td align="right">61</td>
+</tr>
+<tr class="even">
+<td>Grand Average</td>
+<td align="right">64</td>
+<td align="right">64</td>
+<td align="right">64</td>
+<td align="right">64</td>
+</tr>
+<tr class="odd">
+<td>Difference</td>
+<td align="right">-3</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">-3</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\({\hat \sigma}=\sqrt{MS_E}\)</span> can be obtained from the ANOVA table.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(<span class="kw">lm</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401))</code></pre></div>
+<pre><code>Analysis of Variance Table
+
+Response: y
+          Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+diets      3    228    76.0  13.571 4.658e-05 ***
+Residuals 20    112     5.6                      
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>The upper <span class="math inline">\(.05/(2\cdot 6)=0.004\)</span> percentile of the <span class="math inline">\(t_{24-4}\)</span> can be obtained with the t quantile function in R <code>qt()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span><span class="fl">0.004</span>,<span class="dt">df =</span> <span class="dv">20</span>)</code></pre></div>
+<pre><code>[1] 2.945349</code></pre>
+<p>Plugging in these values to the confidence interval formula we can obtain a Bonferroni adjusted 95% confidence interval for <span class="math inline">\(\mu_B-\mu_A\)</span>:</p>
+<p><span class="math display">\[ 66-61 \pm 2.95 \sqrt{5.6} \sqrt{1/6+1/6}\]</span></p>
+<p>The lower and upper limits can be calculated in R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">66</span><span class="op">-</span><span class="dv">61</span> <span class="op">-</span><span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span><span class="fl">0.004</span>,<span class="dt">df =</span> <span class="dv">20</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co"># lower limit</span></code></pre></div>
+<pre><code>[1] 0.9758869</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">66</span><span class="op">-</span><span class="dv">61</span> <span class="op">+</span><span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span><span class="fl">0.004</span>,<span class="dt">df =</span> <span class="dv">20</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co"># upper limit</span></code></pre></div>
+<pre><code>[1] 9.024113</code></pre>
+<p>The 95% confidence interval for <span class="math inline">\(\mu_B-\mu_A\)</span> is ( 0.98, 9.02 ).</p>
+</div>
+<div id="the-tukey-method" class="section level3">
+<h3><span class="header-section-number">7.9.2</span> The Tukey Method</h3>
+<p>The only difference between the Tukey and Bonferroni methods is in the choice of the critical value.</p>
+<p>Treatments <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are declared significantly different at level <span class="math inline">\(\alpha\)</span> if</p>
+<p><span class="math display">\[|t_{ij}|&gt;\frac{1}{\sqrt 2} q_{k,N-k,\alpha},\]</span></p>
+<p>where <span class="math inline">\(t_{ij}\)</span> is the observed value of the two-sample t-statistic and <span class="math inline">\(q_{k,N-k,\alpha}\)</span> is the upper <span class="math inline">\(\alpha\)</span> percentile of the Studentized range distribution with parameters <span class="math inline">\(k\)</span> and <span class="math inline">\(N-k\)</span> degrees of freedom. The CDF and inverse CDF of the Studentized Range Distribution is available in R via the functions <code>ptukey()</code> and <code>qtukey()</code> respectively.</p>
+<p>A 100<span class="math inline">\((1-\alpha)\)</span>% simultaneous confidence interval for <span class="math inline">\(c\)</span> pairs <span class="math inline">\(\mu_i-\mu_j\)</span> is</p>
+<p><span class="math display">\[\bar{y_{j \cdot}}-\bar{y_{i \cdot}} \pm \frac{1}{\sqrt 2} q_{k,N-k,\alpha} \hat{\sigma}\sqrt{1/n_j+1/n_i}.\]</span></p>
+<p>The Bonferroni method is more conservative than Tukey’s method. In other words, the simultaneous confidence intervals based on the Tukey method are shorter.</p>
+<p>In the coagulation study <span class="math inline">\(N = 24, k = 4\)</span> so the 5% critical value of the Studentize range distribution is obtained using the the inverse CDF function <code>qtukey()</code> for this distribution. The argument <code>lower.tail = FALSE</code> is used so we obtain the upper percentile of the distribution (i.e., the value of <span class="math inline">\(x\)</span> such that <span class="math inline">\(P\left(X&gt;x\right)=0.05\)</span>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qtukey</span>(.<span class="dv">05</span>,<span class="dv">4</span>,<span class="dv">16</span>,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>[1] 4.046093</code></pre>
+<p>Let’s obtain the Tukey p-value and confidence interval for <span class="math inline">\(\mu_B-\mu_A\)</span>. The observed value of the test statistic is</p>
+<p><span class="math display">\[q^{obs}=\sqrt{2}|t_{AB}|,\]</span></p>
+<p>where <span class="math display">\[t_{AB}=\frac{\bar{y_{A \cdot}}-\bar{y_{B \cdot}} } {\hat{\sigma}\sqrt{1/n_A+1/n_B}}.\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="kw">sqrt</span>(<span class="dv">2</span>)<span class="op">*</span>(<span class="dv">66</span><span class="op">-</span><span class="dv">61</span>))<span class="op">/</span>(<span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>))</code></pre></div>
+<pre><code>[1] 5.175492</code></pre>
+<p>The p-value</p>
+<p><span class="math display">\[P\left(q_{4,20}&gt;q^{obs}\right)\]</span></p>
+<p>is then obtained using the CDF of the Studentized range distribution</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">-</span><span class="kw">ptukey</span>(<span class="dt">q =</span> <span class="kw">sqrt</span>(<span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span><span class="op">*</span><span class="fl">5.6</span><span class="op">/</span><span class="dv">6</span>),<span class="dt">nmeans =</span> <span class="dv">4</span>,<span class="dt">df =</span> <span class="dv">20</span>)</code></pre></div>
+<pre><code>[1] 0.007797788</code></pre>
+<p>The 95% limits of the Tukey confidence interval for <span class="math inline">\(\mu_B-\mu_A\)</span> is</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span><span class="op">-</span>(<span class="dv">1</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span>))<span class="op">*</span><span class="kw">qtukey</span>(<span class="dt">p =</span> .<span class="dv">05</span>,<span class="dt">nmeans =</span> <span class="dv">4</span>,<span class="dt">df =</span> <span class="dv">20</span>,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co">#lower limit</span></code></pre></div>
+<pre><code>[1] 1.175925</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span><span class="op">+</span>(<span class="dv">1</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span>))<span class="op">*</span><span class="kw">qtukey</span>(<span class="dt">p =</span> .<span class="dv">05</span>,<span class="dt">nmeans =</span> <span class="dv">4</span>,<span class="dt">df =</span> <span class="dv">20</span>,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co">#upper limit</span></code></pre></div>
+<pre><code>[1] 8.824075</code></pre>
+<p>The width of the Tukey confidence interval for <span class="math inline">\(\mu_B-\mu_A\)</span> is</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">1</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span>))<span class="op">*</span><span class="kw">qtukey</span>(<span class="dt">p =</span> .<span class="dv">05</span>,<span class="dt">nmeans =</span> <span class="dv">4</span>,<span class="dt">df =</span> <span class="dv">20</span>,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>)</code></pre></div>
+<pre><code>[1] 3.824075</code></pre>
+<p>The width of Bonferroni <span class="math inline">\(\mu_B-\mu_A\)</span> is</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span><span class="fl">0.004</span>,<span class="dt">df =</span> <span class="dv">20</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>)</code></pre></div>
+<pre><code>[1] 4.024113</code></pre>
+<p>This shows that the Tukey confidence interval is shorter than Bonferroni confidence intervals.</p>
+<p>The command <code>TukeyHSD()</code> can be used to obtain all the Tukey confidence intervals and p-values for an ANOVA.</p>
+<p>Continuing with the blood coagulation study all of the 95% Tukey confidence intervals for the diets are</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">TukeyHSD</span>(<span class="kw">aov</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401))</code></pre></div>
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = y ~ diets, data = tab0401)
+
+$diets
+             diff        lwr       upr     p adj
+B-A  5.000000e+00   1.175925  8.824075 0.0077978
+C-A  7.000000e+00   3.175925 10.824075 0.0002804
+D-A -1.421085e-14  -3.824075  3.824075 1.0000000
+C-B  2.000000e+00  -1.824075  5.824075 0.4766005
+D-B -5.000000e+00  -8.824075 -1.175925 0.0077978
+D-C -7.000000e+00 -10.824075 -3.175925 0.0002804</code></pre>
+<p>A plot of the 95% confidence intervals can be obtained by using the <code>plot()</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(<span class="kw">aov</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401)))</code></pre></div>
+<p><img src="06-anova_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+</div>
+</div>
+<div id="sample-size-for-anova---designing-a-study-to-compare-more-than-two-treatments" class="section level2">
+<h2><span class="header-section-number">7.10</span> Sample size for ANOVA - Designing a study to compare more than two treatments</h2>
+<p>Consider the hypothesis that k means are equal vs. the alternative that at least two differ. What is the probability that the test rejects if at least two means differ? Power = <span class="math inline">\(1-P({\text{Type II error}})\)</span> is this probability.</p>
+<p>The null and alternative hypotheses are:</p>
+<p><span class="math display">\[H_0: \mu_1=\mu_2 = \cdots = \mu_k \thinspace {\text  vs. } \thinspace H_1: \mu_i \ne\mu_j.\]</span></p>
+<p>The test rejects at level <span class="math inline">\(\alpha\)</span> if</p>
+<p><span class="math display">\[MS_{Treat}/MS_E \ge F_{k-1,N-K,\alpha}.\]</span></p>
+<p>The power of the test is</p>
+<p><span class="math display">\[ 1- \beta= P\left(MS_{Treat}/MS_E \ge F_{k-1,N-K,\alpha} \right),\]</span></p>
+<p>when <span class="math inline">\(H_0\)</span> is false.</p>
+<p>When <span class="math inline">\(H_0\)</span> is false it can be shown that:</p>
+<ul>
+<li><p><span class="math inline">\(MS_{Treat}/\sigma^2\)</span> has a non-central Chi-square distribution with <span class="math inline">\(k-1\)</span> degrees of freedom and non-centrality parameter <span class="math inline">\(\delta\)</span>.</p></li>
+<li><p><span class="math inline">\(MS_{Treat}/MS_E\)</span> has a non-central <span class="math inline">\(F\)</span> distribution with the numerator and denominator degrees of freedom <span class="math inline">\(k-1\)</span> and <span class="math inline">\(N-k\)</span> respectively, and non-centrality parameter</p></li>
+</ul>
+<p><span class="math display">\[\delta = \frac{\sum_{i = 1}^kn_i\left(\mu_i-{\bar \mu} \right)^2}{\sigma^2},\]</span></p>
+<p>where <span class="math inline">\(n_i\)</span> is the number of observations in group <span class="math inline">\(i\)</span>, <span class="math inline">\({\bar \mu}=\sum_{i = 1}^k \mu_i/k\)</span>, and <span class="math inline">\(\sigma^2\)</span> is the within group error variance .</p>
+<p>This is denoted by <span class="math inline">\(F_{k-1,N-k}(\delta)\)</span>.</p>
+<div id="direct-calculation-of-power-using-r" class="section level3">
+<h3><span class="header-section-number">7.10.1</span> Direct calculation of Power using R</h3>
+<ul>
+<li>The power of the test is</li>
+</ul>
+<p><span class="math display">\[P\left(F_{k-1,N-k}(\delta) &gt; F_{k-1,N-K,\alpha} \right).\]</span></p>
+<ul>
+<li>The power is an increasing function <span class="math inline">\(\delta\)</span></li>
+<li>The power depends on the true values of the treatment means <span class="math inline">\(\mu_i\)</span>, the error variance <span class="math inline">\(\sigma^2\)</span>, and sample size <span class="math inline">\(n_i\)</span>.</li>
+<li>If the experimenter has some prior idea about the treatment means and error variance the sample size (number of replications) that will guarantee a pre-assigned power of the test.</li>
+<li>The degrees of freedom used in the power function are <span class="math inline">\(k-1\)</span> for the numerator degrees of freedom (<span class="math inline">\(k\)</span> is the number of groups) and <span class="math inline">\(N-k\)</span> for the denominator degrees of freedom, where <span class="math inline">\(N = n_ik\)</span> (<span class="math inline">\(n_i\)</span> is the total number of observations in group <span class="math inline">\(i\)</span>) the total number of observations in all the groups.</li>
+</ul>
+<div id="example-1" class="section level4">
+<h4><span class="header-section-number">7.10.1.1</span> Example</h4>
+<p>Suppose that an investigator would like to replicate the blood coagulation study with only 3 animals per diet. In this case <span class="math inline">\(k = 4, n_i = 3.\)</span> The treatment means from the initial study are:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Diet</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Average</td>
+<td>61</td>
+<td>66</td>
+<td>68</td>
+<td>61</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(lm.diets)</code></pre></div>
+<pre><code>Analysis of Variance Table
+
+Response: y
+          Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+diets      3    228    76.0  13.571 4.658e-05 ***
+Residuals 20    112     5.6                      
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>So, we will use <span class="math inline">\(\mu_1=\)</span> 61, <span class="math inline">\(\mu_2=\)</span> 66, <span class="math inline">\(\mu_3=\)</span> 68, <span class="math inline">\(\mu_4=\)</span> 61. The error variance <span class="math inline">\(\sigma^2\)</span> was estimated as <span class="math inline">\(MS_E = 5.6\)</span>. Assuming that the estimated values are the true values of the parameters, the non-centrality parameter of the <span class="math inline">\(F\)</span> distribution is</p>
+<p><span class="math display">\[\delta = 3 \times \left((61-64)^2+(66-64)^2+(68-64)^2+(61-64)^2\right)/5.6 = 20.35714\]</span></p>
+<p>This was calculated using R</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">3</span><span class="op">*</span>((<span class="dv">61</span><span class="op">-</span><span class="dv">64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">66</span><span class="op">-</span><span class="dv">64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">68</span><span class="op">-</span><span class="dv">64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">61</span><span class="op">-</span><span class="dv">64</span>)<span class="op">^</span><span class="dv">2</span>))<span class="op">/</span><span class="fl">5.6</span></code></pre></div>
+<pre><code>[1] 20.35714</code></pre>
+<p>If we choose <span class="math inline">\(\alpha = 0.05\)</span> as the significance level then <span class="math inline">\(F_{3,8,0.05}=\)</span> 4.0661806. The power of the test is then</p>
+<p><span class="math display">\[P\left(F_{3,8}(20.36) &gt; 4.07 \right)=0.85.\]</span></p>
+<p>This was calculated using the CDF for the <span class="math inline">\(F\)</span> distribution in R <code>pf()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="fl">4.07</span>,<span class="dt">df1 =</span> <span class="dv">3</span>,<span class="dt">df2 =</span> <span class="dv">8</span>,<span class="dt">ncp =</span> <span class="fl">20.36</span>)</code></pre></div>
+<pre><code>[1] 0.8496248</code></pre>
+</div>
+</div>
+<div id="calculating-power-and-sample-size-using-the-pwr-library-in-r" class="section level3">
+<h3><span class="header-section-number">7.10.2</span> Calculating Power and Sample Size using the <code>pwr</code> library in R</h3>
+<p>There are several libraries in R which can calculate power and sample size for statistical tests. The library <code>pwr()</code> has a function</p>
+<p><code>pwr.anova.test(k = NULL, n = NULL, f = NULL, sig.level = 0.05, power = NULL)</code></p>
+<p>for computing power and sample size.</p>
+<ul>
+<li><code>k</code> Number of groups</li>
+<li><code>n</code> Number of observations (per group)</li>
+<li><code>f</code> Effect size</li>
+</ul>
+<p>The effect size is the standard deviation of the population means divided by the common within-population standard deviation.</p>
+<p><span class="math display">\[f = \sqrt{\frac{\sum_{i = 1}^k\left(\mu_i-{\bar \mu} \right)^2/k}{\sigma^2}}.\]</span></p>
+<p><span class="math inline">\({\bar \mu}=\sum_{i = 1}^k \mu_i/k\)</span>, and <span class="math inline">\(\sigma^2\)</span> is the within group error variance.</p>
+<p>The relationship between effect size <span class="math inline">\(f\)</span> for ANOVA and the non-centrality parameter <span class="math inline">\(\delta\)</span> is</p>
+<p><span class="math display">\[\delta = kn_if^2,\]</span></p>
+<p>where <span class="math inline">\(n_i\)</span> is the number of observations in group <span class="math inline">\(i = 1,...,k\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eff.size &lt;-<span class="st"> </span><span class="kw">sqrt</span>(((<span class="dv">61</span><span class="op">-</span><span class="dv">64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">66</span><span class="op">-</span><span class="dv">64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">68</span><span class="op">-</span><span class="dv">64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">61</span><span class="op">-</span><span class="dv">64</span>)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span><span class="op">/</span><span class="fl">5.6</span>)
+<span class="kw">library</span>(pwr)
+<span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">n =</span> <span class="dv">3</span>,<span class="dt">f =</span> eff.size)</code></pre></div>
+<pre><code>
+     Balanced one-way analysis of variance power calculation 
+
+              k = 4
+              n = 3
+              f = 1.30247
+      sig.level = 0.05
+          power = 0.8499001
+
+NOTE: n is number in each group</code></pre>
+<p>Recall that 1.3 is a very large effect size. A plot of effect size versus power when <span class="math inline">\(k = 4,n = 3\)</span> is shown below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(pwr)
+x &lt;-<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">05</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.01</span>)
+<span class="kw">plot</span>(x,<span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">n =</span> <span class="dv">3</span>,<span class="dt">f =</span> x)<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Effect Size&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Power&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Power vs. Effect Size for k = 4, n = 3&quot;</span>)</code></pre></div>
+<p><img src="06-anova_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p>The plot shows that power is an increasing function of effect size. The power is 1 for effect sizes at least 1.9.</p>
+</div>
+<div id="calculating-power-using-using-simulation" class="section level3">
+<h3><span class="header-section-number">7.10.3</span> Calculating Power using using Simulation</h3>
+<p>The power of an ANOVA design can be simulated using R.</p>
+<p>The general procedure for simulating power is:</p>
+<ol style="list-style-type: decimal">
+<li><p>Use the underlying model to generate random data with (a) specified sample sizes, (b) parameter values that one is trying to detect with the hypothesis test, and (c) nuisance parameters such as variances.</p></li>
+<li><p>Run the estimation program (e.g., <code>t.test()</code>,<code>lm()</code> ) on these randomly generated data.</p></li>
+<li><p>Calculate the test statistic and p-value.</p></li>
+<li><p>Do Steps 1–3 many times, say, N, and save the p-values. The estimated power for a level alpha test is the proportion of observations (out of N) for which the p-value is less than alpha.</p></li>
+</ol>
+<p>One of the advantages of calculating power via simulation is that we can investigate what happens to power if, say, some of the assumptions behind one-way ANOVA are violated.</p>
+<p>A simple R program that implements 1-4 above, for three treatment groups, is given below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Simulate power of ANOVA for three groups</span>
+
+NSIM &lt;-<span class="st"> </span><span class="dv">10000</span> <span class="co"># number of simulations</span>
+res &lt;-<span class="st"> </span><span class="kw">numeric</span>(NSIM) <span class="co"># store p-values in res</span>
+
+mu1 &lt;-<span class="st"> </span><span class="dv">2</span>; mu2 &lt;-<span class="st"> </span><span class="fl">2.5</span>;mu3 &lt;-<span class="st"> </span><span class="dv">2</span>  <span class="co"># true mean values of treatment groups</span>
+sigma1 &lt;-<span class="st"> </span><span class="dv">1</span>; sigma2 &lt;-<span class="st"> </span><span class="dv">1</span>; sigma3 &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co">#variances in each group</span>
+n1 &lt;-<span class="st"> </span><span class="dv">40</span>; n2 &lt;-<span class="st"> </span><span class="dv">40</span>; n3 &lt;-<span class="st"> </span><span class="dv">40</span> <span class="co">#sample size in each group</span>
+
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>NSIM) <span class="co"># do the calculations below N times</span>
+  { 
+y1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n1,<span class="dt">mean =</span> mu1,<span class="dt">sd =</span> sigma1) <span class="co"># generate a random sample of size n1 from N(mu1,sigma1^2)</span>
+y2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n2,<span class="dt">mean =</span> mu2,<span class="dt">sd =</span> sigma2) <span class="co"># generate a random sample of size n2 from N(mu2,sigma2^2)</span>
+y3 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n3,<span class="dt">mean =</span> mu3,<span class="dt">sd =</span> sigma3) <span class="co"># generate a random sample of size n3 from N(mu3,sigma3^2)</span>
+y &lt;-<span class="st"> </span><span class="kw">c</span>(y1,y2,y3) <span class="co"># store all the values from the groups</span>
+trt &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,n1),<span class="kw">rep</span>(<span class="dv">2</span>,n2),<span class="kw">rep</span>(<span class="dv">3</span>,n3))) <span class="co"># generate the treatment assignment for each group</span>
+m &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>trt) <span class="co"># calculate the ANOVA</span>
+res[i] &lt;-<span class="st"> </span><span class="kw">anova</span>(m)[<span class="dv">1</span>,<span class="dv">5</span>] <span class="co"># p-value of F test</span>
+}
+<span class="kw">sum</span>(res<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span>NSIM <span class="co"># calculate p-value</span></code></pre></div>
+<pre><code>[1] 0.6263</code></pre>
+<p>We can check to make sure that our program works by verifying two scenarios where we know the answers.</p>
+<ol style="list-style-type: decimal">
+<li>Calculate the power of the test when <span class="math inline">\(\mu_1 = 2,\mu_2 = 2.5,\mu_3 = 2, \sigma = 1, n_1 = n_2 = n_3 = 40\)</span>, and</li>
+</ol>
+<p><span class="math display">\[f = \sqrt{\frac{\sum_{i = 1}^3\left(\mu_i-{2.17} \right)^2/3}{1^2}}=0.2357023,\]</span></p>
+<p>using <code>pwr.anova.test()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mug &lt;-<span class="st"> </span><span class="kw">sum</span>(mu1,mu2,mu3)<span class="op">/</span><span class="dv">3</span>
+mui &lt;-<span class="st"> </span><span class="kw">c</span>(mu1,mu2,mu3)
+f1 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(((<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)<span class="op">*</span><span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>))<span class="op">/</span>sigma1)
+<span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">3</span>,<span class="dt">f =</span> f1,<span class="dt">n =</span> <span class="dv">40</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</code></pre></div>
+<pre><code>
+     Balanced one-way analysis of variance power calculation 
+
+              k = 3
+              n = 40
+              f = 0.2357023
+      sig.level = 0.05
+          power = 0.6207319
+
+NOTE: n is number in each group</code></pre>
+<p>The simulation program and <code>pwr.anova.test()</code> both calculate power equal to 62%.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Calculate the power directly.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">k &lt;-<span class="st"> </span><span class="dv">3</span>
+n &lt;-<span class="st"> </span><span class="dv">40</span>
+delta &lt;-<span class="st"> </span>n<span class="op">*</span><span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>sigma1
+<span class="kw">qf</span>(<span class="dt">p =</span> .<span class="dv">95</span>,<span class="dt">df1 =</span> <span class="dv">3</span>,<span class="dt">df2 =</span> <span class="dv">117</span>)</code></pre></div>
+<pre><code>[1] 2.682132</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="kw">qf</span>(<span class="dt">p =</span> .<span class="dv">95</span>,<span class="dt">df1 =</span> k<span class="op">-</span><span class="dv">1</span>,<span class="dt">df2 =</span> n<span class="op">*</span>k<span class="op">-</span>k), <span class="dt">df1 =</span> k<span class="op">-</span><span class="dv">1</span>,<span class="dt">df2 =</span> n<span class="op">*</span>k<span class="op">-</span>k,<span class="dt">ncp =</span> delta,<span class="dt">lower.tail =</span> T)</code></pre></div>
+<pre><code>[1] 0.6207319</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>When <span class="math inline">\(\mu_1=\mu_2=\mu3\)</span> (i.e., when <span class="math inline">\(H_0\)</span> is true) the power of the test is <span class="math inline">\(\alpha\)</span>.</li>
+</ol>
+<p>When <span class="math inline">\(\delta = 0\)</span></p>
+<p><span class="math display">\[P\left(F_{k-1,N-k}(0) &gt; F_{k-1,N-K,\alpha} \right)=\alpha.\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Simulate power of ANOVA for three groups</span>
+
+NSIM &lt;-<span class="st"> </span><span class="dv">10000</span> <span class="co"># number of simulations</span>
+res &lt;-<span class="st"> </span><span class="kw">numeric</span>(NSIM) <span class="co"># store p-values in res</span>
+
+mu1 &lt;-<span class="st"> </span><span class="dv">2</span>; mu2 &lt;-<span class="st"> </span><span class="dv">2</span>;mu3 &lt;-<span class="st"> </span><span class="dv">2</span>  <span class="co"># true mean values of treatment groups</span>
+sigma1 &lt;-<span class="st"> </span><span class="dv">1</span>; sigma2 &lt;-<span class="st"> </span><span class="dv">1</span>; sigma3 &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co">#variances in each group</span>
+n1 &lt;-<span class="st"> </span><span class="dv">10</span>; n2 &lt;-<span class="st"> </span><span class="dv">10</span>; n3 &lt;-<span class="st"> </span><span class="dv">10</span> <span class="co">#sample size in each group</span>
+
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>NSIM) <span class="co"># do the calculations below N times</span>
+  { 
+y1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n1,<span class="dt">mean =</span> mu1,<span class="dt">sd =</span> sigma1) <span class="co"># generate a random sample of size n1 from N(mu1,sigma1^2)</span>
+y2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n2,<span class="dt">mean =</span> mu2,<span class="dt">sd =</span> sigma2) <span class="co"># generate a random sample of size n2 from N(mu2,sigma2^2)</span>
+y3 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n3,<span class="dt">mean =</span> mu3,<span class="dt">sd =</span> sigma3) <span class="co"># generate a random sample of size n3 from N(mu3,sigma3^2)</span>
+y &lt;-<span class="st"> </span><span class="kw">c</span>(y1,y2,y3) <span class="co"># store all the values from the groups</span>
+trt &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,n1),<span class="kw">rep</span>(<span class="dv">2</span>,n2),<span class="kw">rep</span>(<span class="dv">3</span>,n3))) <span class="co"># generate the treatment assignment for each group</span>
+m &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>trt) <span class="co"># calculate the ANOVA</span>
+res[i] &lt;-<span class="st"> </span><span class="kw">anova</span>(m)[<span class="dv">1</span>,<span class="dv">5</span>] <span class="co"># p-value of F test</span>
+}
+<span class="kw">sum</span>(res<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span>NSIM <span class="co"># calculate p-value</span></code></pre></div>
+<pre><code>[1] 0.0452</code></pre>
+</div>
+</div>
+<div id="questions-4" class="section level2">
+<h2><span class="header-section-number">7.11</span> Questions</h2>
+<ol style="list-style-type: decimal">
+<li>Let <span class="math inline">\(\mu_{A}, \mu_{B},\mu_{C},\mu_{D}\)</span> be the mean coagulation times of diets A, B, C, and D respectively.</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li><p>Formulate a null and alternative hypotheses to compare the mean coagulation times between the four diets.</p></li>
+<li><p>What is the test statistic and P-value of the test in part (a)?</p></li>
+<li><p>Is there a significant difference (at the 1% significance level) between at least two of the diets?</p></li>
+<li><p>What are the assumptions behind:</p></li>
+</ol>
+<ul>
+<li>The ANOVA table calculations.</li>
+<li>The P-value in the ANOVA table.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Interpret the parameters in the additive model for ANOVA <span class="math display">\[y_{ti}=\mu+\tau_t+\epsilon_{ti},\]</span> where, <span class="math inline">\(y_{ti}\)</span> is the <span class="math inline">\(i^{th}\)</span> observation in the <span class="math inline">\(t^{th}\)</span> treatment group, <span class="math inline">\(\mu\)</span> is the overall mean, and <span class="math inline">\(\tau_t\)</span> is the deviation produced by treatment <span class="math inline">\(t\)</span>, and <span class="math inline">\(\epsilon_{ti}\)</span> is the error.</li>
+</ol>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-bhh2005">
+<p>Box, George EP, J Stuart Hunter, and William Gordon Hunter. 2005. <em>Statistics for Experimenters: Design, Innovation, and Discovery</em>. Vol. 2. Wiley-Interscience New York.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="causal-inference.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="randomized-block-designs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

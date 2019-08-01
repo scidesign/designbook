@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11 Split-Plot Designs | Design of Experiments and Observational Studies</title>
+  <meta name="description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11 Split-Plot Designs | Design of Experiments and Observational Studies" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="github-repo" content="scidesign/designbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11 Split-Plot Designs | Design of Experiments and Observational Studies" />
+  
+  <meta name="twitter:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  
+
+<meta name="author" content="Nathan Taback" />
+
+
+<meta name="date" content="2019-07-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="fractional-factorial-designs.html">
+<link rel="next" href="design-of-observational-studies.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-design-scientific-studies"><i class="fa fa-check"></i><b>2.1</b> Why Design Scientific Studies?</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#big-data-and-designing-scientific-studies"><i class="fa fa-check"></i><b>2.2</b> Big Data and Designing Scientific Studies</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#what-is-big-data-and-why-does-it-matter"><i class="fa fa-check"></i><b>2.2.1</b> What is Big data and why does it matter?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction.html"><a href="introduction.html#is-statistical-sampling-and-randomization-still-relevant-in-the-era-of-big-data"><i class="fa fa-check"></i><b>2.2.2</b> Is statistical sampling and randomization still relevant in the era of Big Data?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html"><i class="fa fa-check"></i><b>3</b> Review of Mathematical Statistics</a><ul>
+<li class="chapter" data-level="3.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#data"><i class="fa fa-check"></i><b>3.1</b> Data</a></li>
+<li class="chapter" data-level="3.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#distributions"><i class="fa fa-check"></i><b>3.2</b> Distributions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Continuous Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#randomness"><i class="fa fa-check"></i><b>3.3</b> Randomness</a></li>
+<li class="chapter" data-level="3.4" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#parameters-and-statistics"><i class="fa fa-check"></i><b>3.4</b> Parameters and Statistics</a></li>
+<li class="chapter" data-level="3.5" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#residuals-and-degress-of-freedom"><i class="fa fa-check"></i><b>3.5</b> Residuals and Degress of Freedom</a></li>
+<li class="chapter" data-level="3.6" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#the-normal-distribution"><i class="fa fa-check"></i><b>3.6</b> The Normal Distribution</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises"><i class="fa fa-check"></i><b>3.6.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
+<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
+<li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#questions"><i class="fa fa-check"></i><b>3.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html"><i class="fa fa-check"></i><b>4</b> Completely Randomized Designs: Comparing Two Treatments</a><ul>
+<li class="chapter" data-level="4.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#comparing-two-treatments"><i class="fa fa-check"></i><b>4.1</b> Comparing Two Treatments</a></li>
+<li class="chapter" data-level="4.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#treatment-assignment-mechanism-and-propensity-score"><i class="fa fa-check"></i><b>4.2</b> Treatment Assignment Mechanism and Propensity Score</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#propensity-score"><i class="fa fa-check"></i><b>4.2.1</b> Propensity Score</a></li>
+<li class="chapter" data-level="4.2.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#assignment-mechanism"><i class="fa fa-check"></i><b>4.2.2</b> Assignment Mechanism</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#completely-randomized-experiment"><i class="fa fa-check"></i><b>4.3</b> Completely Randomized Experiment</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#example"><i class="fa fa-check"></i><b>4.3.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-distribution"><i class="fa fa-check"></i><b>4.4</b> The Randomization Distribution</a></li>
+<li class="chapter" data-level="4.5" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-p-value"><i class="fa fa-check"></i><b>4.5</b> The Randomization p-value</a></li>
+<li class="chapter" data-level="4.6" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#two-sided-randomization-p-value"><i class="fa fa-check"></i><b>4.6</b> Two-Sided Randomization P value</a></li>
+<li class="chapter" data-level="4.7" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#other-test-statistics"><i class="fa fa-check"></i><b>4.7</b> Other Test Statistics</a></li>
+<li class="chapter" data-level="4.8" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#calculating-the-randomization-p-value-using-monte-carlo-sampling"><i class="fa fa-check"></i><b>4.8</b> Calculating the Randomization P-value using Monte Carlo Sampling</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#does-caffeine-have-an-effect-on-reaction-time"><i class="fa fa-check"></i><b>4.8.1</b> Does Caffeine Have an Effect on Reaction Time?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#properties-of-the-randomization-test"><i class="fa fa-check"></i><b>4.9</b> Properties of the Randomization Test</a></li>
+<li class="chapter" data-level="4.10" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-two-sample-t-test"><i class="fa fa-check"></i><b>4.10</b> The two-sample t-test</a></li>
+<li class="chapter" data-level="4.11" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#randomized-paired-comparison"><i class="fa fa-check"></i><b>4.11</b> Randomized paired comparison</a></li>
+<li class="chapter" data-level="4.12" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-test-for-a-randomized-paired-design"><i class="fa fa-check"></i><b>4.12</b> The Randomization Test for a Randomized Paired Design</a></li>
+<li class="chapter" data-level="4.13" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#paired-t-test"><i class="fa fa-check"></i><b>4.13</b> Paired t-test</a></li>
+<li class="chapter" data-level="4.14" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#questions-1"><i class="fa fa-check"></i><b>4.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html"><i class="fa fa-check"></i><b>5</b> How Many Experimental Units are Required to Compare Two Treatments?</a><ul>
+<li class="chapter" data-level="5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#clinical-trials"><i class="fa fa-check"></i><b>5.1</b> Clinical Trials</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#phases-of-clinical-trials"><i class="fa fa-check"></i><b>5.1.1</b> Phases of clinical trials</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
+<li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.4.1</b> Calculating the Power of the One Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-two-sample-t-test"><i class="fa fa-check"></i><b>5.5</b> Power of two sample t test</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-two-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.5.1</b> Calculating the Power of the Two Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#effect-size"><i class="fa fa-check"></i><b>5.6</b> Effect size</a></li>
+<li class="chapter" data-level="5.7" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-equal-allocation"><i class="fa fa-check"></i><b>5.7</b> Sample size - known variance and equal allocation</a></li>
+<li class="chapter" data-level="5.8" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-unequal-allocation"><i class="fa fa-check"></i><b>5.8</b> Sample size - known variance and unequal allocation</a></li>
+<li class="chapter" data-level="5.9" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#comparing-proportions-for-binary-outcomes"><i class="fa fa-check"></i><b>5.9</b> Comparing Proportions for Binary Outcomes</a></li>
+<li class="chapter" data-level="5.10" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-power-by-simulation"><i class="fa fa-check"></i><b>5.10</b> Calculating Power by simulation</a></li>
+<li class="chapter" data-level="5.11" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#questions-2"><i class="fa fa-check"></i><b>5.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.1</b> The Fundemental Problem of Causal Inference</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="causal-inference.html"><a href="causal-inference.html#example-of-the-fundemental-problem"><i class="fa fa-check"></i><b>6.1.1</b> Example of the fundemental problem</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#randomized-experiments-as-a-solution-to-the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.2</b> Randomized experiments as a solution to the fundemental problem of causal inference</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#average-causal-effects-and-randomized-experiments"><i class="fa fa-check"></i><b>6.3</b> Average causal effects and randomized experiments</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="causal-inference.html"><a href="causal-inference.html#stable-unit-treatment-value-assignment"><i class="fa fa-check"></i><b>6.3.1</b> Stable Unit Treatment Value Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#ignorable-assignment-mechanisims"><i class="fa fa-check"></i><b>6.4</b> Ignorable Assignment Mechanisims</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="causal-inference.html"><a href="causal-inference.html#the-perfect-doctor-example"><i class="fa fa-check"></i><b>6.4.1</b> The Perfect Doctor Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#questions-3"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html"><i class="fa fa-check"></i><b>7</b> Completely Randomized Designs: Comparing More Than Two Treatments</a><ul>
+<li class="chapter" data-level="7.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova---comparing-more-than-two-groups"><i class="fa fa-check"></i><b>7.1</b> ANOVA - Comparing more than two groups</a></li>
+<li class="chapter" data-level="7.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#analysis-of-variance-anova-table"><i class="fa fa-check"></i><b>7.2</b> Analysis of Variance (ANOVA) table</a></li>
+<li class="chapter" data-level="7.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-anova-identity"><i class="fa fa-check"></i><b>7.3</b> The ANOVA identity</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---blood-coagulation-study"><i class="fa fa-check"></i><b>7.3.1</b> Example - Blood coagulation study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#general-anova"><i class="fa fa-check"></i><b>7.4</b> General ANOVA</a></li>
+<li class="chapter" data-level="7.5" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova-assumptions"><i class="fa fa-check"></i><b>7.5</b> ANOVA Assumptions</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---checking-the-assumptions-in-the-blood-coagualtion-study"><i class="fa fa-check"></i><b>7.5.1</b> Example - checking the assumptions in the blood coagualtion study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#coding-qualitative-predictors-in-regression-models"><i class="fa fa-check"></i><b>7.6</b> Coding Qualitative Predictors in Regression Models</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#dummy-coding"><i class="fa fa-check"></i><b>7.6.1</b> Dummy Coding</a></li>
+<li class="chapter" data-level="7.6.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#deviation-coding"><i class="fa fa-check"></i><b>7.6.2</b> Deviation Coding</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#estimating-treatment-effects-using-least-squares"><i class="fa fa-check"></i><b>7.7</b> Estimating Treatment Effects using Least Squares</a></li>
+<li class="chapter" data-level="7.8" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#using-the-lm-function-in-r-to-estimate-treatment-effects"><i class="fa fa-check"></i><b>7.8</b> Using the <code>lm()</code> Function in R to Estimate Treatment Effects</a></li>
+<li class="chapter" data-level="7.9" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#multiple-comparisons"><i class="fa fa-check"></i><b>7.9</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-bonferroni-method"><i class="fa fa-check"></i><b>7.9.1</b> The Bonferroni Method</a></li>
+<li class="chapter" data-level="7.9.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-tukey-method"><i class="fa fa-check"></i><b>7.9.2</b> The Tukey Method</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#sample-size-for-anova---designing-a-study-to-compare-more-than-two-treatments"><i class="fa fa-check"></i><b>7.10</b> Sample size for ANOVA - Designing a study to compare more than two treatments</a><ul>
+<li class="chapter" data-level="7.10.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#direct-calculation-of-power-using-r"><i class="fa fa-check"></i><b>7.10.1</b> Direct calculation of Power using R</a></li>
+<li class="chapter" data-level="7.10.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-and-sample-size-using-the-pwr-library-in-r"><i class="fa fa-check"></i><b>7.10.2</b> Calculating Power and Sample Size using the <code>pwr</code> library in R</a></li>
+<li class="chapter" data-level="7.10.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-using-using-simulation"><i class="fa fa-check"></i><b>7.10.3</b> Calculating Power using using Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#questions-4"><i class="fa fa-check"></i><b>7.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html"><i class="fa fa-check"></i><b>8</b> Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#anova-table-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.1</b> ANOVA Table for Randomized Block Designs</a></li>
+<li class="chapter" data-level="8.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-anova-identity-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.2</b> The ANOVA identity for Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#degrees-of-freedom"><i class="fa fa-check"></i><b>8.2.1</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="8.2.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#penicillin-manufacturing-example"><i class="fa fa-check"></i><b>8.2.2</b> Penicillin Manufacturing Example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-linear-model-for-randomized-block-design"><i class="fa fa-check"></i><b>8.3</b> The Linear Model for Randomized Block Design</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#checking-statistical-assumptions"><i class="fa fa-check"></i><b>8.3.1</b> Checking statistical assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#application-of-blocking-to-achieve-balanced-randomization-permuted-block-randomization"><i class="fa fa-check"></i><b>8.4</b> Application of Blocking to Achieve Balanced Randomization: Permuted Block Randomization</a></li>
+<li class="chapter" data-level="8.5" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#latin-square-designs"><i class="fa fa-check"></i><b>8.5</b> Latin square designs</a></li>
+<li class="chapter" data-level="8.6" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#general-latin-square-designs"><i class="fa fa-check"></i><b>8.6</b> General Latin Square Designs</a></li>
+<li class="chapter" data-level="8.7" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.7</b> Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#hyper-graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.8</b> Hyper-Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.9" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#balanced-incomplete-block-designs"><i class="fa fa-check"></i><b>8.9</b> Balanced incomplete block designs</a></li>
+<li class="chapter" data-level="8.10" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#questions-5"><i class="fa fa-check"></i><b>8.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html"><i class="fa fa-check"></i><b>9</b> Factorial Designs at Two Levels - <span class="math inline">\(2^k\)</span> Designs</a><ul>
+<li class="chapter" data-level="9.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#difference-between-anova-and-factorial-designs"><i class="fa fa-check"></i><b>9.1</b> Difference between ANOVA and Factorial Designs</a></li>
+<li class="chapter" data-level="9.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#performing-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.2</b> Performing a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#cube-plots"><i class="fa fa-check"></i><b>9.3</b> Cube plots</a></li>
+<li class="chapter" data-level="9.4" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#factorial-effects"><i class="fa fa-check"></i><b>9.4</b> Factorial effects</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#main-effects"><i class="fa fa-check"></i><b>9.4.1</b> Main effects</a></li>
+<li class="chapter" data-level="9.4.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-effects"><i class="fa fa-check"></i><b>9.4.2</b> Interaction effects</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#replication-in-factorial-designs"><i class="fa fa-check"></i><b>9.5</b> Replication in factorial designs</a></li>
+<li class="chapter" data-level="9.6" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#estimate-of-the-error-variance-and-standard-error-of-effects-from-replicated-runs"><i class="fa fa-check"></i><b>9.6</b> Estimate of the error variance and standard error of effects from replicated runs</a></li>
+<li class="chapter" data-level="9.7" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interpretation-of-results"><i class="fa fa-check"></i><b>9.7</b> Interpretation of results</a></li>
+<li class="chapter" data-level="9.8" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-plots"><i class="fa fa-check"></i><b>9.8</b> Interaction plots</a></li>
+<li class="chapter" data-level="9.9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#linear-model-for-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.9</b> Linear Model for a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.10" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#advantages-of-factorial-designs-over-one-factor-at-a-time-designs"><i class="fa fa-check"></i><b>9.10</b> Advantages of factorial designs over one-factor-at-a-time designs</a></li>
+<li class="chapter" data-level="9.11" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#normal-plots-in-unreplicated-factorial-designs"><i class="fa fa-check"></i><b>9.11</b> Normal Plots in Unreplicated Factorial Designs</a><ul>
+<li class="chapter" data-level="9.11.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#review-of-normal-quantile-plots"><i class="fa fa-check"></i><b>9.11.1</b> Review of Normal Quantile Plots</a></li>
+<li class="chapter" data-level="9.11.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#example---24-design-for-studying-a-chemical-reaction"><i class="fa fa-check"></i><b>9.11.2</b> Example - <span class="math inline">\(2^4\)</span> design for studying a chemical reaction</a></li>
+</ul></li>
+<li class="chapter" data-level="9.12" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#half-normal-plots"><i class="fa fa-check"></i><b>9.12</b> Half-Normal Plots</a></li>
+<li class="chapter" data-level="9.13" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#lenths-method-testing-significance-for-experiments-without-variance-estimates"><i class="fa fa-check"></i><b>9.13</b> Lenth’s method: testing significance for experiments without variance estimates</a></li>
+<li class="chapter" data-level="9.14" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#blocking-factorial-designs"><i class="fa fa-check"></i><b>9.14</b> Blocking Factorial Designs</a><ul>
+<li class="chapter" data-level="9.14.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#effect-hierarchy-principle"><i class="fa fa-check"></i><b>9.14.1</b> Effect hierarchy principle</a></li>
+<li class="chapter" data-level="9.14.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generation-of-orthogonal-blocks"><i class="fa fa-check"></i><b>9.14.2</b> Generation of Orthogonal Blocks</a></li>
+<li class="chapter" data-level="9.14.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#an-example-of-how-not-to-block"><i class="fa fa-check"></i><b>9.14.3</b> An example of how not to block</a></li>
+</ul></li>
+<li class="chapter" data-level="9.15" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generators-and-defining-relations"><i class="fa fa-check"></i><b>9.15</b> Generators and Defining Relations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html"><i class="fa fa-check"></i><b>10</b> Fractional factorial designs</a><ul>
+<li class="chapter" data-level="10.1" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---effect-of-five-factors-on-six-properties-of-film-in-eight-runs"><i class="fa fa-check"></i><b>10.1</b> Example - Effect of five factors on six properties of film in eight runs</a></li>
+<li class="chapter" data-level="10.2" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#effect-aliasing-and-design-resolution"><i class="fa fa-check"></i><b>10.2</b> Effect Aliasing and Design Resolution</a></li>
+<li class="chapter" data-level="10.3" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---leaf-spring-experiment"><i class="fa fa-check"></i><b>10.3</b> Example - Leaf Spring Experiment</a></li>
+<li class="chapter" data-level="10.4" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---baking-cookies"><i class="fa fa-check"></i><b>10.4</b> Example - Baking Cookies</a></li>
+<li class="chapter" data-level="10.5" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#questions-6"><i class="fa fa-check"></i><b>10.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="split-plot-designs.html"><a href="split-plot-designs.html"><i class="fa fa-check"></i><b>11</b> Split-Plot Designs</a><ul>
+<li class="chapter" data-level="11.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#anova-table-for-split-plot-experiment"><i class="fa fa-check"></i><b>11.1</b> ANOVA table for split plot experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-not-to-do-it"><i class="fa fa-check"></i><b>11.2</b> Split plot ANOVA - How not to do it</a></li>
+<li class="chapter" data-level="11.3" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-to-do-it"><i class="fa fa-check"></i><b>11.3</b> Split plot ANOVA - How to do it</a></li>
+<li class="chapter" data-level="11.4" data-path="split-plot-designs.html"><a href="split-plot-designs.html#so-what-is-a-split-plot"><i class="fa fa-check"></i><b>11.4</b> So, what is a split plot?</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#randomizing-a-split-plot-experiment"><i class="fa fa-check"></i><b>11.4.1</b> Randomizing a Split Plot experiment</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="split-plot-designs.html"><a href="split-plot-designs.html#questions-7"><i class="fa fa-check"></i><b>11.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html"><i class="fa fa-check"></i><b>12</b> Design of Observational Studies</a><ul>
+<li class="chapter" data-level="12.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#what-is-an-observational-study"><i class="fa fa-check"></i><b>12.1</b> What is an observational study?</a></li>
+<li class="chapter" data-level="12.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#designing-and-observational-study"><i class="fa fa-check"></i><b>12.2</b> Designing and Observational Study</a></li>
+<li class="chapter" data-level="12.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example---epidemiologic-follow-up-study"><i class="fa fa-check"></i><b>12.3</b> Example - Epidemiologic Follow-up Study</a></li>
+<li class="chapter" data-level="12.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-1"><i class="fa fa-check"></i><b>12.4</b> Propensity Score</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-examples"><i class="fa fa-check"></i><b>12.4.1</b> Propensity Score Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#estimating-the-propensity-score-in-an-observational-study"><i class="fa fa-check"></i><b>12.5</b> Estimating the propensity score in an observational study</a></li>
+<li class="chapter" data-level="12.6" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#the-balancing-property-of-the-propensity-score"><i class="fa fa-check"></i><b>12.6</b> The balancing property of the propensity score</a></li>
+<li class="chapter" data-level="12.7" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#imbalance-versus-overlap"><i class="fa fa-check"></i><b>12.7</b> Imbalance versus Overlap</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example-from-the-nhefs"><i class="fa fa-check"></i><b>12.7.1</b> Example from the NHEFS</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-and-ignorable-treatment-assignment"><i class="fa fa-check"></i><b>12.8</b> Propensity Score and Ignorable Treatment Assignment</a></li>
+<li class="chapter" data-level="12.9" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-methods-to-reduce-bias-in-observational-studies"><i class="fa fa-check"></i><b>12.9</b> Propensity Score Methods to Reduce Bias in Observational Studies</a><ul>
+<li class="chapter" data-level="12.9.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-matching-matching"><i class="fa fa-check"></i><b>12.9.1</b> Propensity Score Matching Matching</a></li>
+<li class="chapter" data-level="12.9.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-stratification"><i class="fa fa-check"></i><b>12.9.2</b> Propensity score stratification</a></li>
+<li class="chapter" data-level="12.9.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#multivariate-adjustment-using-the-propensity-score"><i class="fa fa-check"></i><b>12.9.3</b> Multivariate adjustment using the propensity score</a></li>
+<li class="chapter" data-level="12.9.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#comparing-the-three-methods"><i class="fa fa-check"></i><b>12.9.4</b> Comparing the three methods</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#questions-8"><i class="fa fa-check"></i><b>12.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Design of Experiments and Observational Studies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="split-plot-designs" class="section level1">
+<h1><span class="header-section-number">11</span> Split-Plot Designs</h1>
+<p>These designs were originally developed for agriculture by R.A. Fisher and F. Yates. Due to their applicability outside agriculture they could also be called split-unit designs.</p>
+<p>The results from a split-plot experiment are shown in the table below (<span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span>). The experiment was designed to study the corrosion resistance of steel bars treated with four different coatings <span class="math inline">\(C_1, C_2, C_3, C_4\)</span> at three duplicated furnace temperatures 360, 370, 380. The positions of the coated steel bars in the furnace were randomized within each heat. In run 1 the heat was 360 and the first position in the furnace had a steel bar with coating 2 the second position had coating 3 , the third position had coating 1, and the fourth position had coating 4. But, because the furnace heat was hard to change the heats were run in the systematic order shown.</p>
+<p>The primary interest were the comparison of coatings and how they interacted with temperature.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">run</th>
+<th align="left">heats</th>
+<th align="left">coating</th>
+<th align="right">position</th>
+<th align="right">replication</th>
+<th align="right">resistance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">r1</td>
+<td align="left">T360</td>
+<td align="left">C2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">73</td>
+</tr>
+<tr class="even">
+<td align="left">r1</td>
+<td align="left">T360</td>
+<td align="left">C3</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">83</td>
+</tr>
+<tr class="odd">
+<td align="left">r1</td>
+<td align="left">T360</td>
+<td align="left">C1</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">67</td>
+</tr>
+<tr class="even">
+<td align="left">r1</td>
+<td align="left">T360</td>
+<td align="left">C4</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">89</td>
+</tr>
+<tr class="odd">
+<td align="left">r2</td>
+<td align="left">T370</td>
+<td align="left">C1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">65</td>
+</tr>
+<tr class="even">
+<td align="left">r2</td>
+<td align="left">T370</td>
+<td align="left">C3</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">87</td>
+</tr>
+<tr class="odd">
+<td align="left">r2</td>
+<td align="left">T370</td>
+<td align="left">C4</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">86</td>
+</tr>
+<tr class="even">
+<td align="left">r2</td>
+<td align="left">T370</td>
+<td align="left">C2</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">91</td>
+</tr>
+<tr class="odd">
+<td align="left">r3</td>
+<td align="left">T380</td>
+<td align="left">C3</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">147</td>
+</tr>
+<tr class="even">
+<td align="left">r3</td>
+<td align="left">T380</td>
+<td align="left">C1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">155</td>
+</tr>
+<tr class="odd">
+<td align="left">r3</td>
+<td align="left">T380</td>
+<td align="left">C2</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">127</td>
+</tr>
+<tr class="even">
+<td align="left">r3</td>
+<td align="left">T380</td>
+<td align="left">C4</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">212</td>
+</tr>
+<tr class="odd">
+<td align="left">r4</td>
+<td align="left">T380</td>
+<td align="left">C4</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">153</td>
+</tr>
+<tr class="even">
+<td align="left">r4</td>
+<td align="left">T380</td>
+<td align="left">C3</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">90</td>
+</tr>
+<tr class="odd">
+<td align="left">r4</td>
+<td align="left">T380</td>
+<td align="left">C2</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">100</td>
+</tr>
+<tr class="even">
+<td align="left">r4</td>
+<td align="left">T380</td>
+<td align="left">C1</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">108</td>
+</tr>
+<tr class="odd">
+<td align="left">r5</td>
+<td align="left">T370</td>
+<td align="left">C4</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">150</td>
+</tr>
+<tr class="even">
+<td align="left">r5</td>
+<td align="left">T370</td>
+<td align="left">C1</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">140</td>
+</tr>
+<tr class="odd">
+<td align="left">r5</td>
+<td align="left">T370</td>
+<td align="left">C3</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">121</td>
+</tr>
+<tr class="even">
+<td align="left">r5</td>
+<td align="left">T370</td>
+<td align="left">C2</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">142</td>
+</tr>
+<tr class="odd">
+<td align="left">r6</td>
+<td align="left">T360</td>
+<td align="left">C1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">33</td>
+</tr>
+<tr class="even">
+<td align="left">r6</td>
+<td align="left">T360</td>
+<td align="left">C4</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">54</td>
+</tr>
+<tr class="odd">
+<td align="left">r6</td>
+<td align="left">T360</td>
+<td align="left">C2</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">r6</td>
+<td align="left">T360</td>
+<td align="left">C3</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">46</td>
+</tr>
+</tbody>
+</table>
+<p>The split-plot experiment of corrosion resistance is shown for the first replicate at 360.</p>
+
+<p>The average resistance for each coating and temperature is shown in the table below.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">run</th>
+<th align="left">heats</th>
+<th align="right">average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">r1</td>
+<td align="left">T360</td>
+<td align="right">78.00</td>
+</tr>
+<tr class="even">
+<td align="left">r2</td>
+<td align="left">T370</td>
+<td align="right">82.25</td>
+</tr>
+<tr class="odd">
+<td align="left">r3</td>
+<td align="left">T380</td>
+<td align="right">160.25</td>
+</tr>
+<tr class="even">
+<td align="left">r4</td>
+<td align="left">T380</td>
+<td align="right">112.75</td>
+</tr>
+<tr class="odd">
+<td align="left">r5</td>
+<td align="left">T370</td>
+<td align="right">138.25</td>
+</tr>
+<tr class="even">
+<td align="left">r6</td>
+<td align="left">T360</td>
+<td align="right">35.25</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left">heats</th>
+<th align="right">average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">T360</td>
+<td align="right">56.625</td>
+</tr>
+<tr class="even">
+<td align="left">T370</td>
+<td align="right">110.250</td>
+</tr>
+<tr class="odd">
+<td align="left">T380</td>
+<td align="right">136.500</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left">coating</th>
+<th align="right">average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">C1</td>
+<td align="right">94.66667</td>
+</tr>
+<tr class="even">
+<td align="left">C2</td>
+<td align="right">90.16667</td>
+</tr>
+<tr class="odd">
+<td align="left">C3</td>
+<td align="right">95.66667</td>
+</tr>
+<tr class="even">
+<td align="left">C4</td>
+<td align="right">124.00000</td>
+</tr>
+</tbody>
+</table>
+<p>The primary interest was to compare coatings and how they interact with temperature. How does the split-plot design compare with, say, a 3x4 factorial design of coating and temperature? In the factorial design an oven temperature-coating combination would be randomly selected then we would obtain a corrosion resistance measure. Then randomly select another oven temperature-coating combination and obtain another corrosion resistance measure until we have a resistance measure for all 12 oven temperature-coating combinations. To run each combination in random order would require adjusting the furnace temperature up to 24 times (since there were two replicates) and would have resulted in a much larger variance. The split plot is like a randomized block design (with whole plots as blocks) in which the opportunity is taken to introduce additional factors between blocks. In this design there is only one source of error influencing the resistance.</p>
+<p>There are two different experimental units:</p>
+<ul>
+<li>The six different furnace heats, called whole plots.</li>
+<li>The four positions within each furnace heat, called subplots, where the differently coated bars could be placed in the furnace.</li>
+</ul>
+<p>There are two different variances associated with the whole plots and subplots. <span class="math inline">\(\sigma^2_W\)</span> for whole plots and <span class="math inline">\(\sigma^2_S\)</span> for subplots. It would be misleading to treat as if only one error source and one variance.</p>
+<p>Achieving and maintaining a given temperature in this furnace was very imprecise. The whole plot variance, measuring variation from one heat to another, was expected to be large.</p>
+<p>The subplot variance measuring variation from position to position, within a given heat, was expected to be small.</p>
+<p>The subplot effects and subplot-main plot interaction are estimated using with the same subplot error.</p>
+<p>Two considerations important in choosing an experimental design are feasibility and efficiency. In industrial experimentation a split-plot design is often convenient and the only practical possibility. This is the case whenever there are certain factors that are <em>difficult to change</em> and others that are <em>easy to change</em>. In this example changing the <em>furnace temperature was difficult to change</em>; rearranging the <em>positions of the coated bars in the furnace was easy to change</em>.</p>
+<div id="anova-table-for-split-plot-experiment" class="section level2">
+<h2><span class="header-section-number">11.1</span> ANOVA table for split plot experiment</h2>
+<p>The numerical calculations for the ANOVA of a split-plot design are the same as for other balanced designs (designs where all treatment combinations have the same number of observations) and can be performed in R or with other statistical software. Experimenters sometimes have difficulty identifying appropriate error terms.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">spfurcoat1 &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance <span class="op">~</span><span class="st"> </span>replication <span class="op">*</span><span class="st"> </span>heats <span class="op">*</span><span class="st"> </span>coating, <span class="dt">data =</span> tab0901)
+<span class="kw">summary</span>(spfurcoat1)</code></pre></div>
+<pre><code>                          Df Sum Sq Mean Sq
+replication                1    782     782
+heats                      2  26519   13260
+coating                    3   4289    1430
+replication:heats          2  13658    6829
+replication:coating        3    254      85
+heats:coating              6   3270     545
+replication:heats:coating  6    867     144</code></pre>
+<p>The whole plot effects are <code>replication</code> and <code>replication:heats</code>. So the ANOVA table for the whole plots is:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th>DF</th>
+<th align="left">SS</th>
+<th align="left">MS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">replication</td>
+<td>1</td>
+<td align="left">782</td>
+<td align="left">782</td>
+</tr>
+<tr class="even">
+<td align="left">replication <span class="math inline">\(\times\)</span> heats</td>
+<td>2</td>
+<td align="left">13658</td>
+<td align="left">6829</td>
+</tr>
+</tbody>
+</table>
+<p>The whole plot mean square error is 6829. This measures the differences between the replicated heats at the three different temperatures.</p>
+<p>The subplot effects are:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th>DF</th>
+<th align="left">SS</th>
+<th align="left">MS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">coating</td>
+<td>3</td>
+<td align="left">4289</td>
+<td align="left">1430</td>
+</tr>
+<tr class="even">
+<td align="left">coating <span class="math inline">\(\times\)</span> heats</td>
+<td>6</td>
+<td align="left">3270</td>
+<td align="left">545</td>
+</tr>
+</tbody>
+</table>
+<p>The subplot mean square error is <span class="math inline">\((254+867)/(3+6)=\)</span> 124.6. The sum of squares for the subplot error is the sum of interaction between replicate and coating (<code>replication:coating</code>) and the three way interaction of replication, heats and coating (<code>replication:heats:coating</code>). The subplot error measures to what extent the coatings give dissimilar results within each of the replicated temperatures.</p>
+<p>In R the ANOVA table for whole plot and sub plot effects can obtained by specifying the subplot error structure explicit using <code>Error()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">spfurcoat &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance <span class="op">~</span><span class="st"> </span>replication <span class="op">+</span><span class="st"> </span>heats <span class="op">+</span><span class="st"> </span>
+<span class="st">                   </span>replication<span class="op">:</span>heats <span class="op">+</span><span class="st"> </span>coating <span class="op">+</span><span class="st"> </span>
+<span class="st">                   </span>heats<span class="op">:</span>coating <span class="op">+</span><span class="st"> </span><span class="kw">Error</span>(heats<span class="op">/</span>replication),
+                 <span class="dt">data =</span> tab0901)
+<span class="kw">summary</span>(spfurcoat)</code></pre></div>
+<pre><code>
+Error: heats
+      Df Sum Sq Mean Sq
+heats  2  26519   13260
+
+Error: heats:replication
+                  Df Sum Sq Mean Sq
+replication        1    782     782
+replication:heats  2  13658    6829
+
+Error: Within
+              Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+coating        3   4289  1429.7  11.480 0.00198 **
+heats:coating  6   3270   545.0   4.376 0.02407 * 
+Residuals      9   1121   124.5                   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>The whole plot effects are under the heading <code>Error: heats:replication</code> and the subplot effects are under the heading <code>Error: Within</code>. Under the heading <code>Error: heats</code> is mean square error for a one-way ANOVA model comparing heats.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>( <span class="kw">aov</span>(resistance<span class="op">~</span>heats,tab0901))</code></pre></div>
+<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+heats        2  26519   13260   12.04 0.000328 ***
+Residuals   21  23119    1101                     
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>The ratio of mean square errors follows an <span class="math inline">\(F_{2,2}\)</span>. The F statistic for whole plots is 13260/6829= 1.94. So the p-value to test <span class="math inline">\(H_0:\mu_{360}=\mu_{370}=\mu_{380}\)</span> is</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="dv">13260</span><span class="op">/</span><span class="dv">6829</span>,<span class="dt">df1 =</span> <span class="dv">2</span>,<span class="dt">df2 =</span> <span class="dv">2</span>)</code></pre></div>
+<pre><code>[1] 0.3399373</code></pre>
+<p>The subplot effects of coating and the interaction of temperature and coating can be tested by forming F statistics using the subplot mean square error. These tests are given in the ANOVA table under the heading <code>Error: Within</code>. There are statistically significant differences between coatings and the interaction between temperature and coating.</p>
+<p>The whole plot error mean square 4813 is an estimate of <span class="math inline">\(4\sigma^2_W+\sigma^2_S\)</span>. So,</p>
+<p><span class="math display">\[4813 = 4\hat {\sigma}^2_W+\hat {\sigma}^2_S.\]</span></p>
+<p>The subplot mean square error is 125 so <span class="math inline">\(\hat {\sigma}^2_S = 125\)</span>. Estimates of the whole plot and sub plot standard deviations are,</p>
+<p><span class="math display">\[ \hat {\sigma}_W =\sqrt{\left(\frac{4813-125}{4} \right)}=34.2, \hspace{1cm} \hat {\sigma}_S=\sqrt{125}=11.1.\]</span></p>
+<p>The estimated standard deviation of furnace heats is approximately three times as large as the standard deviation for coatings.</p>
+<p>The values for the split plot experiment can be put into one ANOVA table.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th>DF</th>
+<th align="left">SS</th>
+<th align="left">MS</th>
+<th align="center">F</th>
+<th align="center">P</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Whole plot:</strong></td>
+<td></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">replication</td>
+<td>1</td>
+<td align="left">782</td>
+<td align="left">782</td>
+<td align="center">782/6829 = 0.12</td>
+<td align="center">0.77</td>
+</tr>
+<tr class="odd">
+<td align="left">heats</td>
+<td>2</td>
+<td align="left">26519</td>
+<td align="left">13260</td>
+<td align="center">13260/6829 = 1.9</td>
+<td align="center">0.34</td>
+</tr>
+<tr class="even">
+<td align="left">replication <span class="math inline">\(\times\)</span> heats</td>
+<td>2</td>
+<td align="left">13658</td>
+<td align="left">6829</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">(whole plot error)</td>
+<td></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Subplot:</strong></td>
+<td></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">coating</td>
+<td>3</td>
+<td align="left">4289</td>
+<td align="left">1430</td>
+<td align="center">11.48</td>
+<td align="center">0.002</td>
+</tr>
+<tr class="even">
+<td align="left">coating <span class="math inline">\(\times\)</span> heats</td>
+<td>6</td>
+<td align="left">3270</td>
+<td align="left">545</td>
+<td align="center">4.376</td>
+<td align="center">0.02</td>
+</tr>
+<tr class="odd">
+<td align="left">Subplot error</td>
+<td>9</td>
+<td align="left">1121</td>
+<td align="left">124.5</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Suppose that a split plot experiment is conducted with whole factor plot <span class="math inline">\(A\)</span> with <span class="math inline">\(I\)</span> levels and sub plot factor <span class="math inline">\(B\)</span> with <span class="math inline">\(J\)</span> levels. The experiment is replicated <span class="math inline">\(n\)</span> times. The ANOVA table is:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="center">DF</th>
+<th align="center">SS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Whole plot:</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">replication</td>
+<td align="center"><span class="math inline">\(n-1\)</span></td>
+<td align="center"><span class="math inline">\(SS_{Rep}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="center"><span class="math inline">\(I-1\)</span></td>
+<td align="center"><span class="math inline">\(SS_A\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">replication <span class="math inline">\(\times\)</span> A</td>
+<td align="center"><span class="math inline">\((n-1)(I-1)\)</span></td>
+<td align="center"><span class="math inline">\(SS_{W}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">(whole plot error)</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Subplot:</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="center"><span class="math inline">\(J-1\)</span></td>
+<td align="center"><span class="math inline">\(SS_B\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(A \times B\)</span></td>
+<td align="center"><span class="math inline">\((I-1)(J-1)\)</span></td>
+<td align="center"><span class="math inline">\(SS_{A \times B}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Subplot error</td>
+<td align="center"><span class="math inline">\(I(J-1)(n-1)\)</span></td>
+<td align="center"><span class="math inline">\(SS_S\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="split-plot-anova---how-not-to-do-it" class="section level2">
+<h2><span class="header-section-number">11.2</span> Split plot ANOVA - How not to do it</h2>
+<p>Suppose that you didn’t know about the split-plot structure. So the experimenter analyzes the data as a two-way ANOVA. Would you reach the same conclusions?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">furcoatanova &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance<span class="op">~</span>heats<span class="op">*</span>coating,<span class="dt">data =</span> tab0901)
+<span class="kw">summary</span>(furcoatanova)</code></pre></div>
+<pre><code>              Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+heats          2  26519   13260  10.226 0.00256 **
+coating        3   4289    1430   1.103 0.38602   
+heats:coating  6   3270     545   0.420 0.85180   
+Residuals     12  15560    1297                   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>The two-way ANOVA shows that there is no evidence of a difference in the four coatings, evidence of a difference between temperatures, and no evidence of an interaction between temperature and coating.</p>
+<p>What happened?</p>
+<p>The two factors temperature and coating use different randomization schemes and the number of replicates is different for each factor. The subplot factor, coatings, restricted randomization to the four positions within a given temperature (whole plot). For the whole plot factor, complete randomization can usually be applied in assigning the levels of A to the whole plots (although this was not the case for the corrosion study). Therefore, the error should consist of two parts: whole plot error and subplot error. In order to test the significance of the whole plot factor and the subplot factor we need respective mean squares with the respective whole plot error component and subplot error component respectively.</p>
+<p>The (incorrect) two-way ANOVA model is</p>
+<p><span class="math display">\[y_{ijk}=\eta+\alpha_i+\beta_j+(\alpha\beta)_{ij}+\epsilon_{ijk}, \thinspace \epsilon_{ijk} \sim N(0,\sigma^2)\]</span></p>
+<p><span class="math inline">\(y_{ijk}\)</span> is the observation for the <span class="math inline">\(k\)</span>th replicate of the <span class="math inline">\(i\)</span>th level of factor <span class="math inline">\(A\)</span> and the <span class="math inline">\(j\)</span>th level of factor <span class="math inline">\(B\)</span>. (adapted from Wu and Hamada)</p>
+</div>
+<div id="split-plot-anova---how-to-do-it" class="section level2">
+<h2><span class="header-section-number">11.3</span> Split plot ANOVA - How to do it</h2>
+<p>The correct model is</p>
+<p><span class="math display">\[y_{ijk}=\eta+\tau_k+ \alpha_i+ (\tau\alpha)_{ki}+ \beta_j+(\alpha\beta)_{ij}+(\tau\beta)_{kj}+(\tau\alpha\beta)_{kij}+ \epsilon^{\prime}_{ijk}, \thinspace \epsilon^{\prime}_{ijk} \sim N(0,\sigma^2)\]</span></p>
+<p><span class="math inline">\(i = 1,...,I; \thinspace j = 1,...,J; \thinspace k = 1,...,n.\)</span></p>
+<ul>
+<li><span class="math inline">\(y_{ijk}\)</span> is the observation for the <span class="math inline">\(k\)</span>th replicate of the <span class="math inline">\(i\)</span>th level of factor <span class="math inline">\(A\)</span> and the <span class="math inline">\(j\)</span>th level of factor <span class="math inline">\(B\)</span>. (adapted from Wu and Hamada)</li>
+</ul>
+<p><em>Whole plot effects</em></p>
+<ul>
+<li><p><span class="math inline">\(\tau_k\)</span> is the effect of the <span class="math inline">\(k\)</span>th replicate.</p></li>
+<li><p><span class="math inline">\(\alpha_i\)</span> is the <span class="math inline">\(i\)</span>th main effect for <span class="math inline">\(A\)</span></p></li>
+<li><p><span class="math inline">\((\tau\alpha)_{ki}\)</span> is the <span class="math inline">\((k,i)\)</span>th interaction effect between replicate and <span class="math inline">\(A\)</span>. This is the whole plot error term.</p></li>
+</ul>
+<p><em>Subplot effects</em></p>
+<ul>
+<li><p><span class="math inline">\(\beta_j\)</span> is the <span class="math inline">\(j\)</span>th main effect of <span class="math inline">\(B\)</span></p></li>
+<li><p><span class="math inline">\((\alpha\beta)_{ij}\)</span> is the <span class="math inline">\((i,j)\)</span>th interaction between <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p></li>
+<li><p><span class="math inline">\((\tau\beta)_{kj}\)</span> is the <span class="math inline">\((k,j)\)</span>th interaction between the replicate and <span class="math inline">\(B\)</span>.</p></li>
+<li><p><span class="math inline">\((\tau\alpha\beta)_{kij}\)</span> is the <span class="math inline">\((k,i,j)\)</span>th interaction between the replicate, <span class="math inline">\(A\)</span>, and <span class="math inline">\(B\)</span>.</p></li>
+<li><p><span class="math inline">\(\epsilon^{\prime}_{ijk}\)</span> is the error term.</p></li>
+</ul>
+<p>The term <span class="math inline">\(\epsilon_{kij}=(\tau\beta)_{kj}+(\tau\alpha\beta)_{kij}+\epsilon^{\prime}_{ijk}\)</span> is the subplot error term.</p>
+<p>The subplot error is usually smaller than the whole plot error since subplots tend to be more homogeneous than whole plots. Subplot treatments can be compared with higher precision. Therefore, factors of greater importance/interest should be assigned to subplots if possible.</p>
+</div>
+<div id="so-what-is-a-split-plot" class="section level2">
+<h2><span class="header-section-number">11.4</span> So, what is a split plot?</h2>
+<p>A split-plot can be thought of as a blocked experiment where the blocks themselves serve as experimental units for a subset of the factors.</p>
+<p>Blocks = Whole plots</p>
+<p>Experimental units within blocks = split plots</p>
+<p>Corresponding to two levels of experimental units are two levels of randomization. One randomization to to determine assignment to whole plots. A randomization of treatments to split-plot experimental units occurs within each plot.</p>
+<div id="randomizing-a-split-plot-experiment" class="section level3">
+<h3><span class="header-section-number">11.4.1</span> Randomizing a Split Plot experiment</h3>
+<p>The three steps in randomizing a basic split-plot experiment consisting of 5 blocks (replicates), 4 levels of whole plot factor A, and 8 levels of split-plot factor B are:</p>
+<ol style="list-style-type: decimal">
+<li>Division of experimental area or material into five blocks.</li>
+</ol>
+
+<ol start="2" style="list-style-type: decimal">
+<li>Randomization of four levels of whole plot factor A to each of the five blocks.</li>
+</ol>
+
+<ol start="3" style="list-style-type: decimal">
+<li>Randomization of eight levels of split plot factor B within each level of whole plot factor A.</li>
+</ol>
+
+</div>
+</div>
+<div id="questions-7" class="section level2">
+<h2><span class="header-section-number">11.5</span> Questions</h2>
+<ol style="list-style-type: decimal">
+<li><p>When is a split-plot design appropriate and useful?</p></li>
+<li><p>In a split-plot design is it appropriate that the whole plot factor and sub-plot (or split-plot factor) use the same randomization scheme? Explain using an example.</p></li>
+</ol>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-bhh2005">
+<p>Box, George EP, J Stuart Hunter, and William Gordon Hunter. 2005. <em>Statistics for Experimenters: Design, Innovation, and Discovery</em>. Vol. 2. Wiley-Interscience New York.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fractional-factorial-designs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="design-of-observational-studies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

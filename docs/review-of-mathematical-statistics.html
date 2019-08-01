@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Review of Mathematical Statistics | Design of Experiments and Observational Studies</title>
+  <meta name="description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Review of Mathematical Statistics | Design of Experiments and Observational Studies" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="github-repo" content="scidesign/designbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Review of Mathematical Statistics | Design of Experiments and Observational Studies" />
+  
+  <meta name="twitter:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  
+
+<meta name="author" content="Nathan Taback" />
+
+
+<meta name="date" content="2019-07-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html">
+<link rel="next" href="completely-randomized-designs-comparing-two-treatments.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-design-scientific-studies"><i class="fa fa-check"></i><b>2.1</b> Why Design Scientific Studies?</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#big-data-and-designing-scientific-studies"><i class="fa fa-check"></i><b>2.2</b> Big Data and Designing Scientific Studies</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#what-is-big-data-and-why-does-it-matter"><i class="fa fa-check"></i><b>2.2.1</b> What is Big data and why does it matter?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction.html"><a href="introduction.html#is-statistical-sampling-and-randomization-still-relevant-in-the-era-of-big-data"><i class="fa fa-check"></i><b>2.2.2</b> Is statistical sampling and randomization still relevant in the era of Big Data?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html"><i class="fa fa-check"></i><b>3</b> Review of Mathematical Statistics</a><ul>
+<li class="chapter" data-level="3.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#data"><i class="fa fa-check"></i><b>3.1</b> Data</a></li>
+<li class="chapter" data-level="3.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#distributions"><i class="fa fa-check"></i><b>3.2</b> Distributions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Continuous Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#randomness"><i class="fa fa-check"></i><b>3.3</b> Randomness</a></li>
+<li class="chapter" data-level="3.4" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#parameters-and-statistics"><i class="fa fa-check"></i><b>3.4</b> Parameters and Statistics</a></li>
+<li class="chapter" data-level="3.5" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#residuals-and-degress-of-freedom"><i class="fa fa-check"></i><b>3.5</b> Residuals and Degress of Freedom</a></li>
+<li class="chapter" data-level="3.6" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#the-normal-distribution"><i class="fa fa-check"></i><b>3.6</b> The Normal Distribution</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises"><i class="fa fa-check"></i><b>3.6.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
+<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
+<li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#questions"><i class="fa fa-check"></i><b>3.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html"><i class="fa fa-check"></i><b>4</b> Completely Randomized Designs: Comparing Two Treatments</a><ul>
+<li class="chapter" data-level="4.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#comparing-two-treatments"><i class="fa fa-check"></i><b>4.1</b> Comparing Two Treatments</a></li>
+<li class="chapter" data-level="4.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#treatment-assignment-mechanism-and-propensity-score"><i class="fa fa-check"></i><b>4.2</b> Treatment Assignment Mechanism and Propensity Score</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#propensity-score"><i class="fa fa-check"></i><b>4.2.1</b> Propensity Score</a></li>
+<li class="chapter" data-level="4.2.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#assignment-mechanism"><i class="fa fa-check"></i><b>4.2.2</b> Assignment Mechanism</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#completely-randomized-experiment"><i class="fa fa-check"></i><b>4.3</b> Completely Randomized Experiment</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#example"><i class="fa fa-check"></i><b>4.3.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-distribution"><i class="fa fa-check"></i><b>4.4</b> The Randomization Distribution</a></li>
+<li class="chapter" data-level="4.5" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-p-value"><i class="fa fa-check"></i><b>4.5</b> The Randomization p-value</a></li>
+<li class="chapter" data-level="4.6" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#two-sided-randomization-p-value"><i class="fa fa-check"></i><b>4.6</b> Two-Sided Randomization P value</a></li>
+<li class="chapter" data-level="4.7" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#other-test-statistics"><i class="fa fa-check"></i><b>4.7</b> Other Test Statistics</a></li>
+<li class="chapter" data-level="4.8" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#calculating-the-randomization-p-value-using-monte-carlo-sampling"><i class="fa fa-check"></i><b>4.8</b> Calculating the Randomization P-value using Monte Carlo Sampling</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#does-caffeine-have-an-effect-on-reaction-time"><i class="fa fa-check"></i><b>4.8.1</b> Does Caffeine Have an Effect on Reaction Time?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#properties-of-the-randomization-test"><i class="fa fa-check"></i><b>4.9</b> Properties of the Randomization Test</a></li>
+<li class="chapter" data-level="4.10" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-two-sample-t-test"><i class="fa fa-check"></i><b>4.10</b> The two-sample t-test</a></li>
+<li class="chapter" data-level="4.11" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#randomized-paired-comparison"><i class="fa fa-check"></i><b>4.11</b> Randomized paired comparison</a></li>
+<li class="chapter" data-level="4.12" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-test-for-a-randomized-paired-design"><i class="fa fa-check"></i><b>4.12</b> The Randomization Test for a Randomized Paired Design</a></li>
+<li class="chapter" data-level="4.13" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#paired-t-test"><i class="fa fa-check"></i><b>4.13</b> Paired t-test</a></li>
+<li class="chapter" data-level="4.14" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#questions-1"><i class="fa fa-check"></i><b>4.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html"><i class="fa fa-check"></i><b>5</b> How Many Experimental Units are Required to Compare Two Treatments?</a><ul>
+<li class="chapter" data-level="5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#clinical-trials"><i class="fa fa-check"></i><b>5.1</b> Clinical Trials</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#phases-of-clinical-trials"><i class="fa fa-check"></i><b>5.1.1</b> Phases of clinical trials</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
+<li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.4.1</b> Calculating the Power of the One Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-two-sample-t-test"><i class="fa fa-check"></i><b>5.5</b> Power of two sample t test</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-two-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.5.1</b> Calculating the Power of the Two Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#effect-size"><i class="fa fa-check"></i><b>5.6</b> Effect size</a></li>
+<li class="chapter" data-level="5.7" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-equal-allocation"><i class="fa fa-check"></i><b>5.7</b> Sample size - known variance and equal allocation</a></li>
+<li class="chapter" data-level="5.8" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-unequal-allocation"><i class="fa fa-check"></i><b>5.8</b> Sample size - known variance and unequal allocation</a></li>
+<li class="chapter" data-level="5.9" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#comparing-proportions-for-binary-outcomes"><i class="fa fa-check"></i><b>5.9</b> Comparing Proportions for Binary Outcomes</a></li>
+<li class="chapter" data-level="5.10" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-power-by-simulation"><i class="fa fa-check"></i><b>5.10</b> Calculating Power by simulation</a></li>
+<li class="chapter" data-level="5.11" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#questions-2"><i class="fa fa-check"></i><b>5.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.1</b> The Fundemental Problem of Causal Inference</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="causal-inference.html"><a href="causal-inference.html#example-of-the-fundemental-problem"><i class="fa fa-check"></i><b>6.1.1</b> Example of the fundemental problem</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#randomized-experiments-as-a-solution-to-the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.2</b> Randomized experiments as a solution to the fundemental problem of causal inference</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#average-causal-effects-and-randomized-experiments"><i class="fa fa-check"></i><b>6.3</b> Average causal effects and randomized experiments</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="causal-inference.html"><a href="causal-inference.html#stable-unit-treatment-value-assignment"><i class="fa fa-check"></i><b>6.3.1</b> Stable Unit Treatment Value Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#ignorable-assignment-mechanisims"><i class="fa fa-check"></i><b>6.4</b> Ignorable Assignment Mechanisims</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="causal-inference.html"><a href="causal-inference.html#the-perfect-doctor-example"><i class="fa fa-check"></i><b>6.4.1</b> The Perfect Doctor Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#questions-3"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html"><i class="fa fa-check"></i><b>7</b> Completely Randomized Designs: Comparing More Than Two Treatments</a><ul>
+<li class="chapter" data-level="7.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova---comparing-more-than-two-groups"><i class="fa fa-check"></i><b>7.1</b> ANOVA - Comparing more than two groups</a></li>
+<li class="chapter" data-level="7.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#analysis-of-variance-anova-table"><i class="fa fa-check"></i><b>7.2</b> Analysis of Variance (ANOVA) table</a></li>
+<li class="chapter" data-level="7.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-anova-identity"><i class="fa fa-check"></i><b>7.3</b> The ANOVA identity</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---blood-coagulation-study"><i class="fa fa-check"></i><b>7.3.1</b> Example - Blood coagulation study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#general-anova"><i class="fa fa-check"></i><b>7.4</b> General ANOVA</a></li>
+<li class="chapter" data-level="7.5" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova-assumptions"><i class="fa fa-check"></i><b>7.5</b> ANOVA Assumptions</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---checking-the-assumptions-in-the-blood-coagualtion-study"><i class="fa fa-check"></i><b>7.5.1</b> Example - checking the assumptions in the blood coagualtion study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#coding-qualitative-predictors-in-regression-models"><i class="fa fa-check"></i><b>7.6</b> Coding Qualitative Predictors in Regression Models</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#dummy-coding"><i class="fa fa-check"></i><b>7.6.1</b> Dummy Coding</a></li>
+<li class="chapter" data-level="7.6.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#deviation-coding"><i class="fa fa-check"></i><b>7.6.2</b> Deviation Coding</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#estimating-treatment-effects-using-least-squares"><i class="fa fa-check"></i><b>7.7</b> Estimating Treatment Effects using Least Squares</a></li>
+<li class="chapter" data-level="7.8" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#using-the-lm-function-in-r-to-estimate-treatment-effects"><i class="fa fa-check"></i><b>7.8</b> Using the <code>lm()</code> Function in R to Estimate Treatment Effects</a></li>
+<li class="chapter" data-level="7.9" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#multiple-comparisons"><i class="fa fa-check"></i><b>7.9</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-bonferroni-method"><i class="fa fa-check"></i><b>7.9.1</b> The Bonferroni Method</a></li>
+<li class="chapter" data-level="7.9.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-tukey-method"><i class="fa fa-check"></i><b>7.9.2</b> The Tukey Method</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#sample-size-for-anova---designing-a-study-to-compare-more-than-two-treatments"><i class="fa fa-check"></i><b>7.10</b> Sample size for ANOVA - Designing a study to compare more than two treatments</a><ul>
+<li class="chapter" data-level="7.10.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#direct-calculation-of-power-using-r"><i class="fa fa-check"></i><b>7.10.1</b> Direct calculation of Power using R</a></li>
+<li class="chapter" data-level="7.10.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-and-sample-size-using-the-pwr-library-in-r"><i class="fa fa-check"></i><b>7.10.2</b> Calculating Power and Sample Size using the <code>pwr</code> library in R</a></li>
+<li class="chapter" data-level="7.10.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-using-using-simulation"><i class="fa fa-check"></i><b>7.10.3</b> Calculating Power using using Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#questions-4"><i class="fa fa-check"></i><b>7.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html"><i class="fa fa-check"></i><b>8</b> Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#anova-table-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.1</b> ANOVA Table for Randomized Block Designs</a></li>
+<li class="chapter" data-level="8.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-anova-identity-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.2</b> The ANOVA identity for Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#degrees-of-freedom"><i class="fa fa-check"></i><b>8.2.1</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="8.2.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#penicillin-manufacturing-example"><i class="fa fa-check"></i><b>8.2.2</b> Penicillin Manufacturing Example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-linear-model-for-randomized-block-design"><i class="fa fa-check"></i><b>8.3</b> The Linear Model for Randomized Block Design</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#checking-statistical-assumptions"><i class="fa fa-check"></i><b>8.3.1</b> Checking statistical assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#application-of-blocking-to-achieve-balanced-randomization-permuted-block-randomization"><i class="fa fa-check"></i><b>8.4</b> Application of Blocking to Achieve Balanced Randomization: Permuted Block Randomization</a></li>
+<li class="chapter" data-level="8.5" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#latin-square-designs"><i class="fa fa-check"></i><b>8.5</b> Latin square designs</a></li>
+<li class="chapter" data-level="8.6" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#general-latin-square-designs"><i class="fa fa-check"></i><b>8.6</b> General Latin Square Designs</a></li>
+<li class="chapter" data-level="8.7" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.7</b> Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#hyper-graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.8</b> Hyper-Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.9" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#balanced-incomplete-block-designs"><i class="fa fa-check"></i><b>8.9</b> Balanced incomplete block designs</a></li>
+<li class="chapter" data-level="8.10" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#questions-5"><i class="fa fa-check"></i><b>8.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html"><i class="fa fa-check"></i><b>9</b> Factorial Designs at Two Levels - <span class="math inline">\(2^k\)</span> Designs</a><ul>
+<li class="chapter" data-level="9.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#difference-between-anova-and-factorial-designs"><i class="fa fa-check"></i><b>9.1</b> Difference between ANOVA and Factorial Designs</a></li>
+<li class="chapter" data-level="9.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#performing-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.2</b> Performing a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#cube-plots"><i class="fa fa-check"></i><b>9.3</b> Cube plots</a></li>
+<li class="chapter" data-level="9.4" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#factorial-effects"><i class="fa fa-check"></i><b>9.4</b> Factorial effects</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#main-effects"><i class="fa fa-check"></i><b>9.4.1</b> Main effects</a></li>
+<li class="chapter" data-level="9.4.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-effects"><i class="fa fa-check"></i><b>9.4.2</b> Interaction effects</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#replication-in-factorial-designs"><i class="fa fa-check"></i><b>9.5</b> Replication in factorial designs</a></li>
+<li class="chapter" data-level="9.6" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#estimate-of-the-error-variance-and-standard-error-of-effects-from-replicated-runs"><i class="fa fa-check"></i><b>9.6</b> Estimate of the error variance and standard error of effects from replicated runs</a></li>
+<li class="chapter" data-level="9.7" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interpretation-of-results"><i class="fa fa-check"></i><b>9.7</b> Interpretation of results</a></li>
+<li class="chapter" data-level="9.8" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-plots"><i class="fa fa-check"></i><b>9.8</b> Interaction plots</a></li>
+<li class="chapter" data-level="9.9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#linear-model-for-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.9</b> Linear Model for a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.10" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#advantages-of-factorial-designs-over-one-factor-at-a-time-designs"><i class="fa fa-check"></i><b>9.10</b> Advantages of factorial designs over one-factor-at-a-time designs</a></li>
+<li class="chapter" data-level="9.11" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#normal-plots-in-unreplicated-factorial-designs"><i class="fa fa-check"></i><b>9.11</b> Normal Plots in Unreplicated Factorial Designs</a><ul>
+<li class="chapter" data-level="9.11.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#review-of-normal-quantile-plots"><i class="fa fa-check"></i><b>9.11.1</b> Review of Normal Quantile Plots</a></li>
+<li class="chapter" data-level="9.11.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#example---24-design-for-studying-a-chemical-reaction"><i class="fa fa-check"></i><b>9.11.2</b> Example - <span class="math inline">\(2^4\)</span> design for studying a chemical reaction</a></li>
+</ul></li>
+<li class="chapter" data-level="9.12" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#half-normal-plots"><i class="fa fa-check"></i><b>9.12</b> Half-Normal Plots</a></li>
+<li class="chapter" data-level="9.13" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#lenths-method-testing-significance-for-experiments-without-variance-estimates"><i class="fa fa-check"></i><b>9.13</b> Lenth’s method: testing significance for experiments without variance estimates</a></li>
+<li class="chapter" data-level="9.14" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#blocking-factorial-designs"><i class="fa fa-check"></i><b>9.14</b> Blocking Factorial Designs</a><ul>
+<li class="chapter" data-level="9.14.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#effect-hierarchy-principle"><i class="fa fa-check"></i><b>9.14.1</b> Effect hierarchy principle</a></li>
+<li class="chapter" data-level="9.14.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generation-of-orthogonal-blocks"><i class="fa fa-check"></i><b>9.14.2</b> Generation of Orthogonal Blocks</a></li>
+<li class="chapter" data-level="9.14.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#an-example-of-how-not-to-block"><i class="fa fa-check"></i><b>9.14.3</b> An example of how not to block</a></li>
+</ul></li>
+<li class="chapter" data-level="9.15" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generators-and-defining-relations"><i class="fa fa-check"></i><b>9.15</b> Generators and Defining Relations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html"><i class="fa fa-check"></i><b>10</b> Fractional factorial designs</a><ul>
+<li class="chapter" data-level="10.1" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---effect-of-five-factors-on-six-properties-of-film-in-eight-runs"><i class="fa fa-check"></i><b>10.1</b> Example - Effect of five factors on six properties of film in eight runs</a></li>
+<li class="chapter" data-level="10.2" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#effect-aliasing-and-design-resolution"><i class="fa fa-check"></i><b>10.2</b> Effect Aliasing and Design Resolution</a></li>
+<li class="chapter" data-level="10.3" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---leaf-spring-experiment"><i class="fa fa-check"></i><b>10.3</b> Example - Leaf Spring Experiment</a></li>
+<li class="chapter" data-level="10.4" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---baking-cookies"><i class="fa fa-check"></i><b>10.4</b> Example - Baking Cookies</a></li>
+<li class="chapter" data-level="10.5" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#questions-6"><i class="fa fa-check"></i><b>10.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="split-plot-designs.html"><a href="split-plot-designs.html"><i class="fa fa-check"></i><b>11</b> Split-Plot Designs</a><ul>
+<li class="chapter" data-level="11.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#anova-table-for-split-plot-experiment"><i class="fa fa-check"></i><b>11.1</b> ANOVA table for split plot experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-not-to-do-it"><i class="fa fa-check"></i><b>11.2</b> Split plot ANOVA - How not to do it</a></li>
+<li class="chapter" data-level="11.3" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-to-do-it"><i class="fa fa-check"></i><b>11.3</b> Split plot ANOVA - How to do it</a></li>
+<li class="chapter" data-level="11.4" data-path="split-plot-designs.html"><a href="split-plot-designs.html#so-what-is-a-split-plot"><i class="fa fa-check"></i><b>11.4</b> So, what is a split plot?</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#randomizing-a-split-plot-experiment"><i class="fa fa-check"></i><b>11.4.1</b> Randomizing a Split Plot experiment</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="split-plot-designs.html"><a href="split-plot-designs.html#questions-7"><i class="fa fa-check"></i><b>11.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html"><i class="fa fa-check"></i><b>12</b> Design of Observational Studies</a><ul>
+<li class="chapter" data-level="12.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#what-is-an-observational-study"><i class="fa fa-check"></i><b>12.1</b> What is an observational study?</a></li>
+<li class="chapter" data-level="12.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#designing-and-observational-study"><i class="fa fa-check"></i><b>12.2</b> Designing and Observational Study</a></li>
+<li class="chapter" data-level="12.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example---epidemiologic-follow-up-study"><i class="fa fa-check"></i><b>12.3</b> Example - Epidemiologic Follow-up Study</a></li>
+<li class="chapter" data-level="12.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-1"><i class="fa fa-check"></i><b>12.4</b> Propensity Score</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-examples"><i class="fa fa-check"></i><b>12.4.1</b> Propensity Score Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#estimating-the-propensity-score-in-an-observational-study"><i class="fa fa-check"></i><b>12.5</b> Estimating the propensity score in an observational study</a></li>
+<li class="chapter" data-level="12.6" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#the-balancing-property-of-the-propensity-score"><i class="fa fa-check"></i><b>12.6</b> The balancing property of the propensity score</a></li>
+<li class="chapter" data-level="12.7" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#imbalance-versus-overlap"><i class="fa fa-check"></i><b>12.7</b> Imbalance versus Overlap</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example-from-the-nhefs"><i class="fa fa-check"></i><b>12.7.1</b> Example from the NHEFS</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-and-ignorable-treatment-assignment"><i class="fa fa-check"></i><b>12.8</b> Propensity Score and Ignorable Treatment Assignment</a></li>
+<li class="chapter" data-level="12.9" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-methods-to-reduce-bias-in-observational-studies"><i class="fa fa-check"></i><b>12.9</b> Propensity Score Methods to Reduce Bias in Observational Studies</a><ul>
+<li class="chapter" data-level="12.9.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-matching-matching"><i class="fa fa-check"></i><b>12.9.1</b> Propensity Score Matching Matching</a></li>
+<li class="chapter" data-level="12.9.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-stratification"><i class="fa fa-check"></i><b>12.9.2</b> Propensity score stratification</a></li>
+<li class="chapter" data-level="12.9.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#multivariate-adjustment-using-the-propensity-score"><i class="fa fa-check"></i><b>12.9.3</b> Multivariate adjustment using the propensity score</a></li>
+<li class="chapter" data-level="12.9.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#comparing-the-three-methods"><i class="fa fa-check"></i><b>12.9.4</b> Comparing the three methods</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#questions-8"><i class="fa fa-check"></i><b>12.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Design of Experiments and Observational Studies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="review-of-mathematical-statistics" class="section level1">
+<h1><span class="header-section-number">3</span> Review of Mathematical Statistics</h1>
+<div id="data" class="section level2">
+<h2><span class="header-section-number">3.1</span> Data</h2>
+<p>Experimental data describes the outcome of the experimental run. For example 10 successive runs in a chemical experiment produce the following data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">100</span>)
+<span class="co"># Generate a random sample of 10 observations from a N(60,10^2)</span>
+dat &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">60</span>, <span class="dt">sd =</span> <span class="dv">10</span>), <span class="dv">1</span>)
+dat</code></pre></div>
+<pre><code> [1] 55.0 61.3 59.2 68.9 61.2 63.2 54.2 67.1 51.7 56.4</code></pre>
+</div>
+<div id="distributions" class="section level2">
+<h2><span class="header-section-number">3.2</span> Distributions</h2>
+<p>Distributions can be displayed graphically or numerically.</p>
+<p>A histogram is a graphical summary of a data set.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(dat)</code></pre></div>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  51.70   55.35   60.20   59.82   62.73   68.90 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(dat)</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The total aggregate of observations that might occur as a result of repeatedly performing a particular operation is called a population of observations. The observations that actually occur are some kind of sample from the population.</p>
+<div id="continuous-distributions" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Continuous Distributions</h3>
+<p>A continuous random variable <span class="math inline">\(X\)</span> is fully characterized by its density function <span class="math inline">\(f(x)\)</span>, where <span class="math inline">\(f(x) \ge 0\)</span>, <span class="math inline">\(\thinspace f\)</span> is piecewise continuous, and <span class="math inline">\(\int_{-\infty}^{\infty}f(x)dx = 1\)</span>.</p>
+<p>The cumulative distribution function (CDF) of <span class="math inline">\(X\)</span> is defined as:</p>
+<p><span class="math display">\[ F(x)=P(X \le x)=\int_{-\infty}^{x}f(x)dx.\]</span></p>
+<p>If <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x\)</span> then <span class="math inline">\(F&#39;(x)=f(x)\)</span> (fundamental theorem of calculus). The CDF can be used to calculate the probability that <span class="math inline">\(X\)</span> falls in the interval <span class="math inline">\((a,b)\)</span>. This is the area under the density curve which can also be expressed in terms of the CDF:</p>
+<p><span class="math display">\[P\left(a &lt; X &lt; b\right)=\int_{a}^{b}f(x)dx = F(b)-F(a).\]</span></p>
+<p>In R a list of all the common distributions can be obtained by the command <code>help(&quot;distributions&quot;)</code>.</p>
+<p>The following R code draws a random sample of 100 observations from a Chi-square distribution on 10 degrees of freedom <span class="math inline">\(\chi^2_{10}\)</span>. The density function of the <span class="math inline">\(\chi^2_{10}\)</span> is superimposed over the histogram of the sample.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rchisq</span>(<span class="dv">100</span>, <span class="dv">10</span>) <span class="co"># draw a sample of 100 from chi-square 10</span>
+h &lt;-<span class="st"> </span><span class="kw">hist</span>(x) <span class="co"># create the histogram</span>
+<span class="co"># superimpoise chi-square density over histogram</span>
+xfit &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length =</span> <span class="dv">40</span>)
+yfit &lt;-<span class="st"> </span><span class="kw">dchisq</span>(xfit, <span class="dv">10</span>) <span class="co">#chi-square density</span>
+yfit &lt;-<span class="st"> </span>yfit <span class="op">*</span><span class="st"> </span><span class="kw">diff</span>(h<span class="op">$</span>mids[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="kw">length</span>(x)
+<span class="kw">lines</span>(xfit, yfit)</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+</div>
+<div id="randomness" class="section level2">
+<h2><span class="header-section-number">3.3</span> Randomness</h2>
+<p>A random drawing is where each member of the population has an equal chance of being selected. The hypothesis of random sampling may not apply to real data. For example, cold days are usually followed by cold days. So daily temperature not directly representable by random drawings. In many cases we can’t rely on the random sampling property although design can make this assumption relevant.</p>
+</div>
+<div id="parameters-and-statistics" class="section level2">
+<h2><span class="header-section-number">3.4</span> Parameters and Statistics</h2>
+<p>What is the difference between a parameter and a statistic? A parameter is a population quantity and a statistic is a quantity based on a sample drawn from the population.</p>
+<p>Example: The population of all adult (18+ years old) males in Toronto, Canada. Suppose that there are <span class="math inline">\(N\)</span> adult males. The quantity of interest, <span class="math inline">\(y\)</span>, is age. A sample of size <span class="math inline">\(n\)</span> is drawn from this population. The population mean is <span class="math inline">\(\mu=\sum_{i = 1}^N y_i /N\)</span> and the sample mean is <span class="math inline">\({\bar y}=\sum_{i = 1}^n y_i /n\)</span>.</p>
+</div>
+<div id="residuals-and-degress-of-freedom" class="section level2">
+<h2><span class="header-section-number">3.5</span> Residuals and Degress of Freedom</h2>
+<p><span class="math inline">\(y_i-{\bar y}\)</span> is called a residual. Since <span class="math inline">\(\sum (y_i-{\bar y})=0\)</span> any <span class="math inline">\(n-1\)</span> completely determine the the last observation. This is a constraint on the the residuals. So <span class="math inline">\(n\)</span> residuals have <span class="math inline">\(n-1\)</span> degrees of freedom since the last residual cannot be freely chosen.</p>
+</div>
+<div id="the-normal-distribution" class="section level2">
+<h2><span class="header-section-number">3.6</span> The Normal Distribution</h2>
+<p>The density function of the normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> is:</p>
+<p><span class="math display">\[ \phi(x)=\frac{1}{\sigma \sqrt{2\pi}}exp\left( \frac{-1}{2} \left(\frac{x-\mu}{\sigma}\right)^2\right)\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">by =</span> <span class="fl">0.1</span>)
+<span class="kw">plot</span>(x,
+     <span class="kw">dnorm</span>(x),
+     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,
+     <span class="dt">main =</span> <span class="st">&quot;The Standard Normal Distribution&quot;</span>,
+     <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="kw">phi</span>(x))))</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>A random variable <span class="math inline">\(X\)</span> that follows a normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> will be denoted by <span class="math inline">\(X \sim N\left(\mu, \sigma^2\right)\)</span>.</p>
+<p>If <span class="math inline">\(Y \sim N\left(\mu, \sigma^2\right)\)</span> then <span class="math inline">\(Z \sim N(0,1)\)</span>, where <span class="math inline">\(Z=\frac{Y-\mu}{\sigma}\)</span>.</p>
+<p>The cumulative distribution function (CDF) of a <span class="math inline">\(N(0,1)\)</span> distribution,</p>
+<p><span class="math display">\[ \Phi(x)= P(X&lt;x)= \int_{-\infty}^x \phi(x)dx\]</span></p>
+<p>is shown in the plot below using the R function for the normal CDF <code>pnorm()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dt">by =</span> <span class="fl">0.1</span>), <span class="kw">pnorm</span>(x), 
+     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="kw">Phi</span>(x))),
+     <span class="dt">main =</span> <span class="st">&quot;Standard Normal Cumulative Distribution Function&quot;</span>)</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="exercises" class="section level3">
+<h3><span class="header-section-number">3.6.1</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>Use R to calculate the <span class="math inline">\(P(-1&lt;Z&lt;2)\)</span>, where <span class="math inline">\(Z \sim N(0,1)\)</span>. Answer:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="op">-</span><span class="dv">1</span>)</code></pre></div>
+<pre><code>[1] 0.8185946</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Use R to calculate the <span class="math inline">\(P(X&gt;5)\)</span>, where <span class="math inline">\(X \sim N(6,2)\)</span>. Answer:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">6</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(<span class="dv">2</span>))</code></pre></div>
+<pre><code>[1] 0.7602499</code></pre>
+</div>
+</div>
+<div id="quantile-quantile-plots" class="section level2">
+<h2><span class="header-section-number">3.7</span> Quantile-Quantile Plots</h2>
+<p>Quantile-quantile (Q-Q) plots are useful for comparing distribution functions. If <span class="math inline">\(X\)</span> is a continuous random variable with strictly increasing distribution function <span class="math inline">\(F(x)\)</span> then the <span class="math inline">\(pth\)</span> quantile of the distribution is the value of <span class="math inline">\(x_p\)</span> such that,</p>
+<p><span class="math display">\[ F(x_p)=p\]</span></p>
+<p>or</p>
+<p><span class="math display">\[x_p = F^{-1}(p).\]</span></p>
+<p>In a Q-Q plot, the quantiles of one distribution are plotted against another distribution. Q-Q plots can be used to investigate if a set of numbers follows a certain distribution.</p>
+<p>Suppose that we have observations independent observations <span class="math inline">\(X_1,X_2, ...,X_n\)</span> from a uniform distribution on <span class="math inline">\([0,1]\)</span> or Unif[0,1]. The ordered sample values (also called the order statistics) are the values <span class="math inline">\(X_{(j)}\)</span> such that <span class="math inline">\(X_{(1)}&lt;X_{(2)}&lt; \cdots &lt; X_{(n)}\)</span>.</p>
+<p>It can be shown that</p>
+<p><span class="math display">\[E\left(X_{(j)}\right)=\frac{j}{n+1}.\]</span></p>
+<p>This suggests that if we plot <span class="math inline">\(X_{(j)}\)</span> vs. <span class="math inline">\(\frac{j}{n+1}\)</span> then if the underlying distribution is Unif[0,1] then the plot should be roughly linear.</p>
+<p>A continuous random variable with strictly increasing CDF <span class="math inline">\(F_X\)</span> can be transformed to a Unif[0,1] by defining a new random variable <span class="math inline">\(Y = F_X(X)\)</span>. This is also called the probability integral transformation.</p>
+<p>This suggests the following procedure. Suppose that it’s hypothesized that <span class="math inline">\(X\)</span> follows a certain distribution function with CDF <span class="math inline">\(F\)</span>. Given a sample <span class="math inline">\(X_1,X_2,...,X_n\)</span> plot</p>
+<p><span class="math display">\[F(X_{(k)}) \hspace{0.2cm} {\text{vs. }} \hspace{0.2cm} \frac{k}{n+1}\]</span></p>
+<p>or equivalently</p>
+<p><span class="math display">\[X_{(k)} \hspace{0.2cm} {\text{vs. }} \hspace{0.2cm} F^{-1}\left(\frac{k}{n+1}\right)\]</span></p>
+<p><span class="math inline">\(X_{(k)}\)</span> can be thought of as empirical quantiles and <span class="math inline">\(F^{-1}\left(\frac{k}{n+1}\right)\)</span> as the hypothesized quantiles.</p>
+<p>The quantile assigned to <span class="math inline">\(X_{(k)}\)</span> is not unique. Instead of assigning it <span class="math inline">\(\frac{k}{n+1}\)</span> it is often assigned <span class="math inline">\(\frac{k-0.5}{n}\)</span>. In practice it makes little difference which definition is used.</p>
+<div id="normal-quantile-plots" class="section level3">
+<h3><span class="header-section-number">3.7.1</span> Normal Quantile Plots</h3>
+<p>Normal quantile plots are useful for assessing if data fits a normal distribution.</p>
+<p>Suppose that <span class="math inline">\(X_1,X_2,...,X_n\)</span> are a random sample from the uniform distribution on <span class="math inline">\([0,1]\)</span>. The sample can be ordered from smallest to largest <span class="math inline">\(X_{(1)}&lt;X_{(2)}&lt; \cdots &lt; X_{(n)}\)</span>. It can be shown that</p>
+<p><span class="math display">\[E\left( X_{(j)} \right)=\frac{j}{n+1}.\]</span></p>
+<p>If the observations are uniform then the plot of the ordered observations <span class="math inline">\(X_{(1)},X_{(2)},...,X_{(n)}\)</span> versus their expected values will be a straight line.</p>
+<p>If we want to investigate if a sample <span class="math inline">\(X_1,X_2,...,X_n\)</span> follows a certain distribution with CDF <span class="math inline">\(F_X\)</span> then we can transform the sample to a uniform distribution on <span class="math inline">\([0,1]\)</span> by calculating <span class="math inline">\(Y_i = F_X(X_i)\)</span>.</p>
+<p>So, given a sample <span class="math inline">\(X_1,X_2,...,X_n\)</span> plot</p>
+<p><span class="math display">\[F(X_{(k)}) \quad \textrm{vs.} \quad  \frac{k}{n+1}.\]</span></p>
+<p>This is the same as</p>
+<p><span class="math display">\[X_{(k)} \quad \textrm{vs.} \quad  F^{-1}\left(\frac{k}{n+1}\right).\]</span></p>
+<p>This means that the <span class="math inline">\(k/(n+1)\)</span> quantile is assigned to the <span class="math inline">\(k^{th}\)</span> order statistic. But in some implementations sometimes the <span class="math inline">\(k^{th}\)</span> quantile is assigned to <span class="math inline">\(X_{(k)}\)</span> is <span class="math inline">\((k-0.5)/n\)</span> (see Rice, pg 352-355).</p>
+<p>The following data from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span> are the weights from 11 tomato plants.</p>
+<pre><code> [1] 29.9 11.4 26.6 23.7 25.3 28.5 14.2 17.9 16.5 21.1 24.3</code></pre>
+<p>Do the weights follow a Normal distribution?</p>
+<p>If the tomato weights are normally distributed then a plot of the ordered tomato weights, <span class="math inline">\(y_{(1)}&lt;y_{(2)}&lt; \cdots &lt; y_{(11)}\)</span> versus the cumulative probabilities <span class="math inline">\(p_i=(i-0.5)/N\)</span>, where <span class="math inline">\(N\)</span> is the number of observations should be the same shape as the CDF of the Normal distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">sort</span>(tomato.data<span class="op">$</span>pounds), <span class="dv">1</span><span class="op">:</span><span class="dv">11</span><span class="op">/</span><span class="kw">length</span>(tomato.data<span class="op">$</span>pounds),
+     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;ith Weight&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;(i-0.5)/11&quot;</span>)</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>It’s difficult to tell if the weights have the same shape as the Normal CDF. But, the curve can be stretched at the extreme ends so that it becomes a straight line. A method for stretching out the curve is developed below.</p>
+<p>Assume that the weights, <span class="math inline">\(y_i \sim N\left (\mu, \sigma^2\right)\)</span>.</p>
+<p>Then <span class="math inline">\(\Phi(y_i)\)</span> has a uniform distribution over <span class="math inline">\([0,1]\)</span>. This means that the expected values of <span class="math inline">\(\Phi(y_i), i = 1,...N\)</span> should be equally spaced over <span class="math inline">\([0,1]\)</span> or the <span class="math inline">\(N\)</span> points <span class="math inline">\((p_i,\Phi(y_{(i)})\)</span> should fall on a straight line. Applying the <span class="math inline">\(\Phi^{-1}\)</span> transform to the horizontal and vertical scales, the <span class="math inline">\(N\)</span> points <span class="math display">\[\left(\Phi^{-1}(p_i),y_i\right), i = 1,...,N,\]</span></p>
+<p>should follow a straight line. These points form the <strong>normal probability plot</strong> of the tomato plant weights. (Wu and Hamada, pages 77-78)</p>
+<p>A normal probability plot in R can be obtained using <code>qqnorm()</code> for the normal probability plot and <code>qqline()</code> to add the straight line.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(tomato.data<span class="op">$</span>pounds)
+<span class="kw">qqline</span>(tomato.data<span class="op">$</span>pounds)</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>In this case assuming that the data are generated from a normal distribution is a plausible assumption since most of the points are close the straight line.</p>
+</div>
+<div id="exercises-1" class="section level3">
+<h3><span class="header-section-number">3.7.2</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>The following 50 data set contains the ages of participants in a study of social media habits. Is it plausible to assume that the data are normally distributed?</li>
+</ol>
+<pre><code> [1] 34.2 35.1 35.5 36.5 47.0 34.7  9.8 36.1 40.6 34.8 38.3 34.7 37.3 33.8
+[15] 34.4 28.0 33.7 28.4 73.7 36.2 33.8 36.1 32.8 34.9 35.7 55.0 36.8 35.0
+[29] 33.7 33.6 37.9 35.9 38.6 34.8 34.3 39.3 33.1 33.4 30.9 36.2 35.2 36.1
+[43] 35.3 35.6 33.7 33.9 34.4 33.7 32.5 38.2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">round</span>(agedata,<span class="dv">1</span>))</code></pre></div>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   9.80   33.73   34.95   35.86   36.20   73.70 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(agedata)</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(agedata);<span class="kw">qqline</span>(agedata)</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
+<p>Answer: The histogram and the qqplot indicate the tails of the age distribution are heavier than the normal distribution. In the qqplot this is indicated by the marked deviations from the straight line for very small and large sample quantiles. Thus, the qqplot indicates that the data is not normally distributed.</p>
+</div>
+</div>
+<div id="central-limit-theorem" class="section level2">
+<h2><span class="header-section-number">3.8</span> Central Limit Theorem</h2>
+<p>The central limit theorem states that if <span class="math inline">\(X_1, X_2, ...\)</span> is an independent sequence of identically distributed random variables with mean <span class="math inline">\(\mu = E(X_i)\)</span> and variance <span class="math inline">\(\sigma^2 = Var(X_i)\)</span> then</p>
+<p><span class="math display">\[ \lim_{n\to\infty} P\left(\frac{\bar X - \mu}{\frac {\sigma}{\sqrt n}} \leq x \right) = \Phi(x),\]</span></p>
+<p>where <span class="math inline">\({\bar X} = \sum_{i = 1}^{n} X_i/n\)</span> and <span class="math inline">\(\Phi(x)\)</span> is the standard normal CDF. This means that the distribution of <span class="math inline">\({\bar X}\)</span> is approximately <span class="math inline">\(N\left(\mu,{\frac {\sigma}{\sqrt n}}\right)\)</span>.</p>
+<p>Example: A fair coin is flipped 50 times. What is the distribution of the average number of heads?</p>
+<p>Let <span class="math inline">\(X_1, ...,X_{50}\)</span> where <span class="math inline">\(X_i = 1\)</span>, if the toss is a head and <span class="math inline">\(X_i = 0\)</span> if the toss is a tail. Since the coin is fair <span class="math inline">\(P(X_i = 1)=0.5, i = 1,...,50\)</span>. The average number of heads is <span class="math inline">\(\sum_{i = 1}^{50} X_i/50\)</span>. <span class="math inline">\(E(X_i)=0.5\)</span> and <span class="math inline">\(Var(X_i)=p(1-p)=0.5(1-0.5)=0.25\)</span> so <span class="math inline">\(\sum_{i = 1}^{50} X_i/50 \overset{approx}\sim N(0.5,0.25/\sqrt{50})\)</span></p>
+</div>
+<div id="chi-square-distribution" class="section level2">
+<h2><span class="header-section-number">3.9</span> Chi-Square Distribution</h2>
+<p>Let <span class="math inline">\(X_1, X_2, ..., X_n\)</span> be independent and identically distributed random variables that have a <span class="math inline">\(N(0,1)\)</span> distribution. The distribution of</p>
+<p><span class="math display">\[ \sum_{i = 1}^{n}X_i^2,\]</span></p>
+<p>has a chi-square distribution on <span class="math inline">\(n\)</span> degrees of freedom or <span class="math inline">\(\chi^2_{n}\)</span>.</p>
+<p>The mean of a <span class="math inline">\(\chi^2_{n}\)</span> is <span class="math inline">\(n\)</span> with variance <span class="math inline">\(2n\)</span>.</p>
+<p>The chi-square distribution is a right-skewed distribution, but becomes normal as the degrees of freedom increases. In the plot below the <span class="math inline">\(\chi^2_{50}\)</span> density is very close to the <span class="math inline">\(N(50,100)\)</span> density.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compare chi-square densities with normal density</span>
+x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dt">length =</span> <span class="dv">100</span>)
+hx &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x,<span class="dt">mean =</span> <span class="dv">50</span>,<span class="dt">sd =</span> <span class="kw">sqrt</span>(<span class="dv">2</span><span class="op">*</span><span class="dv">50</span>)) <span class="co">#normal density</span>
+
+degf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">50</span>)
+colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;gold&quot;</span>, <span class="st">&quot;black&quot;</span>)
+labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;df = 1&quot;</span>, <span class="st">&quot;df = 3&quot;</span>, <span class="st">&quot;df = 8&quot;</span>, <span class="st">&quot;df = 50&quot;</span>, <span class="st">&quot;normal&quot;</span>)
+
+<span class="kw">plot</span>(x, hx, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">xlab =</span> <span class="st">&quot;x value&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Density&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Comparison of Chi-Square Distributions&quot;</span>,<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.25</span>))
+
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {
+  <span class="kw">lines</span>(x, <span class="kw">dchisq</span>(x,degf[i]), <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> colors[i]) <span class="co"># dchisq is the chi-square density</span>
+}
+
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">inset =</span> .<span class="dv">05</span>, <span class="dt">title =</span> <span class="st">&quot;Distributions&quot;</span>,
+       labels, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">col =</span> colors)</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Let <span class="math inline">\(X_1,X_2,...,X_n\)</span> be independent with a <span class="math inline">\(N(\mu, \sigma^2)\)</span> distribution. The distribution of the sample variance <span class="math inline">\(S^2=\sum_{i = 1}^{n}(X_i-{\bar X})^2/(n-1)\)</span> has a <span class="math inline">\(\chi^2_{n-1}\)</span> distribution, namely,</p>
+<p><span class="math display">\[ \frac{n-1}{\sigma^2} S^2 \sim \chi^2_{n-1}.\]</span></p>
+<div id="exercises-2" class="section level3">
+<h3><span class="header-section-number">3.9.1</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>If <span class="math inline">\(X_1,X_2,...,X_{50}\)</span> are a random sample from a <span class="math inline">\(N(40,25)\)</span> then calculate <span class="math inline">\(P(S^2&gt;27)\)</span>.</li>
+</ol>
+<p>Answer: We know that <span class="math inline">\(\frac{49}{25} S^2 \sim \chi^2_{49}\)</span>. So</p>
+<p><span class="math display">\[\begin{aligned} 
+P\left(\frac{49}{25}S^2&gt;\frac{49}{25} \times 27\right) &amp;=P\left(\chi^2_{49}&gt;\frac{49}{25} \times 27\right) \\
+                                    &amp;=P\left(\chi^2_{49}&gt;1.96 \times 27\right) \\
+                                    &amp;=P\left(\chi^2_{49}&gt;52.92\right). 
+\end{aligned}\]</span></p>
+<p>The CDF of the <span class="math inline">\(\chi^2_{n}\)</span> in R is <code>pchisq()</code>.</p>
+<p>Therefore,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pchisq</span>(<span class="dt">q =</span> <span class="fl">52.92</span>,<span class="dt">df =</span> <span class="dv">49</span>)</code></pre></div>
+<pre><code>[1] 0.325325</code></pre>
+<p>So, <span class="math inline">\(P(S^2&gt;27)=1-P(S^2&lt;27)=\)</span> 0.325325.</p>
+</div>
+</div>
+<div id="t-distribution" class="section level2">
+<h2><span class="header-section-number">3.10</span> t Distribution</h2>
+<p>If <span class="math inline">\(X \sim N(0,1)\)</span> and <span class="math inline">\(W \sim \chi^2_n\)</span> then the distribution of <span class="math inline">\(\frac{X}{\sqrt{W/n}}\)</span> has a t distribution on <span class="math inline">\(n\)</span> degrees of freedom or <span class="math inline">\(\frac{X}{\sqrt{W/{n}}} \sim t_n\)</span>.</p>
+<p>Let <span class="math inline">\(X_1, X_2, ...\)</span> is an independent sequence of identically distributed random variables that have a <span class="math inline">\(N(0,1)\)</span> distribution. The distribution of</p>
+<p><span class="math display">\[ \frac{{\bar X}-\mu }{\frac {S}{\sqrt n}} \sim t_{n-1},\]</span></p>
+<p>where <span class="math inline">\(S^2=\sum_{i = 1}^{n}(X_i-{\bar X})^2/(n-1)\)</span>. This follows since <span class="math inline">\(\bar X\)</span> and <span class="math inline">\(S^2\)</span> are independent.</p>
+<p>The t distribution for small values of <span class="math inline">\(n\)</span> has “heavier tails” compared to the normal. As the degrees of freedom increases the t-distribution is almost identical to the normal distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compare t densities with normal density</span>
+x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">length =</span> <span class="dv">100</span>)
+hx &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x) <span class="co">#normal density</span>
+
+degf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">30</span>)
+colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;gold&quot;</span>, <span class="st">&quot;black&quot;</span>)
+labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;df = 1&quot;</span>, <span class="st">&quot;df = 3&quot;</span>, <span class="st">&quot;df = 8&quot;</span>, <span class="st">&quot;df = 30&quot;</span>, <span class="st">&quot;normal&quot;</span>)
+
+<span class="kw">plot</span>(x, hx, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">xlab =</span> <span class="st">&quot;x value&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Density&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Comparison of t Distributions&quot;</span>)
+
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {
+  <span class="kw">lines</span>(x, <span class="kw">dt</span>(x,degf[i]), <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> colors[i]) <span class="co"># dt is the t density</span>
+}
+
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">inset =</span> .<span class="dv">05</span>, <span class="dt">title =</span> <span class="st">&quot;Distributions&quot;</span>,
+       labels, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">col =</span> colors)</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div id="exercises-3" class="section level3">
+<h3><span class="header-section-number">3.10.1</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>Suppose that an experimenter obtained a random sample of body weights (kg) from 10 male subjects 66.9, 70.9, 65.8, 78, 71.6, 65.9, 72.4, 73.7, 72.9, 68.5. The distribution of weight in this population is known to be <span class="math inline">\(N(70,\sigma^2)\)</span>. What is the probability that the average weight is between 68kg and 71kg?</li>
+</ol>
+<p>Answer: The distribution of <span class="math inline">\(\frac{{\bar X}-70 }{\frac{S}{\sqrt{10}}}\)</span> is <span class="math inline">\(t_9\)</span>, where <span class="math inline">\(S\)</span> is the sample standard deviation. So</p>
+<p><span class="math display">\[P\left(68 &lt; {\bar X} &lt; 71\right) = P\left(\frac{68-70}{5.6/\sqrt{10}} &lt; \frac{{\bar X}-70}{5.6/\sqrt{10}} &lt; \frac{71-70}{5.6/\sqrt{10}}\right)\]</span></p>
+<p>Use R to do the calculations. First put the data into a vector to calculate the standard deviation then use the <span class="math inline">\(t_9\)</span> CDF:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">66.9</span>, <span class="fl">70.9</span>, <span class="fl">65.8</span>, <span class="fl">78.0</span>, <span class="fl">71.6</span>, <span class="fl">65.9</span>, <span class="fl">72.4</span>, <span class="fl">73.7</span>, <span class="fl">72.9</span>, <span class="fl">68.5</span>)
+<span class="kw">sd</span>(dat) <span class="co"># The SD of the weights</span></code></pre></div>
+<pre><code>[1] 3.904186</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span>(<span class="dv">68</span> <span class="op">-</span><span class="st"> </span><span class="dv">70</span>) <span class="op">/</span><span class="st"> </span>(<span class="kw">sd</span>(dat) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">10</span>))
+a</code></pre></div>
+<pre><code>[1] -1.619942</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b &lt;-<span class="st"> </span>(<span class="dv">71</span> <span class="op">-</span><span class="st"> </span><span class="dv">70</span>) <span class="op">/</span><span class="st"> </span>(<span class="kw">sd</span>(dat) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">10</span>))
+b</code></pre></div>
+<pre><code>[1] 0.8099711</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pt</span>(b, <span class="dt">df =</span> <span class="dv">9</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pt</span>(a, <span class="dt">df =</span> <span class="dv">9</span>)</code></pre></div>
+<pre><code>[1] 0.7107282</code></pre>
+<p>So,</p>
+<p><span class="math display">\[\begin{aligned}
+P\left(68 &lt; {\bar X} &lt; 71\right) &amp;= P\left(-1.619942&lt;t_9&lt;0.8099711\right) \\
+                                 &amp;= 0.7107282
+\end{aligned}\]</span></p>
+</div>
+</div>
+<div id="f-distribution" class="section level2">
+<h2><span class="header-section-number">3.11</span> F Distribution</h2>
+<p>Let <span class="math inline">\(X \sim \chi^2_m\)</span> and <span class="math inline">\(Y\sim \chi^2_n\)</span> be independent. The distribution of</p>
+<p><span class="math display">\[ W= \frac{X/m}{Y/n} \sim F_{m,n},\]</span></p>
+<p>where <span class="math inline">\(F_{m,n}\)</span> denotes the F distribution on <span class="math inline">\(m,n\)</span> degrees of freedom. The F distribution is right skewed (see graph below). For <span class="math inline">\(n&gt;2, E(W)=n/(n-2)\)</span>. It also follows that the square of a <span class="math inline">\(t_n\)</span> random variable follows an <span class="math inline">\(F_{1,n}\)</span>.</p>
+<p>The F distribution is right skewed</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compare t densities with normal density</span>
+
+colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>)
+<span class="kw">plot</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>, <span class="dt">by =</span> <span class="fl">0.1</span>), <span class="kw">df</span>(<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dv">7</span>,<span class="dv">10</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">col =</span> colors[<span class="dv">1</span>],
+     <span class="dt">ylab =</span> <span class="st">&quot;Density&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;F Distributions&quot;</span>)
+<span class="kw">lines</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>), <span class="kw">df</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dv">7</span>,<span class="dv">4</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> colors[<span class="dv">2</span>])
+labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;F(7,10)&quot;</span>,<span class="st">&quot;F(7,4)&quot;</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">inset =</span> .<span class="dv">05</span>, <span class="dt">title =</span> <span class="st">&quot;Distributions&quot;</span>,
+       labels, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">col =</span> colors)</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
+<div id="significance-testing-and-basic-decision-theory-in-hypothesis-testing" class="section level2">
+<h2><span class="header-section-number">3.12</span> Significance Testing and Basic Decision Theory in Hypothesis Testing</h2>
+<p>Suppose that <span class="math inline">\(X_1, X_2,...,X_n\)</span></p>
+<p>In hypothesis testing there are two types of errors that can be made. They are called type I and type II errors.</p>
+<p><span class="math display">\[\begin{array}{c|c|c}
+ &amp; H_0 \text{ true} &amp; H_1 \text{ true} \\
+\hline
+  \text {Accept } H_0 &amp; \text {correct decision} &amp; \text {type II error} \\ 
+  \hline
+  \text {Reject } H_0 &amp; \text {type I error} &amp; \text {correct decision}  
+ \end{array}\]</span></p>
+<p>The probabilities of type I and II errors are usually set in advance of running the experiment.</p>
+<p><span class="math display">\[ \alpha = P(\text{type I}), \thinspace \beta = P(\text {type II}).\]</span></p>
+<p>If the p-value <span class="math inline">\(\le \alpha\)</span> then the test is statistically significant at level <span class="math inline">\(\alpha\)</span>. The power of the test is <span class="math inline">\(1-\beta\)</span>: the probability of rejecting <span class="math inline">\(H_0\)</span> when the alternative hypothesis <span class="math inline">\(H_1\)</span> is true.</p>
+<div id="exercises-4" class="section level3">
+<h3><span class="header-section-number">3.12.1</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>Let <span class="math inline">\(W \sim F_{7,10}\)</span>. Use R to calculate <span class="math inline">\(P(3&lt;W&lt;4)\)</span>.</li>
+</ol>
+<p>Answer: The CDF of the <span class="math inline">\(F_{m,n}\)</span> distribution in R is <code>pf()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pf</span>(<span class="dv">4</span>, <span class="dt">df1 =</span> <span class="dv">7</span>, <span class="dt">df2 =</span> <span class="dv">10</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pf</span>(<span class="dv">3</span>, <span class="dt">df1 =</span> <span class="dv">7</span>, <span class="dt">df2 =</span> <span class="dv">10</span>)</code></pre></div>
+<pre><code>[1] 0.03258576</code></pre>
+<p>So, <span class="math inline">\(P(3&lt;W&lt;4)=\)</span> 0.0325858.</p>
+</div>
+</div>
+<div id="linear-regression" class="section level2">
+<h2><span class="header-section-number">3.13</span> Linear Regression</h2>
+<p><span class="citation">Lea (<a href="#ref-lea1965new">1965</a>)</span> discussed the relationship between mean annual temperature and mortality index for a type of breast cancer in women taken from regions in Europe (example from Wu and Hammada).</p>
+<p>The data is shown below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Breast Cancer data</span>
+M &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">102.5</span>, <span class="fl">104.5</span>, <span class="fl">100.4</span>, <span class="fl">95.9</span>, <span class="fl">87.0</span>, <span class="fl">95.0</span>, <span class="fl">88.6</span>, <span class="fl">89.2</span>, <span class="fl">78.9</span>, 
+       <span class="fl">84.6</span>, <span class="fl">81.7</span>, <span class="fl">72.2</span>, <span class="fl">65.1</span>, <span class="fl">68.1</span>, <span class="fl">67.3</span>, <span class="fl">52.5</span>)
+T &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">51.3</span>, <span class="fl">49.9</span>, <span class="fl">50.0</span>,<span class="fl">49.2</span>, <span class="fl">48.5</span>, <span class="fl">47.8</span>, <span class="fl">47.3</span>, <span class="fl">45.1</span>, <span class="fl">46.3</span>, <span class="fl">42.1</span>, 
+       <span class="fl">44.2</span>, <span class="fl">43.5</span>, <span class="fl">42.3</span>, <span class="fl">40.2</span>, <span class="fl">31.8</span>, <span class="fl">34.0</span>)</code></pre></div>
+<p>A linear regression model of mortality versus temperature is obtained by estimating the intercept and slope in the equation:</p>
+<p><span class="math display">\[ y_i = \beta_0 + \beta_1 x_i + \epsilon_i, i = 1,...,n\]</span></p>
+<p>where <span class="math inline">\(\epsilon_i \sim N(0,\sigma^2)\)</span>. The values of <span class="math inline">\(\beta_0, \beta_1\)</span> that minimize the sum of squares</p>
+<p><span class="math display">\[ \sum_{i = 1}^{n} (y_i-(\beta_0+\beta_1 x_i))^2, \]</span></p>
+<p>are called the least squares estimators. They are given by <span class="math inline">\(\hat{\beta_0}={\bar y}-{\hat{\beta_1}}{\bar{x}}\)</span>, <span class="math inline">\({\hat{\beta_1}}=r\frac{S_y}{S_x}.\)</span> <span class="math inline">\(r\)</span> is the correlation between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span>, and <span class="math inline">\(S_x, S_y\)</span> are the sample standard deviations of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> respectively.</p>
+<p>A scatter plot of the data shows a linear relationship between mortality and temperature. So a regression line is fit to the data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(T, M, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;mortality index&quot;</span>)
+reg1 &lt;-<span class="st"> </span><span class="kw">lm</span>(M <span class="op">~</span><span class="st"> </span>T)
+<span class="co"># Parameter estimates and ANOVA table</span>
+<span class="kw">summary</span>(reg1)</code></pre></div>
+<pre><code>
+Call:
+lm(formula = M ~ T)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-12.8358  -5.6319   0.4904   4.3981  14.1200 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -21.7947    15.6719  -1.391    0.186    
+T             2.3577     0.3489   6.758  9.2e-06 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 7.545 on 14 degrees of freedom
+Multiple R-squared:  0.7654,    Adjusted R-squared:  0.7486 
+F-statistic: 45.67 on 1 and 14 DF,  p-value: 9.202e-06</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Add regression line to the plot</span>
+<span class="kw">abline</span>(reg1)</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>The two main assumptions of constant variance and normality of residuals should always be investigated.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#plot residuals vs. fitted</span>
+<span class="kw">plot</span>(reg1<span class="op">$</span>fitted,reg1<span class="op">$</span>residuals)
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>) <span class="co"># add horizontal line at 0</span></code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#check normality of residuals</span>
+<span class="kw">qqnorm</span>(reg1<span class="op">$</span>residuals)
+<span class="kw">qqline</span>(reg1<span class="op">$</span>residuals)</code></pre></div>
+<p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-21-2.png" width="672" /></p>
+<p>If there is more than one independent variable then the above model is called a multiple linear regression model.</p>
+<p><span class="math display">\[ y_i=\beta_0+\beta_1 x_{i1} + \beta_2 x_{i2} + \cdots +  \beta_k x_{ik} + \epsilon_{i}, \thinspace i = 1,...,n, \]</span></p>
+<p>where <span class="math inline">\(\epsilon_{i} \sim N(0,\sigma^2)\)</span>.</p>
+<p>This can also be expressed in matrix notation as</p>
+<p><span class="math display">\[ y = X\beta+\epsilon,\]</span></p>
+<p>where,</p>
+<p><span class="math display">\[y = 
+ \begin{pmatrix}
+  y_{1}  \\
+  y_{2}  \\
+  \vdots  \\
+  y_{n}  
+ \end{pmatrix}, \quad X=
+ \begin{pmatrix}
+  1 &amp; x_{11} &amp; \cdots &amp; x_{1k} \\
+  1 &amp; x_{21} &amp; \cdots &amp; a_{2k} \\
+  \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots  \\
+  1 &amp; x_{n1} &amp; \cdots &amp; a_{nk} 
+ \end{pmatrix}, \quad \beta= 
+ \begin{pmatrix}
+  \beta_0 \\
+  \beta_1 \\
+  \vdots  \\
+  \beta_k 
+ \end{pmatrix}, \quad \epsilon=\begin{pmatrix}
+  \epsilon_0 \\
+  \epsilon_1 \\
+  \vdots  \\
+  \epsilon_k 
+ \end{pmatrix}\]</span></p>
+<p>The least squares estimator is</p>
+<p><span class="math display">\[{\hat \beta}=\left(X^{T} X\right)^{-1}X^{T}y.\]</span></p>
+<p>The covariance matrix of <span class="math inline">\({\hat \beta}\)</span> is <span class="math inline">\(\left(X^{T} X\right)^{-1}{\sigma}^2\)</span>. An estimator of <span class="math inline">\(\sigma^2\)</span> is</p>
+<p><span class="math display">\[{\hat \sigma^2}=\frac{1}{n-k}\sum_{i = 1}^{n}(y_i-{\hat y_i})^2,\]</span></p>
+<p>where <span class="math inline">\({\hat y_i}={\hat \beta_0}+{\hat \beta_1} x_{i1} + \cdots + {\hat \beta_k} x_{ik}\)</span> is the predicted value of <span class="math inline">\(y_i\)</span>.</p>
+<div id="covariates-in-regression" class="section level3">
+<h3><span class="header-section-number">3.13.1</span> Covariates in Regression</h3>
+<p>The covariates in regression <span class="math inline">\(x_{ij}\)</span> can either be continuous or categorical variables. If the nominal independent variable of interest has <span class="math inline">\(k\)</span> categories then <span class="math inline">\(k-1\)</span> indicator variables should be used to index the categories provided the regression model contains a slope. If the regression model does not contain a slope then exactly <span class="math inline">\(k\)</span> indicator variables are required.</p>
+<p>The <span class="math inline">\(k-1\)</span> dummy variables for indexing <span class="math inline">\(k\)</span> categories can be defined in many ways.</p>
+</div>
+<div id="weighing-problem" class="section level3">
+<h3><span class="header-section-number">3.13.2</span> Weighing Problem</h3>
+<p>Harold Hotelling in 1949 wrote a paper on how to obtain more accurate weighings through experimental design.</p>
+<p>Suppose that we want to measure the mass of two apples A and B using an old-fashioned two-pan balance scale.</p>
+<div class="figure">
+<img src="Balance_scale_IMGP9755.jpg" alt="A two pan balance" />
+<p class="caption">A two pan balance</p>
+</div>
+<p>Which of the following two methods produces a more precise estimate of the weights of each apple?</p>
+<p><strong>Method 1</strong></p>
+<p>Weigh each apple separately.</p>
+<p><strong>Method 2</strong></p>
+<p>Obtain two weighings by</p>
+<ol style="list-style-type: decimal">
+<li>Weighing two apples in one pan.</li>
+<li>Weighing one apple in one pan and the other apple in the other pan</li>
+</ol>
+<p>Let <span class="math inline">\(w_1, w_2\)</span> be the weights of apples one and two. Each weighing has standard error <span class="math inline">\(\sigma\)</span>. So the precision of the estimates from method 1 is <span class="math inline">\(\sigma\)</span>.</p>
+<p>If the objects are weighed together in one pan, resulting in measurement <span class="math inline">\(m_1\)</span>, then in opposite pans, resulting in measurement <span class="math inline">\(m_2\)</span>, we have two equations for the unknown weights <span class="math inline">\(w_1,w_2\)</span>:</p>
+<p><span class="math display">\[\begin{aligned} 
+w_1+w_2 &amp;=  m_1 \\ 
+w_1-w_2 &amp;=  m_2.
+\end{aligned}\]</span></p>
+<p>This leads to <span class="math inline">\({\hat w_1}=(m_1+m_2)/2\)</span> and <span class="math inline">\({\hat w_2}=(m_1-m_2)/2\)</span>. So, <span class="math inline">\(Var\left({\hat w_1}\right)=Var\left({\hat w_2}\right)=\sigma^2/2.\)</span> The same precision with method 1 would require twice as many measurements.</p>
+<p>The moral of the story is that the method used in the design of the experiment has an impact on the precision of the estimates obtained from the experiment.</p>
+<p>This can also be viewed as a linear regression problem.</p>
+<p><span class="math display">\[\begin{aligned} 
+w_1x_{11}+w_2x_{21} &amp;=  m_1 \\ 
+w_1x_{21}-w_2x_{21} &amp;=  m_2,
+\end{aligned}\]</span></p>
+<p>where,</p>
+<p><span class="math display">\[ x_{ij} = \left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if the } i^{th} \mbox{ measurement of the }  j^{th} \mbox{ object is in the left pan}  \\
+        -1 &amp; \mbox{if the } i^{th} \mbox{ measurement of the }  j^{th} \mbox{ object is in right pan.}
+    \end{array}
+\right.\]</span></p>
+<p>NB: The pan that’s coded as 1 or -1 is arbitrary.</p>
+<p>In matrix notation we have <span class="math inline">\(y = X{\beta}+\epsilon\)</span>:</p>
+<p><span class="math display">\[y=(m_1,m_2)^{\prime},\thinspace X=
+ \begin{pmatrix}
+  1 &amp; 1 \\
+  1 &amp; -1 \\
+ \end{pmatrix}, \thinspace {\beta}=(w_1,w_2)^{\prime}.\]</span></p>
+<p>The least-squares estimates can be found using R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#step-by-step matrix mutiplication example for weighing problem</span>
+
+X &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>) <span class="co">#define X matrix</span>
+Y &lt;-<span class="st"> </span><span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X <span class="co"># multiply X^T by X (X^T*X) NB: t(X) is the transpose of X</span>
+W &lt;-<span class="st"> </span><span class="kw">solve</span>(Y) <span class="co"># calculate the inverse</span>
+W <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(X) <span class="co"># calculate (X^T*X)^(-1)*X^T</span></code></pre></div>
+<pre><code>     [,1] [,2]
+[1,]  0.5  0.5
+[2,]  0.5 -0.5</code></pre>
+
+</div>
+</div>
+<div id="questions" class="section level2">
+<h2><span class="header-section-number">3.14</span> Questions</h2>
+<ol style="list-style-type: decimal">
+<li>A chemist has seven light objects to weigh on a balance pan scale. The standard deviation of each weighing is denoted by <span class="math inline">\(\sigma\)</span>.</li>
+</ol>
+<p>In a 1935 paper Frank Yates suggested an improved technique by weighing all seven objects together, and also weighing them in groups of three. The groups are chosen so that each object is weighed four times altogether, twice with any other object and twice without it.</p>
+<p>Let <span class="math inline">\(y_1,...,y_8\)</span> be the readings from the scale so that the equations for determining the unknown weights, <span class="math inline">\(\beta_1,..., \beta_7\)</span>, are</p>
+<p><span class="math display">\[\begin{aligned} 
+y_1 &amp;= \beta_1 + \beta_2 + \beta_3 + \beta_4 + \beta_5 + \beta_6 + \beta_7 + \epsilon_1 &amp; \\ 
+y_2 &amp;= \beta_1 + \beta_2 + \beta_3 + \epsilon_2\\
+y_3&amp;= \beta_1 + \beta_4 + \beta_5 + \epsilon_3\\
+y_4&amp;= \beta_1 + \beta_6 + \beta_7 + \epsilon_4\\
+y_5&amp;= \beta_2 + \beta_4 + \beta_6 + \epsilon_5\\
+y_6&amp;= \beta_2 + \beta_5 + \beta_7 + \epsilon_6\\
+y_7&amp;= \beta_3 + \beta_4 + \beta_7 + \epsilon_7\\
+y_8&amp;= \beta_3 + \beta_5 + \beta_6 + \epsilon_8,\\
+\end{aligned}\]</span></p>
+<p>where the <span class="math inline">\(\epsilon_i, i = 1,...,8\)</span> are independent errors.</p>
+<p>In a 1949 paper Harold Hotelling suggested modifying Yates’ procedure by placing in the other pan of the scale those of the objects not included in one of his weighings. In other words if the first three objects are to be weighed then the remaining four objects would be placed in the opposite pan.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Write Yates’ procedure in matrix form <span class="math inline">\({\bf y}=X{\bf \beta}+\epsilon\)</span>, where <span class="math inline">\({\bf y&#39;}=(y_1,...,y_8)\)</span>, <span class="math inline">\({\bf \beta&#39;}=(\beta_1,...,\beta_7)\)</span>, <span class="math inline">\({\bf \epsilon&#39;}=(\epsilon_1,...,\epsilon_8)\)</span>, and <span class="math inline">\(X\)</span> is an <span class="math inline">\(8\times7\)</span> matrix. Find the least squares estimate of <span class="math inline">\(\beta\)</span>. (HINT: use the R code given above to carry out the matrix multiplication)</li>
+<li>Write Hotellings procedure in matrix form <span class="math inline">\({\bf y}=X{\bf \beta}+\epsilon\)</span>, where <span class="math inline">\({\bf y&#39;}=(y_1,...,y_8)\)</span>, <span class="math inline">\({\bf \beta&#39;}=(\beta_1,...,\beta_7)\)</span>, <span class="math inline">\({\bf \epsilon&#39;}=(\epsilon_1,...,\epsilon_8)\)</span>, and <span class="math inline">\(X\)</span> is an <span class="math inline">\(8\times7\)</span> matrix. Find the least squares estimate of <span class="math inline">\(\beta\)</span>.</li>
+<li>Find the variance of a weight using Yates’ and Hotelling’s procedures (you may use known results from regression analysis).</li>
+<li>If the chemist wanted estimates of the weights with the highest precision then which procedure (Yates or Hotelling) would you recommend that the chemist use to weigh objects? Explain your reasoning.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Show that if <span class="math inline">\(X \sim t_n\)</span> then <span class="math inline">\(X^2 \sim F_{1,n}\)</span>.</li>
+</ol>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-bhh2005">
+<p>Box, George EP, J Stuart Hunter, and William Gordon Hunter. 2005. <em>Statistics for Experimenters: Design, Innovation, and Discovery</em>. Vol. 2. Wiley-Interscience New York.</p>
+</div>
+<div id="ref-lea1965new">
+<p>Lea, AJ. 1965. “New Observations on Distribution of Neoplasms of Female Breast in Certain European Countries.” <em>Br Med J</em> 1 (5433). British Medical Journal Publishing Group: 488–90.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="completely-randomized-designs-comparing-two-treatments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

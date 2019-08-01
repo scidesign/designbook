@@ -1,0 +1,2033 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Randomized Block Designs | Design of Experiments and Observational Studies</title>
+  <meta name="description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 Randomized Block Designs | Design of Experiments and Observational Studies" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="github-repo" content="scidesign/designbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 Randomized Block Designs | Design of Experiments and Observational Studies" />
+  
+  <meta name="twitter:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  
+
+<meta name="author" content="Nathan Taback" />
+
+
+<meta name="date" content="2019-07-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="completely-randomized-designs-comparing-more-than-two-treatments.html">
+<link rel="next" href="factorial-designs-at-two-levels-2k-designs.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-design-scientific-studies"><i class="fa fa-check"></i><b>2.1</b> Why Design Scientific Studies?</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#big-data-and-designing-scientific-studies"><i class="fa fa-check"></i><b>2.2</b> Big Data and Designing Scientific Studies</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#what-is-big-data-and-why-does-it-matter"><i class="fa fa-check"></i><b>2.2.1</b> What is Big data and why does it matter?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction.html"><a href="introduction.html#is-statistical-sampling-and-randomization-still-relevant-in-the-era-of-big-data"><i class="fa fa-check"></i><b>2.2.2</b> Is statistical sampling and randomization still relevant in the era of Big Data?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html"><i class="fa fa-check"></i><b>3</b> Review of Mathematical Statistics</a><ul>
+<li class="chapter" data-level="3.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#data"><i class="fa fa-check"></i><b>3.1</b> Data</a></li>
+<li class="chapter" data-level="3.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#distributions"><i class="fa fa-check"></i><b>3.2</b> Distributions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Continuous Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#randomness"><i class="fa fa-check"></i><b>3.3</b> Randomness</a></li>
+<li class="chapter" data-level="3.4" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#parameters-and-statistics"><i class="fa fa-check"></i><b>3.4</b> Parameters and Statistics</a></li>
+<li class="chapter" data-level="3.5" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#residuals-and-degress-of-freedom"><i class="fa fa-check"></i><b>3.5</b> Residuals and Degress of Freedom</a></li>
+<li class="chapter" data-level="3.6" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#the-normal-distribution"><i class="fa fa-check"></i><b>3.6</b> The Normal Distribution</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises"><i class="fa fa-check"></i><b>3.6.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
+<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
+<li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#questions"><i class="fa fa-check"></i><b>3.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html"><i class="fa fa-check"></i><b>4</b> Completely Randomized Designs: Comparing Two Treatments</a><ul>
+<li class="chapter" data-level="4.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#comparing-two-treatments"><i class="fa fa-check"></i><b>4.1</b> Comparing Two Treatments</a></li>
+<li class="chapter" data-level="4.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#treatment-assignment-mechanism-and-propensity-score"><i class="fa fa-check"></i><b>4.2</b> Treatment Assignment Mechanism and Propensity Score</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#propensity-score"><i class="fa fa-check"></i><b>4.2.1</b> Propensity Score</a></li>
+<li class="chapter" data-level="4.2.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#assignment-mechanism"><i class="fa fa-check"></i><b>4.2.2</b> Assignment Mechanism</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#completely-randomized-experiment"><i class="fa fa-check"></i><b>4.3</b> Completely Randomized Experiment</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#example"><i class="fa fa-check"></i><b>4.3.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-distribution"><i class="fa fa-check"></i><b>4.4</b> The Randomization Distribution</a></li>
+<li class="chapter" data-level="4.5" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-p-value"><i class="fa fa-check"></i><b>4.5</b> The Randomization p-value</a></li>
+<li class="chapter" data-level="4.6" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#two-sided-randomization-p-value"><i class="fa fa-check"></i><b>4.6</b> Two-Sided Randomization P value</a></li>
+<li class="chapter" data-level="4.7" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#other-test-statistics"><i class="fa fa-check"></i><b>4.7</b> Other Test Statistics</a></li>
+<li class="chapter" data-level="4.8" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#calculating-the-randomization-p-value-using-monte-carlo-sampling"><i class="fa fa-check"></i><b>4.8</b> Calculating the Randomization P-value using Monte Carlo Sampling</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#does-caffeine-have-an-effect-on-reaction-time"><i class="fa fa-check"></i><b>4.8.1</b> Does Caffeine Have an Effect on Reaction Time?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#properties-of-the-randomization-test"><i class="fa fa-check"></i><b>4.9</b> Properties of the Randomization Test</a></li>
+<li class="chapter" data-level="4.10" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-two-sample-t-test"><i class="fa fa-check"></i><b>4.10</b> The two-sample t-test</a></li>
+<li class="chapter" data-level="4.11" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#randomized-paired-comparison"><i class="fa fa-check"></i><b>4.11</b> Randomized paired comparison</a></li>
+<li class="chapter" data-level="4.12" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-test-for-a-randomized-paired-design"><i class="fa fa-check"></i><b>4.12</b> The Randomization Test for a Randomized Paired Design</a></li>
+<li class="chapter" data-level="4.13" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#paired-t-test"><i class="fa fa-check"></i><b>4.13</b> Paired t-test</a></li>
+<li class="chapter" data-level="4.14" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#questions-1"><i class="fa fa-check"></i><b>4.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html"><i class="fa fa-check"></i><b>5</b> How Many Experimental Units are Required to Compare Two Treatments?</a><ul>
+<li class="chapter" data-level="5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#clinical-trials"><i class="fa fa-check"></i><b>5.1</b> Clinical Trials</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#phases-of-clinical-trials"><i class="fa fa-check"></i><b>5.1.1</b> Phases of clinical trials</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
+<li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.4.1</b> Calculating the Power of the One Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-two-sample-t-test"><i class="fa fa-check"></i><b>5.5</b> Power of two sample t test</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-two-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.5.1</b> Calculating the Power of the Two Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#effect-size"><i class="fa fa-check"></i><b>5.6</b> Effect size</a></li>
+<li class="chapter" data-level="5.7" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-equal-allocation"><i class="fa fa-check"></i><b>5.7</b> Sample size - known variance and equal allocation</a></li>
+<li class="chapter" data-level="5.8" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-unequal-allocation"><i class="fa fa-check"></i><b>5.8</b> Sample size - known variance and unequal allocation</a></li>
+<li class="chapter" data-level="5.9" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#comparing-proportions-for-binary-outcomes"><i class="fa fa-check"></i><b>5.9</b> Comparing Proportions for Binary Outcomes</a></li>
+<li class="chapter" data-level="5.10" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-power-by-simulation"><i class="fa fa-check"></i><b>5.10</b> Calculating Power by simulation</a></li>
+<li class="chapter" data-level="5.11" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#questions-2"><i class="fa fa-check"></i><b>5.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.1</b> The Fundemental Problem of Causal Inference</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="causal-inference.html"><a href="causal-inference.html#example-of-the-fundemental-problem"><i class="fa fa-check"></i><b>6.1.1</b> Example of the fundemental problem</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#randomized-experiments-as-a-solution-to-the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.2</b> Randomized experiments as a solution to the fundemental problem of causal inference</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#average-causal-effects-and-randomized-experiments"><i class="fa fa-check"></i><b>6.3</b> Average causal effects and randomized experiments</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="causal-inference.html"><a href="causal-inference.html#stable-unit-treatment-value-assignment"><i class="fa fa-check"></i><b>6.3.1</b> Stable Unit Treatment Value Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#ignorable-assignment-mechanisims"><i class="fa fa-check"></i><b>6.4</b> Ignorable Assignment Mechanisims</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="causal-inference.html"><a href="causal-inference.html#the-perfect-doctor-example"><i class="fa fa-check"></i><b>6.4.1</b> The Perfect Doctor Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#questions-3"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html"><i class="fa fa-check"></i><b>7</b> Completely Randomized Designs: Comparing More Than Two Treatments</a><ul>
+<li class="chapter" data-level="7.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova---comparing-more-than-two-groups"><i class="fa fa-check"></i><b>7.1</b> ANOVA - Comparing more than two groups</a></li>
+<li class="chapter" data-level="7.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#analysis-of-variance-anova-table"><i class="fa fa-check"></i><b>7.2</b> Analysis of Variance (ANOVA) table</a></li>
+<li class="chapter" data-level="7.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-anova-identity"><i class="fa fa-check"></i><b>7.3</b> The ANOVA identity</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---blood-coagulation-study"><i class="fa fa-check"></i><b>7.3.1</b> Example - Blood coagulation study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#general-anova"><i class="fa fa-check"></i><b>7.4</b> General ANOVA</a></li>
+<li class="chapter" data-level="7.5" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova-assumptions"><i class="fa fa-check"></i><b>7.5</b> ANOVA Assumptions</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---checking-the-assumptions-in-the-blood-coagualtion-study"><i class="fa fa-check"></i><b>7.5.1</b> Example - checking the assumptions in the blood coagualtion study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#coding-qualitative-predictors-in-regression-models"><i class="fa fa-check"></i><b>7.6</b> Coding Qualitative Predictors in Regression Models</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#dummy-coding"><i class="fa fa-check"></i><b>7.6.1</b> Dummy Coding</a></li>
+<li class="chapter" data-level="7.6.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#deviation-coding"><i class="fa fa-check"></i><b>7.6.2</b> Deviation Coding</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#estimating-treatment-effects-using-least-squares"><i class="fa fa-check"></i><b>7.7</b> Estimating Treatment Effects using Least Squares</a></li>
+<li class="chapter" data-level="7.8" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#using-the-lm-function-in-r-to-estimate-treatment-effects"><i class="fa fa-check"></i><b>7.8</b> Using the <code>lm()</code> Function in R to Estimate Treatment Effects</a></li>
+<li class="chapter" data-level="7.9" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#multiple-comparisons"><i class="fa fa-check"></i><b>7.9</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-bonferroni-method"><i class="fa fa-check"></i><b>7.9.1</b> The Bonferroni Method</a></li>
+<li class="chapter" data-level="7.9.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-tukey-method"><i class="fa fa-check"></i><b>7.9.2</b> The Tukey Method</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#sample-size-for-anova---designing-a-study-to-compare-more-than-two-treatments"><i class="fa fa-check"></i><b>7.10</b> Sample size for ANOVA - Designing a study to compare more than two treatments</a><ul>
+<li class="chapter" data-level="7.10.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#direct-calculation-of-power-using-r"><i class="fa fa-check"></i><b>7.10.1</b> Direct calculation of Power using R</a></li>
+<li class="chapter" data-level="7.10.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-and-sample-size-using-the-pwr-library-in-r"><i class="fa fa-check"></i><b>7.10.2</b> Calculating Power and Sample Size using the <code>pwr</code> library in R</a></li>
+<li class="chapter" data-level="7.10.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-using-using-simulation"><i class="fa fa-check"></i><b>7.10.3</b> Calculating Power using using Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#questions-4"><i class="fa fa-check"></i><b>7.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html"><i class="fa fa-check"></i><b>8</b> Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#anova-table-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.1</b> ANOVA Table for Randomized Block Designs</a></li>
+<li class="chapter" data-level="8.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-anova-identity-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.2</b> The ANOVA identity for Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#degrees-of-freedom"><i class="fa fa-check"></i><b>8.2.1</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="8.2.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#penicillin-manufacturing-example"><i class="fa fa-check"></i><b>8.2.2</b> Penicillin Manufacturing Example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-linear-model-for-randomized-block-design"><i class="fa fa-check"></i><b>8.3</b> The Linear Model for Randomized Block Design</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#checking-statistical-assumptions"><i class="fa fa-check"></i><b>8.3.1</b> Checking statistical assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#application-of-blocking-to-achieve-balanced-randomization-permuted-block-randomization"><i class="fa fa-check"></i><b>8.4</b> Application of Blocking to Achieve Balanced Randomization: Permuted Block Randomization</a></li>
+<li class="chapter" data-level="8.5" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#latin-square-designs"><i class="fa fa-check"></i><b>8.5</b> Latin square designs</a></li>
+<li class="chapter" data-level="8.6" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#general-latin-square-designs"><i class="fa fa-check"></i><b>8.6</b> General Latin Square Designs</a></li>
+<li class="chapter" data-level="8.7" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.7</b> Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#hyper-graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.8</b> Hyper-Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.9" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#balanced-incomplete-block-designs"><i class="fa fa-check"></i><b>8.9</b> Balanced incomplete block designs</a></li>
+<li class="chapter" data-level="8.10" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#questions-5"><i class="fa fa-check"></i><b>8.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html"><i class="fa fa-check"></i><b>9</b> Factorial Designs at Two Levels - <span class="math inline">\(2^k\)</span> Designs</a><ul>
+<li class="chapter" data-level="9.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#difference-between-anova-and-factorial-designs"><i class="fa fa-check"></i><b>9.1</b> Difference between ANOVA and Factorial Designs</a></li>
+<li class="chapter" data-level="9.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#performing-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.2</b> Performing a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#cube-plots"><i class="fa fa-check"></i><b>9.3</b> Cube plots</a></li>
+<li class="chapter" data-level="9.4" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#factorial-effects"><i class="fa fa-check"></i><b>9.4</b> Factorial effects</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#main-effects"><i class="fa fa-check"></i><b>9.4.1</b> Main effects</a></li>
+<li class="chapter" data-level="9.4.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-effects"><i class="fa fa-check"></i><b>9.4.2</b> Interaction effects</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#replication-in-factorial-designs"><i class="fa fa-check"></i><b>9.5</b> Replication in factorial designs</a></li>
+<li class="chapter" data-level="9.6" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#estimate-of-the-error-variance-and-standard-error-of-effects-from-replicated-runs"><i class="fa fa-check"></i><b>9.6</b> Estimate of the error variance and standard error of effects from replicated runs</a></li>
+<li class="chapter" data-level="9.7" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interpretation-of-results"><i class="fa fa-check"></i><b>9.7</b> Interpretation of results</a></li>
+<li class="chapter" data-level="9.8" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-plots"><i class="fa fa-check"></i><b>9.8</b> Interaction plots</a></li>
+<li class="chapter" data-level="9.9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#linear-model-for-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.9</b> Linear Model for a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.10" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#advantages-of-factorial-designs-over-one-factor-at-a-time-designs"><i class="fa fa-check"></i><b>9.10</b> Advantages of factorial designs over one-factor-at-a-time designs</a></li>
+<li class="chapter" data-level="9.11" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#normal-plots-in-unreplicated-factorial-designs"><i class="fa fa-check"></i><b>9.11</b> Normal Plots in Unreplicated Factorial Designs</a><ul>
+<li class="chapter" data-level="9.11.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#review-of-normal-quantile-plots"><i class="fa fa-check"></i><b>9.11.1</b> Review of Normal Quantile Plots</a></li>
+<li class="chapter" data-level="9.11.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#example---24-design-for-studying-a-chemical-reaction"><i class="fa fa-check"></i><b>9.11.2</b> Example - <span class="math inline">\(2^4\)</span> design for studying a chemical reaction</a></li>
+</ul></li>
+<li class="chapter" data-level="9.12" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#half-normal-plots"><i class="fa fa-check"></i><b>9.12</b> Half-Normal Plots</a></li>
+<li class="chapter" data-level="9.13" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#lenths-method-testing-significance-for-experiments-without-variance-estimates"><i class="fa fa-check"></i><b>9.13</b> Lenth’s method: testing significance for experiments without variance estimates</a></li>
+<li class="chapter" data-level="9.14" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#blocking-factorial-designs"><i class="fa fa-check"></i><b>9.14</b> Blocking Factorial Designs</a><ul>
+<li class="chapter" data-level="9.14.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#effect-hierarchy-principle"><i class="fa fa-check"></i><b>9.14.1</b> Effect hierarchy principle</a></li>
+<li class="chapter" data-level="9.14.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generation-of-orthogonal-blocks"><i class="fa fa-check"></i><b>9.14.2</b> Generation of Orthogonal Blocks</a></li>
+<li class="chapter" data-level="9.14.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#an-example-of-how-not-to-block"><i class="fa fa-check"></i><b>9.14.3</b> An example of how not to block</a></li>
+</ul></li>
+<li class="chapter" data-level="9.15" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generators-and-defining-relations"><i class="fa fa-check"></i><b>9.15</b> Generators and Defining Relations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html"><i class="fa fa-check"></i><b>10</b> Fractional factorial designs</a><ul>
+<li class="chapter" data-level="10.1" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---effect-of-five-factors-on-six-properties-of-film-in-eight-runs"><i class="fa fa-check"></i><b>10.1</b> Example - Effect of five factors on six properties of film in eight runs</a></li>
+<li class="chapter" data-level="10.2" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#effect-aliasing-and-design-resolution"><i class="fa fa-check"></i><b>10.2</b> Effect Aliasing and Design Resolution</a></li>
+<li class="chapter" data-level="10.3" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---leaf-spring-experiment"><i class="fa fa-check"></i><b>10.3</b> Example - Leaf Spring Experiment</a></li>
+<li class="chapter" data-level="10.4" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---baking-cookies"><i class="fa fa-check"></i><b>10.4</b> Example - Baking Cookies</a></li>
+<li class="chapter" data-level="10.5" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#questions-6"><i class="fa fa-check"></i><b>10.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="split-plot-designs.html"><a href="split-plot-designs.html"><i class="fa fa-check"></i><b>11</b> Split-Plot Designs</a><ul>
+<li class="chapter" data-level="11.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#anova-table-for-split-plot-experiment"><i class="fa fa-check"></i><b>11.1</b> ANOVA table for split plot experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-not-to-do-it"><i class="fa fa-check"></i><b>11.2</b> Split plot ANOVA - How not to do it</a></li>
+<li class="chapter" data-level="11.3" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-to-do-it"><i class="fa fa-check"></i><b>11.3</b> Split plot ANOVA - How to do it</a></li>
+<li class="chapter" data-level="11.4" data-path="split-plot-designs.html"><a href="split-plot-designs.html#so-what-is-a-split-plot"><i class="fa fa-check"></i><b>11.4</b> So, what is a split plot?</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#randomizing-a-split-plot-experiment"><i class="fa fa-check"></i><b>11.4.1</b> Randomizing a Split Plot experiment</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="split-plot-designs.html"><a href="split-plot-designs.html#questions-7"><i class="fa fa-check"></i><b>11.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html"><i class="fa fa-check"></i><b>12</b> Design of Observational Studies</a><ul>
+<li class="chapter" data-level="12.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#what-is-an-observational-study"><i class="fa fa-check"></i><b>12.1</b> What is an observational study?</a></li>
+<li class="chapter" data-level="12.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#designing-and-observational-study"><i class="fa fa-check"></i><b>12.2</b> Designing and Observational Study</a></li>
+<li class="chapter" data-level="12.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example---epidemiologic-follow-up-study"><i class="fa fa-check"></i><b>12.3</b> Example - Epidemiologic Follow-up Study</a></li>
+<li class="chapter" data-level="12.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-1"><i class="fa fa-check"></i><b>12.4</b> Propensity Score</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-examples"><i class="fa fa-check"></i><b>12.4.1</b> Propensity Score Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#estimating-the-propensity-score-in-an-observational-study"><i class="fa fa-check"></i><b>12.5</b> Estimating the propensity score in an observational study</a></li>
+<li class="chapter" data-level="12.6" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#the-balancing-property-of-the-propensity-score"><i class="fa fa-check"></i><b>12.6</b> The balancing property of the propensity score</a></li>
+<li class="chapter" data-level="12.7" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#imbalance-versus-overlap"><i class="fa fa-check"></i><b>12.7</b> Imbalance versus Overlap</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example-from-the-nhefs"><i class="fa fa-check"></i><b>12.7.1</b> Example from the NHEFS</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-and-ignorable-treatment-assignment"><i class="fa fa-check"></i><b>12.8</b> Propensity Score and Ignorable Treatment Assignment</a></li>
+<li class="chapter" data-level="12.9" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-methods-to-reduce-bias-in-observational-studies"><i class="fa fa-check"></i><b>12.9</b> Propensity Score Methods to Reduce Bias in Observational Studies</a><ul>
+<li class="chapter" data-level="12.9.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-matching-matching"><i class="fa fa-check"></i><b>12.9.1</b> Propensity Score Matching Matching</a></li>
+<li class="chapter" data-level="12.9.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-stratification"><i class="fa fa-check"></i><b>12.9.2</b> Propensity score stratification</a></li>
+<li class="chapter" data-level="12.9.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#multivariate-adjustment-using-the-propensity-score"><i class="fa fa-check"></i><b>12.9.3</b> Multivariate adjustment using the propensity score</a></li>
+<li class="chapter" data-level="12.9.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#comparing-the-three-methods"><i class="fa fa-check"></i><b>12.9.4</b> Comparing the three methods</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#questions-8"><i class="fa fa-check"></i><b>12.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Design of Experiments and Observational Studies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="randomized-block-designs" class="section level1">
+<h1><span class="header-section-number">8</span> Randomized Block Designs</h1>
+<p>Randomizing subjects to, say, two treatments in the design of a clinical trial should produce two treatment groups where all the covariates are balanced. But it doesn’t guarantee that equal numbers of patients will be assigned to each treatment group for important covariates.</p>
+<p>Suppose the covariate is income level (low/medium/high). If income level is related to the outcome of interest then it’s important that the two treatment groups have a balanced number of subjects in each income level. So this shouldn’t be left to chance! To avoid an imbalance between income levels in the two treatment groups the design can be <em>blocked</em> by income group. This means that the we randomize subjects in low, medium, and high income groups separately.</p>
+<p>We have already encountered block designs in randomized paired designs. In these designs the block size is two. In general block designs the size of a block can be larger.</p>
+<p>Where do block designs fit into what we have learned so far?</p>
+<p>Comparison of two treatments</p>
+<ul>
+<li>Unblocked arrangements: unpaired comparison of two treatment groups</li>
+<li>Blocked arrangements: paired comparison of two treatments</li>
+</ul>
+<p>Comparison of more than two treatments</p>
+<ul>
+<li>Unblocked arrangements: randomized one-way design</li>
+<li>Blocked arrangements: randomized block design</li>
+</ul>
+<p>In blocked designs two kinds of effects are contemplated: 1. treatments (this is what the experimenter is interested in). 2. blocks (this is what the experimenter wants to eliminate the contribution to the treatment effect).</p>
+<p>Blocks might be: different litters of animals; blends of chemical material; strips of land; or contiguous periods of time.</p>
+<div id="anova-table-for-randomized-block-designs" class="section level2">
+<h2><span class="header-section-number">8.1</span> ANOVA Table for Randomized Block Designs</h2>
+<p>The table below shows data from a randomized block experiment in which a process of the manufacture of penicillin was investigated (Box, Hunter, and Hunter, 2005). Yield was the response of primary interest and the experimenters wanted to compare four variants of the manufacturing process called treatments A, B, C, and D.</p>
+<p>The properties of an important raw material (com steep liquor) varied considerably, and it was believed that this alone might cause considerable differences in yield. It was found, however, that for experimental purposes a blend of the material could be obtained to make four runs. This supplied the opportunity of running the <span class="math inline">\(k = 4\)</span> treatments within each of <span class="math inline">\(n = 5\)</span> blends (blocks) of the liquor.</p>
+<p>Within each blend the order in which the treatments were run were randomized. In a fully randomized one-way treatment classification blend differences might not be balanced between the treatments A, B, C, D. This might increase the experimental noise. But, by randomly assigning the order in which the four treatments were run within each blend (block), blend differences between the groups were largely eliminated.</p>
+<p>A Key feature of randomized block designs is that randomization is applied to treatments within each block. In other words, the blocks represent a restriction on randomization.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">run</th>
+<th align="right">blend</th>
+<th align="left">treatment</th>
+<th align="right">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">A</td>
+<td align="right">89</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="left">A</td>
+<td align="right">84</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="left">A</td>
+<td align="right">81</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="left">A</td>
+<td align="right">87</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="left">A</td>
+<td align="right">79</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="left">B</td>
+<td align="right">88</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="left">B</td>
+<td align="right">77</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="left">B</td>
+<td align="right">87</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="left">B</td>
+<td align="right">92</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="left">B</td>
+<td align="right">81</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="left">C</td>
+<td align="right">97</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="left">C</td>
+<td align="right">92</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="left">C</td>
+<td align="right">87</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="left">C</td>
+<td align="right">89</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="left">C</td>
+<td align="right">80</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="left">D</td>
+<td align="right">94</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="left">D</td>
+<td align="right">79</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="left">D</td>
+<td align="right">85</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="left">D</td>
+<td align="right">84</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="left">D</td>
+<td align="right">88</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-anova-identity-for-randomized-block-designs" class="section level2">
+<h2><span class="header-section-number">8.2</span> The ANOVA identity for Randomized Block Designs</h2>
+<p>Let</p>
+<ul>
+<li><span class="math inline">\(a\)</span> is the number of treatments and <span class="math inline">\(b\)</span> the number of blocks.</li>
+<li><span class="math inline">\(y_{i\cdot}\)</span> be the total of all observations taken under treatment <span class="math inline">\(i\)</span>.</li>
+<li><span class="math inline">\(y_{\cdot j}\)</span> be the total of all observations taken under block <span class="math inline">\(j\)</span>.</li>
+<li><span class="math inline">\(y_{\cdot\cdot}\)</span> be the grand total of all observations.</li>
+<li><span class="math inline">\(N = ab\)</span> be the total of all observations</li>
+</ul>
+<p>Mathematically these quantities can be expressed as:</p>
+<p><span class="math display">\[\begin{aligned}
+y_{i\cdot} &amp;= \sum_{j = 1}^b y_{ij}, \thinspace \thinspace i = 1,...,a\\
+y_{\cdot j} &amp;= \sum_{i = 1}^a y_{ij}, \thinspace \thinspace j = 1,...,b \\
+y_{\cdot \cdot} &amp;= \sum_{j = 1}^b\sum_{i = 1}^a y_{ij} 
+\end{aligned}\]</span></p>
+<p>The treatment, block, and grand averages can be expressed as:</p>
+<p><span class="math display">\[\begin{aligned}
+\bar{y_{i\cdot}} &amp;=y_{i\cdot}/b \\
+\bar{y_{\cdot j}} &amp;=y_{\cdot j}/a \\
+\bar{y_{\cdot \cdot}} &amp;=y_{\cdot \cdot}/N 
+\end{aligned}\]</span></p>
+<p>The total sum of squares can be re-expressed by adding and subtracting the treatment and block averages as:</p>
+<p><span class="math display">\[\sum_{i = 1}^a\sum_{j = 1}^b \left(y_{ij}-\bar{y_{\cdot \cdot}}\right)^2 = \sum_{i = 1}^a\sum_{j = 1}^b \left[(\bar{y_{i\cdot}}-\bar{y_{\cdot \cdot}})+(\bar{y_{\cdot j}}-\bar{y_{\cdot \cdot}}) + (y_{ij}-\bar{y_{i\cdot}}-\bar{y_{\cdot j}}+\bar{y_{\cdot \cdot}})) \right]^2.\]</span></p>
+<p>After expanding and simplifying the equation above it can be shown that:</p>
+<p><span class="math display">\[\begin{aligned}
+\underbrace{\sum_{i = 1}^a\sum_{j = 1}^b \left(y_{ij}-\bar{y_{\cdot \cdot}}\right)^2}_{\text{Total sum of squares}} &amp;= \underbrace{b\sum_{i = 1}^a \left(\bar{y_{i\cdot}}-\bar{y_{\cdot \cdot}}\right)^2}_{\text{Sum of squares due to treatments}} + \underbrace{a\sum_{j = 1}^b \left(\bar{y_{\cdot j}}-\bar{y_{\cdot \cdot}}\right)^2}_{\text{Sum of squares due to blocks}} + \underbrace{\sum_{i = 1}^a\sum_{j = 1}^b \left(y_{ij}-\bar{y_{i\cdot}}-\bar{y_{\cdot j}}+\bar{y_{\cdot \cdot}} \right)^2}_{\text{Sum of squares due to error}} \\
+SS_{T}&amp;=SS_{Treat}+SS_{Blocks}+SS_E
+\end{aligned}\]</span></p>
+<div id="degrees-of-freedom" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Degrees of freedom</h3>
+<ul>
+<li>There are <span class="math inline">\(N\)</span> observations so <span class="math inline">\(SS_T\)</span> has <span class="math inline">\(N-1\)</span> degrees of freedom.</li>
+<li>There are <span class="math inline">\(a\)</span> treatments and <span class="math inline">\(b\)</span> blocks so <span class="math inline">\(SS_{Treat}\)</span> and <span class="math inline">\(SS_{Blocks}\)</span> have <span class="math inline">\(a-1\)</span> and <span class="math inline">\(b-1\)</span> degrees of freedom, respectively.</li>
+<li>The sum of squares on the left hand side the equation should add to the sum of squares on the right hand side of the equation. Therefore, the error sum of squares has <span class="math inline">\((N-1)-(a-1)-(b-1)=(ab-1)-(a-1)-(b-1)=(a-1)(b-1)\)</span> degrees of freedom.</li>
+</ul>
+</div>
+<div id="penicillin-manufacturing-example" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> Penicillin Manufacturing Example</h3>
+<p>The block averages are:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">block.ave &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">split</span>(tab0404<span class="op">$</span>y,tab0404<span class="op">$</span>blend),mean)
+block.ave</code></pre></div>
+<pre><code> 1  2  3  4  5 
+92 83 85 88 82 </code></pre>
+<p>The treatment averages are:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trt.ave &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">split</span>(tab0404<span class="op">$</span>y,tab0404<span class="op">$</span>treatment),mean)
+trt.ave</code></pre></div>
+<pre><code> A  B  C  D 
+84 85 89 86 </code></pre>
+<p>The grand average is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand.ave &lt;-<span class="st"> </span><span class="kw">mean</span>(tab0404<span class="op">$</span>y)
+grand.ave</code></pre></div>
+<pre><code>[1] 86</code></pre>
+<p>The block deviations from the grand average and the sum of squares of block deviations are:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">block.devs &lt;-<span class="st"> </span>block.ave<span class="op">-</span>grand.ave
+block.devs</code></pre></div>
+<pre><code> 1  2  3  4  5 
+ 6 -3 -1  2 -4 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(block.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">4</span></code></pre></div>
+<pre><code>[1] 264</code></pre>
+<p>The treatment deviations from the grand average and the sum of squares of treatment deviations are:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">treatment.devs &lt;-<span class="st"> </span>trt.ave<span class="op">-</span>grand.ave
+treatment.devs</code></pre></div>
+<pre><code> A  B  C  D 
+-2 -1  3  0 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(treatment.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span></code></pre></div>
+<pre><code>[1] 70</code></pre>
+<p>The sum of squares of deviations from the grand average are:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all.devs &lt;-<span class="st"> </span>tab0404<span class="op">$</span>y<span class="op">-</span>grand.ave
+<span class="kw">sum</span>(all.devs<span class="op">^</span><span class="dv">2</span>)</code></pre></div>
+<pre><code>[1] 560</code></pre>
+<p>So, the error sum of squares is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(all.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">-</span><span class="kw">sum</span>(treatment.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span><span class="op">-</span><span class="kw">sum</span>(block.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">4</span></code></pre></div>
+<pre><code>[1] 226</code></pre>
+<p>Would <span class="math inline">\(SS_E\)</span> increase or decrease if blocking was not incorporated into the design? <span class="math inline">\(SS_E\)</span> would increase since the extra variation would not be incorporated into <span class="math inline">\(SS_{Treat}\)</span> so it must be incorporated into <span class="math inline">\(SS_E\)</span>.</p>
+</div>
+</div>
+<div id="the-linear-model-for-randomized-block-design" class="section level2">
+<h2><span class="header-section-number">8.3</span> The Linear Model for Randomized Block Design</h2>
+<p>The linear model for the randomized block design is</p>
+<p><span class="math display">\[y_{ij}=\mu+\tau_i+\beta_j+\epsilon_{ij},\]</span></p>
+<p>where <span class="math inline">\(E(\epsilon_{ij})=0.\)</span></p>
+<p>The model is completely additive. It assumes that there is no interaction between blocks and treatments. An interaction could occur if an impurity in blend 3 poisoned treatment B and made it ineffective, even though it did not affect the other treatments.</p>
+<p>Another way in which an interaction can occur is when the response relationship is multiplicative</p>
+<p><span class="math display">\[E(y_{ij})=\mu\tau_i\beta_j.\]</span></p>
+<p>Taking logs and denoting transformed terms by primes, the model then becomes</p>
+<p><span class="math display">\[y_{ij}^{\prime}=\mu^{\prime}+\tau_i^{\prime}+\beta_j^{\prime}+\epsilon_{ij}^{\prime}\]</span></p>
+<p>and assuming that <span class="math inline">\(\epsilon_{ij}^{\prime}\)</span> were approximately independent and identically distributed the response <span class="math inline">\(y_{ij}^{\prime}=log(y_{ij})\)</span> could be analyzed using a linear model in which the interaction would disappear.</p>
+<p>Interactions often belong to two categories: (a) transformable interactions, which are eliminated by transformation of the original data, and (b) nontransfromable such as a treatment -blend interaction that cannot be eliminated via a transformation.</p>
+<p>The ANOVA table for a randomized block design can be obtained by fitting a linear model and extracting the ANOVA table. Using R the penicillin example has ANOVA table</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pen.model &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment)<span class="op">+</span><span class="kw">as.factor</span>(blend),<span class="dt">data =</span> tab0404)
+<span class="kw">anova</span>(pen.model)</code></pre></div>
+<pre><code>Analysis of Variance Table
+
+Response: y
+                     Df Sum Sq Mean Sq F value  Pr(&gt;F)  
+as.factor(treatment)  3     70  23.333  1.2389 0.33866  
+as.factor(blend)      4    264  66.000  3.5044 0.04075 *
+Residuals            12    226  18.833                  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>If we further assume that <span class="math inline">\(\epsilon_{ij} \sim N(0,\sigma^2)\)</span> then <span class="math inline">\(MS_{Treat}/MS_{E} \sim F_{a-1,(a-1)(b-1)}, MS_{Blocks} \sim F_{b-1,(a-1)(b-1)}.\)</span></p>
+<p>Suppose that the blends (blocks) were not included in the model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(<span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment),<span class="dt">data =</span> tab0404))</code></pre></div>
+<pre><code>Analysis of Variance Table
+
+Response: y
+                     Df Sum Sq Mean Sq F value Pr(&gt;F)
+as.factor(treatment)  3     70  23.333  0.7619 0.5318
+Residuals            16    490  30.625               </code></pre>
+<p><span class="math inline">\(SS_E\)</span> increases from 226 to 226+264 = 490. <span class="math inline">\(SS_T\)</span> not associated with treatments or the mean, almost half is accounted for by block-to-block variation. If the experiment had been arranged on a completely randomized basis with no blocks, the error variance would have been much larger. The randomized block design increased the sensitivity of this experiment.</p>
+<p>There is no evidence that the four treatments produce different yields. How could this information be used in optimizing yield in the manufacturing process? Is one of the treatments less expensive to run? If one of the treatments is less expensive to run then an analysis on cost rather than yield might reveal important information.</p>
+<p>The differences between the blocks might be informative. In particular the investigators might speculate about why blend 1 has such a different influence on yield. Perhaps now the experimenters should study the characteristics of the different blends of corn steep liquor. (Box, Hunter, Hunter, 2005)</p>
+<div id="checking-statistical-assumptions" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> Checking statistical assumptions</h3>
+<p>The normality of the residuals can be checked by using a normal quantile plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pen.model &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment)<span class="op">+</span><span class="kw">as.factor</span>(blend),<span class="dt">data =</span> tab0404)
+<span class="kw">qqnorm</span>(pen.model<span class="op">$</span>residuals,<span class="dt">main =</span> <span class="st">&quot;Q-Q Plot for Penicillin Study&quot;</span>);<span class="kw">qqline</span>(pen.model<span class="op">$</span>residuals)</code></pre></div>
+<p><img src="07-blocking_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>The constant variance assumption can be investigated by plotting the predicted values versus the residuals. The predicted (fitted) values are</p>
+<p><span class="math display">\[\hat {y_{ij}}=\bar{y_{i\cdot}}+\bar{y_{\cdot j}}-\bar{y_{\cdot \cdot}}\]</span></p>
+<p>and the residuals are</p>
+<p><span class="math display">\[ y_{ij}-\hat {y_{ij}}.\]</span></p>
+<p>Using R this plot can be obtained.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(pen.model<span class="op">$</span>fitted.values,pen.model<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Penicillin study&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</code></pre></div>
+<p><img src="07-blocking_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+</div>
+<div id="application-of-blocking-to-achieve-balanced-randomization-permuted-block-randomization" class="section level2">
+<h2><span class="header-section-number">8.4</span> Application of Blocking to Achieve Balanced Randomization: Permuted Block Randomization</h2>
+<p>One application of blocking is to use it as a tool to achieve a balanced randomization.</p>
+<p>Randomizing subjects to, say, two treatments in the design of a clinical trial should produce two treatment groups where all the covariates are balanced. But it doesn’t guarantee that equal numbers of patients will be assigned to each treatment group.</p>
+<p>Simple randomization assigns subjects to 2 treatments with probability 1/2. This may cause imbalance among different groups (e.g., male/female).</p>
+<p>A permuted block randomization is a way to use blocking to assign patients to treatments in the blocks. Suppose we want to compare two treatments: A, B in a randomized trial. In a permuted block randomization we could use blocks of size 4. The possible sequences are:</p>
+<p>{AABB, ABAB, ABBA, BBAA, BABA, BAAB}.</p>
+<p>When a subject is to be randomized a block is randomly chosen. For example, if ABAB is chosen then first patient receives A, second patient receives B, etc. This ensures an equal number of patients in each treatment group.</p>
+</div>
+<div id="latin-square-designs" class="section level2">
+<h2><span class="header-section-number">8.5</span> Latin square designs</h2>
+<p>There are several other types of designs that utilize the blocking principle such as The Latin Square design. If there is more than one nuisance source that can be eliminated then a Latin Square design might be appropriate.</p>
+<p>An experiment to test the feasibility of reducing air pollution by modifying a gasoline mixture with very small amounts of certain chemicals A, B, C, and D was conducted. The four treatments were tested with four different drivers and four different cars. There were thus two block factors-cars and drivers. (Box, Hunter, and Hunter 2005)</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Car 1</th>
+<th>Car 2</th>
+<th>Car 3</th>
+<th>Car 4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Driver I</td>
+<td>A</td>
+<td>B</td>
+<td>D</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>19</td>
+<td>24</td>
+<td>23</td>
+<td>26</td>
+</tr>
+<tr class="odd">
+<td>Driver II</td>
+<td>D</td>
+<td>C</td>
+<td>A</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>23</td>
+<td>24</td>
+<td>19</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td>Driver II</td>
+<td>I B</td>
+<td>D</td>
+<td>C</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>15</td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td>Driver IV</td>
+<td>C</td>
+<td>A</td>
+<td>B</td>
+<td>D</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>19</td>
+<td>18</td>
+<td>19</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Each treatment appears once in every row (driver) and every column (car).</li>
+<li>Randomization can be achieved by randomly allocating the treatments to the symbols A, B, C, and D; the drivers to the symbols I, II, III, and IV; and cars to the symbols 1, 2, 3, 4.<br />
+</li>
+<li>The treatments are denoted by Latin letters A, B, C, D; hence the name Latin square design.</li>
+<li>The design allows for blocking with two variables.</li>
+<li>The two blocking variables must have the same number of levels as the treatment variable.</li>
+</ul>
+<p>Suppose that the design used a single car and driver with 16 experimental runs for the four treatments. This design could also be valid, but the Latin square has the advantage that the results do not just apply to one car and one driver.</p>
+<p>The data is available in the R data frame <code>tab0408</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">driver</th>
+<th align="right">cars</th>
+<th align="left">additive</th>
+<th align="right">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">A</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="left">D</td>
+<td align="right">23</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="left">B</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="left">C</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="left">B</td>
+<td align="right">24</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="left">C</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="left">D</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="left">A</td>
+<td align="right">18</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="left">D</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="left">A</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="left">C</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="left">B</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="left">C</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="left">B</td>
+<td align="right">30</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="left">A</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="left">D</td>
+<td align="right">16</td>
+</tr>
+</tbody>
+</table>
+<p>The model and analysis are similar to the randomized block design except that there is an additional blocking factor.</p>
+<p>In R the ANOVA table and treatment effects are obtained.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">latinsq.auto &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>additive<span class="op">+</span><span class="kw">as.factor</span>(cars)<span class="op">+</span><span class="kw">as.factor</span>(driver),<span class="dt">data =</span> tab0408)
+<span class="kw">anova</span>(latinsq.auto)</code></pre></div>
+<pre><code>Analysis of Variance Table
+
+Response: y
+                  Df Sum Sq Mean Sq F value   Pr(&gt;F)   
+additive           3     40  13.333     2.5 0.156490   
+as.factor(cars)    3     24   8.000     1.5 0.307174   
+as.factor(driver)  3    216  72.000    13.5 0.004466 **
+Residuals          6     32   5.333                    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(latinsq.auto)</code></pre></div>
+<pre><code>
+Call:
+lm(formula = y ~ additive + as.factor(cars) + as.factor(driver), 
+    data = tab0408)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+    -3     -1      0      1      2 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         2.000e+01  1.826e+00  10.954 3.44e-05 ***
+additiveB           4.000e+00  1.633e+00   2.449  0.04983 *  
+additiveC           3.000e+00  1.633e+00   1.837  0.11584    
+additiveD           1.000e+00  1.633e+00   0.612  0.56276    
+as.factor(cars)2    1.000e+00  1.633e+00   0.612  0.56276    
+as.factor(cars)3   -2.448e-15  1.633e+00   0.000  1.00000    
+as.factor(cars)4    3.000e+00  1.633e+00   1.837  0.11584    
+as.factor(driver)2  1.000e+00  1.633e+00   0.612  0.56276    
+as.factor(driver)3 -8.000e+00  1.633e+00  -4.899  0.00271 ** 
+as.factor(driver)4 -5.000e+00  1.633e+00  -3.062  0.02217 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.309 on 6 degrees of freedom
+Multiple R-squared:  0.8974,    Adjusted R-squared:  0.7436 
+F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
+<ul>
+<li>The Latin square has been effective in removing a large component of variation due to drivers.<br />
+</li>
+<li>It assumed that the effects of treatments, cars, and drivers are all additive so that there is no interaction effects.</li>
+<li>It is inappropriate to use Latin square designs to study factors that can interact. Effects of one factor can then be mixed up with interactions of other factors. Outliers can occur as a result of these interactions. When interactions between factors are likely possible need to use a factorial design.</li>
+</ul>
+<p>The ANOVA identity for a Latin Square design is:</p>
+<p><span class="math display">\[SS_T = SS_{Treat}+SS_{Cars}+SS_{Driver}+SS_E.\]</span></p>
+<p>By similar reasoning to randomized blocks the associated degrees of freedom are also additive.</p>
+<p>The statistical model for a <span class="math inline">\(4x4\)</span> Latin square is:</p>
+<p><span class="math display">\[y_{ijk}=\mu+\alpha_i+\tau_j+\beta_k+\epsilon_{ijk},\]</span></p>
+<p>where <span class="math inline">\(i,j,k = 1,...,4\)</span>, <span class="math inline">\(y_{ijk}\)</span> is the observation in the <span class="math inline">\(ith\)</span> row and <span class="math inline">\(kth\)</span> column for the <span class="math inline">\(jth\)</span> treatment, <span class="math inline">\(\mu\)</span> is the overall mean, <span class="math inline">\(\alpha_i\)</span> is the row effect, <span class="math inline">\(\tau_j\)</span> is the <span class="math inline">\(jth\)</span> treatment effect, <span class="math inline">\(\beta_k\)</span> is the <span class="math inline">\(kth\)</span> column effect, and <span class="math inline">\(\epsilon_{ijk}\)</span> is the random error. We will assume that <span class="math inline">\(\epsilon_{ijk} \sim N(0,\sigma^2).\)</span></p>
+<p>Under the assumption that the residuals are independent and <span class="math inline">\(N(0,\sigma^2)\)</span> then under the null hypothesis that there are no differences between between treatments</p>
+<p><span class="math display">\[MS_{Treat}/MS_E \sim F_{3,6}.\]</span></p>
+<p>The statistical assumptions can be checked by plotting: (1) a normal quantile plot of the residuals; and (2) the predicted values versus residuals versus.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(latinsq.auto<span class="op">$</span>residuals,<span class="dt">main =</span> <span class="st">&quot;Q-Q Plot for Automobile Emissions&quot;</span>);<span class="kw">qqline</span>(latinsq.auto<span class="op">$</span>residuals)</code></pre></div>
+<p><img src="07-blocking_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(latinsq.auto<span class="op">$</span>fitted.values,latinsq.auto<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Automobile Emissions&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</code></pre></div>
+<p><img src="07-blocking_files/figure-html/unnamed-chunk-15-2.png" width="672" /></p>
+</div>
+<div id="general-latin-square-designs" class="section level2">
+<h2><span class="header-section-number">8.6</span> General Latin Square Designs</h2>
+<p>A Latin square for p factors of a <span class="math inline">\(p \times p\)</span> Latin square, is a square containing <span class="math inline">\(p\)</span> rows and <span class="math inline">\(p\)</span> columns. Each of the <span class="math inline">\(p^2\)</span> cells contains one of the <span class="math inline">\(p\)</span> letters that correspond to a treatment. Each letter occurs once and only once in each row and column.</p>
+<p>There are many possible <span class="math inline">\(p \times p\)</span> Latin squares. If <span class="math inline">\(p = 3\)</span> then two Latin squares are below,</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Col1</th>
+<th>Col2</th>
+<th>Col3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row 1</td>
+<td>B</td>
+<td>A</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>Row 2</td>
+<td>A</td>
+<td>C</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td>Row 3</td>
+<td>C</td>
+<td>B</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Col1</th>
+<th>Col2</th>
+<th>Col3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row 1</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>Row 2</td>
+<td>C</td>
+<td>A</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td>Row 3</td>
+<td>B</td>
+<td>C</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<p>Note that Col1, Col2, Col3 are three levels of a blocking variable and Row 1, Row 2, Row 3 are three levels of another blocking variable.</p>
+<p>If <span class="math inline">\(p = 4\)</span> then two examples of Latin squares are below,</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Col1</th>
+<th>Col2</th>
+<th>Col3</th>
+<th>Col4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row 1</td>
+<td>B</td>
+<td>A</td>
+<td>D</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>Row 2</td>
+<td>C</td>
+<td>D</td>
+<td>A</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td>Row 3</td>
+<td>D</td>
+<td>B</td>
+<td>C</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td>Row 4</td>
+<td>A</td>
+<td>C</td>
+<td>B</td>
+<td>D</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Col1</th>
+<th>Col2</th>
+<th>Col3</th>
+<th>Col4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row 1</td>
+<td>D</td>
+<td>A</td>
+<td>C</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td>Row 2</td>
+<td>A</td>
+<td>D</td>
+<td>B</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td>Row 3</td>
+<td>B</td>
+<td>C</td>
+<td>A</td>
+<td>D</td>
+</tr>
+<tr class="even">
+<td>Row 4</td>
+<td>C</td>
+<td>B</td>
+<td>D</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="graeco-latin-square-designs" class="section level2">
+<h2><span class="header-section-number">8.7</span> Graeco-Latin Square Designs</h2>
+<p>A Graeco-Latin square is a <span class="math inline">\(k \times k\)</span> pattern that permits study of <span class="math inline">\(k\)</span> treatments simultaneously with three different blocking variables each at <span class="math inline">\(k\)</span> levels. This is a Latin square in which each Greek letter appears once and only once with each Latin letter. It can be used to control three sources of extraneous variability (i.e. block in three different directions).</p>
+<p>Suppose that we wanted to also block out the effects of day in the air pollution study. If the experiment is to be run on four different days, with four drivers, and four cars then a Graeco-Latin square design is in the table below.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Car 1</th>
+<th align="left">Car 2</th>
+<th align="center">Car 3</th>
+<th align="center">Car 4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Driver I</td>
+<td align="left">A <span class="math inline">\(\alpha\)</span></td>
+<td align="left">B <span class="math inline">\(\beta\)</span></td>
+<td align="center">C <span class="math inline">\(\gamma\)</span></td>
+<td align="center">D <span class="math inline">\(\delta\)</span></td>
+</tr>
+<tr class="even">
+<td>Driver II</td>
+<td align="left">B <span class="math inline">\(\delta\)</span></td>
+<td align="left">A <span class="math inline">\(\gamma\)</span></td>
+<td align="center">D <span class="math inline">\(\beta\)</span></td>
+<td align="center">C <span class="math inline">\(\alpha\)</span></td>
+</tr>
+<tr class="odd">
+<td>Driver III</td>
+<td align="left">C <span class="math inline">\(\beta\)</span></td>
+<td align="left">D <span class="math inline">\(\alpha\)</span></td>
+<td align="center">A <span class="math inline">\(\delta\)</span></td>
+<td align="center">B <span class="math inline">\(\gamma\)</span></td>
+</tr>
+<tr class="even">
+<td>Driver IV</td>
+<td align="left">D <span class="math inline">\(\gamma\)</span></td>
+<td align="left">C <span class="math inline">\(\delta\)</span></td>
+<td align="center">B <span class="math inline">\(\alpha\)</span></td>
+<td align="center">A <span class="math inline">\(\beta\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>To generate a <span class="math inline">\(3 \times 3\)</span> Graeco-Latin square design, superimpose two designs using the Greek letters for the second <span class="math inline">\(3 \times 3\)</span> Latin square.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Col1</th>
+<th>Col2</th>
+<th>Col3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row 1</td>
+<td>B</td>
+<td>A</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>Row 2</td>
+<td>A</td>
+<td>C</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td>Row 3</td>
+<td>C</td>
+<td>B</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Col1</th>
+<th>Col2</th>
+<th>Col3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row 1</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>Row 2</td>
+<td>C</td>
+<td>A</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td>Row 3</td>
+<td>B</td>
+<td>C</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<p>Using Greek letters <span class="math inline">\(\alpha,\beta, \gamma\)</span> in place of A, B, C in the second square we obtain the Graeco-Latin square design:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Col1</th>
+<th align="left">Col2</th>
+<th align="left">Col3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row 1</td>
+<td align="left">B <span class="math inline">\(\alpha\)</span></td>
+<td align="left">A <span class="math inline">\(\beta\)</span></td>
+<td align="left">C <span class="math inline">\(\gamma\)</span></td>
+</tr>
+<tr class="even">
+<td>Row 2</td>
+<td align="left">A <span class="math inline">\(\gamma\)</span></td>
+<td align="left">C <span class="math inline">\(\alpha\)</span></td>
+<td align="left">B <span class="math inline">\(\beta\)</span></td>
+</tr>
+<tr class="odd">
+<td>Row 3</td>
+<td align="left">C <span class="math inline">\(\beta\)</span></td>
+<td align="left">B <span class="math inline">\(\gamma\)</span></td>
+<td align="left">A <span class="math inline">\(\alpha\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="hyper-graeco-latin-square-designs" class="section level2">
+<h2><span class="header-section-number">8.8</span> Hyper-Graeco-Latin Square Designs</h2>
+<p>Blocking for multiple factors may be extended further using hyper-Graeco-Latin squares.</p>
+<p>Consider three <span class="math inline">\(4 \times 4\)</span> Latin squares</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Col1</th>
+<th>Col2</th>
+<th>Col3</th>
+<th>Col4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row 1</td>
+<td>B</td>
+<td>A</td>
+<td>D</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>Row 2</td>
+<td>C</td>
+<td>D</td>
+<td>A</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td>Row 3</td>
+<td>D</td>
+<td>B</td>
+<td>C</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td>Row 4</td>
+<td>A</td>
+<td>C</td>
+<td>B</td>
+<td>D</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Col1</th>
+<th>Col2</th>
+<th>Col3</th>
+<th>Col4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row 1</td>
+<td>D</td>
+<td>A</td>
+<td>C</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td>Row 2</td>
+<td>A</td>
+<td>D</td>
+<td>B</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td>Row 3</td>
+<td>B</td>
+<td>C</td>
+<td>A</td>
+<td>D</td>
+</tr>
+<tr class="even">
+<td>Row 4</td>
+<td>C</td>
+<td>B</td>
+<td>D</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Col1</th>
+<th>Col2</th>
+<th>Col3</th>
+<th>Col4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row 1</td>
+<td>A</td>
+<td>D</td>
+<td>B</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>Row 2</td>
+<td>C</td>
+<td>A</td>
+<td>D</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td>Row 3</td>
+<td>B</td>
+<td>C</td>
+<td>A</td>
+<td>D</td>
+</tr>
+<tr class="even">
+<td>Row 4</td>
+<td>D</td>
+<td>B</td>
+<td>C</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<p>To form a hyper-Graeco-Latin square we use Greek letters <span class="math inline">\(\alpha,\beta,\gamma, \delta\)</span> for A, B, C, D in the second square and numbers 1,2,3,4 for A, B,C, D in the third square then superimpose all the squares. Thus, the design is:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Col1</th>
+<th align="center">Col2</th>
+<th align="center">Col3</th>
+<th align="center">Col4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row 1</td>
+<td align="left">B <span class="math inline">\(\delta\)</span> 1</td>
+<td align="center">A <span class="math inline">\(\alpha\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\gamma\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\beta\)</span> 3</td>
+</tr>
+<tr class="even">
+<td>Row 2</td>
+<td align="left">C <span class="math inline">\(\alpha\)</span> 3</td>
+<td align="center">D <span class="math inline">\(\delta\)</span> 1</td>
+<td align="center">A <span class="math inline">\(\beta\)</span> 4</td>
+<td align="center">B <span class="math inline">\(\gamma\)</span> 2</td>
+</tr>
+<tr class="odd">
+<td>Row 3</td>
+<td align="left">D <span class="math inline">\(\beta\)</span> 2</td>
+<td align="center">B <span class="math inline">\(\gamma\)</span> 3</td>
+<td align="center">C <span class="math inline">\(\alpha\)</span> 1</td>
+<td align="center">A <span class="math inline">\(\delta\)</span> 4</td>
+</tr>
+<tr class="even">
+<td>Row 4</td>
+<td align="left">A <span class="math inline">\(\gamma\)</span> 4</td>
+<td align="center">C <span class="math inline">\(\beta\)</span> 2</td>
+<td align="center">B <span class="math inline">\(\delta\)</span> 3</td>
+<td align="center">D <span class="math inline">\(\alpha\)</span> 1</td>
+</tr>
+</tbody>
+</table>
+<p>The primary goal is to compare treatments A, B, C, D while blocking for four factors. The levels of each the factors are the 4 rows, 4 columns, 4 Greek letters, and 4 numbers.</p>
+<p>The following example from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span> illustrates this design.</p>
+<p>A machine used to test the wearing quality of cloth is to be used to compare the wearing quality of four pieces of cloth on one machine. The response is weight loss in tenths of a milligram when it is rubbed against emery paper for 1000 revolutions of the machine.</p>
+<ul>
+<li>Samples of four different types of cloth (treatments) A, B, C, D are to be compared. The investigators would like to block for the effects of:</li>
+</ul>
+<ol style="list-style-type: lower-roman">
+<li>type of specimen holders 1, 2, 3, 4</li>
+<li>position on the machine <span class="math inline">\(P_1,P_2,P_3,P_4\)</span>.</li>
+<li>emory paper sheet <span class="math inline">\(\alpha,\beta,\gamma,\delta\)</span>.</li>
+<li>machine cycle <span class="math inline">\(C_1,C_2,C_3,C_4\)</span>.</li>
+</ol>
+<p>The design was replicated. The first replicate is shown in the table below.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center"><span class="math inline">\(P_1\)</span></th>
+<th align="center"><span class="math inline">\(P_2\)</span></th>
+<th align="center"><span class="math inline">\(P_3\)</span></th>
+<th align="center"><span class="math inline">\(P_4\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(C_1\)</span></td>
+<td align="center">A <span class="math inline">\(\alpha\)</span> 1</td>
+<td align="center">B <span class="math inline">\(\beta\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\gamma\)</span> 3</td>
+<td align="center">D <span class="math inline">\(\delta\)</span> 4</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="center">320</td>
+<td align="center">297</td>
+<td align="center">299</td>
+<td align="center">313</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_2\)</span></td>
+<td align="center">C <span class="math inline">\(\beta\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\alpha\)</span> 3</td>
+<td align="center">A <span class="math inline">\(\delta\)</span> 2</td>
+<td align="center">B <span class="math inline">\(\gamma\)</span> 1</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="center">266</td>
+<td align="center">227</td>
+<td align="center">260</td>
+<td align="center">240</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_3\)</span></td>
+<td align="center">D <span class="math inline">\(\gamma\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\delta\)</span> 1</td>
+<td align="center">B <span class="math inline">\(\alpha\)</span> 4</td>
+<td align="center">A <span class="math inline">\(\beta\)</span> 3</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="center">221</td>
+<td align="center">240</td>
+<td align="center">267</td>
+<td align="center">252</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_4\)</span></td>
+<td align="center">B <span class="math inline">\(\delta\)</span> 3</td>
+<td align="center">A <span class="math inline">\(\gamma\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\beta\)</span> 1</td>
+<td align="center">C <span class="math inline">\(\alpha\)</span> 2</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="center">301</td>
+<td align="center">238</td>
+<td align="center">243</td>
+<td align="center">290</td>
+</tr>
+</tbody>
+</table>
+<p>In order to estimate the experimental error a second replicate of the experiment was run. The results are shown in the table below.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center"><span class="math inline">\(P_1\)</span></th>
+<th align="center"><span class="math inline">\(P_2\)</span></th>
+<th align="center"><span class="math inline">\(P_3\)</span></th>
+<th align="center"><span class="math inline">\(P_4\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(C_5\)</span></td>
+<td align="center">A <span class="math inline">\(\alpha\)</span> 1</td>
+<td align="center">B <span class="math inline">\(\beta\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\gamma\)</span> 3</td>
+<td align="center">D <span class="math inline">\(\delta\)</span> 4</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="center">285</td>
+<td align="center">280</td>
+<td align="center">331</td>
+<td align="center">311</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_6\)</span></td>
+<td align="center">C <span class="math inline">\(\beta\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\alpha\)</span> 3</td>
+<td align="center">A <span class="math inline">\(\delta\)</span> 2</td>
+<td align="center">B <span class="math inline">\(\gamma\)</span> 1</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="center">268</td>
+<td align="center">233</td>
+<td align="center">291</td>
+<td align="center">280</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_7\)</span></td>
+<td align="center">D <span class="math inline">\(\gamma\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\delta\)</span> 1</td>
+<td align="center">B <span class="math inline">\(\alpha\)</span> 4</td>
+<td align="center">A <span class="math inline">\(\beta\)</span> 3</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="center">265</td>
+<td align="center">273</td>
+<td align="center">234</td>
+<td align="center">243</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_8\)</span></td>
+<td align="center">B <span class="math inline">\(\delta\)</span> 3</td>
+<td align="center">A <span class="math inline">\(\gamma\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\beta\)</span> 1</td>
+<td align="center">C <span class="math inline">\(\alpha\)</span> 2</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="center">306</td>
+<td align="center">271</td>
+<td align="center">270</td>
+<td align="center">272</td>
+</tr>
+</tbody>
+</table>
+<p>The R data frame looks like</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">cycle</th>
+<th align="right">position</th>
+<th align="left">treatment</th>
+<th align="right">holder</th>
+<th align="left">paper</th>
+<th align="right">y</th>
+<th align="right">rep</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">A</td>
+<td align="right">1</td>
+<td align="left">a</td>
+<td align="right">320</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="left">C</td>
+<td align="right">4</td>
+<td align="left">b</td>
+<td align="right">266</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="left">D</td>
+<td align="right">2</td>
+<td align="left">e</td>
+<td align="right">221</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="left">B</td>
+<td align="right">3</td>
+<td align="left">c</td>
+<td align="right">301</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">1</td>
+<td align="left">A</td>
+<td align="right">1</td>
+<td align="left">d</td>
+<td align="right">285</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="left">C</td>
+<td align="right">4</td>
+<td align="left">h</td>
+<td align="right">268</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">1</td>
+<td align="left">D</td>
+<td align="right">2</td>
+<td align="left">g</td>
+<td align="right">265</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="left">B</td>
+<td align="right">3</td>
+<td align="left">f</td>
+<td align="right">306</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="left">B</td>
+<td align="right">2</td>
+<td align="left">b</td>
+<td align="right">297</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="left">D</td>
+<td align="right">3</td>
+<td align="left">a</td>
+<td align="right">227</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="left">C</td>
+<td align="right">1</td>
+<td align="left">c</td>
+<td align="right">240</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="left">A</td>
+<td align="right">4</td>
+<td align="left">e</td>
+<td align="right">238</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="left">B</td>
+<td align="right">2</td>
+<td align="left">h</td>
+<td align="right">280</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="left">D</td>
+<td align="right">3</td>
+<td align="left">d</td>
+<td align="right">233</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">2</td>
+<td align="left">C</td>
+<td align="right">1</td>
+<td align="left">f</td>
+<td align="right">273</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">2</td>
+<td align="left">A</td>
+<td align="right">4</td>
+<td align="left">g</td>
+<td align="right">271</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="left">C</td>
+<td align="right">3</td>
+<td align="left">e</td>
+<td align="right">299</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="left">A</td>
+<td align="right">2</td>
+<td align="left">c</td>
+<td align="right">260</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="left">B</td>
+<td align="right">4</td>
+<td align="left">a</td>
+<td align="right">267</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="left">D</td>
+<td align="right">1</td>
+<td align="left">b</td>
+<td align="right">243</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="left">C</td>
+<td align="right">3</td>
+<td align="left">g</td>
+<td align="right">331</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">3</td>
+<td align="left">A</td>
+<td align="right">2</td>
+<td align="left">f</td>
+<td align="right">291</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">3</td>
+<td align="left">B</td>
+<td align="right">4</td>
+<td align="left">d</td>
+<td align="right">234</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">3</td>
+<td align="left">D</td>
+<td align="right">1</td>
+<td align="left">h</td>
+<td align="right">270</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="left">D</td>
+<td align="right">4</td>
+<td align="left">c</td>
+<td align="right">313</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="left">B</td>
+<td align="right">1</td>
+<td align="left">e</td>
+<td align="right">240</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="left">A</td>
+<td align="right">3</td>
+<td align="left">b</td>
+<td align="right">252</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="left">C</td>
+<td align="right">2</td>
+<td align="left">a</td>
+<td align="right">290</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="left">D</td>
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">311</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">4</td>
+<td align="left">B</td>
+<td align="right">1</td>
+<td align="left">g</td>
+<td align="right">280</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">4</td>
+<td align="left">A</td>
+<td align="right">3</td>
+<td align="left">h</td>
+<td align="right">243</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">4</td>
+<td align="left">C</td>
+<td align="right">2</td>
+<td align="left">d</td>
+<td align="right">272</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<p>The average weight loss for treatments, holders, positions, emery papers, cycles, and replicates are:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>treatment),mean) <span class="co"># treatment means</span></code></pre></div>
+<pre><code>      A       B       C       D 
+270.000 275.625 279.875 260.375 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>holder),mean) <span class="co"># holder means</span></code></pre></div>
+<pre><code>      1       2       3       4 
+268.875 272.000 274.000 271.000 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>position),mean) <span class="co"># position means</span></code></pre></div>
+<pre><code>      1       2       3       4 
+279.000 257.375 274.375 275.125 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>paper),mean) <span class="co"># paper means</span></code></pre></div>
+<pre><code>     a      b      c      d      e      f      g      h 
+276.00 264.50 278.50 256.00 249.50 295.25 286.75 265.25 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>cycle),mean) <span class="co"># cycle means</span></code></pre></div>
+<pre><code>     1      2      3      4      5      6      7      8 
+307.25 248.25 245.00 268.00 301.75 268.00 253.75 279.75 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>rep),mean) <span class="co"># replicate means</span></code></pre></div>
+<pre><code>       1        2 
+267.1250 275.8125 </code></pre>
+<p>A linear model can be fit so that the ANOVA table and parameter treatment effects can be calculated.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wear.hypsq &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>treatment<span class="op">+</span><span class="kw">as.factor</span>(rep)<span class="op">+</span><span class="kw">as.factor</span>(position)<span class="op">+</span><span class="kw">as.factor</span>(cycle)<span class="op">+</span><span class="kw">as.factor</span>(holder)<span class="op">+</span><span class="kw">as.factor</span>(paper),<span class="dt">data =</span> tab0412)
+<span class="kw">anova</span>(wear.hypsq)</code></pre></div>
+<pre><code>Analysis of Variance Table
+
+Response: y
+                    Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+treatment            3  1705.3  568.45  5.3908  0.021245 *  
+as.factor(rep)       1   603.8  603.78  5.7259  0.040366 *  
+as.factor(position)  3  2217.3  739.11  7.0093  0.009925 ** 
+as.factor(cycle)     6 14770.4 2461.74 23.3455 5.273e-05 ***
+as.factor(holder)    3   109.1   36.36  0.3449  0.793790    
+as.factor(paper)     6  6108.9 1018.16  9.6555  0.001698 ** 
+Residuals            9   949.0  105.45                      
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="balanced-incomplete-block-designs" class="section level2">
+<h2><span class="header-section-number">8.9</span> Balanced incomplete block designs</h2>
+<p>Suppose that instead of four samples to be included on each 1000 revolution cycle only three could be included, but the experimenter still wanted to compare four treatments. The size of the block is now 3 - too small to accommodate all treatments simultaneously. A balanced incomplete block design has the property that every pair of treatments occurs together in a block the same number of times.</p>
+<p>A balanced incomplete block design of <span class="math inline">\(t = 4\)</span> treatments in <span class="math inline">\(b = 4\)</span> blocks of size <span class="math inline">\(k = 3\)</span>.</p>
+<p>A balanced incomplete block design of four samples on each 1000 revolution cycle could be:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Cycle block</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>A</td>
+<td>B</td>
+<td>D</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>A</td>
+<td>C</td>
+<td>D</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+</tr>
+</tbody>
+</table>
+<p>This is the same table but show which treatments are missing from the blocks.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Cycle block</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>x</td>
+<td>x</td>
+<td></td>
+<td>x</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>x</td>
+<td></td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td></td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="questions-5" class="section level2">
+<h2><span class="header-section-number">8.10</span> Questions</h2>
+<ol style="list-style-type: decimal">
+<li><p>When is it appropriate to use a randomized block design?</p></li>
+<li><p>The following data are the weights (in kg) of six people measured on two different scales. The investigator was interested to see if the two scales are different.</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">260716</span>)
+scale1 &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">6</span>,<span class="dv">70</span>,<span class="dv">10</span>))
+scale2 &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">6</span>,<span class="dv">71</span>,<span class="dv">11</span>))
+x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(scale1,scale2),<span class="dt">nrow =</span> <span class="dv">2</span>,<span class="dt">ncol =</span> <span class="dv">6</span>)
+<span class="kw">colnames</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;4&quot;</span>,<span class="st">&quot;5&quot;</span>,<span class="st">&quot;6&quot;</span>)
+<span class="kw">row.names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Scale I&quot;</span>,<span class="st">&quot;Scale II&quot;</span>)
+knitr<span class="op">::</span><span class="kw">kable</span>(x)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4</th>
+<th align="right">5</th>
+<th align="right">6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Scale I</td>
+<td align="right">46</td>
+<td align="right">64</td>
+<td align="right">80</td>
+<td align="right">71</td>
+<td align="right">99</td>
+<td align="right">70</td>
+</tr>
+<tr class="even">
+<td>Scale II</td>
+<td align="right">78</td>
+<td align="right">66</td>
+<td align="right">70</td>
+<td align="right">64</td>
+<td align="right">46</td>
+<td align="right">70</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li>What is the name of this design? Explain.</li>
+<li>What is blocking factor used in this design?</li>
+<li>Is there any evidence at the 5% level that the two scales are different?</li>
+</ol>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-bhh2005">
+<p>Box, George EP, J Stuart Hunter, and William Gordon Hunter. 2005. <em>Statistics for Experimenters: Design, Innovation, and Discovery</em>. Vol. 2. Wiley-Interscience New York.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="completely-randomized-designs-comparing-more-than-two-treatments.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="factorial-designs-at-two-levels-2k-designs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

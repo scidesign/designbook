@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>12 Design of Observational Studies | Design of Experiments and Observational Studies</title>
+  <meta name="description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="12 Design of Observational Studies | Design of Experiments and Observational Studies" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="github-repo" content="scidesign/designbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="12 Design of Observational Studies | Design of Experiments and Observational Studies" />
+  
+  <meta name="twitter:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  
+
+<meta name="author" content="Nathan Taback" />
+
+
+<meta name="date" content="2019-07-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="split-plot-designs.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-design-scientific-studies"><i class="fa fa-check"></i><b>2.1</b> Why Design Scientific Studies?</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#big-data-and-designing-scientific-studies"><i class="fa fa-check"></i><b>2.2</b> Big Data and Designing Scientific Studies</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#what-is-big-data-and-why-does-it-matter"><i class="fa fa-check"></i><b>2.2.1</b> What is Big data and why does it matter?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction.html"><a href="introduction.html#is-statistical-sampling-and-randomization-still-relevant-in-the-era-of-big-data"><i class="fa fa-check"></i><b>2.2.2</b> Is statistical sampling and randomization still relevant in the era of Big Data?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html"><i class="fa fa-check"></i><b>3</b> Review of Mathematical Statistics</a><ul>
+<li class="chapter" data-level="3.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#data"><i class="fa fa-check"></i><b>3.1</b> Data</a></li>
+<li class="chapter" data-level="3.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#distributions"><i class="fa fa-check"></i><b>3.2</b> Distributions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Continuous Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#randomness"><i class="fa fa-check"></i><b>3.3</b> Randomness</a></li>
+<li class="chapter" data-level="3.4" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#parameters-and-statistics"><i class="fa fa-check"></i><b>3.4</b> Parameters and Statistics</a></li>
+<li class="chapter" data-level="3.5" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#residuals-and-degress-of-freedom"><i class="fa fa-check"></i><b>3.5</b> Residuals and Degress of Freedom</a></li>
+<li class="chapter" data-level="3.6" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#the-normal-distribution"><i class="fa fa-check"></i><b>3.6</b> The Normal Distribution</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises"><i class="fa fa-check"></i><b>3.6.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
+<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
+<li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#questions"><i class="fa fa-check"></i><b>3.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html"><i class="fa fa-check"></i><b>4</b> Completely Randomized Designs: Comparing Two Treatments</a><ul>
+<li class="chapter" data-level="4.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#comparing-two-treatments"><i class="fa fa-check"></i><b>4.1</b> Comparing Two Treatments</a></li>
+<li class="chapter" data-level="4.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#treatment-assignment-mechanism-and-propensity-score"><i class="fa fa-check"></i><b>4.2</b> Treatment Assignment Mechanism and Propensity Score</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#propensity-score"><i class="fa fa-check"></i><b>4.2.1</b> Propensity Score</a></li>
+<li class="chapter" data-level="4.2.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#assignment-mechanism"><i class="fa fa-check"></i><b>4.2.2</b> Assignment Mechanism</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#completely-randomized-experiment"><i class="fa fa-check"></i><b>4.3</b> Completely Randomized Experiment</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#example"><i class="fa fa-check"></i><b>4.3.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-distribution"><i class="fa fa-check"></i><b>4.4</b> The Randomization Distribution</a></li>
+<li class="chapter" data-level="4.5" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-p-value"><i class="fa fa-check"></i><b>4.5</b> The Randomization p-value</a></li>
+<li class="chapter" data-level="4.6" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#two-sided-randomization-p-value"><i class="fa fa-check"></i><b>4.6</b> Two-Sided Randomization P value</a></li>
+<li class="chapter" data-level="4.7" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#other-test-statistics"><i class="fa fa-check"></i><b>4.7</b> Other Test Statistics</a></li>
+<li class="chapter" data-level="4.8" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#calculating-the-randomization-p-value-using-monte-carlo-sampling"><i class="fa fa-check"></i><b>4.8</b> Calculating the Randomization P-value using Monte Carlo Sampling</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#does-caffeine-have-an-effect-on-reaction-time"><i class="fa fa-check"></i><b>4.8.1</b> Does Caffeine Have an Effect on Reaction Time?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#properties-of-the-randomization-test"><i class="fa fa-check"></i><b>4.9</b> Properties of the Randomization Test</a></li>
+<li class="chapter" data-level="4.10" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-two-sample-t-test"><i class="fa fa-check"></i><b>4.10</b> The two-sample t-test</a></li>
+<li class="chapter" data-level="4.11" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#randomized-paired-comparison"><i class="fa fa-check"></i><b>4.11</b> Randomized paired comparison</a></li>
+<li class="chapter" data-level="4.12" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-test-for-a-randomized-paired-design"><i class="fa fa-check"></i><b>4.12</b> The Randomization Test for a Randomized Paired Design</a></li>
+<li class="chapter" data-level="4.13" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#paired-t-test"><i class="fa fa-check"></i><b>4.13</b> Paired t-test</a></li>
+<li class="chapter" data-level="4.14" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#questions-1"><i class="fa fa-check"></i><b>4.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html"><i class="fa fa-check"></i><b>5</b> How Many Experimental Units are Required to Compare Two Treatments?</a><ul>
+<li class="chapter" data-level="5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#clinical-trials"><i class="fa fa-check"></i><b>5.1</b> Clinical Trials</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#phases-of-clinical-trials"><i class="fa fa-check"></i><b>5.1.1</b> Phases of clinical trials</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
+<li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.4.1</b> Calculating the Power of the One Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-two-sample-t-test"><i class="fa fa-check"></i><b>5.5</b> Power of two sample t test</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-two-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.5.1</b> Calculating the Power of the Two Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#effect-size"><i class="fa fa-check"></i><b>5.6</b> Effect size</a></li>
+<li class="chapter" data-level="5.7" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-equal-allocation"><i class="fa fa-check"></i><b>5.7</b> Sample size - known variance and equal allocation</a></li>
+<li class="chapter" data-level="5.8" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-unequal-allocation"><i class="fa fa-check"></i><b>5.8</b> Sample size - known variance and unequal allocation</a></li>
+<li class="chapter" data-level="5.9" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#comparing-proportions-for-binary-outcomes"><i class="fa fa-check"></i><b>5.9</b> Comparing Proportions for Binary Outcomes</a></li>
+<li class="chapter" data-level="5.10" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-power-by-simulation"><i class="fa fa-check"></i><b>5.10</b> Calculating Power by simulation</a></li>
+<li class="chapter" data-level="5.11" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#questions-2"><i class="fa fa-check"></i><b>5.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.1</b> The Fundemental Problem of Causal Inference</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="causal-inference.html"><a href="causal-inference.html#example-of-the-fundemental-problem"><i class="fa fa-check"></i><b>6.1.1</b> Example of the fundemental problem</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#randomized-experiments-as-a-solution-to-the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.2</b> Randomized experiments as a solution to the fundemental problem of causal inference</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#average-causal-effects-and-randomized-experiments"><i class="fa fa-check"></i><b>6.3</b> Average causal effects and randomized experiments</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="causal-inference.html"><a href="causal-inference.html#stable-unit-treatment-value-assignment"><i class="fa fa-check"></i><b>6.3.1</b> Stable Unit Treatment Value Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#ignorable-assignment-mechanisims"><i class="fa fa-check"></i><b>6.4</b> Ignorable Assignment Mechanisims</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="causal-inference.html"><a href="causal-inference.html#the-perfect-doctor-example"><i class="fa fa-check"></i><b>6.4.1</b> The Perfect Doctor Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#questions-3"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html"><i class="fa fa-check"></i><b>7</b> Completely Randomized Designs: Comparing More Than Two Treatments</a><ul>
+<li class="chapter" data-level="7.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova---comparing-more-than-two-groups"><i class="fa fa-check"></i><b>7.1</b> ANOVA - Comparing more than two groups</a></li>
+<li class="chapter" data-level="7.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#analysis-of-variance-anova-table"><i class="fa fa-check"></i><b>7.2</b> Analysis of Variance (ANOVA) table</a></li>
+<li class="chapter" data-level="7.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-anova-identity"><i class="fa fa-check"></i><b>7.3</b> The ANOVA identity</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---blood-coagulation-study"><i class="fa fa-check"></i><b>7.3.1</b> Example - Blood coagulation study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#general-anova"><i class="fa fa-check"></i><b>7.4</b> General ANOVA</a></li>
+<li class="chapter" data-level="7.5" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova-assumptions"><i class="fa fa-check"></i><b>7.5</b> ANOVA Assumptions</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---checking-the-assumptions-in-the-blood-coagualtion-study"><i class="fa fa-check"></i><b>7.5.1</b> Example - checking the assumptions in the blood coagualtion study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#coding-qualitative-predictors-in-regression-models"><i class="fa fa-check"></i><b>7.6</b> Coding Qualitative Predictors in Regression Models</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#dummy-coding"><i class="fa fa-check"></i><b>7.6.1</b> Dummy Coding</a></li>
+<li class="chapter" data-level="7.6.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#deviation-coding"><i class="fa fa-check"></i><b>7.6.2</b> Deviation Coding</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#estimating-treatment-effects-using-least-squares"><i class="fa fa-check"></i><b>7.7</b> Estimating Treatment Effects using Least Squares</a></li>
+<li class="chapter" data-level="7.8" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#using-the-lm-function-in-r-to-estimate-treatment-effects"><i class="fa fa-check"></i><b>7.8</b> Using the <code>lm()</code> Function in R to Estimate Treatment Effects</a></li>
+<li class="chapter" data-level="7.9" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#multiple-comparisons"><i class="fa fa-check"></i><b>7.9</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-bonferroni-method"><i class="fa fa-check"></i><b>7.9.1</b> The Bonferroni Method</a></li>
+<li class="chapter" data-level="7.9.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-tukey-method"><i class="fa fa-check"></i><b>7.9.2</b> The Tukey Method</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#sample-size-for-anova---designing-a-study-to-compare-more-than-two-treatments"><i class="fa fa-check"></i><b>7.10</b> Sample size for ANOVA - Designing a study to compare more than two treatments</a><ul>
+<li class="chapter" data-level="7.10.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#direct-calculation-of-power-using-r"><i class="fa fa-check"></i><b>7.10.1</b> Direct calculation of Power using R</a></li>
+<li class="chapter" data-level="7.10.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-and-sample-size-using-the-pwr-library-in-r"><i class="fa fa-check"></i><b>7.10.2</b> Calculating Power and Sample Size using the <code>pwr</code> library in R</a></li>
+<li class="chapter" data-level="7.10.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-using-using-simulation"><i class="fa fa-check"></i><b>7.10.3</b> Calculating Power using using Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#questions-4"><i class="fa fa-check"></i><b>7.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html"><i class="fa fa-check"></i><b>8</b> Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#anova-table-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.1</b> ANOVA Table for Randomized Block Designs</a></li>
+<li class="chapter" data-level="8.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-anova-identity-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.2</b> The ANOVA identity for Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#degrees-of-freedom"><i class="fa fa-check"></i><b>8.2.1</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="8.2.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#penicillin-manufacturing-example"><i class="fa fa-check"></i><b>8.2.2</b> Penicillin Manufacturing Example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-linear-model-for-randomized-block-design"><i class="fa fa-check"></i><b>8.3</b> The Linear Model for Randomized Block Design</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#checking-statistical-assumptions"><i class="fa fa-check"></i><b>8.3.1</b> Checking statistical assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#application-of-blocking-to-achieve-balanced-randomization-permuted-block-randomization"><i class="fa fa-check"></i><b>8.4</b> Application of Blocking to Achieve Balanced Randomization: Permuted Block Randomization</a></li>
+<li class="chapter" data-level="8.5" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#latin-square-designs"><i class="fa fa-check"></i><b>8.5</b> Latin square designs</a></li>
+<li class="chapter" data-level="8.6" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#general-latin-square-designs"><i class="fa fa-check"></i><b>8.6</b> General Latin Square Designs</a></li>
+<li class="chapter" data-level="8.7" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.7</b> Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#hyper-graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.8</b> Hyper-Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.9" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#balanced-incomplete-block-designs"><i class="fa fa-check"></i><b>8.9</b> Balanced incomplete block designs</a></li>
+<li class="chapter" data-level="8.10" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#questions-5"><i class="fa fa-check"></i><b>8.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html"><i class="fa fa-check"></i><b>9</b> Factorial Designs at Two Levels - <span class="math inline">\(2^k\)</span> Designs</a><ul>
+<li class="chapter" data-level="9.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#difference-between-anova-and-factorial-designs"><i class="fa fa-check"></i><b>9.1</b> Difference between ANOVA and Factorial Designs</a></li>
+<li class="chapter" data-level="9.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#performing-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.2</b> Performing a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#cube-plots"><i class="fa fa-check"></i><b>9.3</b> Cube plots</a></li>
+<li class="chapter" data-level="9.4" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#factorial-effects"><i class="fa fa-check"></i><b>9.4</b> Factorial effects</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#main-effects"><i class="fa fa-check"></i><b>9.4.1</b> Main effects</a></li>
+<li class="chapter" data-level="9.4.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-effects"><i class="fa fa-check"></i><b>9.4.2</b> Interaction effects</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#replication-in-factorial-designs"><i class="fa fa-check"></i><b>9.5</b> Replication in factorial designs</a></li>
+<li class="chapter" data-level="9.6" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#estimate-of-the-error-variance-and-standard-error-of-effects-from-replicated-runs"><i class="fa fa-check"></i><b>9.6</b> Estimate of the error variance and standard error of effects from replicated runs</a></li>
+<li class="chapter" data-level="9.7" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interpretation-of-results"><i class="fa fa-check"></i><b>9.7</b> Interpretation of results</a></li>
+<li class="chapter" data-level="9.8" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-plots"><i class="fa fa-check"></i><b>9.8</b> Interaction plots</a></li>
+<li class="chapter" data-level="9.9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#linear-model-for-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.9</b> Linear Model for a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.10" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#advantages-of-factorial-designs-over-one-factor-at-a-time-designs"><i class="fa fa-check"></i><b>9.10</b> Advantages of factorial designs over one-factor-at-a-time designs</a></li>
+<li class="chapter" data-level="9.11" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#normal-plots-in-unreplicated-factorial-designs"><i class="fa fa-check"></i><b>9.11</b> Normal Plots in Unreplicated Factorial Designs</a><ul>
+<li class="chapter" data-level="9.11.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#review-of-normal-quantile-plots"><i class="fa fa-check"></i><b>9.11.1</b> Review of Normal Quantile Plots</a></li>
+<li class="chapter" data-level="9.11.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#example---24-design-for-studying-a-chemical-reaction"><i class="fa fa-check"></i><b>9.11.2</b> Example - <span class="math inline">\(2^4\)</span> design for studying a chemical reaction</a></li>
+</ul></li>
+<li class="chapter" data-level="9.12" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#half-normal-plots"><i class="fa fa-check"></i><b>9.12</b> Half-Normal Plots</a></li>
+<li class="chapter" data-level="9.13" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#lenths-method-testing-significance-for-experiments-without-variance-estimates"><i class="fa fa-check"></i><b>9.13</b> Lenth’s method: testing significance for experiments without variance estimates</a></li>
+<li class="chapter" data-level="9.14" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#blocking-factorial-designs"><i class="fa fa-check"></i><b>9.14</b> Blocking Factorial Designs</a><ul>
+<li class="chapter" data-level="9.14.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#effect-hierarchy-principle"><i class="fa fa-check"></i><b>9.14.1</b> Effect hierarchy principle</a></li>
+<li class="chapter" data-level="9.14.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generation-of-orthogonal-blocks"><i class="fa fa-check"></i><b>9.14.2</b> Generation of Orthogonal Blocks</a></li>
+<li class="chapter" data-level="9.14.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#an-example-of-how-not-to-block"><i class="fa fa-check"></i><b>9.14.3</b> An example of how not to block</a></li>
+</ul></li>
+<li class="chapter" data-level="9.15" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generators-and-defining-relations"><i class="fa fa-check"></i><b>9.15</b> Generators and Defining Relations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html"><i class="fa fa-check"></i><b>10</b> Fractional factorial designs</a><ul>
+<li class="chapter" data-level="10.1" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---effect-of-five-factors-on-six-properties-of-film-in-eight-runs"><i class="fa fa-check"></i><b>10.1</b> Example - Effect of five factors on six properties of film in eight runs</a></li>
+<li class="chapter" data-level="10.2" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#effect-aliasing-and-design-resolution"><i class="fa fa-check"></i><b>10.2</b> Effect Aliasing and Design Resolution</a></li>
+<li class="chapter" data-level="10.3" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---leaf-spring-experiment"><i class="fa fa-check"></i><b>10.3</b> Example - Leaf Spring Experiment</a></li>
+<li class="chapter" data-level="10.4" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---baking-cookies"><i class="fa fa-check"></i><b>10.4</b> Example - Baking Cookies</a></li>
+<li class="chapter" data-level="10.5" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#questions-6"><i class="fa fa-check"></i><b>10.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="split-plot-designs.html"><a href="split-plot-designs.html"><i class="fa fa-check"></i><b>11</b> Split-Plot Designs</a><ul>
+<li class="chapter" data-level="11.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#anova-table-for-split-plot-experiment"><i class="fa fa-check"></i><b>11.1</b> ANOVA table for split plot experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-not-to-do-it"><i class="fa fa-check"></i><b>11.2</b> Split plot ANOVA - How not to do it</a></li>
+<li class="chapter" data-level="11.3" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-to-do-it"><i class="fa fa-check"></i><b>11.3</b> Split plot ANOVA - How to do it</a></li>
+<li class="chapter" data-level="11.4" data-path="split-plot-designs.html"><a href="split-plot-designs.html#so-what-is-a-split-plot"><i class="fa fa-check"></i><b>11.4</b> So, what is a split plot?</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#randomizing-a-split-plot-experiment"><i class="fa fa-check"></i><b>11.4.1</b> Randomizing a Split Plot experiment</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="split-plot-designs.html"><a href="split-plot-designs.html#questions-7"><i class="fa fa-check"></i><b>11.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html"><i class="fa fa-check"></i><b>12</b> Design of Observational Studies</a><ul>
+<li class="chapter" data-level="12.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#what-is-an-observational-study"><i class="fa fa-check"></i><b>12.1</b> What is an observational study?</a></li>
+<li class="chapter" data-level="12.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#designing-and-observational-study"><i class="fa fa-check"></i><b>12.2</b> Designing and Observational Study</a></li>
+<li class="chapter" data-level="12.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example---epidemiologic-follow-up-study"><i class="fa fa-check"></i><b>12.3</b> Example - Epidemiologic Follow-up Study</a></li>
+<li class="chapter" data-level="12.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-1"><i class="fa fa-check"></i><b>12.4</b> Propensity Score</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-examples"><i class="fa fa-check"></i><b>12.4.1</b> Propensity Score Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#estimating-the-propensity-score-in-an-observational-study"><i class="fa fa-check"></i><b>12.5</b> Estimating the propensity score in an observational study</a></li>
+<li class="chapter" data-level="12.6" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#the-balancing-property-of-the-propensity-score"><i class="fa fa-check"></i><b>12.6</b> The balancing property of the propensity score</a></li>
+<li class="chapter" data-level="12.7" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#imbalance-versus-overlap"><i class="fa fa-check"></i><b>12.7</b> Imbalance versus Overlap</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example-from-the-nhefs"><i class="fa fa-check"></i><b>12.7.1</b> Example from the NHEFS</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-and-ignorable-treatment-assignment"><i class="fa fa-check"></i><b>12.8</b> Propensity Score and Ignorable Treatment Assignment</a></li>
+<li class="chapter" data-level="12.9" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-methods-to-reduce-bias-in-observational-studies"><i class="fa fa-check"></i><b>12.9</b> Propensity Score Methods to Reduce Bias in Observational Studies</a><ul>
+<li class="chapter" data-level="12.9.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-matching-matching"><i class="fa fa-check"></i><b>12.9.1</b> Propensity Score Matching Matching</a></li>
+<li class="chapter" data-level="12.9.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-stratification"><i class="fa fa-check"></i><b>12.9.2</b> Propensity score stratification</a></li>
+<li class="chapter" data-level="12.9.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#multivariate-adjustment-using-the-propensity-score"><i class="fa fa-check"></i><b>12.9.3</b> Multivariate adjustment using the propensity score</a></li>
+<li class="chapter" data-level="12.9.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#comparing-the-three-methods"><i class="fa fa-check"></i><b>12.9.4</b> Comparing the three methods</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#questions-8"><i class="fa fa-check"></i><b>12.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Design of Experiments and Observational Studies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="design-of-observational-studies" class="section level1">
+<h1><span class="header-section-number">12</span> Design of Observational Studies</h1>
+<div id="what-is-an-observational-study" class="section level2">
+<h2><span class="header-section-number">12.1</span> What is an observational study?</h2>
+<p>According to <span class="citation">Rosenbaum (<a href="#ref-rosenbaum2010design">2010</a>)</span> (pg. 6)</p>
+<blockquote>
+<p>“An observational study is an empiric investigation of effects caused by treatments when randomized experimentation is unethical or infeasible. The quality and strength of evidence provided by an observational study is determined largely by its design.”</p>
+</blockquote>
+<p>A technical definition of an observational study is given by 1</p>
+<blockquote>
+<p>The process that determines which <em>experimental units</em> receive which <em>treatments</em> is called the <em>assignment mechanisim</em>. When the <em>assignment mechanism</em> is unknown then the design is called an <em>observational study</em>.</p>
+</blockquote>
+<p>In randomized experiments (pg. 20, 1):</p>
+<blockquote>
+<p>“… the assignment mechanism is under the control of the experimenter, and the probability of any assignment of treatments across the units in the experiment is entirely knowable before the experiment begins.”</p>
+</blockquote>
+<p>Randomized experiments are currently viewed as the most credible basis for determining cause and effect relationships. <a href="http://www.hc-sc.gc.ca/index-eng.php">Health Canada</a>, the <a href="http://www.fda.gov">U.S. Food and Drug Administration</a>, <a href="http://www.ema.europa.eu/ema/">European Medicines Agency</a>, and other regulatory agencies all rely on randomized experiments in their approval processes for pharmaceutical treatments.</p>
+</div>
+<div id="designing-and-observational-study" class="section level2">
+<h2><span class="header-section-number">12.2</span> Designing and Observational Study</h2>
+<p>Good observational studies are designed. According to <span class="citation">Rubin (<a href="#ref-rubin2007design">2007</a>)</span></p>
+<blockquote>
+<p>An observational study should be conceptualized as a broken randomized experiment … in an observational study we view the observed data as having arisen from a hypothetical complex randomized experiment with a lost rule for the propensity scores, whose values we will try to reconstruct.</p>
+</blockquote>
+<p><span class="citation">Rubin (<a href="#ref-rubin2007design">2007</a>)</span> also discusses the importance of a design phase of observational studies before seeing outcome data.</p>
+<blockquote>
+<p>Of critical importance, in randomized experiments the design phase takes place prior to seeing any outcome data. And this critical feature of randomized experiments can be duplicated in observational studies, for example, using propensity score methods, and we should objectively approximate, or attempt to replicate, a randomized experiment when designing an observational study. Propensity score methods are the observational study equivalent of complete (i.e., unrestricted) randomization in a randomized experiment. That is, these methods are intended to eliminate bias, but are not intended to increase precision. Of course, propensity score methods can only perfectly eliminate bias when the assignment mechanism is truly unconfounded, given the observed covariates, X, and when the propensity scores are effectively known, whereas randomization eliminates bias due to all covariates, both observed and unobserved. … no outcome data from the study are in sight when objectively designing either a randomized experiment or an observational study.</p>
+</blockquote>
+<ul>
+<li><p>The main part of the design stage is to assess the degree of balance in the covariate distributions between treated and control units, which involves comparing the distributions of covariates in the treated and control samples.</p></li>
+<li><p>The difference in average covariate values by treatment status, scaled by their sample standard deviation provides a scale-free way to assess the differences.</p></li>
+<li><p>When treatment groups have important covariates that are more than one-quarter or one-half of a standard deviation apart, simple regression methods are unreliable for removing biases associated with differences in covariates.</p></li>
+</ul>
+<ol class="example" style="list-style-type: decimal">
+<li></li>
+</ol>
+</div>
+<div id="example---epidemiologic-follow-up-study" class="section level2">
+<h2><span class="header-section-number">12.3</span> Example - Epidemiologic Follow-up Study</h2>
+<p>The NHEFS survey was designed to investigate the relationships between clinical, nutritional, and behavioural factors assessed in the first National Health and Nutrition Examination Survey NHANES I and subsequent morbidity, mortality, and hospital utilization, as well as changes in risk factors, functional limitation, and institutionalization. For more information see the survey <a href="http://www.cdc.gov/nchs/nhanes/nhefs/nhefs.htm">website</a>.</p>
+<p>Individuals were classified as treated if they reported, being smokers at baseline in 1971-75, and having quit smoking in the 1982 survey. The latter implies that the individuals included in our study did not die and were not otherwise lost to follow-up between baseline and 1982 (otherwise they would not have been able to respond to the survey). That is, we selected individuals into our study conditional on an event (responding to the 1982 survey) that occurred after the start of smoking cessation. If smoking cessation affects the probability of selection into the study, we might have selection bias <a href="https://cdn1.sph.harvard.edu/wp-content/uploads/sites/1268/2015/11/hernanrobins_v2.17.12.pdf">Hernan, Robins,2014</a> (<span class="citation">Hernan MA and JM (<a href="#ref-hernanrobins2016">2016</a>)</span>).</p>
+<p>The outcome in this study is weight change from 1981 to 1971 <code>wt82_71</code>. The covariates in this study are shown in the table below for each treatment group.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Cessation (A = 1)</th>
+<th align="right">No cessation (A = 0)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>age, years</td>
+<td align="right">46.2</td>
+<td align="right">42.8</td>
+</tr>
+<tr class="even">
+<td>men, %</td>
+<td align="right">54.6</td>
+<td align="right">46.6</td>
+</tr>
+<tr class="odd">
+<td>white, %</td>
+<td align="right">91.1</td>
+<td align="right">85.4</td>
+</tr>
+<tr class="even">
+<td>university, %</td>
+<td align="right">15.4</td>
+<td align="right">9.9</td>
+</tr>
+<tr class="odd">
+<td>weight, kg</td>
+<td align="right">72.4</td>
+<td align="right">70.3</td>
+</tr>
+<tr class="even">
+<td>Cigarettes/day</td>
+<td align="right">18.6</td>
+<td align="right">21.2</td>
+</tr>
+<tr class="odd">
+<td>year smoking</td>
+<td align="right">26.0</td>
+<td align="right">24.1</td>
+</tr>
+<tr class="even">
+<td>little/no exercise, %</td>
+<td align="right">40.7</td>
+<td align="right">37.9</td>
+</tr>
+<tr class="odd">
+<td>inactive daily life, %</td>
+<td align="right">11.2</td>
+<td align="right">8.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="propensity-score-1" class="section level2">
+<h2><span class="header-section-number">12.4</span> Propensity Score</h2>
+<p>Covariates are pre-treatment variables and take the same value for each unit no matter which treatment is applied. For example, pre-treatment blood pressure or pre-test reading level are not influenced by a treatment that would alter blood pressure or reading level.</p>
+<p>The propensity score is <span class="math display">\[e({\bf x})=P\left(T = 1|{\bf x}\right),\]</span> where <span class="math inline">\({\bf x}\)</span> are observed covariates.</p>
+<p>The <span class="math inline">\(i^{th}\)</span> propensity score is the probability that a unit receives treatment given all the information, recorded as covariates, that is observed before the treatment.</p>
+<p>In experiments the propensity scores are known. In observational studies they can be estimated using models such as logistic regression where the outcome is the treatment indicator and the predictors are all the confounding covariates.</p>
+<div id="propensity-score-examples" class="section level3">
+<h3><span class="header-section-number">12.4.1</span> Propensity Score Examples</h3>
+<ol style="list-style-type: decimal">
+<li>Consider a completely randomized design with <span class="math inline">\(n = 2\)</span> units and one unit is assigned treatment. The treatment assignment for the <span class="math inline">\(i^{th}\)</span> subject is:</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(T_1\)</span></th>
+<th><span class="math inline">\(T_2\)</span></th>
+<th><span class="math inline">\(P(T_1)\)</span></th>
+<th><span class="math inline">\(P(T_2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0.5</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0.5</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Each unit’s propensity score is 0.5.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Consider a completely randomized design with <span class="math inline">\(n = 8\)</span> units and three units are assigned treatment. Each unit has a 3/8 chance of receiving treatment (and 5/8 of receiving control). Thus, each person’s propensity score is 3/8. The probability of an particular treatment assignment is <span class="math inline">\(\frac{1}{\binom {8} {3}}=\frac{1}{56}\)</span>.</li>
+</ol>
+<p>Remember that the overall treatment assignment is the collection of all 8 units’ treatment assignments. These can be generated using the R code below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(combinat)
+i &lt;-<span class="st"> </span><span class="kw">combn</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>,<span class="dv">3</span>)
+<span class="kw">colnames</span>(i) &lt;-<span class="st"> </span>(nth &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">56</span>, 
+                            <span class="kw">c</span>(<span class="st">&quot;st Trt Assig&quot;</span>, <span class="st">&quot;nd Trt Assig&quot;</span>, <span class="st">&quot;rd Trt Assig&quot;</span>, <span class="kw">rep</span>(<span class="st">&quot;th Trt Assig&quot;</span>, <span class="dv">53</span>))))
+i</code></pre></div>
+<pre><code>     1st Trt Assig 2nd Trt Assig 3rd Trt Assig 4th Trt Assig 5th Trt Assig
+[1,]             1             1             1             1             1
+[2,]             2             2             2             2             2
+[3,]             3             4             5             6             7
+     6th Trt Assig 7th Trt Assig 8th Trt Assig 9th Trt Assig
+[1,]             1             1             1             1
+[2,]             2             3             3             3
+[3,]             8             4             5             6
+     10th Trt Assig 11th Trt Assig 12th Trt Assig 13th Trt Assig
+[1,]              1              1              1              1
+[2,]              3              3              4              4
+[3,]              7              8              5              6
+     14th Trt Assig 15th Trt Assig 16th Trt Assig 17th Trt Assig
+[1,]              1              1              1              1
+[2,]              4              4              5              5
+[3,]              7              8              6              7
+     18th Trt Assig 19th Trt Assig 20th Trt Assig 21th Trt Assig
+[1,]              1              1              1              1
+[2,]              5              6              6              7
+[3,]              8              7              8              8
+     22th Trt Assig 23th Trt Assig 24th Trt Assig 25th Trt Assig
+[1,]              2              2              2              2
+[2,]              3              3              3              3
+[3,]              4              5              6              7
+     26th Trt Assig 27th Trt Assig 28th Trt Assig 29th Trt Assig
+[1,]              2              2              2              2
+[2,]              3              4              4              4
+[3,]              8              5              6              7
+     30th Trt Assig 31th Trt Assig 32th Trt Assig 33th Trt Assig
+[1,]              2              2              2              2
+[2,]              4              5              5              5
+[3,]              8              6              7              8
+     34th Trt Assig 35th Trt Assig 36th Trt Assig 37th Trt Assig
+[1,]              2              2              2              3
+[2,]              6              6              7              4
+[3,]              7              8              8              5
+     38th Trt Assig 39th Trt Assig 40th Trt Assig 41th Trt Assig
+[1,]              3              3              3              3
+[2,]              4              4              4              5
+[3,]              6              7              8              6
+     42th Trt Assig 43th Trt Assig 44th Trt Assig 45th Trt Assig
+[1,]              3              3              3              3
+[2,]              5              5              6              6
+[3,]              7              8              7              8
+     46th Trt Assig 47th Trt Assig 48th Trt Assig 49th Trt Assig
+[1,]              3              4              4              4
+[2,]              7              5              5              5
+[3,]              8              6              7              8
+     50th Trt Assig 51th Trt Assig 52th Trt Assig 53th Trt Assig
+[1,]              4              4              4              5
+[2,]              6              6              7              6
+[3,]              7              8              8              7
+     54th Trt Assig 55th Trt Assig 56th Trt Assig
+[1,]              5              5              6
+[2,]              6              7              7
+[3,]              8              8              8</code></pre>
+<p>Each column corresponds to the units that will be treated; so the units that will not be treated are not included in the column. For example in the first treatment assignment units 1, 2, 3 will be treated and units 4, 5, 6, 7, 8 will be given control. In the second treatment assignment units 1, 2, 4 will be treated and units 3, 5, 6, 7, 8 will be given control.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Consider a completely randomized design with <span class="math inline">\(n\)</span> units and <span class="math inline">\(m\)</span> units are assigned treatment. Each unit has probability <span class="math inline">\(\frac{m}{n}\)</span> of receiving treatment (and <span class="math inline">\(1-\frac{m}{n}\)</span> of receiving control). Thus, each person’s propensity score is <span class="math inline">\(m/n\)</span>. The probability of an particular treatment assignment is <span class="math inline">\(\frac{1}{\binom {n} {m}}\)</span>.</p></li>
+<li><p>Consider a study that plans to use a doctor’s medical records to compare two treatments (<span class="math inline">\(T = 0\)</span> and <span class="math inline">\(T = 1\)</span>) given for a certain condition. Treatments were not assigned to patients randomly, but were based on various measured and unmeasured patient factors. The patient factors that were measured are age (<span class="math inline">\(x_1\)</span>), sex (<span class="math inline">\(x_2\)</span>), and health status before treatment (<span class="math inline">\(x_3\)</span>). The propensity score can be estimated for each patient by fitting a logistic regression model with treatment as the dependent variable and <span class="math inline">\(x_1, x_2, x_3\)</span> as the predictor variables.</p></li>
+</ol>
+<p><span class="math display">\[log\left(\frac{p_i}{1-p_i} \right)={\hat \beta_0}+{\hat \beta_1} x_{i1} + {\hat \beta_2} x_{i2} +{\hat \beta_3} x_{i3},\]</span></p>
+<p>where <span class="math inline">\(p_i = P(T_i = 1).\)</span> The predicted probabilities from the above equation are estimates of the propensity score for each patient.</p>
+<p><span class="math display">\[ {\hat p_i}= \frac {exp\left({\hat \beta_0}+{\hat \beta_1} x_{i1} + {\hat \beta_2} x_{i2} +{\hat \beta_3} x_{i3} \right)} {1+ exp\left({\hat \beta_0}+{\hat \beta_1} x_{i1} + {\hat \beta_2} x_{i2} +{\hat \beta_3} x_{i3} \right)}\]</span></p>
+</div>
+</div>
+<div id="estimating-the-propensity-score-in-an-observational-study" class="section level2">
+<h2><span class="header-section-number">12.5</span> Estimating the propensity score in an observational study</h2>
+<p>The propensity score for each NHEFS subject can be estimated by fitting a logistic regression model.</p>
+<p>The propensity score for each subject is <span class="math inline">\({\hat p_i}\)</span>, where <span class="math inline">\({\hat p_i}\)</span> is the predicted probability of smoking cessation from the logistic regression model. The predicted probabilities for the first 20 subjects are:</p>
+<p>Subject 1’s estimated probability of quitting smoking (propensity score) is 0.12 and subject 11’s estimated probability (propensity score) of quitting smoking is 0.26.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prop.model &lt;-<span class="st"> </span><span class="kw">glm</span>(qsmk <span class="op">~</span><span class="st"> </span><span class="kw">as.factor</span>(sex) <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(race) <span class="op">+</span><span class="st"> </span>
+<span class="st">                    </span>age <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(education.code) <span class="op">+</span><span class="st"> </span>smokeintensity <span class="op">+</span><span class="st"> </span>
+<span class="st">                    </span>smokeyrs  <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(exercise) <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(active) <span class="op">+</span><span class="st"> </span>
+<span class="st">                    </span>wt71, <span class="dt">family =</span> <span class="kw">binomial</span>(), <span class="dt">data =</span> nhefshwdat)
+
+<span class="co">#Propensity scores for each subject</span>
+pqsmkobs &lt;-<span class="st"> </span><span class="kw">predict</span>(prop.model, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)
+dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>,nhefshwdat<span class="op">$</span>qsmk[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>], pqsmkobs[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>])
+<span class="kw">colnames</span>(dat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Subject&quot;</span>,<span class="st">&quot;Quit Smoking&quot;</span>, <span class="st">&quot;Estimated Propensity Score&quot;</span>)
+knitr<span class="op">::</span><span class="kw">kable</span>(dat)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Subject</th>
+<th align="right">Quit Smoking</th>
+<th align="right">Estimated Propensity Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0.1239035</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0.1597305</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">0.1599358</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">0.3106921</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">0</td>
+<td align="right">0.3197595</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">0.1662245</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">0</td>
+<td align="right">0.2390891</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">0</td>
+<td align="right">0.2619028</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">0</td>
+<td align="right">0.2991737</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">0</td>
+<td align="right">0.2941244</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">1</td>
+<td align="right">0.2598566</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="right">0</td>
+<td align="right">0.1876179</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">0</td>
+<td align="right">0.3466681</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">0</td>
+<td align="right">0.1771667</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">1</td>
+<td align="right">0.2722928</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="right">0</td>
+<td align="right">0.2254419</td>
+</tr>
+<tr class="odd">
+<td align="right">17</td>
+<td align="right">0</td>
+<td align="right">0.3419014</td>
+</tr>
+<tr class="even">
+<td align="right">18</td>
+<td align="right">1</td>
+<td align="right">0.3197956</td>
+</tr>
+<tr class="odd">
+<td align="right">19</td>
+<td align="right">0</td>
+<td align="right">0.2725982</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="right">0</td>
+<td align="right">0.2329680</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-balancing-property-of-the-propensity-score" class="section level2">
+<h2><span class="header-section-number">12.6</span> The balancing property of the propensity score</h2>
+<p>The balancing property of the propensity score says that treated (<span class="math inline">\(T = 1\)</span>) and control (<span class="math inline">\(T = 0\)</span>) subjects with the same propensity score <span class="math inline">\(e({\bf x})\)</span> have the same distribution of the observed covariates, <span class="math inline">\({\bf x}\)</span>,</p>
+<p><span class="math display">\[ P\left({\bf x} | T = 1,e({\bf x}) \right)=P\left({\bf x} | T = 0,e({\bf x}) \right)\]</span></p>
+<p>or</p>
+<p><span class="math display">\[ T \bot {\bf x}|e({\bf x}).\]</span></p>
+<p>This means that treatment is independent of the observed covariates conditional on the propensity score.</p>
+<ul>
+<li><p>The balancing property says that if two units, <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, are paired, one of whom is treated, <span class="math inline">\(T_i+T_j = 1\)</span>, so that they have the same value of the propensity score <span class="math inline">\(e({\bf x}_i)=e({\bf x}_j)\)</span>, then they may have different values of the observed covariate, <span class="math inline">\({\bf x}_i \ne {\bf x}_j\)</span>, but in this pair the specific value of the observed covariate will be unrelated to the treatment assignment.</p></li>
+<li><p>If many pairs are formed this way then the the distribution of the observed covariates will look about the same in the treated and control groups, even though individuals in matched pairs will typically have different values of <span class="math inline">\(x\)</span>. Although it is difficult to match on 20 covariates at once, it is easy to match on one covariate, the propensity score <span class="math inline">\(e({\bf x})\)</span>, and matching on <span class="math inline">\(e({\bf x})\)</span> will tend to balance all 20 covariates.</p></li>
+</ul>
+<p>How can the degree of balance in the covariate distributions between treated and control units be assessed?</p>
+<p>The difference in average covariate values by treatment status, scaled by their sample standard deviation. This provides a scale-free way to assess the differences. As a rule-of-thumb, when treatment groups have important covariates that are more than one-quarter or one-half of a standard deviation apart, simple regression methods are unreliable for removing biases associated with differences in covariates (1).</p>
+<p>If <span class="math inline">\({\bar x}_t, s^2_t\)</span> are the mean and variance of a covariate in the treated group and <span class="math inline">\({\bar x}_c, s^2_c\)</span> are the mean and variance of a covariate in the control group then the pooled variance is</p>
+<p><span class="math display">\[ \sqrt{\frac{s^2_t+s^2_c}{2}}.\]</span></p>
+<p>The absolute pooled standardized difference is,</p>
+<p><span class="math display">\[ \frac {100 \times |{\bar x}_t-{\bar x}_c|}{\sqrt{\frac{s^2_t+s^2_c}{2}}}.\]</span></p>
+</div>
+<div id="imbalance-versus-overlap" class="section level2">
+<h2><span class="header-section-number">12.7</span> Imbalance versus Overlap</h2>
+<p>In a study comparing two treatments (which we typically label “treatment” and “control”), causal inferences are cleanest if the units receiving the treatment are comparable to those receiving the control.</p>
+<p>Suppose that treatment assignment is ignorable. There are two major ways in which the treatment and control groups may not be comparable, imbalance and lack of complete overlap.</p>
+<p>Imbalance occurs if the distributions of relevant pre-treatment variables differ for the treatment and control groups.</p>
+<p>Lack of complete overlap occurs if there are values of pre-treatment variables where there are treated units but no controls, or controls but no treated units. Lack of complete overlap creates problems because it means that there are treatment observations for which we have no counterfactuals (that is, control observations with the same covariate distribution) and vice versa. When treatment and control groups do not completely overlap, the data are inherently limited in what they can tell us about treatment effects in the regions of nonoverlap. No amount of adjustment can create direct treatment/control comparisons, and one must either restrict inferences to the region of overlap, or rely on a model to extrapolate outside this region. (<span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>)</p>
+<p>Imbalance and lack of complete overlap are issues for causal inference largely because they force us to rely more heavily on model specification and less on direct support from the data.</p>
+<p>When treatment and control groups are unbalanced, the simple comparison of group averages, <span class="math inline">\({\bar y}_1-{\bar y}_0\)</span>, is usually not a good estimate of the average treatment effect. Although, it’s possible to adjust for pre-treatment differences between the groups.</p>
+<p>Lack of complete overlap is a more serious problem than imbalance. But similar statistical methods are used in both scenarios, so we discuss these problems together here.</p>
+<div id="example-from-the-nhefs" class="section level3">
+<h3><span class="header-section-number">12.7.1</span> Example from the NHEFS</h3>
+<p>The following table shows the distribution of covariates (age, sex, race, etc.) in each treatment group.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Cessation (A = 1)</th>
+<th align="right">No cessation (A = 0)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>age, years</td>
+<td align="right">46.2</td>
+<td align="right">42.8</td>
+</tr>
+<tr class="even">
+<td>men, %</td>
+<td align="right">54.6</td>
+<td align="right">46.6</td>
+</tr>
+<tr class="odd">
+<td>white, %</td>
+<td align="right">91.1</td>
+<td align="right">85.4</td>
+</tr>
+<tr class="even">
+<td>university, %</td>
+<td align="right">15.4</td>
+<td align="right">9.9</td>
+</tr>
+<tr class="odd">
+<td>weight, kg</td>
+<td align="right">72.4</td>
+<td align="right">70.3</td>
+</tr>
+<tr class="even">
+<td>Cigarettes/day</td>
+<td align="right">18.6</td>
+<td align="right">21.2</td>
+</tr>
+<tr class="odd">
+<td>year smoking</td>
+<td align="right">26.0</td>
+<td align="right">24.1</td>
+</tr>
+<tr class="even">
+<td>little/no exercise, %</td>
+<td align="right">40.7</td>
+<td align="right">37.9</td>
+</tr>
+<tr class="odd">
+<td>inactive daily life, %</td>
+<td align="right">11.2</td>
+<td align="right">8.9</td>
+</tr>
+</tbody>
+</table>
+<p>There are more men in the stop smoking group (A = 1) compared to the smoking group (A = 0) (55% vs. 47%). In addition, there are more white people, university graduates, and years of smoking in the group that stopped smoking.</p>
+<p>The absolute pooled standardized difference between the groups can be calculated for all the covariates using the function <code>MatchBalance</code> in the library <code>Matching</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Matching)
+mb &lt;-<span class="st"> </span><span class="kw">MatchBalance</span>(qsmk <span class="op">~</span><span class="st"> </span><span class="kw">as.factor</span>(sex) <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(race) <span class="op">+</span><span class="st"> </span>
+<span class="st">                     </span>age <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(education.code) <span class="op">+</span><span class="st"> </span>
+<span class="st">                     </span>smokeintensity <span class="op">+</span><span class="st"> </span>smokeyrs  <span class="op">+</span><span class="st"> </span>
+<span class="st">                     </span><span class="kw">as.factor</span>(exercise) <span class="op">+</span><span class="st"> </span>
+<span class="st">                     </span><span class="kw">as.factor</span>(active) <span class="op">+</span><span class="st"> </span>wt71, <span class="dt">data =</span> nhefshwdat,<span class="dt">nboots =</span> <span class="dv">10</span>)</code></pre></div>
+<pre><code>
+***** (V1) as.factor(sex)1 *****
+before matching:
+mean treatment........ 0.45409 
+mean control.......... 0.53396 
+std mean diff......... -16.022 
+
+mean raw eQQ diff..... 0.079404 
+med  raw eQQ diff..... 0 
+max  raw eQQ diff..... 1 
+
+mean eCDF diff........ 0.039935 
+med  eCDF diff........ 0.039935 
+max  eCDF diff........ 0.07987 
+
+var ratio (Tr/Co)..... 0.99779 
+T-test p-value........ 0.0057371 
+
+
+***** (V2) as.factor(race)1 *****
+before matching:
+mean treatment........ 0.08933 
+mean control.......... 0.14617 
+std mean diff......... -19.905 
+
+mean raw eQQ diff..... 0.057072 
+med  raw eQQ diff..... 0 
+max  raw eQQ diff..... 1 
+
+mean eCDF diff........ 0.028422 
+med  eCDF diff........ 0.028422 
+max  eCDF diff........ 0.056844 
+
+var ratio (Tr/Co)..... 0.65287 
+T-test p-value........ 0.0012863 
+
+
+***** (V3) age *****
+before matching:
+mean treatment........ 46.174 
+mean control.......... 42.788 
+std mean diff......... 27.714 
+
+mean raw eQQ diff..... 3.3921 
+med  raw eQQ diff..... 4 
+max  raw eQQ diff..... 5 
+
+mean eCDF diff........ 0.068985 
+med  eCDF diff........ 0.074988 
+max  eCDF diff........ 0.12956 
+
+var ratio (Tr/Co)..... 1.0731 
+T-test p-value........ 1.6316e-06 
+KS Bootstrap p-value.. &lt; 2.22e-16 
+KS Naive p-value...... 8.6584e-05 
+KS Statistic.......... 0.12956 
+
+
+***** (V4) as.factor(education.code)2 *****
+before matching:
+mean treatment........ 0.18362 
+mean control.......... 0.22872 
+std mean diff......... -11.633 
+
+mean raw eQQ diff..... 0.044665 
+med  raw eQQ diff..... 0 
+max  raw eQQ diff..... 1 
+
+mean eCDF diff........ 0.022548 
+med  eCDF diff........ 0.022548 
+max  eCDF diff........ 0.045096 
+
+var ratio (Tr/Co)..... 0.85115 
+T-test p-value........ 0.049355 
+
+
+***** (V5) as.factor(education.code)3 *****
+before matching:
+mean treatment........ 0.38958 
+mean control.......... 0.41273 
+std mean diff......... -4.7408 
+
+mean raw eQQ diff..... 0.022333 
+med  raw eQQ diff..... 0 
+max  raw eQQ diff..... 1 
+
+mean eCDF diff........ 0.011574 
+med  eCDF diff........ 0.011574 
+max  eCDF diff........ 0.023148 
+
+var ratio (Tr/Co)..... 0.98271 
+T-test p-value........ 0.41346 
+
+
+***** (V6) as.factor(education.code)4 *****
+before matching:
+mean treatment........ 0.07196 
+mean control.......... 0.079106 
+std mean diff......... -2.7616 
+
+mean raw eQQ diff..... 0.0074442 
+med  raw eQQ diff..... 0 
+max  raw eQQ diff..... 1 
+
+mean eCDF diff........ 0.0035727 
+med  eCDF diff........ 0.0035727 
+max  eCDF diff........ 0.0071455 
+
+var ratio (Tr/Co)..... 0.91822 
+T-test p-value........ 0.6368 
+
+
+***** (V7) as.factor(education.code)5 *****
+before matching:
+mean treatment........ 0.15385 
+mean control.......... 0.098882 
+std mean diff......... 15.215 
+
+mean raw eQQ diff..... 0.054591 
+med  raw eQQ diff..... 0 
+max  raw eQQ diff..... 1 
+
+mean eCDF diff........ 0.027482 
+med  eCDF diff........ 0.027482 
+max  eCDF diff........ 0.054964 
+
+var ratio (Tr/Co)..... 1.4633 
+T-test p-value........ 0.0062041 
+
+
+***** (V8) smokeintensity *****
+before matching:
+mean treatment........ 18.603 
+mean control.......... 21.192 
+std mean diff......... -20.874 
+
+mean raw eQQ diff..... 2.6849 
+med  raw eQQ diff..... 2 
+max  raw eQQ diff..... 20 
+
+mean eCDF diff........ 0.064175 
+med  eCDF diff........ 0.043336 
+max  eCDF diff........ 0.14366 
+
+var ratio (Tr/Co)..... 1.1679 
+T-test p-value........ 0.00025243 
+KS Bootstrap p-value.. &lt; 2.22e-16 
+KS Naive p-value...... 8.6245e-06 
+KS Statistic.......... 0.14366 
+
+
+***** (V9) smokeyrs *****
+before matching:
+mean treatment........ 26.032 
+mean control.......... 24.088 
+std mean diff......... 15.26 
+
+mean raw eQQ diff..... 1.9752 
+med  raw eQQ diff..... 2 
+max  raw eQQ diff..... 5 
+
+mean eCDF diff........ 0.032783 
+med  eCDF diff........ 0.023244 
+max  eCDF diff........ 0.088511 
+
+var ratio (Tr/Co)..... 1.1846 
+T-test p-value........ 0.0072293 
+KS Bootstrap p-value.. &lt; 2.22e-16 
+KS Naive p-value...... 0.018385 
+KS Statistic.......... 0.088511 
+
+
+***** (V10) as.factor(exercise)1 *****
+before matching:
+mean treatment........ 0.43672 
+mean control.......... 0.41702 
+std mean diff......... 3.9669 
+
+mean raw eQQ diff..... 0.019851 
+med  raw eQQ diff..... 0 
+max  raw eQQ diff..... 1 
+
+mean eCDF diff........ 0.0098498 
+med  eCDF diff........ 0.0098498 
+max  eCDF diff........ 0.0197 
+
+var ratio (Tr/Co)..... 1.0135 
+T-test p-value........ 0.49202 
+
+
+***** (V11) as.factor(exercise)2 *****
+before matching:
+mean treatment........ 0.40695 
+mean control.......... 0.37919 
+std mean diff......... 5.6429 
+
+mean raw eQQ diff..... 0.027295 
+med  raw eQQ diff..... 0 
+max  raw eQQ diff..... 1 
+
+mean eCDF diff........ 0.013878 
+med  eCDF diff........ 0.013878 
+max  eCDF diff........ 0.027756 
+
+var ratio (Tr/Co)..... 1.0269 
+T-test p-value........ 0.32766 
+
+
+***** (V12) as.factor(active)1 *****
+before matching:
+mean treatment........ 0.4665 
+mean control.......... 0.45314 
+std mean diff......... 2.6753 
+
+mean raw eQQ diff..... 0.014888 
+med  raw eQQ diff..... 0 
+max  raw eQQ diff..... 1 
+
+mean eCDF diff........ 0.0066814 
+med  eCDF diff........ 0.0066814 
+max  eCDF diff........ 0.013363 
+
+var ratio (Tr/Co)..... 1.006 
+T-test p-value........ 0.64338 
+
+
+***** (V13) as.factor(active)2 *****
+before matching:
+mean treatment........ 0.11166 
+mean control.......... 0.089424 
+std mean diff......... 7.0522 
+
+mean raw eQQ diff..... 0.022333 
+med  raw eQQ diff..... 0 
+max  raw eQQ diff..... 1 
+
+mean eCDF diff........ 0.011119 
+med  eCDF diff........ 0.011119 
+max  eCDF diff........ 0.022239 
+
+var ratio (Tr/Co)..... 1.2202 
+T-test p-value........ 0.21198 
+
+
+***** (V14) wt71 *****
+before matching:
+mean treatment........ 72.355 
+mean control.......... 70.303 
+std mean diff......... 13.13 
+
+mean raw eQQ diff..... 2.1872 
+med  raw eQQ diff..... 2.04 
+max  raw eQQ diff..... 14.75 
+
+mean eCDF diff........ 0.032352 
+med  eCDF diff........ 0.032386 
+max  eCDF diff........ 0.07 
+
+var ratio (Tr/Co)..... 1.0606 
+T-test p-value........ 0.022421 
+KS Bootstrap p-value.. &lt; 2.22e-16 
+KS Naive p-value...... 0.10646 
+KS Statistic.......... 0.07 
+
+
+Before Matching Minimum p.value: &lt; 2.22e-16 
+Variable Name(s): age smokeintensity smokeyrs wt71  Number(s): 3 8 9 14 </code></pre>
+<p>If the absolute value of the standardized mean difference is greater than 10% then this indicates a serious imbalance. For example, sex has an absolute standardized mean difference of <span class="math inline">\(|-16.022|=16.022\)</span> indicating serious imbalance between the groups in males and females.</p>
+</div>
+</div>
+<div id="propensity-score-and-ignorable-treatment-assignment" class="section level2">
+<h2><span class="header-section-number">12.8</span> Propensity Score and Ignorable Treatment Assignment</h2>
+<ul>
+<li>Assume that the treatment assignment <span class="math inline">\(T\)</span> is strongly ignorable. This means that</li>
+</ul>
+<p><span class="math display">\[P(T|Y(0),Y(1),{\bf x})=P(T|{\bf x}),\]</span></p>
+<p>or</p>
+<p><span class="math display">\[ T \bot Y(0),Y(1)|{\bf x}.\]</span></p>
+<ul>
+<li><p>It may be difficult to find a treated and control unit that are closely matched for every one of the many covariates in <span class="math inline">\(x\)</span>, but it is easy to match on one variable, the propensity score, <span class="math inline">\(e(\bf{x})\)</span>, and doing that will create treated and control groups that have similar distributions for all the covariates.</p></li>
+<li><p>Ignorable treatment assignment and the balancing property of the propensity score implies that (for a proof see <span class="citation">Rosenbaum (<a href="#ref-rosenbaum2010design">2010</a>)</span>)</p></li>
+</ul>
+<p><span class="math display">\[P(T|Y(0),Y(1),e({\bf x}))=P(T|e({\bf x})),\]</span></p>
+<p>or <span class="math display">\[ T \bot Y(0),Y(1)|e({\bf x}).\]</span></p>
+<p>This means that the scaler propensity score <span class="math inline">\(e({\bf x})\)</span> may be used in place of the many covariates in <span class="math inline">\(\bf x\)</span>.</p>
+<ul>
+<li>The propensity score can be used in place of many covariates.</li>
+<li>If treatment assignment is strongly ignorable then propensity score methods will produce unbiased results of the treatment effects.</li>
+<li>In the smoking cessation study what does it mean for treatment assignment to be ignorable?</li>
+<li>The potential outcomes for weight gain in the smoking cessation (treated) and smoking (control) groups are independent of treatment assignment conditional on the propensity score.</li>
+<li>The treatment assignment mechanism has been reconstructed using the propensity score.</li>
+<li>Suppose a critic came along and claimed that the study did not measure an important covariate (e.g., spouse is a smoker) so the study is in no position to claim that the smoking cessation group and the smoking groups are comparable.<br />
+</li>
+<li>This criticism could be dismissed in a randomized experiment — randomization does tend to balance unobserved covariates — but the criticism cannot be dismissed in an observational study.</li>
+<li>This difference in the unobserved covariate, the critic continues, is the real reason outcomes differ in the treated and control groups: it is not an effect caused by the treatment, but rather a failure on the part of the investigators to measure and control imbalances in the unobserved covariate.</li>
+<li>The sensitivity of an observational study to bias from an unmeasured covariate is the magnitude of the departure from the model that would need to be present to materially alter the study’s conclusions.</li>
+<li>There are statistical methods to measure how sensitive an observational study is to this type of bias. (see <span class="citation">Rosenbaum (<a href="#ref-rosenbaum2010design">2010</a>)</span>, pg. 76)</li>
+</ul>
+</div>
+<div id="propensity-score-methods-to-reduce-bias-in-observational-studies" class="section level2">
+<h2><span class="header-section-number">12.9</span> Propensity Score Methods to Reduce Bias in Observational Studies</h2>
+<p>If experimental units are randomized to different treatments then there should be no selection bias (or systematic differences) in observed or unobserved covariates between the treatment groups. In a study where the investigator does not have control over the treatment assignment a direct comparison could be misleading. If covariate information is incorporated into the study design or into adjustment of the treatment effect then a direct comparison might be appropriate. Most standard methods such as stratification and covariance adjustment can only use a limited number of covariates, but propensity scores are a scalar summary of this information, hence don’t have this limitation (<span class="citation">d’Agostino (<a href="#ref-d1998tutorial">1998</a>)</span>).</p>
+<blockquote>
+<p>… in observational studies, propensity scores are used primarily to reduce bias and increase precision. The three most common techniques that use the propensity score are matching, stratification (also called subclassification) and regression adjustment. Each of these techniques is a way to make an adjustment for covariates prior to (matching and stratification) or while (stratification and regression adjustment) calculating the treatment effect. With all three techniques, the propensity score is calculated the same way, but once it is estimated it is applied differently. Propensity scores are useful for these techniques because by definition the propensity score is the conditional probability of treatment given the observed covariates <span class="math inline">\(e({\bf x})= P(T = 1|X)\)</span>, which implies that <span class="math inline">\(T\)</span> and <span class="math inline">\({\bf x}\)</span> are conditionally independent given <span class="math inline">\(e({\bf x})\)</span>. Thus, subjects in treatment and control groups with equal (or nearly equal) propensity scores will tend to have the same (or nearly the same) distributions on their background covariates. Exact adjustments made using the propensity score will, on average, remove all of the bias in the background covariates. Therefore bias-removing adjustments can be made using the propensity scores rather than all of the background covariates individually. (<span class="citation">d’Agostino (<a href="#ref-d1998tutorial">1998</a>)</span>).</p>
+</blockquote>
+<div id="propensity-score-matching-matching" class="section level3">
+<h3><span class="header-section-number">12.9.1</span> Propensity Score Matching Matching</h3>
+<div id="example-maimonides-rule" class="section level4">
+<h4><span class="header-section-number">12.9.1.1</span> Example: Maimonides’ Rule</h4>
+<p>The following example is based on <span class="citation">Rosenbaum (<a href="#ref-rosenbaum2010design">2010</a>)</span>.</p>
+<ul>
+<li>Educators are very interested in studying the effect of class size on learning.</li>
+<li>Does smaller class size cause students to achieve higher math and verbal scores?</li>
+<li><span class="citation">Angrist and Lavy (<a href="#ref-angrist1997">1997</a>)</span> published an unusual study of the effects of class size on academic achievement.</li>
+<li>Causal effects of class size on pupil achievement is difficult to measure. The twelfth century Rabbinic scholar Maimonides interpreted the the Talmud’s discussion of class size as:</li>
+<li>“Twenty-five children may be put in charge of one teacher. If the number in the class exceeds twenty-five but is not more than forty, he should have an assistant to help with instruction. If there are more than forty, two teachers must be appointed.”</li>
+<li>Since 1969 the rule has been used to determine class size in Israeli public schools.</li>
+<li>Class size is usually determined by other factors such as wealth of a community, special needs of students, etc.</li>
+<li>If adherence to Maimonides’ rule were perfectly rigid, then what would separate a school with a single class of size 40 from the same school with two classes whose average size is 20.5 is the enrollment of a single student.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Number of children in grade 5</th>
+<th>40</th>
+<th>80</th>
+<th>120</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Class size with one extra student</td>
+<td>20.5</td>
+<td>27</td>
+<td>30.25</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Angrist and Lavy matched schools where the number of grade 5 students are 31-40 to schools where the number of grade 5 students are 41-50.<br />
+</li>
+<li>86 matched pairs of two schools were formed, matching to minimize to total absolute difference in percentage disadvantaged.</li>
+<li>It’s plausible that whether or not a few more students enrol in the fifth grade is a haphazard event.</li>
+<li>This is an example of natural experiment where students were haphazardly (randomly) assigned to small or large grade 5 classes.</li>
+<li>It was haphazard because it depended only on the number of grade 5 children at a school.</li>
+</ul>
+</div>
+<div id="propensity-score-matching---how-to-do-it" class="section level4">
+<h4><span class="header-section-number">12.9.1.2</span> Propensity score matching - How to do it</h4>
+<ul>
+<li>For each unit we have a propensity score.</li>
+<li>Randomly select a treated subject.</li>
+<li>Match to a control subject with the closest propensity score (within some limit or “calipers”).</li>
+<li>Eliminate both units from the pool of subjects until there is no acceptable match.</li>
+</ul>
+<p>It’s not always possible to match every unit treated to a unit that is not treated.</p>
+<p>In R propensity score matching can be done using the <code>Match</code> function in the <code>Matching</code> library.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prop.model &lt;-<span class="st"> </span><span class="kw">glm</span>(qsmk <span class="op">~</span><span class="st"> </span><span class="kw">as.factor</span>(sex) <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(race) <span class="op">+</span><span class="st"> </span>
+<span class="st">                    </span>age <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(education.code) <span class="op">+</span><span class="st"> </span>
+<span class="st">                    </span>smokeintensity <span class="op">+</span><span class="st"> </span>smokeyrs  <span class="op">+</span><span class="st"> </span>
+<span class="st">                    </span><span class="kw">as.factor</span>(exercise) <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(active) <span class="op">+</span><span class="st"> </span>
+<span class="st">                    </span>wt71, <span class="dt">family =</span> <span class="kw">binomial</span>(), 
+                    <span class="dt">data =</span> nhefshwdat)
+
+X &lt;-<span class="st"> </span>prop.model<span class="op">$</span>fitted
+Y &lt;-<span class="st"> </span>nhefshwdat<span class="op">$</span>wt82_<span class="dv">71</span>
+Tr &lt;-<span class="st"> </span>nhefshwdat<span class="op">$</span>qsmk
+<span class="kw">library</span>(Matching)
+rr &lt;-<span class="st"> </span><span class="kw">Match</span>(<span class="dt">Y =</span> Y,<span class="dt">Tr =</span> Tr,<span class="dt">X =</span> X,<span class="dt">M =</span> <span class="dv">1</span>)
+<span class="kw">summary</span>(rr)</code></pre></div>
+<pre><code>
+Estimate...  2.9342 
+AI SE......  0.5838 
+T-stat.....  5.026 
+p.val......  5.0087e-07 
+
+Original number of observations..............  1566 
+Original number of treated obs...............  403 
+Matched number of observations...............  403 
+Matched number of observations  (unweighted).  1009 </code></pre>
+<p>After matching on covariates the treatment effect (difference in weight gain between the group that stopped smoking and the group that did not stop smoking) is 2.93 with a p-value of 0 (5.0087e-07).</p>
+<p>Now, let’s check covariate balance.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">MatchBalance</span>(qsmk <span class="op">~</span><span class="st"> </span><span class="kw">as.factor</span>(sex) <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(race) <span class="op">+</span><span class="st"> </span>
+<span class="st">                     </span>age <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(education.code) <span class="op">+</span><span class="st"> </span>
+<span class="st">                     </span>smokeintensity <span class="op">+</span><span class="st"> </span>smokeyrs  <span class="op">+</span><span class="st"> </span>
+<span class="st">                     </span><span class="kw">as.factor</span>(exercise) <span class="op">+</span><span class="st"> </span>
+<span class="st">                     </span><span class="kw">as.factor</span>(active) <span class="op">+</span><span class="st"> </span>wt71, <span class="dt">data =</span> nhefshwdat,
+                     <span class="dt">match.out =</span> rr,<span class="dt">nboots =</span> <span class="dv">10</span>)</code></pre></div>
+<pre><code>
+***** (V1) as.factor(sex)1 *****
+                       Before Matching       After Matching
+mean treatment........    0.45409           0.45409 
+mean control..........    0.53396           0.45331 
+std mean diff.........    -16.022           0.15703 
+
+mean raw eQQ diff.....   0.079404         0.0069376 
+med  raw eQQ diff.....          0                 0 
+max  raw eQQ diff.....          1                 1 
+
+mean eCDF diff........   0.039935         0.0034688 
+med  eCDF diff........   0.039935         0.0034688 
+max  eCDF diff........    0.07987         0.0069376 
+
+var ratio (Tr/Co).....    0.99779            1.0003 
+T-test p-value........  0.0057371           0.98136 
+
+
+***** (V2) as.factor(race)1 *****
+                       Before Matching       After Matching
+mean treatment........    0.08933           0.08933 
+mean control..........    0.14617          0.083561 
+std mean diff.........    -19.905            2.0202 
+
+mean raw eQQ diff.....   0.057072         0.0029732 
+med  raw eQQ diff.....          0                 0 
+max  raw eQQ diff.....          1                 1 
+
+mean eCDF diff........   0.028422         0.0014866 
+med  eCDF diff........   0.028422         0.0014866 
+max  eCDF diff........   0.056844         0.0029732 
+
+var ratio (Tr/Co).....    0.65287            1.0623 
+T-test p-value........  0.0012863           0.75212 
+
+
+***** (V3) age *****
+                       Before Matching       After Matching
+mean treatment........     46.174            46.174 
+mean control..........     42.788            46.595 
+std mean diff.........     27.714           -3.4504 
+
+mean raw eQQ diff.....     3.3921           0.67294 
+med  raw eQQ diff.....          4                 1 
+max  raw eQQ diff.....          5                 2 
+
+mean eCDF diff........   0.068985          0.013693 
+med  eCDF diff........   0.074988          0.010902 
+max  eCDF diff........    0.12956          0.050545 
+
+var ratio (Tr/Co).....     1.0731           0.92406 
+T-test p-value........ 1.6316e-06           0.57566 
+KS Bootstrap p-value.. &lt; 2.22e-16               0.1 
+KS Naive p-value...... 8.6584e-05           0.15182 
+KS Statistic..........    0.12956          0.050545 
+
+
+***** (V4) as.factor(education.code)2 *****
+                       Before Matching       After Matching
+mean treatment........    0.18362           0.18362 
+mean control..........    0.22872           0.20084 
+std mean diff.........    -11.633           -4.4403 
+
+mean raw eQQ diff.....   0.044665          0.020813 
+med  raw eQQ diff.....          0                 0 
+max  raw eQQ diff.....          1                 1 
+
+mean eCDF diff........   0.022548          0.010406 
+med  eCDF diff........   0.022548          0.010406 
+max  eCDF diff........   0.045096          0.020813 
+
+var ratio (Tr/Co).....    0.85115           0.93399 
+T-test p-value........   0.049355           0.53095 
+
+
+***** (V5) as.factor(education.code)3 *****
+                       Before Matching       After Matching
+mean treatment........    0.38958           0.38958 
+mean control..........    0.41273           0.38093 
+std mean diff.........    -4.7408            1.7703 
+
+mean raw eQQ diff.....   0.022333          0.013875 
+med  raw eQQ diff.....          0                 0 
+max  raw eQQ diff.....          1                 1 
+
+mean eCDF diff........   0.011574         0.0069376 
+med  eCDF diff........   0.011574         0.0069376 
+max  eCDF diff........   0.023148          0.013875 
+
+var ratio (Tr/Co).....    0.98271            1.0084 
+T-test p-value........    0.41346           0.79553 
+
+
+***** (V6) as.factor(education.code)4 *****
+                       Before Matching       After Matching
+mean treatment........    0.07196           0.07196 
+mean control..........   0.079106          0.079115 
+std mean diff.........    -2.7616           -2.7652 
+
+mean raw eQQ diff.....  0.0074442         0.0059465 
+med  raw eQQ diff.....          0                 0 
+max  raw eQQ diff.....          1                 1 
+
+mean eCDF diff........  0.0035727         0.0029732 
+med  eCDF diff........  0.0035727         0.0029732 
+max  eCDF diff........  0.0071455         0.0059465 
+
+var ratio (Tr/Co).....    0.91822           0.91663 
+T-test p-value........     0.6368           0.68742 
+
+
+***** (V7) as.factor(education.code)5 *****
+                       Before Matching       After Matching
+mean treatment........    0.15385           0.15385 
+mean control..........   0.098882           0.15182 
+std mean diff.........     15.215           0.56014 
+
+mean raw eQQ diff.....   0.054591          0.019822 
+med  raw eQQ diff.....          0                 0 
+max  raw eQQ diff.....          1                 1 
+
+mean eCDF diff........   0.027482         0.0099108 
+med  eCDF diff........   0.027482         0.0099108 
+max  eCDF diff........   0.054964          0.019822 
+
+var ratio (Tr/Co).....     1.4633            1.0109 
+T-test p-value........  0.0062041           0.93208 
+
+
+***** (V8) smokeintensity *****
+                       Before Matching       After Matching
+mean treatment........     18.603            18.603 
+mean control..........     21.192             18.77 
+std mean diff.........    -20.874           -1.3479 
+
+mean raw eQQ diff.....     2.6849            1.4618 
+med  raw eQQ diff.....          2                 0 
+max  raw eQQ diff.....         20                20 
+
+mean eCDF diff........   0.064175          0.033126 
+med  eCDF diff........   0.043336          0.019822 
+max  eCDF diff........    0.14366          0.090188 
+
+var ratio (Tr/Co).....     1.1679            1.2535 
+T-test p-value........ 0.00025243           0.82363 
+KS Bootstrap p-value.. &lt; 2.22e-16        &lt; 2.22e-16 
+KS Naive p-value...... 8.6245e-06         0.0005454 
+KS Statistic..........    0.14366          0.090188 
+
+
+***** (V9) smokeyrs *****
+                       Before Matching       After Matching
+mean treatment........     26.032            26.032 
+mean control..........     24.088            26.437 
+std mean diff.........      15.26            -3.176 
+
+mean raw eQQ diff.....     1.9752            1.1655 
+med  raw eQQ diff.....          2                 1 
+max  raw eQQ diff.....          5                 6 
+
+mean eCDF diff........   0.032783           0.01967 
+med  eCDF diff........   0.023244          0.016848 
+max  eCDF diff........   0.088511          0.050545 
+
+var ratio (Tr/Co).....     1.1846            1.1132 
+T-test p-value........  0.0072293           0.61403 
+KS Bootstrap p-value.. &lt; 2.22e-16               0.1 
+KS Naive p-value......   0.018385           0.15182 
+KS Statistic..........   0.088511          0.050545 
+
+
+***** (V10) as.factor(exercise)1 *****
+                       Before Matching       After Matching
+mean treatment........    0.43672           0.43672 
+mean control..........    0.41702           0.46081 
+std mean diff.........     3.9669           -4.8493 
+
+mean raw eQQ diff.....   0.019851          0.022795 
+med  raw eQQ diff.....          0                 0 
+max  raw eQQ diff.....          1                 1 
+
+mean eCDF diff........  0.0098498          0.011397 
+med  eCDF diff........  0.0098498          0.011397 
+max  eCDF diff........     0.0197          0.022795 
+
+var ratio (Tr/Co).....     1.0135           0.99007 
+T-test p-value........    0.49202           0.49084 
+
+
+***** (V11) as.factor(exercise)2 *****
+                       Before Matching       After Matching
+mean treatment........    0.40695           0.40695 
+mean control..........    0.37919           0.36873 
+std mean diff.........     5.6429            7.7689 
+
+mean raw eQQ diff.....   0.027295          0.021804 
+med  raw eQQ diff.....          0                 0 
+max  raw eQQ diff.....          1                 1 
+
+mean eCDF diff........   0.013878          0.010902 
+med  eCDF diff........   0.013878          0.010902 
+max  eCDF diff........   0.027756          0.021804 
+
+var ratio (Tr/Co).....     1.0269            1.0368 
+T-test p-value........    0.32766           0.25681 
+
+
+***** (V12) as.factor(active)1 *****
+                       Before Matching       After Matching
+mean treatment........     0.4665            0.4665 
+mean control..........    0.45314           0.46844 
+std mean diff.........     2.6753          -0.38737 
+
+mean raw eQQ diff.....   0.014888                 0 
+med  raw eQQ diff.....          0                 0 
+max  raw eQQ diff.....          1                 0 
+
+mean eCDF diff........  0.0066814                 0 
+med  eCDF diff........  0.0066814                 0 
+max  eCDF diff........   0.013363                 0 
+
+var ratio (Tr/Co).....      1.006           0.99949 
+T-test p-value........    0.64338           0.95705 
+
+
+***** (V13) as.factor(active)2 *****
+                       Before Matching       After Matching
+mean treatment........    0.11166           0.11166 
+mean control..........   0.089424           0.09748 
+std mean diff.........     7.0522            4.4974 
+
+mean raw eQQ diff.....   0.022333          0.012884 
+med  raw eQQ diff.....          0                 0 
+max  raw eQQ diff.....          1                 1 
+
+mean eCDF diff........   0.011119          0.006442 
+med  eCDF diff........   0.011119          0.006442 
+max  eCDF diff........   0.022239          0.012884 
+
+var ratio (Tr/Co).....     1.2202            1.1275 
+T-test p-value........    0.21198           0.51116 
+
+
+***** (V14) wt71 *****
+                       Before Matching       After Matching
+mean treatment........     72.355            72.355 
+mean control..........     70.303            72.563 
+std mean diff.........      13.13           -1.3303 
+
+mean raw eQQ diff.....     2.1872            1.8433 
+med  raw eQQ diff.....       2.04              1.92 
+max  raw eQQ diff.....      14.75             14.75 
+
+mean eCDF diff........   0.032352          0.028802 
+med  eCDF diff........   0.032386          0.024777 
+max  eCDF diff........       0.07          0.078295 
+
+var ratio (Tr/Co).....     1.0606            1.0282 
+T-test p-value........   0.022421           0.84279 
+KS Bootstrap p-value..        0.1        &lt; 2.22e-16 
+KS Naive p-value......    0.10646         0.0041188 
+KS Statistic..........       0.07          0.078295 
+
+
+Before Matching Minimum p.value: &lt; 2.22e-16 
+Variable Name(s): age smokeintensity smokeyrs  Number(s): 3 8 9 
+
+After Matching Minimum p.value: &lt; 2.22e-16 
+Variable Name(s): smokeintensity wt71  Number(s): 8 14 </code></pre>
+<p>The output shows the effectiveness of propensity score matching in reducing imbalance. Sex has an absolute standardized difference of 16 before matching and 0.16 after matching, and the absolute standardized difference of race has shifted from 19.9 to 2.0.</p>
+<p>How does this compare to not adjusting for imbalance?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Unadjusted t-test</span>
+<span class="kw">t.test</span>(nhefshwdat<span class="op">$</span>wt82_<span class="dv">71</span>[<span class="kw">as.factor</span>(nhefshwdat<span class="op">$</span>qsmk)<span class="op">==</span><span class="dv">0</span>],
+       nhefshwdat<span class="op">$</span>wt82_<span class="dv">71</span>[<span class="kw">as.factor</span>(nhefshwdat<span class="op">$</span>qsmk)<span class="op">==</span><span class="dv">1</span>],<span class="dt">var.equal =</span> T)</code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  nhefshwdat$wt82_71[as.factor(nhefshwdat$qsmk) == 0] and nhefshwdat$wt82_71[as.factor(nhefshwdat$qsmk) == 1]
+## t = -5.6322, df = 1564, p-value = 2.106e-08
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.425367 -1.655796
+## sample estimates:
+## mean of x mean of y 
+##  1.984498  4.525079</code></pre>
+<p>The unadjusted treatment effect is 2.54 with a p-value of 0. So, both analyses lead to the same conclusion that stopping to smoke leads to significant weight gain. Although the weight gain in the matched propensity score analysis is 0.39Kg higher.</p>
+</div>
+</div>
+<div id="propensity-score-stratification" class="section level3">
+<h3><span class="header-section-number">12.9.2</span> Propensity score stratification</h3>
+<div id="stratification" class="section level4">
+<h4><span class="header-section-number">12.9.2.1</span> Stratification</h4>
+<p>The following data were selected from data supplied to the U. S. Surgeon General’s Committee from three of the studies in which comparisons of the death rates of men with different smoking habits were made (<span class="citation">Cochran (<a href="#ref-cochran1968">1968</a>)</span>).</p>
+<p>The table shows the unadjusted death rates per 1,000 person-years.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Smoking group</th>
+<th>Canadian</th>
+<th>British</th>
+<th>U.S.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Non-smokers</td>
+<td>20.2</td>
+<td>11.3</td>
+<td>13.5</td>
+</tr>
+<tr class="even">
+<td>Cigarettes only</td>
+<td>20.5</td>
+<td>14.1</td>
+<td>13.5</td>
+</tr>
+<tr class="odd">
+<td>Cigars, pipes</td>
+<td>35.5</td>
+<td>20.7</td>
+<td>17.4</td>
+</tr>
+</tbody>
+</table>
+<p>Conclusion: urge the cigar and pipe smokers to give up smoking and if they lack the strength of will to do so, they should switch to cigarettes.</p>
+<p>Are there other variables in which the three groups of smokers may differ, that (i) are related to the probability of dying; and (ii) are clearly not themselves affected by smoking habits?</p>
+<p>The regression of probability of dying on age for men over 40 is a concave upwards curve, the slope rising more and more steeply as age advances. The mean ages for each group in the previous table are as follows.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Smoking group</th>
+<th>Canadian</th>
+<th>British</th>
+<th>U.S.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Non-smokers</td>
+<td>54.9</td>
+<td>49.1</td>
+<td>57.0</td>
+</tr>
+<tr class="even">
+<td>Cigarettes only</td>
+<td>50.5</td>
+<td>49.8</td>
+<td>53.2</td>
+</tr>
+<tr class="odd">
+<td>Cigars, pipes</td>
+<td>65.9</td>
+<td>55.7</td>
+<td>59.7</td>
+</tr>
+</tbody>
+</table>
+<p>The table shows the adjusted death rates obtained when the age distributions were divided into 9 subclasses. The results are similar for different numbers of subclasses.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Smoking group</th>
+<th>Canadian</th>
+<th>British</th>
+<th>U.S.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Non-smokers</td>
+<td>20.2</td>
+<td>11.3</td>
+<td>13.5</td>
+</tr>
+<tr class="even">
+<td>Cigarettes only</td>
+<td>29.5</td>
+<td>14.8</td>
+<td>21.2</td>
+</tr>
+<tr class="odd">
+<td>Cigars, pipes</td>
+<td>19.8</td>
+<td>11.0</td>
+<td>13.7</td>
+</tr>
+</tbody>
+</table>
+<p>Compare to the unadjusted death rates</p>
+<table>
+<thead>
+<tr class="header">
+<th>Smoking group</th>
+<th>Canadian</th>
+<th>British</th>
+<th>U.S.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Non-smokers</td>
+<td>20.2</td>
+<td>11.3</td>
+<td>13.5</td>
+</tr>
+<tr class="even">
+<td>Cigarettes only</td>
+<td>20.5</td>
+<td>14.1</td>
+<td>13.5</td>
+</tr>
+<tr class="odd">
+<td>Cigars, pipes</td>
+<td>35.5</td>
+<td>20.7</td>
+<td>17.4</td>
+</tr>
+</tbody>
+</table>
+<p><span class="citation">Cochran (<a href="#ref-cochran1968">1968</a>)</span> showed that creating 5 or more strata removes 90% of the bias due to the stratifying variable.</p>
+</div>
+<div id="stratification-based-on-the-propensity-score" class="section level4">
+<h4><span class="header-section-number">12.9.2.2</span> Stratification based on the propensity score</h4>
+<p>Propensity scores permit subclassification on multiple covariates simultaneously. One advantage of this method is that the whole sample is used and not just matched sets.</p>
+<p><span class="citation">Cochran (<a href="#ref-cochran1968">1968</a>)</span> showed that creating five strata removes 90 per cent of the bias due to the stratifying variable or covariate.</p>
+<p><span class="citation">Rosenbaum and Rubin (<a href="#ref-rosenbaum1984">1984</a>)</span> show that Cochran’s result holds for stratification based on the propensity score. Stratification on the propensity score balances all covariates that are used to estimate the propensity score, and often five strata based on the propensity score will remove over 90 per cent of the bias in each of these covariates.</p>
+<p>The R code below defines the five strata based on the propensity score as five binary variables <code>nhefshwdat$strat1</code>, <code>nhefshwdat$strat2</code>, etc. Another variable <code>nhefshwdat$stratvar</code> is defined as an ordinal variable to be used in a multiple regression model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nhefshwdat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/Dropbox/Docs/sta305/2015/assignments/Assignment2/nhefshw2dat.csv&quot;</span>)
+<span class="kw">attach</span>(nhefshwdat)
+<span class="co">#Logistic regression of smoking cessation on covariates </span>
+prop.model &lt;-<span class="st"> </span><span class="kw">glm</span>(qsmk <span class="op">~</span><span class="st"> </span><span class="kw">as.factor</span>(sex) <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(race) <span class="op">+</span><span class="st"> </span>
+<span class="st">                    </span>age <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(education.code) <span class="op">+</span><span class="st"> </span>
+<span class="st">                    </span>smokeintensity <span class="op">+</span><span class="st"> </span>smokeyrs  <span class="op">+</span><span class="st"> </span>
+<span class="st">                    </span><span class="kw">as.factor</span>(exercise) <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(active) <span class="op">+</span><span class="st"> </span>
+<span class="st">                    </span>wt71, <span class="dt">family =</span> <span class="kw">binomial</span>(), 
+                    <span class="dt">data =</span> nhefshwdat)
+
+nhefshwdat<span class="op">$</span>pqsmkobs &lt;-<span class="st"> </span><span class="kw">predict</span>(prop.model, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)
+strat &lt;-<span class="st"> </span><span class="kw">quantile</span>(nhefshwdat<span class="op">$</span>pqsmkobs,<span class="kw">c</span>(.<span class="dv">2</span>,.<span class="dv">4</span>,.<span class="dv">6</span>,.<span class="dv">8</span>))
+
+<span class="co"># Create strata defined by the propensity score</span>
+
+nhefshwdat<span class="op">$</span>strat1 &lt;-<span class="st"> </span>nhefshwdat<span class="op">$</span>pqsmkobs<span class="op">&lt;=</span>strat[<span class="dv">1</span>]
+nhefshwdat<span class="op">$</span>strat2 &lt;-<span class="st"> </span>(nhefshwdat<span class="op">$</span>pqsmkobs <span class="op">&gt;</span><span class="st"> </span>strat[<span class="dv">1</span>]) <span class="op">&amp;</span><span class="st"> </span>(nhefshwdat<span class="op">$</span>pqsmkobs <span class="op">&lt;=</span><span class="st"> </span>strat[<span class="dv">2</span>])
+nhefshwdat<span class="op">$</span>strat3 &lt;-<span class="st"> </span>(nhefshwdat<span class="op">$</span>pqsmkobs <span class="op">&gt;</span><span class="st"> </span>strat[<span class="dv">2</span>]) <span class="op">&amp;</span><span class="st"> </span>(nhefshwdat<span class="op">$</span>pqsmkobs <span class="op">&lt;=</span><span class="st"> </span>strat[<span class="dv">3</span>]) 
+nhefshwdat<span class="op">$</span>strat4 &lt;-<span class="st"> </span>(nhefshwdat<span class="op">$</span>pqsmkobs <span class="op">&gt;</span><span class="st"> </span>strat[<span class="dv">3</span>]) <span class="op">&amp;</span><span class="st"> </span>(nhefshwdat<span class="op">$</span>pqsmkobs <span class="op">&lt;=</span><span class="st"> </span>strat[<span class="dv">4</span>])
+nhefshwdat<span class="op">$</span>strat5 &lt;-<span class="st"> </span>nhefshwdat<span class="op">$</span>pqsmkobs <span class="op">&gt;</span><span class="st"> </span>strat[<span class="dv">4</span>] 
+
+nhefshwdat<span class="op">$</span>stratvar &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="kw">length</span>(nhefshwdat<span class="op">$</span>qsmk))
+
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(nhefshwdat<span class="op">$</span>qsmk)) 
+  {
+<span class="cf">if</span> (nhefshwdat<span class="op">$</span>strat1[i]<span class="op">==</span>T) {nhefshwdat<span class="op">$</span>stratvar[i] &lt;-<span class="st"> </span><span class="dv">1</span>}
+<span class="cf">else</span> 
+  <span class="cf">if</span> (nhefshwdat<span class="op">$</span>strat2[i]<span class="op">==</span>T) {nhefshwdat<span class="op">$</span>stratvar[i] &lt;-<span class="st"> </span><span class="dv">2</span>}
+<span class="cf">else</span> 
+  <span class="cf">if</span> (nhefshwdat<span class="op">$</span>strat3[i]<span class="op">==</span>T) {nhefshwdat<span class="op">$</span>stratvar[i] &lt;-<span class="st"> </span><span class="dv">3</span>}
+<span class="cf">else</span> 
+  <span class="cf">if</span> (nhefshwdat<span class="op">$</span>strat4[i]<span class="op">==</span>T) {nhefshwdat<span class="op">$</span>stratvar[i] &lt;-<span class="st"> </span><span class="dv">4</span>}
+<span class="cf">else</span> nhefshwdat<span class="op">$</span>stratvar[i] &lt;-<span class="st"> </span><span class="dv">5</span>
+}
+<span class="kw">write.csv</span>(nhefshwdat,<span class="st">&quot;nhefshwdat.csv&quot;</span>)</code></pre></div>
+<p>The treatment effect within each strata is obtained in the R code below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nhefshwdat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&#39;nhefshwdat.csv&#39;</span>)
+propmodel1 &lt;-<span class="st"> </span><span class="kw">glm</span>(wt82_<span class="dv">71</span>[strat1]<span class="op">~</span>qsmk[strat1],<span class="dt">data =</span> nhefshwdat)
+<span class="kw">summary</span>(propmodel1)</code></pre></div>
+<pre><code>
+Call:
+glm(formula = wt82_71[strat1] ~ qsmk[strat1], data = nhefshwdat)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-17.528   -3.882   -0.184    3.191   34.068  
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    3.5829     0.4464   8.027 2.06e-14 ***
+qsmk[strat1]   1.5719     1.2205   1.288    0.199    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for gaussian family taken to be 54.19378)
+
+    Null deviance: 16998  on 313  degrees of freedom
+Residual deviance: 16908  on 312  degrees of freedom
+AIC: 2148.8
+
+Number of Fisher Scoring iterations: 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">propmodel2 &lt;-<span class="st"> </span><span class="kw">glm</span>(wt82_<span class="dv">71</span>[strat2]<span class="op">~</span>qsmk[strat2], 
+                  <span class="dt">data =</span> nhefshwdat)
+<span class="kw">summary</span>(propmodel2)</code></pre></div>
+<pre><code>
+Call:
+glm(formula = wt82_71[strat2] ~ qsmk[strat2], data = nhefshwdat)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-32.750   -3.946   -0.317    3.763   30.982  
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    2.7000     0.4466   6.046 4.26e-09 ***
+qsmk[strat2]   5.0542     1.0287   4.913 1.45e-06 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for gaussian family taken to be 50.66173)
+
+    Null deviance: 16979  on 312  degrees of freedom
+Residual deviance: 15756  on 311  degrees of freedom
+AIC: 2120.8
+
+Number of Fisher Scoring iterations: 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">propmodel3 &lt;-<span class="st"> </span><span class="kw">glm</span>(wt82_<span class="dv">71</span>[strat3]<span class="op">~</span>qsmk[strat3], 
+                  <span class="dt">data =</span> nhefshwdat)
+<span class="kw">summary</span>(propmodel3)</code></pre></div>
+<pre><code>
+Call:
+glm(formula = wt82_71[strat3] ~ qsmk[strat3], data = nhefshwdat)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-43.402   -3.707    0.263    4.807   41.663  
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    2.1214     0.5384   3.940 0.000101 ***
+qsmk[strat3]   3.7269     1.0519   3.543 0.000456 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for gaussian family taken to be 66.96828)
+
+    Null deviance: 21668  on 312  degrees of freedom
+Residual deviance: 20827  on 311  degrees of freedom
+AIC: 2208.2
+
+Number of Fisher Scoring iterations: 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">propmodel4 &lt;-<span class="st"> </span><span class="kw">glm</span>(wt82_<span class="dv">71</span>[strat4]<span class="op">~</span>qsmk[strat4], 
+                  <span class="dt">data =</span> nhefshwdat)
+<span class="kw">summary</span>(propmodel4)</code></pre></div>
+<pre><code>
+Call:
+glm(formula = wt82_71[strat4] ~ qsmk[strat4], data = nhefshwdat)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-25.578   -4.357    0.168    3.923   47.583  
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    0.9552     0.5131   1.862   0.0636 .  
+qsmk[strat4]   3.8712     0.9464   4.090 5.49e-05 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for gaussian family taken to be 58.17997)
+
+    Null deviance: 19067  on 312  degrees of freedom
+Residual deviance: 18094  on 311  degrees of freedom
+AIC: 2164.1
+
+Number of Fisher Scoring iterations: 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">propmodel5 &lt;-<span class="st"> </span><span class="kw">glm</span>(wt82_<span class="dv">71</span>[strat5]<span class="op">~</span>qsmk[strat5], 
+                  <span class="dt">data =</span> nhefshwdat)
+<span class="kw">summary</span>(propmodel5)</code></pre></div>
+<pre><code>
+Call:
+glm(formula = wt82_71[strat5] ~ qsmk[strat5], data = nhefshwdat)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-28.7365   -3.9177    0.2878    4.9209   31.0088  
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)   -0.2893     0.5878  -0.492   0.6230  
+qsmk[strat5]   2.0550     0.9192   2.236   0.0261 *
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for gaussian family taken to be 63.92345)
+
+    Null deviance: 20200  on 312  degrees of freedom
+Residual deviance: 19880  on 311  degrees of freedom
+AIC: 2193.6
+
+Number of Fisher Scoring iterations: 2</code></pre>
+<p>The overall treatment effect can be calculated by calculating an estimate of the regression coefficient. The 95% confidence interval for the treatment effect is also calculated.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nhefshwdat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&#39;nhefshwdat.csv&#39;</span>)
+stratmodel &lt;-<span class="st"> </span><span class="kw">glm</span>(wt82_<span class="dv">71</span><span class="op">~</span>qsmk<span class="op">+</span><span class="kw">as.factor</span>(stratvar),<span class="dt">data =</span> nhefshwdat)
+<span class="kw">summary</span>(stratmodel)</code></pre></div>
+<pre><code>
+Call:
+glm(formula = wt82_71 ~ qsmk + as.factor(stratvar), data = nhefshwdat)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-43.523   -3.971    0.019    4.212   47.405  
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            3.3565     0.4373   7.675 2.89e-14 ***
+qsmk                   3.2645     0.4543   7.186 1.03e-12 ***
+as.factor(stratvar)2  -0.3191     0.6135  -0.520 0.603017    
+as.factor(stratvar)3  -1.1140     0.6157  -1.809 0.070602 .  
+as.factor(stratvar)4  -2.2229     0.6173  -3.601 0.000327 ***
+as.factor(stratvar)5  -4.1404     0.6256  -6.619 4.97e-11 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for gaussian family taken to be 58.89146)
+
+    Null deviance: 97176  on 1565  degrees of freedom
+Residual deviance: 91871  on 1560  degrees of freedom
+AIC: 10835
+
+Number of Fisher Scoring iterations: 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 95% confidence interval for treatment effect based on subclassification</span>
+<span class="kw">confint</span>(stratmodel)[<span class="dv">2</span>,]</code></pre></div>
+<pre><code>   2.5 %   97.5 % 
+2.374168 4.154838 </code></pre>
+<p>In summary the 5 quintiles produced treatment effects</p>
+<table>
+<thead>
+<tr class="header">
+<th>Estimate (se)</th>
+<th>P-value</th>
+<th>PS Quintile</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1.57 (1.22)</td>
+<td>0.199</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>5.05 (1.03)</td>
+<td>0.00</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>3.73 (1.05)</td>
+<td>0.00</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>3.87 (0.95)</td>
+<td>0.00</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>2.06 (0.92)</td>
+<td>0.03</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>The overall treatment effect is 3.26, which can be obtained by averaging the estimates within each stratum. This is a larger estimate compared to the treatment effect obtained by matching. The treatment effect and can also be estimated by fitting a linear regression model for the change in weight on the treatment variable and the quintiles of the estimated propensity score.</p>
+<p>The linear regression yields the same treatment effect as averaging the estimates, but also provides an estimate of standard error, p-value, and confidence interval for the treatment effect.</p>
+<p>We can investigate covariate balance within subclasses. In practice this should occur prior to looking at the outcome data. The number of subjects and average propensity score (shown in brackets) within each treatment group by subclass is shown in the table below.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Subclass</th>
+<th>Smoking Cessation</th>
+<th>No smoking cessation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>42 (0.14)</td>
+<td>272 (0.12)</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>59 (0.2)</td>
+<td>254 (0.19)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>82 (0.24)</td>
+<td>231 (0.24)</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>92 (0.31)</td>
+<td>221 (0.3)</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>128 (0.43)</td>
+<td>185 (0.41)</td>
+</tr>
+</tbody>
+</table>
+<p>For example, the percentage of males in each subclass are:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Subclass</th>
+<th>Smoking Cessation</th>
+<th>No Smoking Cessation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>28.57%</td>
+<td>22.79%</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>44.07%</td>
+<td>43.31%</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>54.88%</td>
+<td>46.32%</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>55.43%</td>
+<td>59.73%</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>67.19%</td>
+<td>70.81%</td>
+</tr>
+</tbody>
+</table>
+<p>The other covariates were also investigated and subclassification balanced the 9 covariates within each subclass.</p>
+</div>
+</div>
+<div id="multivariate-adjustment-using-the-propensity-score" class="section level3">
+<h3><span class="header-section-number">12.9.3</span> Multivariate adjustment using the propensity score</h3>
+<p>Another method for using the propensity score to adjust for bias is to use the propensity score itself as a predictor in a regression model along with the treatment indicator.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prop.model.adj &lt;-<span class="st"> </span><span class="kw">glm</span>(wt82_<span class="dv">71</span> <span class="op">~</span><span class="st"> </span>qsmk<span class="op">+</span><span class="st"> </span>pqsmkobs, <span class="dt">data =</span> nhefshwdat)
+<span class="kw">summary</span>(prop.model.adj)</code></pre></div>
+<pre><code>
+Call:
+glm(formula = wt82_71 ~ qsmk + pqsmkobs, data = nhefshwdat)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-43.574   -3.977   -0.090    4.223   47.607  
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    5.560      0.509  10.923  &lt; 2e-16 ***
+qsmk           3.397      0.456   7.451 1.53e-13 ***
+pqsmkobs     -14.752      1.885  -7.827 9.13e-15 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for gaussian family taken to be 58.63809)
+
+    Null deviance: 97176  on 1565  degrees of freedom
+Residual deviance: 91651  on 1563  degrees of freedom
+AIC: 10825
+
+Number of Fisher Scoring iterations: 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">confint</span>(prop.model.adj)</code></pre></div>
+<pre><code>Waiting for profiling to be done...</code></pre>
+<pre><code>                 2.5 %     97.5 %
+(Intercept)   4.562548   6.557939
+qsmk          2.503604   4.290951
+pqsmkobs    -18.445381 -11.057680</code></pre>
+</div>
+<div id="comparing-the-three-methods" class="section level3">
+<h3><span class="header-section-number">12.9.4</span> Comparing the three methods</h3>
+<p>The three propensity score methods yield similar results for the treatment effect.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Average Treatment Effect</th>
+<th>95% Confidence Interval</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Matched</td>
+<td>2.93</td>
+<td>1.8 - 4.0</td>
+</tr>
+<tr class="even">
+<td>Stratified</td>
+<td>3.26</td>
+<td>1.7 - 3.4</td>
+</tr>
+<tr class="odd">
+<td>Regression</td>
+<td>3.40</td>
+<td>2.5 - 4.3</td>
+</tr>
+<tr class="even">
+<td>Unadjusted</td>
+<td>2.54</td>
+<td>1.7 - 3.4</td>
+</tr>
+</tbody>
+</table>
+<p>The unadjusted analysis (two-sample t-test) underestimates the treatment effect by approximately 1kg.</p>
+</div>
+</div>
+<div id="questions-8" class="section level2">
+<h2><span class="header-section-number">12.10</span> Questions</h2>
+<p>The NHEFS survey was designed to investigate the relationships between clinical, nutritional, and behavioural factors assessed in the first National Health and Nutrition Examination Survey NHANES I and subsequent morbidity, mortality, and hospital utilization, as well as changes in risk factors, functional limitation, and institutionalization. For more information see . This question will involve using this data to estimate the average causal effect of smoking cessation on weight gain.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Individuals were classified as treated if they reported, being smokers at baseline in 1971-75, and having quit smoking in the 1982 survey. The latter implies that the individuals included in our study did not die and were not otherwise lost to follow-up between baseline and 1982 (otherwise they would not have been able to respond to the survey). That is, we selected individuals into our study conditional on an event (responding to the 1982 survey) that occurred after the start of smoking cessation. If smoking cessation affects the probability of selection into the study, we might have selection bias (<span class="citation">Hernan MA and JM (<a href="#ref-hernanrobins2016">2016</a>)</span> ). Would a randomized experiment of smoking cessation have this problem? How could a randomized experiment of smoking cessation be designed? What is the major difference between the latter randomized experiment and this study (NHEFS survey)?</p></li>
+<li><p>Should a statistician be concerned that using the NHEFS data to compare weight loss in the group of subjects that quit smoking versus those that did not quit smoking is biased? If yes then state why you think the comparison might be biased, otherwise state why the comparison is unbiased.</p></li>
+<li><p>Use R to estimate the propensity score for each subject in the study. Use the variables: sex, race, age, education.code, smokeintensity, smokers, exercise, active, wt71 as covariates. After calculating the propensity score use the Match function in R to match subjects on the propensity score. Does the balance between the two groups improve after matching? Hand in your R code and output.</p></li>
+<li><p>Estimate the effect of smoking cessation on weight gain using propensity score matching? Did the propensity reduce the bias in estimating the treatment effect? What assumption can make to conclude that smoking cessation causes weight loss? Do you think this assumption is valid? Briefly explain. Hand in your R code and output.</p></li>
+</ol>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-angrist1997">
+<p>Angrist, Joshua D, and Victor Lavy. 1997. “Using Maimonides’ Rule to Estimate the Effect of Class Size on Student Achievement.” National Bureau of Economic Research.</p>
+</div>
+<div id="ref-cochran1968">
+<p>Cochran, William G. 1968. “The Effectiveness of Adjustment by Subclassification in Removing Bias in Observational Studies.” <em>Biometrics</em>. JSTOR, 295–313.</p>
+</div>
+<div id="ref-d1998tutorial">
+<p>d’Agostino, Ralph B. 1998. “Tutorial in Biostatistics: Propensity Score Methods for Bias Reduction in the Comparison of a Treatment to a Non-Randomized Control Group.” <em>Stat Med</em> 17 (19): 2265–81.</p>
+</div>
+<div id="ref-gelman2006">
+<p>Gelman, Andrew, and Jennifer Hill. 2006. <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-hernanrobins2016">
+<p>Hernan MA, and Robins JM. 2016. <em>Causal Inference</em>. Chapman &amp; Hall, CRC.</p>
+</div>
+<div id="ref-rosenbaum2010design">
+<p>Rosenbaum, Paul R. 2010. “Design of Observational Studies.” <em>New York, USA: Springer. Doi</em> 10. Citeseer: 978–1.</p>
+</div>
+<div id="ref-rosenbaum1984">
+<p>Rosenbaum, Paul R, and Donald B Rubin. 1984. “Reducing Bias in Observational Studies Using Subclassification on the Propensity Score.” <em>Journal of the American Statistical Association</em> 79 (387). Taylor &amp;amp; Francis Group: 516–24.</p>
+</div>
+<div id="ref-rubin2007design">
+<p>Rubin, Donald B. 2007. “The Design Versus the Analysis of Observational Studies for Causal Effects: Parallels with the Design of Randomized Trials.” <em>Statistics in Medicine</em> 26 (1). Wiley Online Library: 20–36.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="split-plot-designs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

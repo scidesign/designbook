@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Completely Randomized Designs: Comparing Two Treatments | Design of Experiments and Observational Studies</title>
+  <meta name="description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Completely Randomized Designs: Comparing Two Treatments | Design of Experiments and Observational Studies" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="github-repo" content="scidesign/designbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Completely Randomized Designs: Comparing Two Treatments | Design of Experiments and Observational Studies" />
+  
+  <meta name="twitter:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  
+
+<meta name="author" content="Nathan Taback" />
+
+
+<meta name="date" content="2019-07-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="review-of-mathematical-statistics.html">
+<link rel="next" href="how-many-experimental-units-are-required-to-compare-two-treatments.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-design-scientific-studies"><i class="fa fa-check"></i><b>2.1</b> Why Design Scientific Studies?</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#big-data-and-designing-scientific-studies"><i class="fa fa-check"></i><b>2.2</b> Big Data and Designing Scientific Studies</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#what-is-big-data-and-why-does-it-matter"><i class="fa fa-check"></i><b>2.2.1</b> What is Big data and why does it matter?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction.html"><a href="introduction.html#is-statistical-sampling-and-randomization-still-relevant-in-the-era-of-big-data"><i class="fa fa-check"></i><b>2.2.2</b> Is statistical sampling and randomization still relevant in the era of Big Data?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html"><i class="fa fa-check"></i><b>3</b> Review of Mathematical Statistics</a><ul>
+<li class="chapter" data-level="3.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#data"><i class="fa fa-check"></i><b>3.1</b> Data</a></li>
+<li class="chapter" data-level="3.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#distributions"><i class="fa fa-check"></i><b>3.2</b> Distributions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Continuous Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#randomness"><i class="fa fa-check"></i><b>3.3</b> Randomness</a></li>
+<li class="chapter" data-level="3.4" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#parameters-and-statistics"><i class="fa fa-check"></i><b>3.4</b> Parameters and Statistics</a></li>
+<li class="chapter" data-level="3.5" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#residuals-and-degress-of-freedom"><i class="fa fa-check"></i><b>3.5</b> Residuals and Degress of Freedom</a></li>
+<li class="chapter" data-level="3.6" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#the-normal-distribution"><i class="fa fa-check"></i><b>3.6</b> The Normal Distribution</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises"><i class="fa fa-check"></i><b>3.6.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
+<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
+<li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#questions"><i class="fa fa-check"></i><b>3.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html"><i class="fa fa-check"></i><b>4</b> Completely Randomized Designs: Comparing Two Treatments</a><ul>
+<li class="chapter" data-level="4.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#comparing-two-treatments"><i class="fa fa-check"></i><b>4.1</b> Comparing Two Treatments</a></li>
+<li class="chapter" data-level="4.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#treatment-assignment-mechanism-and-propensity-score"><i class="fa fa-check"></i><b>4.2</b> Treatment Assignment Mechanism and Propensity Score</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#propensity-score"><i class="fa fa-check"></i><b>4.2.1</b> Propensity Score</a></li>
+<li class="chapter" data-level="4.2.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#assignment-mechanism"><i class="fa fa-check"></i><b>4.2.2</b> Assignment Mechanism</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#completely-randomized-experiment"><i class="fa fa-check"></i><b>4.3</b> Completely Randomized Experiment</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#example"><i class="fa fa-check"></i><b>4.3.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-distribution"><i class="fa fa-check"></i><b>4.4</b> The Randomization Distribution</a></li>
+<li class="chapter" data-level="4.5" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-p-value"><i class="fa fa-check"></i><b>4.5</b> The Randomization p-value</a></li>
+<li class="chapter" data-level="4.6" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#two-sided-randomization-p-value"><i class="fa fa-check"></i><b>4.6</b> Two-Sided Randomization P value</a></li>
+<li class="chapter" data-level="4.7" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#other-test-statistics"><i class="fa fa-check"></i><b>4.7</b> Other Test Statistics</a></li>
+<li class="chapter" data-level="4.8" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#calculating-the-randomization-p-value-using-monte-carlo-sampling"><i class="fa fa-check"></i><b>4.8</b> Calculating the Randomization P-value using Monte Carlo Sampling</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#does-caffeine-have-an-effect-on-reaction-time"><i class="fa fa-check"></i><b>4.8.1</b> Does Caffeine Have an Effect on Reaction Time?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#properties-of-the-randomization-test"><i class="fa fa-check"></i><b>4.9</b> Properties of the Randomization Test</a></li>
+<li class="chapter" data-level="4.10" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-two-sample-t-test"><i class="fa fa-check"></i><b>4.10</b> The two-sample t-test</a></li>
+<li class="chapter" data-level="4.11" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#randomized-paired-comparison"><i class="fa fa-check"></i><b>4.11</b> Randomized paired comparison</a></li>
+<li class="chapter" data-level="4.12" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-test-for-a-randomized-paired-design"><i class="fa fa-check"></i><b>4.12</b> The Randomization Test for a Randomized Paired Design</a></li>
+<li class="chapter" data-level="4.13" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#paired-t-test"><i class="fa fa-check"></i><b>4.13</b> Paired t-test</a></li>
+<li class="chapter" data-level="4.14" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#questions-1"><i class="fa fa-check"></i><b>4.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html"><i class="fa fa-check"></i><b>5</b> How Many Experimental Units are Required to Compare Two Treatments?</a><ul>
+<li class="chapter" data-level="5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#clinical-trials"><i class="fa fa-check"></i><b>5.1</b> Clinical Trials</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#phases-of-clinical-trials"><i class="fa fa-check"></i><b>5.1.1</b> Phases of clinical trials</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
+<li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.4.1</b> Calculating the Power of the One Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-two-sample-t-test"><i class="fa fa-check"></i><b>5.5</b> Power of two sample t test</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-two-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.5.1</b> Calculating the Power of the Two Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#effect-size"><i class="fa fa-check"></i><b>5.6</b> Effect size</a></li>
+<li class="chapter" data-level="5.7" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-equal-allocation"><i class="fa fa-check"></i><b>5.7</b> Sample size - known variance and equal allocation</a></li>
+<li class="chapter" data-level="5.8" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-unequal-allocation"><i class="fa fa-check"></i><b>5.8</b> Sample size - known variance and unequal allocation</a></li>
+<li class="chapter" data-level="5.9" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#comparing-proportions-for-binary-outcomes"><i class="fa fa-check"></i><b>5.9</b> Comparing Proportions for Binary Outcomes</a></li>
+<li class="chapter" data-level="5.10" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-power-by-simulation"><i class="fa fa-check"></i><b>5.10</b> Calculating Power by simulation</a></li>
+<li class="chapter" data-level="5.11" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#questions-2"><i class="fa fa-check"></i><b>5.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.1</b> The Fundemental Problem of Causal Inference</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="causal-inference.html"><a href="causal-inference.html#example-of-the-fundemental-problem"><i class="fa fa-check"></i><b>6.1.1</b> Example of the fundemental problem</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#randomized-experiments-as-a-solution-to-the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.2</b> Randomized experiments as a solution to the fundemental problem of causal inference</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#average-causal-effects-and-randomized-experiments"><i class="fa fa-check"></i><b>6.3</b> Average causal effects and randomized experiments</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="causal-inference.html"><a href="causal-inference.html#stable-unit-treatment-value-assignment"><i class="fa fa-check"></i><b>6.3.1</b> Stable Unit Treatment Value Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#ignorable-assignment-mechanisims"><i class="fa fa-check"></i><b>6.4</b> Ignorable Assignment Mechanisims</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="causal-inference.html"><a href="causal-inference.html#the-perfect-doctor-example"><i class="fa fa-check"></i><b>6.4.1</b> The Perfect Doctor Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#questions-3"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html"><i class="fa fa-check"></i><b>7</b> Completely Randomized Designs: Comparing More Than Two Treatments</a><ul>
+<li class="chapter" data-level="7.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova---comparing-more-than-two-groups"><i class="fa fa-check"></i><b>7.1</b> ANOVA - Comparing more than two groups</a></li>
+<li class="chapter" data-level="7.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#analysis-of-variance-anova-table"><i class="fa fa-check"></i><b>7.2</b> Analysis of Variance (ANOVA) table</a></li>
+<li class="chapter" data-level="7.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-anova-identity"><i class="fa fa-check"></i><b>7.3</b> The ANOVA identity</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---blood-coagulation-study"><i class="fa fa-check"></i><b>7.3.1</b> Example - Blood coagulation study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#general-anova"><i class="fa fa-check"></i><b>7.4</b> General ANOVA</a></li>
+<li class="chapter" data-level="7.5" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova-assumptions"><i class="fa fa-check"></i><b>7.5</b> ANOVA Assumptions</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---checking-the-assumptions-in-the-blood-coagualtion-study"><i class="fa fa-check"></i><b>7.5.1</b> Example - checking the assumptions in the blood coagualtion study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#coding-qualitative-predictors-in-regression-models"><i class="fa fa-check"></i><b>7.6</b> Coding Qualitative Predictors in Regression Models</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#dummy-coding"><i class="fa fa-check"></i><b>7.6.1</b> Dummy Coding</a></li>
+<li class="chapter" data-level="7.6.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#deviation-coding"><i class="fa fa-check"></i><b>7.6.2</b> Deviation Coding</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#estimating-treatment-effects-using-least-squares"><i class="fa fa-check"></i><b>7.7</b> Estimating Treatment Effects using Least Squares</a></li>
+<li class="chapter" data-level="7.8" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#using-the-lm-function-in-r-to-estimate-treatment-effects"><i class="fa fa-check"></i><b>7.8</b> Using the <code>lm()</code> Function in R to Estimate Treatment Effects</a></li>
+<li class="chapter" data-level="7.9" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#multiple-comparisons"><i class="fa fa-check"></i><b>7.9</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-bonferroni-method"><i class="fa fa-check"></i><b>7.9.1</b> The Bonferroni Method</a></li>
+<li class="chapter" data-level="7.9.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-tukey-method"><i class="fa fa-check"></i><b>7.9.2</b> The Tukey Method</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#sample-size-for-anova---designing-a-study-to-compare-more-than-two-treatments"><i class="fa fa-check"></i><b>7.10</b> Sample size for ANOVA - Designing a study to compare more than two treatments</a><ul>
+<li class="chapter" data-level="7.10.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#direct-calculation-of-power-using-r"><i class="fa fa-check"></i><b>7.10.1</b> Direct calculation of Power using R</a></li>
+<li class="chapter" data-level="7.10.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-and-sample-size-using-the-pwr-library-in-r"><i class="fa fa-check"></i><b>7.10.2</b> Calculating Power and Sample Size using the <code>pwr</code> library in R</a></li>
+<li class="chapter" data-level="7.10.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-using-using-simulation"><i class="fa fa-check"></i><b>7.10.3</b> Calculating Power using using Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#questions-4"><i class="fa fa-check"></i><b>7.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html"><i class="fa fa-check"></i><b>8</b> Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#anova-table-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.1</b> ANOVA Table for Randomized Block Designs</a></li>
+<li class="chapter" data-level="8.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-anova-identity-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.2</b> The ANOVA identity for Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#degrees-of-freedom"><i class="fa fa-check"></i><b>8.2.1</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="8.2.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#penicillin-manufacturing-example"><i class="fa fa-check"></i><b>8.2.2</b> Penicillin Manufacturing Example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-linear-model-for-randomized-block-design"><i class="fa fa-check"></i><b>8.3</b> The Linear Model for Randomized Block Design</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#checking-statistical-assumptions"><i class="fa fa-check"></i><b>8.3.1</b> Checking statistical assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#application-of-blocking-to-achieve-balanced-randomization-permuted-block-randomization"><i class="fa fa-check"></i><b>8.4</b> Application of Blocking to Achieve Balanced Randomization: Permuted Block Randomization</a></li>
+<li class="chapter" data-level="8.5" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#latin-square-designs"><i class="fa fa-check"></i><b>8.5</b> Latin square designs</a></li>
+<li class="chapter" data-level="8.6" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#general-latin-square-designs"><i class="fa fa-check"></i><b>8.6</b> General Latin Square Designs</a></li>
+<li class="chapter" data-level="8.7" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.7</b> Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#hyper-graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.8</b> Hyper-Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.9" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#balanced-incomplete-block-designs"><i class="fa fa-check"></i><b>8.9</b> Balanced incomplete block designs</a></li>
+<li class="chapter" data-level="8.10" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#questions-5"><i class="fa fa-check"></i><b>8.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html"><i class="fa fa-check"></i><b>9</b> Factorial Designs at Two Levels - <span class="math inline">\(2^k\)</span> Designs</a><ul>
+<li class="chapter" data-level="9.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#difference-between-anova-and-factorial-designs"><i class="fa fa-check"></i><b>9.1</b> Difference between ANOVA and Factorial Designs</a></li>
+<li class="chapter" data-level="9.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#performing-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.2</b> Performing a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#cube-plots"><i class="fa fa-check"></i><b>9.3</b> Cube plots</a></li>
+<li class="chapter" data-level="9.4" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#factorial-effects"><i class="fa fa-check"></i><b>9.4</b> Factorial effects</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#main-effects"><i class="fa fa-check"></i><b>9.4.1</b> Main effects</a></li>
+<li class="chapter" data-level="9.4.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-effects"><i class="fa fa-check"></i><b>9.4.2</b> Interaction effects</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#replication-in-factorial-designs"><i class="fa fa-check"></i><b>9.5</b> Replication in factorial designs</a></li>
+<li class="chapter" data-level="9.6" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#estimate-of-the-error-variance-and-standard-error-of-effects-from-replicated-runs"><i class="fa fa-check"></i><b>9.6</b> Estimate of the error variance and standard error of effects from replicated runs</a></li>
+<li class="chapter" data-level="9.7" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interpretation-of-results"><i class="fa fa-check"></i><b>9.7</b> Interpretation of results</a></li>
+<li class="chapter" data-level="9.8" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-plots"><i class="fa fa-check"></i><b>9.8</b> Interaction plots</a></li>
+<li class="chapter" data-level="9.9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#linear-model-for-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.9</b> Linear Model for a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.10" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#advantages-of-factorial-designs-over-one-factor-at-a-time-designs"><i class="fa fa-check"></i><b>9.10</b> Advantages of factorial designs over one-factor-at-a-time designs</a></li>
+<li class="chapter" data-level="9.11" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#normal-plots-in-unreplicated-factorial-designs"><i class="fa fa-check"></i><b>9.11</b> Normal Plots in Unreplicated Factorial Designs</a><ul>
+<li class="chapter" data-level="9.11.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#review-of-normal-quantile-plots"><i class="fa fa-check"></i><b>9.11.1</b> Review of Normal Quantile Plots</a></li>
+<li class="chapter" data-level="9.11.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#example---24-design-for-studying-a-chemical-reaction"><i class="fa fa-check"></i><b>9.11.2</b> Example - <span class="math inline">\(2^4\)</span> design for studying a chemical reaction</a></li>
+</ul></li>
+<li class="chapter" data-level="9.12" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#half-normal-plots"><i class="fa fa-check"></i><b>9.12</b> Half-Normal Plots</a></li>
+<li class="chapter" data-level="9.13" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#lenths-method-testing-significance-for-experiments-without-variance-estimates"><i class="fa fa-check"></i><b>9.13</b> Lenth’s method: testing significance for experiments without variance estimates</a></li>
+<li class="chapter" data-level="9.14" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#blocking-factorial-designs"><i class="fa fa-check"></i><b>9.14</b> Blocking Factorial Designs</a><ul>
+<li class="chapter" data-level="9.14.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#effect-hierarchy-principle"><i class="fa fa-check"></i><b>9.14.1</b> Effect hierarchy principle</a></li>
+<li class="chapter" data-level="9.14.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generation-of-orthogonal-blocks"><i class="fa fa-check"></i><b>9.14.2</b> Generation of Orthogonal Blocks</a></li>
+<li class="chapter" data-level="9.14.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#an-example-of-how-not-to-block"><i class="fa fa-check"></i><b>9.14.3</b> An example of how not to block</a></li>
+</ul></li>
+<li class="chapter" data-level="9.15" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generators-and-defining-relations"><i class="fa fa-check"></i><b>9.15</b> Generators and Defining Relations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html"><i class="fa fa-check"></i><b>10</b> Fractional factorial designs</a><ul>
+<li class="chapter" data-level="10.1" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---effect-of-five-factors-on-six-properties-of-film-in-eight-runs"><i class="fa fa-check"></i><b>10.1</b> Example - Effect of five factors on six properties of film in eight runs</a></li>
+<li class="chapter" data-level="10.2" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#effect-aliasing-and-design-resolution"><i class="fa fa-check"></i><b>10.2</b> Effect Aliasing and Design Resolution</a></li>
+<li class="chapter" data-level="10.3" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---leaf-spring-experiment"><i class="fa fa-check"></i><b>10.3</b> Example - Leaf Spring Experiment</a></li>
+<li class="chapter" data-level="10.4" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---baking-cookies"><i class="fa fa-check"></i><b>10.4</b> Example - Baking Cookies</a></li>
+<li class="chapter" data-level="10.5" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#questions-6"><i class="fa fa-check"></i><b>10.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="split-plot-designs.html"><a href="split-plot-designs.html"><i class="fa fa-check"></i><b>11</b> Split-Plot Designs</a><ul>
+<li class="chapter" data-level="11.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#anova-table-for-split-plot-experiment"><i class="fa fa-check"></i><b>11.1</b> ANOVA table for split plot experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-not-to-do-it"><i class="fa fa-check"></i><b>11.2</b> Split plot ANOVA - How not to do it</a></li>
+<li class="chapter" data-level="11.3" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-to-do-it"><i class="fa fa-check"></i><b>11.3</b> Split plot ANOVA - How to do it</a></li>
+<li class="chapter" data-level="11.4" data-path="split-plot-designs.html"><a href="split-plot-designs.html#so-what-is-a-split-plot"><i class="fa fa-check"></i><b>11.4</b> So, what is a split plot?</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#randomizing-a-split-plot-experiment"><i class="fa fa-check"></i><b>11.4.1</b> Randomizing a Split Plot experiment</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="split-plot-designs.html"><a href="split-plot-designs.html#questions-7"><i class="fa fa-check"></i><b>11.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html"><i class="fa fa-check"></i><b>12</b> Design of Observational Studies</a><ul>
+<li class="chapter" data-level="12.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#what-is-an-observational-study"><i class="fa fa-check"></i><b>12.1</b> What is an observational study?</a></li>
+<li class="chapter" data-level="12.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#designing-and-observational-study"><i class="fa fa-check"></i><b>12.2</b> Designing and Observational Study</a></li>
+<li class="chapter" data-level="12.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example---epidemiologic-follow-up-study"><i class="fa fa-check"></i><b>12.3</b> Example - Epidemiologic Follow-up Study</a></li>
+<li class="chapter" data-level="12.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-1"><i class="fa fa-check"></i><b>12.4</b> Propensity Score</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-examples"><i class="fa fa-check"></i><b>12.4.1</b> Propensity Score Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#estimating-the-propensity-score-in-an-observational-study"><i class="fa fa-check"></i><b>12.5</b> Estimating the propensity score in an observational study</a></li>
+<li class="chapter" data-level="12.6" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#the-balancing-property-of-the-propensity-score"><i class="fa fa-check"></i><b>12.6</b> The balancing property of the propensity score</a></li>
+<li class="chapter" data-level="12.7" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#imbalance-versus-overlap"><i class="fa fa-check"></i><b>12.7</b> Imbalance versus Overlap</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example-from-the-nhefs"><i class="fa fa-check"></i><b>12.7.1</b> Example from the NHEFS</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-and-ignorable-treatment-assignment"><i class="fa fa-check"></i><b>12.8</b> Propensity Score and Ignorable Treatment Assignment</a></li>
+<li class="chapter" data-level="12.9" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-methods-to-reduce-bias-in-observational-studies"><i class="fa fa-check"></i><b>12.9</b> Propensity Score Methods to Reduce Bias in Observational Studies</a><ul>
+<li class="chapter" data-level="12.9.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-matching-matching"><i class="fa fa-check"></i><b>12.9.1</b> Propensity Score Matching Matching</a></li>
+<li class="chapter" data-level="12.9.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-stratification"><i class="fa fa-check"></i><b>12.9.2</b> Propensity score stratification</a></li>
+<li class="chapter" data-level="12.9.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#multivariate-adjustment-using-the-propensity-score"><i class="fa fa-check"></i><b>12.9.3</b> Multivariate adjustment using the propensity score</a></li>
+<li class="chapter" data-level="12.9.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#comparing-the-three-methods"><i class="fa fa-check"></i><b>12.9.4</b> Comparing the three methods</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#questions-8"><i class="fa fa-check"></i><b>12.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Design of Experiments and Observational Studies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="completely-randomized-designs-comparing-two-treatments" class="section level1">
+<h1><span class="header-section-number">4</span> Completely Randomized Designs: Comparing Two Treatments</h1>
+<p>Suppose that subjects are randomly assigned to two groups in a medical study to investigate which group has a higher mortality rate. In one group patients receive the standard treatment for the disease, and in the other group patients receive an experimental treatment. Since patients were randomly assigned to the two groups then the two groups of patients should be similar <em>except for the treatment they recieved</em>.</p>
+<p>If patients in the group receiving the experimental treatment live longer on average and the difference is both clinically meaningful and statistically significant then because of the design we can conclude that the new treatment <em>caused</em> patients to live longer. Randomization is supposed to ensure that the groups will be similar with respect to all the factors <em>measured</em> in the study and all the factors that are <em>not measured</em>.</p>
+<div id="comparing-two-treatments" class="section level2">
+<h2><span class="header-section-number">4.1</span> Comparing Two Treatments</h2>
+<ul>
+<li>Is fertilizer A better than fertilizer B for growing wheat?<br />
+</li>
+<li>Is drug A better than drug B for treating breast cancer?<br />
+</li>
+<li>Is webpage A better than webpage B for selling a certain product?</li>
+</ul>
+<p>These are all examples of comparing two <em>treatments</em>. In experimental design <em>treatments</em> are different procedures applied to <em>experimental units</em> - the things to which we apply <em>treatments</em>.</p>
+<p>In the first example the treatments are two fertilizers and the experimental units might be plots of land. In the second example the treatments are two different drugs to treat breast cancer and the experimental units are breast cancer patients. In the third example the treatments are two webpage designs and the experimental units are potential customers (example from <a href="https://support.google.com/analytics/answer/1745147?hl%20=%20en">Google experiments</a>).</p>
+</div>
+<div id="treatment-assignment-mechanism-and-propensity-score" class="section level2">
+<h2><span class="header-section-number">4.2</span> Treatment Assignment Mechanism and Propensity Score</h2>
+<p>In randomized experiments (1, pg. 20):</p>
+<blockquote>
+<p>“… the assignment mechanism is under the control of the experimenter, and the probability of any assignment of treatments across the units in the experiment is entirely knowable before the experiment begins.”</p>
+</blockquote>
+<p>Suppose, for example, that we have two breast cancer patients and we want to randomly assign these two patients to two treatments (A and B). Then how many ways can this be done?</p>
+<ol style="list-style-type: decimal">
+<li>patient 1 receives A and patient 2 receives A</li>
+<li>patient 1 receives A and patient 2 receives B</li>
+<li>patient 1 receives B and patient 2 receives A</li>
+<li>patient 1 receives B and patient 2 receives B</li>
+</ol>
+<div id="propensity-score" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Propensity Score</h3>
+<p>The probability that an individual patient (experimental unit) receives treatment is called the <strong>propensity score</strong>. In this case the probability that an individual patient receives treatment A (or B) is 1/2.</p>
+<p>It’s important to note that the assignment mechanism and propensity scores are different probabilities, although in some designs they may be equal.</p>
+<p>In general, if there are <span class="math inline">\(N\)</span> experimental units then there are <span class="math inline">\(2^N\)</span> possible treatment assignments (provided there are two treatments).</p>
+<p>A treatment assignment vector records the treatment that each experimental unit is assigned to receive. Let <span class="math inline">\(N\)</span> be the number of experimental units. Let <span class="math inline">\(t_i\)</span> be the treatment indicator for unit <span class="math inline">\(i\)</span></p>
+<p><span class="math display">\[t_i =
+\left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if subject i assigned treatment A} \\
+        0 &amp; \mbox{if subject i assigned treatment B. }
+    \end{array}
+\right.\]</span></p>
+<p>If <span class="math inline">\(N = 2\)</span> then the possible treatment assignment vectors</p>
+<p><span class="math inline">\(\begin{pmatrix}  t_1 \\  t_2  \end{pmatrix}\)</span> are:</p>
+<p><span class="math display">\[\begin{pmatrix} 
+  1 \\
+  0
+ \end{pmatrix}, \begin{pmatrix}
+ 0 \\
+  1
+ \end{pmatrix},\begin{pmatrix}
+ 1 \\
+  1
+ \end{pmatrix},\begin{pmatrix}
+ 0 \\
+  0
+ \end{pmatrix},\]</span></p>
+<p>For example, the first treatment assignment vector</p>
+<p><span class="math display">\[\begin{pmatrix} 
+  1 \\
+  0
+ \end{pmatrix}\]</span></p>
+<p>means that the first experimental unit receives treatment A, and the second treatment B; and the third treatment assignment vector</p>
+<p><span class="math display">\[\begin{pmatrix}
+ 1 \\
+  1
+ \end{pmatrix}\]</span></p>
+<p>means that the first and second experimental units both receive treatment A.</p>
+</div>
+<div id="assignment-mechanism" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Assignment Mechanism</h3>
+<p>There are 4 possible treatment assignments. The probability of a treatment assignment is 1/4. This probability is called the <strong>assignment mechanism</strong>. It is the probability that a particular treatment assignment vector will occur.</p>
+</div>
+</div>
+<div id="completely-randomized-experiment" class="section level2">
+<h2><span class="header-section-number">4.3</span> Completely Randomized Experiment</h2>
+<p>It wouldn’t be a very informative experiment if both patients received A or both received B. Therefore, it makes sense to rule out this scenario. If we rule out this scenario then we want to assign treatments to patients such that one patient receives A and the other receives B. So, the possible treatment assignments are:</p>
+<ol style="list-style-type: decimal">
+<li><p>patient 1 receives A and patient 2 receives B or (in vector notation) <span class="math inline">\(\begin{pmatrix}  1 \\  0  \end{pmatrix}.\)</span></p></li>
+<li><p>patient 1 receives B and patient 2 receives A or (in vector notation) <span class="math inline">\(\begin{pmatrix}  0 \\  1\end{pmatrix}.\)</span></p></li>
+</ol>
+<p>There are are two possible treatment assignments. The probability of a treatment assignment is 1/2, and the probability that an individual patient receives treatment A (or B) is still 1/2.</p>
+<p>Notice that the probability of a treatment assignment is different from the probability that of an individual experimental unit receiving a treatment.</p>
+<p>A completely randomized experiment has the number of units assigned to treatment A, <span class="math inline">\(N_A\)</span> fixed in advance so that the number of units assigned to treatment B <span class="math inline">\(N_B = N-N_A\)</span> are also fixed in advance. In such a design, <span class="math inline">\(N_A\)</span> units are randomly selected, from a population of <span class="math inline">\(N\)</span> units, to receive the treatment A, with the remaining <span class="math inline">\(N_B\)</span> assigned to the other treatment. In this case, each unit has probability <span class="math inline">\(N_A/N\)</span> of being assigned to treatment A. There are <span class="math inline">\(N \choose N_A\)</span> distinct values of the treatment assignment vector with <span class="math inline">\(N_A\)</span> units out of <span class="math inline">\(N\)</span> assigned to treatment A. Therefore, the assignment mechanism or the probability of any particular treatment assignment is:</p>
+<p><span class="math display">\[\frac{1}{\binom{N}{N_A}}.\]</span></p>
+<div id="example" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Example</h3>
+<p>Is fertilizer A better than fertilizer B for growing wheat? It is decided to take one large plot of land and divide it into twelve smaller plots of land then treat some plots with fertilizer A or B. How should we assign fertilizers (<em>treatments</em>) to plots of land?</p>
+<p><span class="math display">\[\begin{array}{|c|c|c|c|c|c|}
+\hline
+  {\text {plot }} 1 &amp; {\text {plot }}2 &amp; {\text {plot }}3 &amp; {\text {plot }}4 &amp; {\text {plot }}5 &amp; {\text {plot }}6 \\ 
+  \hline
+  {\text {plot }}7 &amp; {\text {plot }}8 &amp; {\text {plot }}9 &amp; {\text {plot }}10 &amp; {\text {plot }}11 &amp; {\text {plot }}12 \\
+  \hline
+ \end{array}\]</span></p>
+<p>Some of the plots get more sunlight and not all the plots have the exact same soil composition which may affect wheat yield. In other words, the plots are not identical. Nevertheless, we want to make sure that we can identify the treatment effect even though the plots are not identical. Statisticians sometimes state this as being able to identify the treatment effect (<em>viz.</em> difference between fertilizers) in the presence of other sources of variation (<em>viz.</em> differences between plots).</p>
+<p>Ideally we would assign fertilizer A to six plots and fertilizer B to six plots. How can this be done so that each plot has an equal chance of being assigned fertilizer A or B? One way to assign the two fertilizers to the plots is to use six playing cards labelled A (for fertilizer A) cards and six playing cards labelled B (for fertilizer B), shuffle the cards then assign the first card to plot 1, the second card to plot 2, etc.</p>
+<p>In R we can represent the Red and Black cards as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cards &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;A&quot;</span>,<span class="dv">6</span>),<span class="kw">rep</span>(<span class="st">&quot;B&quot;</span>,<span class="dv">6</span>))
+cards <span class="co"># print cards</span></code></pre></div>
+<pre><code> [1] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot;</code></pre>
+<p>Now, to “shuffle” the “cards” we can use <code>sample()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shuffle &lt;-<span class="st"> </span><span class="kw">sample</span>(cards,<span class="dv">12</span>)
+shuffle</code></pre></div>
+<pre><code> [1] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot;</code></pre>
+<p>The first plot will be assigned A, the second plot will be assigned A, etc.</p>
+<p>Exercise:</p>
+<ol style="list-style-type: decimal">
+<li><p>How many ways are there to assign six plots to fertilizer A and six plots to fertilizer B? In other words how many different treatment assignments are possible?</p></li>
+<li><p>What is the probability that an individual plot receives fertilizer A?</p></li>
+<li><p>What is the probability of choosing the treatment assignment A, A, A, A, A, A, B, B, B, B, B, B?</p></li>
+</ol>
+<p>Answers:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\({12 \choose 6}=\)</span> 924. That is, there are 924 unique subsets of 6 plots that can be chosen from 12 plots. In R we can choose six plots from 12 using the <code>sample()</code> command.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>,<span class="dv">6</span>)</code></pre></div>
+<pre><code>[1] 6 3 8 5 1 9</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>1/2.</p></li>
+<li><p><span class="math inline">\(P({\text {treatment assignment}})= {\frac {1}{{12 \choose 6}}}=\)</span> 0.001.</p></li>
+</ol>
+</div>
+</div>
+<div id="the-randomization-distribution" class="section level2">
+<h2><span class="header-section-number">4.4</span> The Randomization Distribution</h2>
+<p>Let’s consider the fertilizer example from the previous section. The treatment assignment that the experimenter used was</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shuffle</code></pre></div>
+<pre><code> [1] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot;</code></pre>
+<p><span class="math display">\[\begin{array}{|c|c|c|c|c|c|}
+\hline
+  {\text A} &amp; {\text B} &amp; {\text B} &amp; {\text B} &amp; {\text B} &amp; {\text A} \\ 
+  \hline
+  {\text A} &amp; {\text A} &amp; {\text A} &amp; {\text B} &amp; {\text A} &amp; {\text B} \\
+  \hline
+ \end{array}\]</span></p>
+<p>This is one of the <span class="math inline">\({12 \choose 6}=\)</span> 924 possible ways of allocating 6 A’s and 6 B’s to the 12 plots. The probability of choosing any of these allocations is <span class="math inline">\({\frac {1}{{12 \choose 6}}}=\)</span> 0.001.</p>
+<p>The data from this experiment is:</p>
+<p><span class="math display">\[\begin{array}{|c|c|c|c|c|c|}
+\hline
+  {\text A } (11.4) &amp; {\text B } (26.9) &amp; {\text B } (26.6) &amp; {\text B } (25.3) &amp; {\text B } (28.5) &amp; {\text A } (23.7) \\ 
+  \hline
+  {\text A } (17.9) &amp; {\text A } (16.5) &amp; {\text A } (21.1) &amp; {\text B } (14.2) &amp; {\text A } (19.6) &amp; {\text B } (24.3) \\
+  \hline
+ \end{array}\]</span></p>
+<p>This can be stored in R. A summary of the distributions of the two samples is given below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Fertilizer data</span>
+yA &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">11.4</span>,<span class="fl">23.7</span>,<span class="fl">17.9</span>,<span class="fl">16.5</span>,<span class="fl">21.1</span>,<span class="fl">19.6</span>)
+<span class="kw">summary</span>(yA); <span class="kw">sd</span>(yA)</code></pre></div>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  11.40   16.85   18.75   18.37   20.73   23.70 </code></pre>
+<pre><code>[1] 4.234934</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">yB &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">26.9</span>,<span class="fl">26.6</span>,<span class="fl">25.3</span>,<span class="fl">28.5</span>,<span class="fl">14.2</span>,<span class="fl">24.3</span>)
+<span class="kw">summary</span>(yB); <span class="kw">sd</span>(yB)</code></pre></div>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  14.20   24.55   25.95   24.30   26.82   28.50 </code></pre>
+<pre><code>[1] 5.151699</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(yA) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(yB)</code></pre></div>
+<pre><code>[1] -5.933333</code></pre>
+<p>The distributions of the two samples can also be described by the empirical cumulative distribution function (CDF):</p>
+<p><span class="math display">\[{\hat F}(y)=\frac{\sum_{i = 1}^{n}I(y_i \le y)}{n},\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is the number of sample points and <span class="math inline">\(I(\cdot)\)</span> is the indicator function</p>
+<p><span class="math display">\[ I(y_i \le y) = \left\{
+    \begin{array}{ll}
+        1  &amp; \mbox{if } y_i \le y \\
+        0 &amp; \mbox{if } y_i &gt; y
+    \end{array}
+\right.\]</span></p>
+<p>The R function <code>ecdf()</code> calculates the empirical CDF.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#plot empirical cdf for fertilizer B</span>
+<span class="kw">plot.ecdf</span>(yB,<span class="dt">xlab =</span> <span class="st">&quot;yield&quot;</span>,<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">29</span>),<span class="dt">main =</span> <span class="st">&quot;Empirical CDF Fertilizer&quot;</span>)
+<span class="co">#add empirical cdf for fertilizer A to plot</span>
+<span class="kw">plot.ecdf</span>(yA,<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>,<span class="dt">pch =</span> <span class="dv">2</span>,<span class="dt">add =</span> T)
+<span class="co"># add legend</span>
+<span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Fertilizer B&quot;</span>,<span class="st">&quot;Fertilizer A&quot;</span>),<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;blue&quot;</span>),<span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">19</span>,<span class="dv">2</span>))</code></pre></div>
+<p><img src="03-twotreatments_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wheatdat &lt;-<span class="st"> </span><span class="kw">stack</span>(<span class="kw">data.frame</span>(yA,yB)) <span class="co">#stack the columns</span>
+<span class="kw">boxplot</span>(values<span class="op">~</span>ind,<span class="dt">data =</span> wheatdat) <span class="co"># create side-by-side boxplot</span></code></pre></div>
+<p><img src="03-twotreatments_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<p>Is the difference in wheat yield due to the treatment or due to chance?</p>
+<ul>
+<li><p>Assume that there is no difference in the average yield between fertilizer A and fertilizer B.</p></li>
+<li><p>If there is no difference then the yield would be the same even if a different treatment allocation occurred.</p></li>
+<li><p>Under this assumption of no difference between the treatments, if one of the other 924 treatment allocations occurred such as A, A, A, A, B, A, A, B, B, B, B, B. Then the data from the experiment would have been:</p></li>
+</ul>
+<p><span class="math display">\[\begin{array}{|c|c|c|c|c|c|}
+\hline
+  {\text B } (11.4) &amp; {\text A } (26.9) &amp; {\text B } (26.6) &amp; {\text B } (25.3) &amp; {\text B } (28.5) &amp; {\text A } (23.7) \\ 
+  \hline
+  {\text A } (17.9) &amp; {\text A } (16.5) &amp; {\text A } (21.1) &amp; {\text B } (14.2) &amp; {\text A } (19.6) &amp; {\text B } (24.3) \\
+  \hline
+ \end{array}\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Fertilizer data</span>
+yA_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">26.9</span>,<span class="fl">23.7</span>,<span class="fl">17.9</span>,<span class="fl">16.5</span>,<span class="fl">21.1</span>,<span class="fl">19.6</span>)
+<span class="kw">mean</span>(yA_<span class="dv">1</span>); <span class="kw">sd</span>(yA_<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 20.95</code></pre>
+<pre><code>## [1] 3.844867</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">yB_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">11.4</span>,<span class="fl">26.6</span>,<span class="fl">25.3</span>,<span class="fl">28.5</span>,<span class="fl">14.2</span>,<span class="fl">24.3</span>)
+<span class="kw">mean</span>(yB_<span class="dv">1</span>); <span class="kw">sd</span>(yB_<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 21.71667</code></pre>
+<pre><code>## [1] 7.103638</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(yA_<span class="dv">1</span>) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(yB_<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] -0.7666667</code></pre>
+<p>Assume that there is no difference between the two treatments. The set of all possible differences that might have occurred if a different treatment allocation was chosen is called the randomization distribution.</p>
+<p>The randomization distribution can be obtained in R using the following code.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fert &lt;-<span class="st"> </span><span class="kw">c</span>(yA,yB) <span class="co">#pool data</span>
+N &lt;-<span class="st"> </span><span class="kw">choose</span>(<span class="dv">12</span>,<span class="dv">6</span>)
+res &lt;-<span class="st"> </span><span class="kw">numeric</span>(N) <span class="co"># store the results</span>
+<span class="co">#install.packages(&quot;combinat&quot;) # if package not installed then remove comment</span>
+<span class="kw">library</span>(combinat)</code></pre></div>
+<pre><code>
+Attaching package: &#39;combinat&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:utils&#39;:
+
+    combn</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">index &lt;-<span class="st"> </span><span class="kw">combn</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>,<span class="dv">6</span>) <span class="co"># Generate N treatment assignments</span>
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N)
+{
+  res[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(fert[index[,i]]) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(fert[<span class="op">-</span>index[,i]])
+}
+<span class="kw">hist</span>(res,<span class="dt">xlab =</span> <span class="st">&quot;ybarA-ybarB&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Randomization Distribution of difference in means&quot;</span>)
+observed &lt;-<span class="st"> </span><span class="kw">mean</span>(yA) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(yB) <span class="co">#store observed mean difference</span>
+<span class="kw">abline</span>(<span class="dt">v =</span> observed,<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="co">#add line at observed mean diff</span></code></pre></div>
+<p><img src="03-twotreatments_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>The researchers are interested in determining if fertilizer B produces a higher yield compared to fertilizer A.</p>
+<p>The null and alternative hypotheses of interest are</p>
+<p><span class="math display">\[\begin{aligned}
+&amp; H_0: \text {There is no difference between treatments,} \\
+&amp; H_1: \text {Fertilizer B increases wheat yield.}
+\end{aligned}\]</span></p>
+</div>
+<div id="the-randomization-p-value" class="section level2">
+<h2><span class="header-section-number">4.5</span> The Randomization p-value</h2>
+<p>The p value of the <em>randomization test</em> of <span class="math inline">\(H_0\)</span> can be calculated as the probability of getting a test statistic as extreme of more extreme than the observed value of the test statistic <span class="math inline">\(t^{*}\)</span>. Since all of the <span class="math inline">\(N \choose N_A\)</span> randomizations are equally likely under <span class="math inline">\(H_0\)</span>, the p value is</p>
+<p><span class="math display">\[P(T \le t^{*}|H_0)= \sum_{i = 1}^{N \choose N_A} \frac{I(t_i \le t^{*})}{{N \choose N_A}},\]</span></p>
+<p>where <span class="math inline">\(t_i\)</span> is the value of the test statistic <span class="math inline">\(T={\bar Y}_A-{\bar Y}_B\)</span> for the <span class="math inline">\(i^{th}\)</span> randomization (<span class="citation">Ernst (<a href="#ref-ernst2004perm">2004</a>)</span>).</p>
+<p>The observed value of the test statistic is -5.93. So, the p-value is</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># of times values from the mean randomization distribution less than observed value</span>
+<span class="kw">sum</span>(res <span class="op">&lt;=</span><span class="st"> </span>observed) </code></pre></div>
+<pre><code>[1] 26</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N <span class="co"># Number of randomizations</span></code></pre></div>
+<pre><code>[1] 924</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pval &lt;-<span class="st"> </span><span class="kw">sum</span>(res <span class="op">&lt;=</span><span class="st"> </span>observed)<span class="op">/</span>N <span class="co"># Randomization p value</span>
+<span class="kw">round</span>(pval, <span class="dv">2</span>)</code></pre></div>
+<pre><code>[1] 0.03</code></pre>
+<p>A p-value of 0.03 can be interpreted as: assume there is no difference in yield between fertilizers A and B then the proportion of randomizations that would produce an observed mean difference between A and B of at most -5.93 is 0.03. In other words, under the assumption that there is no difference between A and B only 3% of randomizations would produce an extreme or more extreme difference than the observed mean difference.</p>
+</div>
+<div id="two-sided-randomization-p-value" class="section level2">
+<h2><span class="header-section-number">4.6</span> Two-Sided Randomization P value</h2>
+<p>If we are using a two-sided alternative then how do we calculate a p-value? The randomization distribution may not be symmetric so there is no justification for simply doubling the probability in one tail.</p>
+<p>Let</p>
+<p><span class="math display">\[{\bar t}=\frac{1}{\binom{N} {N_A}}{\sum_{i = 1}^{\binom{N} {N_A}} t_i}\]</span></p>
+<p>be the mean of the randomization distribution then we can define the two-sided p-value as</p>
+<p><span class="math display">\[P(\left|T-{\bar t}\right| \ge \left|t^{*}-{\bar t}\right||H_0) = \sum_{i = 1}^{N \choose N_A} \frac{I(\left|t_i-{\bar t}\right| \ge \left|t^{*}-{\bar t}\right|)}{{N \choose N_A}},\]</span></p>
+<p>this is the probability of obtaining an observed value of the test statistic as far, or farther, from the mean of the randomization distribution.</p>
+<p>In R this can be calculated</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">yA &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">11.4</span>,<span class="fl">23.7</span>,<span class="fl">17.9</span>,<span class="fl">16.5</span>,<span class="fl">21.1</span>,<span class="fl">19.6</span>)
+yB &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">26.9</span>,<span class="fl">26.6</span>,<span class="fl">25.3</span>,<span class="fl">28.5</span>,<span class="fl">14.2</span>,<span class="fl">24.3</span>)
+fert &lt;-<span class="st"> </span><span class="kw">c</span>(yA,yB) <span class="co">#pool data</span>
+N &lt;-<span class="st"> </span><span class="kw">choose</span>(<span class="dv">12</span>,<span class="dv">6</span>)
+res &lt;-<span class="st"> </span><span class="kw">numeric</span>(N) <span class="co"># store the results</span>
+<span class="co">#install.packages(&quot;combinat&quot;) # if package not installed then remove comment</span>
+<span class="kw">library</span>(combinat)
+index &lt;-<span class="st"> </span><span class="kw">combn</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>,<span class="dv">6</span>)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N)
+{
+  res[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(fert[index[,i]]) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(fert[<span class="op">-</span>index[,i]])
+}
+
+tbar &lt;-<span class="st"> </span><span class="kw">mean</span>(res)
+pval &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">abs</span>(res <span class="op">-</span><span class="st"> </span>tbar) <span class="op">&gt;=</span><span class="st"> </span><span class="kw">abs</span>(observed <span class="op">-</span><span class="st"> </span>tbar))<span class="op">/</span>N
+<span class="kw">round</span>(pval,<span class="dv">2</span>)</code></pre></div>
+<pre><code>[1] 0.06</code></pre>
+<p>In this case, since the randomization distribution, is roughly symmetric the two-sided p-value is approximately half the one-sided p-value.</p>
+</div>
+<div id="other-test-statistics" class="section level2">
+<h2><span class="header-section-number">4.7</span> Other Test Statistics</h2>
+<p>Other test statistics could be used instead of <span class="math inline">\(T={\bar Y}_A-{\bar Y}_B\)</span> to measure the effectiveness of fertilizer A. The difference in group medians or trimmed means are examples of other test statistics.</p>
+<p>The randomization distribution of the difference in group medians can be obtained by modifying the R code used for the difference in group means.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fert &lt;-<span class="st"> </span><span class="kw">c</span>(yA,yB) <span class="co">#pool data</span>
+N &lt;-<span class="st"> </span><span class="kw">choose</span>(<span class="dv">12</span>,<span class="dv">6</span>)
+res &lt;-<span class="st"> </span><span class="kw">numeric</span>(N) <span class="co"># store the results</span>
+<span class="co">#install.packages(&quot;combinat&quot;) # if package not installed then remove comment</span>
+<span class="kw">library</span>(combinat)
+index &lt;-<span class="st"> </span><span class="kw">combn</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>,<span class="dv">6</span>) <span class="co"># Generate N treatment assignments</span>
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N)
+{
+  res[i] &lt;-<span class="st"> </span><span class="kw">median</span>(fert[index[,i]]) <span class="op">-</span><span class="st"> </span><span class="kw">median</span>(fert[<span class="op">-</span>index[,i]])
+}
+<span class="kw">hist</span>(res,<span class="dt">xlab =</span> <span class="st">&quot;medianA-medianB&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Randomization Distribution of difference in medians&quot;</span>)
+observed &lt;-<span class="st"> </span><span class="kw">median</span>(yA) <span class="op">-</span><span class="st"> </span><span class="kw">median</span>(yB) <span class="co">#store observed median difference</span>
+<span class="kw">abline</span>(<span class="dt">v =</span> observed, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="co">#add line at observed median diff</span></code></pre></div>
+<p><img src="03-twotreatments_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>The p-value of the randomization test can be calculated</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># of times values from the median randomization distribution less than observed value</span>
+<span class="kw">sum</span>(res <span class="op">&lt;=</span><span class="st"> </span>observed) </code></pre></div>
+<pre><code>[1] 36</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N <span class="co"># Number of randomizations</span></code></pre></div>
+<pre><code>[1] 924</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pval &lt;-<span class="st"> </span><span class="kw">sum</span>(res <span class="op">&lt;=</span><span class="st"> </span>observed)<span class="op">/</span>N <span class="co"># Randomization p value</span>
+<span class="kw">round</span>(pval, <span class="dv">2</span>)</code></pre></div>
+<pre><code>[1] 0.04</code></pre>
+</div>
+<div id="calculating-the-randomization-p-value-using-monte-carlo-sampling" class="section level2">
+<h2><span class="header-section-number">4.8</span> Calculating the Randomization P-value using Monte Carlo Sampling</h2>
+<p>Computation of the randomization distribution involves calculating the difference in means for every possible way to split the data into two samples of size <span class="math inline">\(n_A\)</span> each. If <span class="math inline">\(N = 30\)</span> and <span class="math inline">\(N_A = 15\)</span> this would result in <span class="math inline">\({30 \choose 15}=\)</span> 155.12 million differences. These types of calculations are not practical unless the sample size is small.</p>
+<p>Instead we can resort to Monte Carlo sampling from the randomization distribution to estimate the exact p-value. The p-value is the proportion of test statistics as extreme or more extreme than the observed value.</p>
+<p>The data set can be randomly divided into two groups and the test statistic calculated. Several thousand test statistics are usually sufficient to get an accurate estimate of the exact p-value and sampling can be done without replacement.</p>
+<p>If <span class="math inline">\(M\)</span> test statistics, <span class="math inline">\(t_i\)</span>, <span class="math inline">\(i = 1,...,M\)</span> are randomly sampled from the permutation distribution, a one-sided Monte Carlo p value for a test of <span class="math inline">\(H_0: \mu_T = 0\)</span> versus <span class="math inline">\(H_1: \mu_T &gt; 0\)</span> is</p>
+<p><span class="math display">\[ {\hat p} = \frac {1+\sum_{i = 1}^M I(t_i \ge t^{*})}{M+1}.\]</span></p>
+<p>Including the observed value <span class="math inline">\(t^{*}\)</span> there are <span class="math inline">\(M+1\)</span> test statistics.</p>
+<div id="does-caffeine-have-an-effect-on-reaction-time" class="section level3">
+<h3><span class="header-section-number">4.8.1</span> Does Caffeine Have an Effect on Reaction Time?</h3>
+
+<p>A study of the effects of caffeine on reaction time using the <a href="http://asp.censusatschool.ca/asp/timer-eng.asp">Census at School Canada reaction timer</a> was conducted on a group of 30 high school students.</p>
+<p>The investigator randomly assigned an equal number to two groups: one group (CAFF) consumed a caffeinated beverage prior to taking the test and the other group (NOCAFF) consumed the same amount of water. She wanted to study the effect that caffeine would have on reaction time. In particular she wanted to know if caffeine slows down reaction time.</p>
+
+<p>The data she collected are below:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">rt</th>
+<th align="left">group</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.352</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.332</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.213</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.290</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.379</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.389</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.229</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.314</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.187</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.324</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.460</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.426</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.326</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.449</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.424</td>
+<td align="left">CAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.359</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.255</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.330</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.443</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.398</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.290</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.131</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.283</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.138</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.223</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.313</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.281</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.263</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="odd">
+<td align="right">0.340</td>
+<td align="left">NOCAFF</td>
+</tr>
+<tr class="even">
+<td align="right">0.325</td>
+<td align="left">NOCAFF</td>
+</tr>
+</tbody>
+</table>
+<p>Did the CAFF group have a slower reaction time compared to the NOCAFF group?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(rtdat<span class="op">$</span>rt[rtdat<span class="op">$</span>group <span class="op">==</span><span class="st"> &quot;CAFF&quot;</span>])  <span class="co">#Distribution for CAFF group</span></code></pre></div>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.1870  0.3020  0.3320  0.3396  0.4065  0.4600 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(rtdat<span class="op">$</span>rt[rtdat<span class="op">$</span>group <span class="op">==</span><span class="st"> &quot;NOCAFF&quot;</span>])  <span class="co">#Distribution for NOCAFF group</span></code></pre></div>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.1310  0.2590  0.2900  0.2915  0.3350  0.4430 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(rt<span class="op">~</span>group,<span class="dt">data =</span> rtdat,<span class="dt">ylab =</span> <span class="st">&quot;Reaction Time&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Reation Time Study&quot;</span>)</code></pre></div>
+<p><img src="03-twotreatments_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>The data indicate that the median difference between the CAFF and NOCAFF groups is 0.042 seconds. Is the observed difference due to random chance? Let’s conduct a randomization test to find out, but we will approximate the p-value using Monte Carlo simulation since there are 155.12 million possible differences.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">caff &lt;-rtdat<span class="op">$</span>rt[rtdat<span class="op">$</span>group<span class="op">==</span><span class="st">&quot;CAFF&quot;</span>]
+ncaff &lt;-<span class="st"> </span>rtdat<span class="op">$</span>rt[rtdat<span class="op">$</span>group<span class="op">==</span><span class="st">&quot;NOCAFF&quot;</span>]
+rt1 &lt;-<span class="st"> </span><span class="kw">c</span>(caff,ncaff)
+N &lt;-<span class="st"> </span><span class="dv">10000</span>
+result &lt;-<span class="st"> </span><span class="kw">numeric</span>(N) 
+<span class="kw">set.seed</span>(<span class="dv">1701</span>)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N) {
+index &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">length</span>(rt),<span class="dt">size =</span> <span class="kw">length</span>(caff),<span class="dt">replace =</span> <span class="ot">FALSE</span>)
+result[i] &lt;-<span class="st"> </span><span class="kw">median</span>(rt[index]) <span class="op">-</span><span class="st"> </span><span class="kw">median</span>(rt[<span class="op">-</span>index]) 
+}
+observed &lt;-<span class="st"> </span><span class="kw">median</span>(caff) <span class="op">-</span><span class="st"> </span><span class="kw">median</span>(ncaff)
+
+<span class="co">#P-value - results will vary depending on the sample chosen, but set.seed() is fixed so</span>
+<span class="co">#same sample will be chosen unless this value changes.</span>
+phatval &lt;-<span class="st"> </span>(<span class="kw">sum</span>(result <span class="op">&gt;=</span><span class="st"> </span>observed)<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(N<span class="op">+</span><span class="dv">1</span>)
+phatval</code></pre></div>
+<pre><code>[1] 0.07559244</code></pre>
+<p>The p-value 0.076 is not unusual under the null hypothesis. Thus, this study did not find evidence that caffeine slows down reaction time.</p>
+</div>
+</div>
+<div id="properties-of-the-randomization-test" class="section level2">
+<h2><span class="header-section-number">4.9</span> Properties of the Randomization Test</h2>
+<p>The P-value of the one-sided randomization test must be a multiple of <span class="math inline">\(\frac{1}{\binom{N} {N_A}}\)</span>. If a significance level of <span class="math inline">\(\alpha=\frac{k}{\binom{N} {N_A}}\)</span>, where <span class="math inline">\(k = 1,...,{N \choose N_A}\)</span> is chosen then</p>
+<p><span class="math display">\[P(\text{type I}) = \alpha.\]</span></p>
+<p>In other words the randomization test is an exact test.</p>
+<p>If <span class="math inline">\(\alpha\)</span> is not chosen as a multiple of <span class="math inline">\(\frac{1}{\binom {N}{N_A}}\)</span>, but <span class="math inline">\(\frac{k}{\binom {N}{N_A}}\)</span> is the largest p-value less than <span class="math inline">\(\alpha\)</span>, then <span class="math inline">\(P(\text{type I}) = \frac{k}{\binom {N}{N_A}}&lt; \alpha\)</span> and the randomization test is conservative. Either way, the test is guaranteed to control the probability of a type I error under very minimal conditions: randomization of the experimental units to the treatments (<span class="citation">Ernst (<a href="#ref-ernst2004perm">2004</a>)</span>).</p>
+</div>
+<div id="the-two-sample-t-test" class="section level2">
+<h2><span class="header-section-number">4.10</span> The two-sample t-test</h2>
+<p>If the two wheat yield samples are independent random samples from a normal distribution with means <span class="math inline">\(\mu_A\)</span> and <span class="math inline">\(\mu_B\)</span> but the same variance then the statistic</p>
+<p><span class="math display">\[ {\bar y}_A - {\bar y}_b \sim N\left(\mu_A-\mu_B,\sigma^2(1/n_A+1/n_B) \right).\]</span></p>
+<p>So,</p>
+<p><span class="math display">\[ \frac {{\bar y}_A - {\bar y}_b- \delta}{\sigma \sqrt{(1/n_A+1/n_B)}} \sim N(0,1),\]</span></p>
+<p>where <span class="math inline">\(\delta=\mu_A-\mu_B\)</span>.</p>
+<p>If we substitute</p>
+<p><span class="math display">\[S^2=\frac{\sum_{i = 1}^{n_A}(y_{iA}-{\bar y}_A)+\sum_{i = 1}^{n_B}(y_{iB}-{\bar y}_B)}{n_A+n_B-2}\]</span></p>
+<p>for <span class="math inline">\(\sigma^2\)</span> then</p>
+<p><span class="math display">\[ \frac {{\bar y}_A - {\bar y}_b - \delta}{s \sqrt{(1/n_A+1/n_B)}} \sim t_{n_A+n_B-2},\]</span></p>
+<p>is called the two sample t-statistic.</p>
+<p>In the wheat yield example <span class="math inline">\(H_0:\mu_A=\mu_B\)</span> and suppose that <span class="math inline">\(H_1: \mu_A &lt; \mu_B.\)</span> The p-value of the test is obtained by calculating the observed value of the two sample t-statistic under <span class="math inline">\(H_0\)</span>.</p>
+<p><span class="math display">\[ t^{*}= \frac {{\bar y}_A - {\bar y}_b}{s \sqrt{(1/n_A+1/n_B)}} = \frac {18.37 - 24.3}{4.72 \sqrt{(1/6+1/6)}}=-2.18\]</span></p>
+<p>The p-value is <span class="math inline">\(P(t_{18}&lt;-2.18)=\)</span> 0.03.</p>
+<p>The calculation was done in R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s &lt;-<span class="st"> </span><span class="kw">sqrt</span>((<span class="dv">5</span><span class="op">*</span><span class="kw">var</span>(yA)<span class="op">+</span><span class="dv">5</span><span class="op">*</span><span class="kw">var</span>(yB))<span class="op">/</span><span class="dv">10</span>)
+tstar &lt;-<span class="st"> </span>(<span class="kw">mean</span>(yA)<span class="op">-</span><span class="kw">mean</span>(yB))<span class="op">/</span>(s<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>)); <span class="kw">round</span>(tstar,<span class="dv">2</span>)</code></pre></div>
+<pre><code>[1] -2.18</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pval &lt;-<span class="st"> </span><span class="kw">pt</span>(tstar,<span class="dv">10</span>); <span class="kw">round</span>(pval,<span class="dv">2</span>)</code></pre></div>
+<pre><code>[1] 0.03</code></pre>
+<p>In R the command to run a two-sample t-test is <code>t.test()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(yA,yB,<span class="dt">var.equal =</span> <span class="ot">TRUE</span>,<span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</code></pre></div>
+<pre><code>
+    Two Sample t-test
+
+data:  yA and yB
+t = -2.1793, df = 10, p-value = 0.02715
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+       -Inf -0.9987621
+sample estimates:
+mean of x mean of y 
+ 18.36667  24.30000 </code></pre>
+<p>The assumption of normality can be checked using normal quantile plots, although the t-test is robust against non-normality.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(yA);<span class="kw">qqline</span>(yA)</code></pre></div>
+<p><img src="03-twotreatments_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(yB);<span class="kw">qqline</span>(yB)</code></pre></div>
+<p><img src="03-twotreatments_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+<p>Both plots indicate that the normality assumption is satisfied.</p>
+<p>Notice that the p-value from the randomization test and the p-value from two-sample t-test are almost identical. Although the randomization test neither depends on normality nor independence. The randomization test does depend on Fisher’s concept that after randomization, if the null hypothesis is true, the two results obtained from each particular plot will be <em>exchangeable</em>. The randomization test tells you what you could say if exchangeability were true.</p>
+</div>
+<div id="randomized-paired-comparison" class="section level2">
+<h2><span class="header-section-number">4.11</span> Randomized paired comparison</h2>
+<p>If a comparison is made within matched pairs of experimental units then randomization is straightforward to carry out within a matched pair.</p>
+<p>This is illustrated with a study on the wear of boys’ shoes (<span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span>).</p>
+<p>Measurements on the amount of wear of the soles of shoes worn by 10 boys were obtained by the following design:</p>
+<ul>
+<li><p>Each boy wore a special pair of shoes with the soles made of two different synthetic materials, A (a standard material) and B (a cheaper material).</p></li>
+<li><p>The decision as to whether the left or right sole was made with A or B was determined by the flip of a fair coin.</p></li>
+<li><p>During the test some boys scuffed their shoes more than others, but each boys’ shoes were subjected to the same amount of wear.</p></li>
+<li><p>Most of the boy-to-boy variation can be eliminated by working with the differences between A and B.</p></li>
+</ul>
+<p>The data and a plot of the data are shown below .</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(BHH2)
+<span class="kw">data</span>(shoes.data)
+shoes.data</code></pre></div>
+<pre><code>   boy matA sideA matB sideB
+1    1 13.2     L 14.0     R
+2    2  8.2     L  8.8     R
+3    3 10.9     R 11.2     L
+4    4 14.3     L 14.2     R
+5    5 10.7     R 11.8     L
+6    6  6.6     L  6.4     R
+7    7  9.5     L  9.8     R
+8    8 10.8     L 11.3     R
+9    9  8.8     R  9.3     L
+10  10 13.3     L 13.6     R</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(shoes.data<span class="op">$</span>boy,shoes.data<span class="op">$</span>matA,<span class="dt">pch =</span> <span class="dv">16</span>,<span class="dt">cex =</span> <span class="fl">1.5</span>,<span class="dt">xlab =</span> <span class="st">&quot;Boy&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Wear&quot;</span>)
+<span class="kw">points</span>(shoes.data<span class="op">$</span>boy,shoes.data<span class="op">$</span>matB,<span class="dt">pch =</span> <span class="dv">17</span>,<span class="dt">cex =</span> <span class="fl">1.5</span>)
+<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>,<span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Material A&quot;</span>,<span class="st">&quot;Material B&quot;</span>),<span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>,<span class="dv">17</span>))</code></pre></div>
+<p><img src="03-twotreatments_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>An experimental design of this kind is called a randomized paired comparison design. Later in the course we will see how this idea can be extended to compare more than two treatments using randomized block designs.</p>
+</div>
+<div id="the-randomization-test-for-a-randomized-paired-design" class="section level2">
+<h2><span class="header-section-number">4.12</span> The Randomization Test for a Randomized Paired Design</h2>
+<p>The treatments were assigned to the boys left or right shoe by flipping a fair coin. If the coin toss was a tail then the left side received material A and the right side material B; if the coin toss was a head then the right side received material A and the left side received material B.</p>
+<p>Exercise: Based on the boys shoe data above write down the treatment allocation for this experiment. Use “T” for tails and “H” for heads.</p>
+<p>Answer: T T H T H T T T H T</p>
+<p>The null hypothesis is that there is no difference in wear between A and B. This means that the treatment assignment (sequence of 10 coin tosses) is one of <span class="math inline">\(2^{10}=1024\)</span> equiprobable treatment assignments.</p>
+<p>In a paired design we can work with the difference between treatment for each experimental unit.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diff &lt;-<span class="st"> </span>shoes.data<span class="op">$</span>matA<span class="op">-</span>shoes.data<span class="op">$</span>matB
+meandiff &lt;-<span class="st"> </span><span class="kw">mean</span>(diff); meandiff</code></pre></div>
+<pre><code>[1] -0.41</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shoe.dat2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(shoes.data,diff)
+shoe.dat2</code></pre></div>
+<pre><code>   boy matA sideA matB sideB diff
+1    1 13.2     L 14.0     R -0.8
+2    2  8.2     L  8.8     R -0.6
+3    3 10.9     R 11.2     L -0.3
+4    4 14.3     L 14.2     R  0.1
+5    5 10.7     R 11.8     L -1.1
+6    6  6.6     L  6.4     R  0.2
+7    7  9.5     L  9.8     R -0.3
+8    8 10.8     L 11.3     R -0.5
+9    9  8.8     R  9.3     L -0.5
+10  10 13.3     L 13.6     R -0.3</code></pre>
+<p>Under the null hypothesis the wear of boys left or right shoe is same regardless of what material he had on his sole. This means that if there was a different treatment assignment, say, H T H T H T T T H T then the difference for the first boy would have been +0.8 since he would have had his right side assigned to material A (14.0) and his left side assigned to material B (13.2).</p>
+<p>The randomization distribution of the average difference is the distribution of the average differences, for all the different treatment assignments.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">^</span>(<span class="dv">10</span>) <span class="co"># number of treatment assignments</span>
+res &lt;-<span class="st"> </span><span class="kw">numeric</span>(N) <span class="co">#vector to store results</span>
+LR &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)) <span class="co"># difference is multiplied by -1 or 1</span>
+trtassign &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="kw">rep</span>(LR, <span class="dv">10</span>)) <span class="co"># generate all possible treatment assign</span>
+
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N){
+res[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">as.numeric</span>(trtassign[i,])<span class="op">*</span>diff)
+}
+
+<span class="kw">hist</span>(res, <span class="dt">xlab =</span> <span class="st">&quot;Mean Difference&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Randomization Distribution Boys&#39; Shoes&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v =</span> meandiff,<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><img src="03-twotreatments_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>The p-value for testing if B has more wear than A is:</p>
+<p><span class="math display">\[P(D \le d^{*}|H_0)= \sum_{i = 1}^{2^{10}} \frac{I(d_i \le d^{*})}{2^{10}},\]</span></p>
+<p>where <span class="math inline">\(D={\bar A}-{\bar B}\)</span>, and <span class="math inline">\(d^{*}\)</span> is the observed mean difference.</p>
+<p>This can be calculated in R</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(res<span class="op">&lt;=</span>meandiff) <span class="co"># number of differences le observed diff</span></code></pre></div>
+<pre><code>[1] 7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(res<span class="op">&lt;=</span>meandiff)<span class="op">/</span>N <span class="co"># p-value</span></code></pre></div>
+<pre><code>[1] 0.006835938</code></pre>
+<p>The value of <span class="math inline">\(d^{*}=\)</span> -0.41 is unusual under the null hypothesis since only 7 produced by the randomization distribution give <span class="math inline">\(d^{*}\)</span> less than -0.41. Therefore, there is a statistically significant increase in the amount of wear with the cheaper material B.</p>
+</div>
+<div id="paired-t-test" class="section level2">
+<h2><span class="header-section-number">4.13</span> Paired t-test</h2>
+<p>If we assume that the differences -0.8, -0.6, -0.3, 0.1, -1.1, 0.2, -0.3, -0.5, -0.5, -0.3 are a random sample from a normal distribution then the statistic</p>
+<p><span class="math display">\[t=\frac{{\bar d}}{s_{\bar d}/\sqrt{10}} \sim t_{10-1},\]</span></p>
+<p>where, <span class="math inline">\(s_{\bar d}\)</span> is the sample standard deviation of the paired differences. The p-value for testing if <span class="math inline">\({\bar D} &lt; 0\)</span> is</p>
+<p><span class="math display">\[ P(t_{9}&lt; t).\]</span></p>
+<p>In general if there are <span class="math inline">\(n\)</span> differences then</p>
+<p><span class="math display">\[t=\frac{{\bar d}}{s_{\bar d}/\sqrt{n}} \sim t_{n-1},\]</span></p>
+<p>where, <span class="math inline">\(s_{\bar d}\)</span> is the sample standard deviation of the paired differences. The p-value for testing if <span class="math inline">\({\bar D} &lt; 0\)</span> is</p>
+<p><span class="math display">\[ P(t_{n-1}&lt; t).\]</span></p>
+<p>NB: This is the same as a one-sample t-test of the differences.</p>
+<p>In R a paired t-test can be obtained by using the command <code>t.test()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(shoes.data<span class="op">$</span>matA,shoes.data<span class="op">$</span>matB,<span class="dt">paired =</span> <span class="ot">TRUE</span>,<span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</code></pre></div>
+<pre><code>
+    Paired t-test
+
+data:  shoes.data$matA and shoes.data$matB
+t = -3.3489, df = 9, p-value = 0.004269
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+       -Inf -0.1855736
+sample estimates:
+mean of the differences 
+                  -0.41 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(diff,<span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>) <span class="co"># same as a one-sample t-test on the diff</span></code></pre></div>
+<pre><code>
+    One Sample t-test
+
+data:  diff
+t = -3.3489, df = 9, p-value = 0.004269
+alternative hypothesis: true mean is less than 0
+95 percent confidence interval:
+       -Inf -0.1855736
+sample estimates:
+mean of x 
+    -0.41 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(diff); <span class="kw">qqline</span>(diff)</code></pre></div>
+<p><img src="03-twotreatments_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>Exercise: Calculate the test statistic and p-value of the paired t test using R</p>
+<p>Answer:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tobs &lt;-<span class="st"> </span><span class="kw">mean</span>(diff)<span class="op">/</span>(<span class="kw">sd</span>(diff)<span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">10</span>)); tobs</code></pre></div>
+<pre><code>## [1] -3.348877</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pt</span>(tobs,<span class="dt">df =</span> <span class="dv">9</span>) <span class="co"># p-value using t-dist CDF</span></code></pre></div>
+<pre><code>## [1] 0.00426939</code></pre>
+</div>
+<div id="questions-1" class="section level2">
+<h2><span class="header-section-number">4.14</span> Questions</h2>
+<ol style="list-style-type: decimal">
+<li>Suppose that two drugs A and B are to be tested on 12 subjects’ eyes. The drugs will be randomly assigned to the left eye or right eye based on the flip of a fair coin. If the coin toss is heads then a subject will receive drug A in their right eye. The coin was flipped 12 times and the following sequence of heads and tails was obtained:</li>
+</ol>
+<p><span class="math display">\[\begin{array}
+{c c c c c c c c c c c c}
+T&amp;T&amp;H&amp;T&amp;H&amp;T&amp;T&amp;T&amp;H&amp;T&amp;T&amp;H
+\end{array}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Create a table that shows how the treatments will be allocated to the 12 subjects’ left and right eyes?</li>
+<li>What is the probability of obtaining this treatment allocation?</li>
+<li>What type of experimental design has been used to assign treatments to subjects? Explain.</li>
+</ol>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-bhh2005">
+<p>Box, George EP, J Stuart Hunter, and William Gordon Hunter. 2005. <em>Statistics for Experimenters: Design, Innovation, and Discovery</em>. Vol. 2. Wiley-Interscience New York.</p>
+</div>
+<div id="ref-ernst2004perm">
+<p>Ernst, Michael D. 2004. “Permutation Methods: A Basis for Exact Inference.” <em>Statistical Science</em> 19 (4). Institute of Mathematical Statistics: 676–85.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="review-of-mathematical-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="how-many-experimental-units-are-required-to-compare-two-treatments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Fractional factorial designs | Design of Experiments and Observational Studies</title>
+  <meta name="description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Fractional factorial designs | Design of Experiments and Observational Studies" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="github-repo" content="scidesign/designbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Fractional factorial designs | Design of Experiments and Observational Studies" />
+  
+  <meta name="twitter:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  
+
+<meta name="author" content="Nathan Taback" />
+
+
+<meta name="date" content="2019-07-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="factorial-designs-at-two-levels-2k-designs.html">
+<link rel="next" href="split-plot-designs.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-design-scientific-studies"><i class="fa fa-check"></i><b>2.1</b> Why Design Scientific Studies?</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#big-data-and-designing-scientific-studies"><i class="fa fa-check"></i><b>2.2</b> Big Data and Designing Scientific Studies</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#what-is-big-data-and-why-does-it-matter"><i class="fa fa-check"></i><b>2.2.1</b> What is Big data and why does it matter?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction.html"><a href="introduction.html#is-statistical-sampling-and-randomization-still-relevant-in-the-era-of-big-data"><i class="fa fa-check"></i><b>2.2.2</b> Is statistical sampling and randomization still relevant in the era of Big Data?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html"><i class="fa fa-check"></i><b>3</b> Review of Mathematical Statistics</a><ul>
+<li class="chapter" data-level="3.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#data"><i class="fa fa-check"></i><b>3.1</b> Data</a></li>
+<li class="chapter" data-level="3.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#distributions"><i class="fa fa-check"></i><b>3.2</b> Distributions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2.1</b> Continuous Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#randomness"><i class="fa fa-check"></i><b>3.3</b> Randomness</a></li>
+<li class="chapter" data-level="3.4" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#parameters-and-statistics"><i class="fa fa-check"></i><b>3.4</b> Parameters and Statistics</a></li>
+<li class="chapter" data-level="3.5" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#residuals-and-degress-of-freedom"><i class="fa fa-check"></i><b>3.5</b> Residuals and Degress of Freedom</a></li>
+<li class="chapter" data-level="3.6" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#the-normal-distribution"><i class="fa fa-check"></i><b>3.6</b> The Normal Distribution</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises"><i class="fa fa-check"></i><b>3.6.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
+<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
+<li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#questions"><i class="fa fa-check"></i><b>3.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html"><i class="fa fa-check"></i><b>4</b> Completely Randomized Designs: Comparing Two Treatments</a><ul>
+<li class="chapter" data-level="4.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#comparing-two-treatments"><i class="fa fa-check"></i><b>4.1</b> Comparing Two Treatments</a></li>
+<li class="chapter" data-level="4.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#treatment-assignment-mechanism-and-propensity-score"><i class="fa fa-check"></i><b>4.2</b> Treatment Assignment Mechanism and Propensity Score</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#propensity-score"><i class="fa fa-check"></i><b>4.2.1</b> Propensity Score</a></li>
+<li class="chapter" data-level="4.2.2" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#assignment-mechanism"><i class="fa fa-check"></i><b>4.2.2</b> Assignment Mechanism</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#completely-randomized-experiment"><i class="fa fa-check"></i><b>4.3</b> Completely Randomized Experiment</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#example"><i class="fa fa-check"></i><b>4.3.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-distribution"><i class="fa fa-check"></i><b>4.4</b> The Randomization Distribution</a></li>
+<li class="chapter" data-level="4.5" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-p-value"><i class="fa fa-check"></i><b>4.5</b> The Randomization p-value</a></li>
+<li class="chapter" data-level="4.6" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#two-sided-randomization-p-value"><i class="fa fa-check"></i><b>4.6</b> Two-Sided Randomization P value</a></li>
+<li class="chapter" data-level="4.7" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#other-test-statistics"><i class="fa fa-check"></i><b>4.7</b> Other Test Statistics</a></li>
+<li class="chapter" data-level="4.8" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#calculating-the-randomization-p-value-using-monte-carlo-sampling"><i class="fa fa-check"></i><b>4.8</b> Calculating the Randomization P-value using Monte Carlo Sampling</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#does-caffeine-have-an-effect-on-reaction-time"><i class="fa fa-check"></i><b>4.8.1</b> Does Caffeine Have an Effect on Reaction Time?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#properties-of-the-randomization-test"><i class="fa fa-check"></i><b>4.9</b> Properties of the Randomization Test</a></li>
+<li class="chapter" data-level="4.10" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-two-sample-t-test"><i class="fa fa-check"></i><b>4.10</b> The two-sample t-test</a></li>
+<li class="chapter" data-level="4.11" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#randomized-paired-comparison"><i class="fa fa-check"></i><b>4.11</b> Randomized paired comparison</a></li>
+<li class="chapter" data-level="4.12" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-test-for-a-randomized-paired-design"><i class="fa fa-check"></i><b>4.12</b> The Randomization Test for a Randomized Paired Design</a></li>
+<li class="chapter" data-level="4.13" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#paired-t-test"><i class="fa fa-check"></i><b>4.13</b> Paired t-test</a></li>
+<li class="chapter" data-level="4.14" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#questions-1"><i class="fa fa-check"></i><b>4.14</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html"><i class="fa fa-check"></i><b>5</b> How Many Experimental Units are Required to Compare Two Treatments?</a><ul>
+<li class="chapter" data-level="5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#clinical-trials"><i class="fa fa-check"></i><b>5.1</b> Clinical Trials</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#phases-of-clinical-trials"><i class="fa fa-check"></i><b>5.1.1</b> Phases of clinical trials</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
+<li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.4.1</b> Calculating the Power of the One Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-two-sample-t-test"><i class="fa fa-check"></i><b>5.5</b> Power of two sample t test</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-two-sample-t-test-using-r"><i class="fa fa-check"></i><b>5.5.1</b> Calculating the Power of the Two Sample t-test using R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#effect-size"><i class="fa fa-check"></i><b>5.6</b> Effect size</a></li>
+<li class="chapter" data-level="5.7" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-equal-allocation"><i class="fa fa-check"></i><b>5.7</b> Sample size - known variance and equal allocation</a></li>
+<li class="chapter" data-level="5.8" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#sample-size---known-variance-and-unequal-allocation"><i class="fa fa-check"></i><b>5.8</b> Sample size - known variance and unequal allocation</a></li>
+<li class="chapter" data-level="5.9" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#comparing-proportions-for-binary-outcomes"><i class="fa fa-check"></i><b>5.9</b> Comparing Proportions for Binary Outcomes</a></li>
+<li class="chapter" data-level="5.10" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-power-by-simulation"><i class="fa fa-check"></i><b>5.10</b> Calculating Power by simulation</a></li>
+<li class="chapter" data-level="5.11" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#questions-2"><i class="fa fa-check"></i><b>5.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.1</b> The Fundemental Problem of Causal Inference</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="causal-inference.html"><a href="causal-inference.html#example-of-the-fundemental-problem"><i class="fa fa-check"></i><b>6.1.1</b> Example of the fundemental problem</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#randomized-experiments-as-a-solution-to-the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.2</b> Randomized experiments as a solution to the fundemental problem of causal inference</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#average-causal-effects-and-randomized-experiments"><i class="fa fa-check"></i><b>6.3</b> Average causal effects and randomized experiments</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="causal-inference.html"><a href="causal-inference.html#stable-unit-treatment-value-assignment"><i class="fa fa-check"></i><b>6.3.1</b> Stable Unit Treatment Value Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#ignorable-assignment-mechanisims"><i class="fa fa-check"></i><b>6.4</b> Ignorable Assignment Mechanisims</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="causal-inference.html"><a href="causal-inference.html#the-perfect-doctor-example"><i class="fa fa-check"></i><b>6.4.1</b> The Perfect Doctor Example</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#questions-3"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html"><i class="fa fa-check"></i><b>7</b> Completely Randomized Designs: Comparing More Than Two Treatments</a><ul>
+<li class="chapter" data-level="7.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova---comparing-more-than-two-groups"><i class="fa fa-check"></i><b>7.1</b> ANOVA - Comparing more than two groups</a></li>
+<li class="chapter" data-level="7.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#analysis-of-variance-anova-table"><i class="fa fa-check"></i><b>7.2</b> Analysis of Variance (ANOVA) table</a></li>
+<li class="chapter" data-level="7.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-anova-identity"><i class="fa fa-check"></i><b>7.3</b> The ANOVA identity</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---blood-coagulation-study"><i class="fa fa-check"></i><b>7.3.1</b> Example - Blood coagulation study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#general-anova"><i class="fa fa-check"></i><b>7.4</b> General ANOVA</a></li>
+<li class="chapter" data-level="7.5" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#anova-assumptions"><i class="fa fa-check"></i><b>7.5</b> ANOVA Assumptions</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#example---checking-the-assumptions-in-the-blood-coagualtion-study"><i class="fa fa-check"></i><b>7.5.1</b> Example - checking the assumptions in the blood coagualtion study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#coding-qualitative-predictors-in-regression-models"><i class="fa fa-check"></i><b>7.6</b> Coding Qualitative Predictors in Regression Models</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#dummy-coding"><i class="fa fa-check"></i><b>7.6.1</b> Dummy Coding</a></li>
+<li class="chapter" data-level="7.6.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#deviation-coding"><i class="fa fa-check"></i><b>7.6.2</b> Deviation Coding</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#estimating-treatment-effects-using-least-squares"><i class="fa fa-check"></i><b>7.7</b> Estimating Treatment Effects using Least Squares</a></li>
+<li class="chapter" data-level="7.8" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#using-the-lm-function-in-r-to-estimate-treatment-effects"><i class="fa fa-check"></i><b>7.8</b> Using the <code>lm()</code> Function in R to Estimate Treatment Effects</a></li>
+<li class="chapter" data-level="7.9" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#multiple-comparisons"><i class="fa fa-check"></i><b>7.9</b> Multiple Comparisons</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-bonferroni-method"><i class="fa fa-check"></i><b>7.9.1</b> The Bonferroni Method</a></li>
+<li class="chapter" data-level="7.9.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#the-tukey-method"><i class="fa fa-check"></i><b>7.9.2</b> The Tukey Method</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#sample-size-for-anova---designing-a-study-to-compare-more-than-two-treatments"><i class="fa fa-check"></i><b>7.10</b> Sample size for ANOVA - Designing a study to compare more than two treatments</a><ul>
+<li class="chapter" data-level="7.10.1" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#direct-calculation-of-power-using-r"><i class="fa fa-check"></i><b>7.10.1</b> Direct calculation of Power using R</a></li>
+<li class="chapter" data-level="7.10.2" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-and-sample-size-using-the-pwr-library-in-r"><i class="fa fa-check"></i><b>7.10.2</b> Calculating Power and Sample Size using the <code>pwr</code> library in R</a></li>
+<li class="chapter" data-level="7.10.3" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#calculating-power-using-using-simulation"><i class="fa fa-check"></i><b>7.10.3</b> Calculating Power using using Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="completely-randomized-designs-comparing-more-than-two-treatments.html"><a href="completely-randomized-designs-comparing-more-than-two-treatments.html#questions-4"><i class="fa fa-check"></i><b>7.11</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html"><i class="fa fa-check"></i><b>8</b> Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#anova-table-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.1</b> ANOVA Table for Randomized Block Designs</a></li>
+<li class="chapter" data-level="8.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-anova-identity-for-randomized-block-designs"><i class="fa fa-check"></i><b>8.2</b> The ANOVA identity for Randomized Block Designs</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#degrees-of-freedom"><i class="fa fa-check"></i><b>8.2.1</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="8.2.2" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#penicillin-manufacturing-example"><i class="fa fa-check"></i><b>8.2.2</b> Penicillin Manufacturing Example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#the-linear-model-for-randomized-block-design"><i class="fa fa-check"></i><b>8.3</b> The Linear Model for Randomized Block Design</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#checking-statistical-assumptions"><i class="fa fa-check"></i><b>8.3.1</b> Checking statistical assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#application-of-blocking-to-achieve-balanced-randomization-permuted-block-randomization"><i class="fa fa-check"></i><b>8.4</b> Application of Blocking to Achieve Balanced Randomization: Permuted Block Randomization</a></li>
+<li class="chapter" data-level="8.5" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#latin-square-designs"><i class="fa fa-check"></i><b>8.5</b> Latin square designs</a></li>
+<li class="chapter" data-level="8.6" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#general-latin-square-designs"><i class="fa fa-check"></i><b>8.6</b> General Latin Square Designs</a></li>
+<li class="chapter" data-level="8.7" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.7</b> Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.8" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#hyper-graeco-latin-square-designs"><i class="fa fa-check"></i><b>8.8</b> Hyper-Graeco-Latin Square Designs</a></li>
+<li class="chapter" data-level="8.9" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#balanced-incomplete-block-designs"><i class="fa fa-check"></i><b>8.9</b> Balanced incomplete block designs</a></li>
+<li class="chapter" data-level="8.10" data-path="randomized-block-designs.html"><a href="randomized-block-designs.html#questions-5"><i class="fa fa-check"></i><b>8.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html"><i class="fa fa-check"></i><b>9</b> Factorial Designs at Two Levels - <span class="math inline">\(2^k\)</span> Designs</a><ul>
+<li class="chapter" data-level="9.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#difference-between-anova-and-factorial-designs"><i class="fa fa-check"></i><b>9.1</b> Difference between ANOVA and Factorial Designs</a></li>
+<li class="chapter" data-level="9.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#performing-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.2</b> Performing a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#cube-plots"><i class="fa fa-check"></i><b>9.3</b> Cube plots</a></li>
+<li class="chapter" data-level="9.4" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#factorial-effects"><i class="fa fa-check"></i><b>9.4</b> Factorial effects</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#main-effects"><i class="fa fa-check"></i><b>9.4.1</b> Main effects</a></li>
+<li class="chapter" data-level="9.4.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-effects"><i class="fa fa-check"></i><b>9.4.2</b> Interaction effects</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#replication-in-factorial-designs"><i class="fa fa-check"></i><b>9.5</b> Replication in factorial designs</a></li>
+<li class="chapter" data-level="9.6" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#estimate-of-the-error-variance-and-standard-error-of-effects-from-replicated-runs"><i class="fa fa-check"></i><b>9.6</b> Estimate of the error variance and standard error of effects from replicated runs</a></li>
+<li class="chapter" data-level="9.7" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interpretation-of-results"><i class="fa fa-check"></i><b>9.7</b> Interpretation of results</a></li>
+<li class="chapter" data-level="9.8" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#interaction-plots"><i class="fa fa-check"></i><b>9.8</b> Interaction plots</a></li>
+<li class="chapter" data-level="9.9" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#linear-model-for-a-2k-factorial-design"><i class="fa fa-check"></i><b>9.9</b> Linear Model for a <span class="math inline">\(2^k\)</span> Factorial Design</a></li>
+<li class="chapter" data-level="9.10" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#advantages-of-factorial-designs-over-one-factor-at-a-time-designs"><i class="fa fa-check"></i><b>9.10</b> Advantages of factorial designs over one-factor-at-a-time designs</a></li>
+<li class="chapter" data-level="9.11" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#normal-plots-in-unreplicated-factorial-designs"><i class="fa fa-check"></i><b>9.11</b> Normal Plots in Unreplicated Factorial Designs</a><ul>
+<li class="chapter" data-level="9.11.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#review-of-normal-quantile-plots"><i class="fa fa-check"></i><b>9.11.1</b> Review of Normal Quantile Plots</a></li>
+<li class="chapter" data-level="9.11.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#example---24-design-for-studying-a-chemical-reaction"><i class="fa fa-check"></i><b>9.11.2</b> Example - <span class="math inline">\(2^4\)</span> design for studying a chemical reaction</a></li>
+</ul></li>
+<li class="chapter" data-level="9.12" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#half-normal-plots"><i class="fa fa-check"></i><b>9.12</b> Half-Normal Plots</a></li>
+<li class="chapter" data-level="9.13" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#lenths-method-testing-significance-for-experiments-without-variance-estimates"><i class="fa fa-check"></i><b>9.13</b> Lenth’s method: testing significance for experiments without variance estimates</a></li>
+<li class="chapter" data-level="9.14" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#blocking-factorial-designs"><i class="fa fa-check"></i><b>9.14</b> Blocking Factorial Designs</a><ul>
+<li class="chapter" data-level="9.14.1" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#effect-hierarchy-principle"><i class="fa fa-check"></i><b>9.14.1</b> Effect hierarchy principle</a></li>
+<li class="chapter" data-level="9.14.2" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generation-of-orthogonal-blocks"><i class="fa fa-check"></i><b>9.14.2</b> Generation of Orthogonal Blocks</a></li>
+<li class="chapter" data-level="9.14.3" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#an-example-of-how-not-to-block"><i class="fa fa-check"></i><b>9.14.3</b> An example of how not to block</a></li>
+</ul></li>
+<li class="chapter" data-level="9.15" data-path="factorial-designs-at-two-levels-2k-designs.html"><a href="factorial-designs-at-two-levels-2k-designs.html#generators-and-defining-relations"><i class="fa fa-check"></i><b>9.15</b> Generators and Defining Relations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html"><i class="fa fa-check"></i><b>10</b> Fractional factorial designs</a><ul>
+<li class="chapter" data-level="10.1" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---effect-of-five-factors-on-six-properties-of-film-in-eight-runs"><i class="fa fa-check"></i><b>10.1</b> Example - Effect of five factors on six properties of film in eight runs</a></li>
+<li class="chapter" data-level="10.2" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#effect-aliasing-and-design-resolution"><i class="fa fa-check"></i><b>10.2</b> Effect Aliasing and Design Resolution</a></li>
+<li class="chapter" data-level="10.3" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---leaf-spring-experiment"><i class="fa fa-check"></i><b>10.3</b> Example - Leaf Spring Experiment</a></li>
+<li class="chapter" data-level="10.4" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#example---baking-cookies"><i class="fa fa-check"></i><b>10.4</b> Example - Baking Cookies</a></li>
+<li class="chapter" data-level="10.5" data-path="fractional-factorial-designs.html"><a href="fractional-factorial-designs.html#questions-6"><i class="fa fa-check"></i><b>10.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="split-plot-designs.html"><a href="split-plot-designs.html"><i class="fa fa-check"></i><b>11</b> Split-Plot Designs</a><ul>
+<li class="chapter" data-level="11.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#anova-table-for-split-plot-experiment"><i class="fa fa-check"></i><b>11.1</b> ANOVA table for split plot experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-not-to-do-it"><i class="fa fa-check"></i><b>11.2</b> Split plot ANOVA - How not to do it</a></li>
+<li class="chapter" data-level="11.3" data-path="split-plot-designs.html"><a href="split-plot-designs.html#split-plot-anova---how-to-do-it"><i class="fa fa-check"></i><b>11.3</b> Split plot ANOVA - How to do it</a></li>
+<li class="chapter" data-level="11.4" data-path="split-plot-designs.html"><a href="split-plot-designs.html#so-what-is-a-split-plot"><i class="fa fa-check"></i><b>11.4</b> So, what is a split plot?</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="split-plot-designs.html"><a href="split-plot-designs.html#randomizing-a-split-plot-experiment"><i class="fa fa-check"></i><b>11.4.1</b> Randomizing a Split Plot experiment</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="split-plot-designs.html"><a href="split-plot-designs.html#questions-7"><i class="fa fa-check"></i><b>11.5</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html"><i class="fa fa-check"></i><b>12</b> Design of Observational Studies</a><ul>
+<li class="chapter" data-level="12.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#what-is-an-observational-study"><i class="fa fa-check"></i><b>12.1</b> What is an observational study?</a></li>
+<li class="chapter" data-level="12.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#designing-and-observational-study"><i class="fa fa-check"></i><b>12.2</b> Designing and Observational Study</a></li>
+<li class="chapter" data-level="12.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example---epidemiologic-follow-up-study"><i class="fa fa-check"></i><b>12.3</b> Example - Epidemiologic Follow-up Study</a></li>
+<li class="chapter" data-level="12.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-1"><i class="fa fa-check"></i><b>12.4</b> Propensity Score</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-examples"><i class="fa fa-check"></i><b>12.4.1</b> Propensity Score Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#estimating-the-propensity-score-in-an-observational-study"><i class="fa fa-check"></i><b>12.5</b> Estimating the propensity score in an observational study</a></li>
+<li class="chapter" data-level="12.6" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#the-balancing-property-of-the-propensity-score"><i class="fa fa-check"></i><b>12.6</b> The balancing property of the propensity score</a></li>
+<li class="chapter" data-level="12.7" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#imbalance-versus-overlap"><i class="fa fa-check"></i><b>12.7</b> Imbalance versus Overlap</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#example-from-the-nhefs"><i class="fa fa-check"></i><b>12.7.1</b> Example from the NHEFS</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-and-ignorable-treatment-assignment"><i class="fa fa-check"></i><b>12.8</b> Propensity Score and Ignorable Treatment Assignment</a></li>
+<li class="chapter" data-level="12.9" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-methods-to-reduce-bias-in-observational-studies"><i class="fa fa-check"></i><b>12.9</b> Propensity Score Methods to Reduce Bias in Observational Studies</a><ul>
+<li class="chapter" data-level="12.9.1" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-matching-matching"><i class="fa fa-check"></i><b>12.9.1</b> Propensity Score Matching Matching</a></li>
+<li class="chapter" data-level="12.9.2" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#propensity-score-stratification"><i class="fa fa-check"></i><b>12.9.2</b> Propensity score stratification</a></li>
+<li class="chapter" data-level="12.9.3" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#multivariate-adjustment-using-the-propensity-score"><i class="fa fa-check"></i><b>12.9.3</b> Multivariate adjustment using the propensity score</a></li>
+<li class="chapter" data-level="12.9.4" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#comparing-the-three-methods"><i class="fa fa-check"></i><b>12.9.4</b> Comparing the three methods</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="design-of-observational-studies.html"><a href="design-of-observational-studies.html#questions-8"><i class="fa fa-check"></i><b>12.10</b> Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Design of Experiments and Observational Studies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="fractional-factorial-designs" class="section level1">
+<h1><span class="header-section-number">10</span> Fractional factorial designs</h1>
+<p>A <span class="math inline">\(2^k\)</span> full factorial requires <span class="math inline">\(2^k\)</span> runs. Full factorials are seldom used in practice for large k (k&gt;=7). For economic reasons fractional factorial designs, which consist of a fraction of full factorial designs are used. There are criteria to choose “optimal” fractions.</p>
+<div id="example---effect-of-five-factors-on-six-properties-of-film-in-eight-runs" class="section level2">
+<h2><span class="header-section-number">10.1</span> Example - Effect of five factors on six properties of film in eight runs</h2>
+<p>The following example is taken from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span>.</p>
+<p>Five factors were studied in 8 runs. The factors were:</p>
+<ul>
+<li>Catalyst concentration (A)</li>
+<li>Amount of additive (B)</li>
+<li>Amounts of three emulsifiers (C, D, E)</li>
+</ul>
+<p>Polymer solutions were prepared and spread as a film on a microscope slide. Six different responses were recorded.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">run</th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+<th align="right">D</th>
+<th align="right">E</th>
+<th align="left">y1</th>
+<th align="left">y2</th>
+<th align="left">y3</th>
+<th align="left">y4</th>
+<th align="left">y5</th>
+<th align="left">y6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">slightly</td>
+<td align="left">yes</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">slightly</td>
+<td align="left">yes</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">no</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">slightly</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">slightly</td>
+<td align="left">yes</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">slightly</td>
+<td align="left">yes</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>The eight run design was constructed beginning with a standard table of signs for a <span class="math inline">\(2^3\)</span> design in the factors A, B, C.</p></li>
+<li><p>The column of signs associated with the BC interaction was used to accommodate factor D, the ABC interaction column was used for factor E.</p></li>
+<li><p>A full factorial for the five factors A, B, C, D, E would have needed <span class="math inline">\(2^5 = 32\)</span> runs.</p></li>
+<li><p>Only 1/4 were run. This design is called a quarter fraction of the full <span class="math inline">\(2^5\)</span> or a <span class="math inline">\(2^{5-2}\)</span> design (a two to the five minus two design). In general a <span class="math inline">\(2^{k-p}\)</span> design is a <span class="math inline">\(\frac{1}{2^p}\)</span> fraction of a <span class="math inline">\(2^k\)</span> design using <span class="math inline">\(2^{k-p}\)</span> runs.</p></li>
+</ul>
+</div>
+<div id="effect-aliasing-and-design-resolution" class="section level2">
+<h2><span class="header-section-number">10.2</span> Effect Aliasing and Design Resolution</h2>
+<p>A chemist in an industrial development lab was trying to formulate a household liquid product using a new process. The liquid had good properties but was unstable. The chemist wanted to synthesize the product in hope of hitting conditions that would give stability, but without success. The chemist identified four important influences: A (acid concentration), B (catalyst concentration), C (temperature), D (monomer concentration). His 8 run fractional factorial design is shown below.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">test</th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+<th align="right">D</th>
+<th align="right">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">14</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+<p>The signs of the ABC interaction is used to accommodate factor D. The tests were run in random order. He wanted to achieve a stability value of at least 25.</p>
+<p>The factorial effects and Normal, half-Normal, and Lenth plots are below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(FrF2)
+fact.prod &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)
+fact.prod1 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)
+<span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.prod<span class="op">$</span>coefficients,<span class="dv">2</span>)</code></pre></div>
+<pre><code>(Intercept)           A           B           C           D         A:B 
+      29.25       -5.75       -3.75       -1.25        0.75        0.25 
+        A:C         B:C         A:D         B:D         C:D       A:B:C 
+       0.75       -0.25          NA          NA          NA          NA 
+      A:B:D       A:C:D       B:C:D     A:B:C:D 
+         NA          NA          NA          NA </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> F)</code></pre></div>
+<p><img src="08-factorialdesigns_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> T)</code></pre></div>
+<p><img src="08-factorialdesigns_files/figure-html/unnamed-chunk-39-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">LenthPlot</span>(fact.prod1)</code></pre></div>
+<p><img src="08-factorialdesigns_files/figure-html/unnamed-chunk-39-3.png" width="672" /></p>
+<pre><code>    alpha       PSE        ME       SME 
+ 0.050000  1.125000  4.234638 10.134346 </code></pre>
+<p>Even though the stability never reached the desired level of 25, two important factors, A and B, were identified. This Normal and half-Normal plots indicate the importance of these factors, although factor B is not significant according to the Lenth plot.</p>
+<p>What information could have been obtained if a full <span class="math inline">\(2^5\)</span> design had been used?</p>
+<table>
+<thead>
+<tr class="header">
+<th>Factors</th>
+<th align="center">Number of effects</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Main</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td>2-factor</td>
+<td align="center">10</td>
+</tr>
+<tr class="odd">
+<td>3-factor</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td>4-factor</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td>5-factor</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<p>There are 31 degrees of freedom in a 32 run design. But, are 16 used for estimating three factor interactions or higher. Is it practical to commit half the degrees of freedom to estimate such effects? According to effect hierarchy principle three-factor and higher not usually important. Thus, using full factorial wasteful. It’s more economical to use a fraction of full factorial design that allows lower order effects to be estimated.</p>
+<p>Consider a design that studies five factors in 16 run. A half fraction of a <span class="math inline">\(2^5\)</span> or <span class="math inline">\(2^{5-1}\)</span>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Run</th>
+<th align="right">B</th>
+<th align="right">C</th>
+<th align="right">D</th>
+<th align="right">E</th>
+<th align="right">Q</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>The factor E is assigned to the column BCD. But, the column for E is used to estimate the main effect of E and also for BCD. So, this design cannot distinguish between E and BCD. The main factor E is said to be <strong>aliased</strong> with the BCD interaction.</p>
+<p>This aliasing relation is denoted by <span class="math display">\[E = BCD \thinspace or \thinspace I = BCDE,\]</span> where <span class="math inline">\(I\)</span> denotes the column of all +’s.</p>
+<p>This uses same mathematical definition as the confounding of a block effect with a factorial effect. Aliasing of the effects is a price one must pay for choosing a smaller design.</p>
+<p>The <span class="math inline">\(2^{5-1}\)</span> design has only 15 degrees of freedom for estimating factorial effects, it cannot estimate all 31 factorial effects among the factors B, C, D, E, Q.</p>
+<p>The equation <span class="math inline">\(I = BCDE\)</span> is called the <strong>defining relation</strong> of the <span class="math inline">\(2^{5-1}\)</span> design. The design is said to have resolution IV because the defining relation consists of the “word” BCDE, which has “length” 4.</p>
+<p>Multiplying both sides of <span class="math inline">\(I = BCDE\)</span> by column B <span class="math display">\[B = B \times I = B \times BCDE = CDE\]</span>, the relation <span class="math inline">\(B = CDE\)</span> is obtained. B is aliased with the CDE interaction. Following the same method all 15 aliasing relations can be obtained.</p>
+<p><span class="math display">\[B = CDE,  C = BDE,    D = BCE,    E = BCD, \\
+BC = DE,    BD = CE,    BE = CD, \\ 
+Q = BCDEQ,  BQ = CDEQ,  CQ = BDEQ,  DQ = BCEQ, \\
+EQ = BCDQ,  BCQ = DEQ,  BDQ = CEQ,  BEQ = CDQ\]</span></p>
+<p>Each of the four main effects <span class="math inline">\(B, C, D, E\)</span> is respectively aliased with <span class="math inline">\(CDE, BDE, BCE,BCD\)</span>. Therefore, the main effects of <span class="math inline">\(B,C,D,E\)</span> are estimable only if the aforementioned three-factor interactions are negligible. The other factorial effects have analogous aliasing properties.</p>
+</div>
+<div id="example---leaf-spring-experiment" class="section level2">
+<h2><span class="header-section-number">10.3</span> Example - Leaf Spring Experiment</h2>
+<p>The following example is from Wu and Hamada (2009). An experiment to improve a heat treatment process on truck leaf springs. The heat treatment that forms the camber in leaf springs consists of heating in a high temperature furnace, processing by forming a machine , and quenching in an oil bath. The free height of an unloaded spring has a target value around 8in. The goal of the experiment is to make the variation about the target as small as possible.</p>
+<p>Five factors were studied in this <span class="math inline">\(2^{5-1}\)</span> design.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Factor</th>
+<th align="center">Level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">B. Temperature</td>
+<td align="center">1840 (-), 1880 (+)</td>
+</tr>
+<tr class="even">
+<td align="left">C. Heating time</td>
+<td align="center">23 (-), 25 (+)</td>
+</tr>
+<tr class="odd">
+<td align="left">D. Transfer time</td>
+<td align="center">10 (-), 12 (+)</td>
+</tr>
+<tr class="even">
+<td align="left">E. Hold down time</td>
+<td align="center">2 (-), 3 (+)</td>
+</tr>
+<tr class="odd">
+<td align="left">Q. Quench oil temperature</td>
+<td align="center">130-150 (-), 150-170 (+)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="right">B</th>
+<th align="right">C</th>
+<th align="right">D</th>
+<th align="right">E</th>
+<th align="right">Q</th>
+<th align="right">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">7.7900</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">8.0700</td>
+</tr>
+<tr class="odd">
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">7.5200</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">7.6333</td>
+</tr>
+<tr class="odd">
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">7.9400</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">7.9467</td>
+</tr>
+<tr class="odd">
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">7.5400</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">7.6867</td>
+</tr>
+<tr class="odd">
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">7.2900</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">7.7333</td>
+</tr>
+<tr class="odd">
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">7.5200</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">7.6467</td>
+</tr>
+<tr class="odd">
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">7.4000</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">7.6233</td>
+</tr>
+<tr class="odd">
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">7.2033</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">7.6333</td>
+</tr>
+</tbody>
+</table>
+<p>The factorial effects are estimated as before.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(FrF2)
+fact.leaf &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)
+fact.leaf2 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)
+<span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.leaf<span class="op">$</span>coefficients,<span class="dv">2</span>)</code></pre></div>
+<pre><code>(Intercept)           B           C           D           E           Q 
+      15.27        0.22        0.18        0.03        0.10       -0.26 
+        B:C         B:D         C:D         B:E         C:E         D:E 
+       0.02        0.02       -0.04          NA          NA          NA 
+        B:Q         C:Q         D:Q         E:Q       B:C:D       B:C:E 
+       0.08       -0.17        0.05        0.03          NA          NA 
+      B:D:E       C:D:E       B:C:Q       B:D:Q       C:D:Q       B:E:Q 
+         NA          NA        0.01       -0.04       -0.05          NA 
+      C:E:Q       D:E:Q     B:C:D:E     B:C:D:Q     B:C:E:Q     B:D:E:Q 
+         NA          NA          NA          NA          NA          NA 
+    C:D:E:Q   B:C:D:E:Q 
+         NA          NA </code></pre>
+<p>Notice that the factorial effects are missing for effects that are aliased. The Normal, half-Normal, and Lenth plots are below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> F)</code></pre></div>
+<p><img src="08-factorialdesigns_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> T)</code></pre></div>
+<p><img src="08-factorialdesigns_files/figure-html/unnamed-chunk-43-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">LenthPlot</span>(fact.leaf2,<span class="dt">cex.fac =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="08-factorialdesigns_files/figure-html/unnamed-chunk-43-3.png" width="672" /></p>
+<pre><code>    alpha       PSE        ME       SME 
+0.0500000 0.0606000 0.1557773 0.3162503 </code></pre>
+</div>
+<div id="example---baking-cookies" class="section level2">
+<h2><span class="header-section-number">10.4</span> Example - Baking Cookies</h2>
+<p>Consider a factorial design to study the effects of the amounts of three factors on the taste of chocolate chip cookies.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Factor</th>
+<th align="left">Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Butter</td>
+<td align="left">10g (-1), 15g (+1)</td>
+</tr>
+<tr class="even">
+<td align="left">Sugar</td>
+<td align="left">1/2 cup (-1), 3/4 cup (+1)</td>
+</tr>
+<tr class="odd">
+<td align="left">Baking powder</td>
+<td align="left">1/2 teaspoon (-), 1 teaspoon (+)</td>
+</tr>
+</tbody>
+</table>
+<p>Taste will be measured on a scale of 1 (poor) to 10 (excellent). A full factorial will require <span class="math inline">\(2^3 = 8\)</span> runs.</p>
+<p>The 8 runs of the full factorial design tell the experimenter how to set the levels of the different ingredients (factors).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Run</th>
+<th align="right">butter</th>
+<th align="right">sugar</th>
+<th align="right">powder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>In the first run the experimenter will bake chocolate chip cookies with 10g butter, 1/2 cup sugar, and 1/2 teaspoon of baking powder; the second run will use 15g butter, 1/2 cup sugar, and 1/2 teaspoon of baking powder; etc.</p>
+<p>But, the experimenter decides to also study baking time on taste, but can’t afford to do more than 8 runs since each run requires a different batch of cookie dough. He wants to test if a baking time of 12 minutes versus 16 minutes has an impact on taste</p>
+<p>So, he decides to use the three factor interaction between butter, sugar, and powder to <strong>assign if baking time will be 12 minutes (-1) or 16 minutes (+1) in each of the 8 runs</strong>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Run</th>
+<th align="right">butter</th>
+<th align="right">sugar</th>
+<th align="right">powder</th>
+<th align="right">baking time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>In this factorial design with four factors in 8 runs the experimenter will bake the cookies with 10g butter, 1/2 cup sugar, 1/2 teaspoon of baking powder, and baking time 12 minutes in the first run; in the second run use 15g butter, 1/2 cup sugar, and 1/2 teaspoon of baking powder, and 16 minutes baking time; etc.</p>
+<p>Let <span class="math inline">\(A\)</span>=butter, <span class="math inline">\(B\)</span>=sugar, <span class="math inline">\(C\)</span>=powder, <span class="math inline">\(D\)</span>=baking time. But, <span class="math display">\[D = ABC\]</span> since he used the three factor interaction to assign baking times to each run. In other words <span class="math inline">\(D\)</span> is <strong>aliased</strong> with <span class="math inline">\(ABC\)</span>.</p>
+<p>This type of design is called a <span class="math inline">\(2^{4-1}\)</span> fractional factorial design. Instead of using a full factorial or <span class="math inline">\(2^4 = 16\)</span> runs to study 4 factors we are using <span class="math inline">\(\frac{1}{2}2^4 = 8\)</span> runs.</p>
+<p>The aliasing relation <span class="math display">\[D = ABC \Rightarrow I = ABCD,\]</span> where <span class="math inline">\(I\)</span> is the column of <span class="math inline">\(+1\)</span>s.</p>
+<p>The aliasing relation also means that other factors in the design have aliases. We can find these aliases by multiplying <span class="math inline">\(I = ABCD\)</span> by all the possible main and interaction effects.</p>
+<p><span class="math display">\[A = BCD, B = ACD, C = ABD, D = ABC, AB = CD, AC = BD, BC = AD\]</span></p>
+<p>All the main effects are aliased with three factor interactions, and two factor interactions with two factor interactions.</p>
+<p>Suppose that the experimental runs were conducted and the following results were obtained.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Run</th>
+<th align="right">butter</th>
+<th align="right">sugar</th>
+<th align="right">powder</th>
+<th align="right">baking time</th>
+<th align="right">taste (y)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+<p>The factorial effect of baking time (<span class="math inline">\(D\)</span>) is really the effect of <span class="math inline">\(D+ABC\)</span>. In other words the effects of <span class="math inline">\(D\)</span> and <span class="math inline">\(ABC\)</span> are confounded. They cannot be separately estimated which is why <span class="math inline">\(ABC\)</span> is called an alias of <span class="math inline">\(D\)</span>.</p>
+<p>This means that effect of <span class="math inline">\(D\)</span></p>
+<p><span class="math display">\[\frac{1}{4}\left(-y_1+y_2+y_3-y_4+y_5-y_6-y_7+y_8\right)=-2.5\]</span></p>
+<p>is really the effect of <span class="math inline">\(D+ABC\)</span> or baking time plus the interaction of butter, sugar, and baking powder. In order for this to be equal to the effect of baking time (<span class="math inline">\(D\)</span>) we must assume the three-way interaction (<span class="math inline">\(ABC\)</span>) is small enough to be ignored (i.e., the factorial estimate of <span class="math inline">\(ABC\)</span> is close to 0).</p>
+<p>If the experimenter were to use a full factorial then he would require <span class="math inline">\(2^4 = 16\)</span> different batches of cookies. In a full <span class="math inline">\(2^4\)</span> design he would be estimating 4 main effects, 6 two-way interactions, 4 three-way interactions, and 1 four-way interaction. If we assume that we can ignore three-factor and higher order interactions then a 16 run design is being used to estimate then a 16 run design is being used to estimate 10 effects. Fractional factorials use these redundancies by arranging that lower order effects are confounded with higher order interactions that are assumed negligible.</p>
+</div>
+<div id="questions-6" class="section level2">
+<h2><span class="header-section-number">10.5</span> Questions</h2>
+<ol style="list-style-type: decimal">
+<li>(Adapted from BHH question 8, pg. 227) A chemist performed an experiment with temperature at 130 and 150 degrees Celsius and two catalysts. The chemist performed three runs randomizing the order of runs within each week.</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Run number</th>
+<th>Temperature</th>
+<th>Catalyst</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>130</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>130</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>150</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Is this a factorial experiment? If it is not a factorial experiment then is it possible to turn this design into a factorial design? Explain?</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>What is the table of contrasts for a <span class="math inline">\(2^3\)</span> factorial design.</p></li>
+<li><p>A <span class="math inline">\(2^2\)</span> factorial design involved two factors A and B. The main effects for A and B are 10 and 12 respectively. The lab technician that ran the experiment discovered that he made an error in recording the experimental results: whenever factor A was set to the + level the measurement should be increased by 5 (i.e., if <span class="math inline">\(y_i\)</span> is the measurement when A is set to the + level then the measurement should have been recorded as <span class="math inline">\(y_i+5\)</span>) What are the correct main effects for A and B?</p></li>
+<li><p>Suppose that you were studying two factors A and B each at two levels in a <span class="math inline">\(2^2\)</span> factorial design.</p></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Write a linear model with parameters that correspond to the main effects.</p></li>
+<li><p>Use least squares to estimate the parameters in part (a).</p></li>
+</ol>
+<ol start="5" style="list-style-type: decimal">
+<li>(Box, Hunter, and Hunter problem 5.6) A study was conducted to determine the effects of individual bathers on the fecal and total coliform bacterial populations in water. The variables of interest were the time since the subject’s last bath, the vigor of the subject’s activity in the water, and the subject’s sex. The experiments were performed1ed in a 100-gallon polyethylene tub using dechlorinated tap water at 38°C. The bacterial contribution of each bather was determined by subtracting the bacterial concentration measured al 15 and 30 minutes from that measured initially.</li>
+</ol>
+<p>A replicated <span class="math inline">\(2^3\)</span> factorial design was used for this experiment.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Name</th>
+<th>Low Level</th>
+<th>High Level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x_1\)</span></td>
+<td>Time since last bath</td>
+<td>1 hour</td>
+<td>24 hour</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_2\)</span></td>
+<td>Vigor of bathing activity</td>
+<td>Lethargic</td>
+<td>Vigorous</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x_3\)</span></td>
+<td>Sex of bather</td>
+<td>Female</td>
+<td>Male</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(y_1\)</span></td>
+<td>Fecal coliform contribution after 15 minutes (organisms/100 mL)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y_2\)</span></td>
+<td>Fecal coliform contribution after 30 minutes (organisms/100 mL)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(y_3\)</span></td>
+<td>Total coliform contribution after 15 minutes (organisms/100 mL)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y_4\)</span></td>
+<td>Total coliform contribution after 30 minutes (organisms/1OO mL)</td>
+</tr>
+</tbody>
+</table>
+<p>The data are shown in the table below.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">run</th>
+<th align="right">x1</th>
+<th align="right">x2</th>
+<th align="right">x3</th>
+<th align="right">y1</th>
+<th align="right">y2</th>
+<th align="right">y3</th>
+<th align="right">y4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">12</td>
+<td align="right">15</td>
+<td align="right">57</td>
+<td align="right">80</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">16</td>
+<td align="right">10</td>
+<td align="right">323</td>
+<td align="right">360</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">183</td>
+<td align="right">193</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">153</td>
+<td align="right">170</td>
+<td align="right">426</td>
+<td align="right">590</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">129</td>
+<td align="right">148</td>
+<td align="right">250</td>
+<td align="right">243</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">143</td>
+<td align="right">170</td>
+<td align="right">580</td>
+<td align="right">450</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">113</td>
+<td align="right">217</td>
+<td align="right">650</td>
+<td align="right">735</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">10</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">37</td>
+<td align="right">39</td>
+<td align="right">280</td>
+<td align="right">250</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">21</td>
+<td align="right">21</td>
+<td align="right">33</td>
+<td align="right">53</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">10</td>
+<td align="right">87</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">96</td>
+<td align="right">67</td>
+<td align="right">147</td>
+<td align="right">193</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">390</td>
+<td align="right">360</td>
+<td align="right">1470</td>
+<td align="right">1560</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">300</td>
+<td align="right">377</td>
+<td align="right">665</td>
+<td align="right">810</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">280</td>
+<td align="right">250</td>
+<td align="right">675</td>
+<td align="right">795</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Calculate main and interaction effects on fecal and total coliform populations after 15 and 30 minutes.</p></li>
+<li><p>Use R to calculate the main and interaction effects for <span class="math inline">\(y_3\)</span>.</p></li>
+<li><p>Interpret the main effects and interaction effects in (a). Do you think that the effects are real or noise? Explain.</p></li>
+</ol>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-bhh2005">
+<p>Box, George EP, J Stuart Hunter, and William Gordon Hunter. 2005. <em>Statistics for Experimenters: Design, Innovation, and Discovery</em>. Vol. 2. Wiley-Interscience New York.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="factorial-designs-at-two-levels-2k-designs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="split-plot-designs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
