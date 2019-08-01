@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 How Many Experimental Units are Required to Compare Two Treatments? | Design of Experiments and Observational Studies</title>
-  <meta name="description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="description" content="An Introduction to Design, Causal Inference,and Analysis Using R" />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 How Many Experimental Units are Required to Compare Two Treatments? | Design of Experiments and Observational Studies" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta property="og:description" content="An Introduction to Design, Causal Inference,and Analysis Using R" />
   <meta name="github-repo" content="scidesign/designbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="5 How Many Experimental Units are Required to Compare Two Treatments? | Design of Experiments and Observational Studies" />
   
-  <meta name="twitter:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="twitter:description" content="An Introduction to Design, Causal Inference,and Analysis Using R" />
   
 
 <meta name="author" content="Nathan Taback" />
 
 
-<meta name="date" content="2019-07-31" />
+<meta name="date" content="2019-08-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,44 +47,78 @@
 
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123360659-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123360659-2');
+</script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -120,19 +154,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
-<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
-<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
-</ul></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a></li>
 <li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
-<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
-<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
-<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
-</ul></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a></li>
 <li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
 <li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
 <li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
@@ -168,7 +197,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
 <li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-2"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
 <li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
@@ -329,7 +358,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>In each of these examples experimental units (e.g., human subjects) were randomly assigned to two groups to investigate the causal effects of a treatment. How many subjects should be assigned to each group?</p>
 <div id="clinical-trials" class="section level2">
 <h2><span class="header-section-number">5.1</span> Clinical Trials</h2>
-<p>Clinical trials are prospective intervention studies with human subjects to investigate experimental drugs, new treatments, medical devices, or clinical procedures (<span class="citation">Yin (<a href="#ref-yin2013clinical">2013</a>)</span>).</p>
+<p>Clinical trials are prospective intervention studies with human subjects to investigate experimental drugs, new treatments, medical devices, or clinical procedures (<span class="citation">Yin (<a href="#ref-yin2013clinical" role="doc-biblioref">2013</a>)</span>).</p>
 <p>There are typically fours phases of clinical trials.</p>
 <div id="phases-of-clinical-trials" class="section level3">
 <h3><span class="header-section-number">5.1.1</span> Phases of clinical trials</h3>
@@ -338,7 +367,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>Phase I:</strong> Usually first study in humans to investigate the toxicity and side effects of the new agent. Identify MTD.</p>
 <p><strong>Phase II:</strong> Assess if drug has sufficient efficacy. The drug is usually administered around the MTD. If drug does not show efficacy or is too toxic then further testing is discontinued.</p>
 <p><strong>Phase III:</strong> If drug passes phase II testing then it is compared to the current standard of care or placebo. These are long-term, large scale randomized studies that may involve hundreds or thousands of patients.</p>
-<p>If the drug is proven to be effective (e.g. two positive phase III trials required for FDA approval) the company will file an application with regulatory agencies to sell the drug. If approved then the drug will be available to the general population in the country where it was approved.</p>
+<p>If the drug is proven to be effective (e.g. two positive phase III trials required for FDA approval) the company will file an application with regulatory agencies to sell the drug.
+If approved then the drug will be available to the general population in the country where it was approved.</p>
 <p><strong>Phase IV:</strong> After approval a study might follow a large number of patients over a longer period of time to monitor side effects and drug interactions. For example, findings from these studies might add a warning label to the drug.</p>
 <p>Some comments:</p>
 <ul>
@@ -359,7 +389,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="how-many-patients-should-be-enrolled-in-a-phase-iii-clinical-trial" class="section level4">
 <h4><span class="header-section-number">5.1.1.1</span> How many patients should be enrolled in a Phase III clinical trial?</h4>
 <blockquote>
-<p>If an experimental agent exhibits adequate short-term therapeutic effects in a phase II trial, the drug will be moved forward to a phase III study for confirmative testing of its long-term effectiveness. Phase III clinical trials are randomized and controlled studies that directly compare the investigational drug with the current “gold standard” treatment or a placebo when there is no standard of care. The sample size of a phase III trial is large, usually ranging from hundreds up to thousands of participants … Due to their enormous sizes, large scales, and long follow-ups, phase III trials are the most costly comparative studies to evaluate the drug’s efficacy. (pg. 159, <span class="citation">Yin (<a href="#ref-yin2013clinical">2013</a>)</span>)</p>
+<p>If an experimental agent exhibits adequate short-term therapeutic effects in a phase II trial, the drug will be moved forward to a phase III study for confirmative testing of its long-term effectiveness. Phase III clinical trials are randomized and controlled studies that directly compare the investigational drug with the current “gold standard” treatment or a placebo when there is no standard of care. The sample size of a phase III trial is large, usually ranging from hundreds up to thousands of participants … Due to their enormous sizes, large scales, and long follow-ups, phase III trials are the most costly comparative studies to evaluate the drug’s efficacy. (pg. 159, <span class="citation">Yin (<a href="#ref-yin2013clinical" role="doc-biblioref">2013</a>)</span>)</p>
 </blockquote>
 <ul>
 <li>In a phase III trial sample size is the most critical component of the study design. The sample size has implications for how many subjects will be exposed to a drug that has no proven efficacy.</li>
@@ -373,7 +403,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="statistical-hypotheses-and-the-number-of-experimental-units" class="section level2">
 <h2><span class="header-section-number">5.2</span> Statistical Hypotheses and the Number of Experimental Units</h2>
-<p>Suppose that subjects are randomized to treatments A or B with equal probability. Let <span class="math inline">\(\mu_A\)</span> be the mean response in the group receiving drug A and <span class="math inline">\(\mu_B\)</span> be the mean response in the group receiving drug B. The null hypothesis is that there is no difference between A and B, the alternative claims there is a clinically meaningful difference between them.</p>
+<p>Suppose that subjects are randomized to treatments A or B with equal probability.
+Let <span class="math inline">\(\mu_A\)</span> be the mean response in the group receiving drug A and <span class="math inline">\(\mu_B\)</span> be the mean response in the group receiving drug B.
+The null hypothesis is that there is no difference between A and B, the alternative claims there is a clinically meaningful difference between them.</p>
 <p><span class="math display">\[H_0:\mu_A=\mu_B \thinspace \text{ versus } \thinspace H_1:\mu_A \ne \mu_B \]</span></p>
 <p>The type I error rate is defined as:</p>
 <p><span class="math display">\[\begin{aligned}
@@ -385,7 +417,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 \beta&amp;=P\left(\text{type II error}\right) \\
      &amp;=P\left(\text{Accept }H_0|H_1 \text{ is true}\right).   
 \end{aligned}\]</span></p>
-<p>Power is defined as: <span class="math display">\[ \begin{aligned}
+<p>Power is defined as:
+<span class="math display">\[ \begin{aligned}
 \text {power} &amp;= 1-\beta \\
               &amp;= 1-P\left(\text{Accept }H_0|H_1 \text{ is true}\right) \\
               &amp;= P\left(\text{Reject } H_0|H_1 \text{ is true}\right).
@@ -411,7 +444,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Subtract the mean <span class="math inline">\(\mu_1\)</span> and divide by <span class="math inline">\(\sigma/\sqrt{n}\)</span> to obtain:</p>
 <p><span class="math display">\[ 1-\beta = 1-\Phi\left( z_{\alpha/2}-\left(\frac{\mu_1-\mu_0}{\sigma/\sqrt{n}}\right) \right)+\Phi\left( -z_{\alpha/2}-\left(\frac{\mu_1-\mu_0}{\sigma/\sqrt{n}}\right) \right),\]</span></p>
 <p>where <span class="math inline">\(\Phi(\cdot)\)</span> is the <span class="math inline">\(N(0,1)\)</span> CDF.</p>
-<div id="exercises-5" class="section level3">
+<div id="exercises-2" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Exercises</h3>
 <ol style="list-style-type: decimal">
 <li>What is the limit of the power function as:</li>
@@ -425,14 +458,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="calculating-the-power-of-the-one-sample-z-test-using-r" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Calculating the Power of the One Sample z-test using R</h3>
 <p>The power function for a one-sample z-test can be calculated using R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pow.z.test &lt;-<span class="st"> </span><span class="cf">function</span>(alpha,mu1,mu0,sigma,n){
-  arg1 &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)<span class="op">-</span>(mu1<span class="op">-</span>mu0)<span class="op">/</span>(sigma<span class="op">/</span><span class="kw">sqrt</span>(n))
-  arg2 &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">1</span><span class="op">*</span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)<span class="op">-</span>(mu1<span class="op">-</span>mu0)<span class="op">/</span>(sigma<span class="op">/</span><span class="kw">sqrt</span>(n))
-  <span class="dv">1</span><span class="op">-</span><span class="kw">pnorm</span>(arg1)<span class="op">+</span><span class="kw">pnorm</span>(arg2)
-}</code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1">pow.z.test &lt;-<span class="st"> </span><span class="cf">function</span>(alpha,mu1,mu0,sigma,n){</a>
+<a class="sourceLine" id="cb125-2" title="2">  arg1 &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)<span class="op">-</span>(mu1<span class="op">-</span>mu0)<span class="op">/</span>(sigma<span class="op">/</span><span class="kw">sqrt</span>(n))</a>
+<a class="sourceLine" id="cb125-3" title="3">  arg2 &lt;-<span class="st"> </span><span class="dv">-1</span><span class="op">*</span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)<span class="op">-</span>(mu1<span class="op">-</span>mu0)<span class="op">/</span>(sigma<span class="op">/</span><span class="kw">sqrt</span>(n))</a>
+<a class="sourceLine" id="cb125-4" title="4">  <span class="dv">1</span><span class="op">-</span><span class="kw">pnorm</span>(arg1)<span class="op">+</span><span class="kw">pnorm</span>(arg2)</a>
+<a class="sourceLine" id="cb125-5" title="5">}</a></code></pre></div>
 <p>For example the power of the test</p>
 <p><span class="math display">\[H_0:\mu = 0 \thinspace \text{ versus } \thinspace H_1:\mu = 0.2\]</span> with <span class="math inline">\(n = 30,\sigma = 0.2, \alpha = 0.05\)</span> can be calculated by calling the above function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pow.z.test</span>(.<span class="dv">05</span>,.<span class="dv">15</span>,<span class="dv">0</span>,.<span class="dv">2</span>,<span class="dv">30</span>) </code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="kw">pow.z.test</span>(.<span class="dv">05</span>,.<span class="dv">15</span>,<span class="dv">0</span>,.<span class="dv">2</span>,<span class="dv">30</span>) </a></code></pre></div>
 <pre><code>[1] 0.9841413</code></pre>
 <p>This means that with <span class="math inline">\(n = 30\)</span> experimental units there is a 0.98 probability that the z-test will detect a mean of 0.2 when <span class="math inline">\(\sigma = 0.2, \alpha = 0.05\)</span>.</p>
 </div>
@@ -455,16 +488,16 @@ V &amp;= \frac{(n-1)}{\sigma^2} S^2.
 <p><span class="math inline">\(Z \sim N(0,1)\)</span> and <span class="math inline">\(V \sim \chi^2_{n-1}\)</span> and <span class="math inline">\(Z\)</span> is independent of <span class="math inline">\(V\)</span>.</p>
 <p>If <span class="math inline">\(\gamma = 0\)</span> then then <span class="math inline">\(\sqrt{n} \left[\frac{{\bar X}-\mu_0}{S}\right] \sim t_{n-1}\)</span>. But, if <span class="math inline">\(\gamma \ne 0\)</span> then <span class="math inline">\(\sqrt{n} \left[\frac{{\bar X}-\mu_0}{S}\right] \sim t_{n-1, \gamma}\)</span>, where <span class="math inline">\(t_{n-1, \gamma}\)</span> is the non-central t-distribution with non-centrality parameter <span class="math inline">\(\gamma\)</span>. If <span class="math inline">\(\gamma = 0\)</span> this is sometimes called the central t-distribution.</p>
 <p>A plot of the central (<span class="math inline">\(\gamma = 0\)</span>) and non-central t are shown in the plot below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Plot of noncentral t and central t</span>
-x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">6</span>,<span class="dv">6</span>,<span class="dt">by =</span> <span class="fl">0.01</span>)
-<span class="kw">plot</span>(x,<span class="kw">dt</span>(x,<span class="dv">10</span>,<span class="dv">0</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;t-density&quot;</span>,<span class="dt">col =</span> <span class="st">&quot;black&quot;</span>,
-     <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Noncentral t-distribution&quot;</span>)
-<span class="kw">points</span>(x,<span class="kw">dt</span>(x,<span class="dv">10</span>,<span class="dv">1</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
-<span class="kw">points</span>(x,<span class="kw">dt</span>(x,<span class="dv">10</span>,<span class="dv">2</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">3</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
-<span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>,
-       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="kw">expression</span>(gamma <span class="op">==</span><span class="st"> </span><span class="dv">0</span>),
-                <span class="kw">expression</span>(gamma <span class="op">==</span><span class="st"> </span><span class="dv">1</span>),<span class="kw">expression</span>(gamma<span class="op">==</span><span class="dv">2</span>)),
-                <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="co">#Plot of noncentral t and central t</span></a>
+<a class="sourceLine" id="cb128-2" title="2">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">6</span>,<span class="dv">6</span>,<span class="dt">by =</span> <span class="fl">0.01</span>)</a>
+<a class="sourceLine" id="cb128-3" title="3"><span class="kw">plot</span>(x,<span class="kw">dt</span>(x,<span class="dv">10</span>,<span class="dv">0</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;t-density&quot;</span>,<span class="dt">col =</span> <span class="st">&quot;black&quot;</span>,</a>
+<a class="sourceLine" id="cb128-4" title="4">     <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Noncentral t-distribution&quot;</span>)</a>
+<a class="sourceLine" id="cb128-5" title="5"><span class="kw">points</span>(x,<span class="kw">dt</span>(x,<span class="dv">10</span>,<span class="dv">1</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb128-6" title="6"><span class="kw">points</span>(x,<span class="kw">dt</span>(x,<span class="dv">10</span>,<span class="dv">2</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">3</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb128-7" title="7"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>,</a>
+<a class="sourceLine" id="cb128-8" title="8">       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="kw">expression</span>(gamma <span class="op">==</span><span class="st"> </span><span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb128-9" title="9">                <span class="kw">expression</span>(gamma <span class="op">==</span><span class="st"> </span><span class="dv">1</span>),<span class="kw">expression</span>(gamma<span class="op">==</span><span class="dv">2</span>)),</a>
+<a class="sourceLine" id="cb128-10" title="10">                <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>))</a></code></pre></div>
 <p><img src="04-powersampsize_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>The power of the test at <span class="math inline">\(\mu=\mu_1\)</span> is</p>
 <p><span class="math display">\[\begin{aligned}
@@ -480,22 +513,22 @@ x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</
 <div id="write-a-custom-function-to-calculate-power" class="section level4">
 <h4><span class="header-section-number">5.4.1.1</span> Write a Custom Function to Calculate Power</h4>
 <p>The following function calculates the power function for the one-sample t-test in R:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">onesampttestpow &lt;-<span class="st"> </span><span class="cf">function</span>(alpha,n, mu0, mu1,sigma)
-{delta &lt;-<span class="st"> </span>mu1<span class="op">-</span>mu0
-t.crit &lt;-<span class="kw">qt</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>,n<span class="op">-</span><span class="dv">1</span>)
-t.gamma &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n)<span class="op">*</span>(delta<span class="op">/</span>sigma)
-t.power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pt</span>(t.crit,n<span class="op">-</span><span class="dv">1</span>,<span class="dt">ncp =</span> t.gamma)<span class="op">+</span><span class="kw">pt</span>(<span class="op">-</span>t.crit,n<span class="op">-</span><span class="dv">1</span>,<span class="dt">ncp =</span> t.gamma)
-<span class="kw">return</span>(t.power)
-}</code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1">onesampttestpow &lt;-<span class="st"> </span><span class="cf">function</span>(alpha,n, mu0, mu1,sigma)</a>
+<a class="sourceLine" id="cb129-2" title="2">{delta &lt;-<span class="st"> </span>mu1<span class="op">-</span>mu0</a>
+<a class="sourceLine" id="cb129-3" title="3">t.crit &lt;-<span class="kw">qt</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>,n<span class="dv">-1</span>)</a>
+<a class="sourceLine" id="cb129-4" title="4">t.gamma &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n)<span class="op">*</span>(delta<span class="op">/</span>sigma)</a>
+<a class="sourceLine" id="cb129-5" title="5">t.power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pt</span>(t.crit,n<span class="dv">-1</span>,<span class="dt">ncp =</span> t.gamma)<span class="op">+</span><span class="kw">pt</span>(<span class="op">-</span>t.crit,n<span class="dv">-1</span>,<span class="dt">ncp =</span> t.gamma)</a>
+<a class="sourceLine" id="cb129-6" title="6"><span class="kw">return</span>(t.power)</a>
+<a class="sourceLine" id="cb129-7" title="7">}</a></code></pre></div>
 <p>For example the power of the t-test for testing</p>
 <p><span class="math display">\[H_0:\mu = 0 \thinspace \text{ versus } \thinspace H_1:\mu = 0.15\]</span> with <span class="math inline">\(n = 10,\sigma = 0.2, \alpha = 0.05\)</span> can be calculated by calling the above function is</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">onesampttestpow</span>(.<span class="dv">05</span>,<span class="dv">10</span>,<span class="dv">0</span>,.<span class="dv">15</span>,<span class="fl">0.2</span>)</code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="kw">onesampttestpow</span>(.<span class="dv">05</span>,<span class="dv">10</span>,<span class="dv">0</span>,.<span class="dv">15</span>,<span class="fl">0.2</span>)</a></code></pre></div>
 <pre><code>[1] 0.5619533</code></pre>
 </div>
 <div id="use-power.t.test-to-calculate-power" class="section level4">
 <h4><span class="header-section-number">5.4.1.2</span> Use <code>power.t.test()</code> to Calculate Power</h4>
 <p>There is built-in function in R that can calculate the power of t-test <code>power.t.test()</code>. Using this function on the previous example we get</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">10</span>,<span class="dt">delta =</span> <span class="fl">0.15</span>,<span class="dt">sd =</span> <span class="fl">0.2</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>,<span class="dt">type =</span> <span class="st">&quot;one.sample&quot;</span> )</code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">10</span>,<span class="dt">delta =</span> <span class="fl">0.15</span>,<span class="dt">sd =</span> <span class="fl">0.2</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>,<span class="dt">type =</span> <span class="st">&quot;one.sample&quot;</span> )</a></code></pre></div>
 <pre><code>
      One-sample t test power calculation 
 
@@ -506,7 +539,7 @@ t.power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">
           power = 0.5619339
     alternative = two.sided</code></pre>
 <p>Exactly one of the parameters <code>n</code>, <code>delta</code>, <code>power</code>, <code>sd</code>, and <code>sig.level</code> must be passed as <code>NULL</code>, and that parameter is determined from the others. In this example the function calculates power given the other parameters. If sample size is required for, say, 80% power then use</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">power.t.test</span>(<span class="dt">power =</span> <span class="fl">0.8</span>,<span class="dt">delta =</span> <span class="fl">0.15</span>,<span class="dt">sd =</span> <span class="fl">0.2</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>,<span class="dt">type =</span> <span class="st">&quot;one.sample&quot;</span> )</code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="kw">power.t.test</span>(<span class="dt">power =</span> <span class="fl">0.8</span>,<span class="dt">delta =</span> <span class="fl">0.15</span>,<span class="dt">sd =</span> <span class="fl">0.2</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>,<span class="dt">type =</span> <span class="st">&quot;one.sample&quot;</span> )</a></code></pre></div>
 <pre><code>
      One-sample t test power calculation 
 
@@ -527,7 +560,8 @@ t.power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">
 <p>To fix idea let’s suppose that a phase III clinical trials is being designed and a continuous outcome <span class="math inline">\(Y\)</span> is the primary outcome. Although, the methods below are valid for experimental contexts beyond clinical trials.</p>
 <p>Consider a two-sample comparison with continuous outcomes. Let <span class="math inline">\(Y_{ik}\)</span> be the observed outcome for the <span class="math inline">\(i^{th}\)</span> subject in the <span class="math inline">\(kth\)</span> treatment group, for <span class="math inline">\(i = 1,...,n_k\)</span>, and <span class="math inline">\(k= 1,2\)</span>. The outcomes in the two groups are assumed to be independent and normally distributed with different means but an equal variance <span class="math inline">\(\sigma^2\)</span>,</p>
 <p><span class="math display">\[Y_{ik} \sim N(\mu_k,\sigma^2).\]</span></p>
-<p>Let <span class="math inline">\(\theta=\mu_1-\mu_2\)</span>, the difference in the mean between treatment 1 (the new therapy) and treatment 2 (the standard of care). To test whether the effects of the two treatments are the same, we formulate the null and alternative hypotheses as <span class="math inline">\(H_0:\theta =0\)</span> versus <span class="math inline">\(H_1:\theta \ne 0.\)</span></p>
+<p>Let <span class="math inline">\(\theta=\mu_1-\mu_2\)</span>, the difference in the mean between treatment 1 (the new therapy) and treatment 2 (the standard of care).
+To test whether the effects of the two treatments are the same, we formulate the null and alternative hypotheses as <span class="math inline">\(H_0:\theta =0\)</span> versus <span class="math inline">\(H_1:\theta \ne 0.\)</span></p>
 <p>The two-sample t-statistic <span class="math inline">\(T_n\)</span> discriminates between <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span>. The p-value is calculated by gauging the observed value of <span class="math inline">\(T_n\)</span> against its distribution under <span class="math inline">\(H_0\)</span>. The hypothesis testing procedure assesses the strength of evidence contained in the data against the null hypothesis. If the p-value is adequately small, say, less than 0.05 under a two-sided test, we reject the null hypothesis and claim that there is a significant difference between the two treatments; otherwise there is no significant difference and the study is inconclusive.</p>
 <p>The sample mean for each group is given by <span class="math inline">\({\bar Y}_k = (1/n_k)\sum_{i = 1}^{n_k} Y_{ik}\)</span>, <span class="math inline">\(k = 1,2\)</span>, and the pooled sample variance is</p>
 <p><span class="math display">\[S^2_p= \frac{1}{n_1+n_2-2} \sum_{k = 1}^2 \sum_{i = 1}^{n_k} (Y_{ik}-{\bar Y}_k)^2.\]</span></p>
@@ -540,27 +574,27 @@ t.power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">
 <p>The sample size can be determined by specifying the type I and type II error rates, the standard deviation, and the difference in treatment means that the clinical trial aims to detect.</p>
 <p>The power of the test is</p>
 <p><span class="math display">\[1-\beta = P(t_{n_1+n_2-2, \gamma} \ge t_{n_1+n_2-2, \alpha/2})+P(t_{n_1+n_2-2, \gamma} &lt; -t_{n_1+n_2-2, \alpha/2})\]</span></p>
-<p>The sample size can be solved from this equation which does not have a closed form (see <span class="citation">Yin (<a href="#ref-yin2013clinical">2013</a>)</span>).</p>
+<p>The sample size can be solved from this equation which does not have a closed form (see <span class="citation">Yin (<a href="#ref-yin2013clinical" role="doc-biblioref">2013</a>)</span>).</p>
 <div id="calculating-the-power-of-the-two-sample-t-test-using-r" class="section level3">
 <h3><span class="header-section-number">5.5.1</span> Calculating the Power of the Two Sample t-test using R</h3>
 <div id="write-a-custom-function-to-calculate-power-1" class="section level4">
 <h4><span class="header-section-number">5.5.1.1</span> Write a Custom Function to Calculate Power</h4>
 <p>This can be programmed in R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">twosampttestpow &lt;-<span class="st"> </span><span class="cf">function</span>(alpha,n1,n2, mu1, mu2,sigma){
-delta &lt;-<span class="st"> </span>mu1<span class="op">-</span>mu2
-t.crit &lt;-<span class="kw">qt</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>,n1<span class="op">+</span>n2<span class="op">-</span><span class="dv">2</span>)
-t.gamma &lt;-<span class="st"> </span>delta<span class="op">/</span>(sigma<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>n1<span class="op">+</span><span class="dv">1</span><span class="op">/</span>n2))
-t.power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pt</span>(t.crit,n1<span class="op">+</span>n2<span class="op">-</span><span class="dv">2</span>,<span class="dt">ncp =</span> t.gamma)<span class="op">+</span><span class="kw">pt</span>(<span class="op">-</span>t.crit,n1<span class="op">+</span>n2<span class="op">-</span><span class="dv">2</span>,<span class="dt">ncp =</span> t.gamma)
-<span class="kw">return</span>(t.power)
-}</code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1">twosampttestpow &lt;-<span class="st"> </span><span class="cf">function</span>(alpha,n1,n2, mu1, mu2,sigma){</a>
+<a class="sourceLine" id="cb136-2" title="2">delta &lt;-<span class="st"> </span>mu1<span class="op">-</span>mu2</a>
+<a class="sourceLine" id="cb136-3" title="3">t.crit &lt;-<span class="kw">qt</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>,n1<span class="op">+</span>n2<span class="dv">-2</span>)</a>
+<a class="sourceLine" id="cb136-4" title="4">t.gamma &lt;-<span class="st"> </span>delta<span class="op">/</span>(sigma<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>n1<span class="op">+</span><span class="dv">1</span><span class="op">/</span>n2))</a>
+<a class="sourceLine" id="cb136-5" title="5">t.power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pt</span>(t.crit,n1<span class="op">+</span>n2<span class="dv">-2</span>,<span class="dt">ncp =</span> t.gamma)<span class="op">+</span><span class="kw">pt</span>(<span class="op">-</span>t.crit,n1<span class="op">+</span>n2<span class="dv">-2</span>,<span class="dt">ncp =</span> t.gamma)</a>
+<a class="sourceLine" id="cb136-6" title="6"><span class="kw">return</span>(t.power)</a>
+<a class="sourceLine" id="cb136-7" title="7">}</a></code></pre></div>
 <p>The power of a clinical trial to detect <span class="math inline">\(\theta = 1\)</span> with <span class="math inline">\(\sigma = 3,n_1 = n_2 = 50\)</span> is</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">twosampttestpow</span>(.<span class="dv">05</span>,<span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1"><span class="kw">twosampttestpow</span>(.<span class="dv">05</span>,<span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</a></code></pre></div>
 <pre><code>[1] 0.3785749</code></pre>
 </div>
 <div id="use-power.t.test-to-calculate-power-1" class="section level4">
 <h4><span class="header-section-number">5.5.1.2</span> Use <code>power.t.test()</code> to Calculate Power</h4>
 <p>The built-in function <code>power.t.test()</code> can also be used and gives the same results.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">50</span>,<span class="dt">delta =</span> <span class="dv">1</span>,<span class="dt">sd =</span> <span class="dv">3</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1"><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">50</span>,<span class="dt">delta =</span> <span class="dv">1</span>,<span class="dt">sd =</span> <span class="dv">3</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <pre><code>
      Two-sample t test power calculation 
 
@@ -573,7 +607,7 @@ t.power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">
 
 NOTE: n is number in *each* group</code></pre>
 <p>So the study would require 50 subjects per group to achieve 38% power to detect a difference of <span class="math inline">\(\theta = 1\)</span> at the 5% significance level assuming <span class="math inline">\(\sigma = 3\)</span>. <code>power.t.test()</code> can also output the number of subjects required to achieve a certain power. Suppose the investigators want to know how many subjects per group would have to be enrolled in each group to achieve 80% power under the same conditions?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">power.t.test</span>(<span class="dt">power =</span> <span class="fl">0.8</span>,<span class="dt">delta =</span> <span class="dv">1</span>,<span class="dt">sd =</span> <span class="dv">3</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1"><span class="kw">power.t.test</span>(<span class="dt">power =</span> <span class="fl">0.8</span>,<span class="dt">delta =</span> <span class="dv">1</span>,<span class="dt">sd =</span> <span class="dv">3</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <pre><code>
      Two-sample t test power calculation 
 
@@ -587,36 +621,36 @@ NOTE: n is number in *each* group</code></pre>
 NOTE: n is number in *each* group</code></pre>
 <p>142 subjects would be required in each group to achieve 80% power.</p>
 <p>The following plot shows power of the two-sample t-test as a function of the difference <span class="math inline">\(\theta\)</span> to be detected and equal sample size per group.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Study power as a function of theta and sample size</span>
-pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">30</span>,<span class="dt">delta =</span> <span class="kw">seq</span>(<span class="fl">0.01</span>,<span class="dv">2</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">sd =</span> <span class="fl">1.5</span>,<span class="dt">power =</span> <span class="ot">NULL</span>,
-                    <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>,<span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,<span class="dt">strict =</span> T)
-<span class="kw">plot</span>(pow<span class="op">$</span>delta,pow<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Power of Two-Sample T-Test&quot;</span>,
-     <span class="dt">xlab =</span> <span class="st">&quot;theta&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Power&quot;</span>)
-pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">20</span>,<span class="dt">delta =</span> <span class="kw">seq</span>(<span class="fl">0.01</span>,<span class="dv">2</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">sd =</span> <span class="fl">1.5</span>,<span class="dt">power =</span> <span class="ot">NULL</span>,
-                    <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>,<span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,<span class="dt">strict =</span> T)
-<span class="kw">points</span>(pow<span class="op">$</span>delta,pow<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
-pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">10</span>,<span class="dt">delta =</span> <span class="kw">seq</span>(<span class="fl">0.01</span>,<span class="dv">2</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">sd =</span> <span class="fl">1.5</span>,<span class="dt">power =</span> <span class="ot">NULL</span>,
-                    <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>,<span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,<span class="dt">strict =</span> T)
-<span class="kw">points</span>(pow<span class="op">$</span>delta,pow<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">3</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
-<span class="kw">abline</span>(<span class="dt">a =</span> <span class="fl">0.8</span>,<span class="dt">b =</span> <span class="dv">0</span>)
-<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>,<span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;N = 30&quot;</span>,<span class="st">&quot;N = 20&quot;</span>,<span class="st">&quot;N = 10&quot;</span>),
-       <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"><span class="co"># Study power as a function of theta and sample size</span></a>
+<a class="sourceLine" id="cb143-2" title="2">pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">30</span>,<span class="dt">delta =</span> <span class="kw">seq</span>(<span class="fl">0.01</span>,<span class="dv">2</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">sd =</span> <span class="fl">1.5</span>,<span class="dt">power =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb143-3" title="3">                    <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>,<span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,<span class="dt">strict =</span> T)</a>
+<a class="sourceLine" id="cb143-4" title="4"><span class="kw">plot</span>(pow<span class="op">$</span>delta,pow<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Power of Two-Sample T-Test&quot;</span>,</a>
+<a class="sourceLine" id="cb143-5" title="5">     <span class="dt">xlab =</span> <span class="st">&quot;theta&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Power&quot;</span>)</a>
+<a class="sourceLine" id="cb143-6" title="6">pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">20</span>,<span class="dt">delta =</span> <span class="kw">seq</span>(<span class="fl">0.01</span>,<span class="dv">2</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">sd =</span> <span class="fl">1.5</span>,<span class="dt">power =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb143-7" title="7">                    <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>,<span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,<span class="dt">strict =</span> T)</a>
+<a class="sourceLine" id="cb143-8" title="8"><span class="kw">points</span>(pow<span class="op">$</span>delta,pow<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb143-9" title="9">pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">10</span>,<span class="dt">delta =</span> <span class="kw">seq</span>(<span class="fl">0.01</span>,<span class="dv">2</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">sd =</span> <span class="fl">1.5</span>,<span class="dt">power =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb143-10" title="10">                    <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>,<span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,<span class="dt">strict =</span> T)</a>
+<a class="sourceLine" id="cb143-11" title="11"><span class="kw">points</span>(pow<span class="op">$</span>delta,pow<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">3</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb143-12" title="12"><span class="kw">abline</span>(<span class="dt">a =</span> <span class="fl">0.8</span>,<span class="dt">b =</span> <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb143-13" title="13"><span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>,<span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;N = 30&quot;</span>,<span class="st">&quot;N = 20&quot;</span>,<span class="st">&quot;N = 10&quot;</span>),</a>
+<a class="sourceLine" id="cb143-14" title="14">       <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>))</a></code></pre></div>
 <p><img src="04-powersampsize_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>This next plot shows power as a function of <span class="math inline">\(\sigma\)</span> and sample size per group.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Power as a funtion of sample size and sd</span>
-pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">30</span>,<span class="dt">delta =</span> <span class="dv">1</span>,<span class="dt">sd =</span> <span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">power =</span> <span class="ot">NULL</span>,
-                    <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>,<span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,<span class="dt">strict =</span> T)
-<span class="kw">plot</span>(pow<span class="op">$</span>sd,pow<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Power of Two-Sample T-Test&quot;</span>,
-     <span class="dt">xlab =</span> <span class="st">&quot;SD&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Power&quot;</span>)
-pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">20</span>,<span class="dt">delta =</span> <span class="dv">1</span>,<span class="dt">sd =</span> <span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">power =</span> <span class="ot">NULL</span>,
-                    <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>,<span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,<span class="dt">strict =</span> T)
-<span class="kw">points</span>(pow<span class="op">$</span>sd,pow<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
-pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">10</span>,<span class="dt">delta =</span> <span class="dv">1</span>,<span class="dt">sd =</span> <span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">power =</span> <span class="ot">NULL</span>,
-                    <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>,<span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,<span class="dt">strict =</span> T)
-<span class="kw">points</span>(pow<span class="op">$</span>sd,pow<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">3</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
-<span class="kw">abline</span>(<span class="dt">a =</span> <span class="fl">0.8</span>,<span class="dt">b =</span> <span class="dv">0</span>)
-<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>,<span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;N = 30&quot;</span>,<span class="st">&quot;N = 20&quot;</span>,<span class="st">&quot;N = 10&quot;</span>),
-       <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1"><span class="co"># Power as a funtion of sample size and sd</span></a>
+<a class="sourceLine" id="cb144-2" title="2">pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">30</span>,<span class="dt">delta =</span> <span class="dv">1</span>,<span class="dt">sd =</span> <span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">power =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb144-3" title="3">                    <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>,<span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,<span class="dt">strict =</span> T)</a>
+<a class="sourceLine" id="cb144-4" title="4"><span class="kw">plot</span>(pow<span class="op">$</span>sd,pow<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Power of Two-Sample T-Test&quot;</span>,</a>
+<a class="sourceLine" id="cb144-5" title="5">     <span class="dt">xlab =</span> <span class="st">&quot;SD&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Power&quot;</span>)</a>
+<a class="sourceLine" id="cb144-6" title="6">pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">20</span>,<span class="dt">delta =</span> <span class="dv">1</span>,<span class="dt">sd =</span> <span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">power =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb144-7" title="7">                    <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>,<span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,<span class="dt">strict =</span> T)</a>
+<a class="sourceLine" id="cb144-8" title="8"><span class="kw">points</span>(pow<span class="op">$</span>sd,pow<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb144-9" title="9">pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">10</span>,<span class="dt">delta =</span> <span class="dv">1</span>,<span class="dt">sd =</span> <span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">power =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb144-10" title="10">                    <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>,<span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,<span class="dt">strict =</span> T)</a>
+<a class="sourceLine" id="cb144-11" title="11"><span class="kw">points</span>(pow<span class="op">$</span>sd,pow<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">3</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb144-12" title="12"><span class="kw">abline</span>(<span class="dt">a =</span> <span class="fl">0.8</span>,<span class="dt">b =</span> <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb144-13" title="13"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>,<span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;N = 30&quot;</span>,<span class="st">&quot;N = 20&quot;</span>,<span class="st">&quot;N = 10&quot;</span>),</a>
+<a class="sourceLine" id="cb144-14" title="14">       <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>))</a></code></pre></div>
 <p><img src="04-powersampsize_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 </div>
@@ -625,26 +659,26 @@ pow &lt;-<span class="st"> </span><span class="kw">power.t.test</span>(<span cla
 <h2><span class="header-section-number">5.6</span> Effect size</h2>
 <p>In some studies instead of specifying the difference in treatment means and standard deviation separately the ratio</p>
 <p><span class="math display">\[\frac{\mu_1-\mu_2}{\sigma}\]</span></p>
-<p>can be specified. This ratio is called the scaled effect size. <span class="citation">Cohen (<a href="#ref-cohen1992power">1992</a>)</span> suggests that effect sizes of 0.2, 0.5, 0.8 correspond to small, medium , and large effects. Cohen (1992) states that:</p>
+<p>can be specified. This ratio is called the scaled effect size. <span class="citation">Cohen (<a href="#ref-cohen1992power" role="doc-biblioref">1992</a>)</span> suggests that effect sizes of 0.2, 0.5, 0.8 correspond to small, medium , and large effects. Cohen (1992) states that:</p>
 <blockquote>
 <p>Researchers find specifying the ES the most difficult part of power analysis … To convey the meaning of any given ES index, it is necessary to have some idea of its scale … My intent was that medium ES represent an effect likely to be visible to the naked eye of a careful observer, (it has since been noted in effect- size surveys that it approximates the average size of observed effects in various fields.) I set small ES to be noticeably smaller than medium but not so small as to be trivial, and I set large ES to be the same distance above medium as small was below it. Although the definitions were made subjectively …</p>
 </blockquote>
 <p>Power as a function of effect size can be investigated using R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pow.t &lt;-<span class="st"> </span><span class="cf">function</span>(theta){
-  alpha &lt;-<span class="fl">0.05</span>
-  nA &lt;-<span class="st"> </span><span class="dv">10</span>
-  nB &lt;-<span class="st"> </span><span class="dv">10</span>
-  t.crit &lt;-<span class="kw">qt</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>,nA<span class="op">+</span>nB<span class="op">-</span><span class="dv">2</span>)
-  t.gamma &lt;-<span class="st"> </span>theta<span class="op">/</span>(<span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>nA<span class="op">+</span><span class="dv">1</span><span class="op">/</span>nB))
-  t.power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pt</span>(t.crit,nA<span class="op">+</span>nB<span class="op">-</span><span class="dv">2</span>,<span class="dt">ncp =</span> t.gamma)<span class="op">+</span><span class="kw">pt</span>(<span class="op">-</span>t.crit,nA<span class="op">+</span>nB<span class="op">-</span><span class="dv">2</span>,<span class="dt">ncp =</span> t.gamma)
-  <span class="kw">return</span>(t.power)
-}
-
-x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="dt">by =</span> <span class="fl">0.1</span>)
-<span class="kw">plot</span>(x,<span class="kw">pow.t</span>(x),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;power&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Two-Sample T-Test Power and Effect Size, N = 10&quot;</span>)
-<span class="kw">abline</span>(<span class="dt">v=</span><span class="op">+</span><span class="fl">1.33</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)  
-<span class="kw">abline</span>(<span class="dt">v=</span><span class="op">-</span><span class="fl">1.33</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)  
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="fl">0.8</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) </code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1">pow.t &lt;-<span class="st"> </span><span class="cf">function</span>(theta){</a>
+<a class="sourceLine" id="cb145-2" title="2">  alpha &lt;-<span class="fl">0.05</span></a>
+<a class="sourceLine" id="cb145-3" title="3">  nA &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb145-4" title="4">  nB &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb145-5" title="5">  t.crit &lt;-<span class="kw">qt</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>,nA<span class="op">+</span>nB<span class="dv">-2</span>)</a>
+<a class="sourceLine" id="cb145-6" title="6">  t.gamma &lt;-<span class="st"> </span>theta<span class="op">/</span>(<span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>nA<span class="op">+</span><span class="dv">1</span><span class="op">/</span>nB))</a>
+<a class="sourceLine" id="cb145-7" title="7">  t.power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pt</span>(t.crit,nA<span class="op">+</span>nB<span class="dv">-2</span>,<span class="dt">ncp =</span> t.gamma)<span class="op">+</span><span class="kw">pt</span>(<span class="op">-</span>t.crit,nA<span class="op">+</span>nB<span class="dv">-2</span>,<span class="dt">ncp =</span> t.gamma)</a>
+<a class="sourceLine" id="cb145-8" title="8">  <span class="kw">return</span>(t.power)</a>
+<a class="sourceLine" id="cb145-9" title="9">}</a>
+<a class="sourceLine" id="cb145-10" title="10"></a>
+<a class="sourceLine" id="cb145-11" title="11">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="dt">by =</span> <span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb145-12" title="12"><span class="kw">plot</span>(x,<span class="kw">pow.t</span>(x),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;power&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Two-Sample T-Test Power and Effect Size, N = 10&quot;</span>)</a>
+<a class="sourceLine" id="cb145-13" title="13"><span class="kw">abline</span>(<span class="dt">v=</span><span class="op">+</span><span class="fl">1.33</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)  </a>
+<a class="sourceLine" id="cb145-14" title="14"><span class="kw">abline</span>(<span class="dt">v=</span><span class="op">-</span><span class="fl">1.33</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)  </a>
+<a class="sourceLine" id="cb145-15" title="15"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="fl">0.8</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) </a></code></pre></div>
 <p><img src="04-powersampsize_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>The plot shows that for <span class="math inline">\(n_1 = n_2 = 10\)</span> the two-sample t-test has at least 80% power for detecting effect sizes that are at least 1.3.</p>
 </div>
@@ -668,34 +702,34 @@ x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</
 <p>In many studies comparing two treatments it is desirable to put more experimental units into the experimental group to learn more about this treatment. In a phase III clinical trial if the patient allocation between the two groups is <span class="math inline">\(r = n_1/n_2\)</span> then <span class="math inline">\(n_1 = r\cdot n_2\)</span> and</p>
 <p><span class="math display">\[ n_2=\frac {(1+1/r)\sigma^2 \left(z_{\beta}+z_{\alpha/2}\right)^2} {\theta^2}.\]</span></p>
 <p>An R function to compute the sample size in groups 1 and 2 for unequal allocation is</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">size2z.uneq.test &lt;-<span class="st"> </span><span class="cf">function</span>(theta,alpha,beta,sigma,r)
-{
-  zalpha &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)
-  zbeta &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>beta)
-  n2 &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span>r)<span class="op">*</span>(sigma<span class="op">*</span>(zalpha<span class="op">+</span>zbeta)<span class="op">/</span>theta)<span class="op">^</span><span class="dv">2</span>
-  n1 &lt;-<span class="st"> </span>r<span class="op">*</span>n2
-  <span class="kw">return</span>(<span class="kw">c</span>(n1,n2))
-}</code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1">size2z.uneq.test &lt;-<span class="st"> </span><span class="cf">function</span>(theta,alpha,beta,sigma,r)</a>
+<a class="sourceLine" id="cb146-2" title="2">{</a>
+<a class="sourceLine" id="cb146-3" title="3">  zalpha &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb146-4" title="4">  zbeta &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>beta)</a>
+<a class="sourceLine" id="cb146-5" title="5">  n2 &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span>r)<span class="op">*</span>(sigma<span class="op">*</span>(zalpha<span class="op">+</span>zbeta)<span class="op">/</span>theta)<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb146-6" title="6">  n1 &lt;-<span class="st"> </span>r<span class="op">*</span>n2</a>
+<a class="sourceLine" id="cb146-7" title="7">  <span class="kw">return</span>(<span class="kw">c</span>(n1,n2))</a>
+<a class="sourceLine" id="cb146-8" title="8">}</a></code></pre></div>
 <p>The sample size required for 90% power to detect <span class="math inline">\(\theta = 1\)</span> with <span class="math inline">\(\sigma = 2\)</span> at the 5% level in a trial where two patients will be enrolled in the experimental arm for every patient enrolled in the control arm is 126 in the control group and 63 in the experimental group. The total sample size is 189.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sample size for theta =1, alpha = 0.05, beta = 0.1, sigma = 2, r = 2</span>
-<span class="kw">size2z.uneq.test</span>(<span class="dv">1</span>,.<span class="dv">05</span>,.<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)[<span class="dv">1</span>] <span class="co"># group 1 sample size (experimental group)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1"><span class="co"># sample size for theta =1, alpha = 0.05, beta = 0.1, sigma = 2, r = 2</span></a>
+<a class="sourceLine" id="cb147-2" title="2"><span class="kw">size2z.uneq.test</span>(<span class="dv">1</span>,.<span class="dv">05</span>,.<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)[<span class="dv">1</span>] <span class="co"># group 1 sample size (experimental group)</span></a></code></pre></div>
 <pre><code>[1] 126.0891</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">size2z.uneq.test</span>(<span class="dv">1</span>,.<span class="dv">05</span>,.<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)[<span class="dv">2</span>] <span class="co"># group 2 sample size (control group)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1"><span class="kw">size2z.uneq.test</span>(<span class="dv">1</span>,.<span class="dv">05</span>,.<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)[<span class="dv">2</span>] <span class="co"># group 2 sample size (control group)</span></a></code></pre></div>
 <pre><code>[1] 63.04454</code></pre>
 <p>The power of the two-sample z-test can be studied as a function of the allocation ratio <span class="math inline">\(r\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># power of z test as a function of allocation ratio r,</span>
-<span class="co"># total sample size n, alpha, theta, and sigma</span>
-pow.z.test &lt;-<span class="st"> </span><span class="cf">function</span>(r,n,alpha,theta,sigma)
-{
-  n2 &lt;-<span class="st"> </span>n<span class="op">/</span>(r<span class="op">+</span><span class="dv">1</span>)
-  x &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)<span class="op">-</span><span class="kw">abs</span>(theta)<span class="op">/</span>(sigma<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>(r<span class="op">*</span>n2)<span class="op">+</span><span class="dv">1</span><span class="op">/</span>n2))
-  pow &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pnorm</span>(x)
-  <span class="kw">return</span>(pow)
-}
-
-<span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">seq</span>(.<span class="dv">1</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">y =</span> <span class="kw">pow.z.test</span>(<span class="kw">seq</span>(.<span class="dv">1</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dv">168</span>,.<span class="dv">05</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,
-     <span class="dt">xlab =</span> <span class="st">&quot;Allocation ratio&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Power&quot;</span>,
-     <span class="dt">main =</span> <span class="st">&quot;Power vs. allocation ratio with total sample size fixed at </span><span class="ch">\n</span><span class="st"> n = 168 alpha = 0.05&quot;</span>) </code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1"><span class="co"># power of z test as a function of allocation ratio r,</span></a>
+<a class="sourceLine" id="cb151-2" title="2"><span class="co"># total sample size n, alpha, theta, and sigma</span></a>
+<a class="sourceLine" id="cb151-3" title="3">pow.z.test &lt;-<span class="st"> </span><span class="cf">function</span>(r,n,alpha,theta,sigma)</a>
+<a class="sourceLine" id="cb151-4" title="4">{</a>
+<a class="sourceLine" id="cb151-5" title="5">  n2 &lt;-<span class="st"> </span>n<span class="op">/</span>(r<span class="op">+</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb151-6" title="6">  x &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)<span class="op">-</span><span class="kw">abs</span>(theta)<span class="op">/</span>(sigma<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>(r<span class="op">*</span>n2)<span class="op">+</span><span class="dv">1</span><span class="op">/</span>n2))</a>
+<a class="sourceLine" id="cb151-7" title="7">  pow &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pnorm</span>(x)</a>
+<a class="sourceLine" id="cb151-8" title="8">  <span class="kw">return</span>(pow)</a>
+<a class="sourceLine" id="cb151-9" title="9">}</a>
+<a class="sourceLine" id="cb151-10" title="10"></a>
+<a class="sourceLine" id="cb151-11" title="11"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">seq</span>(.<span class="dv">1</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">y =</span> <span class="kw">pow.z.test</span>(<span class="kw">seq</span>(.<span class="dv">1</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dv">168</span>,.<span class="dv">05</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,</a>
+<a class="sourceLine" id="cb151-12" title="12">     <span class="dt">xlab =</span> <span class="st">&quot;Allocation ratio&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Power&quot;</span>,</a>
+<a class="sourceLine" id="cb151-13" title="13">     <span class="dt">main =</span> <span class="st">&quot;Power vs. allocation ratio with total sample size fixed at </span><span class="ch">\n</span><span class="st"> n = 168 alpha = 0.05&quot;</span>) </a></code></pre></div>
 <p><img src="04-powersampsize_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>The plot shows that imbalance typically leads to loss of power.</p>
 </div>
@@ -711,7 +745,7 @@ pow.z.test &lt;-<span class="st"> </span><span class="cf">function</span>(r,n,al
 \right.\]</span></p>
 <p>for <span class="math inline">\(i = 1,...,n_k\)</span> and <span class="math inline">\(k = 1,2\)</span>. The sum of independent and identically distributed Bernoulli random variables has a binomial distribution,</p>
 <p><span class="math display">\[ \sum_{i = 1}^{n_k} Y_{ik} \sim Bin(n_k,p_k), \thinspace k = 1,2.\]</span></p>
-<p>(see <span class="citation">Yin (<a href="#ref-yin2013clinical">2013</a>)</span>, pg. 173-174)</p>
+<p>(see <span class="citation">Yin (<a href="#ref-yin2013clinical" role="doc-biblioref">2013</a>)</span>, pg. 173-174)</p>
 <p>The sample proportion for group <span class="math inline">\(k\)</span> is</p>
 <p><span class="math display">\[{\hat p}_k={\bar Y}_k = (1/n_k)\sum_{i = 1}^{n_k} Y_{ik}, \thinspace k = 1,2,\]</span></p>
 <p>and <span class="math inline">\(E\left( {\bar Y}_k\right)=p_k\)</span> and <span class="math inline">\(Var\left({\bar Y}_k \right)=\frac{p_k(1-p_k)}{n_k}\)</span>.</p>
@@ -725,7 +759,7 @@ pow.z.test &lt;-<span class="st"> </span><span class="cf">function</span>(r,n,al
 <p>Using this formula to solve for sample size. If <span class="math inline">\(n_1 = r \cdot n_2\)</span> then</p>
 <p><span class="math display">\[n_2= \frac {\left(z_{\alpha/2}+z_{\beta}\right)^2}{\theta^2} \left(p_1(1-p_1)/r+p_2(1-p_2) \right). \]</span></p>
 <p>The built-in R function <code>power.prop.test()</code> can be used to calculate sample size or power. For example suppose that the standard treatment for a disease has a response rate of 20%, and an experimental treatment is anticipated to have a response rate of 28%. The researchers want both arms to have an equal number of subjects. How many patients should be enrolled if the study will conduct a two-sided test at the 5% level with 80% power?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">power.prop.test</span>(<span class="dt">p1 =</span> <span class="fl">0.2</span>,<span class="dt">p2 =</span> <span class="fl">0.25</span>,<span class="dt">power =</span> <span class="fl">0.8</span>)</code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1"><span class="kw">power.prop.test</span>(<span class="dt">p1 =</span> <span class="fl">0.2</span>,<span class="dt">p2 =</span> <span class="fl">0.25</span>,<span class="dt">power =</span> <span class="fl">0.8</span>)</a></code></pre></div>
 <pre><code>
      Two-sample comparison of proportions power calculation 
 
@@ -745,10 +779,10 @@ NOTE: n is number in *each* group</code></pre>
 <p>Consider a two-sample t-test with 30 subjects per group and the standard deviation of the clinical outcome is known to be 1. What is the power of the test <span class="math inline">\(H_0:\mu_1-\mu_2 = 0\)</span> versus <span class="math inline">\(H_1:\mu_1-\mu_2 = 0.5\)</span>, at the 5% significance level?</p>
 <p>The power is the proportion of times that the test correctly rejects the null hypothesis in repeated sampling.</p>
 <p>We can simulate a single study using the <code>rnorm()</code> command. Let’s assume that <span class="math inline">\(n_1 = n_2 = 30, \mu_1 = 3.5, \mu_2 = 3, \sigma = 1, \alpha = 0.05\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">2301</span>)
-<span class="co"># simulate 1 study with two samples with 30 observations: one sample is N(3.5,1) </span>
-<span class="co"># the other is N(3,1) then do a two-sample t-test on each study </span>
-<span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dt">mean =</span> <span class="fl">3.5</span>,<span class="dt">sd =</span> <span class="dv">1</span>),<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dt">mean =</span> <span class="dv">3</span>,<span class="dt">sd =</span> <span class="dv">1</span>),<span class="dt">var.equal =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1"><span class="kw">set.seed</span>(<span class="dv">2301</span>)</a>
+<a class="sourceLine" id="cb154-2" title="2"><span class="co"># simulate 1 study with two samples with 30 observations: one sample is N(3.5,1) </span></a>
+<a class="sourceLine" id="cb154-3" title="3"><span class="co"># the other is N(3,1) then do a two-sample t-test on each study </span></a>
+<a class="sourceLine" id="cb154-4" title="4"><span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dt">mean =</span> <span class="fl">3.5</span>,<span class="dt">sd =</span> <span class="dv">1</span>),<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dt">mean =</span> <span class="dv">3</span>,<span class="dt">sd =</span> <span class="dv">1</span>),<span class="dt">var.equal =</span> T)</a></code></pre></div>
 <pre><code>
     Two Sample t-test
 
@@ -762,24 +796,24 @@ mean of x mean of y
  3.339362  2.825828 </code></pre>
 <p>We would reject the null hypothesis at the 5% level since the p-value is 0.0360489.</p>
 <p>Suppose that 10 studies are simulated. What proportion of these 10 studies will reject the null hypothesis at the 5% level? To investigate how many times the two-sample t-test will reject at the 5% level the <code>replicate()</code> command will be used to generate 10 studies and calculate the p-value in each study. It will still be assumed that <span class="math inline">\(n_1 = n_2 = 30, \mu_1 = 3.5, \mu_2 = 3, \sigma = 1, \alpha = 0.05\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">2301</span>) 
-<span class="co"># simulate 10 studies with two samples with 30 observations: one sample is N(3.5,1) </span>
-<span class="co"># the other is N(3,1) then do a two-sample t-test on each study </span>
-pvals &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10</span>,<span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dt">mean =</span> <span class="fl">3.5</span>,<span class="dt">sd =</span> <span class="dv">1</span>),<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dt">mean =</span> <span class="dv">3</span>,<span class="dt">sd =</span> <span class="dv">1</span>),
-                             <span class="dt">var.equal =</span> T)<span class="op">$</span>p.value)
-pvals <span class="co"># print out 10 p-values</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" title="1"><span class="kw">set.seed</span>(<span class="dv">2301</span>) </a>
+<a class="sourceLine" id="cb156-2" title="2"><span class="co"># simulate 10 studies with two samples with 30 observations: one sample is N(3.5,1) </span></a>
+<a class="sourceLine" id="cb156-3" title="3"><span class="co"># the other is N(3,1) then do a two-sample t-test on each study </span></a>
+<a class="sourceLine" id="cb156-4" title="4">pvals &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10</span>,<span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dt">mean =</span> <span class="fl">3.5</span>,<span class="dt">sd =</span> <span class="dv">1</span>),<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dt">mean =</span> <span class="dv">3</span>,<span class="dt">sd =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb156-5" title="5">                             <span class="dt">var.equal =</span> T)<span class="op">$</span>p.value)</a>
+<a class="sourceLine" id="cb156-6" title="6">pvals <span class="co"># print out 10 p-values</span></a></code></pre></div>
 <pre><code> [1] 0.03604893 0.15477655 0.01777959 0.40851999 0.34580930 0.11131007
  [7] 0.14788381 0.00317709 0.09452230 0.39173723</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(pvals<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span><span class="dv">10</span> <span class="co">#power is the number of times the test rejects at the 5% level</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1"><span class="kw">sum</span>(pvals<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span><span class="dv">10</span> <span class="co">#power is the number of times the test rejects at the 5% level</span></a></code></pre></div>
 <pre><code>[1] 0.3</code></pre>
 <p>But, since we only simulated 10 studies the estimate of power will have a large standard error. So let’s try simulating 10,000 studies so that we can obtain a more precise estimate of power.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">2301</span>)
-pvals &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10000</span>,<span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dt">mean =</span> <span class="fl">3.5</span>,<span class="dt">sd =</span> <span class="dv">1</span>),<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dt">mean =</span> <span class="dv">3</span>,<span class="dt">sd =</span> <span class="dv">1</span>),
-                             <span class="dt">var.equal =</span> T)<span class="op">$</span>p.value)
-<span class="kw">sum</span>(pvals<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span><span class="dv">10000</span> </code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" title="1"><span class="kw">set.seed</span>(<span class="dv">2301</span>)</a>
+<a class="sourceLine" id="cb160-2" title="2">pvals &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10000</span>,<span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dt">mean =</span> <span class="fl">3.5</span>,<span class="dt">sd =</span> <span class="dv">1</span>),<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dt">mean =</span> <span class="dv">3</span>,<span class="dt">sd =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb160-3" title="3">                             <span class="dt">var.equal =</span> T)<span class="op">$</span>p.value)</a>
+<a class="sourceLine" id="cb160-4" title="4"><span class="kw">sum</span>(pvals<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span><span class="dv">10000</span> </a></code></pre></div>
 <pre><code>[1] 0.4881</code></pre>
 <p>This is much closer to the theoretical power obtained from <code>power.t.test()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">30</span>,<span class="dt">delta =</span> <span class="fl">0.5</span>,<span class="dt">sd =</span> <span class="dv">1</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1"><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">30</span>,<span class="dt">delta =</span> <span class="fl">0.5</span>,<span class="dt">sd =</span> <span class="dv">1</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <pre><code>
      Two-sample t test power calculation 
 
@@ -794,14 +828,14 @@ NOTE: n is number in *each* group</code></pre>
 <p>The built-in R functions <code>power.t.test()</code> and <code>power.prop.test()</code> don’t have an option for calculating power where the there is unequal allocation of subjects between groups. One option is to simulate power for the scenarios that are of interest. Another option is to write your own function using the formula derived above.</p>
 <p>In the previous example the standard treatment for a disease has a response rate of 20%, and an experimental treatment is anticipated to have a response rate of 28%. The researchers want both arms to have an equal number of subjects. The power calculation above revealed that the study will require 1094 patients for 80% power. What would happen to the power if the researchers put 1500 patients in the experimental arm and 500 patients in the control arm?</p>
 <p>The number of subjects in the experimental arm that have a positive response to treatment will be an observation from a <span class="math inline">\(Bin(1500,0.28)\)</span> and the number of subjects that have a positive response to the standard treatment will be an observation from a <span class="math inline">\(Bin(500,0.2)\)</span>. We can obtain simulated responses from these distributions using the <code>rbinom()</code> command in R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">2301</span>)
-<span class="kw">rbinom</span>(<span class="dv">1</span>,<span class="dv">1500</span>,<span class="fl">0.28</span>)</code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1"><span class="kw">set.seed</span>(<span class="dv">2301</span>)</a>
+<a class="sourceLine" id="cb164-2" title="2"><span class="kw">rbinom</span>(<span class="dv">1</span>,<span class="dv">1500</span>,<span class="fl">0.28</span>)</a></code></pre></div>
 <pre><code>[1] 403</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbinom</span>(<span class="dv">1</span>,<span class="dv">500</span>,<span class="fl">0.20</span>)</code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" title="1"><span class="kw">rbinom</span>(<span class="dv">1</span>,<span class="dv">500</span>,<span class="fl">0.20</span>)</a></code></pre></div>
 <pre><code>[1] 89</code></pre>
 <p>In this simulated clinical trial 431 of the 1500 patients in the experimental arm had a positive response to the experimental treatment and 101 of the 500 patients in the control arm had a positive response to the standard treatment. The p-value for this simulated study can be obtained using <code>prop.test()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">2301</span>)
-<span class="kw">prop.test</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">rbinom</span>(<span class="dv">1</span>,<span class="dv">1500</span>,<span class="fl">0.28</span>),<span class="kw">rbinom</span>(<span class="dv">1</span>,<span class="dv">500</span>,<span class="fl">0.20</span>)),<span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">1500</span>,<span class="dv">500</span>),<span class="dt">correct =</span> F)</code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1"><span class="kw">set.seed</span>(<span class="dv">2301</span>)</a>
+<a class="sourceLine" id="cb168-2" title="2"><span class="kw">prop.test</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">rbinom</span>(<span class="dv">1</span>,<span class="dv">1500</span>,<span class="fl">0.28</span>),<span class="kw">rbinom</span>(<span class="dv">1</span>,<span class="dv">500</span>,<span class="fl">0.20</span>)),<span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">1500</span>,<span class="dv">500</span>),<span class="dt">correct =</span> F)</a></code></pre></div>
 <pre><code>
     2-sample test for equality of proportions without continuity
     correction
@@ -815,9 +849,9 @@ sample estimates:
    prop 1    prop 2 
 0.2686667 0.1780000 </code></pre>
 <p>In this study the p-value is 0, which is less than 0.05 so there would be evidence that the new treatment is significantly better than the standard treatment. A power simulation repeats this process a large number of times. The <code>repeat()</code> command can be used for the repetition. In the example below we simulate 10,000 hypothetical studies to calculate power.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">2301</span>)
-pvals &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10000</span>,<span class="kw">prop.test</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">rbinom</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">size =</span> <span class="dv">1500</span>,<span class="dt">prob =</span> <span class="fl">0.25</span>),<span class="kw">rbinom</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">size =</span> <span class="dv">500</span>,<span class="dt">prob =</span> <span class="fl">0.20</span>)),<span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">1500</span>,<span class="dv">500</span>),<span class="dt">correct =</span> F)<span class="op">$</span>p.value)
-<span class="kw">sum</span>(pvals<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span><span class="dv">10000</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1"><span class="kw">set.seed</span>(<span class="dv">2301</span>)</a>
+<a class="sourceLine" id="cb170-2" title="2">pvals &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10000</span>,<span class="kw">prop.test</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">rbinom</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">size =</span> <span class="dv">1500</span>,<span class="dt">prob =</span> <span class="fl">0.25</span>),<span class="kw">rbinom</span>(<span class="dt">n =</span> <span class="dv">1</span>,<span class="dt">size =</span> <span class="dv">500</span>,<span class="dt">prob =</span> <span class="fl">0.20</span>)),<span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">1500</span>,<span class="dv">500</span>),<span class="dt">correct =</span> F)<span class="op">$</span>p.value)</a>
+<a class="sourceLine" id="cb170-3" title="3"><span class="kw">sum</span>(pvals<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span><span class="dv">10000</span></a></code></pre></div>
 <pre><code>[1] 0.6231</code></pre>
 <p>If the researchers decide to have a 3:1 allocation ratio of patients in the treatment to control arm then the power will decrease to approximately 62%.</p>
 </div>
@@ -826,13 +860,13 @@ pvals &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span clas
 <ol style="list-style-type: decimal">
 <li>The R function</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sample size for two-sample Z test equal allocation</span>
-size2z.test &lt;-<span class="st"> </span><span class="cf">function</span>(theta,alpha,beta,sigma)
-{
-  zalpha &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)
-  zbeta &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>beta)
-  (<span class="dv">2</span><span class="op">*</span>sigma<span class="op">*</span>(zalpha<span class="op">+</span>zbeta)<span class="op">/</span>theta)<span class="op">^</span><span class="dv">2</span>
-}</code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1"><span class="co"># sample size for two-sample Z test equal allocation</span></a>
+<a class="sourceLine" id="cb172-2" title="2">size2z.test &lt;-<span class="st"> </span><span class="cf">function</span>(theta,alpha,beta,sigma)</a>
+<a class="sourceLine" id="cb172-3" title="3">{</a>
+<a class="sourceLine" id="cb172-4" title="4">  zalpha &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb172-5" title="5">  zbeta &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>beta)</a>
+<a class="sourceLine" id="cb172-6" title="6">  (<span class="dv">2</span><span class="op">*</span>sigma<span class="op">*</span>(zalpha<span class="op">+</span>zbeta)<span class="op">/</span>theta)<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb172-7" title="7">}</a></code></pre></div>
 <p>implements the sample size formula for calculating the sample size for a test of <span class="math inline">\(H_0:\theta = 0\)</span> versus <span class="math inline">\(H_1:\theta \ne 0\)</span>, where <span class="math inline">\(\theta=\mu_1-\mu_2\)</span>.</p>
 <p><span class="math display">\[n=\left(\frac{2\sigma\left(z_{\alpha/2}+z_{\beta}\right)}{\theta}\right)^2\]</span></p>
 <ol style="list-style-type: lower-alpha">
@@ -848,31 +882,31 @@ size2z.test &lt;-<span class="st"> </span><span class="cf">function</span>(theta
 <li>A statistician is designing a phase III clinical trial comparing a continuous outcome in two groups (experimental versus standard therapy) with a total sample size of 168 patients. The team requires that the study have at least 80% power at the 5% significance level to detect a difference of 1 (the standard deviation of the outcome is 2). The design team would like to investigate if it’s possible to have four times as many patients in the experimental group versus the control group with out having to increase the sample size.</li>
 </ol>
 <p>The statistician conducted the following analysis. What is the power if there are four times as many patients in the experimental group? What should the statistician recommend to the team in order for the study to have at least 80% power? For example, should the type I error rate be increased?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sample size for two-sample z test unequal allocation</span>
-<span class="co"># r is the ratio of patients in the experimental arm to control arm</span>
-<span class="co"># e.g. r = 2 means that for every 2 patients in the experimental arm</span>
-<span class="co"># 1 pateint is in the control arm</span>
-
-size2z.uneq.test &lt;-<span class="st"> </span><span class="cf">function</span>(theta,alpha,beta,sigma,r)
-{
-  zalpha &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)
-  zbeta &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>beta)
-  (<span class="dv">1</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span>r)<span class="op">*</span>(sigma<span class="op">*</span>(zalpha<span class="op">+</span>zbeta)<span class="op">/</span>theta)<span class="op">^</span><span class="dv">2</span>
-}
-
-<span class="co"># power of z test as a function of allocation ratio r,</span>
-<span class="co"># total sample size n, alpha, theta, and sigma</span>
-pow.z.test &lt;-<span class="st"> </span><span class="cf">function</span>(r,n,alpha,theta,sigma)
-{
-  n2 &lt;-<span class="st"> </span>n<span class="op">/</span>(r<span class="op">+</span><span class="dv">1</span>)
-  x &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)<span class="op">-</span><span class="kw">abs</span>(theta)<span class="op">/</span>(sigma<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>(r<span class="op">*</span>n2)<span class="op">+</span><span class="dv">1</span><span class="op">/</span>n2))
-  pow &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pnorm</span>(x)
-  <span class="kw">return</span>(pow)
-}
-
-<span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">seq</span>(.<span class="dv">1</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">y =</span> <span class="kw">pow.z.test</span>(<span class="kw">seq</span>(.<span class="dv">1</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dv">168</span>,.<span class="dv">05</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,
-     <span class="dt">xlab =</span> <span class="st">&quot;Allocation ratio&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Power&quot;</span>,
-     <span class="dt">main =</span> <span class="st">&quot;Power vs. allocation ratio with total sample size fixed at </span><span class="ch">\n</span><span class="st"> n = 168 alpha = 0.05&quot;</span>) </code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1"><span class="co"># sample size for two-sample z test unequal allocation</span></a>
+<a class="sourceLine" id="cb173-2" title="2"><span class="co"># r is the ratio of patients in the experimental arm to control arm</span></a>
+<a class="sourceLine" id="cb173-3" title="3"><span class="co"># e.g. r = 2 means that for every 2 patients in the experimental arm</span></a>
+<a class="sourceLine" id="cb173-4" title="4"><span class="co"># 1 pateint is in the control arm</span></a>
+<a class="sourceLine" id="cb173-5" title="5"></a>
+<a class="sourceLine" id="cb173-6" title="6">size2z.uneq.test &lt;-<span class="st"> </span><span class="cf">function</span>(theta,alpha,beta,sigma,r)</a>
+<a class="sourceLine" id="cb173-7" title="7">{</a>
+<a class="sourceLine" id="cb173-8" title="8">  zalpha &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb173-9" title="9">  zbeta &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>beta)</a>
+<a class="sourceLine" id="cb173-10" title="10">  (<span class="dv">1</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span>r)<span class="op">*</span>(sigma<span class="op">*</span>(zalpha<span class="op">+</span>zbeta)<span class="op">/</span>theta)<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb173-11" title="11">}</a>
+<a class="sourceLine" id="cb173-12" title="12"></a>
+<a class="sourceLine" id="cb173-13" title="13"><span class="co"># power of z test as a function of allocation ratio r,</span></a>
+<a class="sourceLine" id="cb173-14" title="14"><span class="co"># total sample size n, alpha, theta, and sigma</span></a>
+<a class="sourceLine" id="cb173-15" title="15">pow.z.test &lt;-<span class="st"> </span><span class="cf">function</span>(r,n,alpha,theta,sigma)</a>
+<a class="sourceLine" id="cb173-16" title="16">{</a>
+<a class="sourceLine" id="cb173-17" title="17">  n2 &lt;-<span class="st"> </span>n<span class="op">/</span>(r<span class="op">+</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb173-18" title="18">  x &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)<span class="op">-</span><span class="kw">abs</span>(theta)<span class="op">/</span>(sigma<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>(r<span class="op">*</span>n2)<span class="op">+</span><span class="dv">1</span><span class="op">/</span>n2))</a>
+<a class="sourceLine" id="cb173-19" title="19">  pow &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pnorm</span>(x)</a>
+<a class="sourceLine" id="cb173-20" title="20">  <span class="kw">return</span>(pow)</a>
+<a class="sourceLine" id="cb173-21" title="21">}</a>
+<a class="sourceLine" id="cb173-22" title="22"></a>
+<a class="sourceLine" id="cb173-23" title="23"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">seq</span>(.<span class="dv">1</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dt">y =</span> <span class="kw">pow.z.test</span>(<span class="kw">seq</span>(.<span class="dv">1</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dv">168</span>,.<span class="dv">05</span>,<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,</a>
+<a class="sourceLine" id="cb173-24" title="24">     <span class="dt">xlab =</span> <span class="st">&quot;Allocation ratio&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Power&quot;</span>,</a>
+<a class="sourceLine" id="cb173-25" title="25">     <span class="dt">main =</span> <span class="st">&quot;Power vs. allocation ratio with total sample size fixed at </span><span class="ch">\n</span><span class="st"> n = 168 alpha = 0.05&quot;</span>) </a></code></pre></div>
 <p><img src="04-powersampsize_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Let <span class="math inline">\(X_1, X_2, ..., X_n\)</span> be an ii <span class="math inline">\(N\left(\mu,\sigma^2\right)\)</span>.</li>
@@ -887,7 +921,7 @@ pow.z.test &lt;-<span class="st"> </span><span class="cf">function</span>(r,n,al
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-cohen1992power">
-<p>Cohen, Jacob. 1992. “A Power Primer.” <em>Psychological Bulletin</em> 112 (1). American Psychological Association: 155.</p>
+<p>Cohen, Jacob. 1992. “A Power Primer.” <em>Psychological Bulletin</em> 112 (1): 155.</p>
 </div>
 <div id="ref-yin2013clinical">
 <p>Yin, Guosheng. 2013. <em>Clinical Trial Design: Bayesian and Frequentist Adaptive Methods</em>. Vol. 876. John Wiley; Sons.</p>
@@ -949,7 +983,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

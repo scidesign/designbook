@@ -1,7 +1,7 @@
 --- 
 title: "Design of Experiments and Observational Studies"
 author: "Nathan Taback"
-date: "2019-07-31"
+date: "2019-08-01"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -9,7 +9,7 @@ bibliography: ["dessci-book.bib"]
 biblio-style: apalike
 link-citations: true
 github-repo: scidesign/designbook
-description: "An Introduction to Design, Causal Inference ,and Analysis Using R"
+description: "An Introduction to Design, Causal Inference,and Analysis Using R"
 ---
 
 # Preface

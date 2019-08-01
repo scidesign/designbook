@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Review of Mathematical Statistics | Design of Experiments and Observational Studies</title>
-  <meta name="description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="description" content="An Introduction to Design, Causal Inference,and Analysis Using R" />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Review of Mathematical Statistics | Design of Experiments and Observational Studies" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta property="og:description" content="An Introduction to Design, Causal Inference,and Analysis Using R" />
   <meta name="github-repo" content="scidesign/designbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="3 Review of Mathematical Statistics | Design of Experiments and Observational Studies" />
   
-  <meta name="twitter:description" content="An Introduction to Design, Causal Inference ,and Analysis Using R" />
+  <meta name="twitter:description" content="An Introduction to Design, Causal Inference,and Analysis Using R" />
   
 
 <meta name="author" content="Nathan Taback" />
 
 
-<meta name="date" content="2019-07-31" />
+<meta name="date" content="2019-08-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,44 +47,78 @@
 
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123360659-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123360659-2');
+</script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -120,19 +154,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
-<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
-<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
-</ul></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a></li>
 <li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
-<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
-<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
-<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
-</ul></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a></li>
 <li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
 <li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
 <li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
@@ -168,7 +197,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
 <li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-2"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
 <li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
@@ -328,22 +357,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="data" class="section level2">
 <h2><span class="header-section-number">3.1</span> Data</h2>
 <p>Experimental data describes the outcome of the experimental run. For example 10 successive runs in a chemical experiment produce the following data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">100</span>)
-<span class="co"># Generate a random sample of 10 observations from a N(60,10^2)</span>
-dat &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">60</span>, <span class="dt">sd =</span> <span class="dv">10</span>), <span class="dv">1</span>)
-dat</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">set.seed</span>(<span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co"># Generate a random sample of 10 observations from a N(60,10^2)</span></a>
+<a class="sourceLine" id="cb1-3" title="3">dat &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">60</span>, <span class="dt">sd =</span> <span class="dv">10</span>), <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1-4" title="4">dat</a></code></pre></div>
 <pre><code> [1] 55.0 61.3 59.2 68.9 61.2 63.2 54.2 67.1 51.7 56.4</code></pre>
 </div>
 <div id="distributions" class="section level2">
 <h2><span class="header-section-number">3.2</span> Distributions</h2>
 <p>Distributions can be displayed graphically or numerically.</p>
 <p>A histogram is a graphical summary of a data set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(dat)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">summary</span>(dat)</a></code></pre></div>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   51.70   55.35   60.20   59.82   62.73   68.90 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(dat)</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">hist</span>(dat)</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>The total aggregate of observations that might occur as a result of repeatedly performing a particular operation is called a population of observations. The observations that actually occur are some kind of sample from the population.</p>
+<p>The total aggregate of observations that might occur as a result of repeatedly performing a particular operation is called a population of observations.
+The observations that actually occur are some kind of sample from the population.</p>
 <div id="continuous-distributions" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Continuous Distributions</h3>
 <p>A continuous random variable <span class="math inline">\(X\)</span> is fully characterized by its density function <span class="math inline">\(f(x)\)</span>, where <span class="math inline">\(f(x) \ge 0\)</span>, <span class="math inline">\(\thinspace f\)</span> is piecewise continuous, and <span class="math inline">\(\int_{-\infty}^{\infty}f(x)dx = 1\)</span>.</p>
@@ -351,21 +381,22 @@ dat</code></pre></div>
 <p><span class="math display">\[ F(x)=P(X \le x)=\int_{-\infty}^{x}f(x)dx.\]</span></p>
 <p>If <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x\)</span> then <span class="math inline">\(F&#39;(x)=f(x)\)</span> (fundamental theorem of calculus). The CDF can be used to calculate the probability that <span class="math inline">\(X\)</span> falls in the interval <span class="math inline">\((a,b)\)</span>. This is the area under the density curve which can also be expressed in terms of the CDF:</p>
 <p><span class="math display">\[P\left(a &lt; X &lt; b\right)=\int_{a}^{b}f(x)dx = F(b)-F(a).\]</span></p>
-<p>In R a list of all the common distributions can be obtained by the command <code>help(&quot;distributions&quot;)</code>.</p>
+<p>In R a list of all the common distributions can be obtained by the command <code>help("distributions")</code>.</p>
 <p>The following R code draws a random sample of 100 observations from a Chi-square distribution on 10 degrees of freedom <span class="math inline">\(\chi^2_{10}\)</span>. The density function of the <span class="math inline">\(\chi^2_{10}\)</span> is superimposed over the histogram of the sample.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rchisq</span>(<span class="dv">100</span>, <span class="dv">10</span>) <span class="co"># draw a sample of 100 from chi-square 10</span>
-h &lt;-<span class="st"> </span><span class="kw">hist</span>(x) <span class="co"># create the histogram</span>
-<span class="co"># superimpoise chi-square density over histogram</span>
-xfit &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length =</span> <span class="dv">40</span>)
-yfit &lt;-<span class="st"> </span><span class="kw">dchisq</span>(xfit, <span class="dv">10</span>) <span class="co">#chi-square density</span>
-yfit &lt;-<span class="st"> </span>yfit <span class="op">*</span><span class="st"> </span><span class="kw">diff</span>(h<span class="op">$</span>mids[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="kw">length</span>(x)
-<span class="kw">lines</span>(xfit, yfit)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">x &lt;-<span class="st"> </span><span class="kw">rchisq</span>(<span class="dv">100</span>, <span class="dv">10</span>) <span class="co"># draw a sample of 100 from chi-square 10</span></a>
+<a class="sourceLine" id="cb6-2" title="2">h &lt;-<span class="st"> </span><span class="kw">hist</span>(x) <span class="co"># create the histogram</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co"># superimpoise chi-square density over histogram</span></a>
+<a class="sourceLine" id="cb6-4" title="4">xfit &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length =</span> <span class="dv">40</span>)</a>
+<a class="sourceLine" id="cb6-5" title="5">yfit &lt;-<span class="st"> </span><span class="kw">dchisq</span>(xfit, <span class="dv">10</span>) <span class="co">#chi-square density</span></a>
+<a class="sourceLine" id="cb6-6" title="6">yfit &lt;-<span class="st"> </span>yfit <span class="op">*</span><span class="st"> </span><span class="kw">diff</span>(h<span class="op">$</span>mids[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]) <span class="op">*</span><span class="st"> </span><span class="kw">length</span>(x)</a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="kw">lines</span>(xfit, yfit)</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 </div>
 <div id="randomness" class="section level2">
 <h2><span class="header-section-number">3.3</span> Randomness</h2>
-<p>A random drawing is where each member of the population has an equal chance of being selected. The hypothesis of random sampling may not apply to real data. For example, cold days are usually followed by cold days. So daily temperature not directly representable by random drawings. In many cases we can’t rely on the random sampling property although design can make this assumption relevant.</p>
+<p>A random drawing is where each member of the population has an equal chance of being selected. The hypothesis of random sampling may not apply to real data.
+For example, cold days are usually followed by cold days. So daily temperature not directly representable by random drawings. In many cases we can’t rely on the random sampling property although design can make this assumption relevant.</p>
 </div>
 <div id="parameters-and-statistics" class="section level2">
 <h2><span class="header-section-number">3.4</span> Parameters and Statistics</h2>
@@ -380,33 +411,35 @@ yfit &lt;-<span class="st"> </span>yfit <span class="op">*</span><span class="st
 <h2><span class="header-section-number">3.6</span> The Normal Distribution</h2>
 <p>The density function of the normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> is:</p>
 <p><span class="math display">\[ \phi(x)=\frac{1}{\sigma \sqrt{2\pi}}exp\left( \frac{-1}{2} \left(\frac{x-\mu}{\sigma}\right)^2\right)\]</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">by =</span> <span class="fl">0.1</span>)
-<span class="kw">plot</span>(x,
-     <span class="kw">dnorm</span>(x),
-     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,
-     <span class="dt">main =</span> <span class="st">&quot;The Standard Normal Distribution&quot;</span>,
-     <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="kw">phi</span>(x))))</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">by =</span> <span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw">plot</span>(x,</a>
+<a class="sourceLine" id="cb7-3" title="3">     <span class="kw">dnorm</span>(x),</a>
+<a class="sourceLine" id="cb7-4" title="4">     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,</a>
+<a class="sourceLine" id="cb7-5" title="5">     <span class="dt">main =</span> <span class="st">&quot;The Standard Normal Distribution&quot;</span>,</a>
+<a class="sourceLine" id="cb7-6" title="6">     <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="kw">phi</span>(x))))</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>A random variable <span class="math inline">\(X\)</span> that follows a normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> will be denoted by <span class="math inline">\(X \sim N\left(\mu, \sigma^2\right)\)</span>.</p>
 <p>If <span class="math inline">\(Y \sim N\left(\mu, \sigma^2\right)\)</span> then <span class="math inline">\(Z \sim N(0,1)\)</span>, where <span class="math inline">\(Z=\frac{Y-\mu}{\sigma}\)</span>.</p>
 <p>The cumulative distribution function (CDF) of a <span class="math inline">\(N(0,1)\)</span> distribution,</p>
 <p><span class="math display">\[ \Phi(x)= P(X&lt;x)= \int_{-\infty}^x \phi(x)dx\]</span></p>
 <p>is shown in the plot below using the R function for the normal CDF <code>pnorm()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dt">by =</span> <span class="fl">0.1</span>), <span class="kw">pnorm</span>(x), 
-     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="kw">Phi</span>(x))),
-     <span class="dt">main =</span> <span class="st">&quot;Standard Normal Cumulative Distribution Function&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">plot</span>(x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dt">by =</span> <span class="fl">0.1</span>), <span class="kw">pnorm</span>(x), </a>
+<a class="sourceLine" id="cb8-2" title="2">     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="kw">Phi</span>(x))),</a>
+<a class="sourceLine" id="cb8-3" title="3">     <span class="dt">main =</span> <span class="st">&quot;Standard Normal Cumulative Distribution Function&quot;</span>)</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <div id="exercises" class="section level3">
 <h3><span class="header-section-number">3.6.1</span> Exercises</h3>
 <ol style="list-style-type: decimal">
-<li>Use R to calculate the <span class="math inline">\(P(-1&lt;Z&lt;2)\)</span>, where <span class="math inline">\(Z \sim N(0,1)\)</span>. Answer:</li>
+<li>Use R to calculate the <span class="math inline">\(P(-1&lt;Z&lt;2)\)</span>, where <span class="math inline">\(Z \sim N(0,1)\)</span>.
+Answer:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="op">-</span><span class="dv">1</span>)</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">pnorm</span>(<span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="op">-</span><span class="dv">1</span>)</a></code></pre></div>
 <pre><code>[1] 0.8185946</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Use R to calculate the <span class="math inline">\(P(X&gt;5)\)</span>, where <span class="math inline">\(X \sim N(6,2)\)</span>. Answer:</li>
+<li>Use R to calculate the <span class="math inline">\(P(X&gt;5)\)</span>, where <span class="math inline">\(X \sim N(6,2)\)</span>.
+Answer:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">6</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(<span class="dv">2</span>))</code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">6</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(<span class="dv">2</span>))</a></code></pre></div>
 <pre><code>[1] 0.7602499</code></pre>
 </div>
 </div>
@@ -420,7 +453,7 @@ yfit &lt;-<span class="st"> </span>yfit <span class="op">*</span><span class="st
 <p>Suppose that we have observations independent observations <span class="math inline">\(X_1,X_2, ...,X_n\)</span> from a uniform distribution on <span class="math inline">\([0,1]\)</span> or Unif[0,1]. The ordered sample values (also called the order statistics) are the values <span class="math inline">\(X_{(j)}\)</span> such that <span class="math inline">\(X_{(1)}&lt;X_{(2)}&lt; \cdots &lt; X_{(n)}\)</span>.</p>
 <p>It can be shown that</p>
 <p><span class="math display">\[E\left(X_{(j)}\right)=\frac{j}{n+1}.\]</span></p>
-<p>This suggests that if we plot <span class="math inline">\(X_{(j)}\)</span> vs. <span class="math inline">\(\frac{j}{n+1}\)</span> then if the underlying distribution is Unif[0,1] then the plot should be roughly linear.</p>
+<p>This suggests that if we plot <span class="math inline">\(X_{(j)}\)</span> vs. <span class="math inline">\(\frac{j}{n+1}\)</span> then if the underlying distribution is Unif[0,1] then the plot should be roughly linear.</p>
 <p>A continuous random variable with strictly increasing CDF <span class="math inline">\(F_X\)</span> can be transformed to a Unif[0,1] by defining a new random variable <span class="math inline">\(Y = F_X(X)\)</span>. This is also called the probability integral transformation.</p>
 <p>This suggests the following procedure. Suppose that it’s hypothesized that <span class="math inline">\(X\)</span> follows a certain distribution function with CDF <span class="math inline">\(F\)</span>. Given a sample <span class="math inline">\(X_1,X_2,...,X_n\)</span> plot</p>
 <p><span class="math display">\[F(X_{(k)}) \hspace{0.2cm} {\text{vs. }} \hspace{0.2cm} \frac{k}{n+1}\]</span></p>
@@ -440,25 +473,24 @@ yfit &lt;-<span class="st"> </span>yfit <span class="op">*</span><span class="st
 <p>This is the same as</p>
 <p><span class="math display">\[X_{(k)} \quad \textrm{vs.} \quad  F^{-1}\left(\frac{k}{n+1}\right).\]</span></p>
 <p>This means that the <span class="math inline">\(k/(n+1)\)</span> quantile is assigned to the <span class="math inline">\(k^{th}\)</span> order statistic. But in some implementations sometimes the <span class="math inline">\(k^{th}\)</span> quantile is assigned to <span class="math inline">\(X_{(k)}\)</span> is <span class="math inline">\((k-0.5)/n\)</span> (see Rice, pg 352-355).</p>
-<p>The following data from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span> are the weights from 11 tomato plants.</p>
+<p>The following data from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005" role="doc-biblioref">2005</a>)</span> are the weights from 11 tomato plants.</p>
 <pre><code> [1] 29.9 11.4 26.6 23.7 25.3 28.5 14.2 17.9 16.5 21.1 24.3</code></pre>
 <p>Do the weights follow a Normal distribution?</p>
 <p>If the tomato weights are normally distributed then a plot of the ordered tomato weights, <span class="math inline">\(y_{(1)}&lt;y_{(2)}&lt; \cdots &lt; y_{(11)}\)</span> versus the cumulative probabilities <span class="math inline">\(p_i=(i-0.5)/N\)</span>, where <span class="math inline">\(N\)</span> is the number of observations should be the same shape as the CDF of the Normal distribution.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">sort</span>(tomato.data<span class="op">$</span>pounds), <span class="dv">1</span><span class="op">:</span><span class="dv">11</span><span class="op">/</span><span class="kw">length</span>(tomato.data<span class="op">$</span>pounds),
-     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;ith Weight&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;(i-0.5)/11&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">plot</span>(<span class="kw">sort</span>(tomato.data<span class="op">$</span>pounds), <span class="dv">1</span><span class="op">:</span><span class="dv">11</span><span class="op">/</span><span class="kw">length</span>(tomato.data<span class="op">$</span>pounds),</a>
+<a class="sourceLine" id="cb14-2" title="2">     <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;ith Weight&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;(i-0.5)/11&quot;</span>)</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>It’s difficult to tell if the weights have the same shape as the Normal CDF. But, the curve can be stretched at the extreme ends so that it becomes a straight line. A method for stretching out the curve is developed below.</p>
 <p>Assume that the weights, <span class="math inline">\(y_i \sim N\left (\mu, \sigma^2\right)\)</span>.</p>
-<p>Then <span class="math inline">\(\Phi(y_i)\)</span> has a uniform distribution over <span class="math inline">\([0,1]\)</span>. This means that the expected values of <span class="math inline">\(\Phi(y_i), i = 1,...N\)</span> should be equally spaced over <span class="math inline">\([0,1]\)</span> or the <span class="math inline">\(N\)</span> points <span class="math inline">\((p_i,\Phi(y_{(i)})\)</span> should fall on a straight line. Applying the <span class="math inline">\(\Phi^{-1}\)</span> transform to the horizontal and vertical scales, the <span class="math inline">\(N\)</span> points <span class="math display">\[\left(\Phi^{-1}(p_i),y_i\right), i = 1,...,N,\]</span></p>
+<p>Then <span class="math inline">\(\Phi(y_i)\)</span> has a uniform distribution over <span class="math inline">\([0,1]\)</span>. This means that the expected values of <span class="math inline">\(\Phi(y_i), i = 1,...N\)</span> should be equally spaced over <span class="math inline">\([0,1]\)</span> or the <span class="math inline">\(N\)</span> points <span class="math inline">\((p_i,\Phi(y_{(i)})\)</span> should fall on a straight line. Applying the <span class="math inline">\(\Phi^{-1}\)</span> transform to the horizontal and vertical scales, the <span class="math inline">\(N\)</span> points
+<span class="math display">\[\left(\Phi^{-1}(p_i),y_i\right), i = 1,...,N,\]</span></p>
 <p>should follow a straight line. These points form the <strong>normal probability plot</strong> of the tomato plant weights. (Wu and Hamada, pages 77-78)</p>
 <p>A normal probability plot in R can be obtained using <code>qqnorm()</code> for the normal probability plot and <code>qqline()</code> to add the straight line.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(tomato.data<span class="op">$</span>pounds)
-<span class="kw">qqline</span>(tomato.data<span class="op">$</span>pounds)</code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">qqnorm</span>(tomato.data<span class="op">$</span>pounds)</a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="kw">qqline</span>(tomato.data<span class="op">$</span>pounds)</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>In this case assuming that the data are generated from a normal distribution is a plausible assumption since most of the points are close the straight line.</p>
-</div>
-<div id="exercises-1" class="section level3">
-<h3><span class="header-section-number">3.7.2</span> Exercises</h3>
+<p>###Exercises</p>
 <ol style="list-style-type: decimal">
 <li>The following 50 data set contains the ages of participants in a study of social media habits. Is it plausible to assume that the data are normally distributed?</li>
 </ol>
@@ -466,12 +498,12 @@ yfit &lt;-<span class="st"> </span>yfit <span class="op">*</span><span class="st
 [15] 34.4 28.0 33.7 28.4 73.7 36.2 33.8 36.1 32.8 34.9 35.7 55.0 36.8 35.0
 [29] 33.7 33.6 37.9 35.9 38.6 34.8 34.3 39.3 33.1 33.4 30.9 36.2 35.2 36.1
 [43] 35.3 35.6 33.7 33.9 34.4 33.7 32.5 38.2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">round</span>(agedata,<span class="dv">1</span>))</code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">summary</span>(<span class="kw">round</span>(agedata,<span class="dv">1</span>))</a></code></pre></div>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
    9.80   33.73   34.95   35.86   36.20   73.70 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(agedata)</code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">hist</span>(agedata)</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(agedata);<span class="kw">qqline</span>(agedata)</code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">qqnorm</span>(agedata);<span class="kw">qqline</span>(agedata)</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
 <p>Answer: The histogram and the qqplot indicate the tails of the age distribution are heavier than the normal distribution. In the qqplot this is indicated by the marked deviations from the straight line for very small and large sample quantiles. Thus, the qqplot indicates that the data is not normally distributed.</p>
 </div>
@@ -491,28 +523,27 @@ yfit &lt;-<span class="st"> </span>yfit <span class="op">*</span><span class="st
 <p>has a chi-square distribution on <span class="math inline">\(n\)</span> degrees of freedom or <span class="math inline">\(\chi^2_{n}\)</span>.</p>
 <p>The mean of a <span class="math inline">\(\chi^2_{n}\)</span> is <span class="math inline">\(n\)</span> with variance <span class="math inline">\(2n\)</span>.</p>
 <p>The chi-square distribution is a right-skewed distribution, but becomes normal as the degrees of freedom increases. In the plot below the <span class="math inline">\(\chi^2_{50}\)</span> density is very close to the <span class="math inline">\(N(50,100)\)</span> density.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compare chi-square densities with normal density</span>
-x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dt">length =</span> <span class="dv">100</span>)
-hx &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x,<span class="dt">mean =</span> <span class="dv">50</span>,<span class="dt">sd =</span> <span class="kw">sqrt</span>(<span class="dv">2</span><span class="op">*</span><span class="dv">50</span>)) <span class="co">#normal density</span>
-
-degf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">50</span>)
-colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;gold&quot;</span>, <span class="st">&quot;black&quot;</span>)
-labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;df = 1&quot;</span>, <span class="st">&quot;df = 3&quot;</span>, <span class="st">&quot;df = 8&quot;</span>, <span class="st">&quot;df = 50&quot;</span>, <span class="st">&quot;normal&quot;</span>)
-
-<span class="kw">plot</span>(x, hx, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">xlab =</span> <span class="st">&quot;x value&quot;</span>,
-     <span class="dt">ylab =</span> <span class="st">&quot;Density&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Comparison of Chi-Square Distributions&quot;</span>,<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.25</span>))
-
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {
-  <span class="kw">lines</span>(x, <span class="kw">dchisq</span>(x,degf[i]), <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> colors[i]) <span class="co"># dchisq is the chi-square density</span>
-}
-
-<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">inset =</span> .<span class="dv">05</span>, <span class="dt">title =</span> <span class="st">&quot;Distributions&quot;</span>,
-       labels, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">col =</span> colors)</code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co"># Compare chi-square densities with normal density</span></a>
+<a class="sourceLine" id="cb21-2" title="2">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dt">length =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb21-3" title="3">hx &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x,<span class="dt">mean =</span> <span class="dv">50</span>,<span class="dt">sd =</span> <span class="kw">sqrt</span>(<span class="dv">2</span><span class="op">*</span><span class="dv">50</span>)) <span class="co">#normal density</span></a>
+<a class="sourceLine" id="cb21-4" title="4"></a>
+<a class="sourceLine" id="cb21-5" title="5">degf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb21-6" title="6">colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;gold&quot;</span>, <span class="st">&quot;black&quot;</span>)</a>
+<a class="sourceLine" id="cb21-7" title="7">labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;df = 1&quot;</span>, <span class="st">&quot;df = 3&quot;</span>, <span class="st">&quot;df = 8&quot;</span>, <span class="st">&quot;df = 50&quot;</span>, <span class="st">&quot;normal&quot;</span>)</a>
+<a class="sourceLine" id="cb21-8" title="8"></a>
+<a class="sourceLine" id="cb21-9" title="9"><span class="kw">plot</span>(x, hx, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">xlab =</span> <span class="st">&quot;x value&quot;</span>,</a>
+<a class="sourceLine" id="cb21-10" title="10">     <span class="dt">ylab =</span> <span class="st">&quot;Density&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Comparison of Chi-Square Distributions&quot;</span>,<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.25</span>))</a>
+<a class="sourceLine" id="cb21-11" title="11"></a>
+<a class="sourceLine" id="cb21-12" title="12"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</a>
+<a class="sourceLine" id="cb21-13" title="13">  <span class="kw">lines</span>(x, <span class="kw">dchisq</span>(x,degf[i]), <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> colors[i]) <span class="co"># dchisq is the chi-square density</span></a>
+<a class="sourceLine" id="cb21-14" title="14">}</a>
+<a class="sourceLine" id="cb21-15" title="15"></a>
+<a class="sourceLine" id="cb21-16" title="16"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">inset =</span> <span class="fl">.05</span>, <span class="dt">title =</span> <span class="st">&quot;Distributions&quot;</span>,</a>
+<a class="sourceLine" id="cb21-17" title="17">       labels, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">col =</span> colors)</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Let <span class="math inline">\(X_1,X_2,...,X_n\)</span> be independent with a <span class="math inline">\(N(\mu, \sigma^2)\)</span> distribution. The distribution of the sample variance <span class="math inline">\(S^2=\sum_{i = 1}^{n}(X_i-{\bar X})^2/(n-1)\)</span> has a <span class="math inline">\(\chi^2_{n-1}\)</span> distribution, namely,</p>
 <p><span class="math display">\[ \frac{n-1}{\sigma^2} S^2 \sim \chi^2_{n-1}.\]</span></p>
-<div id="exercises-2" class="section level3">
-<h3><span class="header-section-number">3.9.1</span> Exercises</h3>
+<p>###Exercises</p>
 <ol style="list-style-type: decimal">
 <li>If <span class="math inline">\(X_1,X_2,...,X_{50}\)</span> are a random sample from a <span class="math inline">\(N(40,25)\)</span> then calculate <span class="math inline">\(P(S^2&gt;27)\)</span>.</li>
 </ol>
@@ -524,10 +555,9 @@ P\left(\frac{49}{25}S^2&gt;\frac{49}{25} \times 27\right) &amp;=P\left(\chi^2_{4
 \end{aligned}\]</span></p>
 <p>The CDF of the <span class="math inline">\(\chi^2_{n}\)</span> in R is <code>pchisq()</code>.</p>
 <p>Therefore,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pchisq</span>(<span class="dt">q =</span> <span class="fl">52.92</span>,<span class="dt">df =</span> <span class="dv">49</span>)</code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pchisq</span>(<span class="dt">q =</span> <span class="fl">52.92</span>,<span class="dt">df =</span> <span class="dv">49</span>)</a></code></pre></div>
 <pre><code>[1] 0.325325</code></pre>
 <p>So, <span class="math inline">\(P(S^2&gt;27)=1-P(S^2&lt;27)=\)</span> 0.325325.</p>
-</div>
 </div>
 <div id="t-distribution" class="section level2">
 <h2><span class="header-section-number">3.10</span> t Distribution</h2>
@@ -536,25 +566,25 @@ P\left(\frac{49}{25}S^2&gt;\frac{49}{25} \times 27\right) &amp;=P\left(\chi^2_{4
 <p><span class="math display">\[\frac{{\bar X}-\mu }{\frac {S}{\sqrt n}} \sim t_{n-1},\]</span></p>
 <p>where <span class="math inline">\(S^2=\sum_{i = 1}^{n}(X_i-{\bar X})^2/(n-1)\)</span>. This follows since <span class="math inline">\(\bar X\)</span> and <span class="math inline">\(S^2\)</span> are independent.</p>
 <p>The t distribution for small values of <span class="math inline">\(n\)</span> has “heavier tails” compared to the normal. As the degrees of freedom increases the t-distribution is almost identical to the normal distribution.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compare t densities with normal density</span>
-x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">length =</span> <span class="dv">100</span>)
-hx &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x) <span class="co">#normal density</span>
-
-degf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">30</span>)
-colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;gold&quot;</span>, <span class="st">&quot;black&quot;</span>)
-labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;df = 1&quot;</span>, <span class="st">&quot;df = 3&quot;</span>, <span class="st">&quot;df = 8&quot;</span>, <span class="st">&quot;df = 30&quot;</span>, <span class="st">&quot;normal&quot;</span>)
-
-<span class="kw">plot</span>(x, hx, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">xlab =</span> <span class="st">&quot;x value&quot;</span>,
-     <span class="dt">ylab =</span> <span class="st">&quot;Density&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Comparison of t Distributions&quot;</span>)
-
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {
-  <span class="kw">lines</span>(x, <span class="kw">dt</span>(x,degf[i]), <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> colors[i]) <span class="co"># dt is the t density</span>
-}
-
-<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">inset =</span> .<span class="dv">05</span>, <span class="dt">title =</span> <span class="st">&quot;Distributions&quot;</span>,
-       labels, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">col =</span> colors)</code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="co"># Compare t densities with normal density</span></a>
+<a class="sourceLine" id="cb24-2" title="2">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">length =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb24-3" title="3">hx &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x) <span class="co">#normal density</span></a>
+<a class="sourceLine" id="cb24-4" title="4"></a>
+<a class="sourceLine" id="cb24-5" title="5">degf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb24-6" title="6">colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;gold&quot;</span>, <span class="st">&quot;black&quot;</span>)</a>
+<a class="sourceLine" id="cb24-7" title="7">labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;df = 1&quot;</span>, <span class="st">&quot;df = 3&quot;</span>, <span class="st">&quot;df = 8&quot;</span>, <span class="st">&quot;df = 30&quot;</span>, <span class="st">&quot;normal&quot;</span>)</a>
+<a class="sourceLine" id="cb24-8" title="8"></a>
+<a class="sourceLine" id="cb24-9" title="9"><span class="kw">plot</span>(x, hx, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">xlab =</span> <span class="st">&quot;x value&quot;</span>,</a>
+<a class="sourceLine" id="cb24-10" title="10">     <span class="dt">ylab =</span> <span class="st">&quot;Density&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Comparison of t Distributions&quot;</span>)</a>
+<a class="sourceLine" id="cb24-11" title="11"></a>
+<a class="sourceLine" id="cb24-12" title="12"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</a>
+<a class="sourceLine" id="cb24-13" title="13">  <span class="kw">lines</span>(x, <span class="kw">dt</span>(x,degf[i]), <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> colors[i]) <span class="co"># dt is the t density</span></a>
+<a class="sourceLine" id="cb24-14" title="14">}</a>
+<a class="sourceLine" id="cb24-15" title="15"></a>
+<a class="sourceLine" id="cb24-16" title="16"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">inset =</span> <span class="fl">.05</span>, <span class="dt">title =</span> <span class="st">&quot;Distributions&quot;</span>,</a>
+<a class="sourceLine" id="cb24-17" title="17">       labels, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">col =</span> colors)</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
-<div id="exercises-3" class="section level3">
+<div id="exercises-1" class="section level3">
 <h3><span class="header-section-number">3.10.1</span> Exercises</h3>
 <ol style="list-style-type: decimal">
 <li>Suppose that an experimenter obtained a random sample of body weights (kg) from 10 male subjects 66.9, 70.9, 65.8, 78, 71.6, 65.9, 72.4, 73.7, 72.9, 68.5. The distribution of weight in this population is known to be <span class="math inline">\(N(70,\sigma^2)\)</span>. What is the probability that the average weight is between 68kg and 71kg?</li>
@@ -562,16 +592,16 @@ labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">
 <p>Answer: The distribution of <span class="math inline">\(\frac{{\bar X}-70 }{\frac{S}{\sqrt{10}}}\)</span> is <span class="math inline">\(t_9\)</span>, where <span class="math inline">\(S\)</span> is the sample standard deviation. So</p>
 <p><span class="math display">\[P\left(68 &lt; {\bar X} &lt; 71\right) = P\left(\frac{68-70}{5.6/\sqrt{10}} &lt; \frac{{\bar X}-70}{5.6/\sqrt{10}} &lt; \frac{71-70}{5.6/\sqrt{10}}\right)\]</span></p>
 <p>Use R to do the calculations. First put the data into a vector to calculate the standard deviation then use the <span class="math inline">\(t_9\)</span> CDF:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">66.9</span>, <span class="fl">70.9</span>, <span class="fl">65.8</span>, <span class="fl">78.0</span>, <span class="fl">71.6</span>, <span class="fl">65.9</span>, <span class="fl">72.4</span>, <span class="fl">73.7</span>, <span class="fl">72.9</span>, <span class="fl">68.5</span>)
-<span class="kw">sd</span>(dat) <span class="co"># The SD of the weights</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">dat &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">66.9</span>, <span class="fl">70.9</span>, <span class="fl">65.8</span>, <span class="fl">78.0</span>, <span class="fl">71.6</span>, <span class="fl">65.9</span>, <span class="fl">72.4</span>, <span class="fl">73.7</span>, <span class="fl">72.9</span>, <span class="fl">68.5</span>)</a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="kw">sd</span>(dat) <span class="co"># The SD of the weights</span></a></code></pre></div>
 <pre><code>[1] 3.904186</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span>(<span class="dv">68</span> <span class="op">-</span><span class="st"> </span><span class="dv">70</span>) <span class="op">/</span><span class="st"> </span>(<span class="kw">sd</span>(dat) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">10</span>))
-a</code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">a &lt;-<span class="st"> </span>(<span class="dv">68</span> <span class="op">-</span><span class="st"> </span><span class="dv">70</span>) <span class="op">/</span><span class="st"> </span>(<span class="kw">sd</span>(dat) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb27-2" title="2">a</a></code></pre></div>
 <pre><code>[1] -1.619942</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b &lt;-<span class="st"> </span>(<span class="dv">71</span> <span class="op">-</span><span class="st"> </span><span class="dv">70</span>) <span class="op">/</span><span class="st"> </span>(<span class="kw">sd</span>(dat) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">10</span>))
-b</code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">b &lt;-<span class="st"> </span>(<span class="dv">71</span> <span class="op">-</span><span class="st"> </span><span class="dv">70</span>) <span class="op">/</span><span class="st"> </span>(<span class="kw">sd</span>(dat) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb29-2" title="2">b</a></code></pre></div>
 <pre><code>[1] 0.8099711</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pt</span>(b, <span class="dt">df =</span> <span class="dv">9</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pt</span>(a, <span class="dt">df =</span> <span class="dv">9</span>)</code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">pt</span>(b, <span class="dt">df =</span> <span class="dv">9</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pt</span>(a, <span class="dt">df =</span> <span class="dv">9</span>)</a></code></pre></div>
 <pre><code>[1] 0.7107282</code></pre>
 <p>So,</p>
 <p><span class="math display">\[\begin{aligned}
@@ -586,15 +616,15 @@ P\left(68 &lt; {\bar X} &lt; 71\right) &amp;= P\left(-1.619942&lt;t_9&lt;0.80997
 <p><span class="math display">\[ W= \frac{X/m}{Y/n} \sim F_{m,n},\]</span></p>
 <p>where <span class="math inline">\(F_{m,n}\)</span> denotes the F distribution on <span class="math inline">\(m,n\)</span> degrees of freedom. The F distribution is right skewed (see graph below). For <span class="math inline">\(n&gt;2, E(W)=n/(n-2)\)</span>. It also follows that the square of a <span class="math inline">\(t_n\)</span> random variable follows an <span class="math inline">\(F_{1,n}\)</span>.</p>
 <p>The F distribution is right skewed</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compare t densities with normal density</span>
-
-colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>)
-<span class="kw">plot</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>, <span class="dt">by =</span> <span class="fl">0.1</span>), <span class="kw">df</span>(<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dv">7</span>,<span class="dv">10</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">col =</span> colors[<span class="dv">1</span>],
-     <span class="dt">ylab =</span> <span class="st">&quot;Density&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;F Distributions&quot;</span>)
-<span class="kw">lines</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>), <span class="kw">df</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dv">7</span>,<span class="dv">4</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> colors[<span class="dv">2</span>])
-labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;F(7,10)&quot;</span>,<span class="st">&quot;F(7,4)&quot;</span>)
-<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">inset =</span> .<span class="dv">05</span>, <span class="dt">title =</span> <span class="st">&quot;Distributions&quot;</span>,
-       labels, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">col =</span> colors)</code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co"># Compare t densities with normal density</span></a>
+<a class="sourceLine" id="cb33-2" title="2"></a>
+<a class="sourceLine" id="cb33-3" title="3">colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb33-4" title="4"><span class="kw">plot</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>, <span class="dt">by =</span> <span class="fl">0.1</span>), <span class="kw">df</span>(<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dv">7</span>,<span class="dv">10</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">col =</span> colors[<span class="dv">1</span>],</a>
+<a class="sourceLine" id="cb33-5" title="5">     <span class="dt">ylab =</span> <span class="st">&quot;Density&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;F Distributions&quot;</span>)</a>
+<a class="sourceLine" id="cb33-6" title="6"><span class="kw">lines</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>), <span class="kw">df</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.1</span>),<span class="dv">7</span>,<span class="dv">4</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="dv">2</span>,<span class="dt">col =</span> colors[<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb33-7" title="7">labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;F(7,10)&quot;</span>,<span class="st">&quot;F(7,4)&quot;</span>)</a>
+<a class="sourceLine" id="cb33-8" title="8"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">inset =</span> <span class="fl">.05</span>, <span class="dt">title =</span> <span class="st">&quot;Distributions&quot;</span>,</a>
+<a class="sourceLine" id="cb33-9" title="9">       labels, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">col =</span> colors)</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
 <div id="significance-testing-and-basic-decision-theory-in-hypothesis-testing" class="section level2">
@@ -611,36 +641,34 @@ labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">
 <p>The probabilities of type I and II errors are usually set in advance of running the experiment.</p>
 <p><span class="math display">\[ \alpha = P(\text{type I}), \thinspace \beta = P(\text {type II}).\]</span></p>
 <p>If the p-value <span class="math inline">\(\le \alpha\)</span> then the test is statistically significant at level <span class="math inline">\(\alpha\)</span>. The power of the test is <span class="math inline">\(1-\beta\)</span>: the probability of rejecting <span class="math inline">\(H_0\)</span> when the alternative hypothesis <span class="math inline">\(H_1\)</span> is true.</p>
-<div id="exercises-4" class="section level3">
-<h3><span class="header-section-number">3.12.1</span> Exercises</h3>
+<p>###Exercises</p>
 <ol style="list-style-type: decimal">
 <li>Let <span class="math inline">\(W \sim F_{7,10}\)</span>. Use R to calculate <span class="math inline">\(P(3&lt;W&lt;4)\)</span>.</li>
 </ol>
 <p>Answer: The CDF of the <span class="math inline">\(F_{m,n}\)</span> distribution in R is <code>pf()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pf</span>(<span class="dv">4</span>, <span class="dt">df1 =</span> <span class="dv">7</span>, <span class="dt">df2 =</span> <span class="dv">10</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pf</span>(<span class="dv">3</span>, <span class="dt">df1 =</span> <span class="dv">7</span>, <span class="dt">df2 =</span> <span class="dv">10</span>)</code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">pf</span>(<span class="dv">4</span>, <span class="dt">df1 =</span> <span class="dv">7</span>, <span class="dt">df2 =</span> <span class="dv">10</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pf</span>(<span class="dv">3</span>, <span class="dt">df1 =</span> <span class="dv">7</span>, <span class="dt">df2 =</span> <span class="dv">10</span>)</a></code></pre></div>
 <pre><code>[1] 0.03258576</code></pre>
 <p>So, <span class="math inline">\(P(3&lt;W&lt;4)=\)</span> 0.0325858.</p>
 </div>
-</div>
 <div id="linear-regression" class="section level2">
 <h2><span class="header-section-number">3.13</span> Linear Regression</h2>
-<p><span class="citation">Lea (<a href="#ref-lea1965new">1965</a>)</span> discussed the relationship between mean annual temperature and mortality index for a type of breast cancer in women taken from regions in Europe (example from Wu and Hammada).</p>
+<p><span class="citation">Lea (<a href="#ref-lea1965new" role="doc-biblioref">1965</a>)</span> discussed the relationship between mean annual temperature and mortality index for a type of breast cancer in women taken from regions in Europe (example from Wu and Hammada).</p>
 <p>The data is shown below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Breast Cancer data</span>
-M &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">102.5</span>, <span class="fl">104.5</span>, <span class="fl">100.4</span>, <span class="fl">95.9</span>, <span class="fl">87.0</span>, <span class="fl">95.0</span>, <span class="fl">88.6</span>, <span class="fl">89.2</span>, <span class="fl">78.9</span>, 
-       <span class="fl">84.6</span>, <span class="fl">81.7</span>, <span class="fl">72.2</span>, <span class="fl">65.1</span>, <span class="fl">68.1</span>, <span class="fl">67.3</span>, <span class="fl">52.5</span>)
-T &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">51.3</span>, <span class="fl">49.9</span>, <span class="fl">50.0</span>,<span class="fl">49.2</span>, <span class="fl">48.5</span>, <span class="fl">47.8</span>, <span class="fl">47.3</span>, <span class="fl">45.1</span>, <span class="fl">46.3</span>, <span class="fl">42.1</span>, 
-       <span class="fl">44.2</span>, <span class="fl">43.5</span>, <span class="fl">42.3</span>, <span class="fl">40.2</span>, <span class="fl">31.8</span>, <span class="fl">34.0</span>)</code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="co">#Breast Cancer data</span></a>
+<a class="sourceLine" id="cb36-2" title="2">M &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">102.5</span>, <span class="fl">104.5</span>, <span class="fl">100.4</span>, <span class="fl">95.9</span>, <span class="fl">87.0</span>, <span class="fl">95.0</span>, <span class="fl">88.6</span>, <span class="fl">89.2</span>, <span class="fl">78.9</span>, </a>
+<a class="sourceLine" id="cb36-3" title="3">       <span class="fl">84.6</span>, <span class="fl">81.7</span>, <span class="fl">72.2</span>, <span class="fl">65.1</span>, <span class="fl">68.1</span>, <span class="fl">67.3</span>, <span class="fl">52.5</span>)</a>
+<a class="sourceLine" id="cb36-4" title="4">T &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">51.3</span>, <span class="fl">49.9</span>, <span class="fl">50.0</span>,<span class="fl">49.2</span>, <span class="fl">48.5</span>, <span class="fl">47.8</span>, <span class="fl">47.3</span>, <span class="fl">45.1</span>, <span class="fl">46.3</span>, <span class="fl">42.1</span>, </a>
+<a class="sourceLine" id="cb36-5" title="5">       <span class="fl">44.2</span>, <span class="fl">43.5</span>, <span class="fl">42.3</span>, <span class="fl">40.2</span>, <span class="fl">31.8</span>, <span class="fl">34.0</span>)</a></code></pre></div>
 <p>A linear regression model of mortality versus temperature is obtained by estimating the intercept and slope in the equation:</p>
 <p><span class="math display">\[ y_i = \beta_0 + \beta_1 x_i + \epsilon_i, i = 1,...,n\]</span></p>
 <p>where <span class="math inline">\(\epsilon_i \sim N(0,\sigma^2)\)</span>. The values of <span class="math inline">\(\beta_0, \beta_1\)</span> that minimize the sum of squares</p>
 <p><span class="math display">\[ \sum_{i = 1}^{n} (y_i-(\beta_0+\beta_1 x_i))^2, \]</span></p>
 <p>are called the least squares estimators. They are given by <span class="math inline">\(\hat{\beta_0}={\bar y}-{\hat{\beta_1}}{\bar{x}}\)</span>, <span class="math inline">\({\hat{\beta_1}}=r\frac{S_y}{S_x}.\)</span> <span class="math inline">\(r\)</span> is the correlation between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span>, and <span class="math inline">\(S_x, S_y\)</span> are the sample standard deviations of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> respectively.</p>
 <p>A scatter plot of the data shows a linear relationship between mortality and temperature. So a regression line is fit to the data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(T, M, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;mortality index&quot;</span>)
-reg1 &lt;-<span class="st"> </span><span class="kw">lm</span>(M <span class="op">~</span><span class="st"> </span>T)
-<span class="co"># Parameter estimates and ANOVA table</span>
-<span class="kw">summary</span>(reg1)</code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">plot</span>(T, M, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;mortality index&quot;</span>)</a>
+<a class="sourceLine" id="cb37-2" title="2">reg1 &lt;-<span class="st"> </span><span class="kw">lm</span>(M <span class="op">~</span><span class="st"> </span>T)</a>
+<a class="sourceLine" id="cb37-3" title="3"><span class="co"># Parameter estimates and ANOVA table</span></a>
+<a class="sourceLine" id="cb37-4" title="4"><span class="kw">summary</span>(reg1)</a></code></pre></div>
 <pre><code>
 Call:
 lm(formula = M ~ T)
@@ -659,17 +687,17 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 7.545 on 14 degrees of freedom
 Multiple R-squared:  0.7654,    Adjusted R-squared:  0.7486 
 F-statistic: 45.67 on 1 and 14 DF,  p-value: 9.202e-06</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Add regression line to the plot</span>
-<span class="kw">abline</span>(reg1)</code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co"># Add regression line to the plot</span></a>
+<a class="sourceLine" id="cb39-2" title="2"><span class="kw">abline</span>(reg1)</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>The two main assumptions of constant variance and normality of residuals should always be investigated.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#plot residuals vs. fitted</span>
-<span class="kw">plot</span>(reg1<span class="op">$</span>fitted,reg1<span class="op">$</span>residuals)
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>) <span class="co"># add horizontal line at 0</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="co">#plot residuals vs. fitted</span></a>
+<a class="sourceLine" id="cb40-2" title="2"><span class="kw">plot</span>(reg1<span class="op">$</span>fitted,reg1<span class="op">$</span>residuals)</a>
+<a class="sourceLine" id="cb40-3" title="3"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>) <span class="co"># add horizontal line at 0</span></a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#check normality of residuals</span>
-<span class="kw">qqnorm</span>(reg1<span class="op">$</span>residuals)
-<span class="kw">qqline</span>(reg1<span class="op">$</span>residuals)</code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co">#check normality of residuals</span></a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="kw">qqnorm</span>(reg1<span class="op">$</span>residuals)</a>
+<a class="sourceLine" id="cb41-3" title="3"><span class="kw">qqline</span>(reg1<span class="op">$</span>residuals)</a></code></pre></div>
 <p><img src="02-mathstatreview_files/figure-html/unnamed-chunk-21-2.png" width="672" /></p>
 <p>If there is more than one independent variable then the above model is called a multiple linear regression model.</p>
 <p><span class="math display">\[ y_i=\beta_0+\beta_1 x_{i1} + \beta_2 x_{i2} + \cdots +  \beta_k x_{ik} + \epsilon_{i}, \thinspace i = 1,...,n, \]</span></p>
@@ -756,12 +784,12 @@ w_1x_{21}-w_2x_{21} &amp;=  m_2,
   1 &amp; -1 \\
  \end{pmatrix}, \thinspace {\beta}=(w_1,w_2)^{\prime}.\]</span></p>
 <p>The least-squares estimates can be found using R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#step-by-step matrix mutiplication example for weighing problem</span>
-
-X &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>) <span class="co">#define X matrix</span>
-Y &lt;-<span class="st"> </span><span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X <span class="co"># multiply X^T by X (X^T*X) NB: t(X) is the transpose of X</span>
-W &lt;-<span class="st"> </span><span class="kw">solve</span>(Y) <span class="co"># calculate the inverse</span>
-W <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(X) <span class="co"># calculate (X^T*X)^(-1)*X^T</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co">#step-by-step matrix mutiplication example for weighing problem</span></a>
+<a class="sourceLine" id="cb42-2" title="2"></a>
+<a class="sourceLine" id="cb42-3" title="3">X &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">-1</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>) <span class="co">#define X matrix</span></a>
+<a class="sourceLine" id="cb42-4" title="4">Y &lt;-<span class="st"> </span><span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X <span class="co"># multiply X^T by X (X^T*X) NB: t(X) is the transpose of X</span></a>
+<a class="sourceLine" id="cb42-5" title="5">W &lt;-<span class="st"> </span><span class="kw">solve</span>(Y) <span class="co"># calculate the inverse</span></a>
+<a class="sourceLine" id="cb42-6" title="6">W <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(X) <span class="co"># calculate (X^T*X)^(-1)*X^T</span></a></code></pre></div>
 <pre><code>     [,1] [,2]
 [1,]  0.5  0.5
 [2,]  0.5 -0.5</code></pre>
@@ -805,7 +833,7 @@ y_8&amp;= \beta_3 + \beta_5 + \beta_6 + \epsilon_8,\\
 <p>Box, George EP, J Stuart Hunter, and William Gordon Hunter. 2005. <em>Statistics for Experimenters: Design, Innovation, and Discovery</em>. Vol. 2. Wiley-Interscience New York.</p>
 </div>
 <div id="ref-lea1965new">
-<p>Lea, AJ. 1965. “New Observations on Distribution of Neoplasms of Female Breast in Certain European Countries.” <em>Br Med J</em> 1 (5433). British Medical Journal Publishing Group: 488–90.</p>
+<p>Lea, AJ. 1965. “New Observations on Distribution of Neoplasms of Female Breast in Certain European Countries.” <em>Br Med J</em> 1 (5433): 488–90.</p>
 </div>
 </div>
             </section>
@@ -864,7 +892,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
