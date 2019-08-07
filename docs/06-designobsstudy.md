@@ -877,7 +877,7 @@ max  eCDF diff........   0.088511 	 	   0.050545
 
 var ratio (Tr/Co).....     1.1846 	 	     1.1132 
 T-test p-value........  0.0072293 	 	    0.61403 
-KS Bootstrap p-value.. < 2.22e-16 	 	        0.1 
+KS Bootstrap p-value.. < 2.22e-16 	 	 < 2.22e-16 
 KS Naive p-value......   0.018385 	 	    0.15182 
 KS Statistic..........   0.088511 	 	   0.050545 
 
@@ -979,7 +979,7 @@ Before Matching Minimum p.value: < 2.22e-16
 Variable Name(s): age smokeintensity smokeyrs  Number(s): 3 8 9 
 
 After Matching Minimum p.value: < 2.22e-16 
-Variable Name(s): smokeintensity wt71  Number(s): 8 14 
+Variable Name(s): smokeintensity smokeyrs wt71  Number(s): 8 9 14 
 ```
 
 The output shows the effectiveness of propensity score matching in reducing imbalance.  Sex has an absolute standardized difference of 16 before matching and 0.16 after matching, and the absolute standardized difference of race has shifted from 19.9 to 2.0.  
