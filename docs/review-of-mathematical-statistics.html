@@ -24,7 +24,7 @@
 <meta name="author" content="Nathan Taback" />
 
 
-<meta name="date" content="2019-08-07" />
+<meta name="date" content="2019-09-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -167,6 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
 </ul></li>
 <li class="chapter" data-level="3.14" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#questions"><i class="fa fa-check"></i><b>3.14</b> Questions</a></li>
+<li class="chapter" data-level="3.15" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#solutions-to-questions"><i class="fa fa-check"></i><b>3.15</b> Solutions to Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html"><i class="fa fa-check"></i><b>4</b> Completely Randomized Designs: Comparing Two Treatments</a><ul>
 <li class="chapter" data-level="4.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#comparing-two-treatments"><i class="fa fa-check"></i><b>4.1</b> Comparing Two Treatments</a></li>
@@ -190,6 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.12" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-test-for-a-randomized-paired-design"><i class="fa fa-check"></i><b>4.12</b> The Randomization Test for a Randomized Paired Design</a></li>
 <li class="chapter" data-level="4.13" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#paired-t-test"><i class="fa fa-check"></i><b>4.13</b> Paired t-test</a></li>
 <li class="chapter" data-level="4.14" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#questions-1"><i class="fa fa-check"></i><b>4.14</b> Questions</a></li>
+<li class="chapter" data-level="4.15" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#solutions-to-questions-1"><i class="fa fa-check"></i><b>4.15</b> Solutions to Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html"><i class="fa fa-check"></i><b>5</b> How Many Experimental Units are Required to Compare Two Treatments?</a><ul>
 <li class="chapter" data-level="5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#clinical-trials"><i class="fa fa-check"></i><b>5.1</b> Clinical Trials</a><ul>
@@ -212,6 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.9" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#comparing-proportions-for-binary-outcomes"><i class="fa fa-check"></i><b>5.9</b> Comparing Proportions for Binary Outcomes</a></li>
 <li class="chapter" data-level="5.10" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-power-by-simulation"><i class="fa fa-check"></i><b>5.10</b> Calculating Power by simulation</a></li>
 <li class="chapter" data-level="5.11" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#questions-2"><i class="fa fa-check"></i><b>5.11</b> Questions</a></li>
+<li class="chapter" data-level="5.12" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#solutions-to-questions-2"><i class="fa fa-check"></i><b>5.12</b> Solutions to Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
 <li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.1</b> The Fundemental Problem of Causal Inference</a><ul>
@@ -823,6 +826,96 @@ y_8&amp;= \beta_3 + \beta_5 + \beta_6 + \epsilon_8,\\
 </ol>
 <ol start="2" style="list-style-type: decimal">
 <li>Show that if <span class="math inline">\(X \sim t_n\)</span> then <span class="math inline">\(X^2 \sim F_{1,n}\)</span>.</li>
+</ol>
+</div>
+<div id="solutions-to-questions" class="section level2">
+<h2><span class="header-section-number">3.15</span> Solutions to Questions</h2>
+<ol style="list-style-type: decimal">
+<li><ol style="list-style-type: lower-alpha">
+<li>Recall that for the linear model <span class="math inline">\(y = X\beta + \epsilon\)</span> the least squares estimate of <span class="math inline">\(\beta\)</span> is <span class="math inline">\({\hat \beta}=\left(X^{T} X\right)^{-1}X^{T}y.\)</span></li>
+</ol></li>
+</ol>
+<p>The following R code generates <span class="math inline">\(X\)</span> and <span class="math inline">\(\left(X^{T} X\right)^{-1}X^{T}\)</span></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">X &lt;-<span class="st"> </span><span class="kw">rbind</span>( <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb44-2" title="2">            <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), </a>
+<a class="sourceLine" id="cb44-3" title="3">            <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>), </a>
+<a class="sourceLine" id="cb44-4" title="4">            <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),       </a>
+<a class="sourceLine" id="cb44-5" title="5">            <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>), </a>
+<a class="sourceLine" id="cb44-6" title="6">            <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb44-7" title="7">            <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb44-8" title="8">            <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb44-9" title="9">X <span class="co"># print X</span></a></code></pre></div>
+<pre><code>     [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+[1,]    1    1    1    1    1    1    1
+[2,]    1    1    1    0    0    0    0
+[3,]    1    0    0    1    1    0    0
+[4,]    1    0    0    0    0    1    1
+[5,]    0    1    0    1    0    1    0
+[6,]    0    1    0    0    1    0    1
+[7,]    0    0    1    1    0    0    1
+[8,]    0    0    1    0    1    1    0</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">solve</span>( <span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X ) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(X) <span class="co">#calculate (X&#39;X)^{-1}X&#39;</span></a></code></pre></div>
+<pre><code>       [,1]    [,2]    [,3]    [,4]    [,5]    [,6]    [,7]    [,8]
+[1,] 0.0625  0.3125  0.3125  0.3125 -0.1875 -0.1875 -0.1875 -0.1875
+[2,] 0.0625  0.3125 -0.1875 -0.1875  0.3125  0.3125 -0.1875 -0.1875
+[3,] 0.0625  0.3125 -0.1875 -0.1875 -0.1875 -0.1875  0.3125  0.3125
+[4,] 0.0625 -0.1875  0.3125 -0.1875  0.3125 -0.1875  0.3125 -0.1875
+[5,] 0.0625 -0.1875  0.3125 -0.1875 -0.1875  0.3125 -0.1875  0.3125
+[6,] 0.0625 -0.1875 -0.1875  0.3125  0.3125 -0.1875 -0.1875  0.3125
+[7,] 0.0625 -0.1875 -0.1875  0.3125 -0.1875  0.3125  0.3125 -0.1875</code></pre>
+<p><span class="math inline">\(\hat \beta\)</span> is obtained by multiplying the matrix <span class="math inline">\(\left(X^{T} X\right)^{-1}X^{T}\)</span> by the vector <span class="math inline">\(y=(y_1,...,y_8)^{\prime}\)</span>. For example, <span class="math inline">\({\hat \beta_1}=(1/16)(y_1 + 5y_2 + 5y_3 + 5y_4 − 3y_5 −3y_6−3y_7 −3y_8).\)</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The <span class="math inline">\(X\)</span> matrix for Hotelling’s procedure is Yates’ <span class="math inline">\(X\)</span> with the zeros replaced by -1:</li>
+</ol>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">Xh &lt;-<span class="st"> </span><span class="kw">ifelse</span>(X <span class="op">==</span><span class="st"> </span><span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb48-2" title="2">Xh; <span class="kw">solve</span>( <span class="kw">t</span>(Xh) <span class="op">%*%</span><span class="st"> </span>Xh ) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(Xh)</a></code></pre></div>
+<pre><code>     [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+[1,]    1    1    1    1    1    1    1
+[2,]    1    1    1   -1   -1   -1   -1
+[3,]    1   -1   -1    1    1   -1   -1
+[4,]    1   -1   -1   -1   -1    1    1
+[5,]   -1    1   -1    1   -1    1   -1
+[6,]   -1    1   -1   -1    1   -1    1
+[7,]   -1   -1    1    1   -1   -1    1
+[8,]   -1   -1    1   -1    1    1   -1</code></pre>
+<pre><code>      [,1]   [,2]   [,3]   [,4]   [,5]   [,6]   [,7]   [,8]
+[1,] 0.125  0.125  0.125  0.125 -0.125 -0.125 -0.125 -0.125
+[2,] 0.125  0.125 -0.125 -0.125  0.125  0.125 -0.125 -0.125
+[3,] 0.125  0.125 -0.125 -0.125 -0.125 -0.125  0.125  0.125
+[4,] 0.125 -0.125  0.125 -0.125  0.125 -0.125  0.125 -0.125
+[5,] 0.125 -0.125  0.125 -0.125 -0.125  0.125 -0.125  0.125
+[6,] 0.125 -0.125 -0.125  0.125  0.125 -0.125 -0.125  0.125
+[7,] 0.125 -0.125 -0.125  0.125 -0.125  0.125  0.125 -0.125</code></pre>
+<p>To calculate <span class="math inline">\({\hat \beta}\)</span> multiply the matrix <span class="math inline">\(\left(X^{T} X\right)^{-1}X^{T}\)</span> by the vector <span class="math inline">\(y=(y_1,...,y_8)^{\prime}\)</span>. For example <span class="math inline">\({\hat \beta_1}=(1/8)(y_1+y_2+y_3+y_4−y_5−y_6−y_7−y_8)\)</span>.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>The covariance matrix of <span class="math inline">\({\hat \beta}\)</span> is <span class="math inline">\(\left(X^{T} X\right)^{-1}{\sigma}^2\)</span>.</li>
+</ol>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="co">#Yates </span></a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="kw">solve</span>( <span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X )</a></code></pre></div>
+<pre><code>        [,1]    [,2]    [,3]    [,4]    [,5]    [,6]    [,7]
+[1,]  0.4375 -0.0625 -0.0625 -0.0625 -0.0625 -0.0625 -0.0625
+[2,] -0.0625  0.4375 -0.0625 -0.0625 -0.0625 -0.0625 -0.0625
+[3,] -0.0625 -0.0625  0.4375 -0.0625 -0.0625 -0.0625 -0.0625
+[4,] -0.0625 -0.0625 -0.0625  0.4375 -0.0625 -0.0625 -0.0625
+[5,] -0.0625 -0.0625 -0.0625 -0.0625  0.4375 -0.0625 -0.0625
+[6,] -0.0625 -0.0625 -0.0625 -0.0625 -0.0625  0.4375 -0.0625
+[7,] -0.0625 -0.0625 -0.0625 -0.0625 -0.0625 -0.0625  0.4375</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="co">#Hotelling</span></a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="kw">solve</span>( <span class="kw">t</span>(Xh) <span class="op">%*%</span><span class="st"> </span>Xh )</a></code></pre></div>
+<pre><code>      [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]
+[1,] 0.125 0.000 0.000 0.000 0.000 0.000 0.000
+[2,] 0.000 0.125 0.000 0.000 0.000 0.000 0.000
+[3,] 0.000 0.000 0.125 0.000 0.000 0.000 0.000
+[4,] 0.000 0.000 0.000 0.125 0.000 0.000 0.000
+[5,] 0.000 0.000 0.000 0.000 0.125 0.000 0.000
+[6,] 0.000 0.000 0.000 0.000 0.000 0.125 0.000
+[7,] 0.000 0.000 0.000 0.000 0.000 0.000 0.125</code></pre>
+<p>The variance of an estimated weight is the diagonal element of the matrix multiplied by <span class="math inline">\(\sigma^2\)</span>.</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Pick the procedure with the lowest variance- Hotelling.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>If <span class="math inline">\(X \sim t_n\)</span> then <span class="math inline">\(X=Y/(\sqrt{W/n})\)</span>, where <span class="math inline">\(Y \sim N(0,1)\)</span> and <span class="math inline">\(W \sim \chi^2_n\)</span>. So <span class="math inline">\(X^2=(Y/(\sqrt{W/n}))^2=Y^2/(W/n)\)</span>, and <span class="math inline">\(Y^2 \sim \chi^2_1\)</span>. Therefore, <span class="math inline">\(X^2 \sim F_{1,n}\)</span>.</li>
 </ol>
 
 </div>

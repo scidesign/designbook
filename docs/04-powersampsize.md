@@ -870,10 +870,140 @@ plot(x = seq(.1,5,by = 0.1),y = pow.z.test(seq(.1,5,by = 0.1),168,.05,1,2),type 
 <img src="04-powersampsize_files/figure-html/unnamed-chunk-27-1.png" width="672" />
 
 
-3. Let $X_1, X_2, ..., X_n$ be an ii $N\left(\mu,\sigma^2\right)$.  
+3. Let $X_1, X_2, ..., X_n$ be iid $N\left(\mu,\sigma^2\right)$.  
 
-a) Show that the power function of the test $H_0:\mu = 0$ versus $H_1:\mu = 1$ is $$1-\Phi\left(z_{\frac{\alpha}{2}}-\frac{\sqrt{n}}{\sigma}\right)$$, where $z_{\frac{\alpha}{2}},$ is the $100\left(1-\frac{\alpha}{2}\right)^{th}$ percentile of the $N\left(0,1\right)$.
+a) Show that the power function of the test $H_0:\mu = 0$ versus $H_1:\mu > 0$ at $\mu=1$ is $$1-\Phi\left(z_{\frac{\alpha}{2}}-\frac{\sqrt{n}}{\sigma}\right)$$, where $z_{\frac{\alpha}{2}},$ is the $100\left(1-\frac{\alpha}{2}\right)^{th}$ percentile of the $N\left(0,1\right)$.
 
 b) Use R to calculate the power when $n = 10$, $\alpha = 0.01$, and $\sigma = 1$.
+
+
+## Solutions to Questions
+
+
+1. a) One sample is iid $N\left(\mu_1,\sigma^2\right)$ and one sample is iid $N\left(\mu_2,\sigma^2\right)$. 
+
+b) Does the sample size increase or decrease as (assume that all the other parameters remain fixed): 
++ $\sigma$ decreases; 
+
+```r
+# sample size for two-sample Z test equal allocation
+size2z.test <- function(theta,alpha,beta,sigma)
+{
+  zalpha <- qnorm(1-alpha/2)
+  zbeta <- qnorm(1-beta)
+  (2*sigma*(zalpha+zbeta)/theta)^2
+}
+
+#sigma=1
+size2z.test(1,0.05,.1,1)
+```
+
+```
+## [1] 42.02969
+```
+
+```r
+#sigma=2
+size2z.test(1,0.05,.1,2)
+```
+
+```
+## [1] 168.1188
+```
+> $n$ decreases as $\sigma$ decreases.
+
++ $\alpha$ decreases; 
+
+```r
+#alpha=0.05
+size2z.test(1,0.05,.1,1)
+```
+
+```
+## [1] 42.02969
+```
+
+```r
+#alpha=0.01
+size2z.test(1,0.01,.1,1)
+```
+
+```
+## [1] 59.51755
+```
+> $n$ increases as $\alpha$ decreases.
+
++ $\theta$ decreases. 
+
+```r
+#theta=1
+size2z.test(1,0.05,.1,1)
+```
+
+```
+## [1] 42.02969
+```
+
+```r
+#theta=2
+size2z.test(2,0.05,.1,1)
+```
+
+```
+## [1] 10.50742
+```
+>$n$ increases as $\theta$ decreases.
+
+
+
+
+2.
+> If r=4 then the power is
+
+```r
+pow.z.test <- function(r,n,alpha,theta,sigma)
+{
+  n2 <- n/(r+1)
+  x <- qnorm(1-alpha/2)-abs(theta)/(sigma*sqrt(1/(r*n2)+1/n2))
+  pow <- 1-pnorm(x)
+  return(pow)
+}
+
+pow.z.test(4,168,0.05,1,2)
+```
+
+```
+## [1] 0.7364151
+```
+
+> The statistician can either increase $n$, $\alpha$, or $\theta$, or decrease $\sigma$.  The statistician >should recommend increasing $n$.  Most regulatory agencies have fixed $\alpha=0.05$.  $\theta=1$ is the smallest meangingful clinical difference so it wouldn't be rationale to increase $\theta$ since the study might miss detecting a clinically significant difference if $\theta$ is increased.  Decreasing $\sigma$ is usually not possible since the variation of the outcome measure is difficult to change in practice. 
+
+3. 
+
+a) The test rejects when 
+
+$$\frac{\bar X}{\sigma/\sqrt{n}} \ge z_{\alpha/2}.$$  The probability the test rejects when $\mu=1$ is:
+
+$$\begin{aligned}
+P\left(\frac{\bar X}{\sigma/\sqrt{n}} \ge z_{\alpha/2}\right) 
+&= P\left({\bar X} \ge z_{\alpha/2} \cdot \sigma/\sqrt{n} \right) \\
+&= P\left(\frac{\bar X - 1}{\sigma/\sqrt{n}} \ge \frac{z_{\alpha/2} \cdot \sigma/\sqrt{n}-1}{\sigma/\sqrt{n}} \right) \\
+&= P\left(Z \ge \frac{z_{\alpha/2} \cdot \sigma/\sqrt{n}-1}{\sigma/\sqrt{n}} \right) \\
+&= 1-\Phi\left(\frac{z_{\alpha/2} \cdot \sigma/\sqrt{n}-1}{\sigma/\sqrt{n}} \right) \\
+&= 1-\Phi\left(z_{\alpha/2} - \frac{\sqrt{n}}{\sigma} \right) \\
+\end{aligned}$$
+
+
+b) Use R to calculate the power when $n=10$, $\alpha=0.01$, and $\sigma=1$.
+
+
+```r
+zalpha2 <- qnorm(1-0.01/2)
+1-pnorm(zalpha2-sqrt(10))
+```
+
+```
+## [1] 0.7212129
+```
 
 

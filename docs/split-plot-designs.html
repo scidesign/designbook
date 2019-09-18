@@ -24,7 +24,7 @@
 <meta name="author" content="Nathan Taback" />
 
 
-<meta name="date" content="2019-08-07" />
+<meta name="date" content="2019-09-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -167,6 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
 </ul></li>
 <li class="chapter" data-level="3.14" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#questions"><i class="fa fa-check"></i><b>3.14</b> Questions</a></li>
+<li class="chapter" data-level="3.15" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#solutions-to-questions"><i class="fa fa-check"></i><b>3.15</b> Solutions to Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html"><i class="fa fa-check"></i><b>4</b> Completely Randomized Designs: Comparing Two Treatments</a><ul>
 <li class="chapter" data-level="4.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#comparing-two-treatments"><i class="fa fa-check"></i><b>4.1</b> Comparing Two Treatments</a></li>
@@ -190,6 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.12" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-test-for-a-randomized-paired-design"><i class="fa fa-check"></i><b>4.12</b> The Randomization Test for a Randomized Paired Design</a></li>
 <li class="chapter" data-level="4.13" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#paired-t-test"><i class="fa fa-check"></i><b>4.13</b> Paired t-test</a></li>
 <li class="chapter" data-level="4.14" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#questions-1"><i class="fa fa-check"></i><b>4.14</b> Questions</a></li>
+<li class="chapter" data-level="4.15" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#solutions-to-questions-1"><i class="fa fa-check"></i><b>4.15</b> Solutions to Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html"><i class="fa fa-check"></i><b>5</b> How Many Experimental Units are Required to Compare Two Treatments?</a><ul>
 <li class="chapter" data-level="5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#clinical-trials"><i class="fa fa-check"></i><b>5.1</b> Clinical Trials</a><ul>
@@ -212,6 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.9" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#comparing-proportions-for-binary-outcomes"><i class="fa fa-check"></i><b>5.9</b> Comparing Proportions for Binary Outcomes</a></li>
 <li class="chapter" data-level="5.10" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-power-by-simulation"><i class="fa fa-check"></i><b>5.10</b> Calculating Power by simulation</a></li>
 <li class="chapter" data-level="5.11" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#questions-2"><i class="fa fa-check"></i><b>5.11</b> Questions</a></li>
+<li class="chapter" data-level="5.12" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#solutions-to-questions-2"><i class="fa fa-check"></i><b>5.12</b> Solutions to Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
 <li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.1</b> The Fundemental Problem of Causal Inference</a><ul>
@@ -670,8 +673,8 @@ How does the split-plot design compare with, say, a 3x4 factorial design of coat
 <div id="anova-table-for-split-plot-experiment" class="section level2">
 <h2><span class="header-section-number">12.1</span> ANOVA table for split plot experiment</h2>
 <p>The numerical calculations for the ANOVA of a split-plot design are the same as for other balanced designs (designs where all treatment combinations have the same number of observations) and can be performed in R or with other statistical software. Experimenters sometimes have difficulty identifying appropriate error terms.</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb388-1" title="1">spfurcoat1 &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance <span class="op">~</span><span class="st"> </span>replication <span class="op">*</span><span class="st"> </span>heats <span class="op">*</span><span class="st"> </span>coating, <span class="dt">data =</span> tab0901)</a>
-<a class="sourceLine" id="cb388-2" title="2"><span class="kw">summary</span>(spfurcoat1)</a></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb415-1" title="1">spfurcoat1 &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance <span class="op">~</span><span class="st"> </span>replication <span class="op">*</span><span class="st"> </span>heats <span class="op">*</span><span class="st"> </span>coating, <span class="dt">data =</span> tab0901)</a>
+<a class="sourceLine" id="cb415-2" title="2"><span class="kw">summary</span>(spfurcoat1)</a></code></pre></div>
 <pre><code>                          Df Sum Sq Mean Sq
 replication                1    782     782
 heats                      2  26519   13260
@@ -733,11 +736,11 @@ replication:heats:coating  6    867     144</code></pre>
 </table>
 <p>The subplot mean square error is <span class="math inline">\((254+867)/(3+6)=\)</span> 124.6. The sum of squares for the subplot error is the sum of interaction between replicate and coating (<code>replication:coating</code>) and the three way interaction of replication, heats and coating (<code>replication:heats:coating</code>). The subplot error measures to what extent the coatings give dissimilar results within each of the replicated temperatures.</p>
 <p>In R the ANOVA table for whole plot and sub plot effects can obtained by specifying the subplot error structure explicit using <code>Error()</code>.</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" title="1">spfurcoat &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance <span class="op">~</span><span class="st"> </span>replication <span class="op">+</span><span class="st"> </span>heats <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb390-2" title="2"><span class="st">                   </span>replication<span class="op">:</span>heats <span class="op">+</span><span class="st"> </span>coating <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb390-3" title="3"><span class="st">                   </span>heats<span class="op">:</span>coating <span class="op">+</span><span class="st"> </span><span class="kw">Error</span>(heats<span class="op">/</span>replication),</a>
-<a class="sourceLine" id="cb390-4" title="4">                 <span class="dt">data =</span> tab0901)</a>
-<a class="sourceLine" id="cb390-5" title="5"><span class="kw">summary</span>(spfurcoat)</a></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" title="1">spfurcoat &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance <span class="op">~</span><span class="st"> </span>replication <span class="op">+</span><span class="st"> </span>heats <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb417-2" title="2"><span class="st">                   </span>replication<span class="op">:</span>heats <span class="op">+</span><span class="st"> </span>coating <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb417-3" title="3"><span class="st">                   </span>heats<span class="op">:</span>coating <span class="op">+</span><span class="st"> </span><span class="kw">Error</span>(heats<span class="op">/</span>replication),</a>
+<a class="sourceLine" id="cb417-4" title="4">                 <span class="dt">data =</span> tab0901)</a>
+<a class="sourceLine" id="cb417-5" title="5"><span class="kw">summary</span>(spfurcoat)</a></code></pre></div>
 <pre><code>
 Error: heats
       Df Sum Sq Mean Sq
@@ -756,14 +759,14 @@ Residuals      9   1121   124.5
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The whole plot effects are under the heading <code>Error: heats:replication</code> and the subplot effects are under the heading <code>Error: Within</code>. Under the heading <code>Error: heats</code> is mean square error for a one-way ANOVA model comparing heats.</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" title="1"><span class="kw">summary</span>( <span class="kw">aov</span>(resistance<span class="op">~</span>heats,tab0901))</a></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb419-1" title="1"><span class="kw">summary</span>( <span class="kw">aov</span>(resistance<span class="op">~</span>heats,tab0901))</a></code></pre></div>
 <pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 heats        2  26519   13260   12.04 0.000328 ***
 Residuals   21  23119    1101                     
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The ratio of mean square errors follows an <span class="math inline">\(F_{2,2}\)</span>. The F statistic for whole plots is 13260/6829= 1.94. So the p-value to test <span class="math inline">\(H_0:\mu_{360}=\mu_{370}=\mu_{380}\)</span> is</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" title="1"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="dv">13260</span><span class="op">/</span><span class="dv">6829</span>,<span class="dt">df1 =</span> <span class="dv">2</span>,<span class="dt">df2 =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" title="1"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="dv">13260</span><span class="op">/</span><span class="dv">6829</span>,<span class="dt">df1 =</span> <span class="dv">2</span>,<span class="dt">df2 =</span> <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>[1] 0.3399373</code></pre>
 <p>The subplot effects of coating and the interaction of temperature and coating can be tested by forming F statistics using the subplot mean square error. These tests are given in the ANOVA table under the heading <code>Error: Within</code>. There are statistically significant differences between coatings and the interaction between temperature and coating.</p>
 <p>The whole plot error mean square 4813 is an estimate of <span class="math inline">\(4\sigma^2_W+\sigma^2_S\)</span>. So,</p>
@@ -919,8 +922,8 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <div id="split-plot-anova---how-not-to-do-it" class="section level2">
 <h2><span class="header-section-number">12.2</span> Split plot ANOVA - How not to do it</h2>
 <p>Suppose that you didn’t know about the split-plot structure. So the experimenter analyzes the data as a two-way ANOVA. Would you reach the same conclusions?</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" title="1">furcoatanova &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance<span class="op">~</span>heats<span class="op">*</span>coating,<span class="dt">data =</span> tab0901)</a>
-<a class="sourceLine" id="cb396-2" title="2"><span class="kw">summary</span>(furcoatanova)</a></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb423-1" title="1">furcoatanova &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance<span class="op">~</span>heats<span class="op">*</span>coating,<span class="dt">data =</span> tab0901)</a>
+<a class="sourceLine" id="cb423-2" title="2"><span class="kw">summary</span>(furcoatanova)</a></code></pre></div>
 <pre><code>              Df Sum Sq Mean Sq F value  Pr(&gt;F)   
 heats          2  26519   13260  10.226 0.00256 **
 coating        3   4289    1430   1.103 0.38602   

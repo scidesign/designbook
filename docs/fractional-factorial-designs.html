@@ -24,7 +24,7 @@
 <meta name="author" content="Nathan Taback" />
 
 
-<meta name="date" content="2019-08-07" />
+<meta name="date" content="2019-09-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -167,6 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
 </ul></li>
 <li class="chapter" data-level="3.14" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#questions"><i class="fa fa-check"></i><b>3.14</b> Questions</a></li>
+<li class="chapter" data-level="3.15" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#solutions-to-questions"><i class="fa fa-check"></i><b>3.15</b> Solutions to Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html"><i class="fa fa-check"></i><b>4</b> Completely Randomized Designs: Comparing Two Treatments</a><ul>
 <li class="chapter" data-level="4.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#comparing-two-treatments"><i class="fa fa-check"></i><b>4.1</b> Comparing Two Treatments</a></li>
@@ -190,6 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.12" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-test-for-a-randomized-paired-design"><i class="fa fa-check"></i><b>4.12</b> The Randomization Test for a Randomized Paired Design</a></li>
 <li class="chapter" data-level="4.13" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#paired-t-test"><i class="fa fa-check"></i><b>4.13</b> Paired t-test</a></li>
 <li class="chapter" data-level="4.14" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#questions-1"><i class="fa fa-check"></i><b>4.14</b> Questions</a></li>
+<li class="chapter" data-level="4.15" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#solutions-to-questions-1"><i class="fa fa-check"></i><b>4.15</b> Solutions to Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html"><i class="fa fa-check"></i><b>5</b> How Many Experimental Units are Required to Compare Two Treatments?</a><ul>
 <li class="chapter" data-level="5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#clinical-trials"><i class="fa fa-check"></i><b>5.1</b> Clinical Trials</a><ul>
@@ -212,6 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.9" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#comparing-proportions-for-binary-outcomes"><i class="fa fa-check"></i><b>5.9</b> Comparing Proportions for Binary Outcomes</a></li>
 <li class="chapter" data-level="5.10" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-power-by-simulation"><i class="fa fa-check"></i><b>5.10</b> Calculating Power by simulation</a></li>
 <li class="chapter" data-level="5.11" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#questions-2"><i class="fa fa-check"></i><b>5.11</b> Questions</a></li>
+<li class="chapter" data-level="5.12" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#solutions-to-questions-2"><i class="fa fa-check"></i><b>5.12</b> Solutions to Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
 <li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.1</b> The Fundemental Problem of Causal Inference</a><ul>
@@ -587,21 +590,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>The signs of the ABC interaction is used to accommodate factor D. The tests were run in random order. He wanted to achieve a stability value of at least 25.</p>
 <p>The factorial effects and Normal, half-Normal, and Lenth plots are below.</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" title="1"><span class="kw">library</span>(FrF2)</a>
-<a class="sourceLine" id="cb376-2" title="2">fact.prod &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)</a>
-<a class="sourceLine" id="cb376-3" title="3">fact.prod1 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)</a>
-<a class="sourceLine" id="cb376-4" title="4"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.prod<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" title="1"><span class="kw">library</span>(FrF2)</a>
+<a class="sourceLine" id="cb403-2" title="2">fact.prod &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)</a>
+<a class="sourceLine" id="cb403-3" title="3">fact.prod1 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)</a>
+<a class="sourceLine" id="cb403-4" title="4"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.prod<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>(Intercept)           A           B           C           D         A:B 
       29.25       -5.75       -3.75       -1.25        0.75        0.25 
         A:C         B:C         A:D         B:D         C:D       A:B:C 
        0.75       -0.25          NA          NA          NA          NA 
       A:B:D       A:C:D       B:C:D     A:B:C:D 
          NA          NA          NA          NA </code></pre>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" title="1"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> F)</a></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" title="1"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> F)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb379-1" title="1"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb406-1" title="1"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> T)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-39-2.png" width="672" /></p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" title="1"><span class="kw">LenthPlot</span>(fact.prod1)</a></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" title="1"><span class="kw">LenthPlot</span>(fact.prod1)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-39-3.png" width="672" /></p>
 <pre><code>    alpha       PSE        ME       SME 
  0.050000  1.125000  4.234638 10.134346 </code></pre>
@@ -975,10 +978,10 @@ EQ = BCDQ,  BCQ = DEQ,  BDQ = CEQ,  BEQ = CDQ\]</span></p>
 </tbody>
 </table>
 <p>The factorial effects are estimated as before.</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" title="1"><span class="kw">library</span>(FrF2)</a>
-<a class="sourceLine" id="cb382-2" title="2">fact.leaf &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)</a>
-<a class="sourceLine" id="cb382-3" title="3">fact.leaf2 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)</a>
-<a class="sourceLine" id="cb382-4" title="4"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.leaf<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" title="1"><span class="kw">library</span>(FrF2)</a>
+<a class="sourceLine" id="cb409-2" title="2">fact.leaf &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)</a>
+<a class="sourceLine" id="cb409-3" title="3">fact.leaf2 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)</a>
+<a class="sourceLine" id="cb409-4" title="4"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.leaf<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>(Intercept)           B           C           D           E           Q 
       15.27        0.22        0.18        0.03        0.10       -0.26 
         B:C         B:D         C:D         B:E         C:E         D:E 
@@ -992,11 +995,11 @@ EQ = BCDQ,  BCQ = DEQ,  BDQ = CEQ,  BEQ = CDQ\]</span></p>
     C:D:E:Q   B:C:D:E:Q 
          NA          NA </code></pre>
 <p>Notice that the factorial effects are missing for effects that are aliased. The Normal, half-Normal, and Lenth plots are below.</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" title="1"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> F)</a></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" title="1"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> F)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb385-1" title="1"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" title="1"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> T)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-43-2.png" width="672" /></p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" title="1"><span class="kw">LenthPlot</span>(fact.leaf2,<span class="dt">cex.fac =</span> <span class="fl">0.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb413-1" title="1"><span class="kw">LenthPlot</span>(fact.leaf2,<span class="dt">cex.fac =</span> <span class="fl">0.5</span>)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-43-3.png" width="672" /></p>
 <pre><code>    alpha       PSE        ME       SME 
 0.0500000 0.0606000 0.1557773 0.3162503 </code></pre>

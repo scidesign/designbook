@@ -981,8 +981,6 @@ pt(tobs,df = 9) # p-value using t-dist CDF
 
 ## Questions
 
-
-
 1. Suppose that two drugs A and B are to be tested on 12 subjects' eyes.  The drugs will be randomly assigned to the left eye or right eye based on the flip of a fair coin.  If the coin toss is heads then a subject will receive drug A in their right eye.  The coin was flipped 12 times and the following sequence of heads and tails was obtained: 
 
 $$\begin{array}
@@ -993,3 +991,34 @@ T&T&H&T&H&T&T&T&H&T&T&H
 (a) Create a table that shows how the treatments will be allocated to the 12 subjects' left and right eyes?
 (b) What is the probability of obtaining this treatment allocation?
 (c) What type of experimental design has been used to assign treatments to subjects? Explain.
+
+## Solutions to Questions
+
+
+1. (a)
+
+$$\begin{array} {c|c}
+\text {Left} & \text {Right} \\
+\hline
+A & B \\
+A & B   \\
+B & A \\
+A & B \\ 
+B & A \\
+A & B \\ 
+A & B \\ 
+A & B \\
+B & A \\
+A & B \\ 
+A & B \\
+B & A \\
+\end{array}$$
+
+(b) $\frac{1}{2^{12}}=0.0002441406.$
+
+(c) A randomized paired design. There are 12 subjects, but each subject receives both treatments in a paired fashion.
+
+
+
+
+

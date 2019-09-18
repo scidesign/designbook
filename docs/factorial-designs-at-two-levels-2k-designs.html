@@ -24,7 +24,7 @@
 <meta name="author" content="Nathan Taback" />
 
 
-<meta name="date" content="2019-08-07" />
+<meta name="date" content="2019-09-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -167,6 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
 </ul></li>
 <li class="chapter" data-level="3.14" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#questions"><i class="fa fa-check"></i><b>3.14</b> Questions</a></li>
+<li class="chapter" data-level="3.15" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#solutions-to-questions"><i class="fa fa-check"></i><b>3.15</b> Solutions to Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html"><i class="fa fa-check"></i><b>4</b> Completely Randomized Designs: Comparing Two Treatments</a><ul>
 <li class="chapter" data-level="4.1" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#comparing-two-treatments"><i class="fa fa-check"></i><b>4.1</b> Comparing Two Treatments</a></li>
@@ -190,6 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.12" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#the-randomization-test-for-a-randomized-paired-design"><i class="fa fa-check"></i><b>4.12</b> The Randomization Test for a Randomized Paired Design</a></li>
 <li class="chapter" data-level="4.13" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#paired-t-test"><i class="fa fa-check"></i><b>4.13</b> Paired t-test</a></li>
 <li class="chapter" data-level="4.14" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#questions-1"><i class="fa fa-check"></i><b>4.14</b> Questions</a></li>
+<li class="chapter" data-level="4.15" data-path="completely-randomized-designs-comparing-two-treatments.html"><a href="completely-randomized-designs-comparing-two-treatments.html#solutions-to-questions-1"><i class="fa fa-check"></i><b>4.15</b> Solutions to Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html"><i class="fa fa-check"></i><b>5</b> How Many Experimental Units are Required to Compare Two Treatments?</a><ul>
 <li class="chapter" data-level="5.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#clinical-trials"><i class="fa fa-check"></i><b>5.1</b> Clinical Trials</a><ul>
@@ -212,6 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.9" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#comparing-proportions-for-binary-outcomes"><i class="fa fa-check"></i><b>5.9</b> Comparing Proportions for Binary Outcomes</a></li>
 <li class="chapter" data-level="5.10" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-power-by-simulation"><i class="fa fa-check"></i><b>5.10</b> Calculating Power by simulation</a></li>
 <li class="chapter" data-level="5.11" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#questions-2"><i class="fa fa-check"></i><b>5.11</b> Questions</a></li>
+<li class="chapter" data-level="5.12" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#solutions-to-questions-2"><i class="fa fa-check"></i><b>5.12</b> Solutions to Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
 <li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#the-fundemental-problem-of-causal-inference"><i class="fa fa-check"></i><b>6.1</b> The Fundemental Problem of Causal Inference</a><ul>
@@ -566,9 +569,9 @@ In a factorial experiment the objective is generally to compare combinations of 
 <li><p>The cube shows how this design produces 12 comparisons along the 12 edges of the cube: four measures of the effect of temperature change; four measures of the effect of concentration change; four measures of the effect of catalyst change.</p></li>
 <li><p>On each edge of the cube only one factor is changed with the other two held constant.</p></li>
 </ul>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" title="1"><span class="kw">library</span>(<span class="st">&quot;FrF2&quot;</span>)</a>
-<a class="sourceLine" id="cb330-2" title="2">bhh54 &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>T<span class="op">*</span>C<span class="op">*</span>K,<span class="dt">data =</span> tab0502)</a>
-<a class="sourceLine" id="cb330-3" title="3"><span class="kw">cubePlot</span>(bhh54,<span class="st">&quot;T&quot;</span>,<span class="st">&quot;K&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Cube plot for pilot plant investigation&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" title="1"><span class="kw">library</span>(<span class="st">&quot;FrF2&quot;</span>)</a>
+<a class="sourceLine" id="cb357-2" title="2">bhh54 &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>T<span class="op">*</span>C<span class="op">*</span>K,<span class="dt">data =</span> tab0502)</a>
+<a class="sourceLine" id="cb357-3" title="3"><span class="kw">cubePlot</span>(bhh54,<span class="st">&quot;T&quot;</span>,<span class="st">&quot;K&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Cube plot for pilot plant investigation&quot;</span>)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 <div id="factorial-effects" class="section level2">
@@ -956,19 +959,19 @@ during the final hours of running. (Box, Hunter, Hunter, 2005)</p>
 <p>So a 95% confidence interval can be calculated as:</p>
 <p><span class="math display">\[\text{effect} \pm t_{8,.05/2}sese\left(\text{effect}\right).\]</span></p>
 <p>where <span class="math inline">\(t_{8,.05/2}\)</span> is the 97.5th percentile of the <span class="math inline">\(t_8\)</span>. This is obtained in R via the <code>qt()</code> function.</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" title="1"><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="fl">-.025</span>,<span class="dt">df =</span> <span class="dv">8</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" title="1"><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="fl">-.025</span>,<span class="dt">df =</span> <span class="dv">8</span>)</a></code></pre></div>
 <pre><code>## [1] 2.306004</code></pre>
 <p>So, a 95% confidence interval for a factorial effect is</p>
 <p><span class="math display">\[\text{effect} \pm 2.3 \times 1.4 =\text{effect} \pm 3.2.\]</span></p>
 <p>A 95% confidence interval for T is</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" title="1"><span class="dv">23</span><span class="fl">-3.2</span> <span class="co">#lower limit </span></a></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" title="1"><span class="dv">23</span><span class="fl">-3.2</span> <span class="co">#lower limit </span></a></code></pre></div>
 <pre><code>## [1] 19.8</code></pre>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" title="1"><span class="dv">23</span><span class="fl">+3.2</span> <span class="co">#upper limit</span></a></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" title="1"><span class="dv">23</span><span class="fl">+3.2</span> <span class="co">#upper limit</span></a></code></pre></div>
 <pre><code>## [1] 26.2</code></pre>
 <p>A 95% confidence interval for K is</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" title="1"><span class="fl">1.5-3.2</span> <span class="co">#lower limit </span></a></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" title="1"><span class="fl">1.5-3.2</span> <span class="co">#lower limit </span></a></code></pre></div>
 <pre><code>## [1] -1.7</code></pre>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" title="1"><span class="fl">1.5+3.2</span> <span class="co">#upper limit</span></a></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" title="1"><span class="fl">1.5+3.2</span> <span class="co">#upper limit</span></a></code></pre></div>
 <pre><code>## [1] 4.7</code></pre>
 <p>The effect due to temperature is probably not due to chance, but chance cannot be rules for the effect due to catalyst.</p>
 <p>The main effect of a factor should be individually interpreted only if there is no evidence that the factor interacts with other factors.</p>
@@ -977,17 +980,17 @@ during the final hours of running. (Box, Hunter, Hunter, 2005)</p>
 <h2><span class="header-section-number">10.8</span> Interaction plots</h2>
 <p>The plots below show the mean yield for each pair of factors TC, TK, CK (i.e., each factor-level combination of these factors). These plots are often called interaction plots. If the two lines are parallel then this indicates no interaction, and if the lines cross or are close to crossing then this indicates that an interaction might be present.</p>
 <p>The plots below indicate a two-way interaction between catalyst and temperature.</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" title="1"><span class="kw">interaction.plot</span>(tab0502<span class="op">$</span>T,tab0502<span class="op">$</span>C,tab0502<span class="op">$</span>y, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,</a>
-<a class="sourceLine" id="cb341-2" title="2">                 <span class="dt">xlab =</span> <span class="st">&quot;Temperature&quot;</span>,<span class="dt">trace.label =</span> <span class="st">&quot;Concentration&quot;</span>,</a>
-<a class="sourceLine" id="cb341-3" title="3">                 <span class="dt">ylab =</span> <span class="st">&quot;Mean yield&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1"><span class="kw">interaction.plot</span>(tab0502<span class="op">$</span>T,tab0502<span class="op">$</span>C,tab0502<span class="op">$</span>y, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,</a>
+<a class="sourceLine" id="cb368-2" title="2">                 <span class="dt">xlab =</span> <span class="st">&quot;Temperature&quot;</span>,<span class="dt">trace.label =</span> <span class="st">&quot;Concentration&quot;</span>,</a>
+<a class="sourceLine" id="cb368-3" title="3">                 <span class="dt">ylab =</span> <span class="st">&quot;Mean yield&quot;</span>)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" title="1"><span class="kw">interaction.plot</span>(tab0502<span class="op">$</span>T,tab0502<span class="op">$</span>K,tab0502<span class="op">$</span>y, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,</a>
-<a class="sourceLine" id="cb342-2" title="2">                 <span class="dt">xlab =</span> <span class="st">&quot;Temperature&quot;</span>,<span class="dt">trace.label =</span> <span class="st">&quot;Catalyst&quot;</span>,</a>
-<a class="sourceLine" id="cb342-3" title="3">                 <span class="dt">ylab =</span> <span class="st">&quot;Mean yield&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" title="1"><span class="kw">interaction.plot</span>(tab0502<span class="op">$</span>T,tab0502<span class="op">$</span>K,tab0502<span class="op">$</span>y, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,</a>
+<a class="sourceLine" id="cb369-2" title="2">                 <span class="dt">xlab =</span> <span class="st">&quot;Temperature&quot;</span>,<span class="dt">trace.label =</span> <span class="st">&quot;Catalyst&quot;</span>,</a>
+<a class="sourceLine" id="cb369-3" title="3">                 <span class="dt">ylab =</span> <span class="st">&quot;Mean yield&quot;</span>)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" title="1"><span class="kw">interaction.plot</span>(tab0502<span class="op">$</span>K,tab0502<span class="op">$</span>C,tab0502<span class="op">$</span>y, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,</a>
-<a class="sourceLine" id="cb343-2" title="2">                 <span class="dt">xlab =</span> <span class="st">&quot;Catalyst&quot;</span>,<span class="dt">trace.label =</span> <span class="st">&quot;Concentration&quot;</span>,</a>
-<a class="sourceLine" id="cb343-3" title="3">                 <span class="dt">ylab =</span> <span class="st">&quot;Mean yield&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" title="1"><span class="kw">interaction.plot</span>(tab0502<span class="op">$</span>K,tab0502<span class="op">$</span>C,tab0502<span class="op">$</span>y, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,</a>
+<a class="sourceLine" id="cb370-2" title="2">                 <span class="dt">xlab =</span> <span class="st">&quot;Catalyst&quot;</span>,<span class="dt">trace.label =</span> <span class="st">&quot;Concentration&quot;</span>,</a>
+<a class="sourceLine" id="cb370-3" title="3">                 <span class="dt">ylab =</span> <span class="st">&quot;Mean yield&quot;</span>)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <div id="linear-model-for-a-2k-factorial-design" class="section level2">
@@ -1018,8 +1021,8 @@ during the final hours of running. (Box, Hunter, Hunter, 2005)</p>
 <p><span class="math display">\[y_i=\beta_0+\beta_1 x_{i1}+\beta_2 x_{i2}+\beta_3 x_{i3}+\beta_4 x_{i1}x_{i2} +\beta_5 x_{i1}x_{i3}+\beta_6 x_{i2}x_{i3} +\beta_7 x_{i1} x_{i2} x_{i3} + \epsilon_i.\]</span></p>
 <p>The variables <span class="math inline">\(x_{i1}x_{i2}\)</span> is the interaction between temperature and concentration, <span class="math inline">\(x_{i1}x_{i3}\)</span> is the interaction between temperature and catalyst, etc.</p>
 <p>The parameter estimates are obtained via the <code>lm()</code> function in R.</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" title="1">fact.mod &lt;-<span class="kw">lm</span>(y<span class="op">~</span>T<span class="op">*</span>K<span class="op">*</span>C,<span class="dt">data =</span> tab0503)</a>
-<a class="sourceLine" id="cb344-2" title="2"><span class="kw">round</span>(<span class="kw">summary</span>(fact.mod)<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb371-1" title="1">fact.mod &lt;-<span class="kw">lm</span>(y<span class="op">~</span>T<span class="op">*</span>K<span class="op">*</span>C,<span class="dt">data =</span> tab0503)</a>
+<a class="sourceLine" id="cb371-2" title="2"><span class="kw">round</span>(<span class="kw">summary</span>(fact.mod)<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>            Estimate Std. Error t value Pr(&gt;|t|)
 (Intercept)    64.25       0.71   90.86     0.00
 T              11.50       0.71   16.26     0.00
@@ -1149,8 +1152,8 @@ T:K:C           0.25       0.71    0.35     0.73</code></pre>
 {\hat \beta_4}=5.12 &amp;\Rightarrow TK = 2 \times 5.12 = 10.25
 \end{aligned}\]</span></p>
 <p>The least squares estimates can be multiplied by 2 in R.</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" title="1">fact.mod &lt;-<span class="kw">lm</span>(y<span class="op">~</span>T<span class="op">*</span>K<span class="op">*</span>C,<span class="dt">data =</span> tab0503)</a>
-<a class="sourceLine" id="cb346-2" title="2"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.mod<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb373-1" title="1">fact.mod &lt;-<span class="kw">lm</span>(y<span class="op">~</span>T<span class="op">*</span>K<span class="op">*</span>C,<span class="dt">data =</span> tab0503)</a>
+<a class="sourceLine" id="cb373-2" title="2"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.mod<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>(Intercept)           T           K           C         T:K         T:C 
       128.5        23.0         1.5        -5.0        10.0         1.5 
         K:C       T:K:C 
@@ -1160,7 +1163,7 @@ T:K:C           0.25       0.71    0.35     0.73</code></pre>
 <p>If the null hypothesis is true then <span class="math inline">\(\beta_1 = 0 \Rightarrow T = 0 \Rightarrow \mu_{T+}-\mu_{T-}=0 \Rightarrow \mu_{T+}=\mu_{T-},\)</span></p>
 <p>where <span class="math inline">\(\mu_{T+}\)</span> is the mean yield when the temperature is set at <span class="math inline">\(180^{\circ}\)</span> and <span class="math inline">\(\mu_{T-}\)</span> is the mean yield when the temperature is set to <span class="math inline">\(160^{\circ}.\)</span> The p-value for temperature is small (Pr(&gt;|t|)=0). This means that there is evidence that the mean yield is different at <span class="math inline">\(180^{\circ}\)</span> compared to <span class="math inline">\(160^{\circ}\)</span>.</p>
 <p>To obtain 95% confidence intervals for the factorial effects we multiply the 95% confidence intervals for the regression parameters by 2. This is easily done in R using the function <code>confint.lm()</code>.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" title="1"><span class="dv">2</span><span class="op">*</span><span class="kw">confint.lm</span>(fact.mod)</a></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb375-1" title="1"><span class="dv">2</span><span class="op">*</span><span class="kw">confint.lm</span>(fact.mod)</a></code></pre></div>
 <pre><code>                 2.5 %     97.5 %
 (Intercept) 125.238818 131.761182
 T            19.738818  26.261182
@@ -1185,29 +1188,29 @@ T:K:C        -2.761182   3.761182</code></pre>
 <p>The normality of a set of data can be assessed by the following method.
 Let <span class="math inline">\(r_{(1)}&lt;...&lt;r_{(N)}\)</span> denote the ordered values of <span class="math inline">\(r_1,...,r_N\)</span>. For example, <span class="math inline">\(r_{(1)}\)</span> is the minimum of <span class="math inline">\({r_1,...,r_N}\)</span>, and <span class="math inline">\(r_{(N)}\)</span> is the maximum of <span class="math inline">\({r_1,...,r_N}\)</span>. So, if the data is: -1, 2, -10, 20 then <span class="math inline">\(r_{(1)}=-20,r_{(2)}=-1, r_{(3)}=2, r_{(4)}=20\)</span>.</p>
 <p>The cumulative distribution function (CDF) of the <span class="math inline">\(N(0,1)\)</span> has an S-shape.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" title="1">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>,<span class="dt">by =</span> <span class="fl">0.1</span>)</a>
-<a class="sourceLine" id="cb350-2" title="2"><span class="kw">plot</span>(x,<span class="kw">pnorm</span>(x),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb377-1" title="1">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>,<span class="dt">by =</span> <span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb377-2" title="2"><span class="kw">plot</span>(x,<span class="kw">pnorm</span>(x),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>So, a test of normality for a set of data is to plot the ordered values <span class="math inline">\(r_{(i)}\)</span> of the data versus <span class="math inline">\(p_i=(i-0.5)/N\)</span>. If the plot has the same S-shape as the normal CDF then this is evidence that the data come from a normal distribution.</p>
 <p>Below is a plot of <span class="math inline">\(r_{(i)}\)</span> vs. <span class="math inline">\(p_i=(i-0.5)/N, i = 1,...,N\)</span> for a random sample of 1000 simulated from the plot</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" title="1">N &lt;-<span class="st"> </span><span class="dv">1000</span></a>
-<a class="sourceLine" id="cb351-2" title="2">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N)</a>
-<a class="sourceLine" id="cb351-3" title="3">p &lt;-<span class="st"> </span>((<span class="dv">1</span><span class="op">:</span>N)<span class="op">-</span><span class="fl">0.5</span>)<span class="op">/</span>N</a>
-<a class="sourceLine" id="cb351-4" title="4"><span class="kw">plot</span>(<span class="kw">sort</span>(x),p)</a></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" title="1">N &lt;-<span class="st"> </span><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb378-2" title="2">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N)</a>
+<a class="sourceLine" id="cb378-3" title="3">p &lt;-<span class="st"> </span>((<span class="dv">1</span><span class="op">:</span>N)<span class="op">-</span><span class="fl">0.5</span>)<span class="op">/</span>N</a>
+<a class="sourceLine" id="cb378-4" title="4"><span class="kw">plot</span>(<span class="kw">sort</span>(x),p)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>We can also construct a normal quantile-quantile plot. It can be shown that <span class="math inline">\(\Phi(r_{(i)})\)</span> has a uniform distribution on <span class="math inline">\([0,1]\)</span>. This implies that <span class="math inline">\(E(\Phi(r_{(i)}))=i/(N+1)\)</span> (this is the expected value of the <span class="math inline">\(ith\)</span> order statistic from a uniform distribution over <span class="math inline">\([0,1]\)</span>.</p>
 <p>This implies that the <span class="math inline">\(N\)</span> points <span class="math inline">\((p_i,\Phi(r_{(i)}))\)</span> should fall on a straight line. Now apply the <span class="math inline">\(\Phi^{-1}\)</span> transformation to the horizontal and vertical scales. The <span class="math inline">\(N\)</span> points</p>
 <p><span class="math display">\[\left(\Phi^{-1}(p_i), r_{(i)} \right)\]</span></p>
 <p>form the normal probability plot of <span class="math inline">\(r_1,...,r_N\)</span>. If <span class="math inline">\(r_1,...,r_N\)</span> are generated from a normal distribution then a plot of the points <span class="math inline">\(\left(\Phi^{-1}(p_i), r_{(i)} \right), i = 1,...,N\)</span> should be a straight line.</p>
 <p>In R <code>qnorm()</code> is <span class="math inline">\(\Phi^{-1}\)</span>.</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" title="1"><span class="kw">set.seed</span>(<span class="dv">2503</span>)</a>
-<a class="sourceLine" id="cb352-2" title="2">N &lt;-<span class="st"> </span><span class="dv">1000</span></a>
-<a class="sourceLine" id="cb352-3" title="3">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N)</a>
-<a class="sourceLine" id="cb352-4" title="4">p &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">:</span>N)<span class="op">/</span>(N<span class="op">+</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb352-5" title="5"><span class="kw">plot</span>(<span class="kw">qnorm</span>(p),<span class="kw">sort</span>(x))</a></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb379-1" title="1"><span class="kw">set.seed</span>(<span class="dv">2503</span>)</a>
+<a class="sourceLine" id="cb379-2" title="2">N &lt;-<span class="st"> </span><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb379-3" title="3">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N)</a>
+<a class="sourceLine" id="cb379-4" title="4">p &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">:</span>N)<span class="op">/</span>(N<span class="op">+</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb379-5" title="5"><span class="kw">plot</span>(<span class="kw">qnorm</span>(p),<span class="kw">sort</span>(x))</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>We usually use the built in function <code>qqnorm()</code> (and <code>qqline()</code> to add a straight line for comparison) to generate normal Q-Q plots. Note that R uses a slightly more general version of quantile (<span class="math inline">\(p_i=(1-a)/(N+(1-a)-a)\)</span>, where <span class="math inline">\(a = 3/8\)</span>, if <span class="math inline">\(N \le 10\)</span>, <span class="math inline">\(a = 1/2\)</span>, if <span class="math inline">\(N &gt; 10\)</span>.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" title="1"><span class="kw">qqnorm</span>(x);<span class="kw">qqline</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" title="1"><span class="kw">qqnorm</span>(x);<span class="kw">qqline</span>(x)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>A marked (systematic) deviation of the plot from the straight line would indicate that:</p>
 <ol style="list-style-type: decimal">
@@ -1357,8 +1360,8 @@ Let <span class="math inline">\(\hat {\theta_{(1)}} &lt; \hat {\theta_{(2)}} &lt
 </tbody>
 </table>
 <p>The design is not replicated so it’s not possible to estimate the standard errors of the factorial effects.</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" title="1">fact1 &lt;-<span class="st"> </span><span class="kw">lm</span>(conversion<span class="op">~</span>x1<span class="op">*</span>x2<span class="op">*</span>x3<span class="op">*</span>x4,<span class="dt">data =</span> tab0510a)</a>
-<a class="sourceLine" id="cb354-2" title="2"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact1<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb381-1" title="1">fact1 &lt;-<span class="st"> </span><span class="kw">lm</span>(conversion<span class="op">~</span>x1<span class="op">*</span>x2<span class="op">*</span>x3<span class="op">*</span>x4,<span class="dt">data =</span> tab0510a)</a>
+<a class="sourceLine" id="cb381-2" title="2"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact1<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>(Intercept)          x1          x2          x3          x4       x1:x2 
      144.50       -8.00       24.00       -0.25       -5.50        1.00 
       x1:x3       x2:x3       x1:x4       x2:x4       x3:x4    x1:x2:x3 
@@ -1366,8 +1369,8 @@ Let <span class="math inline">\(\hat {\theta_{(1)}} &lt; \hat {\theta_{(2)}} &lt
    x1:x2:x4    x1:x3:x4    x2:x3:x4 x1:x2:x3:x4 
        0.50       -0.25       -0.75       -0.25 </code></pre>
 <p>A normal plot of the factorial effects is obtained by using the function <code>DanielPlot()</code> in the <code>FrF2</code> library.</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" title="1"><span class="kw">library</span>(FrF2)</a>
-<a class="sourceLine" id="cb356-2" title="2"><span class="kw">DanielPlot</span>(fact1,<span class="dt">half =</span> <span class="ot">FALSE</span>,<span class="dt">autolab =</span> F, <span class="dt">main =</span> <span class="st">&quot;Normal plot of effects from process development study&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb383-1" title="1"><span class="kw">library</span>(FrF2)</a>
+<a class="sourceLine" id="cb383-2" title="2"><span class="kw">DanielPlot</span>(fact1,<span class="dt">half =</span> <span class="ot">FALSE</span>,<span class="dt">autolab =</span> F, <span class="dt">main =</span> <span class="st">&quot;Normal plot of effects from process development study&quot;</span>)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>The effects corresponding to <code>x1, x4, x2:x4, x2</code> do not fall along the straight line.</p>
 </div>
@@ -1382,8 +1385,8 @@ Let <span class="math inline">\(\hat {\theta_{(1)}} &lt; \hat {\theta_{(2)}} &lt
 <p><span class="math display">\[\left|\hat{\theta}\right|_{(i)} \thinspace {\text vs. } \thinspace \Phi^{-1}(0.5+0.5[i-0.5]/N). \thinspace i = 1,...,N.\]</span></p>
 <p>An advantage of this plot is that all the large estimated effects appear in the upper right hand corner and fall above the line.</p>
 <p>The half-normal plot for the effects in the process development example is can be obtained with <code>DanielPlot()</code> with the option <code>half = TRUE</code>.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" title="1"><span class="kw">library</span>(FrF2)</a>
-<a class="sourceLine" id="cb357-2" title="2"><span class="kw">DanielPlot</span>(fact1,<span class="dt">half =</span> <span class="ot">TRUE</span>,<span class="dt">autolab =</span> F, <span class="dt">main =</span> <span class="st">&quot;Normal plot of effects from process development study&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" title="1"><span class="kw">library</span>(FrF2)</a>
+<a class="sourceLine" id="cb384-2" title="2"><span class="kw">DanielPlot</span>(fact1,<span class="dt">half =</span> <span class="ot">TRUE</span>,<span class="dt">autolab =</span> F, <span class="dt">main =</span> <span class="st">&quot;Normal plot of effects from process development study&quot;</span>)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 </div>
 <div id="lenths-method-testing-significance-for-experiments-without-variance-estimates" class="section level2">
@@ -1408,8 +1411,8 @@ Let <span class="math inline">\(\hat {\theta_{(1)}} &lt; \hat {\theta_{(2)}} &lt
 <p><span class="math display">\[SME = t_{d,\gamma} \times PSE,\]</span></p>
 <p>where <span class="math inline">\(\gamma=\left(1+0.95^{1/N}\right)/2\)</span>.</p>
 <p>Let’s calculate Lenth’s method for the process development example. The estimated factorial effects are:</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" title="1">eff &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>fact1<span class="op">$</span>coefficients</a>
-<a class="sourceLine" id="cb358-2" title="2"><span class="kw">round</span>(eff,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb385-1" title="1">eff &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>fact1<span class="op">$</span>coefficients</a>
+<a class="sourceLine" id="cb385-2" title="2"><span class="kw">round</span>(eff,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>(Intercept)          x1          x2          x3          x4       x1:x2 
      144.50       -8.00       24.00       -0.25       -5.50        1.00 
       x1:x3       x2:x3       x1:x4       x2:x4       x3:x4    x1:x2:x3 
@@ -1417,14 +1420,14 @@ Let <span class="math inline">\(\hat {\theta_{(1)}} &lt; \hat {\theta_{(2)}} &lt
    x1:x2:x4    x1:x3:x4    x2:x3:x4 x1:x2:x3:x4 
        0.50       -0.25       -0.75       -0.25 </code></pre>
 <p>The estimate of <span class="math inline">\(s_0 = 1.5 \cdot \text{median}\left|\hat{\theta}_{i}\right|\)</span> is</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" title="1">s0 &lt;-<span class="st"> </span><span class="fl">1.5</span><span class="op">*</span><span class="kw">median</span>(<span class="kw">abs</span>(eff))</a>
-<a class="sourceLine" id="cb360-2" title="2">s0</a></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb387-1" title="1">s0 &lt;-<span class="st"> </span><span class="fl">1.5</span><span class="op">*</span><span class="kw">median</span>(<span class="kw">abs</span>(eff))</a>
+<a class="sourceLine" id="cb387-2" title="2">s0</a></code></pre></div>
 <pre><code>[1] 1.125</code></pre>
 <p>The trimming constant <span class="math inline">\(2.5s_0\)</span> is</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" title="1"><span class="fl">2.5</span><span class="op">*</span>s0</a></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb389-1" title="1"><span class="fl">2.5</span><span class="op">*</span>s0</a></code></pre></div>
 <pre><code>[1] 2.8125</code></pre>
 <p>The effects <span class="math inline">\(\hat{\theta}_{i}\)</span> such that <span class="math inline">\({\left|\hat{\theta}_{i}\right| \ge 2.5s_0}\)</span> will be trimmed. Below it’s the effects labelled <code>TRUE</code> (<code>x1,x2,x4,x2:x4</code>)</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" title="1"><span class="kw">abs</span>(eff)<span class="op">&lt;</span><span class="fl">2.5</span><span class="op">*</span>s0</a></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb391-1" title="1"><span class="kw">abs</span>(eff)<span class="op">&lt;</span><span class="fl">2.5</span><span class="op">*</span>s0</a></code></pre></div>
 <pre><code>(Intercept)          x1          x2          x3          x4       x1:x2 
       FALSE       FALSE       FALSE        TRUE       FALSE        TRUE 
       x1:x3       x2:x3       x1:x4       x2:x4       x3:x4    x1:x2:x3 
@@ -1432,20 +1435,20 @@ Let <span class="math inline">\(\hat {\theta_{(1)}} &lt; \hat {\theta_{(2)}} &lt
    x1:x2:x4    x1:x3:x4    x2:x3:x4 x1:x2:x3:x4 
        TRUE        TRUE        TRUE        TRUE </code></pre>
 <p>The <span class="math inline">\(PSE\)</span> is then calculated as 1.5 times the median of these values.</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" title="1">PSE &lt;-<span class="st"> </span><span class="fl">1.5</span><span class="op">*</span><span class="kw">median</span>(<span class="kw">abs</span>(eff[<span class="kw">abs</span>(eff)<span class="op">&lt;</span><span class="fl">2.5</span><span class="op">*</span>s0]))</a>
-<a class="sourceLine" id="cb366-2" title="2">PSE</a></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb393-1" title="1">PSE &lt;-<span class="st"> </span><span class="fl">1.5</span><span class="op">*</span><span class="kw">median</span>(<span class="kw">abs</span>(eff[<span class="kw">abs</span>(eff)<span class="op">&lt;</span><span class="fl">2.5</span><span class="op">*</span>s0]))</a>
+<a class="sourceLine" id="cb393-2" title="2">PSE</a></code></pre></div>
 <pre><code>[1] 0.75</code></pre>
 <p>The <span class="math inline">\(ME\)</span> and SME are</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1">ME &lt;-<span class="st"> </span>PSE<span class="op">*</span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="fl">.975</span>,<span class="dt">df =</span> (<span class="dv">16-1</span>)<span class="op">/</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb368-2" title="2">ME</a></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb395-1" title="1">ME &lt;-<span class="st"> </span>PSE<span class="op">*</span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="fl">.975</span>,<span class="dt">df =</span> (<span class="dv">16-1</span>)<span class="op">/</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb395-2" title="2">ME</a></code></pre></div>
 <pre><code>[1] 1.927936</code></pre>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" title="1">SME &lt;-<span class="st"> </span>PSE<span class="op">*</span><span class="kw">qt</span>(<span class="dt">p =</span>(<span class="dv">1</span><span class="fl">+.95</span><span class="op">^</span>{<span class="dv">1</span><span class="op">/</span><span class="dv">15</span>})<span class="op">/</span><span class="dv">2</span>,<span class="dt">df=</span>(<span class="dv">16-1</span>)<span class="op">/</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb370-2" title="2">SME</a></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb397-1" title="1">SME &lt;-<span class="st"> </span>PSE<span class="op">*</span><span class="kw">qt</span>(<span class="dt">p =</span>(<span class="dv">1</span><span class="fl">+.95</span><span class="op">^</span>{<span class="dv">1</span><span class="op">/</span><span class="dv">15</span>})<span class="op">/</span><span class="dv">2</span>,<span class="dt">df=</span>(<span class="dv">16-1</span>)<span class="op">/</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb397-2" title="2">SME</a></code></pre></div>
 <pre><code>[1] 3.913988</code></pre>
 <p>So, 95% confidence intervals for the effects are:</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" title="1">lower &lt;-<span class="st"> </span><span class="kw">round</span>(eff<span class="op">-</span>ME,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb372-2" title="2">upper &lt;-<span class="st"> </span><span class="kw">round</span>(eff<span class="op">+</span>ME,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb372-3" title="3">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">cbind</span>(eff,lower,upper))</a></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb399-1" title="1">lower &lt;-<span class="st"> </span><span class="kw">round</span>(eff<span class="op">-</span>ME,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb399-2" title="2">upper &lt;-<span class="st"> </span><span class="kw">round</span>(eff<span class="op">+</span>ME,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb399-3" title="3">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">cbind</span>(eff,lower,upper))</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1555,8 +1558,8 @@ Let <span class="math inline">\(\hat {\theta_{(1)}} &lt; \hat {\theta_{(2)}} &lt
 </tbody>
 </table>
 <p>A plot of the effects with a <span class="math inline">\(ME\)</span> and <span class="math inline">\(SME\)</span> is usually called a Lenth plot. In R it can be implemented via the function <code>Lenthplot()</code> in the <code>BsMD</code> library. The values of <span class="math inline">\(PSE, ME, SME\)</span> are part of the output. The spikes in the plot below are used to display factor effects.</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb373-1" title="1"><span class="kw">library</span>(BsMD)</a>
-<a class="sourceLine" id="cb373-2" title="2"><span class="kw">LenthPlot</span>(fact1,<span class="dt">cex.fac =</span> <span class="fl">0.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" title="1"><span class="kw">library</span>(BsMD)</a>
+<a class="sourceLine" id="cb400-2" title="2"><span class="kw">LenthPlot</span>(fact1,<span class="dt">cex.fac =</span> <span class="fl">0.5</span>)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <pre><code>   alpha      PSE       ME      SME 
 0.050000 0.750000 1.927936 3.913988 </code></pre>
@@ -1566,16 +1569,16 @@ Let <span class="math inline">\(\hat {\theta_{(1)}} &lt; \hat {\theta_{(2)}} &lt
 <h2><span class="header-section-number">10.14</span> Blocking Factorial Designs</h2>
 <p>In a trial conducted using a <span class="math inline">\(2^3\)</span> design it might be desirable to use the same batch of raw material to make all 8 runs. Suppose that batches of raw material were only large enough to make 4 runs. Then the concept of blocking could be used.</p>
 <p>The following R code generates the design matrix for a <span class="math inline">\(2^3\)</span> design.</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb375-1" title="1">x1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb375-2" title="2">x2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb375-3" title="3">x3 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">4</span>),<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>)))</a>
-<a class="sourceLine" id="cb375-4" title="4">x12 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2</a>
-<a class="sourceLine" id="cb375-5" title="5">x13 &lt;-<span class="st"> </span>x1<span class="op">*</span>x3</a>
-<a class="sourceLine" id="cb375-6" title="6">x23 &lt;-<span class="st"> </span>x2<span class="op">*</span>x3</a>
-<a class="sourceLine" id="cb375-7" title="7">x123 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2<span class="op">*</span>x3</a>
-<a class="sourceLine" id="cb375-8" title="8">run &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">8</span></a>
-<a class="sourceLine" id="cb375-9" title="9">factnames &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Run&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;12&quot;</span>,<span class="st">&quot;13&quot;</span>,<span class="st">&quot;23&quot;</span>,<span class="st">&quot;123&quot;</span>)</a>
-<a class="sourceLine" id="cb375-10" title="10">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">cbind</span>(run,x1,x2,x3,x12,x13,x23,x123),<span class="dt">col.names =</span> factnames)</a></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" title="1">x1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb402-2" title="2">x2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb402-3" title="3">x3 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">4</span>),<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>)))</a>
+<a class="sourceLine" id="cb402-4" title="4">x12 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2</a>
+<a class="sourceLine" id="cb402-5" title="5">x13 &lt;-<span class="st"> </span>x1<span class="op">*</span>x3</a>
+<a class="sourceLine" id="cb402-6" title="6">x23 &lt;-<span class="st"> </span>x2<span class="op">*</span>x3</a>
+<a class="sourceLine" id="cb402-7" title="7">x123 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2<span class="op">*</span>x3</a>
+<a class="sourceLine" id="cb402-8" title="8">run &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">8</span></a>
+<a class="sourceLine" id="cb402-9" title="9">factnames &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Run&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;12&quot;</span>,<span class="st">&quot;13&quot;</span>,<span class="st">&quot;23&quot;</span>,<span class="st">&quot;123&quot;</span>)</a>
+<a class="sourceLine" id="cb402-10" title="10">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">cbind</span>(run,x1,x2,x3,x12,x13,x23,x123),<span class="dt">col.names =</span> factnames)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
