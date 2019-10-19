@@ -238,3 +238,115 @@ with a television show was conducted in several schools in grade 4.  Some classr
 
 (b)  Is it plausible to assume that supplementing the reading program is ignorable in this observational study? 
 
+## Answers to Questions
+
+1. Suppose you are interested in the effect of the presence of vending machines in schools on childhood obesity. What randomized experiment would you want to do (in a perfect world) to evaluate this question?
+
+> *One possible design: Design a randomized experiment with vending machines as the treatment and the rate of obesity as the 
+> outcome.  Schools would be randomly assigned to have vending machines and no vending machines.  The weight of children in 
+> the school would be measured in all schools before the vending machines were installed and at the end of the school year.*
+
+2.  What is the definition of strongly ignorable treatment assignment?  
+
+> See definition above.
+
+> Let $Z=1$ if a unit is treated and $Z=0$ if a unit is control.  Let $Y(0)$ be the potential outcome if the
+> unit is treated and $Y(1)$ the potential outcome if the unit is a control, and $X$ be a vector of 
+> pretreatment covariates:  $$ P(Z|Y(0),Y(1),X)=P(Z|X),$$
+
+and $0<P(Z|Y(0),Y(1),X)<1$.
+
+(a) Give an example of a study where the treatment assignment is ignorable. 
+
+> *Any study that is a randomized experiment. For example, if two fertilizers are randomly assigned to 12 plots of 
+> land with one fertilzer assigned to 6 plots and the other fertilzer assigned to the remaining plots.  The 
+> probability of any particlular treatment assignment is ${\binom {12} {6}}^{-1}$.* 
+
+(b) Give an example of a study where the treatment assignment is non-ignorable. 
+
+> *A doctor assigns treatments to patients based on their prior medical history and how successful the doctor 
+> feels that the treatment will be for the patient.*
+
+3. (Adapted from Hill and Gelman, Chapter 9) The table below describes a hypothetical experiment on 2400 persons. Each row of the table specifies a category of person, as defined by his or her pre-treatment predictor $x$, treatment indicator $T$ , and potential outcomes $Y(0)$, $Y(1)$. (For simplicity, we assume unrealistically that all the people in this experiment fit into these eight categories.)
+
+Category | persons in category |$x$|$T$| $Y(0)$ | $Y(1)$
+---------|---------------------|---|---|--------|------
+  1      |  300                | 0 | 0 | 4      | 6
+  2      |  300                | 1 | 0 | 4      | 6
+  3      |  500                | 0 | 1 | 4      | 6
+  4      |  500                | 1 | 1 | 4      | 6
+  5      |  200                | 0 | 0 | 10     | 12
+  6      |  200                | 1 | 0 | 10     | 12
+  7      |  200                | 0 | 1 | 10     | 12
+  8      |  200                | 1 | 1 | 10     | 12 
+
+In making the table we are assuming omniscience, so that we know both $Y(0)$ and $Y(1)$ for all observations. But the (nonomniscient) investigator would only observe $x$, $T$, and $Y(T)$  for each unit. (For example, a person in category 1 would have $x=0$,$T=0$,$Y(0)=4$, and a person in category 3 would have $x=0$,$T=1$,$Y(1)=6$.)
+
+(a)  Give an example of a context for this study.  Define $x, T, Y(0), Y(1)$.
+
+> Let $T=0$ if subjects receive aspirin and $T=1$ if subjects receive tylenol and aspirin. $x=0$ if the subject
+> is male and $x=1$ if the subject is female.  $Y(0)$ is the time to pain relief if the subject received aspirin
+> and $Y(1)$ is the time to pain relief if the subject received tylenol and aspirin.  
+>
+> In reality we can't observe both responses and the response that we observe will be $Y^{obs}=Z*Y(1)+(1-Z)*Y(0)$.
+> But to illustrate the concepts we will assume that we can observe both $Y(0)$ and $Y(1)$.
+
+(b) What is the average treatment effect in this population of 2400 persons?
+
+> $${\bar Y(0)}=\frac{300\times4+300\times4+500\times4+500\times4+200\times10+200\times10+200\times10+200\times10}{300+300+500
+> +500+200+200+200+200} = 6$$
+>
+> $${\bar Y(1)}=\frac{300\times6+300\times6+500\times6+500\times6+200\times12+200\times12+200\times12+200\times12}{300+300+500
+> +500+200+200+200+200} = 8$$
+>
+> The average treatment effect is ${\bar Y(0)}-{\bar Y(1)}=6-8=-2$.
+
+(c) Is it plausible to believe that these data came from a randomized experiment?
+Defend your answer.
+
+> *500/1000 (50\%) subjects in the $T=0$ have $x=0$ 
+> and 700/1400 (50\%) subjects in the $T=1$ group have $x=0$. If the data came from a randomized experiment we would expect that 
+> all the observed covariates would be balanced.  Therefore it seems plausible that the data came from a randomized 
+> experiment. * 
+
+(d) Another population quantity is the mean of $Y$ for those who received the
+treatment minus the mean of $Y$ for those who did not. What is the relation
+between this quantity and the average treatment effect?
+
+> The average for those that received $T=0$:
+>
+> $$ \frac {300\times4+300\times4+200\times10+200\times10}{300+300+200+200}=6.4$$
+>
+>The average for those that received $T=0$:
+> $$ \frac {500\times6+500\times6+200\times12+200\times12}{500+500+200+200}=7.7$$
+>
+> *The treatment effect using these averages is 7.7-6.4=+1.3.  The relation between this quantity and the average treatment
+> effect is that this quantity is based on the observed responses.  The average treatment effect is
+> based on the observed and unobserved responses.
+> This quantity yields a different treatment effect compared to the average treatment effect.*
+
+(e) For these data, is it plausible to believe that treatment assignment is strongly ignorable
+given the covariate $x$? Defend your answer.
+
+> If treatment assignment is strongly ignorable then $P(T|Y(0)=y_0,Y(1)=y_1,X=x)=P(T|X=x).$  So, let's consider the case where $y_0=4$ and, 
+> $y_1=6$.  $$P(T|Y(0)=4,Y(1)=6,X=0)=\frac{300}{300+500}=\frac{3}{8},$$ and $$P(T=0|X=0)=\frac{300+200}{300+500+200+200}=\frac {5}{12}.$$
+> Therefore, $$P(T|Y(0)=4,Y(1)=6,X=0) \ne P(T=0|X=0).$$  This means that the treatment assignment is non-ignorable since treatment
+> assignment is not (conditionally) independent of the potential outcomes given the covariate.
+
+4. An observational study to evaluate the effectivness of supplementing a reading program 
+with a television show was conducted in several schools in grade 4.  Some classroom teachers chose to supplement their reading program with the television show and some teachers chose not to supplement their reading program. Some teachers chose to supplement if they felt that it would help their class improve their reading scores.  The study collected data on a large number of student and teacher covariates measured before the teachers chose to supplement or not supplement their reading program.  The outcome measure of interest is student reading scores. 
+
+(a) Describe how this study could have been conducted as a randomized experiment.
+
+> Classrooms could be randomly assigned to supplement their reading programs or not supplement their reading programs instead of teachers
+> choosing to supplemnt or not supplemnt their reading programs.
+
+
+(b)  Is it plausible to assume that supplementing the reading program is ignorable in this observational study? 
+
+> No, since teachers intentionally choose to supplement or not supplement based on the characteristics of their class and how 
+> they feel that the class will respond to the reading supplement.  In other words treatment assignment is
+> dependent on the potential outcomes given pre-treatment covariates.
+
+
+

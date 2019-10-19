@@ -478,7 +478,7 @@ max  eCDF diff........ 0.088511
 
 var ratio (Tr/Co)..... 1.1846 
 T-test p-value........ 0.0072293 
-KS Bootstrap p-value.. < 2.22e-16 
+KS Bootstrap p-value.. 0.1 
 KS Naive p-value...... 0.018385 
 KS Statistic.......... 0.088511 
 
@@ -577,7 +577,7 @@ KS Statistic.......... 0.07
 
 
 Before Matching Minimum p.value: < 2.22e-16 
-Variable Name(s): age smokeintensity smokeyrs wt71  Number(s): 3 8 9 14 
+Variable Name(s): age smokeintensity wt71  Number(s): 3 8 14 
 ```
 
 If the absolute value of the standardized mean difference is greater than 10% then this indicates a serious imbalance.  For example, sex has an absolute standardized mean difference of $|-16.022|=16.022$ indicating serious imbalance between the groups in males and females.
@@ -1433,3 +1433,14 @@ The NHEFS survey was designed to investigate the relationships between clinical,
 (c) Use R to estimate the propensity score for each subject in the study.  Use the variables: sex, race, age, education.code, smokeintensity, smokers, exercise, active, wt71 as covariates.   After calculating the propensity score use the Match function in R to match subjects on the propensity score.  Does the balance between the two groups improve after matching?  Hand in your R code and output.
 
 (d) Estimate the effect of smoking cessation on weight gain using propensity score matching?  Did the propensity reduce the bias in estimating the treatment effect?  What assumption can make to conclude that smoking cessation causes weight loss?  Do you think this assumption is valid?  Briefly explain.  Hand in your R code and output.
+
+## Answers to Questions
+
+(a)  A randomized experiment of smoking cessation would randomize subjects to stop smoking or continue smoking.  A randomized study of this treatment would not be feasible in reality.  Nevertheless, randomization would balance the potential responses, observed covraites, and unobserved covariates between the two groups.  Therefore, a randomized study would not have this problem.
+
+(b) Yes, the statistician should be concerned that the study is biased.  Subjects choose to quit smoking based on many factors (covariates).  Some of these factors are observed, but many will be unobserved.  The concern is that some of these unobserved factors that are associated with smoking are also associated with weight gain.
+
+(c) The balance seems to improve on several variables. Namely: sex, age, education code 5, smokeyrs, wt71. See R output above.
+
+(d) See R output above.  The unadjusted analysis yields a treatment effect of 2.5.  The propensity score analysis yields a treatment effect of 2.9. Therefore, balancing the groups seemed to increase the treatment effect.  We can't conclude the smoking cessation causes weight loss since matching on the propensity score does not make the treatment assignment ignorable.  In other words, there might be unobserved factors that are associated with smoking cessation and weight loss that are not accounted for in the propensity score analysis.
+

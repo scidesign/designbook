@@ -902,7 +902,7 @@ $y_2$ | Fecal coliform contribution after 30 minutes (organisms/100 mL)
 $y_3$ |  Total coliform contribution after 15 minutes (organisms/100 mL)
 $y_4$ | Total coliform contribution after 30 minutes (organisms/1OO mL)
 
-The data are shown in the table below.
+The data are shown in the table below and can be downloaded [here](./docs/prb0506.dat).
 
 
  run   x1   x2   x3    y1    y2     y3     y4
@@ -930,6 +930,159 @@ The data are shown in the table below.
 
 (b) Interpret the main effects and interaction effects in (a).  Do you think that the effects are real or noise? Explain.
 
+
+## Answers to Questions
+
+1. No this is not a factorial experiment since not all factor-level combinations were run.  If the chemist added a fourth run setting temperature at 150 and catalyst at 2 then the design would be a $2^2$ factorial design.  
+
+2. Multiply columns AB, AC, BC, and ABC to obtain interactions.
+
+
+  A    B    C   AB   AC   BC   ABC
+---  ---  ---  ---  ---  ---  ----
+ -1   -1   -1    1    1    1    -1
+  1   -1   -1   -1   -1    1     1
+ -1    1   -1   -1    1   -1     1
+  1    1   -1    1   -1   -1    -1
+ -1   -1    1    1   -1   -1     1
+  1   -1    1   -1    1   -1    -1
+ -1    1    1   -1   -1    1    -1
+  1    1    1    1    1    1     1
+
+3. Using the standard design matrix.  The main effect for A is $\frac{y_2+y_4-y_1-y_3}{2}=10.$ and the main effect for B is $\frac{y_3+y_4-y_1-y_2}{2}=12.$  But the main effect for A should be 
+
+$$\frac{(y_2+5) + (y_4+5)-y_1-y_3}{2}=\frac{y_2 + y_4-y_1-y_3}{2}+\frac{10}{2}=10+\frac{10}{2}=15.$$
+
+The main effect for B should be:
+
+$$\frac{-(y_2+5) + (y_4+5)-y_1+y_3}{2}=\frac{-y_2 + y_4-y_1+y_3}{2}=12.$$
+
+So the main effect of A changes, but the main effect of B remains unchanged.
+
+4. (a) Let A and B be the two factors with two levels denoted + and -.
+
+$$y_i=\beta_0+\beta_1 x_{i1}+\beta_2 x_{i2} +\epsilon_i,$$
+
+where, $i=1,2,3,4$,
+
+$$x_{i1} =
+\left\{
+  \begin{array}{ll}
+  	+1  & \mbox{if } A=+ \\
+		-1 & \mbox{if } A=-
+	\end{array}
+\right.$$ 
+
+$$x_{i2} =
+\left\{
+  \begin{array}{ll}
+    +1  & \mbox{if } B=+ \\
+		-1 & \mbox{if } B=-
+	\end{array}
+\right.$$
+
+(b) The parameter estimates can be obtained by minimizing 
+
+$$L(\beta_0,\beta_1,\beta_2)=\sum_{i=1}^4 \epsilon_i^2=\sum_{i=1}^4 \left(y_i-\beta_0+\beta_1 x_{i1}+\beta_2 x_{i2} \right)^2.$$  
+
+This can be done directly, by directly solving $\frac{\partial L}{\partial \beta_i}=0$.  It's also acceptable to use the fact the $\hat {\beta}=(X'X)^{-1}X'y$, where 
+
+$$X = \begin{bmatrix} 1 & -1 & -1 \\
+                      1 & +1 & -1 \\
+                      1 & -1 & +1 \\
+                      1 & +1 & +1 
+      \end{bmatrix}.$$
+
+Use R to calculate $(X'X)^{-1}X'$
+
+```r
+X <- matrix(c(1,1,1,1,-1,1,-1,1,-1,-1,1,1),nrow=4,ncol=3)
+solve(t(X)%*%X)%*%t(X) 
+```
+
+```
+##       [,1]  [,2]  [,3] [,4]
+## [1,]  0.25  0.25  0.25 0.25
+## [2,] -0.25  0.25 -0.25 0.25
+## [3,] -0.25 -0.25  0.25 0.25
+```
+
+$$\begin{bmatrix} \hat{\beta_0} \\ \hat{\beta_1} \\ \hat{\beta_2} \end{bmatrix} = 
+\begin{bmatrix} 
+                      .25 & .25 & .25 & .25 \\
+                      -.25 & .25 & -.25 & .25 \\
+                      -.25 & -.25 & .25 & .25
+      \end{bmatrix} \begin{bmatrix} y_1 \\ y_2 \\ y_3 \\ y_4 \end{bmatrix} = 
+      \begin{bmatrix} \frac{\sum_{i=1}^4y_i}{4} \\ \frac{y_2+y_4-y_1-y_3}{4} \\ 
+      \frac{y_3+y_4-y_1-y_2}{4} \end{bmatrix}$$
+
+Notice that $\hat{\beta_0}={\bar y}$, $\hat{\beta_1}=\frac{1}{2}{\hat A}$, and $\hat{\beta_2}=\frac{1}{2}{\hat B}$, where ${\hat A}$ and ${\hat B}$ are the estiamted factorial effects of A and B.
+
+5. (a) 
+
+
+```r
+prb0506 <- read.table("~/Dropbox/Docs/sta305/BHHData/BHH2-Data/prb0506.dat", header=TRUE, quote="\"")
+fact.mod <- lm(y3~x1*x2*x3,data=prb0506)
+knitr::kable(summary(fact.mod)$coefficients)
+```
+
+               Estimate   Std. Error      t value    Pr(>|t|)
+------------  ---------  -----------  -----------  ----------
+(Intercept)     360.125     82.39335    4.3708018   0.0023779
+x1               86.750     82.39335    1.0528762   0.3231570
+x2               29.750     82.39335    0.3610728   0.7273943
+x3              247.750     82.39335    3.0069174   0.0168927
+x1:x2           -97.125     82.39335   -1.1787966   0.2723484
+x1:x3            66.625     82.39335    0.8086211   0.4421145
+x2:x3             4.875     82.39335    0.0591674   0.9542701
+x1:x2:x3        -36.250     82.39335   -0.4399627   0.6716081
+
+```r
+cubePlot(fact.mod,"x1","x2","x3",round=1,modeled=F)
+```
+
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+
+```r
+interaction.plot(prb0506$x1,prb0506$x2,prb0506$y3,main="interaction between x1 and x2")
+```
+
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-2.png" width="672" />
+
+```r
+interaction.plot(prb0506$x1,prb0506$x3,prb0506$y3,main="interaction between x1 and x3")
+```
+
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-3.png" width="672" />
+
+```r
+interaction.plot(prb0506$x2,prb0506$x3,prb0506$y3,main="interaction between x2 and x3")
+```
+
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-4.png" width="672" />
+
+The main effects and interactions are obtained by multiplying the regression coeffcicents by 2 
+
+
+                     x
+------------  --------
+(Intercept)     720.25
+x1              173.50
+x2               59.50
+x3              495.50
+x1:x2          -194.25
+x1:x3           133.25
+x2:x3             9.75
+x1:x2:x3        -72.50
+
+(b) The main effect for $x_1$ is interpreted as the change in total coliform contribution after 15 minutes when time since last bath $x_1$ increases from 1 hour to 24 hours. 
+
+The interaction between $x_1$ and $x_2$ is interpreted as the difference in the change in total coliform contribution after 15 minutes when time since last bath $x_1$ increases from 1 hour to 24 hours for the two different types of bathing activity. 
+
+The interaction plot for $x_1$ and $x_2$ indicates that there is an interaction, but the hypothesis test doesn't support this conclusion (P-value=0.27).  The other interaction plots are consistient with the hypothesis tests.
+
+The main effect for $x_3$ is the only effect that seems real (P-value=0.02).  The cube plot also supports the large effect that $x_3$ has on $y_3$.  The other effects might be due to noise.
 
 
 
@@ -1177,19 +1330,19 @@ round(2*fact.prod$coefficients,2)
 DanielPlot(fact.prod,half = F)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-40-1.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-44-1.png" width="672" />
 
 ```r
 DanielPlot(fact.prod,half = T)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-40-2.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-44-2.png" width="672" />
 
 ```r
 LenthPlot(fact.prod1)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-40-3.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-44-3.png" width="672" />
 
 ```
     alpha       PSE        ME       SME 
@@ -1323,19 +1476,19 @@ Notice that the factorial effects are missing for effects that are aliased.  The
 DanielPlot(fact.leaf,half = F)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-48-1.png" width="672" />
 
 ```r
 DanielPlot(fact.leaf,half = T)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-44-2.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-48-2.png" width="672" />
 
 ```r
 LenthPlot(fact.leaf2,cex.fac = 0.5)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-44-3.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-48-3.png" width="672" />
 
 ```
     alpha       PSE        ME       SME 
