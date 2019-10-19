@@ -1371,11 +1371,627 @@ sum(res<=0.05)/NSIM # calculate p-value
 
 (iii)  Is there a significant difference (at the 1% significance level) between at least two of the diets?
 
-(iv)  What are the assumptions behind:
+(iv)  What are the statistical assumptions behind:
 
 * The ANOVA table calculations.
 * The P-value in the ANOVA table.
 
-2. Interpret the parameters in the additive model for ANOVA  $$y_{ti}=\mu+\tau_t+\epsilon_{ti},$$
-where, $y_{ti}$ is the $i^{th}$ observation in the $t^{th}$ treatment group, $\mu$ is the overall mean,  and $\tau_t$ is the deviation produced by treatment $t$, and $\epsilon_{ti}$ is the error. 
+2. A psychologist is designing an experiment to investigate the effects of four different learning methods on short term memory. Subjects will be shown a series of 20 words after undergoing some training in the learning method that they were assigned.  The outcome of the experiment is the total number of words that a subject is able to recall after being trained in one of the learning methods.  An equal number of subjects will be randomly assiged to each learning method. 
+
+Based on previous research the psychologist estimates that the mean and standard deviation for each method are:
+
+Learning Method | Mean | Standard deviation
+----------------|------|-------------------
+1               | 15   | 6
+2               | 14.5 | 4
+3               | 12.5 | 3.5
+4               | 15.3 | 3
+
+The psychologist would like to know how many subjects she will require so that her study has 80% power at the 5% significance level. 
+
+(a) Use R to calculate the effect sizes that the psychologist can detect if she uses the different variances of the different learning methods.  The formula for effect size is
+
+$$f = \sqrt{\frac{\sum_{i=1}^k\left(\mu_i-{\bar \mu} \right)^2/k}{\sigma^2}}.$$
+
+${\bar \mu}=\sum_{i=1}^k \mu_i/k$, and $\sigma^2$ is the within group error variance.
+
+For example, for the first effect size assume that the within group variance is 36, for the second effect size assume that the within group variance is 16, and so on.  Now, assuming that she can enrol 15 subjects per group, what is the power to detect each effect size at the 5% level? Use `pwr.anova.test()` to calculate power. (Hand in your R code and output)
+
+
+
+
+
+
+(b)  Use simulation to calculate the power of the study using 15 subjects per group assuming that the standard deviations for the four methods are not equal, but are as shown in the table above, and that the distribution of observations in each group is normal. A random sample of size $n$ from a $N(\mu,\sigma^2)$ can be generated in R using the function `rnorm(n,mu,sigma)`. 
+
+
+
+
+
+(c) What does part (b) tell you about the assumption of a common within group variance in calculating power for an ANOVA experiment? Explain.
+
+
+3. A clinical trial was conducted where patients were randomized to four different treatments.  The data is available in the file [`q2data.csv`](q2data.csv).  The outcome is a continuous response $y_{ij}$ the response for the $ith$ subject in the $jth$ treatment group.  There are three new treatments in this study and one control treatment.  The control treatment is the third treatment ($j=3$).  The main objective of the study is to compare the three new treatments to the control treatment. 
+
+NB: The file can be read into R and put into a data.frame using the command 
+
+
+```r
+q2data <- read.csv("q2data.csv").
+```
+
+
+In this question use the 5% significance level.
+
+(a)  What are the averages and standard deviations of each treatment?  Plot the distributions of the four treatment groups.  Do the distributions look similar or different? (Hand in your R code and output)
+
+
+
+
+(b)  Use linear regression to calculate the ANOVA table.  What do you conclude from the ANOVA table? (NB: when using linear regresssion to calculate the effects the treatment variable should be specified as a factor `as.factor(trt)`.) (Hand in your R code and output)
+
+
+
+
+
+
+(c)  Use the model you obtained in part (b) to obtain the appropriate parameter estimates using the treatment contrast (dummy coding) to answer the main objective.  In R this can be done using the `contr.treatment()` function.  Define the underlying statistical model in terms of dummy variables.  Explictly state the dummy variables.  Interpret the parameter estimates.  Verify the paratemer estimates using the table of means that you obtained in part (a). 
+
+
+
+(d)  Obtain the parameter estimates using the Helmert contrast.  In R this can be done using the `contr.helmert(4)` function. Explictly state the dummy variables. Define the underlying statistical model in terms of dummy variables.  Interpret the parameter estimates.  Verify the parameter estimates using the table of means that you obtained in part (a). (Hand in your R code and output)
+
+
+
+
+(e)  Which coding scheme do you think makes more sense for evaluating if there is a significant difference between any of the new treatments and placebo.
+
+
+(f)  Which pairs of treatments have a statistically significant difference? Do your results change if you adjust for multiple comparisons using either the Bonferroni or Tukey method? Compare all pairs of treatment means using no adjustement, Bonferroni, and Tukey.  If the unadjusted, Bonferroni, and Tukey lead to different conclusions then explain why these methods give different results. Does it make sense to consider all pairs of treatment means given the main objective of this study?  (Hand in your R code and output)
+
+
+
+
+
+
+
+
+
+
+## Answers to Questions
+
+
+1. Let $\mu_{1}, \mu_{2},\mu_{3},\mu_{4}$ be the mean coagulation times of diets A, B, C, and D respectively. 
+
+(i)  Formulate a null and alternative hypotheses to compare the mean coagulation times between the four diets.
+
+$$H_0:\mu_1=\mu_2=\mu_3=\mu_4$$ versus $$H_1:\mu_i \ne \mu_j, i \ne j.$$ 
+
+(ii)  What is the test statistic and P-value of the test in part (a)?
+
+> The F statistic is 13.571 and the p-value is 4.658e-05.
+
+(iii)  Is there a significant difference (at the 1% significance level) between at least two of the diets?
+
+> Yes, since the p-value is less than or equal to 0.01.
+
+(iv)  What are the statistical assumptions behind:
+
+* The ANOVA table calculations.
+
+> There are no statistical assumptions required to carry out the calcualtions for the sums of squares
+> , degrees of freedom, or mean squares. 
+
+* The P-value in the ANOVA table.
+
+>  Additive model, errors are independent, errors are normally distributed with constant variance.   
+>
+>
+> Based on plots below residuals versus fitted values and the normal Q-Q of residuals the normal distribution and constant variance assumptions are fullfilled.  
+>
+>
+> The additive model seems plausible in this case since effects should be additive for
+coagualtion times.  Coagulation times of rats are independent since the time for one rat
+does not depend on another rat.  
+
+2.  A psychologist is designing an experiment to investigate the effects of four different learning methods on short term memory. Subjects will be shown a series of 20 words after undergoing some training in the learning method that they were assigned.  The outcome of the experiment is the total number of words that a subject is able to recall after being trained in one of the learning methods.  An equal number of subjects will be randomly assiged to each learning method. 
+
+Based on previous research the psychologist estimates that the mean and standard deviation for each method are:
+
+Learning Method | Mean | Standard deviation
+----------------|------|-------------------
+1               | 15   | 6
+2               | 14.5 | 4
+3               | 12.5 | 3.5
+4               | 15.3 | 3
+
+The psychologist would like to know how many subjects she will require so that her study has 80% power at the 5% significance level. 
+
+(a) Use R to calculate the effect sizes that the psychologist can detect if she uses the different variances of the different learning methods.  The formula for effect size is
+
+$$f = \sqrt{\frac{\sum_{i=1}^k\left(\mu_i-{\bar \mu} \right)^2/k}{\sigma^2}}.$$
+
+${\bar \mu}=\sum_{i=1}^k \mu_i/k$, and $\sigma^2$ is the within group error variance.
+
+For example, for the first effect size assume that the within group variance is 36, for the second effect size assume that the within group variance is 16, and so on.  Now, assuming that she can enrol 15 subjects per group, what is the power to detect each effect size at the 5% level? Use `pwr.anova.test()` to calculate power. (Hand in your R code and output)
+
+The power is calculated below for when $\sigma=6,4,3.5,3$.
+
+
+
+```r
+library(pwr)
+mu1 <- 15; mu2 <- 14.5;mu3 <- 12.5; mu4 <- 15.3
+sigma1 <- 6; sigma2 <- 4; sigma3 <- 3.5;sigma4 <- 3; 
+mug <- sum(mu1,mu2,mu3,mu4)/4
+mui <- c(mu1,mu2,mu3,mu4)
+
+f1 <- sqrt(sum((mui-mug)^2)/4)/sigma1
+pwr.anova.test(k = 4,f = f1,n=15,sig.level = 0.05)
+```
+
+```
+## 
+##      Balanced one-way analysis of variance power calculation 
+## 
+##               k = 4
+##               n = 15
+##               f = 0.181955
+##       sig.level = 0.05
+##           power = 0.1805942
+## 
+## NOTE: n is number in each group
+```
+
+```r
+f2 <- sqrt(sum((mui-mug)^2)/4)/sigma2
+pwr.anova.test(k = 4,f = f2,n=15,sig.level = 0.05)
+```
+
+```
+## 
+##      Balanced one-way analysis of variance power calculation 
+## 
+##               k = 4
+##               n = 15
+##               f = 0.2729326
+##       sig.level = 0.05
+##           power = 0.3727171
+## 
+## NOTE: n is number in each group
+```
+
+```r
+f3 <- sqrt(sum((mui-mug)^2)/4)/sigma3
+pwr.anova.test(k = 4,f = f3,n=15,sig.level = 0.05)
+```
+
+```
+## 
+##      Balanced one-way analysis of variance power calculation 
+## 
+##               k = 4
+##               n = 15
+##               f = 0.3119229
+##       sig.level = 0.05
+##           power = 0.475779
+## 
+## NOTE: n is number in each group
+```
+
+```r
+f4 <- sqrt(sum((mui-mug)^2)/4)/sigma4
+pwr.anova.test(k = 4,f = f4,n=15,sig.level = 0.05)
+```
+
+```
+## 
+##      Balanced one-way analysis of variance power calculation 
+## 
+##               k = 4
+##               n = 15
+##               f = 0.3639101
+##       sig.level = 0.05
+##           power = 0.6170057
+## 
+## NOTE: n is number in each group
+```
+
+
+
+(b)  Use simulation to calculate the power of the study using 15 subjects per group assuming that the standard deviations for the four methods are not equal, but are as shown in the table above, and that the distribution of observations in each group is normal. A random sample of size $n$ from a $N(\mu,\sigma^2)$ can be generated in R using the function `rnorm(n,mu,sigma)`. (Hand in your R output and R code)
+
+The power is approximately 33% (results will vary).
+
+
+```r
+NSIM <- 10000
+res <- numeric(NSIM)
+
+mu1 <- 15; mu2 <- 14.5;mu3 <- 12.5; mu4 <- 15.3
+sigma1 <- 6; sigma2 <- 4; sigma3 <- 3.5;sigma4 <- 3; 
+n <- 15 
+
+for (i in 1:NSIM){
+
+y1 <- rnorm(n,mu1,sigma1)
+y2 <- rnorm(n,mu2,sigma2)
+y3 <- rnorm(n,mu3,sigma3)
+y4 <- rnorm(n,mu4,sigma4)
+
+y <- c(y1,y2,y3,y4)
+trt <- as.factor(c(rep(1,n),rep(2,n),rep(3,n),rep(4,n)))
+m <- lm(y~trt)
+res[i] <- anova(m)[1,5] # p-value of F test
+}
+
+sum(res<=0.05)/NSIM
+```
+
+
+
+(c) What does part (b) tell you about the assumption of a common within group variance in calculating power for an ANOVA experiment? Explain.
+
+The power in part (b) depends on the within group $\sigma$.  Smaller values correspond to larger power.  But none of the power values are close to the power when the groups have different within group variances.  So, if the within group variances are not approximately equal then the power will not be accurate.  
+
+3. A clinical trial was conducted where patients were randomized to four different treatments.  The data is available in the file `q2data.csv`.  The outcome is a continuous response $y_{ij}$ the response for the $ith$ subject in the $jth$ treatment group.  There are three new treatments in this study and one control treatment.  The control treatment is the third treatment ($j=3$).  The main objective of the study is to compare the three new treatments to the control treatment. 
+
+NB: The file can be read into R and put into a data.frame using the command 
+
+
+```r
+q2data <- read.csv("q2data.csv")
+```
+
+
+In this question use the 5% significance level.
+
+(a)  What are the averages and standard deviations of each treatment?  Plot the distributions of the four treatment groups.  Do the distributions look similar or different? (Hand in your R code and output)
+
+
+
+```r
+q2data <- read.csv("q2data.csv")
+sapply(split(q2data$y,q2data$trt),mean) # treatment averages
+```
+
+```
+##        1        2        3        4 
+## 2.206182 2.290470 2.320007 2.855205
+```
+
+```r
+sapply(split(q2data$y,q2data$trt),sd) # treatment SDs
+```
+
+```
+##        1        2        3        4 
+## 1.799560 1.774576 1.812561 1.763111
+```
+
+```r
+boxplot(y~trt,data=q2data) # plot of distributions - other plots could also be used
+```
+
+<img src="07-anova_files/figure-html/unnamed-chunk-56-1.png" width="672" />
+
+(b)  Use linear regression to calculate the ANOVA table.  What do you conclude from the ANOVA table? (NB: when using linear regresssion to calculate the effects the treatment variable should be specified as a factor `as.factor(trt)`.) (Hand in your R code and output)
+
+The ANOVA table indicates that we would reject $H_0: \mu_1=\mu_2=\mu_3=\mu_4$ at the 5% level.
+
+
+```r
+anova(lm(y~as.factor(trt),data = q2data))
+```
+
+```
+## Analysis of Variance Table
+## 
+## Response: y
+##                 Df  Sum Sq Mean Sq F value  Pr(>F)  
+## as.factor(trt)   3   26.29  8.7639  2.7429 0.04294 *
+## Residuals      391 1249.31  3.1952                  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+
+(c)  Use the model you obtained in part (b) to obtain the appropriate parameter estimates using the treatment contrast (dummy coding) to answer the main objective.  In R this can be done using the `contr.treatment()` function.  Define the underlying statistical model in terms of dummy variables.  Explictly state the dummy variables.  Interpret the parameter estimates.  Verify the paratemer estimates using the table of means that you obtained in part (a). (Hand in your R code and output)
+
+The statistical model is 
+
+$y_{ij}$ is the $j^{th}$ observation under the $i^{th}$ treatment. Let $\mu$ be the overall mean.  The one-way model  $y_{ij}=\mu+\tau_i+\epsilon_{ij}$, $\epsilon_{ij} \sim N(0,\sigma^2)$ can be written in terms of the dummy variables $X_1, X_2, X_3$ as:
+
+$$ y_{ij}=\mu+\tau_1X_{i1}+\tau_2X_{i2}+\tau_3X_{i3}+\epsilon_{ij},$$
+
+where,  
+
+$$X_{1j} =
+\left\{
+	\begin{array}{ll}
+		1  & \mbox{if jth unit recieves treatment 1 } \\
+		0 & \mbox{otherwise}
+	\end{array}
+\right.$$
+
+$$X_{2j} =
+\left\{
+	\begin{array}{ll}
+		1  & \mbox{if jth unit recieves treatment 2 } \\
+		0 & \mbox{otherwise}
+	\end{array}
+\right.$$
+
+$$X_{3j} =
+\left\{
+	\begin{array}{ll}
+		1  & \mbox{if jth unit recieves treatment 4 } \\
+		0 & \mbox{otherwise}
+	\end{array}
+\right.$$
+
+
+Let $\mu_1,\mu_2,\mu_3,\mu_3$ be the treatment means.  It follows that $E(y_{3j})=\mu_3$ is the mean of the control treatment (treatment 3) so 
+
+$$\begin{aligned}
+E(y_{1j})=\mu_1=\mu_3+\tau_1 \\
+E(y_{2j})=\mu_2=\mu_3+\tau_2 \\
+E(y_{4j})=\mu_4=\mu_3+\tau_3 
+\end{aligned}$$
+
+
+The least squares estimates are: 
+
+$$\begin{aligned}
+{\hat \mu}&={\bar y}_{3 \cdot}, \\
+{\hat \tau_1}&={\bar y}_{1 \cdot}-{\bar y}_{3 \cdot}, \\
+{\hat \tau_2}&={\bar y}_{2 \cdot }-{\bar y}_{3 \cdot}, \\
+{\hat \tau_3}&={\bar y}_{4 \cdot }-{\bar y}_{3 \cdot}.
+\end{aligned}$$ 
+
+
+```r
+q2data$trt <- as.factor(q2data$trt)
+contrasts(q2data$trt) <- contr.treatment(n = 4,base = 3)
+summary(lm(y~trt,  data = q2data))
+```
+
+```
+## 
+## Call:
+## lm(formula = y ~ trt, data = q2data)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -5.295 -1.180 -0.048  1.391  4.336 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  2.32001    0.18056  12.849   <2e-16 ***
+## trt1        -0.11382    0.25408  -0.448   0.6544    
+## trt2        -0.02954    0.25668  -0.115   0.9084    
+## trt4         0.53520    0.25345   2.112   0.0354 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.788 on 391 degrees of freedom
+## Multiple R-squared:  0.02061,	Adjusted R-squared:  0.0131 
+## F-statistic: 2.743 on 3 and 391 DF,  p-value: 0.04294
+```
+
+(d)  Obtain the parameter estimates using the Helmert contrast.  In R this can be done using the `contr.helmert(4)` function. Explictly state the dummy variables. Define the underlying statistical model in terms of dummy variables.  Interpret the parameter estimates.  Verify the parameter estimates using the table of means that you obtained in part (a). (Hand in your R code and output)
+
+The Helmert contrast is:
+
+
+```r
+contr.helmert(4)
+```
+
+```
+##   [,1] [,2] [,3]
+## 1   -1   -1   -1
+## 2    1   -1   -1
+## 3    0    2   -1
+## 4    0    0    3
+```
+
+$$X_{1j} =
+\left\{
+	\begin{array}{ll}
+		-1  & \mbox{if jth unit recieves treatment 1 } \\
+		1 & \mbox{if jth unit recieves treatment 2 } \\
+		0 & \mbox{if jth unit recieves treatment 3 or 4 }
+	\end{array}
+\right.$$
+
+$$X_{2j} =
+\left\{
+	\begin{array}{ll}
+		-1  & \mbox{if jth unit recieves treatment 1 } \\
+		-1  & \mbox{if jth unit recieves treatment 2 } \\
+		2 & \mbox{if jth unit recieves treatment 3 } \\
+		0 & \mbox{if jth unit recieves treatment 4 }
+	\end{array}
+\right.$$
+
+$$X_{3j} =
+\left\{
+	\begin{array}{ll}
+		-1  & \mbox{if jth unit recieves treatment 1 } \\
+		-1 & \mbox{if jth unit recieves treatment 2 } \\
+		-1 & \mbox{if jth unit recieves treatment 3 } \\
+		3 & \mbox{if jth unit recieves treatment 4}
+	\end{array}
+\right.$$
+
+Let $\mu_1,\mu_2,\mu_3,\mu_4$ be the treatment means.  
+
+$$\begin{aligned}
+E(y_{1j})&=\mu_1=\mu-\tau_1-\tau_2-\tau_3 \\
+E(y_{2j})&=\mu_2=\mu+\tau_1-\tau_2-\tau_3 \\
+E(y_{3j})&=\mu_3=\mu+2\tau_2-\tau_3 \\
+E(y_{4j})&=\mu_4=3\tau_3
+\end{aligned}$$
+
+Use all four equations to solve for $\mu$.
+
+$$\mu=(\mu_1+\mu_2+\mu_3+\mu_4)/4.$$
+
+Use the first two equations to solve for $\tau_1$.
+
+$$\mu_2-\mu_1=2\tau_1 \Rightarrow \tau_1=(1/2)(\mu_2-\mu_1).$$
+
+Use the first three equations to solve for $\tau_2$.
+
+$$\mu_3-(\mu_1+\mu_2)/2 = 3\tau_2 \Rightarrow \tau_2=(1/3)(\mu_3-(\mu_1+\mu_2)/2).$$
+
+Use the all four equations to solve for $\tau_3$.
+
+$$\mu_4-(\mu_1+\mu_2+\mu_3)/3=4\tau_3 \Rightarrow  \tau_3=(1/4)(\mu_4-(\mu_1+\mu_2+\mu_3)/3).$$
+
+The interpretation of the parameter estimates: the intercept $\mu$ is the grand average; $\tau_i,i=1,2,3$ is the average difference of the $(i+1)th$ mean and the average of the subsequent means.  
+
+
+```r
+q2data$trt <- as.factor(q2data$trt)
+contrasts(q2data$trt) <- contr.helmert(4)
+summary(lm(y~as.factor(trt),data = q2data))
+```
+
+```
+## 
+## Call:
+## lm(formula = y ~ as.factor(trt), data = q2data)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -5.295 -1.180 -0.048  1.391  4.336 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)      2.41797    0.08996  26.879  < 2e-16 ***
+## as.factor(trt)1  0.04214    0.12771   0.330  0.74157    
+## as.factor(trt)2  0.02389    0.07372   0.324  0.74603    
+## as.factor(trt)3  0.14575    0.05154   2.828  0.00493 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.788 on 391 degrees of freedom
+## Multiple R-squared:  0.02061,	Adjusted R-squared:  0.0131 
+## F-statistic: 2.743 on 3 and 391 DF,  p-value: 0.04294
+```
+
+Verify the parameter estimates using the table of means.
+
+
+```r
+xbar <- sapply(split(q2data$y,q2data$trt),mean) # treatment averages
+sum(xbar)/4 # intercept mu
+```
+
+```
+## [1] 2.417966
+```
+
+```r
+(xbar[2]-xbar[1])/2  #beta_1_hat
+```
+
+```
+##          2 
+## 0.04214389
+```
+
+```r
+(xbar[3]-(xbar[1]+xbar[2])/2)/3 #beta_2_hat
+```
+
+```
+##          3 
+## 0.02389354
+```
+
+```r
+(xbar[4]-(xbar[1]+xbar[2]+xbar[3])/3)/4 #beta_3_hat
+```
+
+```
+##         4 
+## 0.1457464
+```
+
+
+(e)  Which coding scheme do you think makes more sense for evaluating if there is a significant difference between any of the new treatments and placebo.
+
+The coding scheme in part (b) is more appropriate since the Helmert coding scheme does not compare any of the new treatments to the placebo. 
+
+(f)  Which pairs of treatments have a statistically significant difference? Do your results change if you adjust for multiple comparisons using either the Bonferroni or Tukey method? Compare all pairs of treatment means using no adjustement, Bonferroni, and Tukey.  If the unadjusted, Bonferroni, and Tukey lead to different conclusions then explain why these methods give different results. Does it make sense to consider all pairs of treatment means given the main objective of this study?  (Hand in your R code and output)
+
+It doesn't really make sense to consider all possible treatment pairs since the primary question is to compare placebo to all the new treatments.  Nevertheless, both Bonferroni and Tukey make these comparisons plus other comparisons.
+
+Treatment 4 is significantly different from placebo in an unadjusted comparison, but this difference becomes non-significant after adjusting for multiple comparisons using both Tukey and Bonferroni. The reason that Tukey and Bonferroni give different p-values compared to the unadjusted is because both Tukey and Bonferroni ensure that the family-wise type I error rate remains at 5%, and the unadjusted family-wise type I error rate is $1-(1-.05)^6=0.26$.  
+
+
+
+```r
+TukeyHSD(aov(y~as.factor(trt),data = q2data))
+```
+
+```
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = y ~ as.factor(trt), data = q2data)
+## 
+## $`as.factor(trt)`
+##           diff          lwr       upr     p adj
+## 2-1 0.08428777 -0.574699935 0.7432755 0.9875857
+## 3-1 0.11382450 -0.541723430 0.7693724 0.9699886
+## 4-1 0.64902293 -0.001589317 1.2996352 0.0508310
+## 3-2 0.02953673 -0.632736356 0.6918098 0.9994544
+## 4-2 0.56473516 -0.092652737 1.2221231 0.1205489
+## 4-3 0.53519843 -0.118741276 1.1891381 0.1511693
+```
+
+```r
+pairwise.t.test(q2data$y,as.factor(q2data$trt),p.adjust.method = "bonferroni")
+```
+
+```
+## 
+## 	Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  q2data$y and as.factor(q2data$trt) 
+## 
+##   1     2     3    
+## 2 1.000 -     -    
+## 3 1.000 1.000 -    
+## 4 0.063 0.163 0.212
+## 
+## P value adjustment method: bonferroni
+```
+
+```r
+pairwise.t.test(q2data$y,as.factor(q2data$trt),p.adjust.method = "none")
+```
+
+```
+## 
+## 	Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  q2data$y and as.factor(q2data$trt) 
+## 
+##   1     2     3    
+## 2 0.742 -     -    
+## 3 0.654 0.908 -    
+## 4 0.010 0.027 0.035
+## 
+## P value adjustment method: none
+```
+
+
+
+
+
 

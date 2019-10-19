@@ -1,7 +1,7 @@
 --- 
 title: "Design of Experiments and Observational Studies"
 author: "Nathan Taback"
-date: "2019-09-18"
+date: "2019-10-19"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book

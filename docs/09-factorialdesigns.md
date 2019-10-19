@@ -862,9 +862,79 @@ LenthPlot(fact1,cex.fac = 0.5)
 
 The option `cex.fac = 0.5` adjusts the size of the characters used for factor labels.
 
+## Questions
+
+1. (Adapted from BHH question 8, pg. 227) A chemist performed an experiment with temperature at 130 and 150 degrees Celsius and two catalysts.  The chemist performed three runs randomizing the order of runs within each week.
+
+Run number | Temperature | Catalyst
+-----------|-------------|----------
+1          |   130       | 1 
+2          |   130       | 2
+3          |   150       | 1
+
+Is this a factorial experiment?  If it is not a factorial experiment then is it possible to turn this design into a factorial design? Explain?
 
 
-## Blocking Factorial Designs
+2. What is the table of contrasts for a $2^3$ factorial design.
+
+3. A $2^2$ factorial design involved two factors A and B.  The main effects for A and B are 10 and 12 respectively.  The lab technician that ran the experiment discovered that he made an error in recording the experimental results: whenever factor A was set to the + level the measurement should be increased by 5 (i.e., if $y_i$ is the measurement when A is set to the + level then the measurement should have been recorded as $y_i+5$)  What are the correct main effects for A and B?   
+
+4. Suppose that you were studying two factors A and B each at two levels in a $2^2$ factorial design.  
+
+(a) Write a linear model with parameters that correspond to the main effects.
+
+(b) Use least squares to estimate the parameters in part (a).  
+
+5. (Box, Hunter, and Hunter problem 5.6)  A study was conducted to determine the effects of individual bathers on the fecal and total coliform bacterial populations in water. The variables of interest were the time since the subject's last bath, the vigor of the subject's activity in the water, and the subject's sex. The experiments were performed1ed in a 100-gallon polyethylene tub using dechlorinated tap water at 38°C. The bacterial contribution of each bather was determined by subtracting the bacterial concentration measured al 15 and 30 minutes from that measured initially.
+
+A replicated $2^3$ factorial design was used for this experiment. 
+
+Code | Name | Low Level | High Level
+-----|------|-----------|-----------
+$x_1$| Time since last bath |1 hour | 24 hour
+$x_2$| Vigor of bathing activity |Lethargic |Vigorous
+$x_3$| Sex of bather |Female | Male
+
+Code  | Name
+------|------------------------------
+$y_1$ | Fecal coliform contribution after 15 minutes (organisms/100 mL)
+$y_2$ | Fecal coliform contribution after 30 minutes (organisms/100 mL)
+$y_3$ |  Total coliform contribution after 15 minutes (organisms/100 mL)
+$y_4$ | Total coliform contribution after 30 minutes (organisms/1OO mL)
+
+The data are shown in the table below.
+
+
+ run   x1   x2   x3    y1    y2     y3     y4
+----  ---  ---  ---  ----  ----  -----  -----
+   1   -1   -1   -1     1     1      3      7
+   2    1   -1   -1    12    15     57     80
+   3   -1    1   -1    16    10    323    360
+   4    1    1   -1     4     6    183    193
+   5   -1   -1    1   153   170    426    590
+   6    1   -1    1   129   148    250    243
+   7   -1    1    1   143   170    580    450
+   8    1    1    1   113   217    650    735
+   9   -1   -1   -1     2     4     10     27
+  10    1   -1   -1    37    39    280    250
+  11   -1    1   -1    21    21     33     53
+  12    1    1   -1     2     5     10     87
+  13   -1   -1    1    96    67    147    193
+  14    1   -1    1   390   360   1470   1560
+  15   -1    1    1   300   377    665    810
+  16    1    1    1   280   250    675    795
+
+(a) Calculate main and interaction effects on fecal and total coliform populations after 15 and 30 minutes.
+
+(a) Use R to calculate the main and interaction effects for $y_3$.  
+
+(b) Interpret the main effects and interaction effects in (a).  Do you think that the effects are real or noise? Explain.
+
+
+
+
+
+# Blocking Factorial Designs
 
 In a trial conducted using a $2^3$ design it might be desirable to use the same batch of raw material to make all 8 runs. Suppose that batches of raw material were only large enough to make 4 runs.  Then the concept of blocking could be used.
 
@@ -1107,19 +1177,19 @@ round(2*fact.prod$coefficients,2)
 DanielPlot(fact.prod,half = F)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-39-1.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-40-1.png" width="672" />
 
 ```r
 DanielPlot(fact.prod,half = T)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-39-2.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-40-2.png" width="672" />
 
 ```r
 LenthPlot(fact.prod1)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-39-3.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-40-3.png" width="672" />
 
 ```
     alpha       PSE        ME       SME 
@@ -1253,19 +1323,19 @@ Notice that the factorial effects are missing for effects that are aliased.  The
 DanielPlot(fact.leaf,half = F)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-44-1.png" width="672" />
 
 ```r
 DanielPlot(fact.leaf,half = T)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-43-2.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-44-2.png" width="672" />
 
 ```r
 LenthPlot(fact.leaf2,cex.fac = 0.5)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-43-3.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-44-3.png" width="672" />
 
 ```
     alpha       PSE        ME       SME 
@@ -1355,74 +1425,3 @@ $$\frac{1}{4}\left(-y_1+y_2+y_3-y_4+y_5-y_6-y_7+y_8\right)=-2.5$$
 is really the effect of $D+ABC$ or baking time plus the interaction of butter, sugar, and baking powder.  In order for this to be equal to the effect of baking time ($D$) we must assume the three-way interaction ($ABC$) is small enough to be ignored (i.e., the factorial estimate of $ABC$ is close to 0).  
 
 If the experimenter were to use a full factorial then he would require $2^4 = 16$ different batches of cookies. In a full $2^4$ design he would be estimating 4 main effects, 6 two-way interactions, 4 three-way interactions, and 1 four-way interaction.  If we assume that we can ignore three-factor and higher order interactions then a 16 run design is being used to estimate then a 16 run design is being used to estimate 10 effects. Fractional factorials use these redundancies by arranging that lower order effects are confounded with higher order interactions that are assumed negligible.  
-
-
-## Questions
-
-1. (Adapted from BHH question 8, pg. 227) A chemist performed an experiment with temperature at 130 and 150 degrees Celsius and two catalysts.  The chemist performed three runs randomizing the order of runs within each week.
-
-Run number | Temperature | Catalyst
------------|-------------|----------
-1          |   130       | 1 
-2          |   130       | 2
-3          |   150       | 1
-
-Is this a factorial experiment?  If it is not a factorial experiment then is it possible to turn this design into a factorial design? Explain?
-
-
-2. What is the table of contrasts for a $2^3$ factorial design.
-
-3. A $2^2$ factorial design involved two factors A and B.  The main effects for A and B are 10 and 12 respectively.  The lab technician that ran the experiment discovered that he made an error in recording the experimental results: whenever factor A was set to the + level the measurement should be increased by 5 (i.e., if $y_i$ is the measurement when A is set to the + level then the measurement should have been recorded as $y_i+5$)  What are the correct main effects for A and B?   
-
-4. Suppose that you were studying two factors A and B each at two levels in a $2^2$ factorial design.  
-
-(a) Write a linear model with parameters that correspond to the main effects.
-
-(b) Use least squares to estimate the parameters in part (a).  
-
-5. (Box, Hunter, and Hunter problem 5.6)  A study was conducted to determine the effects of individual bathers on the fecal and total coliform bacterial populations in water. The variables of interest were the time since the subject's last bath, the vigor of the subject's activity in the water, and the subject's sex. The experiments were performed1ed in a 100-gallon polyethylene tub using dechlorinated tap water at 38°C. The bacterial contribution of each bather was determined by subtracting the bacterial concentration measured al 15 and 30 minutes from that measured initially.
-
-A replicated $2^3$ factorial design was used for this experiment. 
-
-Code | Name | Low Level | High Level
------|------|-----------|-----------
-$x_1$| Time since last bath |1 hour | 24 hour
-$x_2$| Vigor of bathing activity |Lethargic |Vigorous
-$x_3$| Sex of bather |Female | Male
-
-Code  | Name
-------|------------------------------
-$y_1$ | Fecal coliform contribution after 15 minutes (organisms/100 mL)
-$y_2$ | Fecal coliform contribution after 30 minutes (organisms/100 mL)
-$y_3$ |  Total coliform contribution after 15 minutes (organisms/100 mL)
-$y_4$ | Total coliform contribution after 30 minutes (organisms/1OO mL)
-
-The data are shown in the table below.
-
-
- run   x1   x2   x3    y1    y2     y3     y4
-----  ---  ---  ---  ----  ----  -----  -----
-   1   -1   -1   -1     1     1      3      7
-   2    1   -1   -1    12    15     57     80
-   3   -1    1   -1    16    10    323    360
-   4    1    1   -1     4     6    183    193
-   5   -1   -1    1   153   170    426    590
-   6    1   -1    1   129   148    250    243
-   7   -1    1    1   143   170    580    450
-   8    1    1    1   113   217    650    735
-   9   -1   -1   -1     2     4     10     27
-  10    1   -1   -1    37    39    280    250
-  11   -1    1   -1    21    21     33     53
-  12    1    1   -1     2     5     10     87
-  13   -1   -1    1    96    67    147    193
-  14    1   -1    1   390   360   1470   1560
-  15   -1    1    1   300   377    665    810
-  16    1    1    1   280   250    675    795
-
-(a) Calculate main and interaction effects on fecal and total coliform populations after 15 and 30 minutes.
-
-(a) Use R to calculate the main and interaction effects for $y_3$.  
-
-(b) Interpret the main effects and interaction effects in (a).  Do you think that the effects are real or noise? Explain.
-
-

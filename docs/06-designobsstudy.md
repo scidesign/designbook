@@ -478,7 +478,7 @@ max  eCDF diff........ 0.088511
 
 var ratio (Tr/Co)..... 1.1846 
 T-test p-value........ 0.0072293 
-KS Bootstrap p-value.. 0.2 
+KS Bootstrap p-value.. < 2.22e-16 
 KS Naive p-value...... 0.018385 
 KS Statistic.......... 0.088511 
 
@@ -577,7 +577,7 @@ KS Statistic.......... 0.07
 
 
 Before Matching Minimum p.value: < 2.22e-16 
-Variable Name(s): age smokeintensity wt71  Number(s): 3 8 14 
+Variable Name(s): age smokeintensity smokeyrs wt71  Number(s): 3 8 9 14 
 ```
 
 If the absolute value of the standardized mean difference is greater than 10% then this indicates a serious imbalance.  For example, sex has an absolute standardized mean difference of $|-16.022|=16.022$ indicating serious imbalance between the groups in males and females.
@@ -763,7 +763,7 @@ max  eCDF diff........    0.12956 	 	   0.050545
 
 var ratio (Tr/Co).....     1.0731 	 	    0.92406 
 T-test p-value........ 1.6316e-06 	 	    0.57566 
-KS Bootstrap p-value.. < 2.22e-16 	 	        0.1 
+KS Bootstrap p-value.. < 2.22e-16 	 	        0.3 
 KS Naive p-value...... 8.6584e-05 	 	    0.15182 
 KS Statistic..........    0.12956 	 	   0.050545 
 
@@ -970,13 +970,13 @@ max  eCDF diff........       0.07 	 	   0.078295
 
 var ratio (Tr/Co).....     1.0606 	 	     1.0282 
 T-test p-value........   0.022421 	 	    0.84279 
-KS Bootstrap p-value..        0.1 	 	 < 2.22e-16 
+KS Bootstrap p-value.. < 2.22e-16 	 	 < 2.22e-16 
 KS Naive p-value......    0.10646 	 	  0.0041188 
 KS Statistic..........       0.07 	 	   0.078295 
 
 
 Before Matching Minimum p.value: < 2.22e-16 
-Variable Name(s): age smokeintensity smokeyrs  Number(s): 3 8 9 
+Variable Name(s): age smokeintensity smokeyrs wt71  Number(s): 3 8 9 14 
 
 After Matching Minimum p.value: < 2.22e-16 
 Variable Name(s): smokeintensity smokeyrs wt71  Number(s): 8 9 14 

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Design of Experiments and Observational Studies</title>
+  <title>11 Blocking Factorial Designs | Design of Experiments and Observational Studies</title>
   <meta name="description" content="An Introduction to Design, Causal Inference,and Analysis Using R" />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Design of Experiments and Observational Studies" />
+  <meta property="og:title" content="11 Blocking Factorial Designs | Design of Experiments and Observational Studies" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="scidesign/designbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Design of Experiments and Observational Studies" />
+  <meta name="twitter:title" content="11 Blocking Factorial Designs | Design of Experiments and Observational Studies" />
   
   <meta name="twitter:description" content="An Introduction to Design, Causal Inference,and Analysis Using R" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="introduction.html">
+<link rel="prev" href="factorial-designs-at-two-levels-2k-designs.html">
+<link rel="next" href="fractional-factorial-designs.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -356,23 +356,374 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Design of Experiments and Observational Studies</h1>
-<p class="author"><em>Nathan Taback</em></p>
-<p class="date"><em>2019-10-19</em></p>
+<div id="blocking-factorial-designs" class="section level1">
+<h1><span class="header-section-number">11</span> Blocking Factorial Designs</h1>
+<p>In a trial conducted using a <span class="math inline">\(2^3\)</span> design it might be desirable to use the same batch of raw material to make all 8 runs. Suppose that batches of raw material were only large enough to make 4 runs. Then the concept of blocking could be used.</p>
+<p>The following R code generates the design matrix for a <span class="math inline">\(2^3\)</span> design.</p>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb440-1" title="1">x1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb440-2" title="2">x2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb440-3" title="3">x3 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">4</span>),<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>)))</a>
+<a class="sourceLine" id="cb440-4" title="4">x12 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2</a>
+<a class="sourceLine" id="cb440-5" title="5">x13 &lt;-<span class="st"> </span>x1<span class="op">*</span>x3</a>
+<a class="sourceLine" id="cb440-6" title="6">x23 &lt;-<span class="st"> </span>x2<span class="op">*</span>x3</a>
+<a class="sourceLine" id="cb440-7" title="7">x123 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2<span class="op">*</span>x3</a>
+<a class="sourceLine" id="cb440-8" title="8">run &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">8</span></a>
+<a class="sourceLine" id="cb440-9" title="9">factnames &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Run&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;12&quot;</span>,<span class="st">&quot;13&quot;</span>,<span class="st">&quot;23&quot;</span>,<span class="st">&quot;123&quot;</span>)</a>
+<a class="sourceLine" id="cb440-10" title="10">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">cbind</span>(run,x1,x2,x3,x12,x13,x23,x123),<span class="dt">col.names =</span> factnames)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Run</th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">12</th>
+<th align="right">13</th>
+<th align="right">23</th>
+<th align="right">123</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>Suppose that we assign runs 1, 4, 6, 7 to block I which use the first batch of raw material and runs 2, 3, 5, 8 to block II which use the second batch of raw material. The design is blocked this way by placing all runs in which the 123 is minus in one block and all the other runs in which 123 is plus in the other block.</p>
+<p>Any systematic differences between the two blocks of four runs will be eliminated from all the main effects and two factor interactions. What you gain is the elimination of systematic differences between blocks. But now the three factor interaction is confounded with any batch (block) difference. The ability to estimate the three factor interaction separately from the block effect is lost.</p>
+<div id="effect-hierarchy-principle" class="section level3">
+<h3><span class="header-section-number">11.0.1</span> Effect hierarchy principle</h3>
+<ol style="list-style-type: decimal">
+<li><p>Lower-order effects are more likely to be important than higher-order effects.</p></li>
+<li><p>Effects of the same order are equally likely to be important.</p></li>
+</ol>
+<p>This principle suggests that when resources are scare, priority should be given to the estimation of lower order effects. This is useful in screening experiments that have a large number of factors and relatively small number of runs.</p>
+<p>One reason that many accept this principle is that higher order interactions are more difficult to interpret or justify physically. As a result investigators are less interested in estimating the magnitudes of these effects even when they are statistically significant.</p>
+<p>Assigning a fraction of the <span class="math inline">\(2^k\)</span> treatment combinations to each block results in an incomplete blocking scheme as in the case of the balanced incomplete block design. The difference is that the factorial structure of a <span class="math inline">\(2^k\)</span> design allows a neater assignment of treatment combinations to blocks. The neater assignment is done by dividing the total combinations into various fractions and finding optimal assignments by exploiting combinatorial relationships.</p>
 </div>
-<div id="preface" class="section level1">
-<h1><span class="header-section-number">1</span> Preface</h1>
-<p>This book grew out of my course notes for a twelve-week course (one term) on the Design of Scientific Studies at the University of Toronto. I started writing my own notes because I wanted to expose undergraduate and graduate students to the foundations of classical experimental design and observational studies through a modern framework - The Rubin Causal Model. A causal inference framework is important in design, data collection and analysis since it provides a framework for investigators to readily evaluate study limitations and draw appropriate conclusions. R is used to implement designs and analyse the data collected. I assume that the reader has taken basic courses in mathematical statistics, and linear models, although the essentials are reviewed briefly in the first chapter. Some experience using R is helpful although not essential.</p>
-
+<div id="generation-of-orthogonal-blocks" class="section level3">
+<h3><span class="header-section-number">11.0.2</span> Generation of Orthogonal Blocks</h3>
+<p>In the <span class="math inline">\(2^3\)</span> example suppose that the block variable is given the identifying number 4.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Run</th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4 = 123</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>Then you could think of your experiment as containing four factors.
+The fourth factor will have the special property that it does not interact with other factors. If this new factor is introduced by having its levels coincide exactly with the plus and minus signs attributed to 123 then the blocking is said to be generated by the relationship 4 = 123.
+This idea can be used to derive more sophisticated blocking arrangements.</p>
+</div>
+<div id="an-example-of-how-not-to-block" class="section level3">
+<h3><span class="header-section-number">11.0.3</span> An example of how not to block</h3>
+<p>This example is from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005" role="doc-biblioref">2005</a>)</span>. Suppose we would like to arrange the <span class="math inline">\(2^3\)</span> design into four blocks.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Run</th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4 = 123</th>
+<th align="right">5 = 23</th>
+<th align="right">45 = 1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+<td align="right">1</td>
+<td align="right">-1</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>Consider two block factors called 4 and 5. 4 is associated with the three factor interaction and, say, 5 is associated with a the two factor interaction 23 which was deemed unimportant by the investigator. Runs are placed in different blocks depending on the signs of the block variables in columns 4 and 5. Runs for which the signs of 4 and 5 are – would go in one block, -+ in a second block, the +- in a third block, and the ++ runs in the fourth.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Block</th>
+<th align="left">Run</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">I</td>
+<td align="left">4,6</td>
+</tr>
+<tr class="even">
+<td align="left">II</td>
+<td align="left">3,5</td>
+</tr>
+<tr class="odd">
+<td align="left">III</td>
+<td align="left">1,7</td>
+</tr>
+<tr class="even">
+<td align="left">IV</td>
+<td align="left">2,8</td>
+</tr>
+</tbody>
+</table>
+<p>Block variables 4 and 5 are confounded with interactions 123 and 23. But there are three degrees of freedom associated with four blocks. The third degree of freedom accommodates the 45 interaction. But, the 45 interaction has the same signs as the main effect 1. Therefore 45 = 1. Therefore, if we use 4 and 5 as blocking variables it will be confounded with block differences.</p>
+<p>Main effects should not be confounded with block effects. Any blocking scheme that confounds main effects with blocks should not be used. This is based on the assumption: The block-by-treatment interactions are negligible.</p>
+<p>This assumption states that treatment effects do not vary from block to block.
+Without this assumption estimability of the factorial effects will be very complicated.</p>
+<p>For example, if <span class="math inline">\(B_1 = 12\)</span> then this implies two other relations:</p>
+<p><span class="math display">\[ 1B_1 = 1\times B_1 = 112 = 2 \thinspace {\text {and}} \thinspace  B_12 = B_1 \times 2 = 122 = 1.\]</span></p>
+<p>If there is a significant interaction between the block effect <span class="math inline">\(B_1\)</span> and the main effect 1 then the main effect 2 is confounded with <span class="math inline">\(B_11\)</span>. Similarly, if there is a significant interaction between the block effect <span class="math inline">\(B_1\)</span> and the main effect 2 then the main effect 1 is confounded with <span class="math inline">\(B_12\)</span>.</p>
+<p>It can be checked by plotting the residuals for all the treatments within each block. If the pattern varies from block to block then the assumption may be violated. A block-by-treatment interaction often suggests interesting information about the treatment and blocking variables.</p>
+</div>
+<div id="generators-and-defining-relations" class="section level2">
+<h2><span class="header-section-number">11.1</span> Generators and Defining Relations</h2>
+<p>A simple calculus is available to show the consequences of any proposed blocking arrangement. If any column in a <span class="math inline">\(2^k\)</span> design are multiplied by themselves a column of plus signs is obtained. This is denoted by the symbol <span class="math inline">\(I\)</span>. Thus you can write</p>
+<p><span class="math display">\[I = 11 = 22 = 33 = 44 = 55,\]</span></p>
+<p>where, for example, 22 means the product of the elements of column 2 with itself.</p>
+<p>Any column multiplied by <span class="math inline">\(I\)</span> leaves the elements unchanged. So, <span class="math inline">\(I3 = 3\)</span>.</p>
+<p>A general approach for arranging a <span class="math inline">\(2^k\)</span> design in <span class="math inline">\(2^q\)</span> blocks of size <span class="math inline">\(2^{k-q}\)</span> is as follows.</p>
+<p>Let <span class="math inline">\(B_1, B_2, ...,B_q\)</span> be the block variables and the factorial effect <span class="math inline">\(v_i\)</span> is confounded with <span class="math inline">\(B_i\)</span>,</p>
+<p><span class="math display">\[B_1 = v_1,B_2 = v_2,...,B_q = v_q.\]</span></p>
+<p>The block effects are obtained by multiplying the <span class="math inline">\(B_i\)</span>’s:</p>
+<p><span class="math display">\[B_1B_2 = v_1v_2, B_1B_3 = v_1v_3,...,B_1B_2 \cdots B_q = v_1v_2 \cdots v_q\]</span></p>
+<p>There are <span class="math inline">\(2^{q}-1\)</span> possible products of the <span class="math inline">\(B_i\)</span>’s and the <span class="math inline">\(I\)</span> (whose components are +).</p>
+<p>Example: A <span class="math inline">\(2^5\)</span> design can be arranged in 8 blocks of size <span class="math inline">\(2^{5-3}=4\)</span>.</p>
+<p>Consider two blocking schemes.</p>
+<ol style="list-style-type: decimal">
+<li>Define the blocks as</li>
+</ol>
+<p><span class="math display">\[B_1 = 135, B_2 = 235, B_3 = 1234.\]</span> The remaining blocks are confounded with the following interactions:</p>
+<p><span class="math display">\[B_1B_2 = 12, B_1B_3 = 245,B_2B_3 = 145,B_1B_2B_3 = 34\]</span></p>
+<p>In this blocking scheme the seven block effects are confounded with the seven interactions</p>
+<p><span class="math display">\[12,34,135,145,235,245,1234.\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Define the blocks as:</li>
+</ol>
+<p><span class="math display">\[B_1 = 12, B_2 = 13, B_3 = 45.\]</span></p>
+<p>This blocking scheme confounds the following interactions.</p>
+<p><span class="math display">\[12, 13, 23,45, 1245,1345,2345.\]</span></p>
+<p>Which is a better blocking scheme?</p>
+<p>The second scheme confounds four two-factor interactions, while the first confounds only two two-factor interactions. Since two-factor interactions are more likely to be important than three- or four-factor interactions, the first scheme is superior.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-bhh2005">
+<p>Box, George EP, J Stuart Hunter, and William Gordon Hunter. 2005. <em>Statistics for Experimenters: Design, Innovation, and Discovery</em>. Vol. 2. Wiley-Interscience New York.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="factorial-designs-at-two-levels-2k-designs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fractional-factorial-designs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
