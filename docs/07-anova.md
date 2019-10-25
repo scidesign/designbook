@@ -744,6 +744,182 @@ F-statistic: 13.57 on 3 and 20 DF,  p-value: 4.658e-05
 
 The estimate of the intercept $\hat \tau_0$ is the grand average, and the slope estimates $\hat{\tau_1}, \hat{\tau_2}, \hat{\tau_3}$ are the differences between the treatment averages and grand average for diets A, B, C, D.
 
+## Questions-1
+
+1. Let $\mu_{A}, \mu_{B},\mu_{C},\mu_{D}$ be the mean coagulation times of diets A, B, C, and D respectively. 
+
+(i)  Formulate a null and alternative hypotheses to compare the mean coagulation times between the four diets.
+
+(ii)  What is the test statistic and P-value of the test in part (a)?
+
+(iii)  Is there a significant difference (at the 1% significance level) between at least two of the diets?
+
+(iv)  What are the statistical assumptions behind:
+
+* The ANOVA table calculations.
+* The P-value in the ANOVA table.
+
+
+
+2. A clinical trial was conducted where patients were randomized to four different treatments.  The data is available in the file [`q2data.csv`](q2data.csv).  The outcome is a continuous response $y_{ij}$ the response for the $ith$ subject in the $jth$ treatment group.  There are three new treatments in this study and one control treatment.  The control treatment is the third treatment ($j=3$).  The main objective of the study is to compare the three new treatments to the control treatment. 
+
+NB: The file can be read into R and put into a data.frame using the command 
+
+
+```r
+q2data <- read.csv("q2data.csv").
+```
+
+
+In this question use the 5% significance level.
+
+(a)  What are the averages and standard deviations of each treatment?  Plot the distributions of the four treatment groups.  Do the distributions look similar or different? (Hand in your R code and output)
+
+
+
+
+(b)  Use linear regression to calculate the ANOVA table.  What do you conclude from the ANOVA table? (NB: when using linear regresssion to calculate the effects the treatment variable should be specified as a factor `as.factor(trt)`.) (Hand in your R code and output)
+
+
+
+
+
+
+(c)  Use the model you obtained in part (b) to obtain the appropriate parameter estimates using the treatment contrast (dummy coding) to answer the main objective.  In R this can be done using the `contr.treatment()` function.  Define the underlying statistical model in terms of dummy variables.  Explictly state the dummy variables.  Interpret the parameter estimates.  Verify the paratemer estimates using the table of means that you obtained in part (a). 
+
+
+
+(d)  Obtain the parameter estimates using the Helmert contrast.  In R this can be done using the `contr.helmert(4)` function. Explictly state the dummy variables. Define the underlying statistical model in terms of dummy variables.  Interpret the parameter estimates.  Verify the parameter estimates using the table of means that you obtained in part (a). (Hand in your R code and output)
+
+
+
+
+(e)  Which coding scheme do you think makes more sense for evaluating if there is a significant difference between any of the new treatments and placebo.
+
+
+3. A study at UofT recruited twenty-one students to complete a thirty minute survey on their diet and eating habits at the end of an academic year.  Students were paid $10 to complete the survey and answer a few questions.  The data below shows their weight gain from September to April classified by the frequency that students ate fast food.  In group A students reported eating fast food once per month; the students in group B reported eating fast food twice per month; and the students in group C reported eating fast food four times per month.
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> A </th>
+   <th style="text-align:right;"> B </th>
+   <th style="text-align:right;"> C </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;width: 10em; ">  </td>
+   <td style="text-align:right;"> 1.02 </td>
+   <td style="text-align:right;"> 1.44 </td>
+   <td style="text-align:right;"> 0.73 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 10em; ">  </td>
+   <td style="text-align:right;"> -0.32 </td>
+   <td style="text-align:right;"> 0.40 </td>
+   <td style="text-align:right;"> 1.11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 10em; ">  </td>
+   <td style="text-align:right;"> 0.27 </td>
+   <td style="text-align:right;"> -0.30 </td>
+   <td style="text-align:right;"> 3.63 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 10em; ">  </td>
+   <td style="text-align:right;"> 0.08 </td>
+   <td style="text-align:right;"> 2.27 </td>
+   <td style="text-align:right;"> -0.88 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 10em; ">  </td>
+   <td style="text-align:right;"> 0.51 </td>
+   <td style="text-align:right;"> -0.17 </td>
+   <td style="text-align:right;"> 1.21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 10em; ">  </td>
+   <td style="text-align:right;"> 0.34 </td>
+   <td style="text-align:right;"> 1.07 </td>
+   <td style="text-align:right;"> 1.22 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 10em; ">  </td>
+   <td style="text-align:right;"> 1.30 </td>
+   <td style="text-align:right;"> 1.18 </td>
+   <td style="text-align:right;"> 2.40 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 10em; "> ave </td>
+   <td style="text-align:right;"> 0.46 </td>
+   <td style="text-align:right;"> 0.84 </td>
+   <td style="text-align:right;"> 1.35 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 10em; "> sd </td>
+   <td style="text-align:right;"> 0.55 </td>
+   <td style="text-align:right;"> 0.92 </td>
+   <td style="text-align:right;"> 1.40 </td>
+  </tr>
+</tbody>
+</table>
+
+
+The researchers analyzed the data using R.
+
+
+```r
+surveydat <- read.csv("surveydat.csv")
+aovsurvey <- aov(wtchange~grp,data=surveydat)
+summary(aovsurvey)
+```
+
+```
+##             Df Sum Sq Mean Sq F value Pr(>F)
+## grp          2   2.78   1.390   1.341  0.287
+## Residuals   18  18.66   1.037
+```
+
+```r
+mod1 <- lm(wtchange~grp,data=surveydat)
+summary(mod1)$coefficients
+```
+
+```
+##              Estimate Std. Error   t value  Pr(>|t|)
+## (Intercept) 0.4571429  0.3848706 1.1877832 0.2503565
+## grpB        0.3842857  0.5442893 0.7060322 0.4892064
+## grpC        0.8885714  0.5442893 1.6325353 0.1199371
+```
+
+\newpage
+
+
+```r
+par(mfrow = c(2, 2)) # arrange plots in two columns
+boxplot(wtchange~grp,data = surveydat,ylab="Weight Change (Kg)", xlab="Fast Food Frequency")
+qqnorm(aovsurvey$residuals);qqline(aovsurvey$residuals)
+plot(aovsurvey$fitted.values, aovsurvey$residuals,ylab="Residuals", xlab="Fitted",
+     main="Weight Change Study"); abline(h=0)
+```
+
+<img src="07-anova_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+
+
+(a) Is this study and experiment or observational study?  What are the treatments?  
+
+(b)  Would it have been feasible for the researcher to randomized students to the treatments?  What randomization scheme (assigning the subjects to the treatments) could the researcher use to accomplish the randomization?    
+
+(c) What are the null and alternative hypotheses that the researchers are testing in the ANOVA table?  Is there evidence to reject the null hypothesis?  Explain.
+
+(d) Are the statistical assumptions used to calculate the P-value in the ANOVA table satisfied?  Explain.
+
+(e) Interpret the least squares estimates in `mod1`.  Are you surprised that the P-values for the parameters are not small?  Briefly explain.
+
+(f) The researcher is convinced that the results of the study would have provided strong evidence that eating fast food four times per month causes students to gain weight, if the sample size in each group was larger. Is this a valid statement? Explain.
+
 
 ## Multiple Comparisons
 
@@ -1071,7 +1247,7 @@ A plot of the 95% confidence intervals can be obtained by using the `plot()` fun
 plot(TukeyHSD(aov(y~diets,data = tab0401)))
 ```
 
-<img src="07-anova_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+<img src="07-anova_files/figure-html/unnamed-chunk-42-1.png" width="672" />
 
 
 ## Sample size for ANOVA - Designing a study to compare more than two treatments 
@@ -1223,7 +1399,7 @@ x <- seq(.05,5,by = 0.01)
 plot(x,pwr.anova.test(k = 4,n = 3,f = x)$power,type = "l",xlab = "Effect Size",ylab = "Power",main = "Power vs. Effect Size for k = 4, n = 3")
 ```
 
-<img src="07-anova_files/figure-html/unnamed-chunk-39-1.png" width="672" />
+<img src="07-anova_files/figure-html/unnamed-chunk-47-1.png" width="672" />
 
 The plot shows that power is an increasing function of effect size.  The power is 1 for effect sizes at least 1.9. 
 
@@ -1270,7 +1446,7 @@ sum(res<=0.05)/NSIM # calculate p-value
 ```
 
 ```
-[1] 0.6188
+[1] 0.6291
 ```
 
 
@@ -1358,25 +1534,12 @@ sum(res<=0.05)/NSIM # calculate p-value
 ```
 
 ```
-[1] 0.047
+[1] 0.0431
 ```
 
-## Questions
+## Questions-2
 
-1. Let $\mu_{A}, \mu_{B},\mu_{C},\mu_{D}$ be the mean coagulation times of diets A, B, C, and D respectively. 
-
-(i)  Formulate a null and alternative hypotheses to compare the mean coagulation times between the four diets.
-
-(ii)  What is the test statistic and P-value of the test in part (a)?
-
-(iii)  Is there a significant difference (at the 1% significance level) between at least two of the diets?
-
-(iv)  What are the statistical assumptions behind:
-
-* The ANOVA table calculations.
-* The P-value in the ANOVA table.
-
-2. A psychologist is designing an experiment to investigate the effects of four different learning methods on short term memory. Subjects will be shown a series of 20 words after undergoing some training in the learning method that they were assigned.  The outcome of the experiment is the total number of words that a subject is able to recall after being trained in one of the learning methods.  An equal number of subjects will be randomly assiged to each learning method. 
+1. A psychologist is designing an experiment to investigate the effects of four different learning methods on short term memory. Subjects will be shown a series of 20 words after undergoing some training in the learning method that they were assigned.  The outcome of the experiment is the total number of words that a subject is able to recall after being trained in one of the learning methods.  An equal number of subjects will be randomly assiged to each learning method. 
 
 Based on previous research the psychologist estimates that the mean and standard deviation for each method are:
 
@@ -1411,43 +1574,8 @@ For example, for the first effect size assume that the within group variance is 
 (c) What does part (b) tell you about the assumption of a common within group variance in calculating power for an ANOVA experiment? Explain.
 
 
-3. A clinical trial was conducted where patients were randomized to four different treatments.  The data is available in the file [`q2data.csv`](q2data.csv).  The outcome is a continuous response $y_{ij}$ the response for the $ith$ subject in the $jth$ treatment group.  There are three new treatments in this study and one control treatment.  The control treatment is the third treatment ($j=3$).  The main objective of the study is to compare the three new treatments to the control treatment. 
-
-NB: The file can be read into R and put into a data.frame using the command 
-
-
-```r
-q2data <- read.csv("q2data.csv").
-```
-
-
-In this question use the 5% significance level.
-
-(a)  What are the averages and standard deviations of each treatment?  Plot the distributions of the four treatment groups.  Do the distributions look similar or different? (Hand in your R code and output)
-
-
-
-
-(b)  Use linear regression to calculate the ANOVA table.  What do you conclude from the ANOVA table? (NB: when using linear regresssion to calculate the effects the treatment variable should be specified as a factor `as.factor(trt)`.) (Hand in your R code and output)
-
-
-
-
-
-
-(c)  Use the model you obtained in part (b) to obtain the appropriate parameter estimates using the treatment contrast (dummy coding) to answer the main objective.  In R this can be done using the `contr.treatment()` function.  Define the underlying statistical model in terms of dummy variables.  Explictly state the dummy variables.  Interpret the parameter estimates.  Verify the paratemer estimates using the table of means that you obtained in part (a). 
-
-
-
-(d)  Obtain the parameter estimates using the Helmert contrast.  In R this can be done using the `contr.helmert(4)` function. Explictly state the dummy variables. Define the underlying statistical model in terms of dummy variables.  Interpret the parameter estimates.  Verify the parameter estimates using the table of means that you obtained in part (a). (Hand in your R code and output)
-
-
-
-
-(e)  Which coding scheme do you think makes more sense for evaluating if there is a significant difference between any of the new treatments and placebo.
-
-
-(f)  Which pairs of treatments have a statistically significant difference? Do your results change if you adjust for multiple comparisons using either the Bonferroni or Tukey method? Compare all pairs of treatment means using no adjustement, Bonferroni, and Tukey.  If the unadjusted, Bonferroni, and Tukey lead to different conclusions then explain why these methods give different results. Does it make sense to consider all pairs of treatment means given the main objective of this study?  (Hand in your R code and output)
+2. [Question 2 continued from Questions-1 continued][Questions-1]
+Which pairs of treatments have a statistically significant difference? Do your results change if you adjust for multiple comparisons using either the Bonferroni or Tukey method? Compare all pairs of treatment means using no adjustement, Bonferroni, and Tukey.  If the unadjusted, Bonferroni, and Tukey lead to different conclusions then explain why these methods give different results. Does it make sense to consider all pairs of treatment means given the main objective of this study?  
 
 
 
@@ -1458,7 +1586,7 @@ In this question use the 5% significance level.
 
 
 
-## Answers to Questions
+## Answers to Questions-1
 
 
 1. Let $\mu_{1}, \mu_{2},\mu_{3},\mu_{4}$ be the mean coagulation times of diets A, B, C, and D respectively. 
@@ -1494,147 +1622,8 @@ $$H_0:\mu_1=\mu_2=\mu_3=\mu_4$$ versus $$H_1:\mu_i \ne \mu_j, i \ne j.$$
 coagualtion times.  Coagulation times of rats are independent since the time for one rat
 does not depend on another rat.  
 
-2.  A psychologist is designing an experiment to investigate the effects of four different learning methods on short term memory. Subjects will be shown a series of 20 words after undergoing some training in the learning method that they were assigned.  The outcome of the experiment is the total number of words that a subject is able to recall after being trained in one of the learning methods.  An equal number of subjects will be randomly assiged to each learning method. 
 
-Based on previous research the psychologist estimates that the mean and standard deviation for each method are:
-
-Learning Method | Mean | Standard deviation
-----------------|------|-------------------
-1               | 15   | 6
-2               | 14.5 | 4
-3               | 12.5 | 3.5
-4               | 15.3 | 3
-
-The psychologist would like to know how many subjects she will require so that her study has 80% power at the 5% significance level. 
-
-(a) Use R to calculate the effect sizes that the psychologist can detect if she uses the different variances of the different learning methods.  The formula for effect size is
-
-$$f = \sqrt{\frac{\sum_{i=1}^k\left(\mu_i-{\bar \mu} \right)^2/k}{\sigma^2}}.$$
-
-${\bar \mu}=\sum_{i=1}^k \mu_i/k$, and $\sigma^2$ is the within group error variance.
-
-For example, for the first effect size assume that the within group variance is 36, for the second effect size assume that the within group variance is 16, and so on.  Now, assuming that she can enrol 15 subjects per group, what is the power to detect each effect size at the 5% level? Use `pwr.anova.test()` to calculate power. (Hand in your R code and output)
-
-The power is calculated below for when $\sigma=6,4,3.5,3$.
-
-
-
-```r
-library(pwr)
-mu1 <- 15; mu2 <- 14.5;mu3 <- 12.5; mu4 <- 15.3
-sigma1 <- 6; sigma2 <- 4; sigma3 <- 3.5;sigma4 <- 3; 
-mug <- sum(mu1,mu2,mu3,mu4)/4
-mui <- c(mu1,mu2,mu3,mu4)
-
-f1 <- sqrt(sum((mui-mug)^2)/4)/sigma1
-pwr.anova.test(k = 4,f = f1,n=15,sig.level = 0.05)
-```
-
-```
-## 
-##      Balanced one-way analysis of variance power calculation 
-## 
-##               k = 4
-##               n = 15
-##               f = 0.181955
-##       sig.level = 0.05
-##           power = 0.1805942
-## 
-## NOTE: n is number in each group
-```
-
-```r
-f2 <- sqrt(sum((mui-mug)^2)/4)/sigma2
-pwr.anova.test(k = 4,f = f2,n=15,sig.level = 0.05)
-```
-
-```
-## 
-##      Balanced one-way analysis of variance power calculation 
-## 
-##               k = 4
-##               n = 15
-##               f = 0.2729326
-##       sig.level = 0.05
-##           power = 0.3727171
-## 
-## NOTE: n is number in each group
-```
-
-```r
-f3 <- sqrt(sum((mui-mug)^2)/4)/sigma3
-pwr.anova.test(k = 4,f = f3,n=15,sig.level = 0.05)
-```
-
-```
-## 
-##      Balanced one-way analysis of variance power calculation 
-## 
-##               k = 4
-##               n = 15
-##               f = 0.3119229
-##       sig.level = 0.05
-##           power = 0.475779
-## 
-## NOTE: n is number in each group
-```
-
-```r
-f4 <- sqrt(sum((mui-mug)^2)/4)/sigma4
-pwr.anova.test(k = 4,f = f4,n=15,sig.level = 0.05)
-```
-
-```
-## 
-##      Balanced one-way analysis of variance power calculation 
-## 
-##               k = 4
-##               n = 15
-##               f = 0.3639101
-##       sig.level = 0.05
-##           power = 0.6170057
-## 
-## NOTE: n is number in each group
-```
-
-
-
-(b)  Use simulation to calculate the power of the study using 15 subjects per group assuming that the standard deviations for the four methods are not equal, but are as shown in the table above, and that the distribution of observations in each group is normal. A random sample of size $n$ from a $N(\mu,\sigma^2)$ can be generated in R using the function `rnorm(n,mu,sigma)`. (Hand in your R output and R code)
-
-The power is approximately 33% (results will vary).
-
-
-```r
-NSIM <- 10000
-res <- numeric(NSIM)
-
-mu1 <- 15; mu2 <- 14.5;mu3 <- 12.5; mu4 <- 15.3
-sigma1 <- 6; sigma2 <- 4; sigma3 <- 3.5;sigma4 <- 3; 
-n <- 15 
-
-for (i in 1:NSIM){
-
-y1 <- rnorm(n,mu1,sigma1)
-y2 <- rnorm(n,mu2,sigma2)
-y3 <- rnorm(n,mu3,sigma3)
-y4 <- rnorm(n,mu4,sigma4)
-
-y <- c(y1,y2,y3,y4)
-trt <- as.factor(c(rep(1,n),rep(2,n),rep(3,n),rep(4,n)))
-m <- lm(y~trt)
-res[i] <- anova(m)[1,5] # p-value of F test
-}
-
-sum(res<=0.05)/NSIM
-```
-
-
-
-(c) What does part (b) tell you about the assumption of a common within group variance in calculating power for an ANOVA experiment? Explain.
-
-The power in part (b) depends on the within group $\sigma$.  Smaller values correspond to larger power.  But none of the power values are close to the power when the groups have different within group variances.  So, if the within group variances are not approximately equal then the power will not be accurate.  
-
-3. A clinical trial was conducted where patients were randomized to four different treatments.  The data is available in the file `q2data.csv`.  The outcome is a continuous response $y_{ij}$ the response for the $ith$ subject in the $jth$ treatment group.  There are three new treatments in this study and one control treatment.  The control treatment is the third treatment ($j=3$).  The main objective of the study is to compare the three new treatments to the control treatment. 
+2. A clinical trial was conducted where patients were randomized to four different treatments.  The data is available in the file `q2data.csv`.  The outcome is a continuous response $y_{ij}$ the response for the $ith$ subject in the $jth$ treatment group.  There are three new treatments in this study and one control treatment.  The control treatment is the third treatment ($j=3$).  The main objective of the study is to compare the three new treatments to the control treatment. 
 
 NB: The file can be read into R and put into a data.frame using the command 
 
@@ -1673,7 +1662,7 @@ sapply(split(q2data$y,q2data$trt),sd) # treatment SDs
 boxplot(y~trt,data=q2data) # plot of distributions - other plots could also be used
 ```
 
-<img src="07-anova_files/figure-html/unnamed-chunk-56-1.png" width="672" />
+<img src="07-anova_files/figure-html/unnamed-chunk-57-1.png" width="672" />
 
 (b)  Use linear regression to calculate the ANOVA table.  What do you conclude from the ANOVA table? (NB: when using linear regresssion to calculate the effects the treatment variable should be specified as a factor `as.factor(trt)`.) (Hand in your R code and output)
 
@@ -1779,7 +1768,7 @@ summary(lm(y~trt,  data = q2data))
 ## F-statistic: 2.743 on 3 and 391 DF,  p-value: 0.04294
 ```
 
-(d)  Obtain the parameter estimates using the Helmert contrast.  In R this can be done using the `contr.helmert(4)` function. Explictly state the dummy variables. Define the underlying statistical model in terms of dummy variables.  Interpret the parameter estimates.  Verify the parameter estimates using the table of means that you obtained in part (a). (Hand in your R code and output)
+(d)  Obtain the parameter estimates using the Helmert contrast.  In R this can be done using the `contr.helmert(4)` function. Explictly state the dummy variables. Define the underlying statistical model in terms of dummy variables.  Interpret the parameter estimates.  Verify the parameter estimates using the table of means that you obtained in part (a). 
 
 The Helmert contrast is:
 
@@ -1926,6 +1915,249 @@ sum(xbar)/4 # intercept mu
 
 The coding scheme in part (b) is more appropriate since the Helmert coding scheme does not compare any of the new treatments to the placebo. 
 
+
+3. (a) Is this study and experiment or observational study?  What are the treatments?  
+
+This is an observational study.  The treatment has three levels: eating fast food once per month; eating fast food twice per month; and eating fast food four times per month.   Treatment assignment is non-ignorable since students choice to eat fast food may (the treatment group) be related to weight gain (the dependent variable).  In other words, the number of times students eat fast in a month may depend on weight gain (given the students' covariates).   
+
+(b)  Would it have been feasible for the researcher to randomized students to the treatments?  What randomization scheme (assigning the subjects to the treatments) could the researcher use to accomplish the randomization?    
+
+A randomized study is not feasible since the treatment is the frequency of eating fast food.  Nevertheless, a hypothetical randomization scheme could be constructed by labeling all the students using the numbers 1 to 21 then obtaining a random permutation of these numbers. Assign the first 7 students to diet A, the next 7 to diet B, etc.
+
+
+(c)  What are the null and alternative hypotheses that the researchers are testing in the ANOVA table?  Is there evidence to reject the null hypothesis?  Explain.
+
+The researcher is testing if the mean weight loss for diets A, B, C: $\mu_A; \mu_B; \mu_C$, are different.  This corresponds to null and alternative hypotheses:
+
+$$H_0:\mu_1=\mu_2=\mu_3 \text{ vs. } H_1: \mu_i \ne \mu_j, i \ne j.$$ 
+
+The p-value of this test is 0.287, so there is no evidence that the mean weight loss is different.
+
+(d) Are the statistical assumptions used to calculate the P-value in the ANOVA table satisfied?  Explain.
+
+The three assumptions are outlined below.
+
+1. Additive model.
+
+$$y_{ij}=\mu+\tau_i+\epsilon_{ij}.$$
+
+This seems plausible since weight can be viewed as the sum of a common population mean $\mu$ plus the $i^{th}$ treatment effect - $\tau_i$ which represents deviations from $\mu$ for the $i^{th}$ diet, and a random error term that incorporates other sources of variability such as weight measurement due to the scale, variability arising from other uncontrolled factors, and differences between people eating different fast food diets.
+
+
+2. The errors $\epsilon_{ij}$ are independent and identically distributed (iid) with common variance $Var(\epsilon_{ij})=\sigma^2$, for all $i,j$ 
+
+- The common variance assumption can be investigated by plotting the residuals versus the fitted values of the ANOVA model.  
+- A plot of the residuals versus fitted values can be used to investigate the assumption that the residuals are randomly distributed and have constant variance. 
+- In this case the points don't fall randomly on both sides of 0.  The residuals are increasing as the fitted values increase. This is an indication that the common variance assumption is not satisfied.  This can also be seen from the standard deviations in each treatment group: the largest (1.4) is approximately three times as large as the smallest (0.55).
+- We are not given any information to confirm that that observations are independent.  For example, if some of the students in the sample roommates then their weight gains and fast food consumption may not be independent. 
+
+
+3. $\epsilon_{ij} \sim N(0,\sigma^2)$. 
+
+- The normal quantile plots indicates that this assumption is satisfied since the points fall along the straight line.
+
+
+It is not the case that all the assumptions are satisfied since the non-constant variance asssumption may not be true.  In addition, it's difficult to confirm if the data are independent.  Therefore, it might be the case that the p-value is not accurate (e.g., the p-value might actually be smaller.)
+
+(e) Interpret the least squares estimates in `mod1`.  Are you surprised that the P-values for the parameters are not small?  Briefly explain.
+
+
+```r
+mod1 <- lm(wtchange~grp,data=surveydat)
+summary(mod1)$coefficients
+```
+
+```
+##              Estimate Std. Error   t value  Pr(>|t|)
+## (Intercept) 0.4571429  0.3848706 1.1877832 0.2503565
+## grpB        0.3842857  0.5442893 0.7060322 0.4892064
+## grpC        0.8885714  0.5442893 1.6325353 0.1199371
+```
+
+Treatment coding is the default coding used for categorical variables.  This means that the linear regression model can be written as:
+
+$$y_{ij} = \beta_0 + \beta_1x_{1j}+\beta_2x_{2j}+\epsilon_{ij},$$
+where $y_{ij}$ is the $j^{th}$ observation under the $i^{th}$ diet, $\epsilon_{ij}$ is a random error term, and 
+
+$$x_{1j} =
+\left\{
+	\begin{array}{ll}
+		1  & \mbox{if jth unit recieves diet B } \\
+		0 & \mbox{otherwise}
+	\end{array}
+\right.$$
+
+$$x_{2j} =
+\left\{
+	\begin{array}{ll}
+		1  & \mbox{if jth unit recieves diet C } \\
+		0 & \mbox{otherwise}
+	\end{array}
+\right.$$
+
+In this case $\hat \beta_0$ = 0.46 is the mean weight-gain for diet A,
+$\hat \beta_1$ = 0.38 is the difference between mean weight gains for diets B and A, and $\hat \beta_1$ = 0.89 is the difference between mean weight gains for diets C and A.
+
+The P-value from the ANOVA table is large which implies that none of the differences will correspond to small P-values.
+
+(f) The researcher is convinced that the results of the study would have provided strong evidence that eating fast food four times per month causes students to gain weight, if the sample size in each group was larger. Is this a valid statement? Explain.
+
+This is not a valid statement.  Consider the following points:  
+
+- There is no comparison group where students did not eat fast food so it's not possible to calculate the causal effect of fast food versus no fast food on weight gain.  It is possible to calculate the non-causal effect of eating less fast food versus more fast food. 
+
+- Subjects assigned the "treatment" to themselves so we don't know if there are differences in the types of students (e.g., age, sex, history of being overweight) that selected themselves to be in the groups.   
+
+- If the sample size in each group was larger then the power would increase.  Although, even if the study was designed to have high power and the analysis yielded a small p-value then this still wouldn't fix the way treatment was assigned.  So, we wouldn't know if the differences are due to the treatment or due to differences between the types of students in the groups. 
+
+
+
+
+## Answers to Questions-2
+
+1.  A psychologist is designing an experiment to investigate the effects of four different learning methods on short term memory. Subjects will be shown a series of 20 words after undergoing some training in the learning method that they were assigned.  The outcome of the experiment is the total number of words that a subject is able to recall after being trained in one of the learning methods.  An equal number of subjects will be randomly assiged to each learning method. 
+
+Based on previous research the psychologist estimates that the mean and standard deviation for each method are:
+
+Learning Method | Mean | Standard deviation
+----------------|------|-------------------
+1               | 15   | 6
+2               | 14.5 | 4
+3               | 12.5 | 3.5
+4               | 15.3 | 3
+
+The psychologist would like to know how many subjects she will require so that her study has 80% power at the 5% significance level. 
+
+(a) Use R to calculate the effect sizes that the psychologist can detect if she uses the different variances of the different learning methods.  The formula for effect size is
+
+$$f = \sqrt{\frac{\sum_{i=1}^k\left(\mu_i-{\bar \mu} \right)^2/k}{\sigma^2}}.$$
+
+${\bar \mu}=\sum_{i=1}^k \mu_i/k$, and $\sigma^2$ is the within group error variance.
+
+For example, for the first effect size assume that the within group variance is 36, for the second effect size assume that the within group variance is 16, and so on.  Now, assuming that she can enrol 15 subjects per group, what is the power to detect each effect size at the 5% level? Use `pwr.anova.test()` to calculate power. 
+
+The power is calculated below for when $\sigma=6,4,3.5,3$.
+
+
+
+```r
+library(pwr)
+mu1 <- 15; mu2 <- 14.5;mu3 <- 12.5; mu4 <- 15.3
+sigma1 <- 6; sigma2 <- 4; sigma3 <- 3.5;sigma4 <- 3; 
+mug <- sum(mu1,mu2,mu3,mu4)/4
+mui <- c(mu1,mu2,mu3,mu4)
+
+f1 <- sqrt(sum((mui-mug)^2)/4)/sigma1
+pwr.anova.test(k = 4,f = f1,n=15,sig.level = 0.05)
+```
+
+```
+## 
+##      Balanced one-way analysis of variance power calculation 
+## 
+##               k = 4
+##               n = 15
+##               f = 0.181955
+##       sig.level = 0.05
+##           power = 0.1805942
+## 
+## NOTE: n is number in each group
+```
+
+```r
+f2 <- sqrt(sum((mui-mug)^2)/4)/sigma2
+pwr.anova.test(k = 4,f = f2,n=15,sig.level = 0.05)
+```
+
+```
+## 
+##      Balanced one-way analysis of variance power calculation 
+## 
+##               k = 4
+##               n = 15
+##               f = 0.2729326
+##       sig.level = 0.05
+##           power = 0.3727171
+## 
+## NOTE: n is number in each group
+```
+
+```r
+f3 <- sqrt(sum((mui-mug)^2)/4)/sigma3
+pwr.anova.test(k = 4,f = f3,n=15,sig.level = 0.05)
+```
+
+```
+## 
+##      Balanced one-way analysis of variance power calculation 
+## 
+##               k = 4
+##               n = 15
+##               f = 0.3119229
+##       sig.level = 0.05
+##           power = 0.475779
+## 
+## NOTE: n is number in each group
+```
+
+```r
+f4 <- sqrt(sum((mui-mug)^2)/4)/sigma4
+pwr.anova.test(k = 4,f = f4,n=15,sig.level = 0.05)
+```
+
+```
+## 
+##      Balanced one-way analysis of variance power calculation 
+## 
+##               k = 4
+##               n = 15
+##               f = 0.3639101
+##       sig.level = 0.05
+##           power = 0.6170057
+## 
+## NOTE: n is number in each group
+```
+
+
+
+(b)  Use simulation to calculate the power of the study using 15 subjects per group assuming that the standard deviations for the four methods are not equal, but are as shown in the table above, and that the distribution of observations in each group is normal. A random sample of size $n$ from a $N(\mu,\sigma^2)$ can be generated in R using the function `rnorm(n,mu,sigma)`. 
+
+The power is approximately 33% (results will vary).
+
+
+```r
+NSIM <- 10000
+res <- numeric(NSIM)
+
+mu1 <- 15; mu2 <- 14.5;mu3 <- 12.5; mu4 <- 15.3
+sigma1 <- 6; sigma2 <- 4; sigma3 <- 3.5;sigma4 <- 3; 
+n <- 15 
+
+for (i in 1:NSIM){
+
+y1 <- rnorm(n,mu1,sigma1)
+y2 <- rnorm(n,mu2,sigma2)
+y3 <- rnorm(n,mu3,sigma3)
+y4 <- rnorm(n,mu4,sigma4)
+
+y <- c(y1,y2,y3,y4)
+trt <- as.factor(c(rep(1,n),rep(2,n),rep(3,n),rep(4,n)))
+m <- lm(y~trt)
+res[i] <- anova(m)[1,5] # p-value of F test
+}
+
+sum(res<=0.05)/NSIM
+```
+
+
+
+(c) What does part (b) tell you about the assumption of a common within group variance in calculating power for an ANOVA experiment? Explain.
+
+The power in part (b) depends on the within group $\sigma$.  Smaller values correspond to larger power.  But none of the power values are close to the power when the groups have different within group variances.  So, if the within group variances are not approximately equal then the power will not be accurate.  
+
+
+2. [Question 2 continued from Questions-1 continued][Questions-1].
+
 (f)  Which pairs of treatments have a statistically significant difference? Do your results change if you adjust for multiple comparisons using either the Bonferroni or Tukey method? Compare all pairs of treatment means using no adjustement, Bonferroni, and Tukey.  If the unadjusted, Bonferroni, and Tukey lead to different conclusions then explain why these methods give different results. Does it make sense to consider all pairs of treatment means given the main objective of this study?  (Hand in your R code and output)
 
 It doesn't really make sense to consider all possible treatment pairs since the primary question is to compare placebo to all the new treatments.  Nevertheless, both Bonferroni and Tukey make these comparisons plus other comparisons.
@@ -1989,9 +2221,6 @@ pairwise.t.test(q2data$y,as.factor(q2data$trt),p.adjust.method = "none")
 ## 
 ## P value adjustment method: none
 ```
-
-
-
 
 
 

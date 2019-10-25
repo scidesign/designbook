@@ -772,16 +772,6 @@ Cycle block |A |B |C | D
 2. The following data are the weights (in kg) of six people measured on two different scales.  The investigator was interested to see if the two scales are different.
 
 
-```r
-set.seed(260716)
-scale1 <- round(rnorm(n = 6,70,10))
-scale2 <- round(rnorm(n = 6,71,11))
-x <- matrix(c(scale1,scale2),nrow = 2,ncol = 6)
-colnames(x) <- c("1","2","3","4","5","6")
-row.names(x) <- c("Scale I","Scale II")
-knitr::kable(x)
-```
-
              1    2    3    4    5    6
 ---------  ---  ---  ---  ---  ---  ---
 Scale I     46   64   80   71   99   70
