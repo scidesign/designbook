@@ -571,7 +571,7 @@ max  eCDF diff........ 0.07
 
 var ratio (Tr/Co)..... 1.0606 
 T-test p-value........ 0.022421 
-KS Bootstrap p-value.. 0.2 
+KS Bootstrap p-value.. 0.1 
 KS Naive p-value...... 0.10646 
 KS Statistic.......... 0.07 
 

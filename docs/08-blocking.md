@@ -333,17 +333,60 @@ There are several other types of designs that utilize the blocking principle suc
 An experiment to test the feasibility of reducing air pollution by modifying a gasoline mixture with very small amounts of certain chemicals A, B, C, and D was conducted. The four treatments were tested with four different drivers and four different cars. There were thus two block factors-cars and drivers. (Box, Hunter, and Hunter 2005) 
 
 
-         
-         Car 1 Car 2  Car 3  Car 4   
--------- ----- -----  -----  -----                       
-Driver I  A    B       D      C
-          19   24     23     26
-Driver II  D    C       A      B
-          23   24     19     30
-Driver III  B    D       C      A
-          15   14     15     16
-Driver IV  C    A       B      D
-          19   18     19      16
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0lax"></th>
+    <th class="tg-0lax"></th>
+    <th class="tg-0lax" colspan="4">Cars</th>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky">1</td>
+    <td class="tg-0pky">2</td>
+    <td class="tg-0pky">3</td>
+    <td class="tg-0pky">4</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax" rowspan="4">Drivers</td>
+    <td class="tg-0pky">I</td>
+    <td class="tg-0pky">A<br>19</td>
+    <td class="tg-0pky">B<br>24</td>
+    <td class="tg-0pky">D<br>23</td>
+    <td class="tg-0pky">C<br>26</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">II</td>
+    <td class="tg-0pky">D<br>23</td>
+    <td class="tg-0pky">C<br>24</td>
+    <td class="tg-0pky">A<br>19</td>
+    <td class="tg-0pky">B<br>30</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">III</td>
+    <td class="tg-0pky">B<br>15</td>
+    <td class="tg-0pky">D<br>14</td>
+    <td class="tg-0pky">C<br>15</td>
+    <td class="tg-0pky">A<br>16</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">IV</td>
+    <td class="tg-0pky">C<br>19</td>
+    <td class="tg-0pky">A<br>18</td>
+    <td class="tg-0pky">B<br>19</td>
+    <td class="tg-0pky">D<br>16</td>
+  </tr>
+</table>
+
 
 - Each treatment appears once in every row (driver) and every column (car).
 - Randomization can be achieved by randomly allocating the treatments to the symbols A, B, C, and D; the drivers to the symbols I, II, III, and IV; and cars to the symbols 1, 2, 3, 4.  
@@ -355,25 +398,115 @@ Suppose that the design used a single car and driver with 16 experimental runs f
           
 The data is available in the R data frame `tab0408`.
             
+<table class="table table-striped" style="width: auto !important; ">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> driver </th>
+   <th style="text-align:right;"> cars </th>
+   <th style="text-align:left;"> additive </th>
+   <th style="text-align:right;"> y </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 23 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 15 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 23 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 15 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 26 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 30 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+</tbody>
+</table>
 
- driver   cars  additive     y
--------  -----  ---------  ---
-      1      1  A           19
-      2      1  D           23
-      3      1  B           15
-      4      1  C           19
-      1      2  B           24
-      2      2  C           24
-      3      2  D           14
-      4      2  A           18
-      1      3  D           23
-      2      3  A           19
-      3      3  C           15
-      4      3  B           19
-      1      4  C           26
-      2      4  B           30
-      3      4  A           16
-      4      4  D           16
 
 The model and analysis are similar to the randomized block design except that there is an additional blocking factor.  
 
@@ -459,14 +592,14 @@ The statistical assumptions can be checked by plotting: (1) a normal quantile pl
 qqnorm(latinsq.auto$residuals,main = "Q-Q Plot for Automobile Emissions");qqline(latinsq.auto$residuals)
 ```
 
-<img src="08-blocking_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="08-blocking_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 ```r
 plot(latinsq.auto$fitted.values,latinsq.auto$residuals,ylab = "Residuals",xlab = "Fitted",main = "Automobile Emissions")
 abline(h = 0)
 ```
 
-<img src="08-blocking_files/figure-html/unnamed-chunk-15-2.png" width="672" />
+<img src="08-blocking_files/figure-html/unnamed-chunk-16-2.png" width="672" />
 
 
 ## General Latin Square Designs
@@ -476,35 +609,175 @@ A Latin square for p factors of a $p \times p$ Latin square, is a square contain
 There are many possible $p \times p$ Latin squares.  If $p = 3$ then two Latin squares are below, 
 
 
-     Col1 Col2 Col3
----- ---- ---- ----
-Row 1  B   A   C
-Row 2  A   C   B
-Row 3  C   B   A
+Example 1:
 
-     Col1 Col2 Col3
----- ---- ---- ----
-Row 1  A   B   C
-Row 2  C   A   B
-Row 3  B   C   A
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-lboi"></th>
+    <th class="tg-0pky">Col 1</th>
+    <th class="tg-0pky">Col 2</th>
+    <th class="tg-0pky">Col 3</th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 1</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">C</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Row 2</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">B</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Row 3</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">A</td>
+  </tr>
+</table>
+
+Example 2:
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-lboi"></th>
+    <th class="tg-0pky">Col 1</th>
+    <th class="tg-0pky">Col 2</th>
+    <th class="tg-0pky">Col 3</th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 1</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">C</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Row 2</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">B</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Row 3</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">A</td>
+  </tr>
+</table>
 
 Note that Col1, Col2, Col3 are three levels of a blocking variable and Row 1, Row 2, Row 3 are three levels of another blocking variable.   
 
 If $p = 4$ then two examples of Latin squares are below,
 
-     Col1 Col2 Col3 Col4
----- ---- ---- ---- ----
-Row 1  B   A    D    C
-Row 2  C   D    A    B
-Row 3  D   B    C    A
-Row 4  A   C    B    D
+Example 1:
 
-     Col1 Col2 Col3 Col4
----- ---- ---- ---- ----
-Row 1  D   A    C    B
-Row 2  A   D    B    C
-Row 3  B   C    A    D
-Row 4  C   B    D    A
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-lboi"></th>
+    <th class="tg-0pky">Col 1</th>
+    <th class="tg-0pky">Col 2</th>
+    <th class="tg-0pky">Col 3</th>
+    <th class="tg-0lax">Col 4</th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 1</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0lax">C</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Row 2</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0lax">B</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Row 3</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0lax">A</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Row 4</td>
+    <td class="tg-0lax">A</td>
+    <td class="tg-0lax">C</td>
+    <td class="tg-0lax">B</td>
+    <td class="tg-0lax">D</td>
+  </tr>
+</table>
+
+Example 2:
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0pky"></th>
+    <th class="tg-0pky">Col 1</th>
+    <th class="tg-0pky">Col 2</th>
+    <th class="tg-0pky">Col 3</th>
+    <th class="tg-0pky">Col 4</th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 1</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">B</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 2</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">C</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 3</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">D</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 4</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0pky">A</td>
+  </tr>
+</table>
 
 
 ## Graeco-Latin Square Designs
@@ -513,7 +786,7 @@ A Graeco-Latin square is a $k \times k$ pattern that permits study of $k$ treatm
 
 Suppose that we wanted to also block out the effects of day in the air pollution study. If the experiment is to be run on four different days, with four drivers, and four cars then a Graeco-Latin square design is  in the table below.
 
-           Car 1        Car 2        Car 3        Car 4   
+                  Car 1       Car 2       Car 3       Car 4   
 ---------- ------------ ----------- ----------- -----------           
 Driver I   A $\alpha$   B $\beta$    C $\gamma$  D $\delta$
 Driver II  B $\delta$   A $\gamma$   D $\beta$   C $\alpha$
@@ -522,22 +795,80 @@ Driver IV  D $\gamma$   C $\delta$   B $\alpha$  A $\beta$
 
 To generate a $3 \times 3$ Graeco-Latin square design, superimpose two designs using the Greek letters for the second $3 \times 3$ Latin square.
 
-     Col1 Col2 Col3
----- ---- ---- ----
-Row 1  B   A   C
-Row 2  A   C   B
-Row 3  C   B   A
 
-     Col1 Col2 Col3
----- ---- ---- ----
-Row 1  A   B   C
-Row 2  C   A   B
-Row 3  B   C   A
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0pky"></th>
+    <th class="tg-0pky">Col 1</th>
+    <th class="tg-0pky">Col 2</th>
+    <th class="tg-0pky">Col 3</th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 1</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">C</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 2</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">B</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 3</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">A</td>
+  </tr>
+</table>
+
+
+ 
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0pky"></th>
+    <th class="tg-0pky">Col 1</th>
+    <th class="tg-0pky">Col 2</th>
+    <th class="tg-0pky">Col 3</th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 1</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">C</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 2</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">B</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 3</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">A</td>
+  </tr>
+</table>   
+
 
 Using Greek letters $\alpha,\beta, \gamma$ in place of A, B, C in the second square we obtain the Graeco-Latin square design:
 
 
-       Col1        Col2        Col3
+              Col1        Col2        Col3
 ------ ----------- ----------- ----------- 
 Row 1  B $\alpha$   A $\beta$  C $\gamma$
 Row 2  A $\gamma$   C $\alpha$  B $\beta$
@@ -550,30 +881,150 @@ Blocking for multiple factors may be extended further using hyper-Graeco-Latin s
 
 Consider three $4 \times 4$ Latin squares
 
-     Col1 Col2 Col3 Col4
----- ---- ---- ---- ----
-Row 1  B   A    D    C
-Row 2  C   D    A    B
-Row 3  D   B    C    A
-Row 4  A   C    B    D
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0pky"></th>
+    <th class="tg-0pky">Col 1</th>
+    <th class="tg-0pky">Col 2</th>
+    <th class="tg-0pky">Col 3</th>
+    <th class="tg-0pky">Col 4</th>
+    <th class="tg-0lax"></th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 1</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0lax">C</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 2</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0lax">B</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 3</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0lax">A</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Row 4</td>
+    <td class="tg-0lax">A</td>
+    <td class="tg-0lax">C</td>
+    <td class="tg-0lax">B</td>
+    <td class="tg-0lax">D</td>
+  </tr>
+</table>  
+  
 
-     Col1 Col2 Col3 Col4
----- ---- ---- ---- ----
-Row 1  D   A    C    B
-Row 2  A   D    B    C
-Row 3  B   C    A    D
-Row 4  C   B    D    A
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0pky"></th>
+    <th class="tg-0pky">Col 1</th>
+    <th class="tg-0pky">Col 2</th>
+    <th class="tg-0pky">Col 3</th>
+    <th class="tg-0pky">Col 4</th>
+    <th class="tg-0lax"></th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 1</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0lax">B</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 2</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0lax">C</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 3</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0lax">D</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Row 4</td>
+    <td class="tg-0lax">C</td>
+    <td class="tg-0lax">B</td>
+    <td class="tg-0lax">D</td>
+    <td class="tg-0lax">A</td>
+  </tr>
+</table>
+  
 
-     Col1 Col2 Col3 Col4
----- ---- ---- ---- ----
-Row 1  A   D    B    C
-Row 2  C   A    D    B
-Row 3  B   C    A    D
-Row 4  D   B    C    A
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0pky"></th>
+    <th class="tg-0pky">Col 1</th>
+    <th class="tg-0pky">Col 2</th>
+    <th class="tg-0pky">Col 3</th>
+    <th class="tg-0pky">Col 4</th>
+    <th class="tg-0lax"></th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 1</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0lax">C</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 2</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0pky">D</td>
+    <td class="tg-0lax">B</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Row 3</td>
+    <td class="tg-0pky">B</td>
+    <td class="tg-0pky">C</td>
+    <td class="tg-0pky">A</td>
+    <td class="tg-0lax">D</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Row 4</td>
+    <td class="tg-0lax">D</td>
+    <td class="tg-0lax">B</td>
+    <td class="tg-0lax">C</td>
+    <td class="tg-0lax">A</td>
+  </tr>
+</table>
+
 
 To form a hyper-Graeco-Latin square we use Greek letters $\alpha,\beta,\gamma, \delta$ for A, B, C, D in the second square and numbers 1,2,3,4 for A, B,C, D in the third square then superimpose all the squares.  Thus, the design is:
 
-      Col1            Col2          Col3           Col4
+               Col1           Col2          Col3           Col4
 ----- -------------  ------------- -------------  ------------- 
 Row 1  B $\delta$ 1  A $\alpha$ 4   D $\gamma$ 2  C $\beta$ 3
 Row 2  C $\alpha$ 3  D $\delta$ 1   A $\beta$ 4   B $\gamma$ 2
@@ -596,7 +1047,7 @@ iv) machine cycle $C_1,C_2,C_3,C_4$.
 
 The design was replicated.  The first replicate is shown in the table below.
 
-       $P_1$           $P_2$          $P_3$        $P_4$
+             $P_1$          $P_2$         $P_3$           $P_4$
 ----- -------------  ------------- -------------  ------------- 
 $C_1$  A $\alpha$ 1  B $\beta$ 2   C $\gamma$ 3   D $\delta$ 4
          320           297            299           313
@@ -609,7 +1060,7 @@ $C_4$  B $\delta$ 3  A $\gamma$ 4  D $\beta$ 1    C $\alpha$ 2
 
 In order to estimate the experimental error a second replicate of the experiment was run.  The results are shown in the table below.
 
-       $P_1$           $P_2$          $P_3$        $P_4$
+              $P_1$         $P_2$         $P_3$           $P_4$
 ----- -------------  ------------- -------------  ------------- 
 $C_5$  A $\alpha$ 1  B $\beta$ 2   C $\gamma$ 3   D $\delta$ 4
          285           280           331            311
@@ -622,41 +1073,309 @@ $C_8$  B $\delta$ 3  A $\gamma$ 4  D $\beta$ 1    C $\alpha$ 2
 
 The R data frame looks like
 
-
- cycle   position  treatment    holder  paper      y   rep
-------  ---------  ----------  -------  ------  ----  ----
-     1          1  A                 1  a        320     1
-     2          1  C                 4  b        266     1
-     3          1  D                 2  e        221     1
-     4          1  B                 3  c        301     1
-     5          1  A                 1  d        285     2
-     6          1  C                 4  h        268     2
-     7          1  D                 2  g        265     2
-     8          1  B                 3  f        306     2
-     1          2  B                 2  b        297     1
-     2          2  D                 3  a        227     1
-     3          2  C                 1  c        240     1
-     4          2  A                 4  e        238     1
-     5          2  B                 2  h        280     2
-     6          2  D                 3  d        233     2
-     7          2  C                 1  f        273     2
-     8          2  A                 4  g        271     2
-     1          3  C                 3  e        299     1
-     2          3  A                 2  c        260     1
-     3          3  B                 4  a        267     1
-     4          3  D                 1  b        243     1
-     5          3  C                 3  g        331     2
-     6          3  A                 2  f        291     2
-     7          3  B                 4  d        234     2
-     8          3  D                 1  h        270     2
-     1          4  D                 4  c        313     1
-     2          4  B                 1  e        240     1
-     3          4  A                 3  b        252     1
-     4          4  C                 2  a        290     1
-     5          4  D                 4  f        311     2
-     6          4  B                 1  g        280     2
-     7          4  A                 3  h        243     2
-     8          4  C                 2  d        272     2
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> cycle </th>
+   <th style="text-align:right;"> position </th>
+   <th style="text-align:left;"> treatment </th>
+   <th style="text-align:right;"> holder </th>
+   <th style="text-align:left;"> paper </th>
+   <th style="text-align:right;"> y </th>
+   <th style="text-align:right;"> rep </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> a </td>
+   <td style="text-align:right;"> 320 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> b </td>
+   <td style="text-align:right;"> 266 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> e </td>
+   <td style="text-align:right;"> 221 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> c </td>
+   <td style="text-align:right;"> 301 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> d </td>
+   <td style="text-align:right;"> 285 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> h </td>
+   <td style="text-align:right;"> 268 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> g </td>
+   <td style="text-align:right;"> 265 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 306 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> b </td>
+   <td style="text-align:right;"> 297 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> a </td>
+   <td style="text-align:right;"> 227 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> c </td>
+   <td style="text-align:right;"> 240 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> e </td>
+   <td style="text-align:right;"> 238 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> h </td>
+   <td style="text-align:right;"> 280 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> d </td>
+   <td style="text-align:right;"> 233 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 273 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> g </td>
+   <td style="text-align:right;"> 271 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> e </td>
+   <td style="text-align:right;"> 299 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> c </td>
+   <td style="text-align:right;"> 260 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> a </td>
+   <td style="text-align:right;"> 267 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> b </td>
+   <td style="text-align:right;"> 243 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> g </td>
+   <td style="text-align:right;"> 331 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 291 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> d </td>
+   <td style="text-align:right;"> 234 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> h </td>
+   <td style="text-align:right;"> 270 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> c </td>
+   <td style="text-align:right;"> 313 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> e </td>
+   <td style="text-align:right;"> 240 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> b </td>
+   <td style="text-align:right;"> 252 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> a </td>
+   <td style="text-align:right;"> 290 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> f </td>
+   <td style="text-align:right;"> 311 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> g </td>
+   <td style="text-align:right;"> 280 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> h </td>
+   <td style="text-align:right;"> 243 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> d </td>
+   <td style="text-align:right;"> 272 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+</tbody>
+</table>
 
 
 The average weight loss for treatments, holders, positions, emery papers, cycles, and replicates are:
@@ -749,16 +1468,16 @@ A balanced incomplete block design of $t = 4$ treatments in $b = 4$ blocks of si
 
 A balanced incomplete block design of four samples on each 1000 revolution cycle could be:
 
-Cycle block |  |  |
-------------|--|--|--
-1           |A |B |C
-2           |A |B |D
-3           |A |C |D
-4           |B |C |D
+ Cycle block |  |  |
+ -----------|--|--|--
+           1|A |B |C
+           2|A |B |D
+           3|A |C |D
+           4|B |C |D
 
 This is the same table but show which treatments are missing from the blocks.
 
-Cycle block |A |B |C | D
+ Cycle block |A |B |C | D
 ------------|--|--|--|--
 1           |x |x |x | 
 2           |x |x |  |x
@@ -771,11 +1490,39 @@ Cycle block |A |B |C | D
 
 2. The following data are the weights (in kg) of six people measured on two different scales.  The investigator was interested to see if the two scales are different.
 
-
-             1    2    3    4    5    6
----------  ---  ---  ---  ---  ---  ---
-Scale I     46   64   80   71   99   70
-Scale II    78   66   70   64   46   70
+<table class="table table-striped" style="width: auto !important; ">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> 1 </th>
+   <th style="text-align:right;"> 2 </th>
+   <th style="text-align:right;"> 3 </th>
+   <th style="text-align:right;"> 4 </th>
+   <th style="text-align:right;"> 5 </th>
+   <th style="text-align:right;"> 6 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Scale I </td>
+   <td style="text-align:right;"> 46 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 80 </td>
+   <td style="text-align:right;"> 71 </td>
+   <td style="text-align:right;"> 99 </td>
+   <td style="text-align:right;"> 70 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Scale II </td>
+   <td style="text-align:right;"> 78 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 70 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 46 </td>
+   <td style="text-align:right;"> 70 </td>
+  </tr>
+</tbody>
+</table>
 
 (a)  What is the name of this design? Explain.
 (b)  What is blocking factor used in this design?

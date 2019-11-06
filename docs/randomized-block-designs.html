@@ -24,7 +24,7 @@
 <meta name="author" content="Nathan Taback" />
 
 
-<meta name="date" content="2019-10-25" />
+<meta name="date" content="2019-11-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -663,74 +663,112 @@ Residuals            16    490  30.625               </code></pre>
 <h2><span class="header-section-number">9.5</span> Latin square designs</h2>
 <p>There are several other types of designs that utilize the blocking principle such as The Latin Square design. If there is more than one nuisance source that can be eliminated then a Latin Square design might be appropriate.</p>
 <p>An experiment to test the feasibility of reducing air pollution by modifying a gasoline mixture with very small amounts of certain chemicals A, B, C, and D was conducted. The four treatments were tested with four different drivers and four different cars. There were thus two block factors-cars and drivers. (Box, Hunter, and Hunter 2005)</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Car</th>
-<th align="right">1 Car</th>
-<th align="right">2 Car</th>
-<th align="right">3 Car</th>
-<th align="center">4</th>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-0lax">
+</th>
+<th class="tg-0lax">
+</th>
+<th class="tg-0lax" colspan="4">
+Cars
+</th>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Driver I</td>
-<td align="right">A</td>
-<td align="right">B</td>
-<td align="right">D</td>
-<td align="center">C</td>
+<tr>
+<td class="tg-0lax">
+</td>
+<td class="tg-0pky">
+</td>
+<td class="tg-0pky">
+1
+</td>
+<td class="tg-0pky">
+2
+</td>
+<td class="tg-0pky">
+3
+</td>
+<td class="tg-0pky">
+4
+</td>
 </tr>
-<tr class="even">
-<td align="right"></td>
-<td align="right">19</td>
-<td align="right">24</td>
-<td align="right">23</td>
-<td align="center">26</td>
+<tr>
+<td class="tg-0lax" rowspan="4">
+Drivers
+</td>
+<td class="tg-0pky">
+I
+</td>
+<td class="tg-0pky">
+A<br>19
+</td>
+<td class="tg-0pky">
+B<br>24
+</td>
+<td class="tg-0pky">
+D<br>23
+</td>
+<td class="tg-0pky">
+C<br>26
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Driver II</td>
-<td align="right">D</td>
-<td align="right">C</td>
-<td align="right">A</td>
-<td align="center">B</td>
+<tr>
+<td class="tg-0pky">
+II
+</td>
+<td class="tg-0pky">
+D<br>23
+</td>
+<td class="tg-0pky">
+C<br>24
+</td>
+<td class="tg-0pky">
+A<br>19
+</td>
+<td class="tg-0pky">
+B<br>30
+</td>
 </tr>
-<tr class="even">
-<td align="right"></td>
-<td align="right">23</td>
-<td align="right">24</td>
-<td align="right">19</td>
-<td align="center">30</td>
+<tr>
+<td class="tg-0pky">
+III
+</td>
+<td class="tg-0pky">
+B<br>15
+</td>
+<td class="tg-0pky">
+D<br>14
+</td>
+<td class="tg-0pky">
+C<br>15
+</td>
+<td class="tg-0pky">
+A<br>16
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Driver II</td>
-<td align="right">I B</td>
-<td align="right">D</td>
-<td align="right">C</td>
-<td align="center">A</td>
+<tr>
+<td class="tg-0pky">
+IV
+</td>
+<td class="tg-0pky">
+C<br>19
+</td>
+<td class="tg-0pky">
+A<br>18
+</td>
+<td class="tg-0pky">
+B<br>19
+</td>
+<td class="tg-0pky">
+D<br>16
+</td>
 </tr>
-<tr class="even">
-<td align="right"></td>
-<td align="right">15</td>
-<td align="right">14</td>
-<td align="right">15</td>
-<td align="center">16</td>
-</tr>
-<tr class="odd">
-<td align="right">Driver IV</td>
-<td align="right">C</td>
-<td align="right">A</td>
-<td align="right">B</td>
-<td align="center">D</td>
-</tr>
-<tr class="even">
-<td align="right"></td>
-<td align="right">19</td>
-<td align="right">18</td>
-<td align="right">19</td>
-<td align="center">16</td>
-</tr>
-</tbody>
 </table>
 <ul>
 <li>Each treatment appears once in every row (driver) and every column (car).</li>
@@ -742,111 +780,247 @@ Residuals            16    490  30.625               </code></pre>
 </ul>
 <p>Suppose that the design used a single car and driver with 16 experimental runs for the four treatments. This design could also be valid, but the Latin square has the advantage that the results do not just apply to one car and one driver.</p>
 <p>The data is available in the R data frame <code>tab0408</code>.</p>
-<table>
+<table class="table table-striped" style="width: auto !important; ">
 <thead>
-<tr class="header">
-<th align="left">driver</th>
-<th>cars a</th>
-<th align="left">dditive</th>
-<th align="center">y</th>
+<tr>
+<th style="text-align:right;">
+driver
+</th>
+<th style="text-align:right;">
+cars
+</th>
+<th style="text-align:left;">
+additive
+</th>
+<th style="text-align:right;">
+y
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td>1</td>
-<td align="left">A</td>
-<td align="center">19</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+19
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td>1</td>
-<td align="left">D</td>
-<td align="center">23</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+23
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td>1</td>
-<td align="left">B</td>
-<td align="center">15</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+15
+</td>
 </tr>
-<tr class="even">
-<td align="left">4</td>
-<td>1</td>
-<td align="left">C</td>
-<td align="center">19</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+19
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1</td>
-<td>2</td>
-<td align="left">B</td>
-<td align="center">24</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+24
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td>2</td>
-<td align="left">C</td>
-<td align="center">24</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+24
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td>2</td>
-<td align="left">D</td>
-<td align="center">14</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+14
+</td>
 </tr>
-<tr class="even">
-<td align="left">4</td>
-<td>2</td>
-<td align="left">A</td>
-<td align="center">18</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+18
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1</td>
-<td>3</td>
-<td align="left">D</td>
-<td align="center">23</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+23
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td>3</td>
-<td align="left">A</td>
-<td align="center">19</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+19
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td>3</td>
-<td align="left">C</td>
-<td align="center">15</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+15
+</td>
 </tr>
-<tr class="even">
-<td align="left">4</td>
-<td>3</td>
-<td align="left">B</td>
-<td align="center">19</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+19
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1</td>
-<td>4</td>
-<td align="left">C</td>
-<td align="center">26</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+26
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td>4</td>
-<td align="left">B</td>
-<td align="center">30</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+30
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td>4</td>
-<td align="left">A</td>
-<td align="center">16</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+16
+</td>
 </tr>
-<tr class="even">
-<td align="left">4</td>
-<td>4</td>
-<td align="left">D</td>
-<td align="center">16</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+16
+</td>
 </tr>
 </tbody>
 </table>
@@ -908,158 +1082,334 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 <p><span class="math display">\[MS_{Treat}/MS_E \sim F_{3,6}.\]</span></p>
 <p>The statistical assumptions can be checked by plotting: (1) a normal quantile plot of the residuals; and (2) the predicted values versus residuals versus.</p>
 <div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb385-1" title="1"><span class="kw">qqnorm</span>(latinsq.auto<span class="op">$</span>residuals,<span class="dt">main =</span> <span class="st">&quot;Q-Q Plot for Automobile Emissions&quot;</span>);<span class="kw">qqline</span>(latinsq.auto<span class="op">$</span>residuals)</a></code></pre></div>
-<p><img src="08-blocking_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="08-blocking_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" title="1"><span class="kw">plot</span>(latinsq.auto<span class="op">$</span>fitted.values,latinsq.auto<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Automobile Emissions&quot;</span>)</a>
 <a class="sourceLine" id="cb386-2" title="2"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</a></code></pre></div>
-<p><img src="08-blocking_files/figure-html/unnamed-chunk-15-2.png" width="672" /></p>
+<p><img src="08-blocking_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
 </div>
 <div id="general-latin-square-designs" class="section level2">
 <h2><span class="header-section-number">9.6</span> General Latin Square Designs</h2>
 <p>A Latin square for p factors of a <span class="math inline">\(p \times p\)</span> Latin square, is a square containing <span class="math inline">\(p\)</span> rows and <span class="math inline">\(p\)</span> columns. Each of the <span class="math inline">\(p^2\)</span> cells contains one of the <span class="math inline">\(p\)</span> letters that correspond to a treatment. Each letter occurs once and only once in each row and column.</p>
 <p>There are many possible <span class="math inline">\(p \times p\)</span> Latin squares. If <span class="math inline">\(p = 3\)</span> then two Latin squares are below,</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Col</th>
-<th>1 Col</th>
-<th>2 Col</th>
-<th align="left">3</th>
+<p>Example 1:</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-lboi">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Row 1</td>
-<td>B</td>
-<td>A</td>
-<td align="left">C</td>
+<tr>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+C
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 2</td>
-<td>A</td>
-<td>C</td>
-<td align="left">B</td>
+<tr>
+<td class="tg-lboi">
+Row 2
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+B
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Row 3</td>
-<td>C</td>
-<td>B</td>
-<td align="left">A</td>
+<tr>
+<td class="tg-lboi">
+Row 3
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+A
+</td>
 </tr>
-</tbody>
 </table>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Col</th>
-<th>1 Col</th>
-<th>2 Col</th>
-<th align="left">3</th>
+<p>Example 2:</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-lboi">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Row 1</td>
-<td>A</td>
-<td>B</td>
-<td align="left">C</td>
+<tr>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 2</td>
-<td>C</td>
-<td>A</td>
-<td align="left">B</td>
+<tr>
+<td class="tg-lboi">
+Row 2
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+B
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Row 3</td>
-<td>B</td>
-<td>C</td>
-<td align="left">A</td>
+<tr>
+<td class="tg-lboi">
+Row 3
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
 </tr>
-</tbody>
 </table>
 <p>Note that Col1, Col2, Col3 are three levels of a blocking variable and Row 1, Row 2, Row 3 are three levels of another blocking variable.</p>
 <p>If <span class="math inline">\(p = 4\)</span> then two examples of Latin squares are below,</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Col</th>
-<th>1 Col</th>
-<th>2 Col</th>
-<th>3 Col</th>
-<th align="left">4</th>
+<p>Example 1:</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-lboi">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
+<th class="tg-0lax">
+Col 4
+</th>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Row 1</td>
-<td>B</td>
-<td>A</td>
-<td>D</td>
-<td align="left">C</td>
+<tr>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0lax">
+C
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 2</td>
-<td>C</td>
-<td>D</td>
-<td>A</td>
-<td align="left">B</td>
+<tr>
+<td class="tg-lboi">
+Row 2
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0lax">
+B
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Row 3</td>
-<td>D</td>
-<td>B</td>
-<td>C</td>
-<td align="left">A</td>
+<tr>
+<td class="tg-lboi">
+Row 3
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0lax">
+A
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 4</td>
-<td>A</td>
-<td>C</td>
-<td>B</td>
-<td align="left">D</td>
+<tr>
+<td class="tg-0lax">
+Row 4
+</td>
+<td class="tg-0lax">
+A
+</td>
+<td class="tg-0lax">
+C
+</td>
+<td class="tg-0lax">
+B
+</td>
+<td class="tg-0lax">
+D
+</td>
 </tr>
-</tbody>
 </table>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Col</th>
-<th>1 Col</th>
-<th>2 Col</th>
-<th>3 Col</th>
-<th align="left">4</th>
+<p>Example 2:</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-0pky">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
+<th class="tg-0pky">
+Col 4
+</th>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Row 1</td>
-<td>D</td>
-<td>A</td>
-<td>C</td>
-<td align="left">B</td>
+<tr>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+B
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 2</td>
-<td>A</td>
-<td>D</td>
-<td>B</td>
-<td align="left">C</td>
+<tr>
+<td class="tg-0pky">
+Row 2
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Row 3</td>
-<td>B</td>
-<td>C</td>
-<td>A</td>
-<td align="left">D</td>
+<tr>
+<td class="tg-0pky">
+Row 3
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 4</td>
-<td>C</td>
-<td>B</td>
-<td>D</td>
-<td align="left">A</td>
+<tr>
+<td class="tg-0pky">
+Row 4
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+A
+</td>
 </tr>
-</tbody>
 </table>
 </div>
 <div id="graeco-latin-square-designs" class="section level2">
@@ -1069,133 +1419,199 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="right">Car</th>
-<th align="right">1 Car</th>
-<th align="right">2 Ca</th>
-<th>r 3 C</th>
-<th align="left">ar 4</th>
+<th></th>
+<th align="center">Car 1</th>
+<th align="center">Car 2</th>
+<th align="center">Car 3</th>
+<th align="center">Car 4</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">Driver I</td>
-<td align="right">A <span class="math inline">\(\alpha\)</span></td>
-<td align="right">B <span class="math inline">\(\beta\)</span></td>
-<td>C <span class="math inline">\(\gamma\)</span></td>
-<td align="left">D <span class="math inline">\(\delta\)</span></td>
+<td>Driver I</td>
+<td align="center">A <span class="math inline">\(\alpha\)</span></td>
+<td align="center">B <span class="math inline">\(\beta\)</span></td>
+<td align="center">C <span class="math inline">\(\gamma\)</span></td>
+<td align="center">D <span class="math inline">\(\delta\)</span></td>
 </tr>
 <tr class="even">
-<td align="right">Driver II</td>
-<td align="right">B <span class="math inline">\(\delta\)</span></td>
-<td align="right">A <span class="math inline">\(\gamma\)</span></td>
-<td>D <span class="math inline">\(\beta\)</span></td>
-<td align="left">C <span class="math inline">\(\alpha\)</span></td>
+<td>Driver II</td>
+<td align="center">B <span class="math inline">\(\delta\)</span></td>
+<td align="center">A <span class="math inline">\(\gamma\)</span></td>
+<td align="center">D <span class="math inline">\(\beta\)</span></td>
+<td align="center">C <span class="math inline">\(\alpha\)</span></td>
 </tr>
 <tr class="odd">
-<td align="right">Driver III</td>
-<td align="right">C <span class="math inline">\(\beta\)</span></td>
-<td align="right">D <span class="math inline">\(\alpha\)</span></td>
-<td>A <span class="math inline">\(\delta\)</span></td>
-<td align="left">B <span class="math inline">\(\gamma\)</span></td>
+<td>Driver III</td>
+<td align="center">C <span class="math inline">\(\beta\)</span></td>
+<td align="center">D <span class="math inline">\(\alpha\)</span></td>
+<td align="center">A <span class="math inline">\(\delta\)</span></td>
+<td align="center">B <span class="math inline">\(\gamma\)</span></td>
 </tr>
 <tr class="even">
-<td align="right">Driver IV</td>
-<td align="right">D <span class="math inline">\(\gamma\)</span></td>
-<td align="right">C <span class="math inline">\(\delta\)</span></td>
-<td>B <span class="math inline">\(\alpha\)</span></td>
-<td align="left">A <span class="math inline">\(\beta\)</span></td>
+<td>Driver IV</td>
+<td align="center">D <span class="math inline">\(\gamma\)</span></td>
+<td align="center">C <span class="math inline">\(\delta\)</span></td>
+<td align="center">B <span class="math inline">\(\alpha\)</span></td>
+<td align="center">A <span class="math inline">\(\beta\)</span></td>
 </tr>
 </tbody>
 </table>
 <p>To generate a <span class="math inline">\(3 \times 3\)</span> Graeco-Latin square design, superimpose two designs using the Greek letters for the second <span class="math inline">\(3 \times 3\)</span> Latin square.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Col</th>
-<th>1 Col</th>
-<th>2 Col</th>
-<th align="left">3</th>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-0pky">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Row 1</td>
-<td>B</td>
-<td>A</td>
-<td align="left">C</td>
+<tr>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+C
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 2</td>
-<td>A</td>
-<td>C</td>
-<td align="left">B</td>
+<tr>
+<td class="tg-0pky">
+Row 2
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+B
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Row 3</td>
-<td>C</td>
-<td>B</td>
-<td align="left">A</td>
+<tr>
+<td class="tg-0pky">
+Row 3
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+A
+</td>
 </tr>
-</tbody>
 </table>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Col</th>
-<th>1 Col</th>
-<th>2 Col</th>
-<th align="left">3</th>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-0pky">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Row 1</td>
-<td>A</td>
-<td>B</td>
-<td align="left">C</td>
+<tr>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 2</td>
-<td>C</td>
-<td>A</td>
-<td align="left">B</td>
+<tr>
+<td class="tg-0pky">
+Row 2
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+B
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Row 3</td>
-<td>B</td>
-<td>C</td>
-<td align="left">A</td>
+<tr>
+<td class="tg-0pky">
+Row 3
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
 </tr>
-</tbody>
 </table>
 <p>Using Greek letters <span class="math inline">\(\alpha,\beta, \gamma\)</span> in place of A, B, C in the second square we obtain the Graeco-Latin square design:</p>
 <table>
 <thead>
 <tr class="header">
-<th align="right">Col</th>
-<th>1 Col</th>
-<th>2 Col</th>
-<th align="left">3</th>
+<th></th>
+<th align="center">Col1</th>
+<th align="center">Col2</th>
+<th align="center">Col3</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">Row 1</td>
-<td>B <span class="math inline">\(\alpha\)</span></td>
-<td>A <span class="math inline">\(\beta\)</span></td>
-<td align="left">C <span class="math inline">\(\gamma\)</span></td>
+<td>Row 1</td>
+<td align="center">B <span class="math inline">\(\alpha\)</span></td>
+<td align="center">A <span class="math inline">\(\beta\)</span></td>
+<td align="center">C <span class="math inline">\(\gamma\)</span></td>
 </tr>
 <tr class="even">
-<td align="right">Row 2</td>
-<td>A <span class="math inline">\(\gamma\)</span></td>
-<td>C <span class="math inline">\(\alpha\)</span></td>
-<td align="left">B <span class="math inline">\(\beta\)</span></td>
+<td>Row 2</td>
+<td align="center">A <span class="math inline">\(\gamma\)</span></td>
+<td align="center">C <span class="math inline">\(\alpha\)</span></td>
+<td align="center">B <span class="math inline">\(\beta\)</span></td>
 </tr>
 <tr class="odd">
-<td align="right">Row 3</td>
-<td>C <span class="math inline">\(\beta\)</span></td>
-<td>B <span class="math inline">\(\gamma\)</span></td>
-<td align="left">A <span class="math inline">\(\alpha\)</span></td>
+<td>Row 3</td>
+<td align="center">C <span class="math inline">\(\beta\)</span></td>
+<td align="center">B <span class="math inline">\(\gamma\)</span></td>
+<td align="center">A <span class="math inline">\(\alpha\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -1204,168 +1620,330 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 <h2><span class="header-section-number">9.8</span> Hyper-Graeco-Latin Square Designs</h2>
 <p>Blocking for multiple factors may be extended further using hyper-Graeco-Latin squares.</p>
 <p>Consider three <span class="math inline">\(4 \times 4\)</span> Latin squares</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Col</th>
-<th>1 Col</th>
-<th>2 Col</th>
-<th>3 Col</th>
-<th align="left">4</th>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-0pky">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
+<th class="tg-0pky">
+Col 4
+</th>
+<th class="tg-0lax">
+</th>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Row 1</td>
-<td>B</td>
-<td>A</td>
-<td>D</td>
-<td align="left">C</td>
+<tr>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0lax">
+C
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 2</td>
-<td>C</td>
-<td>D</td>
-<td>A</td>
-<td align="left">B</td>
+<tr>
+<td class="tg-0pky">
+Row 2
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0lax">
+B
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Row 3</td>
-<td>D</td>
-<td>B</td>
-<td>C</td>
-<td align="left">A</td>
+<tr>
+<td class="tg-0pky">
+Row 3
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0lax">
+A
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 4</td>
-<td>A</td>
-<td>C</td>
-<td>B</td>
-<td align="left">D</td>
+<tr>
+<td class="tg-0lax">
+Row 4
+</td>
+<td class="tg-0lax">
+A
+</td>
+<td class="tg-0lax">
+C
+</td>
+<td class="tg-0lax">
+B
+</td>
+<td class="tg-0lax">
+D
+</td>
 </tr>
-</tbody>
 </table>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Col</th>
-<th>1 Col</th>
-<th>2 Col</th>
-<th>3 Col</th>
-<th align="left">4</th>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-0pky">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
+<th class="tg-0pky">
+Col 4
+</th>
+<th class="tg-0lax">
+</th>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Row 1</td>
-<td>D</td>
-<td>A</td>
-<td>C</td>
-<td align="left">B</td>
+<tr>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0lax">
+B
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 2</td>
-<td>A</td>
-<td>D</td>
-<td>B</td>
-<td align="left">C</td>
+<tr>
+<td class="tg-0pky">
+Row 2
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0lax">
+C
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Row 3</td>
-<td>B</td>
-<td>C</td>
-<td>A</td>
-<td align="left">D</td>
+<tr>
+<td class="tg-0pky">
+Row 3
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0lax">
+D
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 4</td>
-<td>C</td>
-<td>B</td>
-<td>D</td>
-<td align="left">A</td>
+<tr>
+<td class="tg-0lax">
+Row 4
+</td>
+<td class="tg-0lax">
+C
+</td>
+<td class="tg-0lax">
+B
+</td>
+<td class="tg-0lax">
+D
+</td>
+<td class="tg-0lax">
+A
+</td>
 </tr>
-</tbody>
 </table>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Col</th>
-<th>1 Col</th>
-<th>2 Col</th>
-<th>3 Col</th>
-<th align="left">4</th>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-0pky">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
+<th class="tg-0pky">
+Col 4
+</th>
+<th class="tg-0lax">
+</th>
 </tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Row 1</td>
-<td>A</td>
-<td>D</td>
-<td>B</td>
-<td align="left">C</td>
+<tr>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0lax">
+C
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 2</td>
-<td>C</td>
-<td>A</td>
-<td>D</td>
-<td align="left">B</td>
+<tr>
+<td class="tg-0pky">
+Row 2
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0lax">
+B
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Row 3</td>
-<td>B</td>
-<td>C</td>
-<td>A</td>
-<td align="left">D</td>
+<tr>
+<td class="tg-0pky">
+Row 3
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0lax">
+D
+</td>
 </tr>
-<tr class="even">
-<td align="right">Row 4</td>
-<td>D</td>
-<td>B</td>
-<td>C</td>
-<td align="left">A</td>
+<tr>
+<td class="tg-0lax">
+Row 4
+</td>
+<td class="tg-0lax">
+D
+</td>
+<td class="tg-0lax">
+B
+</td>
+<td class="tg-0lax">
+C
+</td>
+<td class="tg-0lax">
+A
+</td>
 </tr>
-</tbody>
 </table>
 <p>To form a hyper-Graeco-Latin square we use Greek letters <span class="math inline">\(\alpha,\beta,\gamma, \delta\)</span> for A, B, C, D in the second square and numbers 1,2,3,4 for A, B,C, D in the third square then superimpose all the squares. Thus, the design is:</p>
 <table>
 <thead>
 <tr class="header">
-<th align="right">Col</th>
-<th>1 Co</th>
-<th>l2 Co</th>
-<th>l3 Co</th>
-<th align="left">l4</th>
+<th></th>
+<th align="center">Col1</th>
+<th align="center">Col2</th>
+<th align="center">Col3</th>
+<th align="center">Col4</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">Row 1</td>
-<td>B <span class="math inline">\(\delta\)</span> 1</td>
-<td>A <span class="math inline">\(\alpha\)</span> 4</td>
-<td>D <span class="math inline">\(\gamma\)</span> 2</td>
-<td align="left">C <span class="math inline">\(\beta\)</span> 3</td>
+<td>Row 1</td>
+<td align="center">B <span class="math inline">\(\delta\)</span> 1</td>
+<td align="center">A <span class="math inline">\(\alpha\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\gamma\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\beta\)</span> 3</td>
 </tr>
 <tr class="even">
-<td align="right">Row 2</td>
-<td>C <span class="math inline">\(\alpha\)</span> 3</td>
-<td>D <span class="math inline">\(\delta\)</span> 1</td>
-<td>A <span class="math inline">\(\beta\)</span> 4</td>
-<td align="left">B <span class="math inline">\(\gamma\)</span> 2</td>
+<td>Row 2</td>
+<td align="center">C <span class="math inline">\(\alpha\)</span> 3</td>
+<td align="center">D <span class="math inline">\(\delta\)</span> 1</td>
+<td align="center">A <span class="math inline">\(\beta\)</span> 4</td>
+<td align="center">B <span class="math inline">\(\gamma\)</span> 2</td>
 </tr>
 <tr class="odd">
-<td align="right">Row 3</td>
-<td>D <span class="math inline">\(\beta\)</span> 2</td>
-<td>B <span class="math inline">\(\gamma\)</span> 3</td>
-<td>C <span class="math inline">\(\alpha\)</span> 1</td>
-<td align="left">A <span class="math inline">\(\delta\)</span> 4</td>
+<td>Row 3</td>
+<td align="center">D <span class="math inline">\(\beta\)</span> 2</td>
+<td align="center">B <span class="math inline">\(\gamma\)</span> 3</td>
+<td align="center">C <span class="math inline">\(\alpha\)</span> 1</td>
+<td align="center">A <span class="math inline">\(\delta\)</span> 4</td>
 </tr>
 <tr class="even">
-<td align="right">Row 4</td>
-<td>A <span class="math inline">\(\gamma\)</span> 4</td>
-<td>C <span class="math inline">\(\beta\)</span> 2</td>
-<td>B <span class="math inline">\(\delta\)</span> 3</td>
-<td align="left">D <span class="math inline">\(\alpha\)</span> 1</td>
+<td>Row 4</td>
+<td align="center">A <span class="math inline">\(\gamma\)</span> 4</td>
+<td align="center">C <span class="math inline">\(\beta\)</span> 2</td>
+<td align="center">B <span class="math inline">\(\delta\)</span> 3</td>
+<td align="center">D <span class="math inline">\(\alpha\)</span> 1</td>
 </tr>
 </tbody>
 </table>
@@ -1386,69 +1964,69 @@ The investigators would like to block for the effects of:</li>
 <table>
 <thead>
 <tr class="header">
-<th align="right">$P</th>
-<th>_1$ $</th>
-<th align="left">P_2$</th>
-<th><span class="math inline">\(P_3\)</span> $P</th>
-<th align="left">_4$</th>
+<th></th>
+<th align="center"><span class="math inline">\(P_1\)</span></th>
+<th align="center"><span class="math inline">\(P_2\)</span></th>
+<th align="center"><span class="math inline">\(P_3\)</span></th>
+<th align="center"><span class="math inline">\(P_4\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right"><span class="math inline">\(C_1\)</span></td>
-<td>A <span class="math inline">\(\alpha\)</span> 1</td>
-<td align="left">B <span class="math inline">\(\beta\)</span> 2</td>
-<td>C <span class="math inline">\(\gamma\)</span> 3</td>
-<td align="left">D <span class="math inline">\(\delta\)</span> 4</td>
+<td><span class="math inline">\(C_1\)</span></td>
+<td align="center">A <span class="math inline">\(\alpha\)</span> 1</td>
+<td align="center">B <span class="math inline">\(\beta\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\gamma\)</span> 3</td>
+<td align="center">D <span class="math inline">\(\delta\)</span> 4</td>
 </tr>
 <tr class="even">
-<td align="right"></td>
-<td>320</td>
-<td align="left">297</td>
-<td>299</td>
-<td align="left">313</td>
+<td></td>
+<td align="center">320</td>
+<td align="center">297</td>
+<td align="center">299</td>
+<td align="center">313</td>
 </tr>
 <tr class="odd">
-<td align="right"><span class="math inline">\(C_2\)</span></td>
-<td>C <span class="math inline">\(\beta\)</span> 4</td>
-<td align="left">D <span class="math inline">\(\alpha\)</span> 3</td>
-<td>A <span class="math inline">\(\delta\)</span> 2</td>
-<td align="left">B <span class="math inline">\(\gamma\)</span> 1</td>
+<td><span class="math inline">\(C_2\)</span></td>
+<td align="center">C <span class="math inline">\(\beta\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\alpha\)</span> 3</td>
+<td align="center">A <span class="math inline">\(\delta\)</span> 2</td>
+<td align="center">B <span class="math inline">\(\gamma\)</span> 1</td>
 </tr>
 <tr class="even">
-<td align="right"></td>
-<td>266</td>
-<td align="left">227</td>
-<td>260</td>
-<td align="left">240</td>
+<td></td>
+<td align="center">266</td>
+<td align="center">227</td>
+<td align="center">260</td>
+<td align="center">240</td>
 </tr>
 <tr class="odd">
-<td align="right"><span class="math inline">\(C_3\)</span></td>
-<td>D <span class="math inline">\(\gamma\)</span> 2</td>
-<td align="left">C <span class="math inline">\(\delta\)</span> 1</td>
-<td>B <span class="math inline">\(\alpha\)</span> 4</td>
-<td align="left">A <span class="math inline">\(\beta\)</span> 3</td>
+<td><span class="math inline">\(C_3\)</span></td>
+<td align="center">D <span class="math inline">\(\gamma\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\delta\)</span> 1</td>
+<td align="center">B <span class="math inline">\(\alpha\)</span> 4</td>
+<td align="center">A <span class="math inline">\(\beta\)</span> 3</td>
 </tr>
 <tr class="even">
-<td align="right"></td>
-<td>221</td>
-<td align="left">240</td>
-<td>267</td>
-<td align="left">252</td>
+<td></td>
+<td align="center">221</td>
+<td align="center">240</td>
+<td align="center">267</td>
+<td align="center">252</td>
 </tr>
 <tr class="odd">
-<td align="right"><span class="math inline">\(C_4\)</span></td>
-<td>B <span class="math inline">\(\delta\)</span> 3</td>
-<td align="left">A <span class="math inline">\(\gamma\)</span> 4</td>
-<td>D <span class="math inline">\(\beta\)</span> 1</td>
-<td align="left">C <span class="math inline">\(\alpha\)</span> 2</td>
+<td><span class="math inline">\(C_4\)</span></td>
+<td align="center">B <span class="math inline">\(\delta\)</span> 3</td>
+<td align="center">A <span class="math inline">\(\gamma\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\beta\)</span> 1</td>
+<td align="center">C <span class="math inline">\(\alpha\)</span> 2</td>
 </tr>
 <tr class="even">
-<td align="right"></td>
-<td>301</td>
-<td align="left">238</td>
-<td>243</td>
-<td align="left">290</td>
+<td></td>
+<td align="center">301</td>
+<td align="center">238</td>
+<td align="center">243</td>
+<td align="center">290</td>
 </tr>
 </tbody>
 </table>
@@ -1456,373 +2034,835 @@ The investigators would like to block for the effects of:</li>
 <table>
 <thead>
 <tr class="header">
-<th align="right">$P</th>
-<th>_1$ $</th>
-<th align="left">P_2$</th>
-<th><span class="math inline">\(P_3\)</span> $P</th>
-<th align="left">_4$</th>
+<th></th>
+<th align="center"><span class="math inline">\(P_1\)</span></th>
+<th align="center"><span class="math inline">\(P_2\)</span></th>
+<th align="center"><span class="math inline">\(P_3\)</span></th>
+<th align="center"><span class="math inline">\(P_4\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right"><span class="math inline">\(C_5\)</span></td>
-<td>A <span class="math inline">\(\alpha\)</span> 1</td>
-<td align="left">B <span class="math inline">\(\beta\)</span> 2</td>
-<td>C <span class="math inline">\(\gamma\)</span> 3</td>
-<td align="left">D <span class="math inline">\(\delta\)</span> 4</td>
+<td><span class="math inline">\(C_5\)</span></td>
+<td align="center">A <span class="math inline">\(\alpha\)</span> 1</td>
+<td align="center">B <span class="math inline">\(\beta\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\gamma\)</span> 3</td>
+<td align="center">D <span class="math inline">\(\delta\)</span> 4</td>
 </tr>
 <tr class="even">
-<td align="right"></td>
-<td>285</td>
-<td align="left">280</td>
-<td>331</td>
-<td align="left">311</td>
+<td></td>
+<td align="center">285</td>
+<td align="center">280</td>
+<td align="center">331</td>
+<td align="center">311</td>
 </tr>
 <tr class="odd">
-<td align="right"><span class="math inline">\(C_6\)</span></td>
-<td>C <span class="math inline">\(\beta\)</span> 4</td>
-<td align="left">D <span class="math inline">\(\alpha\)</span> 3</td>
-<td>A <span class="math inline">\(\delta\)</span> 2</td>
-<td align="left">B <span class="math inline">\(\gamma\)</span> 1</td>
+<td><span class="math inline">\(C_6\)</span></td>
+<td align="center">C <span class="math inline">\(\beta\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\alpha\)</span> 3</td>
+<td align="center">A <span class="math inline">\(\delta\)</span> 2</td>
+<td align="center">B <span class="math inline">\(\gamma\)</span> 1</td>
 </tr>
 <tr class="even">
-<td align="right"></td>
-<td>268</td>
-<td align="left">233</td>
-<td>291</td>
-<td align="left">280</td>
+<td></td>
+<td align="center">268</td>
+<td align="center">233</td>
+<td align="center">291</td>
+<td align="center">280</td>
 </tr>
 <tr class="odd">
-<td align="right"><span class="math inline">\(C_7\)</span></td>
-<td>D <span class="math inline">\(\gamma\)</span> 2</td>
-<td align="left">C <span class="math inline">\(\delta\)</span> 1</td>
-<td>B <span class="math inline">\(\alpha\)</span> 4</td>
-<td align="left">A <span class="math inline">\(\beta\)</span> 3</td>
+<td><span class="math inline">\(C_7\)</span></td>
+<td align="center">D <span class="math inline">\(\gamma\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\delta\)</span> 1</td>
+<td align="center">B <span class="math inline">\(\alpha\)</span> 4</td>
+<td align="center">A <span class="math inline">\(\beta\)</span> 3</td>
 </tr>
 <tr class="even">
-<td align="right"></td>
-<td>265</td>
-<td align="left">273</td>
-<td>234</td>
-<td align="left">243</td>
+<td></td>
+<td align="center">265</td>
+<td align="center">273</td>
+<td align="center">234</td>
+<td align="center">243</td>
 </tr>
 <tr class="odd">
-<td align="right"><span class="math inline">\(C_8\)</span></td>
-<td>B <span class="math inline">\(\delta\)</span> 3</td>
-<td align="left">A <span class="math inline">\(\gamma\)</span> 4</td>
-<td>D <span class="math inline">\(\beta\)</span> 1</td>
-<td align="left">C <span class="math inline">\(\alpha\)</span> 2</td>
+<td><span class="math inline">\(C_8\)</span></td>
+<td align="center">B <span class="math inline">\(\delta\)</span> 3</td>
+<td align="center">A <span class="math inline">\(\gamma\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\beta\)</span> 1</td>
+<td align="center">C <span class="math inline">\(\alpha\)</span> 2</td>
 </tr>
 <tr class="even">
-<td align="right"></td>
-<td>306</td>
-<td align="left">271</td>
-<td>270</td>
-<td align="left">272</td>
+<td></td>
+<td align="center">306</td>
+<td align="center">271</td>
+<td align="center">270</td>
+<td align="center">272</td>
 </tr>
 </tbody>
 </table>
 <p>The R data frame looks like</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">cycle</th>
-<th>position t</th>
-<th align="left">reatment</th>
-<th>holder p</th>
-<th align="left">aper</th>
-<th align="center">y</th>
-<th align="left">rep</th>
+<tr>
+<th style="text-align:right;">
+cycle
+</th>
+<th style="text-align:right;">
+position
+</th>
+<th style="text-align:left;">
+treatment
+</th>
+<th style="text-align:right;">
+holder
+</th>
+<th style="text-align:left;">
+paper
+</th>
+<th style="text-align:right;">
+y
+</th>
+<th style="text-align:right;">
+rep
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td>1</td>
-<td align="left">A</td>
-<td>1</td>
-<td align="left">a</td>
-<td align="center">320</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+320
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td>1</td>
-<td align="left">C</td>
-<td>4</td>
-<td align="left">b</td>
-<td align="center">266</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+266
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td>1</td>
-<td align="left">D</td>
-<td>2</td>
-<td align="left">e</td>
-<td align="center">221</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:right;">
+221
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">4</td>
-<td>1</td>
-<td align="left">B</td>
-<td>3</td>
-<td align="left">c</td>
-<td align="center">301</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+301
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">5</td>
-<td>1</td>
-<td align="left">A</td>
-<td>1</td>
-<td align="left">d</td>
-<td align="center">285</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+285
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">6</td>
-<td>1</td>
-<td align="left">C</td>
-<td>4</td>
-<td align="left">h</td>
-<td align="center">268</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+h
+</td>
+<td style="text-align:right;">
+268
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="odd">
-<td align="left">7</td>
-<td>1</td>
-<td align="left">D</td>
-<td>2</td>
-<td align="left">g</td>
-<td align="center">265</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+g
+</td>
+<td style="text-align:right;">
+265
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">8</td>
-<td>1</td>
-<td align="left">B</td>
-<td>3</td>
-<td align="left">f</td>
-<td align="center">306</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+306
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1</td>
-<td>2</td>
-<td align="left">B</td>
-<td>2</td>
-<td align="left">b</td>
-<td align="center">297</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+297
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td>2</td>
-<td align="left">D</td>
-<td>3</td>
-<td align="left">a</td>
-<td align="center">227</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+227
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td>2</td>
-<td align="left">C</td>
-<td>1</td>
-<td align="left">c</td>
-<td align="center">240</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+240
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">4</td>
-<td>2</td>
-<td align="left">A</td>
-<td>4</td>
-<td align="left">e</td>
-<td align="center">238</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:right;">
+238
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">5</td>
-<td>2</td>
-<td align="left">B</td>
-<td>2</td>
-<td align="left">h</td>
-<td align="center">280</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+h
+</td>
+<td style="text-align:right;">
+280
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">6</td>
-<td>2</td>
-<td align="left">D</td>
-<td>3</td>
-<td align="left">d</td>
-<td align="center">233</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+233
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="odd">
-<td align="left">7</td>
-<td>2</td>
-<td align="left">C</td>
-<td>1</td>
-<td align="left">f</td>
-<td align="center">273</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+273
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">8</td>
-<td>2</td>
-<td align="left">A</td>
-<td>4</td>
-<td align="left">g</td>
-<td align="center">271</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+g
+</td>
+<td style="text-align:right;">
+271
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1</td>
-<td>3</td>
-<td align="left">C</td>
-<td>3</td>
-<td align="left">e</td>
-<td align="center">299</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:right;">
+299
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td>3</td>
-<td align="left">A</td>
-<td>2</td>
-<td align="left">c</td>
-<td align="center">260</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+260
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td>3</td>
-<td align="left">B</td>
-<td>4</td>
-<td align="left">a</td>
-<td align="center">267</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+267
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">4</td>
-<td>3</td>
-<td align="left">D</td>
-<td>1</td>
-<td align="left">b</td>
-<td align="center">243</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+243
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">5</td>
-<td>3</td>
-<td align="left">C</td>
-<td>3</td>
-<td align="left">g</td>
-<td align="center">331</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+g
+</td>
+<td style="text-align:right;">
+331
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">6</td>
-<td>3</td>
-<td align="left">A</td>
-<td>2</td>
-<td align="left">f</td>
-<td align="center">291</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+291
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="odd">
-<td align="left">7</td>
-<td>3</td>
-<td align="left">B</td>
-<td>4</td>
-<td align="left">d</td>
-<td align="center">234</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+234
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">8</td>
-<td>3</td>
-<td align="left">D</td>
-<td>1</td>
-<td align="left">h</td>
-<td align="center">270</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+h
+</td>
+<td style="text-align:right;">
+270
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1</td>
-<td>4</td>
-<td align="left">D</td>
-<td>4</td>
-<td align="left">c</td>
-<td align="center">313</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+313
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td>4</td>
-<td align="left">B</td>
-<td>1</td>
-<td align="left">e</td>
-<td align="center">240</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:right;">
+240
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td>4</td>
-<td align="left">A</td>
-<td>3</td>
-<td align="left">b</td>
-<td align="center">252</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+252
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">4</td>
-<td>4</td>
-<td align="left">C</td>
-<td>2</td>
-<td align="left">a</td>
-<td align="center">290</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+290
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">5</td>
-<td>4</td>
-<td align="left">D</td>
-<td>4</td>
-<td align="left">f</td>
-<td align="center">311</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+311
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">6</td>
-<td>4</td>
-<td align="left">B</td>
-<td>1</td>
-<td align="left">g</td>
-<td align="center">280</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+g
+</td>
+<td style="text-align:right;">
+280
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="odd">
-<td align="left">7</td>
-<td>4</td>
-<td align="left">A</td>
-<td>3</td>
-<td align="left">h</td>
-<td align="center">243</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+h
+</td>
+<td style="text-align:right;">
+243
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">8</td>
-<td>4</td>
-<td align="left">C</td>
-<td>2</td>
-<td align="left">d</td>
-<td align="center">272</td>
-<td align="left">2</td>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+272
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
 </tbody>
 </table>
@@ -1950,41 +2990,82 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <h2><span class="header-section-number">9.10</span> Questions</h2>
 <ol style="list-style-type: decimal">
 <li><p>When is it appropriate to use a randomized block design?</p></li>
-<li><p>The following data are the weights (in kg) of six people measured on two different scales. The investigator was interested to see if the two scales are different.</p>
-<table>
+<li><p>The following data are the weights (in kg) of six people measured on two different scales. The investigator was interested to see if the two scales are different.</p></li>
+</ol>
+<table class="table table-striped" style="width: auto !important; ">
 <thead>
-<tr class="header">
-<th align="right">1</th>
-<th align="right">2</th>
-<th align="right">3</th>
-<th align="right">4</th>
-<th align="right">5</th>
-<th align="right">6</th>
-<th></th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+1
+</th>
+<th style="text-align:right;">
+2
+</th>
+<th style="text-align:right;">
+3
+</th>
+<th style="text-align:right;">
+4
+</th>
+<th style="text-align:right;">
+5
+</th>
+<th style="text-align:right;">
+6
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">Scale I</td>
-<td align="right">46</td>
-<td align="right">64</td>
-<td align="right">80</td>
-<td align="right">71</td>
-<td align="right">99</td>
-<td>70</td>
+<tr>
+<td style="text-align:left;">
+Scale I
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:right;">
+70
+</td>
 </tr>
-<tr class="even">
-<td align="right">Scale II</td>
-<td align="right">78</td>
-<td align="right">66</td>
-<td align="right">70</td>
-<td align="right">64</td>
-<td align="right">46</td>
-<td>70</td>
+<tr>
+<td style="text-align:left;">
+Scale II
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+70
+</td>
 </tr>
 </tbody>
-</table></li>
-</ol>
+</table>
 <ol style="list-style-type: lower-alpha">
 <li>What is the name of this design? Explain.</li>
 <li>What is blocking factor used in this design?</li>
