@@ -24,7 +24,7 @@
 <meta name="author" content="Nathan Taback" />
 
 
-<meta name="date" content="2019-11-06" />
+<meta name="date" content="2019-11-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1862,90 +1862,216 @@ Let <span class="math inline">\(\hat {\theta_{(1)}} &lt; \hat {\theta_{(2)}} &lt
 <li><p>No this is not a factorial experiment since not all factor-level combinations were run. If the chemist added a fourth run setting temperature at 150 and catalyst at 2 then the design would be a <span class="math inline">\(2^2\)</span> factorial design.</p></li>
 <li><p>Multiply columns AB, AC, BC, and ABC to obtain interactions.</p></li>
 </ol>
-<table>
+<table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">A</th>
-<th align="left">B</th>
-<th>C A</th>
-<th>B A</th>
-<th>C B</th>
-<th>C A</th>
-<th align="left">BC</th>
+<tr>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+<th style="text-align:right;">
+C
+</th>
+<th style="text-align:right;">
+AB
+</th>
+<th style="text-align:right;">
+AC
+</th>
+<th style="text-align:right;">
+BC
+</th>
+<th style="text-align:right;">
+ABC
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">-1</td>
-<td align="left">-1</td>
-<td>-1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="left">-1</td>
-<td>-1</td>
-<td>-1</td>
-<td>-1</td>
-<td>1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">-1</td>
-<td align="left">1</td>
-<td>-1</td>
-<td>-1</td>
-<td>1</td>
-<td>-1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="left">1</td>
-<td>-1</td>
-<td>1</td>
-<td>-1</td>
-<td>-1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">-1</td>
-<td align="left">-1</td>
-<td>1</td>
-<td>1</td>
-<td>-1</td>
-<td>-1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="left">-1</td>
-<td>1</td>
-<td>-1</td>
-<td>1</td>
-<td>-1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">-1</td>
-<td align="left">1</td>
-<td>1</td>
-<td>-1</td>
-<td>-1</td>
-<td>1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="left">1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
 </tbody>
 </table>
@@ -2008,86 +2134,165 @@ Let <span class="math inline">\(\hat {\theta_{(1)}} &lt; \hat {\theta_{(2)}} &lt
 <li></li>
 </ol></li>
 </ol>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb448-1" title="1">prb0506 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;~/Dropbox/Docs/sta305/BHHData/BHH2-Data/prb0506.dat&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">quote=</span><span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>)</a>
-<a class="sourceLine" id="cb448-2" title="2">fact.mod &lt;-<span class="st"> </span><span class="kw">lm</span>(y3<span class="op">~</span>x1<span class="op">*</span>x2<span class="op">*</span>x3,<span class="dt">data=</span>prb0506)</a>
-<a class="sourceLine" id="cb448-3" title="3">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">summary</span>(fact.mod)<span class="op">$</span>coefficients)</a></code></pre></div>
 <table>
 <thead>
-<tr class="header">
-<th align="right">Es</th>
-<th>timate St</th>
-<th align="left">d. Error</th>
-<th align="right">t value P</th>
-<th align="left">r(&gt;|t|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+t value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|t|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">(Intercept)</td>
-<td>360.125</td>
-<td align="left">82.39335</td>
-<td align="right">4.3708018</td>
-<td align="left">0.0023779</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+360.125
+</td>
+<td style="text-align:right;">
+82.39335
+</td>
+<td style="text-align:right;">
+4.3708018
+</td>
+<td style="text-align:right;">
+0.0023779
+</td>
 </tr>
-<tr class="even">
-<td align="right">x1</td>
-<td>86.750</td>
-<td align="left">82.39335</td>
-<td align="right">1.0528762</td>
-<td align="left">0.3231570</td>
+<tr>
+<td style="text-align:left;">
+x1
+</td>
+<td style="text-align:right;">
+86.750
+</td>
+<td style="text-align:right;">
+82.39335
+</td>
+<td style="text-align:right;">
+1.0528762
+</td>
+<td style="text-align:right;">
+0.3231570
+</td>
 </tr>
-<tr class="odd">
-<td align="right">x2</td>
-<td>29.750</td>
-<td align="left">82.39335</td>
-<td align="right">0.3610728</td>
-<td align="left">0.7273943</td>
+<tr>
+<td style="text-align:left;">
+x2
+</td>
+<td style="text-align:right;">
+29.750
+</td>
+<td style="text-align:right;">
+82.39335
+</td>
+<td style="text-align:right;">
+0.3610728
+</td>
+<td style="text-align:right;">
+0.7273943
+</td>
 </tr>
-<tr class="even">
-<td align="right">x3</td>
-<td>247.750</td>
-<td align="left">82.39335</td>
-<td align="right">3.0069174</td>
-<td align="left">0.0168927</td>
+<tr>
+<td style="text-align:left;">
+x3
+</td>
+<td style="text-align:right;">
+247.750
+</td>
+<td style="text-align:right;">
+82.39335
+</td>
+<td style="text-align:right;">
+3.0069174
+</td>
+<td style="text-align:right;">
+0.0168927
+</td>
 </tr>
-<tr class="odd">
-<td align="right">x1:x2</td>
-<td>-97.125</td>
-<td align="left">82.39335</td>
-<td align="right">-1.1787966</td>
-<td align="left">0.2723484</td>
+<tr>
+<td style="text-align:left;">
+x1:x2
+</td>
+<td style="text-align:right;">
+-97.125
+</td>
+<td style="text-align:right;">
+82.39335
+</td>
+<td style="text-align:right;">
+-1.1787966
+</td>
+<td style="text-align:right;">
+0.2723484
+</td>
 </tr>
-<tr class="even">
-<td align="right">x1:x3</td>
-<td>66.625</td>
-<td align="left">82.39335</td>
-<td align="right">0.8086211</td>
-<td align="left">0.4421145</td>
+<tr>
+<td style="text-align:left;">
+x1:x3
+</td>
+<td style="text-align:right;">
+66.625
+</td>
+<td style="text-align:right;">
+82.39335
+</td>
+<td style="text-align:right;">
+0.8086211
+</td>
+<td style="text-align:right;">
+0.4421145
+</td>
 </tr>
-<tr class="odd">
-<td align="right">x2:x3</td>
-<td>4.875</td>
-<td align="left">82.39335</td>
-<td align="right">0.0591674</td>
-<td align="left">0.9542701</td>
+<tr>
+<td style="text-align:left;">
+x2:x3
+</td>
+<td style="text-align:right;">
+4.875
+</td>
+<td style="text-align:right;">
+82.39335
+</td>
+<td style="text-align:right;">
+0.0591674
+</td>
+<td style="text-align:right;">
+0.9542701
+</td>
 </tr>
-<tr class="even">
-<td align="right">x1:x2:x3</td>
-<td>-36.250</td>
-<td align="left">82.39335</td>
-<td align="right">-0.4399627</td>
-<td align="left">0.6716081</td>
+<tr>
+<td style="text-align:left;">
+x1:x2:x3
+</td>
+<td style="text-align:right;">
+-36.250
+</td>
+<td style="text-align:right;">
+82.39335
+</td>
+<td style="text-align:right;">
+-0.4399627
+</td>
+<td style="text-align:right;">
+0.6716081
+</td>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" title="1"><span class="kw">cubePlot</span>(fact.mod,<span class="st">&quot;x1&quot;</span>,<span class="st">&quot;x2&quot;</span>,<span class="st">&quot;x3&quot;</span>,<span class="dt">round=</span><span class="dv">1</span>,<span class="dt">modeled=</span>F)</a></code></pre></div>
-<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb450-1" title="1"><span class="kw">interaction.plot</span>(prb0506<span class="op">$</span>x1,prb0506<span class="op">$</span>x2,prb0506<span class="op">$</span>y3,<span class="dt">main=</span><span class="st">&quot;interaction between x1 and x2&quot;</span>)</a></code></pre></div>
-<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-2.png" width="672" /></p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" title="1"><span class="kw">interaction.plot</span>(prb0506<span class="op">$</span>x1,prb0506<span class="op">$</span>x3,prb0506<span class="op">$</span>y3,<span class="dt">main=</span><span class="st">&quot;interaction between x1 and x3&quot;</span>)</a></code></pre></div>
-<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-3.png" width="672" /></p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb452-1" title="1"><span class="kw">interaction.plot</span>(prb0506<span class="op">$</span>x2,prb0506<span class="op">$</span>x3,prb0506<span class="op">$</span>y3,<span class="dt">main=</span><span class="st">&quot;interaction between x2 and x3&quot;</span>)</a></code></pre></div>
-<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-4.png" width="672" /></p>
+<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-1.png" width="672" /><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-2.png" width="672" /><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-3.png" width="672" /><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-4.png" width="672" /></p>
 <p>The main effects and interactions are obtained by multiplying the regression coeffcicents by 2</p>
 <table>
 <thead>

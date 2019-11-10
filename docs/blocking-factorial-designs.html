@@ -24,7 +24,7 @@
 <meta name="author" content="Nathan Taback" />
 
 
-<meta name="date" content="2019-11-06" />
+<meta name="date" content="2019-11-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -366,109 +366,253 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">11</span> Blocking Factorial Designs</h1>
 <p>In a trial conducted using a <span class="math inline">\(2^3\)</span> design it might be desirable to use the same batch of raw material to make all 8 runs. Suppose that batches of raw material were only large enough to make 4 runs. Then the concept of blocking could be used.</p>
 <p>The following R code generates the design matrix for a <span class="math inline">\(2^3\)</span> design.</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" title="1">x1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb453-2" title="2">x2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb453-3" title="3">x3 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">4</span>),<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>)))</a>
-<a class="sourceLine" id="cb453-4" title="4">x12 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2</a>
-<a class="sourceLine" id="cb453-5" title="5">x13 &lt;-<span class="st"> </span>x1<span class="op">*</span>x3</a>
-<a class="sourceLine" id="cb453-6" title="6">x23 &lt;-<span class="st"> </span>x2<span class="op">*</span>x3</a>
-<a class="sourceLine" id="cb453-7" title="7">x123 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2<span class="op">*</span>x3</a>
-<a class="sourceLine" id="cb453-8" title="8">run &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">8</span></a>
-<a class="sourceLine" id="cb453-9" title="9">factnames &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Run&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;12&quot;</span>,<span class="st">&quot;13&quot;</span>,<span class="st">&quot;23&quot;</span>,<span class="st">&quot;123&quot;</span>)</a>
-<a class="sourceLine" id="cb453-10" title="10">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">cbind</span>(run,x1,x2,x3,x12,x13,x23,x123),<span class="dt">col.names =</span> factnames)</a></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb448-1" title="1">x1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb448-2" title="2">x2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb448-3" title="3">x3 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">4</span>),<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>)))</a>
+<a class="sourceLine" id="cb448-4" title="4">x12 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2</a>
+<a class="sourceLine" id="cb448-5" title="5">x13 &lt;-<span class="st"> </span>x1<span class="op">*</span>x3</a>
+<a class="sourceLine" id="cb448-6" title="6">x23 &lt;-<span class="st"> </span>x2<span class="op">*</span>x3</a>
+<a class="sourceLine" id="cb448-7" title="7">x123 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2<span class="op">*</span>x3</a>
+<a class="sourceLine" id="cb448-8" title="8">run &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">8</span></a>
+<a class="sourceLine" id="cb448-9" title="9">factnames &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Run&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;12&quot;</span>,<span class="st">&quot;13&quot;</span>,<span class="st">&quot;23&quot;</span>,<span class="st">&quot;123&quot;</span>)</a>
+<a class="sourceLine" id="cb448-10" title="10">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">cbind</span>(run,x1,x2,x3,x12,x13,x23,x123),<span class="dt">col.names =</span> factnames)</a></code></pre></div>
 <table>
 <thead>
-<tr class="header">
-<th align="left">Run</th>
-<th align="center">1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-<th align="left">12</th>
-<th align="left">13</th>
-<th align="left">23</th>
-<th align="left">123</th>
+<tr>
+<th style="text-align:right;">
+Run
+</th>
+<th style="text-align:right;">
+1
+</th>
+<th style="text-align:right;">
+2
+</th>
+<th style="text-align:right;">
+3
+</th>
+<th style="text-align:right;">
+12
+</th>
+<th style="text-align:right;">
+13
+</th>
+<th style="text-align:right;">
+23
+</th>
+<th style="text-align:right;">
+123
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="left">1</td>
-<td align="left">1</td>
-<td align="left">1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="center">1</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="left">-1</td>
-<td align="left">-1</td>
-<td align="left">1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="center">-1</td>
-<td align="left">-1</td>
-<td align="left">1</td>
-<td align="left">-1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">4</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">-1</td>
-<td align="left">1</td>
-<td align="left">-1</td>
-<td align="left">-1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">5</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="left">1</td>
-<td align="left">-1</td>
-<td align="left">-1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">6</td>
-<td align="center">1</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="left">-1</td>
-<td align="left">1</td>
-<td align="left">-1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="left">-1</td>
-<td align="left">-1</td>
-<td align="left">1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="even">
-<td align="left">8</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="left">1</td>
-<td align="left">1</td>
-<td align="left">1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
 </tbody>
 </table>
@@ -489,70 +633,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In the <span class="math inline">\(2^3\)</span> example suppose that the block variable is given the identifying number 4.</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">Run</th>
-<th align="center">1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-<th align="left">4 = 123</th>
+<tr>
+<th style="text-align:right;">
+Run
+</th>
+<th style="text-align:right;">
+1
+</th>
+<th style="text-align:right;">
+2
+</th>
+<th style="text-align:right;">
+3
+</th>
+<th style="text-align:right;">
+4 = 123
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="center">1</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="center">-1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">4</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">-1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">5</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">6</td>
-<td align="center">1</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="even">
-<td align="left">8</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
 </tbody>
 </table>
@@ -565,88 +799,214 @@ This idea can be used to derive more sophisticated blocking arrangements.</p>
 <p>This example is from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005" role="doc-biblioref">2005</a>)</span>. Suppose we would like to arrange the <span class="math inline">\(2^3\)</span> design into four blocks.</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">Run</th>
-<th align="center">1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-<th align="left">4 = 123</th>
-<th align="left">5 = 23</th>
-<th align="left">45 = 1</th>
+<tr>
+<th style="text-align:right;">
+Run
+</th>
+<th style="text-align:right;">
+1
+</th>
+<th style="text-align:right;">
+2
+</th>
+<th style="text-align:right;">
+3
+</th>
+<th style="text-align:right;">
+4 = 123
+</th>
+<th style="text-align:right;">
+5 = 23
+</th>
+<th style="text-align:right;">
+45 = 1
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="left">-1</td>
-<td align="left">1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="center">1</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="left">1</td>
-<td align="left">1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="center">-1</td>
-<td align="left">1</td>
-<td align="left">-1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="even">
-<td align="left">4</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">-1</td>
-<td align="left">-1</td>
-<td align="left">-1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">5</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="left">1</td>
-<td align="left">-1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="even">
-<td align="left">6</td>
-<td align="center">1</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="left">-1</td>
-<td align="left">-1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="center">-1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="left">-1</td>
-<td align="left">1</td>
-<td align="left">-1</td>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
 </tr>
-<tr class="even">
-<td align="left">8</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="left">1</td>
-<td align="left">1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
 </tbody>
 </table>

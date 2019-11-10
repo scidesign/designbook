@@ -937,17 +937,93 @@ The data are shown in the table below and can be downloaded [here](./docs/prb050
 
 2. Multiply columns AB, AC, BC, and ABC to obtain interactions.
 
-
-  A    B    C   AB   AC   BC   ABC
----  ---  ---  ---  ---  ---  ----
- -1   -1   -1    1    1    1    -1
-  1   -1   -1   -1   -1    1     1
- -1    1   -1   -1    1   -1     1
-  1    1   -1    1   -1   -1    -1
- -1   -1    1    1   -1   -1     1
-  1   -1    1   -1    1   -1    -1
- -1    1    1   -1   -1    1    -1
-  1    1    1    1    1    1     1
+<table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> A </th>
+   <th style="text-align:right;"> B </th>
+   <th style="text-align:right;"> C </th>
+   <th style="text-align:right;"> AB </th>
+   <th style="text-align:right;"> AC </th>
+   <th style="text-align:right;"> BC </th>
+   <th style="text-align:right;"> ABC </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
 
 3. Using the standard design matrix.  The main effect for A is $\frac{y_2+y_4-y_1-y_3}{2}=10.$ and the main effect for B is $\frac{y_3+y_4-y_1-y_2}{2}=12.$  But the main effect for A should be 
 
@@ -1020,47 +1096,77 @@ Notice that $\hat{\beta_0}={\bar y}$, $\hat{\beta_1}=\frac{1}{2}{\hat A}$, and $
 
 5. (a) 
 
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Estimate </th>
+   <th style="text-align:right;"> Std. Error </th>
+   <th style="text-align:right;"> t value </th>
+   <th style="text-align:right;"> Pr(&gt;|t|) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 360.125 </td>
+   <td style="text-align:right;"> 82.39335 </td>
+   <td style="text-align:right;"> 4.3708018 </td>
+   <td style="text-align:right;"> 0.0023779 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1 </td>
+   <td style="text-align:right;"> 86.750 </td>
+   <td style="text-align:right;"> 82.39335 </td>
+   <td style="text-align:right;"> 1.0528762 </td>
+   <td style="text-align:right;"> 0.3231570 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x2 </td>
+   <td style="text-align:right;"> 29.750 </td>
+   <td style="text-align:right;"> 82.39335 </td>
+   <td style="text-align:right;"> 0.3610728 </td>
+   <td style="text-align:right;"> 0.7273943 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x3 </td>
+   <td style="text-align:right;"> 247.750 </td>
+   <td style="text-align:right;"> 82.39335 </td>
+   <td style="text-align:right;"> 3.0069174 </td>
+   <td style="text-align:right;"> 0.0168927 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x2 </td>
+   <td style="text-align:right;"> -97.125 </td>
+   <td style="text-align:right;"> 82.39335 </td>
+   <td style="text-align:right;"> -1.1787966 </td>
+   <td style="text-align:right;"> 0.2723484 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x3 </td>
+   <td style="text-align:right;"> 66.625 </td>
+   <td style="text-align:right;"> 82.39335 </td>
+   <td style="text-align:right;"> 0.8086211 </td>
+   <td style="text-align:right;"> 0.4421145 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x2:x3 </td>
+   <td style="text-align:right;"> 4.875 </td>
+   <td style="text-align:right;"> 82.39335 </td>
+   <td style="text-align:right;"> 0.0591674 </td>
+   <td style="text-align:right;"> 0.9542701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x2:x3 </td>
+   <td style="text-align:right;"> -36.250 </td>
+   <td style="text-align:right;"> 82.39335 </td>
+   <td style="text-align:right;"> -0.4399627 </td>
+   <td style="text-align:right;"> 0.6716081 </td>
+  </tr>
+</tbody>
+</table>
 
-```r
-prb0506 <- read.table("~/Dropbox/Docs/sta305/BHHData/BHH2-Data/prb0506.dat", header=TRUE, quote="\"")
-fact.mod <- lm(y3~x1*x2*x3,data=prb0506)
-knitr::kable(summary(fact.mod)$coefficients)
-```
-
-               Estimate   Std. Error      t value    Pr(>|t|)
-------------  ---------  -----------  -----------  ----------
-(Intercept)     360.125     82.39335    4.3708018   0.0023779
-x1               86.750     82.39335    1.0528762   0.3231570
-x2               29.750     82.39335    0.3610728   0.7273943
-x3              247.750     82.39335    3.0069174   0.0168927
-x1:x2           -97.125     82.39335   -1.1787966   0.2723484
-x1:x3            66.625     82.39335    0.8086211   0.4421145
-x2:x3             4.875     82.39335    0.0591674   0.9542701
-x1:x2:x3        -36.250     82.39335   -0.4399627   0.6716081
-
-```r
-cubePlot(fact.mod,"x1","x2","x3",round=1,modeled=F)
-```
-
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-1.png" width="672" />
-
-```r
-interaction.plot(prb0506$x1,prb0506$x2,prb0506$y3,main="interaction between x1 and x2")
-```
-
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-2.png" width="672" />
-
-```r
-interaction.plot(prb0506$x1,prb0506$x3,prb0506$y3,main="interaction between x1 and x3")
-```
-
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-3.png" width="672" />
-
-```r
-interaction.plot(prb0506$x2,prb0506$x3,prb0506$y3,main="interaction between x2 and x3")
-```
-
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-4.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-1.png" width="672" /><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-2.png" width="672" /><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-3.png" width="672" /><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-35-4.png" width="672" />
 
 The main effects and interactions are obtained by multiplying the regression coeffcicents by 2 
 
@@ -1107,18 +1213,102 @@ factnames <- c("Run","1","2","3","12","13","23","123")
 knitr::kable(cbind(run,x1,x2,x3,x12,x13,x23,x123),col.names = factnames)
 ```
 
-
-
- Run    1    2    3   12   13   23   123
-----  ---  ---  ---  ---  ---  ---  ----
-   1   -1   -1   -1    1    1    1    -1
-   2    1   -1   -1   -1   -1    1     1
-   3   -1    1   -1   -1    1   -1     1
-   4    1    1   -1    1   -1   -1    -1
-   5   -1   -1    1    1   -1   -1     1
-   6    1   -1    1   -1    1   -1    -1
-   7   -1    1    1   -1   -1    1    -1
-   8    1    1    1    1    1    1     1
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Run </th>
+   <th style="text-align:right;"> 1 </th>
+   <th style="text-align:right;"> 2 </th>
+   <th style="text-align:right;"> 3 </th>
+   <th style="text-align:right;"> 12 </th>
+   <th style="text-align:right;"> 13 </th>
+   <th style="text-align:right;"> 23 </th>
+   <th style="text-align:right;"> 123 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
 
 Suppose that we assign runs 1, 4, 6, 7 to block I which use the first batch of raw material and runs 2, 3, 5, 8 to block II which use the second batch of raw material.  The design is blocked this way by placing all runs in which the 123 is minus in one block and all the other runs in which 123 is plus in the other block.
 
@@ -1141,17 +1331,75 @@ Assigning a fraction of the $2^k$ treatment combinations to each block results i
 
 In the $2^3$ example suppose that the block variable is given the identifying number 4.
 
-
- Run    1    2    3   4 = 123
-----  ---  ---  ---  --------
-   1   -1   -1   -1        -1
-   2    1   -1   -1         1
-   3   -1    1   -1         1
-   4    1    1   -1        -1
-   5   -1   -1    1         1
-   6    1   -1    1        -1
-   7   -1    1    1        -1
-   8    1    1    1         1
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Run </th>
+   <th style="text-align:right;"> 1 </th>
+   <th style="text-align:right;"> 2 </th>
+   <th style="text-align:right;"> 3 </th>
+   <th style="text-align:right;"> 4 = 123 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
 
 
 Then you could think of your experiment as containing four factors.
@@ -1162,17 +1410,93 @@ This idea can be used to derive more sophisticated blocking arrangements.
 
 This example is from @bhh2005. Suppose we would like to arrange the $2^3$ design into four blocks.
 
-
- Run    1    2    3   4 = 123   5 = 23   45 = 1
-----  ---  ---  ---  --------  -------  -------
-   1   -1   -1   -1        -1        1       -1
-   2    1   -1   -1         1        1        1
-   3   -1    1   -1         1       -1       -1
-   4    1    1   -1        -1       -1        1
-   5   -1   -1    1         1       -1       -1
-   6    1   -1    1        -1       -1        1
-   7   -1    1    1        -1        1       -1
-   8    1    1    1         1        1        1
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Run </th>
+   <th style="text-align:right;"> 1 </th>
+   <th style="text-align:right;"> 2 </th>
+   <th style="text-align:right;"> 3 </th>
+   <th style="text-align:right;"> 4 = 123 </th>
+   <th style="text-align:right;"> 5 = 23 </th>
+   <th style="text-align:right;"> 45 = 1 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
 
 Consider two block factors called 4 and 5.  4 is associated with the three factor interaction and, say, 5 is associated with a the two factor interaction 23 which was deemed unimportant by the investigator. Runs are placed in different blocks depending on the signs of the block variables in columns 4 and 5.  Runs for which the signs of 4 and 5 are -- would go in one block,  -+ in a second block, the +- in a third block, and the ++ runs in the fourth.
 
@@ -1266,17 +1590,138 @@ Polymer solutions were prepared and spread as a film on a microscope slide.  Six
 
 
 
-
- run    A    B    C    D    E  y1    y2    y3    y4    y5         y6       
-----  ---  ---  ---  ---  ---  ----  ----  ----  ----  ---------  ---------
-   1   -1   -1   -1    1   -1  no    no    yes   no    slightly   yes      
-   2    1   -1   -1    1    1  no    yes   yes   yes   slightly   yes      
-   3   -1    1   -1   -1    1  no    no    no    yes   no         no       
-   4    1    1   -1   -1   -1  no    yes   no    no    no         no       
-   5   -1   -1    1   -1    1  yes   no    no    yes   no         slightly 
-   6    1   -1    1   -1   -1  yes   yes   no    no    no         no       
-   7   -1    1    1    1   -1  yes   no    yes   no    slightly   yes      
-   8    1    1    1    1    1  yes   yes   yes   yes   slightly   yes      
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> run </th>
+   <th style="text-align:right;"> A </th>
+   <th style="text-align:right;"> B </th>
+   <th style="text-align:right;"> C </th>
+   <th style="text-align:right;"> D </th>
+   <th style="text-align:right;"> E </th>
+   <th style="text-align:left;"> y1 </th>
+   <th style="text-align:left;"> y2 </th>
+   <th style="text-align:left;"> y3 </th>
+   <th style="text-align:left;"> y4 </th>
+   <th style="text-align:left;"> y5 </th>
+   <th style="text-align:left;"> y6 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> slightly </td>
+   <td style="text-align:left;"> yes </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> slightly </td>
+   <td style="text-align:left;"> yes </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> no </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> no </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> slightly </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> no </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> no </td>
+   <td style="text-align:left;"> slightly </td>
+   <td style="text-align:left;"> yes </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> yes </td>
+   <td style="text-align:left;"> slightly </td>
+   <td style="text-align:left;"> yes </td>
+  </tr>
+</tbody>
+</table>
 
 -  The eight run design was constructed beginning with a standard table of signs for a $2^3$ design in the factors A, B, C.
 
@@ -1293,17 +1738,84 @@ A chemist in an industrial development lab was trying to formulate a household l
 
 
 
-
- test    A    B    C    D    y
------  ---  ---  ---  ---  ---
-    1   -1   -1   -1   -1   20
-    2    1   -1   -1    1   14
-    3   -1    1   -1    1   17
-    4    1    1   -1   -1   10
-    5   -1   -1    1    1   19
-    6    1   -1    1   -1   13
-    7   -1    1    1   -1   14
-    8    1    1    1    1   10
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> test </th>
+   <th style="text-align:right;"> A </th>
+   <th style="text-align:right;"> B </th>
+   <th style="text-align:right;"> C </th>
+   <th style="text-align:right;"> D </th>
+   <th style="text-align:right;"> y </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 20 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 17 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+</tbody>
+</table>
 
 The signs of the ABC interaction is used to accommodate factor D.  The tests were run in random order.  He wanted to achieve a stability value of at least 25.  
 
@@ -1365,25 +1877,148 @@ There are 31 degrees of freedom in a 32 run design. But, are 16 used for estimat
 
 Consider a design that studies five factors in 16 run.  A half fraction of a $2^5$ or $2^{5-1}$.
 
-
- Run    B    C    D    E    Q
-----  ---  ---  ---  ---  ---
-   1   -1    1    1   -1   -1
-   2    1    1    1    1   -1
-   3   -1   -1    1    1   -1
-   4    1   -1    1   -1   -1
-   5   -1    1   -1    1   -1
-   6    1    1   -1   -1   -1
-   7   -1   -1   -1   -1   -1
-   8    1   -1   -1    1   -1
-   9   -1    1    1   -1    1
-  10    1    1    1    1    1
-  11   -1   -1    1    1    1
-  12    1   -1    1   -1    1
-  13   -1    1   -1    1    1
-  14    1    1   -1   -1    1
-  15   -1   -1   -1   -1    1
-  16    1   -1   -1    1    1
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Run </th>
+   <th style="text-align:right;"> B </th>
+   <th style="text-align:right;"> C </th>
+   <th style="text-align:right;"> D </th>
+   <th style="text-align:right;"> E </th>
+   <th style="text-align:right;"> Q </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
 
 The factor E is assigned to the column BCD.  But, the column for E is used to estimate the main effect of E and also for BCD.  So, this design cannot distinguish between E and BCD.  The main factor E is said to be **aliased** with the BCD interaction.
 
@@ -1510,17 +2145,66 @@ Taste will be measured on a scale of 1 (poor) to 10 (excellent).  A full factori
 
 The 8 runs of the full factorial design tell the experimenter how to set the levels of the different ingredients (factors).
 
-
- Run   butter   sugar   powder
-----  -------  ------  -------
-   1       -1      -1       -1
-   2        1      -1       -1
-   3       -1       1       -1
-   4        1       1       -1
-   5       -1      -1        1
-   6        1      -1        1
-   7       -1       1        1
-   8        1       1        1
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Run </th>
+   <th style="text-align:right;"> butter </th>
+   <th style="text-align:right;"> sugar </th>
+   <th style="text-align:right;"> powder </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
 
 In the first run the experimenter will bake chocolate chip cookies with 10g butter, 1/2 cup sugar, and 1/2 teaspoon of baking powder; the second run will use 15g butter, 1/2 cup sugar, and 1/2 teaspoon of baking powder; etc.
 
@@ -1528,17 +2212,75 @@ But, the experimenter decides to also study baking time on taste, but can't affo
 
 So, he decides to use the three factor interaction between butter, sugar, and powder to **assign if baking time will be 12 minutes (-1) or 16 minutes (+1) in each of the 8 runs**. 
 
-
- Run   butter   sugar   powder   baking time
-----  -------  ------  -------  ------------
-   1       -1      -1       -1            -1
-   2        1      -1       -1             1
-   3       -1       1       -1             1
-   4        1       1       -1            -1
-   5       -1      -1        1             1
-   6        1      -1        1            -1
-   7       -1       1        1            -1
-   8        1       1        1             1
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Run </th>
+   <th style="text-align:right;"> butter </th>
+   <th style="text-align:right;"> sugar </th>
+   <th style="text-align:right;"> powder </th>
+   <th style="text-align:right;"> baking time </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
 
 In this factorial design with four factors in 8 runs the experimenter will bake the cookies with 10g butter, 1/2 cup sugar, 1/2 teaspoon of baking powder, and baking time 12 minutes in the first run; in the second run use 15g butter, 1/2 cup sugar, and 1/2 teaspoon of baking powder, and 16 minutes baking time; etc.
 
