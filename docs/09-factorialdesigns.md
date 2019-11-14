@@ -902,7 +902,7 @@ $y_2$ | Fecal coliform contribution after 30 minutes (organisms/100 mL)
 $y_3$ |  Total coliform contribution after 15 minutes (organisms/100 mL)
 $y_4$ | Total coliform contribution after 30 minutes (organisms/1OO mL)
 
-The data are shown in the table below and can be downloaded [here](./docs/prb0506.dat).
+The data are shown in the table below and can be downloaded [here](prb0506.dat).
 
 
  run   x1   x2   x3    y1    y2     y3     y4

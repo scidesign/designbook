@@ -24,7 +24,7 @@
 <meta name="author" content="Nathan Taback" />
 
 
-<meta name="date" content="2019-11-10" />
+<meta name="date" content="2019-11-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,66 +60,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 </head>
@@ -155,14 +130,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
+<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
+</ul></li>
 <li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
-<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
-<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
+</ul></li>
 <li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
 <li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
 <li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
@@ -200,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
 <li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-2"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
 <li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
@@ -366,36 +346,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">6</span> Causal Inference</h1>
 <div id="the-fundemental-problem-of-causal-inference" class="section level2">
 <h2><span class="header-section-number">6.1</span> The Fundemental Problem of Causal Inference</h2>
-<p>The following is adapted from <span class="citation">Imbens and Rubin (<a href="#ref-imbens2015" role="doc-biblioref">2015</a>)</span> :</p>
+<p>The following is adapted from <span class="citation">Imbens and Rubin (<a href="#ref-imbens2015">2015</a>)</span> :</p>
 <p>Suppose Bob, at a particular point in time, is contemplating whether or not to take an aspirin for a headache. There are two treatment levels, taking an aspirin, and not taking an aspirin. If Bob takes the aspirin, his headache may be gone, or it may remain, say, an hour later; we denote this outcome, which can be either “Headache” or “No Headache,” by <span class="math inline">\(y^1\)</span>. (We could use a finer measure of the status of my headache an hour later, for example, rating my headache on a ten-point scale, but that does not alter the fundamental issues involved here.) Similarly, if Bob does not take the aspirin, his headache may remain an hour later, or it may not; we denote this potential outcome by <span class="math inline">\(y^0\)</span>, which also can be either “Headache,” or “No Headache.” There are therefore two potential outcomes, <span class="math inline">\(y^1\)</span> and <span class="math inline">\(y^0\)</span>, one for each level of the treatment. The causal effect of the treatment involves the comparison of these two potential outcomes.</p>
 <p>Because in this example each potential outcome can take on only two values, the unit- level causal effect – the comparison of these two outcomes for the same unit – involves one of four (two by two) possibilities:</p>
 <ol style="list-style-type: decimal">
-<li>Headache gone only with aspirin:
-<span class="math inline">\(y^1\)</span> = No Headache, <span class="math inline">\(y^0\)</span> = Headache</li>
-<li>No effect of aspirin, with a headache in both cases:
-<span class="math inline">\(y^1\)</span> = Headache, <span class="math inline">\(y^0\)</span> = Headache</li>
+<li>Headache gone only with aspirin: <span class="math inline">\(y^1\)</span> = No Headache, <span class="math inline">\(y^0\)</span> = Headache</li>
+<li>No effect of aspirin, with a headache in both cases: <span class="math inline">\(y^1\)</span> = Headache, <span class="math inline">\(y^0\)</span> = Headache</li>
 <li>No effect of aspirin, with the headache gone in both cases: <span class="math inline">\(y^1\)</span> = No Headache, <span class="math inline">\(y^0\)</span> = No Headache</li>
-<li>Headache gone only without aspirin:
-<span class="math inline">\(y^1\)</span> = Headache, <span class="math inline">\(y^0\)</span> = No Headache</li>
+<li>Headache gone only without aspirin: <span class="math inline">\(y^1\)</span> = Headache, <span class="math inline">\(y^0\)</span> = No Headache</li>
 </ol>
 <p>There are two important aspects of this definition of a causal effect.</p>
 <ol style="list-style-type: decimal">
 <li><p>The definition of the causal effect depends on the potential outcomes, but it does not depend on which outcome is actually observed. Specifically, whether Bob takes an aspirin (and am therefore unable to observe the state of my headache with no aspirin) or do not take an aspirin (and am thus unable to observe the outcome with an aspirin) does not affect the definition of the causal effect.</p></li>
-<li><p>The causal effect is the comparison of potential outcomes, for the same unit, at the same moment in time post-treatment. In particular, the causal effect is not defined in terms of comparisons of outcomes at different times, as in a before-and-after comparison of my headache before and after deciding to take or not to take the aspirin. <span class="citation">Holland (<a href="#ref-holland1986" role="doc-biblioref">1986</a>)</span> states that “The fundamental problem of causal inference” is therefore the problem that at most one of the potential outcomes can be realized and thus observed. If the action you take is Aspirin, you observe <span class="math inline">\(y^1\)</span> and will never know the value of <span class="math inline">\(y^0\)</span> because you cannot go back in time. Similarly, if your action is No Aspirin, you observe <span class="math inline">\(y^0\)</span> but cannot know the value of <span class="math inline">\(y^1\)</span>. In general, therefore, even though the unit-level causal effect (the comparison of the two potential outcomes) may be well defined, by definition we cannot learn its value from just the single realized potential outcome.</p></li>
+<li><p>The causal effect is the comparison of potential outcomes, for the same unit, at the same moment in time post-treatment. In particular, the causal effect is not defined in terms of comparisons of outcomes at different times, as in a before-and-after comparison of my headache before and after deciding to take or not to take the aspirin. <span class="citation">Holland (<a href="#ref-holland1986">1986</a>)</span> states that “The fundamental problem of causal inference” is therefore the problem that at most one of the potential outcomes can be realized and thus observed. If the action you take is Aspirin, you observe <span class="math inline">\(y^1\)</span> and will never know the value of <span class="math inline">\(y^0\)</span> because you cannot go back in time. Similarly, if your action is No Aspirin, you observe <span class="math inline">\(y^0\)</span> but cannot know the value of <span class="math inline">\(y^1\)</span>. In general, therefore, even though the unit-level causal effect (the comparison of the two potential outcomes) may be well defined, by definition we cannot learn its value from just the single realized potential outcome.</p></li>
 </ol>
 <p>The outcomes that would be observed under control and treatment conditions are often called <strong>counterfactuals or potential outcomes</strong>.</p>
-<p>If Bob took aspirin for his headache then then <span class="math inline">\(y^1\)</span> is observed and <span class="math inline">\(y^0\)</span> is the unobserved counterfactual outcome—it represents what would have happened to Bob if he had no taken aspirin. Conversely, if Bob had not taken aspirin then <span class="math inline">\(y^0\)</span> is observed and <span class="math inline">\(y^1\)</span> is counterfactual. In either case, a simple treatment effect for Bob can be defined as
-<span class="math display">\[ \mbox{treatment effect for Bob }= y^1-y^0.\]</span></p>
+<p>If Bob took aspirin for his headache then then <span class="math inline">\(y^1\)</span> is observed and <span class="math inline">\(y^0\)</span> is the unobserved counterfactual outcome—it represents what would have happened to Bob if he had no taken aspirin. Conversely, if Bob had not taken aspirin then <span class="math inline">\(y^0\)</span> is observed and <span class="math inline">\(y^1\)</span> is counterfactual. In either case, a simple treatment effect for Bob can be defined as <span class="math display">\[ \mbox{treatment effect for Bob }= y^1-y^0.\]</span></p>
 <div id="example-of-the-fundemental-problem" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Example of the fundemental problem</h3>
 <p>The table below shows hypothetical data for an experiment with 100 units (200 potential outcomes). The table shows what the data that is required to determine causal effects for each person in the data set—that is, it includes both potential outcomes for each person. Let <span class="math inline">\(y_i^0\)</span> be the potential outcome for unit <span class="math inline">\(i\)</span> when <span class="math inline">\(T_i = 0\)</span> and <span class="math inline">\(y_i^1\)</span> be the potential outcome for unit <span class="math inline">\(i\)</span> when <span class="math inline">\(T_i = 1\)</span>. <span class="math inline">\(X_i\)</span> is a pre-treatment characteristic or covariate for each unit.</p>
-<table style="width:71%;">
+<table style="width:69%;">
 <colgroup>
 <col width="12%" />
 <col width="9%" />
 <col width="12%" />
 <col width="13%" />
-<col width="22%" />
+<col width="20%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -445,13 +421,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>The observed data is actually</p>
-<table style="width:72%;">
+<table style="width:71%;">
 <colgroup>
 <col width="13%" />
 <col width="9%" />
 <col width="12%" />
 <col width="13%" />
-<col width="22%" />
+<col width="20%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -500,14 +476,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>The fundamental problem of causal inference is that at most one of these two potential outcomes, <span class="math inline">\(y_i^0\)</span> and <span class="math inline">\(y_i^1\)</span>, can be observed for each unit <span class="math inline">\(i\)</span>. The bottom table displays the data that can actually be observed. The <span class="math inline">\(y_i^1\)</span> values are “missing” for those in the control group and the <span class="math inline">\(y_i^0\)</span> values are “missing” for those in the treatment group. (pg. 170-171, <span class="citation">Gelman and Hill (<a href="#ref-gelman2006" role="doc-biblioref">2006</a>)</span>)</p>
+<p>The fundamental problem of causal inference is that at most one of these two potential outcomes, <span class="math inline">\(y_i^0\)</span> and <span class="math inline">\(y_i^1\)</span>, can be observed for each unit <span class="math inline">\(i\)</span>. The bottom table displays the data that can actually be observed. The <span class="math inline">\(y_i^1\)</span> values are “missing” for those in the control group and the <span class="math inline">\(y_i^0\)</span> values are “missing” for those in the treatment group. (pg. 170-171, <span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>)</p>
 <p>We cannot observe both what happens to an individual after taking the treatment (at a particular point in time) and what happens to that same individual after not taking the treatment (at the same point in time). Thus we can never measure a causal effect directly.</p>
 </div>
 </div>
 <div id="randomized-experiments-as-a-solution-to-the-fundemental-problem-of-causal-inference" class="section level2">
 <h2><span class="header-section-number">6.2</span> Randomized experiments as a solution to the fundemental problem of causal inference</h2>
 <p>Randomization and experimentation is one approach to dealing with the fundamental problem of causal inference. Outcomes are observed on a sample of units to learn about the distribution of outcomes in the population. The fundamental problem states that we cannot compare treatment and control outcomes for the same units, so we try to compare them on similar units. Similarity can be attained by using randomization to decide which units are assigned to the treatment group and which units are assigned to the control group.</p>
-<p>Other approaches to dealing with the problem is statistical adjustment via regression modelling and finding close substitutes to the units that did not receive treatment (see <span class="citation">Gelman and Hill (<a href="#ref-gelman2006" role="doc-biblioref">2006</a>)</span>).</p>
+<p>Other approaches to dealing with the problem is statistical adjustment via regression modelling and finding close substitutes to the units that did not receive treatment (see <span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>).</p>
 <p>Suppose that in an experiment units are randomly assigned to receive treatment and control, and also that the units are a random sample from a population of interest. The random sampling and random treatment assignment allow us to estimate the average causal effect of the treatment in the population, and regression modeling can be used to refine this estimate.</p>
 </div>
 <div id="average-causal-effects-and-randomized-experiments" class="section level2">
@@ -519,12 +495,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The control group is a group of units that could have ended up in the treatment group, but due to chance they just happened not to get the treatment. Therefore, on average, their outcomes represent what would have happened to the treated units had they not been treated; similarly, the treatment group outcomes represent what might have happened to the control group had they been treated.</p>
 <p>If <span class="math inline">\(n_0\)</span> units are selected at random from the population and given the control, and <span class="math inline">\(n_1\)</span> other units are randomly selected and given the treatment, then the observed sample averages of <span class="math inline">\(y\)</span> for the treated and control units can be used to estimate the corresponding population quantities, <span class="math inline">\({\bar y}^1\)</span> and <span class="math inline">\({\bar y}^0\)</span>, with their difference estimating the average treatment effect (and with standard error <span class="math inline">\(\sqrt{S^2_0/n_0+S^2_1/n_1}\)</span>). This works because the <span class="math inline">\(y_i^0\)</span> for the control group are a random sample of the values in the entire population. Similarly, the <span class="math inline">\(y_i^1\)</span> for the treatment group are a random sample of the <span class="math inline">\(y_i^1\)</span>’s in the population.</p>
 <p>Equivalently, if we select <span class="math inline">\(n_0 + n_1\)</span> units at random from the population, and then randomly assign <span class="math inline">\(n_0\)</span> of them to the control and <span class="math inline">\(n_1\)</span> to the treatment, we can think of each of the sample groups as representing the corresponding population of control or treated units. Therefore the control group mean can act as a counterfactual for the treatment group (and vice versa).</p>
-<p>In medical studies such as clinical trials it is common to select <span class="math inline">\(n_0 + n_1\)</span> units nonrandomly from the population but then the treatment is assigned at random within this sample. Causal inferences are still justified, but the inferences no longer generalize to the entire population (<span class="citation">Gelman and Hill (<a href="#ref-gelman2006" role="doc-biblioref">2006</a>)</span>).</p>
+<p>In medical studies such as clinical trials it is common to select <span class="math inline">\(n_0 + n_1\)</span> units nonrandomly from the population but then the treatment is assigned at random within this sample. Causal inferences are still justified, but the inferences no longer generalize to the entire population (<span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>).</p>
 <div id="stable-unit-treatment-value-assignment" class="section level3">
 <h3><span class="header-section-number">6.3.1</span> Stable Unit Treatment Value Assignment</h3>
 <p><strong>The assumption.</strong> The potential outcomes for any unit do not vary with the treatments assigned to other units, and, for each unit, there are no different forms or versions of each treatment level, which lead to different potential outcomes.</p>
-<p>The stable unit treatment value assumption involves assuming that treatments applied to one unit do not affect the outcome for another unit. For example, if Adam and Oliver are in different locations and have no contact with each other, it would appear reasonable to assume that if Oliver takes an an aspirin for his headache then his behaviour has no effect on the status of Adam’s headache. This assumption might not hold if Adam and Oliver are in the same location, and Adam’s behavior, affects Oliver’s behaviour. SUTVA incorporates the idea that Adam and Oliver do not interfere with one another and the idea that for each unit there is only a single version of each treatment level (e.g., there is only one dose of aspirin). <span class="citation">(Imbens and Rubin <a href="#ref-imbens2015" role="doc-biblioref">2015</a>)</span></p>
-<p>The causal effect of aspirin on headaches can be estimated if we are able to exclude the possibility that your taking or not taking aspirin has any effect on my headache, and that that the aspirin tablets available to me are of different strengths. These are assumptions that rely on previously acquired knowledge of the subject matter for their justification. Causal inference is generally impossible without such assumptions, and thus it is critical to be explicit about their content and their justifications. <span class="citation">(Imbens and Rubin <a href="#ref-imbens2015" role="doc-biblioref">2015</a>)</span></p>
+<p>The stable unit treatment value assumption involves assuming that treatments applied to one unit do not affect the outcome for another unit. For example, if Adam and Oliver are in different locations and have no contact with each other, it would appear reasonable to assume that if Oliver takes an an aspirin for his headache then his behaviour has no effect on the status of Adam’s headache. This assumption might not hold if Adam and Oliver are in the same location, and Adam’s behavior, affects Oliver’s behaviour. SUTVA incorporates the idea that Adam and Oliver do not interfere with one another and the idea that for each unit there is only a single version of each treatment level (e.g., there is only one dose of aspirin). <span class="citation">(Imbens and Rubin <a href="#ref-imbens2015">2015</a>)</span></p>
+<p>The causal effect of aspirin on headaches can be estimated if we are able to exclude the possibility that your taking or not taking aspirin has any effect on my headache, and that that the aspirin tablets available to me are of different strengths. These are assumptions that rely on previously acquired knowledge of the subject matter for their justification. Causal inference is generally impossible without such assumptions, and thus it is critical to be explicit about their content and their justifications. <span class="citation">(Imbens and Rubin <a href="#ref-imbens2015">2015</a>)</span></p>
 </div>
 </div>
 <div id="ignorable-assignment-mechanisims" class="section level2">
@@ -597,13 +573,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Patients receiving surgery on average live 2 years longer.</li>
 <li>Patients 1 and 3 will receive surgery and patients 2 and 4 will receive drug treatment.</li>
-<li>The observed treatments and outcomes are in this table, where
-<span class="math display">\[T_i =
+<li>The observed treatments and outcomes are in this table, where <span class="math display">\[T_i =
 \left\{
-  \begin{array}{ll}
-      1  &amp; \mbox{if surgery is assigned } \\
-      0 &amp; \mbox{if drug is assigned }
-  \end{array}
+\begin{array}{ll}
+    1  &amp; \mbox{if surgery is assigned } \\
+    0 &amp; \mbox{if drug is assigned }
+\end{array}
 \right.\]</span></li>
 </ul>
 <p>and</p>
@@ -656,7 +631,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <ul>
-<li><p>The observed data tells us that patients receiving drug live, on average, one year longer.</p></li>
+<li>The observed data tells us that patients receiving drug live, on average, one year longer.</li>
 <li><p>This shows that we can reach invalid conclusions if we look at the observed values of potential outcomes without considering how the treatments were assigned.</p></li>
 <li><p>In order to study causal effects the probability of a treatment assignment must be strictly between 0 and 1.</p></li>
 <li><p>The assignment mechanism depended on the potential outcomes and was therefore nonignorable.</p></li>
@@ -667,7 +642,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="questions-3" class="section level2">
 <h2><span class="header-section-number">6.5</span> Questions</h2>
 <ol style="list-style-type: decimal">
-<li><p>(Adapted from <span class="citation">Gelman and Hill (<a href="#ref-gelman2006" role="doc-biblioref">2006</a>)</span>, Chapter 9) Suppose you are interested in the effect of the presence of vending machines in schools on childhood obesity. What randomized experiment would you want to do (in a perfect world) to evaluate this question?</p></li>
+<li><p>(Adapted from <span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>, Chapter 9) Suppose you are interested in the effect of the presence of vending machines in schools on childhood obesity. What randomized experiment would you want to do (in a perfect world) to evaluate this question?</p></li>
 <li><p>What is the definition of ignorable treatment assignment?</p></li>
 </ol>
 <ol style="list-style-type: lower-alpha">
@@ -675,7 +650,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Give an example of a study where the treatment assignment is non-ignorable.</p></li>
 </ol>
 <ol start="3" style="list-style-type: decimal">
-<li>(Adapted from <span class="citation">Gelman and Hill (<a href="#ref-gelman2006" role="doc-biblioref">2006</a>)</span>, Chapter 9) The table below describes a hypothetical experiment on 2400 persons. Each row of the table specifies a category of person, as defined by his or her pre-treatment predictor <span class="math inline">\(x\)</span>, treatment indicator <span class="math inline">\(T\)</span> , and potential outcomes <span class="math inline">\(Y(0)\)</span>, <span class="math inline">\(Y(1)\)</span>. (For simplicity, we assume unrealistically that all the people in this experiment fit into these eight categories.)</li>
+<li>(Adapted from <span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>, Chapter 9) The table below describes a hypothetical experiment on 2400 persons. Each row of the table specifies a category of person, as defined by his or her pre-treatment predictor <span class="math inline">\(x\)</span>, treatment indicator <span class="math inline">\(T\)</span> , and potential outcomes <span class="math inline">\(Y(0)\)</span>, <span class="math inline">\(Y(1)\)</span>. (For simplicity, we assume unrealistically that all the people in this experiment fit into these eight categories.)</li>
 </ol>
 <table>
 <thead>
@@ -759,17 +734,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: lower-alpha">
 <li><p>Give an example of a context for this study. Define <span class="math inline">\(x, T, Y(0), Y(1)\)</span>.</p></li>
 <li><p>What is the average treatment effect in this population of 2400 persons?</p></li>
-<li><p>Is it plausible to believe that these data came from a randomized experiment?
-Defend your answer.</p></li>
-<li><p>Another population quantity is the mean of <span class="math inline">\(Y\)</span> for those who received the
-treatment minus the mean of <span class="math inline">\(Y\)</span> for those who did not. What is the relation
-between this quantity and the average treatment effect?</p></li>
-<li><p>For these data, is it plausible to believe that treatment assignment is strongly ignorable
-given the covariate <span class="math inline">\(x\)</span>? Defend your answer.</p></li>
+<li><p>Is it plausible to believe that these data came from a randomized experiment? Defend your answer.</p></li>
+<li><p>Another population quantity is the mean of <span class="math inline">\(Y\)</span> for those who received the treatment minus the mean of <span class="math inline">\(Y\)</span> for those who did not. What is the relation between this quantity and the average treatment effect?</p></li>
+<li><p>For these data, is it plausible to believe that treatment assignment is strongly ignorable given the covariate <span class="math inline">\(x\)</span>? Defend your answer.</p></li>
 </ol>
 <ol start="4" style="list-style-type: decimal">
-<li>(Adapted from <span class="citation">Gelman and Hill (<a href="#ref-gelman2006" role="doc-biblioref">2006</a>)</span>, Chapter 9) An observational study to evaluate the effectiveness of supplementing a reading program
-with a television show was conducted in several schools in grade 4. Some classroom teachers chose to supplement their reading program with the television show and some teachers chose not to supplement their reading program. Some teachers chose to supplement if they felt that it would help their class improve their reading scores. The study collected data on a large number of student and teacher covariates measured before the teachers chose to supplement or not supplement their reading program. The outcome measure of interest is student reading scores.</li>
+<li>(Adapted from <span class="citation">Gelman and Hill (<a href="#ref-gelman2006">2006</a>)</span>, Chapter 9) An observational study to evaluate the effectiveness of supplementing a reading program with a television show was conducted in several schools in grade 4. Some classroom teachers chose to supplement their reading program with the television show and some teachers chose not to supplement their reading program. Some teachers chose to supplement if they felt that it would help their class improve their reading scores. The study collected data on a large number of student and teacher covariates measured before the teachers chose to supplement or not supplement their reading program. The outcome measure of interest is student reading scores.</li>
 </ol>
 <ol style="list-style-type: lower-alpha">
 <li><p>Describe how this study could have been conducted as a randomized experiment.</p></li>
@@ -782,9 +752,7 @@ with a television show was conducted in several schools in grade 4. Some classro
 <li>Suppose you are interested in the effect of the presence of vending machines in schools on childhood obesity. What randomized experiment would you want to do (in a perfect world) to evaluate this question?</li>
 </ol>
 <blockquote>
-<p><em>One possible design: Design a randomized experiment with vending machines as the treatment and the rate of obesity as the
-outcome. Schools would be randomly assigned to have vending machines and no vending machines. The weight of children in
-the school would be measured in all schools before the vending machines were installed and at the end of the school year.</em></p>
+<p><em>One possible design: Design a randomized experiment with vending machines as the treatment and the rate of obesity as the outcome. Schools would be randomly assigned to have vending machines and no vending machines. The weight of children in the school would be measured in all schools before the vending machines were installed and at the end of the school year.</em></p>
 </blockquote>
 <ol start="2" style="list-style-type: decimal">
 <li>What is the definition of strongly ignorable treatment assignment?</li>
@@ -793,25 +761,20 @@ the school would be measured in all schools before the vending machines were ins
 <p>See definition above.</p>
 </blockquote>
 <blockquote>
-<p>Let <span class="math inline">\(Z=1\)</span> if a unit is treated and <span class="math inline">\(Z=0\)</span> if a unit is control. Let <span class="math inline">\(Y(0)\)</span> be the potential outcome if the
-unit is treated and <span class="math inline">\(Y(1)\)</span> the potential outcome if the unit is a control, and <span class="math inline">\(X\)</span> be a vector of
-pretreatment covariates: <span class="math display">\[ P(Z|Y(0),Y(1),X)=P(Z|X),\]</span></p>
+<p>Let <span class="math inline">\(Z=1\)</span> if a unit is treated and <span class="math inline">\(Z=0\)</span> if a unit is control. Let <span class="math inline">\(Y(0)\)</span> be the potential outcome if the unit is treated and <span class="math inline">\(Y(1)\)</span> the potential outcome if the unit is a control, and <span class="math inline">\(X\)</span> be a vector of pretreatment covariates: <span class="math display">\[ P(Z|Y(0),Y(1),X)=P(Z|X),\]</span></p>
 </blockquote>
 <p>and <span class="math inline">\(0&lt;P(Z|Y(0),Y(1),X)&lt;1\)</span>.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Give an example of a study where the treatment assignment is ignorable.</li>
 </ol>
 <blockquote>
-<p><em>Any study that is a randomized experiment. For example, if two fertilizers are randomly assigned to 12 plots of
-land with one fertilzer assigned to 6 plots and the other fertilzer assigned to the remaining plots. The
-probability of any particlular treatment assignment is <span class="math inline">\({\binom {12} {6}}^{-1}\)</span>.</em></p>
+<p><em>Any study that is a randomized experiment. For example, if two fertilizers are randomly assigned to 12 plots of land with one fertilzer assigned to 6 plots and the other fertilzer assigned to the remaining plots. The probability of any particlular treatment assignment is <span class="math inline">\({\binom {12} {6}}^{-1}\)</span>.</em></p>
 </blockquote>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Give an example of a study where the treatment assignment is non-ignorable.</li>
 </ol>
 <blockquote>
-<p><em>A doctor assigns treatments to patients based on their prior medical history and how successful the doctor
-feels that the treatment will be for the patient.</em></p>
+<p><em>A doctor assigns treatments to patients based on their prior medical history and how successful the doctor feels that the treatment will be for the patient.</em></p>
 </blockquote>
 <ol start="3" style="list-style-type: decimal">
 <li>(Adapted from Hill and Gelman, Chapter 9) The table below describes a hypothetical experiment on 2400 persons. Each row of the table specifies a category of person, as defined by his or her pre-treatment predictor <span class="math inline">\(x\)</span>, treatment indicator <span class="math inline">\(T\)</span> , and potential outcomes <span class="math inline">\(Y(0)\)</span>, <span class="math inline">\(Y(1)\)</span>. (For simplicity, we assume unrealistically that all the people in this experiment fit into these eight categories.)</li>
@@ -899,11 +862,8 @@ feels that the treatment will be for the patient.</em></p>
 <li>Give an example of a context for this study. Define <span class="math inline">\(x, T, Y(0), Y(1)\)</span>.</li>
 </ol>
 <blockquote>
-<p>Let <span class="math inline">\(T=0\)</span> if subjects receive aspirin and <span class="math inline">\(T=1\)</span> if subjects receive tylenol and aspirin. <span class="math inline">\(x=0\)</span> if the subject
-is male and <span class="math inline">\(x=1\)</span> if the subject is female. <span class="math inline">\(Y(0)\)</span> is the time to pain relief if the subject received aspirin
-and <span class="math inline">\(Y(1)\)</span> is the time to pain relief if the subject received tylenol and aspirin.</p>
-<p>In reality we can’t observe both responses and the response that we observe will be <span class="math inline">\(Y^{obs}=Z*Y(1)+(1-Z)*Y(0)\)</span>.
-But to illustrate the concepts we will assume that we can observe both <span class="math inline">\(Y(0)\)</span> and <span class="math inline">\(Y(1)\)</span>.</p>
+<p>Let <span class="math inline">\(T=0\)</span> if subjects receive aspirin and <span class="math inline">\(T=1\)</span> if subjects receive tylenol and aspirin. <span class="math inline">\(x=0\)</span> if the subject is male and <span class="math inline">\(x=1\)</span> if the subject is female. <span class="math inline">\(Y(0)\)</span> is the time to pain relief if the subject received aspirin and <span class="math inline">\(Y(1)\)</span> is the time to pain relief if the subject received tylenol and aspirin.</p>
+<p>In reality we can’t observe both responses and the response that we observe will be <span class="math inline">\(Y^{obs}=Z*Y(1)+(1-Z)*Y(0)\)</span>. But to illustrate the concepts we will assume that we can observe both <span class="math inline">\(Y(0)\)</span> and <span class="math inline">\(Y(1)\)</span>.</p>
 </blockquote>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>What is the average treatment effect in this population of 2400 persons?</li>
@@ -916,58 +876,40 @@ But to illustrate the concepts we will assume that we can observe both <span cla
 <p>The average treatment effect is <span class="math inline">\({\bar Y(0)}-{\bar Y(1)}=6-8=-2\)</span>.</p>
 </blockquote>
 <ol start="3" style="list-style-type: lower-alpha">
-<li>Is it plausible to believe that these data came from a randomized experiment?
-Defend your answer.</li>
+<li>Is it plausible to believe that these data came from a randomized experiment? Defend your answer.</li>
 </ol>
 <blockquote>
-<p><em>500/1000 (50%) subjects in the <span class="math inline">\(T=0\)</span> have <span class="math inline">\(x=0\)</span>
-and 700/1400 (50%) subjects in the <span class="math inline">\(T=1\)</span> group have <span class="math inline">\(x=0\)</span>. If the data came from a randomized experiment we would expect that
-all the observed covariates would be balanced. Therefore it seems plausible that the data came from a randomized
-experiment. </em></p>
+<p><em>500/1000 (50%) subjects in the <span class="math inline">\(T=0\)</span> have <span class="math inline">\(x=0\)</span> and 700/1400 (50%) subjects in the <span class="math inline">\(T=1\)</span> group have <span class="math inline">\(x=0\)</span>. If the data came from a randomized experiment we would expect that all the observed covariates would be balanced. Therefore it seems plausible that the data came from a randomized experiment. </em></p>
 </blockquote>
 <ol start="4" style="list-style-type: lower-alpha">
-<li>Another population quantity is the mean of <span class="math inline">\(Y\)</span> for those who received the
-treatment minus the mean of <span class="math inline">\(Y\)</span> for those who did not. What is the relation
-between this quantity and the average treatment effect?</li>
+<li>Another population quantity is the mean of <span class="math inline">\(Y\)</span> for those who received the treatment minus the mean of <span class="math inline">\(Y\)</span> for those who did not. What is the relation between this quantity and the average treatment effect?</li>
 </ol>
 <blockquote>
 <p>The average for those that received <span class="math inline">\(T=0\)</span>:</p>
 <p><span class="math display">\[ \frac {300\times4+300\times4+200\times10+200\times10}{300+300+200+200}=6.4\]</span></p>
-<p>The average for those that received <span class="math inline">\(T=0\)</span>:
-<span class="math display">\[ \frac {500\times6+500\times6+200\times12+200\times12}{500+500+200+200}=7.7\]</span></p>
-<p><em>The treatment effect using these averages is 7.7-6.4=+1.3. The relation between this quantity and the average treatment
-effect is that this quantity is based on the observed responses. The average treatment effect is
-based on the observed and unobserved responses.
-This quantity yields a different treatment effect compared to the average treatment effect.</em></p>
+<p>The average for those that received <span class="math inline">\(T=0\)</span>: <span class="math display">\[ \frac {500\times6+500\times6+200\times12+200\times12}{500+500+200+200}=7.7\]</span></p>
+<p><em>The treatment effect using these averages is 7.7-6.4=+1.3. The relation between this quantity and the average treatment effect is that this quantity is based on the observed responses. The average treatment effect is based on the observed and unobserved responses. This quantity yields a different treatment effect compared to the average treatment effect.</em></p>
 </blockquote>
 <ol start="5" style="list-style-type: lower-alpha">
-<li>For these data, is it plausible to believe that treatment assignment is strongly ignorable
-given the covariate <span class="math inline">\(x\)</span>? Defend your answer.</li>
+<li>For these data, is it plausible to believe that treatment assignment is strongly ignorable given the covariate <span class="math inline">\(x\)</span>? Defend your answer.</li>
 </ol>
 <blockquote>
-<p>If treatment assignment is strongly ignorable then <span class="math inline">\(P(T|Y(0)=y_0,Y(1)=y_1,X=x)=P(T|X=x).\)</span> So, let’s consider the case where <span class="math inline">\(y_0=4\)</span> and,
-<span class="math inline">\(y_1=6\)</span>. <span class="math display">\[P(T|Y(0)=4,Y(1)=6,X=0)=\frac{300}{300+500}=\frac{3}{8},\]</span> and <span class="math display">\[P(T=0|X=0)=\frac{300+200}{300+500+200+200}=\frac {5}{12}.\]</span>
-Therefore, <span class="math display">\[P(T|Y(0)=4,Y(1)=6,X=0) \ne P(T=0|X=0).\]</span> This means that the treatment assignment is non-ignorable since treatment
-assignment is not (conditionally) independent of the potential outcomes given the covariate.</p>
+<p>If treatment assignment is strongly ignorable then <span class="math inline">\(P(T|Y(0)=y_0,Y(1)=y_1,X=x)=P(T|X=x).\)</span> So, let’s consider the case where <span class="math inline">\(y_0=4\)</span> and, <span class="math inline">\(y_1=6\)</span>. <span class="math display">\[P(T|Y(0)=4,Y(1)=6,X=0)=\frac{300}{300+500}=\frac{3}{8},\]</span> and <span class="math display">\[P(T=0|X=0)=\frac{300+200}{300+500+200+200}=\frac {5}{12}.\]</span> Therefore, <span class="math display">\[P(T|Y(0)=4,Y(1)=6,X=0) \ne P(T=0|X=0).\]</span> This means that the treatment assignment is non-ignorable since treatment assignment is not (conditionally) independent of the potential outcomes given the covariate.</p>
 </blockquote>
 <ol start="4" style="list-style-type: decimal">
-<li>An observational study to evaluate the effectivness of supplementing a reading program
-with a television show was conducted in several schools in grade 4. Some classroom teachers chose to supplement their reading program with the television show and some teachers chose not to supplement their reading program. Some teachers chose to supplement if they felt that it would help their class improve their reading scores. The study collected data on a large number of student and teacher covariates measured before the teachers chose to supplement or not supplement their reading program. The outcome measure of interest is student reading scores.</li>
+<li>An observational study to evaluate the effectivness of supplementing a reading program with a television show was conducted in several schools in grade 4. Some classroom teachers chose to supplement their reading program with the television show and some teachers chose not to supplement their reading program. Some teachers chose to supplement if they felt that it would help their class improve their reading scores. The study collected data on a large number of student and teacher covariates measured before the teachers chose to supplement or not supplement their reading program. The outcome measure of interest is student reading scores.</li>
 </ol>
 <ol style="list-style-type: lower-alpha">
 <li>Describe how this study could have been conducted as a randomized experiment.</li>
 </ol>
 <blockquote>
-<p>Classrooms could be randomly assigned to supplement their reading programs or not supplement their reading programs instead of teachers
-choosing to supplemnt or not supplemnt their reading programs.</p>
+<p>Classrooms could be randomly assigned to supplement their reading programs or not supplement their reading programs instead of teachers choosing to supplemnt or not supplemnt their reading programs.</p>
 </blockquote>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Is it plausible to assume that supplementing the reading program is ignorable in this observational study?</li>
 </ol>
 <blockquote>
-<p>No, since teachers intentionally choose to supplement or not supplement based on the characteristics of their class and how
-they feel that the class will respond to the reading supplement. In other words treatment assignment is
-dependent on the potential outcomes given pre-treatment covariates.</p>
+<p>No, since teachers intentionally choose to supplement or not supplement based on the characteristics of their class and how they feel that the class will respond to the reading supplement. In other words treatment assignment is dependent on the potential outcomes given pre-treatment covariates.</p>
 </blockquote>
 
 </div>
@@ -978,7 +920,7 @@ dependent on the potential outcomes given pre-treatment covariates.</p>
 <p>Gelman, Andrew, and Jennifer Hill. 2006. <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. Cambridge University Press.</p>
 </div>
 <div id="ref-holland1986">
-<p>Holland, Paul W. 1986. “Statistics and Causal Inference.” <em>Journal of the American Statistical Association</em> 81 (396): 945–60.</p>
+<p>Holland, Paul W. 1986. “Statistics and Causal Inference.” <em>Journal of the American Statistical Association</em> 81 (396). Taylor &amp;amp; Francis: 945–60.</p>
 </div>
 <div id="ref-imbens2015">
 <p>Imbens, Guido W, and Donald B Rubin. 2015. <em>Causal Inference in Statistics, Social, and Biomedical Sciences</em>. Cambridge University Press.</p>
@@ -1040,7 +982,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
