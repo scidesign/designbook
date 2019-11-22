@@ -35,29 +35,138 @@ Within each blend the order in which the treatments were run were randomized.  I
 
 A Key feature of randomized block designs is that randomization is applied to treatments within each block.  In other words, the blocks represent a restriction on randomization.
 
-
- run   blend  treatment     y
-----  ------  ----------  ---
-   1       1  A            89
-   4       2  A            84
-   2       3  A            81
-   1       4  A            87
-   3       5  A            79
-   3       1  B            88
-   2       2  B            77
-   1       3  B            87
-   3       4  B            92
-   4       5  B            81
-   2       1  C            97
-   3       2  C            92
-   4       3  C            87
-   2       4  C            89
-   1       5  C            80
-   4       1  D            94
-   1       2  D            79
-   3       3  D            85
-   4       4  D            84
-   2       5  D            88
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> run </th>
+   <th style="text-align:right;"> blend </th>
+   <th style="text-align:left;"> treatment </th>
+   <th style="text-align:right;"> y </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 89 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 84 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 81 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 87 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 79 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 88 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 77 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 87 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 92 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 81 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 97 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 92 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 87 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 89 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 80 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 94 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 79 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 85 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 84 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 88 </td>
+  </tr>
+</tbody>
+</table>
 
 
 ## The ANOVA identity for Randomized Block Designs
@@ -333,58 +442,113 @@ There are several other types of designs that utilize the blocking principle suc
 An experiment to test the feasibility of reducing air pollution by modifying a gasoline mixture with very small amounts of certain chemicals A, B, C, and D was conducted. The four treatments were tested with four different drivers and four different cars. There were thus two block factors-cars and drivers. (Box, Hunter, and Hunter 2005) 
 
 
-
-
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-</style>
-<table class="tg">
+<table class="table table-striped" style="width: auto !important; ">
+ <thead>
   <tr>
-    <th class="tg-0lax"></th>
-    <th class="tg-0lax"></th>
-    <th class="tg-0lax" colspan="4">Cars</th>
+   <th style="text-align:right;"> driver </th>
+   <th style="text-align:right;"> cars </th>
+   <th style="text-align:left;"> additive </th>
+   <th style="text-align:right;"> y </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 19 </td>
   </tr>
   <tr>
-    <td class="tg-0lax"></td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky">1</td>
-    <td class="tg-0pky">2</td>
-    <td class="tg-0pky">3</td>
-    <td class="tg-0pky">4</td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 23 </td>
   </tr>
   <tr>
-    <td class="tg-0lax" rowspan="4">Drivers</td>
-    <td class="tg-0pky">I</td>
-    <td class="tg-0pky">A<br>19</td>
-    <td class="tg-0pky">B<br>24</td>
-    <td class="tg-0pky">D<br>23</td>
-    <td class="tg-0pky">C<br>26</td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 15 </td>
   </tr>
   <tr>
-    <td class="tg-0pky">II</td>
-    <td class="tg-0pky">D<br>23</td>
-    <td class="tg-0pky">C<br>24</td>
-    <td class="tg-0pky">A<br>19</td>
-    <td class="tg-0pky">B<br>30</td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 19 </td>
   </tr>
   <tr>
-    <td class="tg-0pky">III</td>
-    <td class="tg-0pky">B<br>15</td>
-    <td class="tg-0pky">D<br>14</td>
-    <td class="tg-0pky">C<br>15</td>
-    <td class="tg-0pky">A<br>16</td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 24 </td>
   </tr>
   <tr>
-    <td class="tg-0pky">IV</td>
-    <td class="tg-0pky">C<br>19</td>
-    <td class="tg-0pky">A<br>18</td>
-    <td class="tg-0pky">B<br>19</td>
-    <td class="tg-0pky">D<br>16</td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 24 </td>
   </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 23 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 15 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 26 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 30 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+</tbody>
 </table>
 
 
@@ -611,13 +775,7 @@ There are many possible $p \times p$ Latin squares.  If $p = 3$ then two Latin s
 
 Example 1:
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-</style>
+
 <table class="tg">
   <tr>
     <th class="tg-lboi"></th>

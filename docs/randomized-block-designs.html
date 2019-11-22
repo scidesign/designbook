@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9 Randomized Block Designs | Design of Experiments and Observational Studies</title>
   <meta name="description" content="An Introduction to Design, Causal Inference,and Analysis Using R" />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.15 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9 Randomized Block Designs | Design of Experiments and Observational Studies" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Nathan Taback" />
 
 
-<meta name="date" content="2019-11-14" />
+<meta name="date" content="2019-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="completely-randomized-designs-comparing-more-than-two-treatments.html">
-<link rel="next" href="factorial-designs-at-two-levels-2k-designs.html">
+<link rel="prev" href="completely-randomized-designs-comparing-more-than-two-treatments.html"/>
+<link rel="next" href="factorial-designs-at-two-levels-2k-designs.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -60,41 +63,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -130,19 +158,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
-<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
-<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
-</ul></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a></li>
 <li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
-<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
-<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
-<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
-</ul></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a></li>
 <li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
 <li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
 <li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
@@ -180,7 +203,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
 <li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-2"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
 <li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
@@ -358,7 +381,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Unblocked arrangements: randomized one-way design</li>
 <li>Blocked arrangements: randomized block design</li>
 </ul>
-<p>In blocked designs two kinds of effects are contemplated: 1. treatments (this is what the experimenter is interested in). 2. blocks (this is what the experimenter wants to eliminate the contribution to the treatment effect).</p>
+<p>In blocked designs two kinds of effects are contemplated:
+1. treatments (this is what the experimenter is interested in).
+2. blocks (this is what the experimenter wants to eliminate the contribution to the treatment effect).</p>
 <p>Blocks might be: different litters of animals; blends of chemical material; strips of land; or contiguous periods of time.</p>
 <div id="anova-table-for-randomized-block-designs" class="section level2">
 <h2><span class="header-section-number">9.1</span> ANOVA Table for Randomized Block Designs</h2>
@@ -368,133 +393,301 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>A Key feature of randomized block designs is that randomization is applied to treatments within each block. In other words, the blocks represent a restriction on randomization.</p>
 <table>
 <thead>
-<tr class="header">
-<th align="right">run</th>
-<th align="right">blend</th>
-<th align="left">treatment</th>
-<th align="right">y</th>
+<tr>
+<th style="text-align:right;">
+run
+</th>
+<th style="text-align:right;">
+blend
+</th>
+<th style="text-align:left;">
+treatment
+</th>
+<th style="text-align:right;">
+y
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="left">A</td>
-<td align="right">89</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+89
+</td>
 </tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="right">2</td>
-<td align="left">A</td>
-<td align="right">84</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+84
+</td>
 </tr>
-<tr class="odd">
-<td align="right">2</td>
-<td align="right">3</td>
-<td align="left">A</td>
-<td align="right">81</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+81
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="left">A</td>
-<td align="right">87</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+87
+</td>
 </tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="right">5</td>
-<td align="left">A</td>
-<td align="right">79</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+79
+</td>
 </tr>
-<tr class="even">
-<td align="right">3</td>
-<td align="right">1</td>
-<td align="left">B</td>
-<td align="right">88</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+88
+</td>
 </tr>
-<tr class="odd">
-<td align="right">2</td>
-<td align="right">2</td>
-<td align="left">B</td>
-<td align="right">77</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+77
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">3</td>
-<td align="left">B</td>
-<td align="right">87</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+87
+</td>
 </tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="right">4</td>
-<td align="left">B</td>
-<td align="right">92</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+92
+</td>
 </tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="right">5</td>
-<td align="left">B</td>
-<td align="right">81</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+81
+</td>
 </tr>
-<tr class="odd">
-<td align="right">2</td>
-<td align="right">1</td>
-<td align="left">C</td>
-<td align="right">97</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+97
+</td>
 </tr>
-<tr class="even">
-<td align="right">3</td>
-<td align="right">2</td>
-<td align="left">C</td>
-<td align="right">92</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+92
+</td>
 </tr>
-<tr class="odd">
-<td align="right">4</td>
-<td align="right">3</td>
-<td align="left">C</td>
-<td align="right">87</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+87
+</td>
 </tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="right">4</td>
-<td align="left">C</td>
-<td align="right">89</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+89
+</td>
 </tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="left">C</td>
-<td align="right">80</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+80
+</td>
 </tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="right">1</td>
-<td align="left">D</td>
-<td align="right">94</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+94
+</td>
 </tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="left">D</td>
-<td align="right">79</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+79
+</td>
 </tr>
-<tr class="even">
-<td align="right">3</td>
-<td align="right">3</td>
-<td align="left">D</td>
-<td align="right">85</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+85
+</td>
 </tr>
-<tr class="odd">
-<td align="right">4</td>
-<td align="right">4</td>
-<td align="left">D</td>
-<td align="right">84</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+84
+</td>
 </tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="right">5</td>
-<td align="left">D</td>
-<td align="right">88</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+88
+</td>
 </tr>
 </tbody>
 </table>
@@ -539,39 +732,39 @@ SS_{T}&amp;=SS_{Treat}+SS_{Blocks}+SS_E
 <div id="penicillin-manufacturing-example" class="section level3">
 <h3><span class="header-section-number">9.2.2</span> Penicillin Manufacturing Example</h3>
 <p>The block averages are:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">block.ave &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">split</span>(tab0404<span class="op">$</span>y,tab0404<span class="op">$</span>blend),mean)
-block.ave</code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" title="1">block.ave &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">split</span>(tab0404<span class="op">$</span>y,tab0404<span class="op">$</span>blend),mean)</a>
+<a class="sourceLine" id="cb354-2" title="2">block.ave</a></code></pre></div>
 <pre><code> 1  2  3  4  5 
 92 83 85 88 82 </code></pre>
 <p>The treatment averages are:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trt.ave &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">split</span>(tab0404<span class="op">$</span>y,tab0404<span class="op">$</span>treatment),mean)
-trt.ave</code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" title="1">trt.ave &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">split</span>(tab0404<span class="op">$</span>y,tab0404<span class="op">$</span>treatment),mean)</a>
+<a class="sourceLine" id="cb356-2" title="2">trt.ave</a></code></pre></div>
 <pre><code> A  B  C  D 
 84 85 89 86 </code></pre>
 <p>The grand average is:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grand.ave &lt;-<span class="st"> </span><span class="kw">mean</span>(tab0404<span class="op">$</span>y)
-grand.ave</code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" title="1">grand.ave &lt;-<span class="st"> </span><span class="kw">mean</span>(tab0404<span class="op">$</span>y)</a>
+<a class="sourceLine" id="cb358-2" title="2">grand.ave</a></code></pre></div>
 <pre><code>[1] 86</code></pre>
 <p>The block deviations from the grand average and the sum of squares of block deviations are:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">block.devs &lt;-<span class="st"> </span>block.ave<span class="op">-</span>grand.ave
-block.devs</code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" title="1">block.devs &lt;-<span class="st"> </span>block.ave<span class="op">-</span>grand.ave</a>
+<a class="sourceLine" id="cb360-2" title="2">block.devs</a></code></pre></div>
 <pre><code> 1  2  3  4  5 
  6 -3 -1  2 -4 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(block.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">4</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" title="1"><span class="kw">sum</span>(block.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">4</span></a></code></pre></div>
 <pre><code>[1] 264</code></pre>
 <p>The treatment deviations from the grand average and the sum of squares of treatment deviations are:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">treatment.devs &lt;-<span class="st"> </span>trt.ave<span class="op">-</span>grand.ave
-treatment.devs</code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" title="1">treatment.devs &lt;-<span class="st"> </span>trt.ave<span class="op">-</span>grand.ave</a>
+<a class="sourceLine" id="cb364-2" title="2">treatment.devs</a></code></pre></div>
 <pre><code> A  B  C  D 
 -2 -1  3  0 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(treatment.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" title="1"><span class="kw">sum</span>(treatment.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span></a></code></pre></div>
 <pre><code>[1] 70</code></pre>
 <p>The sum of squares of deviations from the grand average are:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all.devs &lt;-<span class="st"> </span>tab0404<span class="op">$</span>y<span class="op">-</span>grand.ave
-<span class="kw">sum</span>(all.devs<span class="op">^</span><span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1">all.devs &lt;-<span class="st"> </span>tab0404<span class="op">$</span>y<span class="op">-</span>grand.ave</a>
+<a class="sourceLine" id="cb368-2" title="2"><span class="kw">sum</span>(all.devs<span class="op">^</span><span class="dv">2</span>)</a></code></pre></div>
 <pre><code>[1] 560</code></pre>
 <p>So, the error sum of squares is:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(all.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">-</span><span class="kw">sum</span>(treatment.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span><span class="op">-</span><span class="kw">sum</span>(block.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">4</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" title="1"><span class="kw">sum</span>(all.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">-</span><span class="kw">sum</span>(treatment.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span><span class="op">-</span><span class="kw">sum</span>(block.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">4</span></a></code></pre></div>
 <pre><code>[1] 226</code></pre>
 <p>Would <span class="math inline">\(SS_E\)</span> increase or decrease if blocking was not incorporated into the design? <span class="math inline">\(SS_E\)</span> would increase since the extra variation would not be incorporated into <span class="math inline">\(SS_{Treat}\)</span> so it must be incorporated into <span class="math inline">\(SS_E\)</span>.</p>
 </div>
@@ -589,8 +782,8 @@ treatment.devs</code></pre></div>
 <p>and assuming that <span class="math inline">\(\epsilon_{ij}^{\prime}\)</span> were approximately independent and identically distributed the response <span class="math inline">\(y_{ij}^{\prime}=log(y_{ij})\)</span> could be analyzed using a linear model in which the interaction would disappear.</p>
 <p>Interactions often belong to two categories: (a) transformable interactions, which are eliminated by transformation of the original data, and (b) nontransfromable such as a treatment -blend interaction that cannot be eliminated via a transformation.</p>
 <p>The ANOVA table for a randomized block design can be obtained by fitting a linear model and extracting the ANOVA table. Using R the penicillin example has ANOVA table</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pen.model &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment)<span class="op">+</span><span class="kw">as.factor</span>(blend),<span class="dt">data =</span> tab0404)
-<span class="kw">anova</span>(pen.model)</code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" title="1">pen.model &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment)<span class="op">+</span><span class="kw">as.factor</span>(blend),<span class="dt">data =</span> tab0404)</a>
+<a class="sourceLine" id="cb372-2" title="2"><span class="kw">anova</span>(pen.model)</a></code></pre></div>
 <pre><code>Analysis of Variance Table
 
 Response: y
@@ -602,7 +795,7 @@ Residuals            12    226  18.833
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>If we further assume that <span class="math inline">\(\epsilon_{ij} \sim N(0,\sigma^2)\)</span> then <span class="math inline">\(MS_{Treat}/MS_{E} \sim F_{a-1,(a-1)(b-1)}, MS_{Blocks} \sim F_{b-1,(a-1)(b-1)}.\)</span></p>
 <p>Suppose that the blends (blocks) were not included in the model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(<span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment),<span class="dt">data =</span> tab0404))</code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" title="1"><span class="kw">anova</span>(<span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment),<span class="dt">data =</span> tab0404))</a></code></pre></div>
 <pre><code>Analysis of Variance Table
 
 Response: y
@@ -615,16 +808,16 @@ Residuals            16    490  30.625               </code></pre>
 <div id="checking-statistical-assumptions" class="section level3">
 <h3><span class="header-section-number">9.3.1</span> Checking statistical assumptions</h3>
 <p>The normality of the residuals can be checked by using a normal quantile plot.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pen.model &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment)<span class="op">+</span><span class="kw">as.factor</span>(blend),<span class="dt">data =</span> tab0404)
-<span class="kw">qqnorm</span>(pen.model<span class="op">$</span>residuals,<span class="dt">main =</span> <span class="st">&quot;Q-Q Plot for Penicillin Study&quot;</span>);<span class="kw">qqline</span>(pen.model<span class="op">$</span>residuals)</code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" title="1">pen.model &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment)<span class="op">+</span><span class="kw">as.factor</span>(blend),<span class="dt">data =</span> tab0404)</a>
+<a class="sourceLine" id="cb376-2" title="2"><span class="kw">qqnorm</span>(pen.model<span class="op">$</span>residuals,<span class="dt">main =</span> <span class="st">&quot;Q-Q Plot for Penicillin Study&quot;</span>);<span class="kw">qqline</span>(pen.model<span class="op">$</span>residuals)</a></code></pre></div>
 <p><img src="08-blocking_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>The constant variance assumption can be investigated by plotting the predicted values versus the residuals. The predicted (fitted) values are</p>
 <p><span class="math display">\[\hat {y_{ij}}=\bar{y_{i\cdot}}+\bar{y_{\cdot j}}-\bar{y_{\cdot \cdot}}\]</span></p>
 <p>and the residuals are</p>
 <p><span class="math display">\[ y_{ij}-\hat {y_{ij}}.\]</span></p>
 <p>Using R this plot can be obtained.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(pen.model<span class="op">$</span>fitted.values,pen.model<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Penicillin study&quot;</span>)
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb377-1" title="1"><span class="kw">plot</span>(pen.model<span class="op">$</span>fitted.values,pen.model<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Penicillin study&quot;</span>)</a>
+<a class="sourceLine" id="cb377-2" title="2"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</a></code></pre></div>
 <p><img src="08-blocking_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 </div>
@@ -641,56 +834,249 @@ Residuals            16    490  30.625               </code></pre>
 <h2><span class="header-section-number">9.5</span> Latin square designs</h2>
 <p>There are several other types of designs that utilize the blocking principle such as The Latin Square design. If there is more than one nuisance source that can be eliminated then a Latin Square design might be appropriate.</p>
 <p>An experiment to test the feasibility of reducing air pollution by modifying a gasoline mixture with very small amounts of certain chemicals A, B, C, and D was conducted. The four treatments were tested with four different drivers and four different cars. There were thus two block factors-cars and drivers. (Box, Hunter, and Hunter 2005)</p>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-</style>
-<table class="tg">
+<table class="table table-striped" style="width: auto !important; ">
+<thead>
 <tr>
-<pre><code>&lt;th class=&quot;tg-0lax&quot;&gt;&lt;/th&gt;
-&lt;th class=&quot;tg-0lax&quot;&gt;&lt;/th&gt;
-&lt;th class=&quot;tg-0lax&quot; colspan=&quot;4&quot;&gt;Cars&lt;/th&gt;</code></pre>
+<th style="text-align:right;">
+driver
+</th>
+<th style="text-align:right;">
+cars
+</th>
+<th style="text-align:left;">
+additive
+</th>
+<th style="text-align:right;">
+y
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+19
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0lax&quot;&gt;&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;1&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;2&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;3&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;4&lt;/td&gt;</code></pre>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+23
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0lax&quot; rowspan=&quot;4&quot;&gt;Drivers&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;I&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;br&gt;19&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;br&gt;24&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;br&gt;23&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;br&gt;26&lt;/td&gt;</code></pre>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+15
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;II&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;br&gt;23&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;br&gt;24&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;br&gt;19&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;br&gt;30&lt;/td&gt;</code></pre>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+19
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;III&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;br&gt;15&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;br&gt;14&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;br&gt;15&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;br&gt;16&lt;/td&gt;</code></pre>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+24
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;IV&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;br&gt;19&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;br&gt;18&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;br&gt;19&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;br&gt;16&lt;/td&gt;</code></pre>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+24
+</td>
 </tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+</tbody>
 </table>
 <ul>
 <li>Each treatment appears once in every row (driver) and every column (car).</li>
@@ -948,8 +1334,8 @@ D
 </table>
 <p>The model and analysis are similar to the randomized block design except that there is an additional blocking factor.</p>
 <p>In R the ANOVA table and treatment effects are obtained.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">latinsq.auto &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>additive<span class="op">+</span><span class="kw">as.factor</span>(cars)<span class="op">+</span><span class="kw">as.factor</span>(driver),<span class="dt">data =</span> tab0408)
-<span class="kw">anova</span>(latinsq.auto)</code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" title="1">latinsq.auto &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>additive<span class="op">+</span><span class="kw">as.factor</span>(cars)<span class="op">+</span><span class="kw">as.factor</span>(driver),<span class="dt">data =</span> tab0408)</a>
+<a class="sourceLine" id="cb378-2" title="2"><span class="kw">anova</span>(latinsq.auto)</a></code></pre></div>
 <pre><code>Analysis of Variance Table
 
 Response: y
@@ -960,7 +1346,7 @@ as.factor(driver)  3    216  72.000    13.5 0.004466 **
 Residuals          6     32   5.333                    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(latinsq.auto)</code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" title="1"><span class="kw">summary</span>(latinsq.auto)</a></code></pre></div>
 <pre><code>
 Call:
 lm(formula = y ~ additive + as.factor(cars) + as.factor(driver), 
@@ -1003,10 +1389,10 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 <p>Under the assumption that the residuals are independent and <span class="math inline">\(N(0,\sigma^2)\)</span> then under the null hypothesis that there are no differences between between treatments</p>
 <p><span class="math display">\[MS_{Treat}/MS_E \sim F_{3,6}.\]</span></p>
 <p>The statistical assumptions can be checked by plotting: (1) a normal quantile plot of the residuals; and (2) the predicted values versus residuals versus.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(latinsq.auto<span class="op">$</span>residuals,<span class="dt">main =</span> <span class="st">&quot;Q-Q Plot for Automobile Emissions&quot;</span>);<span class="kw">qqline</span>(latinsq.auto<span class="op">$</span>residuals)</code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" title="1"><span class="kw">qqnorm</span>(latinsq.auto<span class="op">$</span>residuals,<span class="dt">main =</span> <span class="st">&quot;Q-Q Plot for Automobile Emissions&quot;</span>);<span class="kw">qqline</span>(latinsq.auto<span class="op">$</span>residuals)</a></code></pre></div>
 <p><img src="08-blocking_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(latinsq.auto<span class="op">$</span>fitted.values,latinsq.auto<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Automobile Emissions&quot;</span>)
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb383-1" title="1"><span class="kw">plot</span>(latinsq.auto<span class="op">$</span>fitted.values,latinsq.auto<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Automobile Emissions&quot;</span>)</a>
+<a class="sourceLine" id="cb383-2" title="2"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</a></code></pre></div>
 <p><img src="08-blocking_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
 </div>
 <div id="general-latin-square-designs" class="section level2">
@@ -1014,37 +1400,61 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 <p>A Latin square for p factors of a <span class="math inline">\(p \times p\)</span> Latin square, is a square containing <span class="math inline">\(p\)</span> rows and <span class="math inline">\(p\)</span> columns. Each of the <span class="math inline">\(p^2\)</span> cells contains one of the <span class="math inline">\(p\)</span> letters that correspond to a treatment. Each letter occurs once and only once in each row and column.</p>
 <p>There are many possible <span class="math inline">\(p \times p\)</span> Latin squares. If <span class="math inline">\(p = 3\)</span> then two Latin squares are below,</p>
 <p>Example 1:</p>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-</style>
 <table class="tg">
 <tr>
-<pre><code>&lt;th class=&quot;tg-lboi&quot;&gt;&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 1&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 2&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 3&lt;/th&gt;</code></pre>
+<th class="tg-lboi">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 1&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+C
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-lboi&quot;&gt;Row 2&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;</code></pre>
+<td class="tg-lboi">
+Row 2
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+B
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-lboi&quot;&gt;Row 3&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;</code></pre>
+<td class="tg-lboi">
+Row 3
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+A
+</td>
 </tr>
 </table>
 <p>Example 2:</p>
@@ -1057,28 +1467,59 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 </style>
 <table class="tg">
 <tr>
-<pre><code>&lt;th class=&quot;tg-lboi&quot;&gt;&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 1&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 2&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 3&lt;/th&gt;</code></pre>
+<th class="tg-lboi">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 1&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-lboi&quot;&gt;Row 2&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;</code></pre>
+<td class="tg-lboi">
+Row 2
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+B
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-lboi&quot;&gt;Row 3&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;</code></pre>
+<td class="tg-lboi">
+Row 3
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
 </tr>
 </table>
 <p>Note that Col1, Col2, Col3 are three levels of a blocking variable and Row 1, Row 2, Row 3 are three levels of another blocking variable.</p>
@@ -1094,39 +1535,88 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 </style>
 <table class="tg">
 <tr>
-<pre><code>&lt;th class=&quot;tg-lboi&quot;&gt;&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 1&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 2&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 3&lt;/th&gt;
-&lt;th class=&quot;tg-0lax&quot;&gt;Col 4&lt;/th&gt;</code></pre>
+<th class="tg-lboi">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
+<th class="tg-0lax">
+Col 4
+</th>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 1&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;C&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0lax">
+C
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-lboi&quot;&gt;Row 2&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;B&lt;/td&gt;</code></pre>
+<td class="tg-lboi">
+Row 2
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0lax">
+B
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-lboi&quot;&gt;Row 3&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;A&lt;/td&gt;</code></pre>
+<td class="tg-lboi">
+Row 3
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0lax">
+A
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0lax&quot;&gt;Row 4&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;D&lt;/td&gt;</code></pre>
+<td class="tg-0lax">
+Row 4
+</td>
+<td class="tg-0lax">
+A
+</td>
+<td class="tg-0lax">
+C
+</td>
+<td class="tg-0lax">
+B
+</td>
+<td class="tg-0lax">
+D
+</td>
 </tr>
 </table>
 <p>Example 2:</p>
@@ -1138,39 +1628,88 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 </style>
 <table class="tg">
 <tr>
-<pre><code>&lt;th class=&quot;tg-0pky&quot;&gt;&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 1&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 2&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 3&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 4&lt;/th&gt;</code></pre>
+<th class="tg-0pky">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
+<th class="tg-0pky">
+Col 4
+</th>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 1&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+B
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 2&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 2
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 3&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 3
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 4&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 4
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+A
+</td>
 </tr>
 </table>
 </div>
@@ -1182,40 +1721,40 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 <thead>
 <tr class="header">
 <th></th>
-<th align="right">Car 1</th>
-<th align="right">Car 2</th>
-<th align="right">Car 3</th>
-<th align="right">Car 4</th>
+<th align="center">Car 1</th>
+<th align="center">Car 2</th>
+<th align="center">Car 3</th>
+<th align="center">Car 4</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Driver I</td>
-<td align="right">A <span class="math inline">\(\alpha\)</span></td>
-<td align="right">B <span class="math inline">\(\beta\)</span></td>
-<td align="right">C <span class="math inline">\(\gamma\)</span></td>
-<td align="right">D <span class="math inline">\(\delta\)</span></td>
+<td align="center">A <span class="math inline">\(\alpha\)</span></td>
+<td align="center">B <span class="math inline">\(\beta\)</span></td>
+<td align="center">C <span class="math inline">\(\gamma\)</span></td>
+<td align="center">D <span class="math inline">\(\delta\)</span></td>
 </tr>
 <tr class="even">
 <td>Driver II</td>
-<td align="right">B <span class="math inline">\(\delta\)</span></td>
-<td align="right">A <span class="math inline">\(\gamma\)</span></td>
-<td align="right">D <span class="math inline">\(\beta\)</span></td>
-<td align="right">C <span class="math inline">\(\alpha\)</span></td>
+<td align="center">B <span class="math inline">\(\delta\)</span></td>
+<td align="center">A <span class="math inline">\(\gamma\)</span></td>
+<td align="center">D <span class="math inline">\(\beta\)</span></td>
+<td align="center">C <span class="math inline">\(\alpha\)</span></td>
 </tr>
 <tr class="odd">
 <td>Driver III</td>
-<td align="right">C <span class="math inline">\(\beta\)</span></td>
-<td align="right">D <span class="math inline">\(\alpha\)</span></td>
-<td align="right">A <span class="math inline">\(\delta\)</span></td>
-<td align="right">B <span class="math inline">\(\gamma\)</span></td>
+<td align="center">C <span class="math inline">\(\beta\)</span></td>
+<td align="center">D <span class="math inline">\(\alpha\)</span></td>
+<td align="center">A <span class="math inline">\(\delta\)</span></td>
+<td align="center">B <span class="math inline">\(\gamma\)</span></td>
 </tr>
 <tr class="even">
 <td>Driver IV</td>
-<td align="right">D <span class="math inline">\(\gamma\)</span></td>
-<td align="right">C <span class="math inline">\(\delta\)</span></td>
-<td align="right">B <span class="math inline">\(\alpha\)</span></td>
-<td align="right">A <span class="math inline">\(\beta\)</span></td>
+<td align="center">D <span class="math inline">\(\gamma\)</span></td>
+<td align="center">C <span class="math inline">\(\delta\)</span></td>
+<td align="center">B <span class="math inline">\(\alpha\)</span></td>
+<td align="center">A <span class="math inline">\(\beta\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -1228,28 +1767,59 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 </style>
 <table class="tg">
 <tr>
-<pre><code>&lt;th class=&quot;tg-0pky&quot;&gt;&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 1&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 2&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 3&lt;/th&gt;</code></pre>
+<th class="tg-0pky">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 1&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+C
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 2&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 2
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+B
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 3&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 3
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+A
+</td>
 </tr>
 </table>
 <style type="text/css">
@@ -1260,28 +1830,59 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 </style>
 <table class="tg">
 <tr>
-<pre><code>&lt;th class=&quot;tg-0pky&quot;&gt;&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 1&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 2&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 3&lt;/th&gt;</code></pre>
+<th class="tg-0pky">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 1&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 2&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 2
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+B
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 3&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 3
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
 </tr>
 </table>
 <p>Using Greek letters <span class="math inline">\(\alpha,\beta, \gamma\)</span> in place of A, B, C in the second square we obtain the Graeco-Latin square design:</p>
@@ -1289,29 +1890,29 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 <thead>
 <tr class="header">
 <th></th>
-<th align="right">Col1</th>
-<th align="right">Col2</th>
-<th align="right">Col3</th>
+<th align="center">Col1</th>
+<th align="center">Col2</th>
+<th align="center">Col3</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Row 1</td>
-<td align="right">B <span class="math inline">\(\alpha\)</span></td>
-<td align="right">A <span class="math inline">\(\beta\)</span></td>
-<td align="right">C <span class="math inline">\(\gamma\)</span></td>
+<td align="center">B <span class="math inline">\(\alpha\)</span></td>
+<td align="center">A <span class="math inline">\(\beta\)</span></td>
+<td align="center">C <span class="math inline">\(\gamma\)</span></td>
 </tr>
 <tr class="even">
 <td>Row 2</td>
-<td align="right">A <span class="math inline">\(\gamma\)</span></td>
-<td align="right">C <span class="math inline">\(\alpha\)</span></td>
-<td align="right">B <span class="math inline">\(\beta\)</span></td>
+<td align="center">A <span class="math inline">\(\gamma\)</span></td>
+<td align="center">C <span class="math inline">\(\alpha\)</span></td>
+<td align="center">B <span class="math inline">\(\beta\)</span></td>
 </tr>
 <tr class="odd">
 <td>Row 3</td>
-<td align="right">C <span class="math inline">\(\beta\)</span></td>
-<td align="right">B <span class="math inline">\(\gamma\)</span></td>
-<td align="right">A <span class="math inline">\(\alpha\)</span></td>
+<td align="center">C <span class="math inline">\(\beta\)</span></td>
+<td align="center">B <span class="math inline">\(\gamma\)</span></td>
+<td align="center">A <span class="math inline">\(\alpha\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -1329,40 +1930,90 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 </style>
 <table class="tg">
 <tr>
-<pre><code>&lt;th class=&quot;tg-0pky&quot;&gt;&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 1&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 2&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 3&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 4&lt;/th&gt;
-&lt;th class=&quot;tg-0lax&quot;&gt;&lt;/th&gt;</code></pre>
+<th class="tg-0pky">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
+<th class="tg-0pky">
+Col 4
+</th>
+<th class="tg-0lax">
+</th>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 1&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;C&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0lax">
+C
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 2&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;B&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 2
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0lax">
+B
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 3&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;A&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 3
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0lax">
+A
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0lax&quot;&gt;Row 4&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;D&lt;/td&gt;</code></pre>
+<td class="tg-0lax">
+Row 4
+</td>
+<td class="tg-0lax">
+A
+</td>
+<td class="tg-0lax">
+C
+</td>
+<td class="tg-0lax">
+B
+</td>
+<td class="tg-0lax">
+D
+</td>
 </tr>
 </table>
 <style type="text/css">
@@ -1374,40 +2025,90 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 </style>
 <table class="tg">
 <tr>
-<pre><code>&lt;th class=&quot;tg-0pky&quot;&gt;&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 1&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 2&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 3&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 4&lt;/th&gt;
-&lt;th class=&quot;tg-0lax&quot;&gt;&lt;/th&gt;</code></pre>
+<th class="tg-0pky">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
+<th class="tg-0pky">
+Col 4
+</th>
+<th class="tg-0lax">
+</th>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 1&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;B&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0lax">
+B
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 2&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;C&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 2
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0lax">
+C
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 3&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;D&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 3
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0lax">
+D
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0lax&quot;&gt;Row 4&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;A&lt;/td&gt;</code></pre>
+<td class="tg-0lax">
+Row 4
+</td>
+<td class="tg-0lax">
+C
+</td>
+<td class="tg-0lax">
+B
+</td>
+<td class="tg-0lax">
+D
+</td>
+<td class="tg-0lax">
+A
+</td>
 </tr>
 </table>
 <style type="text/css">
@@ -1419,40 +2120,90 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 </style>
 <table class="tg">
 <tr>
-<pre><code>&lt;th class=&quot;tg-0pky&quot;&gt;&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 1&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 2&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 3&lt;/th&gt;
-&lt;th class=&quot;tg-0pky&quot;&gt;Col 4&lt;/th&gt;
-&lt;th class=&quot;tg-0lax&quot;&gt;&lt;/th&gt;</code></pre>
+<th class="tg-0pky">
+</th>
+<th class="tg-0pky">
+Col 1
+</th>
+<th class="tg-0pky">
+Col 2
+</th>
+<th class="tg-0pky">
+Col 3
+</th>
+<th class="tg-0pky">
+Col 4
+</th>
+<th class="tg-0lax">
+</th>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 1&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;C&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 1
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0lax">
+C
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 2&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;B&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 2
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0pky">
+D
+</td>
+<td class="tg-0lax">
+B
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0pky&quot;&gt;Row 3&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0pky&quot;&gt;A&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;D&lt;/td&gt;</code></pre>
+<td class="tg-0pky">
+Row 3
+</td>
+<td class="tg-0pky">
+B
+</td>
+<td class="tg-0pky">
+C
+</td>
+<td class="tg-0pky">
+A
+</td>
+<td class="tg-0lax">
+D
+</td>
 </tr>
 <tr>
-<pre><code>&lt;td class=&quot;tg-0lax&quot;&gt;Row 4&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;D&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;B&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;C&lt;/td&gt;
-&lt;td class=&quot;tg-0lax&quot;&gt;A&lt;/td&gt;</code></pre>
+<td class="tg-0lax">
+Row 4
+</td>
+<td class="tg-0lax">
+D
+</td>
+<td class="tg-0lax">
+B
+</td>
+<td class="tg-0lax">
+C
+</td>
+<td class="tg-0lax">
+A
+</td>
 </tr>
 </table>
 <p>To form a hyper-Graeco-Latin square we use Greek letters <span class="math inline">\(\alpha,\beta,\gamma, \delta\)</span> for A, B, C, D in the second square and numbers 1,2,3,4 for A, B,C, D in the third square then superimpose all the squares. Thus, the design is:</p>
@@ -1460,48 +2211,49 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 <thead>
 <tr class="header">
 <th></th>
-<th align="right">Col1</th>
-<th align="right">Col2</th>
-<th align="right">Col3</th>
-<th align="right">Col4</th>
+<th align="center">Col1</th>
+<th align="center">Col2</th>
+<th align="center">Col3</th>
+<th align="center">Col4</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Row 1</td>
-<td align="right">B <span class="math inline">\(\delta\)</span> 1</td>
-<td align="right">A <span class="math inline">\(\alpha\)</span> 4</td>
-<td align="right">D <span class="math inline">\(\gamma\)</span> 2</td>
-<td align="right">C <span class="math inline">\(\beta\)</span> 3</td>
+<td align="center">B <span class="math inline">\(\delta\)</span> 1</td>
+<td align="center">A <span class="math inline">\(\alpha\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\gamma\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\beta\)</span> 3</td>
 </tr>
 <tr class="even">
 <td>Row 2</td>
-<td align="right">C <span class="math inline">\(\alpha\)</span> 3</td>
-<td align="right">D <span class="math inline">\(\delta\)</span> 1</td>
-<td align="right">A <span class="math inline">\(\beta\)</span> 4</td>
-<td align="right">B <span class="math inline">\(\gamma\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\alpha\)</span> 3</td>
+<td align="center">D <span class="math inline">\(\delta\)</span> 1</td>
+<td align="center">A <span class="math inline">\(\beta\)</span> 4</td>
+<td align="center">B <span class="math inline">\(\gamma\)</span> 2</td>
 </tr>
 <tr class="odd">
 <td>Row 3</td>
-<td align="right">D <span class="math inline">\(\beta\)</span> 2</td>
-<td align="right">B <span class="math inline">\(\gamma\)</span> 3</td>
-<td align="right">C <span class="math inline">\(\alpha\)</span> 1</td>
-<td align="right">A <span class="math inline">\(\delta\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\beta\)</span> 2</td>
+<td align="center">B <span class="math inline">\(\gamma\)</span> 3</td>
+<td align="center">C <span class="math inline">\(\alpha\)</span> 1</td>
+<td align="center">A <span class="math inline">\(\delta\)</span> 4</td>
 </tr>
 <tr class="even">
 <td>Row 4</td>
-<td align="right">A <span class="math inline">\(\gamma\)</span> 4</td>
-<td align="right">C <span class="math inline">\(\beta\)</span> 2</td>
-<td align="right">B <span class="math inline">\(\delta\)</span> 3</td>
-<td align="right">D <span class="math inline">\(\alpha\)</span> 1</td>
+<td align="center">A <span class="math inline">\(\gamma\)</span> 4</td>
+<td align="center">C <span class="math inline">\(\beta\)</span> 2</td>
+<td align="center">B <span class="math inline">\(\delta\)</span> 3</td>
+<td align="center">D <span class="math inline">\(\alpha\)</span> 1</td>
 </tr>
 </tbody>
 </table>
 <p>The primary goal is to compare treatments A, B, C, D while blocking for four factors. The levels of each the factors are the 4 rows, 4 columns, 4 Greek letters, and 4 numbers.</p>
-<p>The following example from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span> illustrates this design.</p>
+<p>The following example from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005" role="doc-biblioref">2005</a>)</span> illustrates this design.</p>
 <p>A machine used to test the wearing quality of cloth is to be used to compare the wearing quality of four pieces of cloth on one machine. The response is weight loss in tenths of a milligram when it is rubbed against emery paper for 1000 revolutions of the machine.</p>
 <ul>
-<li>Samples of four different types of cloth (treatments) A, B, C, D are to be compared. The investigators would like to block for the effects of:</li>
+<li>Samples of four different types of cloth (treatments) A, B, C, D are to be compared.
+The investigators would like to block for the effects of:</li>
 </ul>
 <ol style="list-style-type: lower-roman">
 <li>type of specimen holders 1, 2, 3, 4</li>
@@ -1517,7 +2269,7 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 <th align="center"><span class="math inline">\(P_1\)</span></th>
 <th align="center"><span class="math inline">\(P_2\)</span></th>
 <th align="center"><span class="math inline">\(P_3\)</span></th>
-<th align="right"><span class="math inline">\(P_4\)</span></th>
+<th align="center"><span class="math inline">\(P_4\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -1526,56 +2278,56 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 <td align="center">A <span class="math inline">\(\alpha\)</span> 1</td>
 <td align="center">B <span class="math inline">\(\beta\)</span> 2</td>
 <td align="center">C <span class="math inline">\(\gamma\)</span> 3</td>
-<td align="right">D <span class="math inline">\(\delta\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\delta\)</span> 4</td>
 </tr>
 <tr class="even">
 <td></td>
 <td align="center">320</td>
 <td align="center">297</td>
 <td align="center">299</td>
-<td align="right">313</td>
+<td align="center">313</td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(C_2\)</span></td>
 <td align="center">C <span class="math inline">\(\beta\)</span> 4</td>
 <td align="center">D <span class="math inline">\(\alpha\)</span> 3</td>
 <td align="center">A <span class="math inline">\(\delta\)</span> 2</td>
-<td align="right">B <span class="math inline">\(\gamma\)</span> 1</td>
+<td align="center">B <span class="math inline">\(\gamma\)</span> 1</td>
 </tr>
 <tr class="even">
 <td></td>
 <td align="center">266</td>
 <td align="center">227</td>
 <td align="center">260</td>
-<td align="right">240</td>
+<td align="center">240</td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(C_3\)</span></td>
 <td align="center">D <span class="math inline">\(\gamma\)</span> 2</td>
 <td align="center">C <span class="math inline">\(\delta\)</span> 1</td>
 <td align="center">B <span class="math inline">\(\alpha\)</span> 4</td>
-<td align="right">A <span class="math inline">\(\beta\)</span> 3</td>
+<td align="center">A <span class="math inline">\(\beta\)</span> 3</td>
 </tr>
 <tr class="even">
 <td></td>
 <td align="center">221</td>
 <td align="center">240</td>
 <td align="center">267</td>
-<td align="right">252</td>
+<td align="center">252</td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(C_4\)</span></td>
 <td align="center">B <span class="math inline">\(\delta\)</span> 3</td>
 <td align="center">A <span class="math inline">\(\gamma\)</span> 4</td>
 <td align="center">D <span class="math inline">\(\beta\)</span> 1</td>
-<td align="right">C <span class="math inline">\(\alpha\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\alpha\)</span> 2</td>
 </tr>
 <tr class="even">
 <td></td>
 <td align="center">301</td>
 <td align="center">238</td>
 <td align="center">243</td>
-<td align="right">290</td>
+<td align="center">290</td>
 </tr>
 </tbody>
 </table>
@@ -1584,68 +2336,68 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 <thead>
 <tr class="header">
 <th></th>
-<th align="right"><span class="math inline">\(P_1\)</span></th>
+<th align="center"><span class="math inline">\(P_1\)</span></th>
 <th align="center"><span class="math inline">\(P_2\)</span></th>
 <th align="center"><span class="math inline">\(P_3\)</span></th>
-<th align="right"><span class="math inline">\(P_4\)</span></th>
+<th align="center"><span class="math inline">\(P_4\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><span class="math inline">\(C_5\)</span></td>
-<td align="right">A <span class="math inline">\(\alpha\)</span> 1</td>
+<td align="center">A <span class="math inline">\(\alpha\)</span> 1</td>
 <td align="center">B <span class="math inline">\(\beta\)</span> 2</td>
 <td align="center">C <span class="math inline">\(\gamma\)</span> 3</td>
-<td align="right">D <span class="math inline">\(\delta\)</span> 4</td>
+<td align="center">D <span class="math inline">\(\delta\)</span> 4</td>
 </tr>
 <tr class="even">
 <td></td>
-<td align="right">285</td>
+<td align="center">285</td>
 <td align="center">280</td>
 <td align="center">331</td>
-<td align="right">311</td>
+<td align="center">311</td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(C_6\)</span></td>
-<td align="right">C <span class="math inline">\(\beta\)</span> 4</td>
+<td align="center">C <span class="math inline">\(\beta\)</span> 4</td>
 <td align="center">D <span class="math inline">\(\alpha\)</span> 3</td>
 <td align="center">A <span class="math inline">\(\delta\)</span> 2</td>
-<td align="right">B <span class="math inline">\(\gamma\)</span> 1</td>
+<td align="center">B <span class="math inline">\(\gamma\)</span> 1</td>
 </tr>
 <tr class="even">
 <td></td>
-<td align="right">268</td>
+<td align="center">268</td>
 <td align="center">233</td>
 <td align="center">291</td>
-<td align="right">280</td>
+<td align="center">280</td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(C_7\)</span></td>
-<td align="right">D <span class="math inline">\(\gamma\)</span> 2</td>
+<td align="center">D <span class="math inline">\(\gamma\)</span> 2</td>
 <td align="center">C <span class="math inline">\(\delta\)</span> 1</td>
 <td align="center">B <span class="math inline">\(\alpha\)</span> 4</td>
-<td align="right">A <span class="math inline">\(\beta\)</span> 3</td>
+<td align="center">A <span class="math inline">\(\beta\)</span> 3</td>
 </tr>
 <tr class="even">
 <td></td>
-<td align="right">265</td>
+<td align="center">265</td>
 <td align="center">273</td>
 <td align="center">234</td>
-<td align="right">243</td>
+<td align="center">243</td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(C_8\)</span></td>
-<td align="right">B <span class="math inline">\(\delta\)</span> 3</td>
+<td align="center">B <span class="math inline">\(\delta\)</span> 3</td>
 <td align="center">A <span class="math inline">\(\gamma\)</span> 4</td>
 <td align="center">D <span class="math inline">\(\beta\)</span> 1</td>
-<td align="right">C <span class="math inline">\(\alpha\)</span> 2</td>
+<td align="center">C <span class="math inline">\(\alpha\)</span> 2</td>
 </tr>
 <tr class="even">
 <td></td>
-<td align="right">306</td>
+<td align="center">306</td>
 <td align="center">271</td>
 <td align="center">270</td>
-<td align="right">272</td>
+<td align="center">272</td>
 </tr>
 </tbody>
 </table>
@@ -2416,27 +3168,27 @@ d
 </tbody>
 </table>
 <p>The average weight loss for treatments, holders, positions, emery papers, cycles, and replicates are:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>treatment),mean) <span class="co"># treatment means</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>treatment),mean) <span class="co"># treatment means</span></a></code></pre></div>
 <pre><code>      A       B       C       D 
 270.000 275.625 279.875 260.375 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>holder),mean) <span class="co"># holder means</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>holder),mean) <span class="co"># holder means</span></a></code></pre></div>
 <pre><code>      1       2       3       4 
 268.875 272.000 274.000 271.000 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>position),mean) <span class="co"># position means</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb388-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>position),mean) <span class="co"># position means</span></a></code></pre></div>
 <pre><code>      1       2       3       4 
 279.000 257.375 274.375 275.125 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>paper),mean) <span class="co"># paper means</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>paper),mean) <span class="co"># paper means</span></a></code></pre></div>
 <pre><code>     a      b      c      d      e      f      g      h 
 276.00 264.50 278.50 256.00 249.50 295.25 286.75 265.25 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>cycle),mean) <span class="co"># cycle means</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>cycle),mean) <span class="co"># cycle means</span></a></code></pre></div>
 <pre><code>     1      2      3      4      5      6      7      8 
 307.25 248.25 245.00 268.00 301.75 268.00 253.75 279.75 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>rep),mean) <span class="co"># replicate means</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>rep),mean) <span class="co"># replicate means</span></a></code></pre></div>
 <pre><code>       1        2 
 267.1250 275.8125 </code></pre>
 <p>A linear model can be fit so that the ANOVA table and parameter treatment effects can be calculated.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wear.hypsq &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>treatment<span class="op">+</span><span class="kw">as.factor</span>(rep)<span class="op">+</span><span class="kw">as.factor</span>(position)<span class="op">+</span><span class="kw">as.factor</span>(cycle)<span class="op">+</span><span class="kw">as.factor</span>(holder)<span class="op">+</span><span class="kw">as.factor</span>(paper),<span class="dt">data =</span> tab0412)
-<span class="kw">anova</span>(wear.hypsq)</code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" title="1">wear.hypsq &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>treatment<span class="op">+</span><span class="kw">as.factor</span>(rep)<span class="op">+</span><span class="kw">as.factor</span>(position)<span class="op">+</span><span class="kw">as.factor</span>(cycle)<span class="op">+</span><span class="kw">as.factor</span>(holder)<span class="op">+</span><span class="kw">as.factor</span>(paper),<span class="dt">data =</span> tab0412)</a>
+<a class="sourceLine" id="cb396-2" title="2"><span class="kw">anova</span>(wear.hypsq)</a></code></pre></div>
 <pre><code>Analysis of Variance Table
 
 Response: y
@@ -2640,24 +3392,24 @@ Scale II
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -2685,10 +3437,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

@@ -151,7 +151,7 @@ shuffle
 ```
 
 ```
- [1] "A" "A" "A" "A" "B" "A" "A" "B" "B" "B" "B" "B"
+ [1] "A" "A" "B" "B" "A" "B" "B" "B" "A" "B" "A" "A"
 ```
 
 The first plot will be assigned A, the second plot will be assigned A, etc.
@@ -173,7 +173,7 @@ sample(1:12,6)
 ```
 
 ```
-[1] 6 3 8 5 1 9
+[1]  8 10  5 11  2 12
 ```
 
 2. 1/2.
@@ -190,7 +190,7 @@ shuffle
 ```
 
 ```
- [1] "A" "A" "A" "A" "B" "A" "A" "B" "B" "B" "B" "B"
+ [1] "A" "A" "B" "B" "A" "B" "B" "B" "A" "B" "A" "A"
 ```
 
 $$\begin{array}{|c|c|c|c|c|c|}
@@ -295,7 +295,7 @@ Is the difference in wheat yield due to the treatment or due to chance?
 
 - If there is no difference then the yield would be the same even if a different treatment allocation occurred. 
 
-- Under this assumption of no difference between the treatments, if one of the other 924 treatment allocations occurred such as A, A, A, A, B, A, A, B, B, B, B, B.  Then the data from the experiment would have been:
+- Under this assumption of no difference between the treatments, if one of the other 924 treatment allocations occurred such as A, A, B, B, A, B, B, B, A, B, A, A.  Then the data from the experiment would have been:
 
 $$\begin{array}{|c|c|c|c|c|c|}
 \hline
@@ -351,20 +351,6 @@ N <- choose(12,6)
 res <- numeric(N) # store the results
 #install.packages("combinat") # if package not installed then remove comment
 library(combinat)
-```
-
-```
-
-Attaching package: 'combinat'
-```
-
-```
-The following object is masked from 'package:utils':
-
-    combn
-```
-
-```r
 index <- combn(1:12,6) # Generate N treatment assignments
 for (i in 1:N)
 {

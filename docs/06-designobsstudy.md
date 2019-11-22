@@ -111,58 +111,50 @@ i
 [1,]             1             1             1             1             1
 [2,]             2             2             2             2             2
 [3,]             3             4             5             6             7
-     6th Trt Assig 7th Trt Assig 8th Trt Assig 9th Trt Assig
-[1,]             1             1             1             1
-[2,]             2             3             3             3
-[3,]             8             4             5             6
-     10th Trt Assig 11th Trt Assig 12th Trt Assig 13th Trt Assig
-[1,]              1              1              1              1
-[2,]              3              3              4              4
-[3,]              7              8              5              6
-     14th Trt Assig 15th Trt Assig 16th Trt Assig 17th Trt Assig
-[1,]              1              1              1              1
-[2,]              4              4              5              5
-[3,]              7              8              6              7
-     18th Trt Assig 19th Trt Assig 20th Trt Assig 21th Trt Assig
-[1,]              1              1              1              1
-[2,]              5              6              6              7
-[3,]              8              7              8              8
-     22th Trt Assig 23th Trt Assig 24th Trt Assig 25th Trt Assig
-[1,]              2              2              2              2
-[2,]              3              3              3              3
-[3,]              4              5              6              7
-     26th Trt Assig 27th Trt Assig 28th Trt Assig 29th Trt Assig
-[1,]              2              2              2              2
-[2,]              3              4              4              4
-[3,]              8              5              6              7
-     30th Trt Assig 31th Trt Assig 32th Trt Assig 33th Trt Assig
-[1,]              2              2              2              2
-[2,]              4              5              5              5
-[3,]              8              6              7              8
-     34th Trt Assig 35th Trt Assig 36th Trt Assig 37th Trt Assig
-[1,]              2              2              2              3
-[2,]              6              6              7              4
-[3,]              7              8              8              5
-     38th Trt Assig 39th Trt Assig 40th Trt Assig 41th Trt Assig
-[1,]              3              3              3              3
-[2,]              4              4              4              5
-[3,]              6              7              8              6
-     42th Trt Assig 43th Trt Assig 44th Trt Assig 45th Trt Assig
-[1,]              3              3              3              3
-[2,]              5              5              6              6
-[3,]              7              8              7              8
-     46th Trt Assig 47th Trt Assig 48th Trt Assig 49th Trt Assig
-[1,]              3              4              4              4
-[2,]              7              5              5              5
-[3,]              8              6              7              8
-     50th Trt Assig 51th Trt Assig 52th Trt Assig 53th Trt Assig
-[1,]              4              4              4              5
-[2,]              6              6              7              6
-[3,]              7              8              8              7
-     54th Trt Assig 55th Trt Assig 56th Trt Assig
-[1,]              5              5              6
-[2,]              6              7              7
-[3,]              8              8              8
+     6th Trt Assig 7th Trt Assig 8th Trt Assig 9th Trt Assig 10th Trt Assig
+[1,]             1             1             1             1              1
+[2,]             2             3             3             3              3
+[3,]             8             4             5             6              7
+     11th Trt Assig 12th Trt Assig 13th Trt Assig 14th Trt Assig 15th Trt Assig
+[1,]              1              1              1              1              1
+[2,]              3              4              4              4              4
+[3,]              8              5              6              7              8
+     16th Trt Assig 17th Trt Assig 18th Trt Assig 19th Trt Assig 20th Trt Assig
+[1,]              1              1              1              1              1
+[2,]              5              5              5              6              6
+[3,]              6              7              8              7              8
+     21th Trt Assig 22th Trt Assig 23th Trt Assig 24th Trt Assig 25th Trt Assig
+[1,]              1              2              2              2              2
+[2,]              7              3              3              3              3
+[3,]              8              4              5              6              7
+     26th Trt Assig 27th Trt Assig 28th Trt Assig 29th Trt Assig 30th Trt Assig
+[1,]              2              2              2              2              2
+[2,]              3              4              4              4              4
+[3,]              8              5              6              7              8
+     31th Trt Assig 32th Trt Assig 33th Trt Assig 34th Trt Assig 35th Trt Assig
+[1,]              2              2              2              2              2
+[2,]              5              5              5              6              6
+[3,]              6              7              8              7              8
+     36th Trt Assig 37th Trt Assig 38th Trt Assig 39th Trt Assig 40th Trt Assig
+[1,]              2              3              3              3              3
+[2,]              7              4              4              4              4
+[3,]              8              5              6              7              8
+     41th Trt Assig 42th Trt Assig 43th Trt Assig 44th Trt Assig 45th Trt Assig
+[1,]              3              3              3              3              3
+[2,]              5              5              5              6              6
+[3,]              6              7              8              7              8
+     46th Trt Assig 47th Trt Assig 48th Trt Assig 49th Trt Assig 50th Trt Assig
+[1,]              3              4              4              4              4
+[2,]              7              5              5              5              6
+[3,]              8              6              7              8              7
+     51th Trt Assig 52th Trt Assig 53th Trt Assig 54th Trt Assig 55th Trt Assig
+[1,]              4              4              5              5              5
+[2,]              6              7              6              6              7
+[3,]              8              8              7              8              8
+     56th Trt Assig
+[1,]              6
+[2,]              7
+[3,]              8
 ```
 
 Each column corresponds to the units that will be treated; so the units that will not be treated are not included in the column.  For example in the first treatment assignment units 1, 2, 3 will be treated and units 4, 5, 6, 7, 8 will be given control.  In the second treatment assignment units 1, 2, 4 will be treated and units 3, 5, 6, 7, 8 will be given control.  
@@ -571,7 +563,7 @@ max  eCDF diff........ 0.07
 
 var ratio (Tr/Co)..... 1.0606 
 T-test p-value........ 0.022421 
-KS Bootstrap p-value.. 0.2 
+KS Bootstrap p-value.. 0.1 
 KS Naive p-value...... 0.10646 
 KS Statistic.......... 0.07 
 
@@ -763,7 +755,7 @@ max  eCDF diff........    0.12956 	 	   0.050545
 
 var ratio (Tr/Co).....     1.0731 	 	    0.92406 
 T-test p-value........ 1.6316e-06 	 	    0.57566 
-KS Bootstrap p-value.. < 2.22e-16 	 	        0.3 
+KS Bootstrap p-value.. < 2.22e-16 	 	        0.1 
 KS Naive p-value...... 8.6584e-05 	 	    0.15182 
 KS Statistic..........    0.12956 	 	   0.050545 
 
@@ -970,13 +962,13 @@ max  eCDF diff........       0.07 	 	   0.078295
 
 var ratio (Tr/Co).....     1.0606 	 	     1.0282 
 T-test p-value........   0.022421 	 	    0.84279 
-KS Bootstrap p-value.. < 2.22e-16 	 	 < 2.22e-16 
+KS Bootstrap p-value..        0.2 	 	 < 2.22e-16 
 KS Naive p-value......    0.10646 	 	  0.0041188 
 KS Statistic..........       0.07 	 	   0.078295 
 
 
 Before Matching Minimum p.value: < 2.22e-16 
-Variable Name(s): age smokeintensity smokeyrs wt71  Number(s): 3 8 9 14 
+Variable Name(s): age smokeintensity smokeyrs  Number(s): 3 8 9 
 
 After Matching Minimum p.value: < 2.22e-16 
 Variable Name(s): smokeintensity smokeyrs wt71  Number(s): 8 9 14 

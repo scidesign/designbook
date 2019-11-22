@@ -6,18 +6,82 @@ The following example is taken from Chapter 4 @bhh2005. The table below gives co
 
 
 
-
-                      A    B    C    D
-------------------  ---  ---  ---  ---
-                     60   65   71   62
-                     63   66   66   60
-                     59   67   68   61
-                     63   63   68   64
-                     62   64   67   63
-                     59   71   68   56
-Treatment Average    61   66   68   61
-Grand Average        64   64   64   64
-Difference           -3    2    4   -3
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> A </th>
+   <th style="text-align:right;"> B </th>
+   <th style="text-align:right;"> C </th>
+   <th style="text-align:right;"> D </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 60 </td>
+   <td style="text-align:right;"> 65 </td>
+   <td style="text-align:right;"> 71 </td>
+   <td style="text-align:right;"> 62 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 63 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 60 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:right;"> 67 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 61 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 63 </td>
+   <td style="text-align:right;"> 63 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 64 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 62 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 67 </td>
+   <td style="text-align:right;"> 63 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:right;"> 71 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 56 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Treatment Average </td>
+   <td style="text-align:right;"> 61 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 61 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Grand Average </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 64 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Difference </td>
+   <td style="text-align:right;"> -3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> -3 </td>
+  </tr>
+</tbody>
+</table>
 
 
 Boxplots of the data are shown below.
@@ -323,21 +387,64 @@ colour <- as.factor(c(rep("Yellow",3),rep("Purple",3),
                       rep("Green",3),rep("Pink",3)))
 ```
 
-
-colour    count
--------  ------
-Yellow        4
-Yellow        3
-Yellow        4
-Purple        3
-Purple        1
-Purple        4
-Green         2
-Green         5
-Green         1
-Pink          1
-Pink          2
-Pink          4
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> colour </th>
+   <th style="text-align:right;"> count </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Yellow </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Yellow </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Yellow </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Purple </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Purple </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Purple </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Green </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Green </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Green </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Pink </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Pink </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Pink </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+</tbody>
+</table>
 
 The average number of candies in each colour is:
 
@@ -549,18 +656,82 @@ This model can also be written in matrix notation $y = X\beta+\epsilon$, where $
 Let's return to the blood coagulation study. The table below gives coagulation times for blood samples drawn from 24 animals receiving four different diets A, B, C, and D.
 
 
-
-                      A    B    C    D
-------------------  ---  ---  ---  ---
-                     60   65   71   62
-                     63   66   66   60
-                     59   67   68   61
-                     63   63   68   64
-                     62   64   67   63
-                     59   71   68   56
-Treatment Average    61   66   68   61
-Grand Average        64   64   64   64
-Difference           -3    2    4   -3
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> A </th>
+   <th style="text-align:right;"> B </th>
+   <th style="text-align:right;"> C </th>
+   <th style="text-align:right;"> D </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 60 </td>
+   <td style="text-align:right;"> 65 </td>
+   <td style="text-align:right;"> 71 </td>
+   <td style="text-align:right;"> 62 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 63 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 60 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:right;"> 67 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 61 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 63 </td>
+   <td style="text-align:right;"> 63 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 64 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 62 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 67 </td>
+   <td style="text-align:right;"> 63 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:right;"> 71 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 56 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Treatment Average </td>
+   <td style="text-align:right;"> 61 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 61 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Grand Average </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 64 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Difference </td>
+   <td style="text-align:right;"> -3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> -3 </td>
+  </tr>
+</tbody>
+</table>
 
 
 
@@ -1045,18 +1216,82 @@ After identifying which pairs are different, the confidence interval quantifies 
 
 The treatment means can be obtained from the table below.
 
-
-                      A    B    C    D
-------------------  ---  ---  ---  ---
-                     60   65   71   62
-                     63   66   66   60
-                     59   67   68   61
-                     63   63   68   64
-                     62   64   67   63
-                     59   71   68   56
-Treatment Average    61   66   68   61
-Grand Average        64   64   64   64
-Difference           -3    2    4   -3
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> A </th>
+   <th style="text-align:right;"> B </th>
+   <th style="text-align:right;"> C </th>
+   <th style="text-align:right;"> D </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 60 </td>
+   <td style="text-align:right;"> 65 </td>
+   <td style="text-align:right;"> 71 </td>
+   <td style="text-align:right;"> 62 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 63 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 60 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:right;"> 67 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 61 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 63 </td>
+   <td style="text-align:right;"> 63 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 64 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 62 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 67 </td>
+   <td style="text-align:right;"> 63 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:right;"> 71 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 56 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Treatment Average </td>
+   <td style="text-align:right;"> 61 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 61 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Grand Average </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 64 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Difference </td>
+   <td style="text-align:right;"> -3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> -3 </td>
+  </tr>
+</tbody>
+</table>
 
 ${\hat \sigma}=\sqrt{MS_E}$ can be obtained from the ANOVA table.  
 

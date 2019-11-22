@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12 Fractional factorial designs | Design of Experiments and Observational Studies</title>
   <meta name="description" content="An Introduction to Design, Causal Inference,and Analysis Using R" />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.15 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12 Fractional factorial designs | Design of Experiments and Observational Studies" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Nathan Taback" />
 
 
-<meta name="date" content="2019-11-14" />
+<meta name="date" content="2019-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="blocking-factorial-designs.html">
-<link rel="next" href="split-plot-designs.html">
+<link rel="prev" href="blocking-factorial-designs.html"/>
+<link rel="next" href="split-plot-designs.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -60,41 +63,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 </head>
@@ -130,19 +158,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>3.7</b> Quantile-Quantile Plots</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#normal-quantile-plots"><i class="fa fa-check"></i><b>3.7.1</b> Normal Quantile Plots</a></li>
-<li class="chapter" data-level="3.7.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.7.2</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.8" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#central-limit-theorem"><i class="fa fa-check"></i><b>3.8</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a><ul>
-<li class="chapter" data-level="3.9.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-2"><i class="fa fa-check"></i><b>3.9.1</b> Exercises</a></li>
-</ul></li>
+<li class="chapter" data-level="3.9" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#chi-square-distribution"><i class="fa fa-check"></i><b>3.9</b> Chi-Square Distribution</a></li>
 <li class="chapter" data-level="3.10" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#t-distribution"><i class="fa fa-check"></i><b>3.10</b> t Distribution</a><ul>
-<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-3"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
+<li class="chapter" data-level="3.10.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-1"><i class="fa fa-check"></i><b>3.10.1</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3.11" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#f-distribution"><i class="fa fa-check"></i><b>3.11</b> F Distribution</a></li>
-<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a><ul>
-<li class="chapter" data-level="3.12.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#exercises-4"><i class="fa fa-check"></i><b>3.12.1</b> Exercises</a></li>
-</ul></li>
+<li class="chapter" data-level="3.12" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#significance-testing-and-basic-decision-theory-in-hypothesis-testing"><i class="fa fa-check"></i><b>3.12</b> Significance Testing and Basic Decision Theory in Hypothesis Testing</a></li>
 <li class="chapter" data-level="3.13" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#linear-regression"><i class="fa fa-check"></i><b>3.13</b> Linear Regression</a><ul>
 <li class="chapter" data-level="3.13.1" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#covariates-in-regression"><i class="fa fa-check"></i><b>3.13.1</b> Covariates in Regression</a></li>
 <li class="chapter" data-level="3.13.2" data-path="review-of-mathematical-statistics.html"><a href="review-of-mathematical-statistics.html#weighing-problem"><i class="fa fa-check"></i><b>3.13.2</b> Weighing Problem</a></li>
@@ -180,7 +203,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#statistical-hypotheses-and-the-number-of-experimental-units"><i class="fa fa-check"></i><b>5.2</b> Statistical Hypotheses and the Number of Experimental Units</a></li>
 <li class="chapter" data-level="5.3" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-z-test"><i class="fa fa-check"></i><b>5.3</b> Power of the One Sample z-test</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-5"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.3.1" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#exercises-2"><i class="fa fa-check"></i><b>5.3.1</b> Exercises</a></li>
 <li class="chapter" data-level="5.3.2" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#calculating-the-power-of-the-one-sample-z-test-using-r"><i class="fa fa-check"></i><b>5.3.2</b> Calculating the Power of the One Sample z-test using R</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="how-many-experimental-units-are-required-to-compare-two-treatments.html"><a href="how-many-experimental-units-are-required-to-compare-two-treatments.html#power-of-the-one-sample-t-test"><i class="fa fa-check"></i><b>5.4</b> Power of the one-sample t-test</a><ul>
@@ -347,7 +370,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>A <span class="math inline">\(2^k\)</span> full factorial requires <span class="math inline">\(2^k\)</span> runs. Full factorials are seldom used in practice for large k (k&gt;=7). For economic reasons fractional factorial designs, which consist of a fraction of full factorial designs are used. There are criteria to choose “optimal” fractions.</p>
 <div id="example---effect-of-five-factors-on-six-properties-of-film-in-eight-runs" class="section level2">
 <h2><span class="header-section-number">12.1</span> Example - Effect of five factors on six properties of film in eight runs</h2>
-<p>The following example is taken from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span>.</p>
+<p>The following example is taken from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005" role="doc-biblioref">2005</a>)</span>.</p>
 <p>Five factors were studied in 8 runs. The factors were:</p>
 <ul>
 <li>Catalyst concentration (A)</li>
@@ -901,21 +924,21 @@ y
 </table>
 <p>The signs of the ABC interaction is used to accommodate factor D. The tests were run in random order. He wanted to achieve a stability value of at least 25.</p>
 <p>The factorial effects and Normal, half-Normal, and Lenth plots are below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(FrF2)
-fact.prod &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)
-fact.prod1 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)
-<span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.prod<span class="op">$</span>coefficients,<span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb456-1" title="1"><span class="kw">library</span>(FrF2)</a>
+<a class="sourceLine" id="cb456-2" title="2">fact.prod &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)</a>
+<a class="sourceLine" id="cb456-3" title="3">fact.prod1 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)</a>
+<a class="sourceLine" id="cb456-4" title="4"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.prod<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>(Intercept)           A           B           C           D         A:B 
       29.25       -5.75       -3.75       -1.25        0.75        0.25 
         A:C         B:C         A:D         B:D         C:D       A:B:C 
        0.75       -0.25          NA          NA          NA          NA 
       A:B:D       A:C:D       B:C:D     A:B:C:D 
          NA          NA          NA          NA </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> F)</code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" title="1"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> F)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" title="1"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> T)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-44-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">LenthPlot</span>(fact.prod1)</code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb460-1" title="1"><span class="kw">LenthPlot</span>(fact.prod1)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-44-3.png" width="672" /></p>
 <pre><code>    alpha       PSE        ME       SME 
  0.050000  1.125000  4.234638 10.134346 </code></pre>
@@ -1300,11 +1323,16 @@ Q
 </tbody>
 </table>
 <p>The factor E is assigned to the column BCD. But, the column for E is used to estimate the main effect of E and also for BCD. So, this design cannot distinguish between E and BCD. The main factor E is said to be <strong>aliased</strong> with the BCD interaction.</p>
-<p>This aliasing relation is denoted by <span class="math display">\[E = BCD \thinspace or \thinspace I = BCDE,\]</span> where <span class="math inline">\(I\)</span> denotes the column of all +’s.</p>
+<p>This aliasing relation is denoted by
+<span class="math display">\[E = BCD \thinspace or \thinspace I = BCDE,\]</span>
+where <span class="math inline">\(I\)</span> denotes the column of all +’s.</p>
 <p>This uses same mathematical definition as the confounding of a block effect with a factorial effect. Aliasing of the effects is a price one must pay for choosing a smaller design.</p>
 <p>The <span class="math inline">\(2^{5-1}\)</span> design has only 15 degrees of freedom for estimating factorial effects, it cannot estimate all 31 factorial effects among the factors B, C, D, E, Q.</p>
-<p>The equation <span class="math inline">\(I = BCDE\)</span> is called the <strong>defining relation</strong> of the <span class="math inline">\(2^{5-1}\)</span> design. The design is said to have resolution IV because the defining relation consists of the “word” BCDE, which has “length” 4.</p>
-<p>Multiplying both sides of <span class="math inline">\(I = BCDE\)</span> by column B <span class="math display">\[B = B \times I = B \times BCDE = CDE\]</span>, the relation <span class="math inline">\(B = CDE\)</span> is obtained. B is aliased with the CDE interaction. Following the same method all 15 aliasing relations can be obtained.</p>
+<p>The equation <span class="math inline">\(I = BCDE\)</span> is called the <strong>defining relation</strong> of the <span class="math inline">\(2^{5-1}\)</span> design.
+The design is said to have resolution IV because the defining relation consists of the “word” BCDE, which has “length” 4.</p>
+<p>Multiplying both sides of <span class="math inline">\(I = BCDE\)</span> by column B
+<span class="math display">\[B = B \times I = B \times BCDE = CDE\]</span>,
+the relation <span class="math inline">\(B = CDE\)</span> is obtained. B is aliased with the CDE interaction. Following the same method all 15 aliasing relations can be obtained.</p>
 <p><span class="math display">\[B = CDE,  C = BDE,    D = BCE,    E = BCD, \\
 BC = DE,    BD = CE,    BE = CD, \\ 
 Q = BCDEQ,  BQ = CDEQ,  CQ = BDEQ,  DQ = BCEQ, \\
@@ -1347,151 +1375,355 @@ EQ = BCDQ,  BCQ = DEQ,  BDQ = CEQ,  BEQ = CDQ\]</span></p>
 </table>
 <table>
 <thead>
-<tr class="header">
-<th align="right">B</th>
-<th align="right">C</th>
-<th align="right">D</th>
-<th align="right">E</th>
-<th align="right">Q</th>
-<th align="right">y</th>
+<tr>
+<th style="text-align:right;">
+B
+</th>
+<th style="text-align:right;">
+C
+</th>
+<th style="text-align:right;">
+D
+</th>
+<th style="text-align:right;">
+E
+</th>
+<th style="text-align:right;">
+Q
+</th>
+<th style="text-align:right;">
+y
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">7.7900</td>
+<tr>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+7.7900
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">8.0700</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+8.0700
+</td>
 </tr>
-<tr class="odd">
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">7.5200</td>
+<tr>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+7.5200
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">7.6333</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+7.6333
+</td>
 </tr>
-<tr class="odd">
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">7.9400</td>
+<tr>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+7.9400
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">7.9467</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+7.9467
+</td>
 </tr>
-<tr class="odd">
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">7.5400</td>
+<tr>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+7.5400
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">7.6867</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+7.6867
+</td>
 </tr>
-<tr class="odd">
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">7.2900</td>
+<tr>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.2900
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">7.7333</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.7333
+</td>
 </tr>
-<tr class="odd">
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">7.5200</td>
+<tr>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.5200
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">7.6467</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.6467
+</td>
 </tr>
-<tr class="odd">
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">7.4000</td>
+<tr>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.4000
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">7.6233</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.6233
+</td>
 </tr>
-<tr class="odd">
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">7.2033</td>
+<tr>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.2033
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">7.6333</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.6333
+</td>
 </tr>
 </tbody>
 </table>
 <p>The factorial effects are estimated as before.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(FrF2)
-fact.leaf &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)
-fact.leaf2 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)
-<span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.leaf<span class="op">$</span>coefficients,<span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb462-1" title="1"><span class="kw">library</span>(FrF2)</a>
+<a class="sourceLine" id="cb462-2" title="2">fact.leaf &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)</a>
+<a class="sourceLine" id="cb462-3" title="3">fact.leaf2 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)</a>
+<a class="sourceLine" id="cb462-4" title="4"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.leaf<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>(Intercept)           B           C           D           E           Q 
       15.27        0.22        0.18        0.03        0.10       -0.26 
         B:C         B:D         C:D         B:E         C:E         D:E 
@@ -1505,11 +1737,11 @@ fact.leaf2 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span clas
     C:D:E:Q   B:C:D:E:Q 
          NA          NA </code></pre>
 <p>Notice that the factorial effects are missing for effects that are aliased. The Normal, half-Normal, and Lenth plots are below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> F)</code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb464-1" title="1"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> F)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> T)</code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" title="1"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> T)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-48-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">LenthPlot</span>(fact.leaf2,<span class="dt">cex.fac =</span> <span class="fl">0.5</span>)</code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb466-1" title="1"><span class="kw">LenthPlot</span>(fact.leaf2,<span class="dt">cex.fac =</span> <span class="fl">0.5</span>)</a></code></pre></div>
 <p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-48-3.png" width="672" /></p>
 <pre><code>    alpha       PSE        ME       SME 
 0.0500000 0.0606000 0.1557773 0.3162503 </code></pre>
@@ -1845,79 +2077,187 @@ baking time
 <p>Suppose that the experimental runs were conducted and the following results were obtained.</p>
 <table>
 <thead>
-<tr class="header">
-<th align="right">Run</th>
-<th align="right">butter</th>
-<th align="right">sugar</th>
-<th align="right">powder</th>
-<th align="right">baking time</th>
-<th align="right">taste (y)</th>
+<tr>
+<th style="text-align:right;">
+Run
+</th>
+<th style="text-align:right;">
+butter
+</th>
+<th style="text-align:right;">
+sugar
+</th>
+<th style="text-align:right;">
+powder
+</th>
+<th style="text-align:right;">
+baking time
+</th>
+<th style="text-align:right;">
+taste (y)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">9</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+9
+</td>
 </tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">4</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
 </tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">7</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
 </tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="right">5</td>
-<td align="right">-1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">5</td>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+5
+</td>
 </tr>
-<tr class="odd">
-<td align="right">7</td>
-<td align="right">-1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">-1</td>
-<td align="right">3</td>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-1
+</td>
+<td style="text-align:right;">
+3
+</td>
 </tr>
-<tr class="even">
-<td align="right">8</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">10</td>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10
+</td>
 </tr>
 </tbody>
 </table>
@@ -1946,24 +2286,24 @@ baking time
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1991,10 +2331,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

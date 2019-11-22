@@ -445,17 +445,111 @@ T:K:C           0.25       0.71    0.35     0.73
 
 The table of contrasts for a $2^3$ design is the design matrix $X$ from the linear model above.
 
-
- Mean    T    K    C   T:K   T:C   K:C   T:K:C   yield average
------  ---  ---  ---  ----  ----  ----  ------  --------------
-    1   -1   -1   -1     1     1     1      -1              60
-    1    1   -1   -1    -1    -1     1       1              72
-    1   -1   -1    1     1    -1    -1       1              54
-    1    1   -1    1    -1     1    -1      -1              68
-    1   -1    1   -1    -1     1    -1       1              52
-    1    1    1   -1     1    -1    -1      -1              83
-    1   -1    1    1    -1    -1     1      -1              45
-    1    1    1    1     1     1     1       1              80
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Mean </th>
+   <th style="text-align:right;"> T </th>
+   <th style="text-align:right;"> K </th>
+   <th style="text-align:right;"> C </th>
+   <th style="text-align:right;"> T:K </th>
+   <th style="text-align:right;"> T:C </th>
+   <th style="text-align:right;"> K:C </th>
+   <th style="text-align:right;"> T:K:C </th>
+   <th style="text-align:right;"> yield average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 60 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 72 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 54 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 68 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 52 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 83 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 45 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 80 </td>
+  </tr>
+</tbody>
+</table>
 
 If the column of T is multiplied by the yield average and divided by 4 then the main effect of T is obtained.
 
@@ -614,25 +708,131 @@ The rationale is as follows:
 
 A process development experiment studied four factors in a $2^4$ factorial design: amount of catalyst charge **1**, temperature **2**, pressure **3**, and concentration of one of the reactants **4**.  The response $y$ is the percent conversion at each of the 16 run conditions. The design is shown below. 
 
-
- x1   x2   x3   x4   conversion
----  ---  ---  ---  -----------
- -1   -1   -1   -1           70
-  1   -1   -1   -1           60
- -1    1   -1   -1           89
-  1    1   -1   -1           81
- -1   -1    1   -1           69
-  1   -1    1   -1           62
- -1    1    1   -1           88
-  1    1    1   -1           81
- -1   -1   -1    1           60
-  1   -1   -1    1           49
- -1    1   -1    1           88
-  1    1   -1    1           82
- -1   -1    1    1           60
-  1   -1    1    1           52
- -1    1    1    1           86
-  1    1    1    1           79
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> x1 </th>
+   <th style="text-align:right;"> x2 </th>
+   <th style="text-align:right;"> x3 </th>
+   <th style="text-align:right;"> x4 </th>
+   <th style="text-align:right;"> conversion </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 70 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 60 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 89 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 81 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 69 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 62 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 88 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 81 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 60 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 49 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 88 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 82 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 60 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 52 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 86 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 79 </td>
+  </tr>
+</tbody>
+</table>
 
 The design is not replicated so it's not possible to estimate the standard errors of the factorial effects.  
 
@@ -657,6 +857,30 @@ A normal plot of the factorial effects is obtained by using the function `Daniel
 ```r
 library(FrF2)
 DanielPlot(fact1,half = FALSE,autolab = F, main = "Normal plot of effects from process development study")
+```
+
+```
+## Warning in plot.window(...): "autolab" is not a graphical parameter
+```
+
+```
+## Warning in plot.xy(xy, type, ...): "autolab" is not a graphical parameter
+```
+
+```
+## Warning in axis(side = side, at = at, labels = labels, ...): "autolab" is not a
+## graphical parameter
+
+## Warning in axis(side = side, at = at, labels = labels, ...): "autolab" is not a
+## graphical parameter
+```
+
+```
+## Warning in box(...): "autolab" is not a graphical parameter
+```
+
+```
+## Warning in title(...): "autolab" is not a graphical parameter
 ```
 
 <img src="09-factorialdesigns_files/figure-html/unnamed-chunk-22-1.png" width="672" />
@@ -685,6 +909,30 @@ The half-normal plot for the effects in the process development example is can b
 ```r
 library(FrF2)
 DanielPlot(fact1,half = TRUE,autolab = F, main = "Normal plot of effects from process development study")
+```
+
+```
+## Warning in plot.window(...): "autolab" is not a graphical parameter
+```
+
+```
+## Warning in plot.xy(xy, type, ...): "autolab" is not a graphical parameter
+```
+
+```
+## Warning in axis(side = side, at = at, labels = labels, ...): "autolab" is not a
+## graphical parameter
+
+## Warning in axis(side = side, at = at, labels = labels, ...): "autolab" is not a
+## graphical parameter
+```
+
+```
+## Warning in box(...): "autolab" is not a graphical parameter
+```
+
+```
+## Warning in title(...): "autolab" is not a graphical parameter
 ```
 
 <img src="09-factorialdesigns_files/figure-html/unnamed-chunk-23-1.png" width="672" />
@@ -826,24 +1074,114 @@ upper <- round(eff+ME,2)
 knitr::kable(cbind(eff,lower,upper))
 ```
 
-                  eff    lower    upper
-------------  -------  -------  -------
-(Intercept)    144.50   142.57   146.43
-x1              -8.00    -9.93    -6.07
-x2              24.00    22.07    25.93
-x3              -0.25    -2.18     1.68
-x4              -5.50    -7.43    -3.57
-x1:x2            1.00    -0.93     2.93
-x1:x3            0.75    -1.18     2.68
-x2:x3           -1.25    -3.18     0.68
-x1:x4            0.00    -1.93     1.93
-x2:x4            4.50     2.57     6.43
-x3:x4           -0.25    -2.18     1.68
-x1:x2:x3        -0.75    -2.68     1.18
-x1:x2:x4         0.50    -1.43     2.43
-x1:x3:x4        -0.25    -2.18     1.68
-x2:x3:x4        -0.75    -2.68     1.18
-x1:x2:x3:x4     -0.25    -2.18     1.68
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> eff </th>
+   <th style="text-align:right;"> lower </th>
+   <th style="text-align:right;"> upper </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 144.50 </td>
+   <td style="text-align:right;"> 142.57 </td>
+   <td style="text-align:right;"> 146.43 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1 </td>
+   <td style="text-align:right;"> -8.00 </td>
+   <td style="text-align:right;"> -9.93 </td>
+   <td style="text-align:right;"> -6.07 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x2 </td>
+   <td style="text-align:right;"> 24.00 </td>
+   <td style="text-align:right;"> 22.07 </td>
+   <td style="text-align:right;"> 25.93 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x3 </td>
+   <td style="text-align:right;"> -0.25 </td>
+   <td style="text-align:right;"> -2.18 </td>
+   <td style="text-align:right;"> 1.68 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x4 </td>
+   <td style="text-align:right;"> -5.50 </td>
+   <td style="text-align:right;"> -7.43 </td>
+   <td style="text-align:right;"> -3.57 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x2 </td>
+   <td style="text-align:right;"> 1.00 </td>
+   <td style="text-align:right;"> -0.93 </td>
+   <td style="text-align:right;"> 2.93 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x3 </td>
+   <td style="text-align:right;"> 0.75 </td>
+   <td style="text-align:right;"> -1.18 </td>
+   <td style="text-align:right;"> 2.68 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x2:x3 </td>
+   <td style="text-align:right;"> -1.25 </td>
+   <td style="text-align:right;"> -3.18 </td>
+   <td style="text-align:right;"> 0.68 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x4 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> -1.93 </td>
+   <td style="text-align:right;"> 1.93 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x2:x4 </td>
+   <td style="text-align:right;"> 4.50 </td>
+   <td style="text-align:right;"> 2.57 </td>
+   <td style="text-align:right;"> 6.43 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x3:x4 </td>
+   <td style="text-align:right;"> -0.25 </td>
+   <td style="text-align:right;"> -2.18 </td>
+   <td style="text-align:right;"> 1.68 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x2:x3 </td>
+   <td style="text-align:right;"> -0.75 </td>
+   <td style="text-align:right;"> -2.68 </td>
+   <td style="text-align:right;"> 1.18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x2:x4 </td>
+   <td style="text-align:right;"> 0.50 </td>
+   <td style="text-align:right;"> -1.43 </td>
+   <td style="text-align:right;"> 2.43 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x3:x4 </td>
+   <td style="text-align:right;"> -0.25 </td>
+   <td style="text-align:right;"> -2.18 </td>
+   <td style="text-align:right;"> 1.68 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x2:x3:x4 </td>
+   <td style="text-align:right;"> -0.75 </td>
+   <td style="text-align:right;"> -2.68 </td>
+   <td style="text-align:right;"> 1.18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x2:x3:x4 </td>
+   <td style="text-align:right;"> -0.25 </td>
+   <td style="text-align:right;"> -2.18 </td>
+   <td style="text-align:right;"> 1.68 </td>
+  </tr>
+</tbody>
+</table>
 
 A plot of the effects with a $ME$ and $SME$ is usually called a Lenth plot.  In R it can be implemented via the function `Lenthplot()` in the `BsMD` library.  The values of $PSE, ME, SME$ are part of the output.  The spikes in the plot below are used to display factor effects.
 
@@ -904,25 +1242,182 @@ $y_4$ | Total coliform contribution after 30 minutes (organisms/1OO mL)
 
 The data are shown in the table below and can be downloaded [here](./docs/prb0506.dat).
 
-
- run   x1   x2   x3    y1    y2     y3     y4
-----  ---  ---  ---  ----  ----  -----  -----
-   1   -1   -1   -1     1     1      3      7
-   2    1   -1   -1    12    15     57     80
-   3   -1    1   -1    16    10    323    360
-   4    1    1   -1     4     6    183    193
-   5   -1   -1    1   153   170    426    590
-   6    1   -1    1   129   148    250    243
-   7   -1    1    1   143   170    580    450
-   8    1    1    1   113   217    650    735
-   9   -1   -1   -1     2     4     10     27
-  10    1   -1   -1    37    39    280    250
-  11   -1    1   -1    21    21     33     53
-  12    1    1   -1     2     5     10     87
-  13   -1   -1    1    96    67    147    193
-  14    1   -1    1   390   360   1470   1560
-  15   -1    1    1   300   377    665    810
-  16    1    1    1   280   250    675    795
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> run </th>
+   <th style="text-align:right;"> x1 </th>
+   <th style="text-align:right;"> x2 </th>
+   <th style="text-align:right;"> x3 </th>
+   <th style="text-align:right;"> y1 </th>
+   <th style="text-align:right;"> y2 </th>
+   <th style="text-align:right;"> y3 </th>
+   <th style="text-align:right;"> y4 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> 57 </td>
+   <td style="text-align:right;"> 80 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 323 </td>
+   <td style="text-align:right;"> 360 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 183 </td>
+   <td style="text-align:right;"> 193 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 153 </td>
+   <td style="text-align:right;"> 170 </td>
+   <td style="text-align:right;"> 426 </td>
+   <td style="text-align:right;"> 590 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 129 </td>
+   <td style="text-align:right;"> 148 </td>
+   <td style="text-align:right;"> 250 </td>
+   <td style="text-align:right;"> 243 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 143 </td>
+   <td style="text-align:right;"> 170 </td>
+   <td style="text-align:right;"> 580 </td>
+   <td style="text-align:right;"> 450 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 113 </td>
+   <td style="text-align:right;"> 217 </td>
+   <td style="text-align:right;"> 650 </td>
+   <td style="text-align:right;"> 735 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 27 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 37 </td>
+   <td style="text-align:right;"> 39 </td>
+   <td style="text-align:right;"> 280 </td>
+   <td style="text-align:right;"> 250 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 53 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 87 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 96 </td>
+   <td style="text-align:right;"> 67 </td>
+   <td style="text-align:right;"> 147 </td>
+   <td style="text-align:right;"> 193 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 390 </td>
+   <td style="text-align:right;"> 360 </td>
+   <td style="text-align:right;"> 1470 </td>
+   <td style="text-align:right;"> 1560 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 300 </td>
+   <td style="text-align:right;"> 377 </td>
+   <td style="text-align:right;"> 665 </td>
+   <td style="text-align:right;"> 810 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 280 </td>
+   <td style="text-align:right;"> 250 </td>
+   <td style="text-align:right;"> 675 </td>
+   <td style="text-align:right;"> 795 </td>
+  </tr>
+</tbody>
+</table>
 
 (a) Calculate main and interaction effects on fecal and total coliform populations after 15 and 30 minutes.
 
@@ -1170,17 +1665,48 @@ Notice that $\hat{\beta_0}={\bar y}$, $\hat{\beta_1}=\frac{1}{2}{\hat A}$, and $
 
 The main effects and interactions are obtained by multiplying the regression coeffcicents by 2 
 
-
-                     x
-------------  --------
-(Intercept)     720.25
-x1              173.50
-x2               59.50
-x3              495.50
-x1:x2          -194.25
-x1:x3           133.25
-x2:x3             9.75
-x1:x2:x3        -72.50
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> x </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 720.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1 </td>
+   <td style="text-align:right;"> 173.50 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x2 </td>
+   <td style="text-align:right;"> 59.50 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x3 </td>
+   <td style="text-align:right;"> 495.50 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x2 </td>
+   <td style="text-align:right;"> -194.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x3 </td>
+   <td style="text-align:right;"> 133.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x2:x3 </td>
+   <td style="text-align:right;"> 9.75 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x1:x2:x3 </td>
+   <td style="text-align:right;"> -72.50 </td>
+  </tr>
+</tbody>
+</table>
 
 (b) The main effect for $x_1$ is interpreted as the change in total coliform contribution after 15 minutes when time since last bath $x_1$ increases from 1 hour to 24 hours. 
 
@@ -2058,25 +2584,148 @@ D. Transfer time              10 (-), 12 (+)
 E. Hold down time             2 (-), 3 (+)
 Q. Quench oil temperature     130-150 (-), 150-170 (+)
 
-
-  B    C    D    E    Q        y
----  ---  ---  ---  ---  -------
- -1    1    1   -1   -1   7.7900
-  1    1    1    1   -1   8.0700
- -1   -1    1    1   -1   7.5200
-  1   -1    1   -1   -1   7.6333
- -1    1   -1    1   -1   7.9400
-  1    1   -1   -1   -1   7.9467
- -1   -1   -1   -1   -1   7.5400
-  1   -1   -1    1   -1   7.6867
- -1    1    1   -1    1   7.2900
-  1    1    1    1    1   7.7333
- -1   -1    1    1    1   7.5200
-  1   -1    1   -1    1   7.6467
- -1    1   -1    1    1   7.4000
-  1    1   -1   -1    1   7.6233
- -1   -1   -1   -1    1   7.2033
-  1   -1   -1    1    1   7.6333
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> B </th>
+   <th style="text-align:right;"> C </th>
+   <th style="text-align:right;"> D </th>
+   <th style="text-align:right;"> E </th>
+   <th style="text-align:right;"> Q </th>
+   <th style="text-align:right;"> y </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 7.7900 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 8.0700 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 7.5200 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 7.6333 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 7.9400 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 7.9467 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 7.5400 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 7.6867 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7.2900 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7.7333 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7.5200 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7.6467 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7.4000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7.6233 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7.2033 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7.6333 </td>
+  </tr>
+</tbody>
+</table>
 
 The factorial effects are estimated as before.
 
@@ -2298,17 +2947,84 @@ All the main effects are aliased with three factor interactions, and two factor 
 
 Suppose that the experimental runs were conducted and the following results were obtained.
 
-
- Run   butter   sugar   powder   baking time   taste (y)
-----  -------  ------  -------  ------------  ----------
-   1       -1      -1       -1            -1           9
-   2        1      -1       -1             1           4
-   3       -1       1       -1             1           7
-   4        1       1       -1            -1           1
-   5       -1      -1        1             1           2
-   6        1      -1        1            -1           5
-   7       -1       1        1            -1           3
-   8        1       1        1             1          10
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Run </th>
+   <th style="text-align:right;"> butter </th>
+   <th style="text-align:right;"> sugar </th>
+   <th style="text-align:right;"> powder </th>
+   <th style="text-align:right;"> baking time </th>
+   <th style="text-align:right;"> taste (y) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+</tbody>
+</table>
 
 
 The factorial effect of baking time ($D$) is really the effect of $D+ABC$.  In other words the effects of $D$ and $ABC$ are confounded.  They cannot be separately estimated which is why $ABC$ is called an alias of $D$. 
