@@ -1646,7 +1646,7 @@ This is the same table but show which treatments are missing from the blocks.
 
 1. When is it appropriate to use a randomized block design?
 
-2. The following data are the weights (in kg) of six people measured on two different scales.  The investigator was interested to see if the two scales are different.
+2. The following data are the response times (in minutes) of six people measured after two treatments. The order in which each person recieved the treatments was determined by randomization.  The investigator was interested to see if the two treatments are different.
 
 <table class="table table-striped" style="width: auto !important; ">
  <thead>
@@ -1662,7 +1662,7 @@ This is the same table but show which treatments are missing from the blocks.
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Scale I </td>
+   <td style="text-align:left;"> Treatment I </td>
    <td style="text-align:right;"> 46 </td>
    <td style="text-align:right;"> 64 </td>
    <td style="text-align:right;"> 80 </td>
@@ -1671,7 +1671,7 @@ This is the same table but show which treatments are missing from the blocks.
    <td style="text-align:right;"> 70 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Scale II </td>
+   <td style="text-align:left;"> Treatment II </td>
    <td style="text-align:right;"> 78 </td>
    <td style="text-align:right;"> 66 </td>
    <td style="text-align:right;"> 70 </td>
@@ -1684,4 +1684,72 @@ This is the same table but show which treatments are missing from the blocks.
 
 (a)  What is the name of this design? Explain.
 (b)  What is blocking factor used in this design?
-(c)  Is there any evidence at the 5% level that the two scales are different?
+(c)  Is there any evidence at the 5% level that the two treatments are different?
+
+
+## Answers to Questions
+
+1. Blocking aims to compare like with like. Using whatever prior knowledge is available about which known features of the experimental units and other aspects of the experimental set-up are strongly associated with potential response. Units are grouped into *blocks* such that all the units in any one block are likely to give similar responses in the absence of treatment differences. So, it's appropriate to block use a randomized block design if we know *a priori* that a factor is strongly associated with the response.  In this case we would randomize within each level of the factor separately.
+
+
+2. (a) This a randomized block design. It is also ramdomized paired design.
+
+   (b)  The blocking factor is person, since the treatments were randomized within person.
+   (c)  The data is analysed using R.  The data is stored in the data frame `q2dat`.
+   
+
+```r
+library(tidyverse)
+q2dat %>% group_by(treatment) %>% summarise(mean = mean(weight), sd = sd(weight))
+```
+
+```
+## # A tibble: 2 x 3
+##   treatment  mean    sd
+##       <dbl> <dbl> <dbl>
+## 1         1  71.7  17.5
+## 2         2  65.7  10.8
+```
+
+```r
+q2mod <- lm(weight ~ treatment + person, data = q2dat)
+summary(q2mod)
+```
+
+```
+## 
+## Call:
+## lm(formula = weight ~ treatment + person, data = q2dat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -22.0238  -5.3810  -0.5238   6.1190  24.9762 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)   
+## (Intercept)   72.167     16.338   4.417  0.00168 **
+## treatment     -6.000      8.671  -0.692  0.50644   
+## person         1.571      2.539   0.619  0.55127   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 15.02 on 9 degrees of freedom
+## Multiple R-squared:  0.0874,	Adjusted R-squared:  -0.1154 
+## F-statistic: 0.4309 on 2 and 9 DF,  p-value: 0.6626
+```
+
+```r
+anova(q2mod)
+```
+
+```
+## Analysis of Variance Table
+## 
+## Response: weight
+##           Df  Sum Sq Mean Sq F value Pr(>F)
+## treatment  1  108.00 108.000  0.4788 0.5064
+## person     1   86.43  86.429  0.3831 0.5513
+## Residuals  9 2030.24 225.582
+```
+   
+In this case there is no evidence at the 5% level that the treatments are different.  

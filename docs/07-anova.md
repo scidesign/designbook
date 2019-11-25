@@ -387,64 +387,21 @@ colour <- as.factor(c(rep("Yellow",3),rep("Purple",3),
                       rep("Green",3),rep("Pink",3)))
 ```
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> colour </th>
-   <th style="text-align:right;"> count </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Yellow </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yellow </td>
-   <td style="text-align:right;"> 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Yellow </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Purple </td>
-   <td style="text-align:right;"> 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Purple </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Purple </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Green </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Green </td>
-   <td style="text-align:right;"> 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Green </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pink </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pink </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pink </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-</tbody>
-</table>
+
+colour    count
+-------  ------
+Yellow        4
+Yellow        3
+Yellow        4
+Purple        3
+Purple        1
+Purple        4
+Green         2
+Green         5
+Green         1
+Pink          1
+Pink          2
+Pink          4
 
 The average number of candies in each colour is:
 
