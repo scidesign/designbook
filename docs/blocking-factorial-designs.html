@@ -78,7 +78,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -373,16 +373,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">11</span> Blocking Factorial Designs</h1>
 <p>In a trial conducted using a <span class="math inline">\(2^3\)</span> design it might be desirable to use the same batch of raw material to make all 8 runs. Suppose that batches of raw material were only large enough to make 4 runs. Then the concept of blocking could be used.</p>
 <p>The following R code generates the design matrix for a <span class="math inline">\(2^3\)</span> design.</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" title="1">x1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb451-2" title="2">x2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb451-3" title="3">x3 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">4</span>),<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>)))</a>
-<a class="sourceLine" id="cb451-4" title="4">x12 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2</a>
-<a class="sourceLine" id="cb451-5" title="5">x13 &lt;-<span class="st"> </span>x1<span class="op">*</span>x3</a>
-<a class="sourceLine" id="cb451-6" title="6">x23 &lt;-<span class="st"> </span>x2<span class="op">*</span>x3</a>
-<a class="sourceLine" id="cb451-7" title="7">x123 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2<span class="op">*</span>x3</a>
-<a class="sourceLine" id="cb451-8" title="8">run &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">8</span></a>
-<a class="sourceLine" id="cb451-9" title="9">factnames &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Run&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;12&quot;</span>,<span class="st">&quot;13&quot;</span>,<span class="st">&quot;23&quot;</span>,<span class="st">&quot;123&quot;</span>)</a>
-<a class="sourceLine" id="cb451-10" title="10">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">cbind</span>(run,x1,x2,x3,x12,x13,x23,x123),<span class="dt">col.names =</span> factnames)</a></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb463-2" data-line-number="2">x2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb463-3" data-line-number="3">x3 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">4</span>),<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>)))</a>
+<a class="sourceLine" id="cb463-4" data-line-number="4">x12 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2</a>
+<a class="sourceLine" id="cb463-5" data-line-number="5">x13 &lt;-<span class="st"> </span>x1<span class="op">*</span>x3</a>
+<a class="sourceLine" id="cb463-6" data-line-number="6">x23 &lt;-<span class="st"> </span>x2<span class="op">*</span>x3</a>
+<a class="sourceLine" id="cb463-7" data-line-number="7">x123 &lt;-<span class="st"> </span>x1<span class="op">*</span>x2<span class="op">*</span>x3</a>
+<a class="sourceLine" id="cb463-8" data-line-number="8">run &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">8</span></a>
+<a class="sourceLine" id="cb463-9" data-line-number="9">factnames &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Run&quot;</span>,<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;12&quot;</span>,<span class="st">&quot;13&quot;</span>,<span class="st">&quot;23&quot;</span>,<span class="st">&quot;123&quot;</span>)</a>
+<a class="sourceLine" id="cb463-10" data-line-number="10">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">cbind</span>(run,x1,x2,x3,x12,x13,x23,x123),<span class="dt">col.names =</span> factnames)</a></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -803,7 +803,7 @@ This idea can be used to derive more sophisticated blocking arrangements.</p>
 </div>
 <div id="an-example-of-how-not-to-block" class="section level3">
 <h3><span class="header-section-number">11.0.3</span> An example of how not to block</h3>
-<p>This example is from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005" role="doc-biblioref">2005</a>)</span>. Suppose we would like to arrange the <span class="math inline">\(2^3\)</span> design into four blocks.</p>
+<p>This example is from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span>. Suppose we would like to arrange the <span class="math inline">\(2^3\)</span> design into four blocks.</p>
 <table>
 <thead>
 <tr>

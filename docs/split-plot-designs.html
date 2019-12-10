@@ -78,7 +78,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -372,7 +372,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="split-plot-designs" class="section level1">
 <h1><span class="header-section-number">13</span> Split-Plot Designs</h1>
 <p>These designs were originally developed for agriculture by R.A. Fisher and F. Yates. Due to their applicability outside agriculture they could also be called split-unit designs.</p>
-<p>The results from a split-plot experiment are shown in the table below (<span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005" role="doc-biblioref">2005</a>)</span>). The experiment was designed to study the corrosion resistance of steel bars treated with four different coatings <span class="math inline">\(C_1, C_2, C_3, C_4\)</span> at three duplicated furnace temperatures 360, 370, 380. The positions of the coated steel bars in the furnace were randomized within each heat. In run 1 the heat was 360 and the first position in the furnace had a steel bar with coating 2 the second position had coating 3 , the third position had coating 1, and the fourth position had coating 4. But, because the furnace heat was hard to change the heats were run in the systematic order shown.</p>
+<p>The results from a split-plot experiment are shown in the table below (<span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span>). The experiment was designed to study the corrosion resistance of steel bars treated with four different coatings <span class="math inline">\(C_1, C_2, C_3, C_4\)</span> at three duplicated furnace temperatures 360, 370, 380. The positions of the coated steel bars in the furnace were randomized within each heat. In run 1 the heat was 360 and the first position in the furnace had a steel bar with coating 2 the second position had coating 3 , the third position had coating 1, and the fourth position had coating 4. But, because the furnace heat was hard to change the heats were run in the systematic order shown.</p>
 <p>The primary interest were the comparison of coatings and how they interacted with temperature.</p>
 <table>
 <thead>
@@ -687,8 +687,8 @@ How does the split-plot design compare with, say, a 3x4 factorial design of coat
 <div id="anova-table-for-split-plot-experiment" class="section level2">
 <h2><span class="header-section-number">13.1</span> ANOVA table for split plot experiment</h2>
 <p>The numerical calculations for the ANOVA of a split-plot design are the same as for other balanced designs (designs where all treatment combinations have the same number of observations) and can be performed in R or with other statistical software. Experimenters sometimes have difficulty identifying appropriate error terms.</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" title="1">spfurcoat1 &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance <span class="op">~</span><span class="st"> </span>replication <span class="op">*</span><span class="st"> </span>heats <span class="op">*</span><span class="st"> </span>coating, <span class="dt">data =</span> tab0901)</a>
-<a class="sourceLine" id="cb465-2" title="2"><span class="kw">summary</span>(spfurcoat1)</a></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb477-1" data-line-number="1">spfurcoat1 &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance <span class="op">~</span><span class="st"> </span>replication <span class="op">*</span><span class="st"> </span>heats <span class="op">*</span><span class="st"> </span>coating, <span class="dt">data =</span> tab0901)</a>
+<a class="sourceLine" id="cb477-2" data-line-number="2"><span class="kw">summary</span>(spfurcoat1)</a></code></pre></div>
 <pre><code>                          Df Sum Sq Mean Sq
 replication                1    782     782
 heats                      2  26519   13260
@@ -750,11 +750,11 @@ replication:heats:coating  6    867     144</code></pre>
 </table>
 <p>The subplot mean square error is <span class="math inline">\((254+867)/(3+6)=\)</span> 124.6. The sum of squares for the subplot error is the sum of interaction between replicate and coating (<code>replication:coating</code>) and the three way interaction of replication, heats and coating (<code>replication:heats:coating</code>). The subplot error measures to what extent the coatings give dissimilar results within each of the replicated temperatures.</p>
 <p>In R the ANOVA table for whole plot and sub plot effects can obtained by specifying the subplot error structure explicit using <code>Error()</code>.</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" title="1">spfurcoat &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance <span class="op">~</span><span class="st"> </span>replication <span class="op">+</span><span class="st"> </span>heats <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb467-2" title="2"><span class="st">                   </span>replication<span class="op">:</span>heats <span class="op">+</span><span class="st"> </span>coating <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb467-3" title="3"><span class="st">                   </span>heats<span class="op">:</span>coating <span class="op">+</span><span class="st"> </span><span class="kw">Error</span>(heats<span class="op">/</span>replication),</a>
-<a class="sourceLine" id="cb467-4" title="4">                 <span class="dt">data =</span> tab0901)</a>
-<a class="sourceLine" id="cb467-5" title="5"><span class="kw">summary</span>(spfurcoat)</a></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb479-1" data-line-number="1">spfurcoat &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance <span class="op">~</span><span class="st"> </span>replication <span class="op">+</span><span class="st"> </span>heats <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb479-2" data-line-number="2"><span class="st">                   </span>replication<span class="op">:</span>heats <span class="op">+</span><span class="st"> </span>coating <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb479-3" data-line-number="3"><span class="st">                   </span>heats<span class="op">:</span>coating <span class="op">+</span><span class="st"> </span><span class="kw">Error</span>(heats<span class="op">/</span>replication),</a>
+<a class="sourceLine" id="cb479-4" data-line-number="4">                 <span class="dt">data =</span> tab0901)</a>
+<a class="sourceLine" id="cb479-5" data-line-number="5"><span class="kw">summary</span>(spfurcoat)</a></code></pre></div>
 <pre><code>
 Error: heats
       Df Sum Sq Mean Sq
@@ -773,14 +773,14 @@ Residuals      9   1121   124.5
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The whole plot effects are under the heading <code>Error: heats:replication</code> and the subplot effects are under the heading <code>Error: Within</code>. Under the heading <code>Error: heats</code> is mean square error for a one-way ANOVA model comparing heats.</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb469-1" title="1"><span class="kw">summary</span>( <span class="kw">aov</span>(resistance<span class="op">~</span>heats,tab0901))</a></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb481-1" data-line-number="1"><span class="kw">summary</span>( <span class="kw">aov</span>(resistance<span class="op">~</span>heats,tab0901))</a></code></pre></div>
 <pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 heats        2  26519   13260   12.04 0.000328 ***
 Residuals   21  23119    1101                     
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The ratio of mean square errors follows an <span class="math inline">\(F_{2,2}\)</span>. The F statistic for whole plots is 13260/6829= 1.94. So the p-value to test <span class="math inline">\(H_0:\mu_{360}=\mu_{370}=\mu_{380}\)</span> is</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" title="1"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="dv">13260</span><span class="op">/</span><span class="dv">6829</span>,<span class="dt">df1 =</span> <span class="dv">2</span>,<span class="dt">df2 =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb483-1" data-line-number="1"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="dv">13260</span><span class="op">/</span><span class="dv">6829</span>,<span class="dt">df1 =</span> <span class="dv">2</span>,<span class="dt">df2 =</span> <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>[1] 0.3399373</code></pre>
 <p>The subplot effects of coating and the interaction of temperature and coating can be tested by forming F statistics using the subplot mean square error. These tests are given in the ANOVA table under the heading <code>Error: Within</code>. There are statistically significant differences between coatings and the interaction between temperature and coating.</p>
 <p>The whole plot error mean square 4813 is an estimate of <span class="math inline">\(4\sigma^2_W+\sigma^2_S\)</span>. So,</p>
@@ -936,8 +936,8 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <div id="split-plot-anova---how-not-to-do-it" class="section level2">
 <h2><span class="header-section-number">13.2</span> Split plot ANOVA - How not to do it</h2>
 <p>Suppose that you didn’t know about the split-plot structure. So the experimenter analyzes the data as a two-way ANOVA. Would you reach the same conclusions?</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" title="1">furcoatanova &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance<span class="op">~</span>heats<span class="op">*</span>coating,<span class="dt">data =</span> tab0901)</a>
-<a class="sourceLine" id="cb473-2" title="2"><span class="kw">summary</span>(furcoatanova)</a></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb485-1" data-line-number="1">furcoatanova &lt;-<span class="st"> </span><span class="kw">aov</span>(resistance<span class="op">~</span>heats<span class="op">*</span>coating,<span class="dt">data =</span> tab0901)</a>
+<a class="sourceLine" id="cb485-2" data-line-number="2"><span class="kw">summary</span>(furcoatanova)</a></code></pre></div>
 <pre><code>              Df Sum Sq Mean Sq F value  Pr(&gt;F)   
 heats          2  26519   13260  10.226 0.00256 **
 coating        3   4289    1430   1.103 0.38602   

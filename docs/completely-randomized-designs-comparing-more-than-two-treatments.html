@@ -78,7 +78,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -373,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">8</span> Completely Randomized Designs: Comparing More Than Two Treatments</h1>
 <div id="anova---comparing-more-than-two-groups" class="section level2">
 <h2><span class="header-section-number">8.1</span> ANOVA - Comparing more than two groups</h2>
-<p>The following example is taken from Chapter 4 <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005" role="doc-biblioref">2005</a>)</span>. The table below gives coagulation times for blood samples drawn from 24 animals receiving four different diets A, B, C, and D.</p>
+<p>The following example is taken from Chapter 4 <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span>. The table below gives coagulation times for blood samples drawn from 24 animals receiving four different diets A, B, C, and D.</p>
 <table>
 <thead>
 <tr>
@@ -544,9 +544,9 @@ Difference
 </tbody>
 </table>
 <p>Boxplots of the data are shown below.</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" title="1"><span class="kw">boxplot</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401,<span class="dt">xlab =</span> <span class="st">&quot;Diets&quot;</span>,</a>
-<a class="sourceLine" id="cb229-2" title="2">        <span class="dt">ylab =</span> <span class="st">&quot;Coagulation time&quot;</span>,</a>
-<a class="sourceLine" id="cb229-3" title="3">        <span class="dt">main =</span> <span class="st">&quot;Coagulation time from 24 </span><span class="ch">\n</span><span class="st"> animals randomly allocated to four diets&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1"><span class="kw">boxplot</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401,<span class="dt">xlab =</span> <span class="st">&quot;Diets&quot;</span>,</a>
+<a class="sourceLine" id="cb229-2" data-line-number="2">        <span class="dt">ylab =</span> <span class="st">&quot;Coagulation time&quot;</span>,</a>
+<a class="sourceLine" id="cb229-3" data-line-number="3">        <span class="dt">main =</span> <span class="st">&quot;Coagulation time from 24 </span><span class="ch">\n</span><span class="st"> animals randomly allocated to four diets&quot;</span>)</a></code></pre></div>
 <p><img src="07-anova_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p><strong>Question:</strong> Is there evidence to indicate a difference in mean coagulation times for the four different diets?</p>
 <p>An idea due to Fisher is to compare the variation in mean coagulation times <em>between</em> the diets to the variation of coagulation times <em>within</em> a diet. These two measures of variation are often summarized in an analysis of variance (ANOVA) table.</p>
@@ -636,8 +636,8 @@ y_{11}-{\bar y}_{\cdot \cdot}&amp;=\left(y_{1 \cdot}-{\bar y}_{\cdot \cdot}\righ
 <p><span class="math inline">\(SS_{Treat}\)</span> and <span class="math inline">\(SS_E\)</span> are independent and it can be shown that <span class="math inline">\(SS_{Treat}/\sigma^2 \sim \chi^2_{a-1}\)</span> and <span class="math inline">\(SS_E/\sigma^2 \sim \chi^2_{N-a}\)</span>. Thus, if <span class="math inline">\(H_0: \mu_1=\cdots=\mu_a\)</span> is true then the ratio</p>
 <p><span class="math display">\[ F= \frac{MS_{Treat}}{MS_E} \sim F_{a-1,N-a}.\]</span></p>
 <p>The ANOVA table for the coagulation data can be calculated in R.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" title="1">aov.diets &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401)</a>
-<a class="sourceLine" id="cb233-2" title="2"><span class="kw">summary</span>(aov.diets)</a></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">aov.diets &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401)</a>
+<a class="sourceLine" id="cb233-2" data-line-number="2"><span class="kw">summary</span>(aov.diets)</a></code></pre></div>
 <pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 diets        3    228    76.0   13.57 4.66e-05 ***
 Residuals   20    112     5.6                     
@@ -645,13 +645,13 @@ Residuals   20    112     5.6
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>In this example <span class="math inline">\(a-1 = 3, N-a = 20, SS_{Treat}=228, SS_E = 112, MS_{Treat}=228/3 = 76.0,MS_E112/20 = 5.6, F = 76/5.6 = 13.57.\)</span></p>
 <p>The observed <span class="math inline">\(F\)</span> value of 13.57 is shown on the <span class="math inline">\(F_{3,20}\)</span> distribution. The p-value of the test is the area under the density to the right of 13.57 (red line). The 95% critical value of the <span class="math inline">\(F_{3,20}\)</span> is 3.10 (blue line). In other words, <span class="math inline">\(P(F_{3,20}&gt;3.10)=0.05\)</span>.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" title="1">x &lt;-<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dt">by =</span> <span class="fl">0.01</span>)</a>
-<a class="sourceLine" id="cb235-2" title="2"><span class="kw">plot</span>(x,<span class="kw">df</span>(<span class="dt">x =</span> x,<span class="dt">df1 =</span> <span class="dv">3</span>,<span class="dt">df2 =</span> <span class="dv">20</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;F(3,20) Density&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;F(3,20) Distribution&quot;</span>)</a>
-<a class="sourceLine" id="cb235-3" title="3"><span class="kw">abline</span>(<span class="dt">v =</span> <span class="fl">13.57</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb235-4" title="4"><span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">qf</span>(<span class="dt">p =</span> <span class="fl">0.95</span>,<span class="dv">3</span>,<span class="dv">20</span>),<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1">x &lt;-<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dt">by =</span> <span class="fl">0.01</span>)</a>
+<a class="sourceLine" id="cb235-2" data-line-number="2"><span class="kw">plot</span>(x,<span class="kw">df</span>(<span class="dt">x =</span> x,<span class="dt">df1 =</span> <span class="dv">3</span>,<span class="dt">df2 =</span> <span class="dv">20</span>),<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;F(3,20) Density&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;F(3,20) Distribution&quot;</span>)</a>
+<a class="sourceLine" id="cb235-3" data-line-number="3"><span class="kw">abline</span>(<span class="dt">v =</span> <span class="fl">13.57</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb235-4" data-line-number="4"><span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">qf</span>(<span class="dt">p =</span> <span class="fl">0.95</span>,<span class="dv">3</span>,<span class="dv">20</span>),<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="07-anova_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>The p-value could also be calculated directly using the cdf of the <span class="math inline">\(F_{3,20}\)</span> distribution.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="fl">13.57</span>,<span class="dt">df1 =</span> <span class="dv">3</span>,<span class="dt">df2 =</span> <span class="dv">20</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="fl">13.57</span>,<span class="dt">df1 =</span> <span class="dv">3</span>,<span class="dt">df2 =</span> <span class="dv">20</span>)</a></code></pre></div>
 <pre><code>[1] 4.66169e-05</code></pre>
 <p>The small p-value indicates that the difference between at least one pair of the treatment means is significantly different from 0.</p>
 </div>
@@ -709,16 +709,16 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <li><p>The additive model assumption seems plausible since the observations from each diet can be viewed as the sum of a common mean plus a random error term.</p></li>
 <li><p>The common variance assumption can be investigated by plotting the residuals versus the fitted values of the ANOVA model. A plot of the residuals versus fitted values can be used to investigate the assumption that the residuals are randomly distributed and have constant variance. Ideally, the points should fall randomly on both sides of 0, with no recognizable patterns in the points.In the R this can be done using the following commands.</p></li>
 </ol>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" title="1"><span class="kw">plot</span>(aov.diets<span class="op">$</span>fitted.values,aov.diets<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,</a>
-<a class="sourceLine" id="cb238-2" title="2">     <span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Blood coagualtion study&quot;</span>)</a>
-<a class="sourceLine" id="cb238-3" title="3"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1"><span class="kw">plot</span>(aov.diets<span class="op">$</span>fitted.values,aov.diets<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,</a>
+<a class="sourceLine" id="cb238-2" data-line-number="2">     <span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Blood coagualtion study&quot;</span>)</a>
+<a class="sourceLine" id="cb238-3" data-line-number="3"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</a></code></pre></div>
 <p><img src="07-anova_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>The assumption of constant variance is satisfied for the blood coagulation study.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>The normality of the residuals can be investigated using a normal quantile-quantile plot.</li>
 </ol>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" title="1"><span class="kw">qqnorm</span>(aov.diets<span class="op">$</span>residuals, <span class="dt">main =</span> <span class="st">&quot;Normal Q-Q Plot for blood coagulation study&quot;</span>)</a>
-<a class="sourceLine" id="cb239-2" title="2"><span class="kw">qqline</span>(aov.diets<span class="op">$</span>residuals)</a></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1"><span class="kw">qqnorm</span>(aov.diets<span class="op">$</span>residuals, <span class="dt">main =</span> <span class="st">&quot;Normal Q-Q Plot for blood coagulation study&quot;</span>)</a>
+<a class="sourceLine" id="cb239-2" data-line-number="2"><span class="kw">qqline</span>(aov.diets<span class="op">$</span>residuals)</a></code></pre></div>
 <p><img src="07-anova_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>The normality assumptions is satisfied.</p>
 </div>
@@ -747,9 +747,9 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <h3><span class="header-section-number">8.6.1</span> Dummy Coding</h3>
 <p>Dummy coding compares each level to the reference level. The intercept is the mean of the reference group.</p>
 <p>Smarties is a candy that comes in several different colours such as yellow, purple, green, and pink. Suppose that we would like to compare the mean number of candy colours in each box. The data from 3 smarties boxes are below.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" title="1">count &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb240-2" title="2">colour &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;Yellow&quot;</span>,<span class="dv">3</span>),<span class="kw">rep</span>(<span class="st">&quot;Purple&quot;</span>,<span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb240-3" title="3">                      <span class="kw">rep</span>(<span class="st">&quot;Green&quot;</span>,<span class="dv">3</span>),<span class="kw">rep</span>(<span class="st">&quot;Pink&quot;</span>,<span class="dv">3</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1">count &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb240-2" data-line-number="2">colour &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;Yellow&quot;</span>,<span class="dv">3</span>),<span class="kw">rep</span>(<span class="st">&quot;Purple&quot;</span>,<span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb240-3" data-line-number="3">                      <span class="kw">rep</span>(<span class="st">&quot;Green&quot;</span>,<span class="dv">3</span>),<span class="kw">rep</span>(<span class="st">&quot;Pink&quot;</span>,<span class="dv">3</span>)))</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -809,13 +809,13 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 </tbody>
 </table>
 <p>The average number of candies in each colour is:</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" title="1"><span class="co">#Get means for each flavour</span></a>
-<a class="sourceLine" id="cb241-2" title="2"><span class="kw">sapply</span>(<span class="kw">split</span>(count,colour),mean)</a></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1"><span class="co">#Get means for each flavour</span></a>
+<a class="sourceLine" id="cb241-2" data-line-number="2"><span class="kw">sapply</span>(<span class="kw">split</span>(count,colour),mean)</a></code></pre></div>
 <pre><code>   Green     Pink   Purple   Yellow 
 2.666667 2.333333 2.666667 3.666667 </code></pre>
 <p>Dummy coding is the default in R and the most common coding scheme. It compares each level of the categorical variable to a fixed reference level.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" title="1"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb243-2" title="2"><span class="kw">contrasts</span>(colour)  <span class="co"># print dummy coding - base is Green</span></a></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb243-2" data-line-number="2"><span class="kw">contrasts</span>(colour)  <span class="co"># print dummy coding - base is Green</span></a></code></pre></div>
 <pre><code>       2 3 4
 Green  0 0 0
 Pink   1 0 0
@@ -845,22 +845,22 @@ Yellow 0 0 1</code></pre>
 \right.\]</span></p>
 <p>If <span class="math inline">\(X_1 = X_2 = X_3 = 0\)</span> then the colour of the smartie is green - the reference category. This shows that we only require 3 dummy variables to define a nominal variable with 4 categories.</p>
 <p>To change the reference level change the value of base in <code>contr.treatment()</code>.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" title="1"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dv">4</span>,<span class="dt">base =</span> <span class="dv">2</span>) <span class="co"># Now reference is pink</span></a>
-<a class="sourceLine" id="cb245-2" title="2"><span class="kw">contrasts</span>(colour)  </a></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dv">4</span>,<span class="dt">base =</span> <span class="dv">2</span>) <span class="co"># Now reference is pink</span></a>
+<a class="sourceLine" id="cb245-2" data-line-number="2"><span class="kw">contrasts</span>(colour)  </a></code></pre></div>
 <pre><code>       1 3 4
 Green  1 0 0
 Pink   0 0 0
 Purple 0 1 0
 Yellow 0 0 1</code></pre>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" title="1"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dv">4</span>,<span class="dt">base =</span> <span class="dv">3</span>) <span class="co"># Now reference is purple</span></a>
-<a class="sourceLine" id="cb247-2" title="2"><span class="kw">contrasts</span>(colour)  </a></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dv">4</span>,<span class="dt">base =</span> <span class="dv">3</span>) <span class="co"># Now reference is purple</span></a>
+<a class="sourceLine" id="cb247-2" data-line-number="2"><span class="kw">contrasts</span>(colour)  </a></code></pre></div>
 <pre><code>       1 2 4
 Green  1 0 0
 Pink   0 1 0
 Purple 0 0 0
 Yellow 0 0 1</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" title="1"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dv">4</span>,<span class="dt">base =</span> <span class="dv">4</span>) <span class="co"># Now reference is yellow</span></a>
-<a class="sourceLine" id="cb249-2" title="2"><span class="kw">contrasts</span>(colour)  </a></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dv">4</span>,<span class="dt">base =</span> <span class="dv">4</span>) <span class="co"># Now reference is yellow</span></a>
+<a class="sourceLine" id="cb249-2" data-line-number="2"><span class="kw">contrasts</span>(colour)  </a></code></pre></div>
 <pre><code>       1 2 3
 Green  1 0 0
 Pink   0 1 0
@@ -897,8 +897,8 @@ Yellow 0 0 0</code></pre>
 \right.\]</span></p>
 <p>1 is used to compare a level to all other levels and -1 is assigned to yellow because it’s the level that will never be compared to the other levels.</p>
 <p>In R the variables can be created using the <code>contr.sum()</code> function. The argument of 4 in <code>contr.sum(4)</code> indicates the number of levels of the factor.</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" title="1"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.sum</span>(<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb251-2" title="2"><span class="kw">contrasts</span>(colour)  </a></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1"><span class="kw">contrasts</span>(colour) &lt;-<span class="st"> </span><span class="kw">contr.sum</span>(<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb251-2" data-line-number="2"><span class="kw">contrasts</span>(colour)  </a></code></pre></div>
 <pre><code>       [,1] [,2] [,3]
 Green     1    0    0
 Pink      0    1    0
@@ -1119,15 +1119,15 @@ Difference
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" title="1"><span class="kw">attach</span>(tab0401)</a>
-<a class="sourceLine" id="cb253-2" title="2"><span class="kw">contrasts</span>(diets)</a></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1"><span class="kw">attach</span>(tab0401)</a>
+<a class="sourceLine" id="cb253-2" data-line-number="2"><span class="kw">contrasts</span>(diets)</a></code></pre></div>
 <pre><code>  B C D
 A 0 0 0
 B 1 0 0
 C 0 1 0
 D 0 0 1</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" title="1">lm.diets &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401)</a>
-<a class="sourceLine" id="cb255-2" title="2"><span class="kw">summary</span>(lm.diets)</a></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1">lm.diets &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401)</a>
+<a class="sourceLine" id="cb255-2" data-line-number="2"><span class="kw">summary</span>(lm.diets)</a></code></pre></div>
 <pre><code>
 Call:
 lm(formula = y ~ diets, data = tab0401)
@@ -1149,7 +1149,7 @@ Residual standard error: 2.366 on 20 degrees of freedom
 Multiple R-squared:  0.6706,    Adjusted R-squared:  0.6212 
 F-statistic: 13.57 on 3 and 20 DF,  p-value: 4.658e-05</code></pre>
 <p>The design matrix is</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" title="1"><span class="kw">model.matrix</span>(lm.diets)</a></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1"><span class="kw">model.matrix</span>(lm.diets)</a></code></pre></div>
 <pre><code>   (Intercept) dietsB dietsC dietsD
 1            1      0      0      0
 2            1      0      0      0
@@ -1248,9 +1248,9 @@ E(y_{Dj})&amp;=\mu_D=\tau_0-\tau_1-\tau_2-\tau_3
 \tau_2 &amp;= \mu_B - \frac{\mu_A+\mu_B+\mu_C+\mu_D}{4} \\
 \tau_3 &amp;= \mu_C - \frac{\mu_A+\mu_B+\mu_C+\mu_D}{4} \\
 \end{aligned}\]</span></p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" title="1"><span class="kw">contrasts</span>(tab0401<span class="op">$</span>diets) &lt;-<span class="st"> </span><span class="kw">contr.sum</span>(<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb259-2" title="2">lm.diets &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401)</a>
-<a class="sourceLine" id="cb259-3" title="3"><span class="kw">summary</span>(lm.diets)</a></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1"><span class="kw">contrasts</span>(tab0401<span class="op">$</span>diets) &lt;-<span class="st"> </span><span class="kw">contr.sum</span>(<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb259-2" data-line-number="2">lm.diets &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401)</a>
+<a class="sourceLine" id="cb259-3" data-line-number="3"><span class="kw">summary</span>(lm.diets)</a></code></pre></div>
 <pre><code>
 Call:
 lm(formula = y ~ diets, data = tab0401)
@@ -1292,7 +1292,7 @@ F-statistic: 13.57 on 3 and 20 DF,  p-value: 4.658e-05</code></pre>
 <li>A clinical trial was conducted where patients were randomized to four different treatments. The data is available in the file <a href="q2data.csv"><code>q2data.csv</code></a>. The outcome is a continuous response <span class="math inline">\(y_{ij}\)</span> the response for the <span class="math inline">\(ith\)</span> subject in the <span class="math inline">\(jth\)</span> treatment group. There are three new treatments in this study and one control treatment. The control treatment is the third treatment (<span class="math inline">\(j=3\)</span>). The main objective of the study is to compare the three new treatments to the control treatment.</li>
 </ol>
 <p>NB: The file can be read into R and put into a data.frame using the command</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" title="1">q2data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;q2data.csv&quot;</span>).</a></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1">q2data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;q2data.csv&quot;</span>).</a></code></pre></div>
 <p>In this question use the 5% significance level.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>What are the averages and standard deviations of each treatment? Plot the distributions of the four treatment groups. Do the distributions look similar or different? (Hand in your R code and output)</p></li>
@@ -1443,24 +1443,24 @@ sd
 </tbody>
 </table>
 <p>The researchers analyzed the data using R.</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" title="1">surveydat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;surveydat.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb262-2" title="2">aovsurvey &lt;-<span class="st"> </span><span class="kw">aov</span>(wtchange<span class="op">~</span>grp,<span class="dt">data=</span>surveydat)</a>
-<a class="sourceLine" id="cb262-3" title="3"><span class="kw">summary</span>(aovsurvey)</a></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1">surveydat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;surveydat.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb262-2" data-line-number="2">aovsurvey &lt;-<span class="st"> </span><span class="kw">aov</span>(wtchange<span class="op">~</span>grp,<span class="dt">data=</span>surveydat)</a>
+<a class="sourceLine" id="cb262-3" data-line-number="3"><span class="kw">summary</span>(aovsurvey)</a></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
 ## grp          2   2.78   1.390   1.341  0.287
 ## Residuals   18  18.66   1.037</code></pre>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" title="1">mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(wtchange<span class="op">~</span>grp,<span class="dt">data=</span>surveydat)</a>
-<a class="sourceLine" id="cb264-2" title="2"><span class="kw">summary</span>(mod1)<span class="op">$</span>coefficients</a></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1">mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(wtchange<span class="op">~</span>grp,<span class="dt">data=</span>surveydat)</a>
+<a class="sourceLine" id="cb264-2" data-line-number="2"><span class="kw">summary</span>(mod1)<span class="op">$</span>coefficients</a></code></pre></div>
 <pre><code>##              Estimate Std. Error   t value  Pr(&gt;|t|)
 ## (Intercept) 0.4571429  0.3848706 1.1877832 0.2503565
 ## grpB        0.3842857  0.5442893 0.7060322 0.4892064
 ## grpC        0.8885714  0.5442893 1.6325353 0.1199371</code></pre>
 <div style="page-break-after: always;"></div>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># arrange plots in two columns</span></a>
-<a class="sourceLine" id="cb266-2" title="2"><span class="kw">boxplot</span>(wtchange<span class="op">~</span>grp,<span class="dt">data =</span> surveydat,<span class="dt">ylab=</span><span class="st">&quot;Weight Change (Kg)&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Fast Food Frequency&quot;</span>)</a>
-<a class="sourceLine" id="cb266-3" title="3"><span class="kw">qqnorm</span>(aovsurvey<span class="op">$</span>residuals);<span class="kw">qqline</span>(aovsurvey<span class="op">$</span>residuals)</a>
-<a class="sourceLine" id="cb266-4" title="4"><span class="kw">plot</span>(aovsurvey<span class="op">$</span>fitted.values, aovsurvey<span class="op">$</span>residuals,<span class="dt">ylab=</span><span class="st">&quot;Residuals&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Fitted&quot;</span>,</a>
-<a class="sourceLine" id="cb266-5" title="5">     <span class="dt">main=</span><span class="st">&quot;Weight Change Study&quot;</span>); <span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># arrange plots in two columns</span></a>
+<a class="sourceLine" id="cb266-2" data-line-number="2"><span class="kw">boxplot</span>(wtchange<span class="op">~</span>grp,<span class="dt">data =</span> surveydat,<span class="dt">ylab=</span><span class="st">&quot;Weight Change (Kg)&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Fast Food Frequency&quot;</span>)</a>
+<a class="sourceLine" id="cb266-3" data-line-number="3"><span class="kw">qqnorm</span>(aovsurvey<span class="op">$</span>residuals);<span class="kw">qqline</span>(aovsurvey<span class="op">$</span>residuals)</a>
+<a class="sourceLine" id="cb266-4" data-line-number="4"><span class="kw">plot</span>(aovsurvey<span class="op">$</span>fitted.values, aovsurvey<span class="op">$</span>residuals,<span class="dt">ylab=</span><span class="st">&quot;Residuals&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Fitted&quot;</span>,</a>
+<a class="sourceLine" id="cb266-5" data-line-number="5">     <span class="dt">main=</span><span class="st">&quot;Weight Change Study&quot;</span>); <span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</a></code></pre></div>
 <p><img src="07-anova_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Is this study and experiment or observational study? What are the treatments?</p></li>
@@ -1511,12 +1511,12 @@ P\left(\text{reject at least one } H_{0_k} \right) &amp;= 1- P\left(\text{do not
 <p><span class="math display">\[|t_{ij}|&gt;t_{N-k,\alpha/2},\]</span></p>
 <p>where <span class="math inline">\(t_{N-k,\alpha/2}\)</span> is the upper <span class="math inline">\(\alpha/2\)</span> percentile of a <span class="math inline">\(t_{N-k}\)</span>.</p>
 <p>The total number of pairs of treatment means that can be tested is <span class="math display">\[c={k \choose 2}=\frac{k(k-1)}{2}.\]</span></p>
-<p>The Bonferroni method for testing <span class="math inline">\(H_0:\mu_i=\mu_j\)</span> vs. <span class="math inline">\(H_0:\mu_i \ne \mu_j\)</span> rejects <span class="math inline">\(H_0\)</span> at level <span class="math inline">\(\alpha\)</span> if</p>
+<p>The Bonferroni method for testing <span class="math inline">\(H_0:\mu_i=\mu_j\)</span> vs. <span class="math inline">\(H_0:\mu_i \ne \mu_j\)</span> rejects <span class="math inline">\(H_0\)</span> at level <span class="math inline">\(\alpha\)</span> if</p>
 <p><span class="math display">\[|t_{ij}|&gt;t_{N-k,\alpha/2c},\]</span></p>
 <p>where <span class="math inline">\(c\)</span> denotes the number of pairs being tested.</p>
 <p>In R the function <code>pairwise.t.test()</code> can be used to compute Bonferroni adjusted p-values.</p>
 <p>This is illustrated below for the blood coagulation study.</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" title="1"><span class="kw">pairwise.t.test</span>(tab0401<span class="op">$</span>y,tab0401<span class="op">$</span>diets,<span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1"><span class="kw">pairwise.t.test</span>(tab0401<span class="op">$</span>y,tab0401<span class="op">$</span>diets,<span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</a></code></pre></div>
 <pre><code>
     Pairwise comparisons using t tests with pooled SD 
 
@@ -1530,7 +1530,7 @@ D 1.00000 0.00934 0.00031
 P value adjustment method: bonferroni </code></pre>
 <p>There are significant differences at the 5% level between diets A and B, A and C, B and D, and C and D using the Bonferroni method.</p>
 <p>For comparison the unadjusted p-values are also calculated.</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" title="1"><span class="kw">pairwise.t.test</span>(tab0401<span class="op">$</span>y,tab0401<span class="op">$</span>diets,<span class="dt">p.adjust.method =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1"><span class="kw">pairwise.t.test</span>(tab0401<span class="op">$</span>y,tab0401<span class="op">$</span>diets,<span class="dt">p.adjust.method =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
 <pre><code>
     Pairwise comparisons using t tests with pooled SD 
 
@@ -1717,7 +1717,7 @@ Difference
 </tbody>
 </table>
 <p><span class="math inline">\({\hat \sigma}=\sqrt{MS_E}\)</span> can be obtained from the ANOVA table.</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" title="1"><span class="kw">anova</span>(<span class="kw">lm</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401))</a></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1"><span class="kw">anova</span>(<span class="kw">lm</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401))</a></code></pre></div>
 <pre><code>Analysis of Variance Table
 
 Response: y
@@ -1727,14 +1727,14 @@ Residuals 20    112     5.6
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The upper <span class="math inline">\(.05/(2\cdot 6)=0.004\)</span> percentile of the <span class="math inline">\(t_{24-4}\)</span> can be obtained with the t quantile function in R <code>qt()</code>.</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" title="1"><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="fl">-0.004</span>,<span class="dt">df =</span> <span class="dv">20</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1"><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="fl">-0.004</span>,<span class="dt">df =</span> <span class="dv">20</span>)</a></code></pre></div>
 <pre><code>[1] 2.945349</code></pre>
 <p>Plugging in these values to the confidence interval formula we can obtain a Bonferroni adjusted 95% confidence interval for <span class="math inline">\(\mu_B-\mu_A\)</span>:</p>
 <p><span class="math display">\[ 66-61 \pm 2.95 \sqrt{5.6} \sqrt{1/6+1/6}\]</span></p>
 <p>The lower and upper limits can be calculated in R.</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" title="1"><span class="dv">66-61</span> <span class="op">-</span><span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="fl">-0.004</span>,<span class="dt">df =</span> <span class="dv">20</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co"># lower limit</span></a></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" data-line-number="1"><span class="dv">66-61</span> <span class="op">-</span><span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="fl">-0.004</span>,<span class="dt">df =</span> <span class="dv">20</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co"># lower limit</span></a></code></pre></div>
 <pre><code>[1] 0.9758869</code></pre>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" title="1"><span class="dv">66-61</span> <span class="op">+</span><span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="fl">-0.004</span>,<span class="dt">df =</span> <span class="dv">20</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co"># upper limit</span></a></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" data-line-number="1"><span class="dv">66-61</span> <span class="op">+</span><span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="fl">-0.004</span>,<span class="dt">df =</span> <span class="dv">20</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co"># upper limit</span></a></code></pre></div>
 <pre><code>[1] 9.024113</code></pre>
 <p>The 95% confidence interval for <span class="math inline">\(\mu_B-\mu_A\)</span> is ( 0.98, 9.02 ).</p>
 </div>
@@ -1748,33 +1748,33 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <p><span class="math display">\[\bar{y_{j \cdot}}-\bar{y_{i \cdot}} \pm \frac{1}{\sqrt 2} q_{k,N-k,\alpha} \hat{\sigma}\sqrt{1/n_j+1/n_i}.\]</span></p>
 <p>The Bonferroni method is more conservative than Tukey’s method. In other words, the simultaneous confidence intervals based on the Tukey method are shorter.</p>
 <p>In the coagulation study <span class="math inline">\(N = 24, k = 4\)</span> so the 5% critical value of the Studentize range distribution is obtained using the the inverse CDF function <code>qtukey()</code> for this distribution. The argument <code>lower.tail = FALSE</code> is used so we obtain the upper percentile of the distribution (i.e., the value of <span class="math inline">\(x\)</span> such that <span class="math inline">\(P\left(X&gt;x\right)=0.05\)</span>).</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" title="1"><span class="kw">qtukey</span>(.<span class="dv">05</span>,<span class="dv">4</span>,<span class="dv">16</span>,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1"><span class="kw">qtukey</span>(.<span class="dv">05</span>,<span class="dv">4</span>,<span class="dv">16</span>,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>[1] 4.046093</code></pre>
 <p>Let’s obtain the Tukey p-value and confidence interval for <span class="math inline">\(\mu_B-\mu_A\)</span>. The observed value of the test statistic is</p>
 <p><span class="math display">\[q^{obs}=\sqrt{2}|t_{AB}|,\]</span></p>
 <p>where <span class="math display">\[t_{AB}=\frac{\bar{y_{A \cdot}}-\bar{y_{B \cdot}} } {\hat{\sigma}\sqrt{1/n_A+1/n_B}}.\]</span></p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" title="1">(<span class="kw">sqrt</span>(<span class="dv">2</span>)<span class="op">*</span>(<span class="dv">66-61</span>))<span class="op">/</span>(<span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" data-line-number="1">(<span class="kw">sqrt</span>(<span class="dv">2</span>)<span class="op">*</span>(<span class="dv">66-61</span>))<span class="op">/</span>(<span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>))</a></code></pre></div>
 <pre><code>[1] 5.175492</code></pre>
 <p>The p-value</p>
 <p><span class="math display">\[P\left(q_{4,20}&gt;q^{obs}\right)\]</span></p>
 <p>is then obtained using the CDF of the Studentized range distribution</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" title="1"><span class="dv">1</span><span class="op">-</span><span class="kw">ptukey</span>(<span class="dt">q =</span> <span class="kw">sqrt</span>(<span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span><span class="op">*</span><span class="fl">5.6</span><span class="op">/</span><span class="dv">6</span>),<span class="dt">nmeans =</span> <span class="dv">4</span>,<span class="dt">df =</span> <span class="dv">20</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1"><span class="dv">1</span><span class="op">-</span><span class="kw">ptukey</span>(<span class="dt">q =</span> <span class="kw">sqrt</span>(<span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span><span class="op">*</span><span class="fl">5.6</span><span class="op">/</span><span class="dv">6</span>),<span class="dt">nmeans =</span> <span class="dv">4</span>,<span class="dt">df =</span> <span class="dv">20</span>)</a></code></pre></div>
 <pre><code>[1] 0.007797788</code></pre>
 <p>The 95% limits of the Tukey confidence interval for <span class="math inline">\(\mu_B-\mu_A\)</span> is</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" title="1"><span class="dv">5</span><span class="op">-</span>(<span class="dv">1</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span>))<span class="op">*</span><span class="kw">qtukey</span>(<span class="dt">p =</span> <span class="fl">.05</span>,<span class="dt">nmeans =</span> <span class="dv">4</span>,<span class="dt">df =</span> <span class="dv">20</span>,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co">#lower limit</span></a></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" data-line-number="1"><span class="dv">5</span><span class="op">-</span>(<span class="dv">1</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span>))<span class="op">*</span><span class="kw">qtukey</span>(<span class="dt">p =</span> <span class="fl">.05</span>,<span class="dt">nmeans =</span> <span class="dv">4</span>,<span class="dt">df =</span> <span class="dv">20</span>,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co">#lower limit</span></a></code></pre></div>
 <pre><code>[1] 1.175925</code></pre>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" title="1"><span class="dv">5</span><span class="op">+</span>(<span class="dv">1</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span>))<span class="op">*</span><span class="kw">qtukey</span>(<span class="dt">p =</span> <span class="fl">.05</span>,<span class="dt">nmeans =</span> <span class="dv">4</span>,<span class="dt">df =</span> <span class="dv">20</span>,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co">#upper limit</span></a></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1"><span class="dv">5</span><span class="op">+</span>(<span class="dv">1</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span>))<span class="op">*</span><span class="kw">qtukey</span>(<span class="dt">p =</span> <span class="fl">.05</span>,<span class="dt">nmeans =</span> <span class="dv">4</span>,<span class="dt">df =</span> <span class="dv">20</span>,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co">#upper limit</span></a></code></pre></div>
 <pre><code>[1] 8.824075</code></pre>
 <p>The width of the Tukey confidence interval for <span class="math inline">\(\mu_B-\mu_A\)</span> is</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" title="1">(<span class="dv">1</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span>))<span class="op">*</span><span class="kw">qtukey</span>(<span class="dt">p =</span> <span class="fl">.05</span>,<span class="dt">nmeans =</span> <span class="dv">4</span>,<span class="dt">df =</span> <span class="dv">20</span>,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" data-line-number="1">(<span class="dv">1</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span>))<span class="op">*</span><span class="kw">qtukey</span>(<span class="dt">p =</span> <span class="fl">.05</span>,<span class="dt">nmeans =</span> <span class="dv">4</span>,<span class="dt">df =</span> <span class="dv">20</span>,<span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>)</a></code></pre></div>
 <pre><code>[1] 3.824075</code></pre>
 <p>The width of Bonferroni <span class="math inline">\(\mu_B-\mu_A\)</span> is</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" title="1"><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="fl">-0.004</span>,<span class="dt">df =</span> <span class="dv">20</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1"><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="fl">-0.004</span>,<span class="dt">df =</span> <span class="dv">20</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="fl">5.6</span>)<span class="op">*</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">6</span>)</a></code></pre></div>
 <pre><code>[1] 4.024113</code></pre>
 <p>This shows that the Tukey confidence interval is shorter than Bonferroni confidence intervals.</p>
 <p>The command <code>TukeyHSD()</code> can be used to obtain all the Tukey confidence intervals and p-values for an ANOVA.</p>
 <p>Continuing with the blood coagulation study all of the 95% Tukey confidence intervals for the diets are</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" title="1"><span class="kw">TukeyHSD</span>(<span class="kw">aov</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401))</a></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" data-line-number="1"><span class="kw">TukeyHSD</span>(<span class="kw">aov</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401))</a></code></pre></div>
 <pre><code>  Tukey multiple comparisons of means
     95% family-wise confidence level
 
@@ -1789,7 +1789,7 @@ C-B  2.000000e+00  -1.824075  5.824075 0.4766005
 D-B -5.000000e+00  -8.824075 -1.175925 0.0077978
 D-C -7.000000e+00 -10.824075 -3.175925 0.0002804</code></pre>
 <p>A plot of the 95% confidence intervals can be obtained by using the <code>plot()</code> function.</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" title="1"><span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(<span class="kw">aov</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401)))</a></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1"><span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(<span class="kw">aov</span>(y<span class="op">~</span>diets,<span class="dt">data =</span> tab0401)))</a></code></pre></div>
 <p><img src="07-anova_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 </div>
 </div>
@@ -1846,7 +1846,7 @@ D-C -7.000000e+00 -10.824075 -3.175925 0.0002804</code></pre>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" title="1"><span class="kw">anova</span>(lm.diets)</a></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1"><span class="kw">anova</span>(lm.diets)</a></code></pre></div>
 <pre><code>Analysis of Variance Table
 
 Response: y
@@ -1858,12 +1858,12 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <p>So, we will use <span class="math inline">\(\mu_1=\)</span> 61, <span class="math inline">\(\mu_2=\)</span> 66, <span class="math inline">\(\mu_3=\)</span> 68, <span class="math inline">\(\mu_4=\)</span> 61. The error variance <span class="math inline">\(\sigma^2\)</span> was estimated as <span class="math inline">\(MS_E = 5.6\)</span>. Assuming that the estimated values are the true values of the parameters, the non-centrality parameter of the <span class="math inline">\(F\)</span> distribution is</p>
 <p><span class="math display">\[\delta = 3 \times \left((61-64)^2+(66-64)^2+(68-64)^2+(61-64)^2\right)/5.6 = 20.35714\]</span></p>
 <p>This was calculated using R</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" title="1">(<span class="dv">3</span><span class="op">*</span>((<span class="dv">61-64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">66-64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">68-64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">61-64</span>)<span class="op">^</span><span class="dv">2</span>))<span class="op">/</span><span class="fl">5.6</span></a></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1">(<span class="dv">3</span><span class="op">*</span>((<span class="dv">61-64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">66-64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">68-64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">61-64</span>)<span class="op">^</span><span class="dv">2</span>))<span class="op">/</span><span class="fl">5.6</span></a></code></pre></div>
 <pre><code>[1] 20.35714</code></pre>
 <p>If we choose <span class="math inline">\(\alpha = 0.05\)</span> as the significance level then <span class="math inline">\(F_{3,8,0.05}=\)</span> 4.0661806. The power of the test is then</p>
 <p><span class="math display">\[P\left(F_{3,8}(20.36) &gt; 4.07 \right)=0.85.\]</span></p>
 <p>This was calculated using the CDF for the <span class="math inline">\(F\)</span> distribution in R <code>pf()</code>.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" title="1"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="fl">4.07</span>,<span class="dt">df1 =</span> <span class="dv">3</span>,<span class="dt">df2 =</span> <span class="dv">8</span>,<span class="dt">ncp =</span> <span class="fl">20.36</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" data-line-number="1"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="fl">4.07</span>,<span class="dt">df1 =</span> <span class="dv">3</span>,<span class="dt">df2 =</span> <span class="dv">8</span>,<span class="dt">ncp =</span> <span class="fl">20.36</span>)</a></code></pre></div>
 <pre><code>[1] 0.8496248</code></pre>
 </div>
 </div>
@@ -1883,9 +1883,9 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <p>The relationship between effect size <span class="math inline">\(f\)</span> for ANOVA and the non-centrality parameter <span class="math inline">\(\delta\)</span> is</p>
 <p><span class="math display">\[\delta = kn_if^2,\]</span></p>
 <p>where <span class="math inline">\(n_i\)</span> is the number of observations in group <span class="math inline">\(i = 1,...,k\)</span>.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" title="1">eff.size &lt;-<span class="st"> </span><span class="kw">sqrt</span>(((<span class="dv">61-64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">66-64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">68-64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">61-64</span>)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span><span class="op">/</span><span class="fl">5.6</span>)</a>
-<a class="sourceLine" id="cb302-2" title="2"><span class="kw">library</span>(pwr)</a>
-<a class="sourceLine" id="cb302-3" title="3"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">n =</span> <span class="dv">3</span>,<span class="dt">f =</span> eff.size)</a></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1">eff.size &lt;-<span class="st"> </span><span class="kw">sqrt</span>(((<span class="dv">61-64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">66-64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">68-64</span>)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="dv">61-64</span>)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span><span class="op">/</span><span class="fl">5.6</span>)</a>
+<a class="sourceLine" id="cb302-2" data-line-number="2"><span class="kw">library</span>(pwr)</a>
+<a class="sourceLine" id="cb302-3" data-line-number="3"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">n =</span> <span class="dv">3</span>,<span class="dt">f =</span> eff.size)</a></code></pre></div>
 <pre><code>
      Balanced one-way analysis of variance power calculation 
 
@@ -1897,9 +1897,9 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 
 NOTE: n is number in each group</code></pre>
 <p>Recall that 1.3 is a very large effect size. A plot of effect size versus power when <span class="math inline">\(k = 4,n = 3\)</span> is shown below.</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" title="1"><span class="kw">library</span>(pwr)</a>
-<a class="sourceLine" id="cb304-2" title="2">x &lt;-<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">05</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.01</span>)</a>
-<a class="sourceLine" id="cb304-3" title="3"><span class="kw">plot</span>(x,<span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">n =</span> <span class="dv">3</span>,<span class="dt">f =</span> x)<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Effect Size&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Power&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Power vs. Effect Size for k = 4, n = 3&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1"><span class="kw">library</span>(pwr)</a>
+<a class="sourceLine" id="cb304-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">05</span>,<span class="dv">5</span>,<span class="dt">by =</span> <span class="fl">0.01</span>)</a>
+<a class="sourceLine" id="cb304-3" data-line-number="3"><span class="kw">plot</span>(x,<span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">n =</span> <span class="dv">3</span>,<span class="dt">f =</span> x)<span class="op">$</span>power,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Effect Size&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Power&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Power vs. Effect Size for k = 4, n = 3&quot;</span>)</a></code></pre></div>
 <p><img src="07-anova_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 <p>The plot shows that power is an increasing function of effect size. The power is 1 for effect sizes at least 1.9.</p>
 </div>
@@ -1915,26 +1915,26 @@ NOTE: n is number in each group</code></pre>
 </ol>
 <p>One of the advantages of calculating power via simulation is that we can investigate what happens to power if, say, some of the assumptions behind one-way ANOVA are violated.</p>
 <p>A simple R program that implements 1-4 above, for three treatment groups, is given below.</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" title="1"><span class="co">#Simulate power of ANOVA for three groups</span></a>
-<a class="sourceLine" id="cb305-2" title="2"></a>
-<a class="sourceLine" id="cb305-3" title="3">NSIM &lt;-<span class="st"> </span><span class="dv">10000</span> <span class="co"># number of simulations</span></a>
-<a class="sourceLine" id="cb305-4" title="4">res &lt;-<span class="st"> </span><span class="kw">numeric</span>(NSIM) <span class="co"># store p-values in res</span></a>
-<a class="sourceLine" id="cb305-5" title="5"></a>
-<a class="sourceLine" id="cb305-6" title="6">mu1 &lt;-<span class="st"> </span><span class="dv">2</span>; mu2 &lt;-<span class="st"> </span><span class="fl">2.5</span>;mu3 &lt;-<span class="st"> </span><span class="dv">2</span>  <span class="co"># true mean values of treatment groups</span></a>
-<a class="sourceLine" id="cb305-7" title="7">sigma1 &lt;-<span class="st"> </span><span class="dv">1</span>; sigma2 &lt;-<span class="st"> </span><span class="dv">1</span>; sigma3 &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co">#variances in each group</span></a>
-<a class="sourceLine" id="cb305-8" title="8">n1 &lt;-<span class="st"> </span><span class="dv">40</span>; n2 &lt;-<span class="st"> </span><span class="dv">40</span>; n3 &lt;-<span class="st"> </span><span class="dv">40</span> <span class="co">#sample size in each group</span></a>
-<a class="sourceLine" id="cb305-9" title="9"></a>
-<a class="sourceLine" id="cb305-10" title="10"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>NSIM) <span class="co"># do the calculations below N times</span></a>
-<a class="sourceLine" id="cb305-11" title="11">  { </a>
-<a class="sourceLine" id="cb305-12" title="12">y1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n1,<span class="dt">mean =</span> mu1,<span class="dt">sd =</span> sigma1) <span class="co"># generate a random sample of size n1 from N(mu1,sigma1^2)</span></a>
-<a class="sourceLine" id="cb305-13" title="13">y2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n2,<span class="dt">mean =</span> mu2,<span class="dt">sd =</span> sigma2) <span class="co"># generate a random sample of size n2 from N(mu2,sigma2^2)</span></a>
-<a class="sourceLine" id="cb305-14" title="14">y3 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n3,<span class="dt">mean =</span> mu3,<span class="dt">sd =</span> sigma3) <span class="co"># generate a random sample of size n3 from N(mu3,sigma3^2)</span></a>
-<a class="sourceLine" id="cb305-15" title="15">y &lt;-<span class="st"> </span><span class="kw">c</span>(y1,y2,y3) <span class="co"># store all the values from the groups</span></a>
-<a class="sourceLine" id="cb305-16" title="16">trt &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,n1),<span class="kw">rep</span>(<span class="dv">2</span>,n2),<span class="kw">rep</span>(<span class="dv">3</span>,n3))) <span class="co"># generate the treatment assignment for each group</span></a>
-<a class="sourceLine" id="cb305-17" title="17">m &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>trt) <span class="co"># calculate the ANOVA</span></a>
-<a class="sourceLine" id="cb305-18" title="18">res[i] &lt;-<span class="st"> </span><span class="kw">anova</span>(m)[<span class="dv">1</span>,<span class="dv">5</span>] <span class="co"># p-value of F test</span></a>
-<a class="sourceLine" id="cb305-19" title="19">}</a>
-<a class="sourceLine" id="cb305-20" title="20"><span class="kw">sum</span>(res<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span>NSIM <span class="co"># calculate p-value</span></a></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" data-line-number="1"><span class="co">#Simulate power of ANOVA for three groups</span></a>
+<a class="sourceLine" id="cb305-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb305-3" data-line-number="3">NSIM &lt;-<span class="st"> </span><span class="dv">10000</span> <span class="co"># number of simulations</span></a>
+<a class="sourceLine" id="cb305-4" data-line-number="4">res &lt;-<span class="st"> </span><span class="kw">numeric</span>(NSIM) <span class="co"># store p-values in res</span></a>
+<a class="sourceLine" id="cb305-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb305-6" data-line-number="6">mu1 &lt;-<span class="st"> </span><span class="dv">2</span>; mu2 &lt;-<span class="st"> </span><span class="fl">2.5</span>;mu3 &lt;-<span class="st"> </span><span class="dv">2</span>  <span class="co"># true mean values of treatment groups</span></a>
+<a class="sourceLine" id="cb305-7" data-line-number="7">sigma1 &lt;-<span class="st"> </span><span class="dv">1</span>; sigma2 &lt;-<span class="st"> </span><span class="dv">1</span>; sigma3 &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co">#variances in each group</span></a>
+<a class="sourceLine" id="cb305-8" data-line-number="8">n1 &lt;-<span class="st"> </span><span class="dv">40</span>; n2 &lt;-<span class="st"> </span><span class="dv">40</span>; n3 &lt;-<span class="st"> </span><span class="dv">40</span> <span class="co">#sample size in each group</span></a>
+<a class="sourceLine" id="cb305-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb305-10" data-line-number="10"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>NSIM) <span class="co"># do the calculations below N times</span></a>
+<a class="sourceLine" id="cb305-11" data-line-number="11">  { </a>
+<a class="sourceLine" id="cb305-12" data-line-number="12">y1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n1,<span class="dt">mean =</span> mu1,<span class="dt">sd =</span> sigma1) <span class="co"># generate a random sample of size n1 from N(mu1,sigma1^2)</span></a>
+<a class="sourceLine" id="cb305-13" data-line-number="13">y2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n2,<span class="dt">mean =</span> mu2,<span class="dt">sd =</span> sigma2) <span class="co"># generate a random sample of size n2 from N(mu2,sigma2^2)</span></a>
+<a class="sourceLine" id="cb305-14" data-line-number="14">y3 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n3,<span class="dt">mean =</span> mu3,<span class="dt">sd =</span> sigma3) <span class="co"># generate a random sample of size n3 from N(mu3,sigma3^2)</span></a>
+<a class="sourceLine" id="cb305-15" data-line-number="15">y &lt;-<span class="st"> </span><span class="kw">c</span>(y1,y2,y3) <span class="co"># store all the values from the groups</span></a>
+<a class="sourceLine" id="cb305-16" data-line-number="16">trt &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,n1),<span class="kw">rep</span>(<span class="dv">2</span>,n2),<span class="kw">rep</span>(<span class="dv">3</span>,n3))) <span class="co"># generate the treatment assignment for each group</span></a>
+<a class="sourceLine" id="cb305-17" data-line-number="17">m &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>trt) <span class="co"># calculate the ANOVA</span></a>
+<a class="sourceLine" id="cb305-18" data-line-number="18">res[i] &lt;-<span class="st"> </span><span class="kw">anova</span>(m)[<span class="dv">1</span>,<span class="dv">5</span>] <span class="co"># p-value of F test</span></a>
+<a class="sourceLine" id="cb305-19" data-line-number="19">}</a>
+<a class="sourceLine" id="cb305-20" data-line-number="20"><span class="kw">sum</span>(res<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span>NSIM <span class="co"># calculate p-value</span></a></code></pre></div>
 <pre><code>[1] 0.6291</code></pre>
 <p>We can check to make sure that our program works by verifying two scenarios where we know the answers.</p>
 <ol style="list-style-type: decimal">
@@ -1942,10 +1942,10 @@ NOTE: n is number in each group</code></pre>
 </ol>
 <p><span class="math display">\[f = \sqrt{\frac{\sum_{i = 1}^3\left(\mu_i-{2.17} \right)^2/3}{1^2}}=0.2357023,\]</span></p>
 <p>using <code>pwr.anova.test()</code></p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" title="1">mug &lt;-<span class="st"> </span><span class="kw">sum</span>(mu1,mu2,mu3)<span class="op">/</span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb307-2" title="2">mui &lt;-<span class="st"> </span><span class="kw">c</span>(mu1,mu2,mu3)</a>
-<a class="sourceLine" id="cb307-3" title="3">f1 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(((<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)<span class="op">*</span><span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>))<span class="op">/</span>sigma1)</a>
-<a class="sourceLine" id="cb307-4" title="4"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">3</span>,<span class="dt">f =</span> f1,<span class="dt">n =</span> <span class="dv">40</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1">mug &lt;-<span class="st"> </span><span class="kw">sum</span>(mu1,mu2,mu3)<span class="op">/</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb307-2" data-line-number="2">mui &lt;-<span class="st"> </span><span class="kw">c</span>(mu1,mu2,mu3)</a>
+<a class="sourceLine" id="cb307-3" data-line-number="3">f1 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(((<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)<span class="op">*</span><span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>))<span class="op">/</span>sigma1)</a>
+<a class="sourceLine" id="cb307-4" data-line-number="4"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">3</span>,<span class="dt">f =</span> f1,<span class="dt">n =</span> <span class="dv">40</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <pre><code>
      Balanced one-way analysis of variance power calculation 
 
@@ -1960,38 +1960,38 @@ NOTE: n is number in each group</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Calculate the power directly.</li>
 </ol>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" title="1">k &lt;-<span class="st"> </span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb309-2" title="2">n &lt;-<span class="st"> </span><span class="dv">40</span></a>
-<a class="sourceLine" id="cb309-3" title="3">delta &lt;-<span class="st"> </span>n<span class="op">*</span><span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>sigma1</a>
-<a class="sourceLine" id="cb309-4" title="4"><span class="kw">qf</span>(<span class="dt">p =</span> <span class="fl">.95</span>,<span class="dt">df1 =</span> <span class="dv">3</span>,<span class="dt">df2 =</span> <span class="dv">117</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" data-line-number="1">k &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb309-2" data-line-number="2">n &lt;-<span class="st"> </span><span class="dv">40</span></a>
+<a class="sourceLine" id="cb309-3" data-line-number="3">delta &lt;-<span class="st"> </span>n<span class="op">*</span><span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>sigma1</a>
+<a class="sourceLine" id="cb309-4" data-line-number="4"><span class="kw">qf</span>(<span class="dt">p =</span> <span class="fl">.95</span>,<span class="dt">df1 =</span> <span class="dv">3</span>,<span class="dt">df2 =</span> <span class="dv">117</span>)</a></code></pre></div>
 <pre><code>[1] 2.682132</code></pre>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" title="1"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="kw">qf</span>(<span class="dt">p =</span> <span class="fl">.95</span>,<span class="dt">df1 =</span> k<span class="dv">-1</span>,<span class="dt">df2 =</span> n<span class="op">*</span>k<span class="op">-</span>k), <span class="dt">df1 =</span> k<span class="dv">-1</span>,<span class="dt">df2 =</span> n<span class="op">*</span>k<span class="op">-</span>k,<span class="dt">ncp =</span> delta,<span class="dt">lower.tail =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1"><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(<span class="dt">q =</span> <span class="kw">qf</span>(<span class="dt">p =</span> <span class="fl">.95</span>,<span class="dt">df1 =</span> k<span class="dv">-1</span>,<span class="dt">df2 =</span> n<span class="op">*</span>k<span class="op">-</span>k), <span class="dt">df1 =</span> k<span class="dv">-1</span>,<span class="dt">df2 =</span> n<span class="op">*</span>k<span class="op">-</span>k,<span class="dt">ncp =</span> delta,<span class="dt">lower.tail =</span> T)</a></code></pre></div>
 <pre><code>[1] 0.6207319</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>When <span class="math inline">\(\mu_1=\mu_2=\mu3\)</span> (i.e., when <span class="math inline">\(H_0\)</span> is true) the power of the test is <span class="math inline">\(\alpha\)</span>.</li>
 </ol>
 <p>When <span class="math inline">\(\delta = 0\)</span></p>
 <p><span class="math display">\[P\left(F_{k-1,N-k}(0) &gt; F_{k-1,N-K,\alpha} \right)=\alpha.\]</span></p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" title="1"><span class="co">#Simulate power of ANOVA for three groups</span></a>
-<a class="sourceLine" id="cb313-2" title="2"></a>
-<a class="sourceLine" id="cb313-3" title="3">NSIM &lt;-<span class="st"> </span><span class="dv">10000</span> <span class="co"># number of simulations</span></a>
-<a class="sourceLine" id="cb313-4" title="4">res &lt;-<span class="st"> </span><span class="kw">numeric</span>(NSIM) <span class="co"># store p-values in res</span></a>
-<a class="sourceLine" id="cb313-5" title="5"></a>
-<a class="sourceLine" id="cb313-6" title="6">mu1 &lt;-<span class="st"> </span><span class="dv">2</span>; mu2 &lt;-<span class="st"> </span><span class="dv">2</span>;mu3 &lt;-<span class="st"> </span><span class="dv">2</span>  <span class="co"># true mean values of treatment groups</span></a>
-<a class="sourceLine" id="cb313-7" title="7">sigma1 &lt;-<span class="st"> </span><span class="dv">1</span>; sigma2 &lt;-<span class="st"> </span><span class="dv">1</span>; sigma3 &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co">#variances in each group</span></a>
-<a class="sourceLine" id="cb313-8" title="8">n1 &lt;-<span class="st"> </span><span class="dv">10</span>; n2 &lt;-<span class="st"> </span><span class="dv">10</span>; n3 &lt;-<span class="st"> </span><span class="dv">10</span> <span class="co">#sample size in each group</span></a>
-<a class="sourceLine" id="cb313-9" title="9"></a>
-<a class="sourceLine" id="cb313-10" title="10"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>NSIM) <span class="co"># do the calculations below N times</span></a>
-<a class="sourceLine" id="cb313-11" title="11">  { </a>
-<a class="sourceLine" id="cb313-12" title="12">y1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n1,<span class="dt">mean =</span> mu1,<span class="dt">sd =</span> sigma1) <span class="co"># generate a random sample of size n1 from N(mu1,sigma1^2)</span></a>
-<a class="sourceLine" id="cb313-13" title="13">y2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n2,<span class="dt">mean =</span> mu2,<span class="dt">sd =</span> sigma2) <span class="co"># generate a random sample of size n2 from N(mu2,sigma2^2)</span></a>
-<a class="sourceLine" id="cb313-14" title="14">y3 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n3,<span class="dt">mean =</span> mu3,<span class="dt">sd =</span> sigma3) <span class="co"># generate a random sample of size n3 from N(mu3,sigma3^2)</span></a>
-<a class="sourceLine" id="cb313-15" title="15">y &lt;-<span class="st"> </span><span class="kw">c</span>(y1,y2,y3) <span class="co"># store all the values from the groups</span></a>
-<a class="sourceLine" id="cb313-16" title="16">trt &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,n1),<span class="kw">rep</span>(<span class="dv">2</span>,n2),<span class="kw">rep</span>(<span class="dv">3</span>,n3))) <span class="co"># generate the treatment assignment for each group</span></a>
-<a class="sourceLine" id="cb313-17" title="17">m &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>trt) <span class="co"># calculate the ANOVA</span></a>
-<a class="sourceLine" id="cb313-18" title="18">res[i] &lt;-<span class="st"> </span><span class="kw">anova</span>(m)[<span class="dv">1</span>,<span class="dv">5</span>] <span class="co"># p-value of F test</span></a>
-<a class="sourceLine" id="cb313-19" title="19">}</a>
-<a class="sourceLine" id="cb313-20" title="20"><span class="kw">sum</span>(res<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span>NSIM <span class="co"># calculate p-value</span></a></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1"><span class="co">#Simulate power of ANOVA for three groups</span></a>
+<a class="sourceLine" id="cb313-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb313-3" data-line-number="3">NSIM &lt;-<span class="st"> </span><span class="dv">10000</span> <span class="co"># number of simulations</span></a>
+<a class="sourceLine" id="cb313-4" data-line-number="4">res &lt;-<span class="st"> </span><span class="kw">numeric</span>(NSIM) <span class="co"># store p-values in res</span></a>
+<a class="sourceLine" id="cb313-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb313-6" data-line-number="6">mu1 &lt;-<span class="st"> </span><span class="dv">2</span>; mu2 &lt;-<span class="st"> </span><span class="dv">2</span>;mu3 &lt;-<span class="st"> </span><span class="dv">2</span>  <span class="co"># true mean values of treatment groups</span></a>
+<a class="sourceLine" id="cb313-7" data-line-number="7">sigma1 &lt;-<span class="st"> </span><span class="dv">1</span>; sigma2 &lt;-<span class="st"> </span><span class="dv">1</span>; sigma3 &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co">#variances in each group</span></a>
+<a class="sourceLine" id="cb313-8" data-line-number="8">n1 &lt;-<span class="st"> </span><span class="dv">10</span>; n2 &lt;-<span class="st"> </span><span class="dv">10</span>; n3 &lt;-<span class="st"> </span><span class="dv">10</span> <span class="co">#sample size in each group</span></a>
+<a class="sourceLine" id="cb313-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb313-10" data-line-number="10"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>NSIM) <span class="co"># do the calculations below N times</span></a>
+<a class="sourceLine" id="cb313-11" data-line-number="11">  { </a>
+<a class="sourceLine" id="cb313-12" data-line-number="12">y1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n1,<span class="dt">mean =</span> mu1,<span class="dt">sd =</span> sigma1) <span class="co"># generate a random sample of size n1 from N(mu1,sigma1^2)</span></a>
+<a class="sourceLine" id="cb313-13" data-line-number="13">y2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n2,<span class="dt">mean =</span> mu2,<span class="dt">sd =</span> sigma2) <span class="co"># generate a random sample of size n2 from N(mu2,sigma2^2)</span></a>
+<a class="sourceLine" id="cb313-14" data-line-number="14">y3 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> n3,<span class="dt">mean =</span> mu3,<span class="dt">sd =</span> sigma3) <span class="co"># generate a random sample of size n3 from N(mu3,sigma3^2)</span></a>
+<a class="sourceLine" id="cb313-15" data-line-number="15">y &lt;-<span class="st"> </span><span class="kw">c</span>(y1,y2,y3) <span class="co"># store all the values from the groups</span></a>
+<a class="sourceLine" id="cb313-16" data-line-number="16">trt &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,n1),<span class="kw">rep</span>(<span class="dv">2</span>,n2),<span class="kw">rep</span>(<span class="dv">3</span>,n3))) <span class="co"># generate the treatment assignment for each group</span></a>
+<a class="sourceLine" id="cb313-17" data-line-number="17">m &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>trt) <span class="co"># calculate the ANOVA</span></a>
+<a class="sourceLine" id="cb313-18" data-line-number="18">res[i] &lt;-<span class="st"> </span><span class="kw">anova</span>(m)[<span class="dv">1</span>,<span class="dv">5</span>] <span class="co"># p-value of F test</span></a>
+<a class="sourceLine" id="cb313-19" data-line-number="19">}</a>
+<a class="sourceLine" id="cb313-20" data-line-number="20"><span class="kw">sum</span>(res<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span>NSIM <span class="co"># calculate p-value</span></a></code></pre></div>
 <pre><code>[1] 0.0431</code></pre>
 </div>
 </div>
@@ -2093,25 +2093,25 @@ does not depend on another rat.</p>
 <li>A clinical trial was conducted where patients were randomized to four different treatments. The data is available in the file <code>q2data.csv</code>. The outcome is a continuous response <span class="math inline">\(y_{ij}\)</span> the response for the <span class="math inline">\(ith\)</span> subject in the <span class="math inline">\(jth\)</span> treatment group. There are three new treatments in this study and one control treatment. The control treatment is the third treatment (<span class="math inline">\(j=3\)</span>). The main objective of the study is to compare the three new treatments to the control treatment.</li>
 </ol>
 <p>NB: The file can be read into R and put into a data.frame using the command</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" title="1">q2data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;q2data.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1">q2data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;q2data.csv&quot;</span>)</a></code></pre></div>
 <p>In this question use the 5% significance level.</p>
 <ol style="list-style-type: lower-alpha">
 <li>What are the averages and standard deviations of each treatment? Plot the distributions of the four treatment groups. Do the distributions look similar or different? (Hand in your R code and output)</li>
 </ol>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" title="1">q2data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;q2data.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb316-2" title="2"><span class="kw">sapply</span>(<span class="kw">split</span>(q2data<span class="op">$</span>y,q2data<span class="op">$</span>trt),mean) <span class="co"># treatment averages</span></a></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" data-line-number="1">q2data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;q2data.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb316-2" data-line-number="2"><span class="kw">sapply</span>(<span class="kw">split</span>(q2data<span class="op">$</span>y,q2data<span class="op">$</span>trt),mean) <span class="co"># treatment averages</span></a></code></pre></div>
 <pre><code>##        1        2        3        4 
 ## 2.206182 2.290470 2.320007 2.855205</code></pre>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(q2data<span class="op">$</span>y,q2data<span class="op">$</span>trt),sd) <span class="co"># treatment SDs</span></a></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" data-line-number="1"><span class="kw">sapply</span>(<span class="kw">split</span>(q2data<span class="op">$</span>y,q2data<span class="op">$</span>trt),sd) <span class="co"># treatment SDs</span></a></code></pre></div>
 <pre><code>##        1        2        3        4 
 ## 1.799560 1.774576 1.812561 1.763111</code></pre>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" title="1"><span class="kw">boxplot</span>(y<span class="op">~</span>trt,<span class="dt">data=</span>q2data) <span class="co"># plot of distributions - other plots could also be used</span></a></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1"><span class="kw">boxplot</span>(y<span class="op">~</span>trt,<span class="dt">data=</span>q2data) <span class="co"># plot of distributions - other plots could also be used</span></a></code></pre></div>
 <p><img src="07-anova_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Use linear regression to calculate the ANOVA table. What do you conclude from the ANOVA table? (NB: when using linear regresssion to calculate the effects the treatment variable should be specified as a factor <code>as.factor(trt)</code>.) (Hand in your R code and output)</li>
 </ol>
 <p>The ANOVA table indicates that we would reject <span class="math inline">\(H_0: \mu_1=\mu_2=\mu_3=\mu_4\)</span> at the 5% level.</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" title="1"><span class="kw">anova</span>(<span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(trt),<span class="dt">data =</span> q2data))</a></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" data-line-number="1"><span class="kw">anova</span>(<span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(trt),<span class="dt">data =</span> q2data))</a></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: y
@@ -2161,9 +2161,9 @@ E(y_{4j})=\mu_4=\mu_3+\tau_3
 {\hat \tau_2}&amp;={\bar y}_{2 \cdot }-{\bar y}_{3 \cdot}, \\
 {\hat \tau_3}&amp;={\bar y}_{4 \cdot }-{\bar y}_{3 \cdot}.
 \end{aligned}\]</span></p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" title="1">q2data<span class="op">$</span>trt &lt;-<span class="st"> </span><span class="kw">as.factor</span>(q2data<span class="op">$</span>trt)</a>
-<a class="sourceLine" id="cb323-2" title="2"><span class="kw">contrasts</span>(q2data<span class="op">$</span>trt) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dt">n =</span> <span class="dv">4</span>,<span class="dt">base =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb323-3" title="3"><span class="kw">summary</span>(<span class="kw">lm</span>(y<span class="op">~</span>trt,  <span class="dt">data =</span> q2data))</a></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" data-line-number="1">q2data<span class="op">$</span>trt &lt;-<span class="st"> </span><span class="kw">as.factor</span>(q2data<span class="op">$</span>trt)</a>
+<a class="sourceLine" id="cb323-2" data-line-number="2"><span class="kw">contrasts</span>(q2data<span class="op">$</span>trt) &lt;-<span class="st"> </span><span class="kw">contr.treatment</span>(<span class="dt">n =</span> <span class="dv">4</span>,<span class="dt">base =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb323-3" data-line-number="3"><span class="kw">summary</span>(<span class="kw">lm</span>(y<span class="op">~</span>trt,  <span class="dt">data =</span> q2data))</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = y ~ trt, data = q2data)
@@ -2188,7 +2188,7 @@ E(y_{4j})=\mu_4=\mu_3+\tau_3
 <li>Obtain the parameter estimates using the Helmert contrast. In R this can be done using the <code>contr.helmert(4)</code> function. Explictly state the dummy variables. Define the underlying statistical model in terms of dummy variables. Interpret the parameter estimates. Verify the parameter estimates using the table of means that you obtained in part (a).</li>
 </ol>
 <p>The Helmert contrast is:</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb325-1" title="1"><span class="kw">contr.helmert</span>(<span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb325-1" data-line-number="1"><span class="kw">contr.helmert</span>(<span class="dv">4</span>)</a></code></pre></div>
 <pre><code>##   [,1] [,2] [,3]
 ## 1   -1   -1   -1
 ## 2    1   -1   -1
@@ -2236,9 +2236,9 @@ E(y_{4j})&amp;=\mu_4=3\tau_3
 <p>Use the all four equations to solve for <span class="math inline">\(\tau_3\)</span>.</p>
 <p><span class="math display">\[\mu_4-(\mu_1+\mu_2+\mu_3)/3=4\tau_3 \Rightarrow  \tau_3=(1/4)(\mu_4-(\mu_1+\mu_2+\mu_3)/3).\]</span></p>
 <p>The interpretation of the parameter estimates: the intercept <span class="math inline">\(\mu\)</span> is the grand average; <span class="math inline">\(\tau_i,i=1,2,3\)</span> is the average difference of the <span class="math inline">\((i+1)th\)</span> mean and the average of the subsequent means.</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" title="1">q2data<span class="op">$</span>trt &lt;-<span class="st"> </span><span class="kw">as.factor</span>(q2data<span class="op">$</span>trt)</a>
-<a class="sourceLine" id="cb327-2" title="2"><span class="kw">contrasts</span>(q2data<span class="op">$</span>trt) &lt;-<span class="st"> </span><span class="kw">contr.helmert</span>(<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb327-3" title="3"><span class="kw">summary</span>(<span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(trt),<span class="dt">data =</span> q2data))</a></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1">q2data<span class="op">$</span>trt &lt;-<span class="st"> </span><span class="kw">as.factor</span>(q2data<span class="op">$</span>trt)</a>
+<a class="sourceLine" id="cb327-2" data-line-number="2"><span class="kw">contrasts</span>(q2data<span class="op">$</span>trt) &lt;-<span class="st"> </span><span class="kw">contr.helmert</span>(<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb327-3" data-line-number="3"><span class="kw">summary</span>(<span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(trt),<span class="dt">data =</span> q2data))</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = y ~ as.factor(trt), data = q2data)
@@ -2260,16 +2260,16 @@ E(y_{4j})&amp;=\mu_4=3\tau_3
 ## Multiple R-squared:  0.02061,    Adjusted R-squared:  0.0131 
 ## F-statistic: 2.743 on 3 and 391 DF,  p-value: 0.04294</code></pre>
 <p>Verify the parameter estimates using the table of means.</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" title="1">xbar &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">split</span>(q2data<span class="op">$</span>y,q2data<span class="op">$</span>trt),mean) <span class="co"># treatment averages</span></a>
-<a class="sourceLine" id="cb329-2" title="2"><span class="kw">sum</span>(xbar)<span class="op">/</span><span class="dv">4</span> <span class="co"># intercept mu</span></a></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" data-line-number="1">xbar &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">split</span>(q2data<span class="op">$</span>y,q2data<span class="op">$</span>trt),mean) <span class="co"># treatment averages</span></a>
+<a class="sourceLine" id="cb329-2" data-line-number="2"><span class="kw">sum</span>(xbar)<span class="op">/</span><span class="dv">4</span> <span class="co"># intercept mu</span></a></code></pre></div>
 <pre><code>## [1] 2.417966</code></pre>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" title="1">(xbar[<span class="dv">2</span>]<span class="op">-</span>xbar[<span class="dv">1</span>])<span class="op">/</span><span class="dv">2</span>  <span class="co">#beta_1_hat</span></a></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" data-line-number="1">(xbar[<span class="dv">2</span>]<span class="op">-</span>xbar[<span class="dv">1</span>])<span class="op">/</span><span class="dv">2</span>  <span class="co">#beta_1_hat</span></a></code></pre></div>
 <pre><code>##          2 
 ## 0.04214389</code></pre>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" title="1">(xbar[<span class="dv">3</span>]<span class="op">-</span>(xbar[<span class="dv">1</span>]<span class="op">+</span>xbar[<span class="dv">2</span>])<span class="op">/</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">3</span> <span class="co">#beta_2_hat</span></a></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1">(xbar[<span class="dv">3</span>]<span class="op">-</span>(xbar[<span class="dv">1</span>]<span class="op">+</span>xbar[<span class="dv">2</span>])<span class="op">/</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">3</span> <span class="co">#beta_2_hat</span></a></code></pre></div>
 <pre><code>##          3 
 ## 0.02389354</code></pre>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" title="1">(xbar[<span class="dv">4</span>]<span class="op">-</span>(xbar[<span class="dv">1</span>]<span class="op">+</span>xbar[<span class="dv">2</span>]<span class="op">+</span>xbar[<span class="dv">3</span>])<span class="op">/</span><span class="dv">3</span>)<span class="op">/</span><span class="dv">4</span> <span class="co">#beta_3_hat</span></a></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" data-line-number="1">(xbar[<span class="dv">4</span>]<span class="op">-</span>(xbar[<span class="dv">1</span>]<span class="op">+</span>xbar[<span class="dv">2</span>]<span class="op">+</span>xbar[<span class="dv">3</span>])<span class="op">/</span><span class="dv">3</span>)<span class="op">/</span><span class="dv">4</span> <span class="co">#beta_3_hat</span></a></code></pre></div>
 <pre><code>##         4 
 ## 0.1457464</code></pre>
 <ol start="5" style="list-style-type: lower-alpha">
@@ -2321,8 +2321,8 @@ E(y_{4j})&amp;=\mu_4=3\tau_3
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Interpret the least squares estimates in <code>mod1</code>. Are you surprised that the P-values for the parameters are not small? Briefly explain.</li>
 </ol>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" title="1">mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(wtchange<span class="op">~</span>grp,<span class="dt">data=</span>surveydat)</a>
-<a class="sourceLine" id="cb337-2" title="2"><span class="kw">summary</span>(mod1)<span class="op">$</span>coefficients</a></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1">mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(wtchange<span class="op">~</span>grp,<span class="dt">data=</span>surveydat)</a>
+<a class="sourceLine" id="cb337-2" data-line-number="2"><span class="kw">summary</span>(mod1)<span class="op">$</span>coefficients</a></code></pre></div>
 <pre><code>##              Estimate Std. Error   t value  Pr(&gt;|t|)
 ## (Intercept) 0.4571429  0.3848706 1.1877832 0.2503565
 ## grpB        0.3842857  0.5442893 0.7060322 0.4892064
@@ -2402,14 +2402,14 @@ where <span class="math inline">\(y_{ij}\)</span> is the <span class="math inlin
 <p><span class="math inline">\({\bar \mu}=\sum_{i=1}^k \mu_i/k\)</span>, and <span class="math inline">\(\sigma^2\)</span> is the within group error variance.</p>
 <p>For example, for the first effect size assume that the within group variance is 36, for the second effect size assume that the within group variance is 16, and so on. Now, assuming that she can enrol 15 subjects per group, what is the power to detect each effect size at the 5% level? Use <code>pwr.anova.test()</code> to calculate power.</p>
 <p>The power is calculated below for when <span class="math inline">\(\sigma=6,4,3.5,3\)</span>.</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" title="1"><span class="kw">library</span>(pwr)</a>
-<a class="sourceLine" id="cb339-2" title="2">mu1 &lt;-<span class="st"> </span><span class="dv">15</span>; mu2 &lt;-<span class="st"> </span><span class="fl">14.5</span>;mu3 &lt;-<span class="st"> </span><span class="fl">12.5</span>; mu4 &lt;-<span class="st"> </span><span class="fl">15.3</span></a>
-<a class="sourceLine" id="cb339-3" title="3">sigma1 &lt;-<span class="st"> </span><span class="dv">6</span>; sigma2 &lt;-<span class="st"> </span><span class="dv">4</span>; sigma3 &lt;-<span class="st"> </span><span class="fl">3.5</span>;sigma4 &lt;-<span class="st"> </span><span class="dv">3</span>; </a>
-<a class="sourceLine" id="cb339-4" title="4">mug &lt;-<span class="st"> </span><span class="kw">sum</span>(mu1,mu2,mu3,mu4)<span class="op">/</span><span class="dv">4</span></a>
-<a class="sourceLine" id="cb339-5" title="5">mui &lt;-<span class="st"> </span><span class="kw">c</span>(mu1,mu2,mu3,mu4)</a>
-<a class="sourceLine" id="cb339-6" title="6"></a>
-<a class="sourceLine" id="cb339-7" title="7">f1 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span>)<span class="op">/</span>sigma1</a>
-<a class="sourceLine" id="cb339-8" title="8"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">f =</span> f1,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1"><span class="kw">library</span>(pwr)</a>
+<a class="sourceLine" id="cb339-2" data-line-number="2">mu1 &lt;-<span class="st"> </span><span class="dv">15</span>; mu2 &lt;-<span class="st"> </span><span class="fl">14.5</span>;mu3 &lt;-<span class="st"> </span><span class="fl">12.5</span>; mu4 &lt;-<span class="st"> </span><span class="fl">15.3</span></a>
+<a class="sourceLine" id="cb339-3" data-line-number="3">sigma1 &lt;-<span class="st"> </span><span class="dv">6</span>; sigma2 &lt;-<span class="st"> </span><span class="dv">4</span>; sigma3 &lt;-<span class="st"> </span><span class="fl">3.5</span>;sigma4 &lt;-<span class="st"> </span><span class="dv">3</span>; </a>
+<a class="sourceLine" id="cb339-4" data-line-number="4">mug &lt;-<span class="st"> </span><span class="kw">sum</span>(mu1,mu2,mu3,mu4)<span class="op">/</span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb339-5" data-line-number="5">mui &lt;-<span class="st"> </span><span class="kw">c</span>(mu1,mu2,mu3,mu4)</a>
+<a class="sourceLine" id="cb339-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb339-7" data-line-number="7">f1 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span>)<span class="op">/</span>sigma1</a>
+<a class="sourceLine" id="cb339-8" data-line-number="8"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">f =</span> f1,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <pre><code>## 
 ##      Balanced one-way analysis of variance power calculation 
 ## 
@@ -2420,8 +2420,8 @@ where <span class="math inline">\(y_{ij}\)</span> is the <span class="math inlin
 ##           power = 0.1805942
 ## 
 ## NOTE: n is number in each group</code></pre>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" title="1">f2 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span>)<span class="op">/</span>sigma2</a>
-<a class="sourceLine" id="cb341-2" title="2"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">f =</span> f2,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1">f2 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span>)<span class="op">/</span>sigma2</a>
+<a class="sourceLine" id="cb341-2" data-line-number="2"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">f =</span> f2,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <pre><code>## 
 ##      Balanced one-way analysis of variance power calculation 
 ## 
@@ -2432,8 +2432,8 @@ where <span class="math inline">\(y_{ij}\)</span> is the <span class="math inlin
 ##           power = 0.3727171
 ## 
 ## NOTE: n is number in each group</code></pre>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" title="1">f3 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span>)<span class="op">/</span>sigma3</a>
-<a class="sourceLine" id="cb343-2" title="2"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">f =</span> f3,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" data-line-number="1">f3 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span>)<span class="op">/</span>sigma3</a>
+<a class="sourceLine" id="cb343-2" data-line-number="2"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">f =</span> f3,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <pre><code>## 
 ##      Balanced one-way analysis of variance power calculation 
 ## 
@@ -2444,8 +2444,8 @@ where <span class="math inline">\(y_{ij}\)</span> is the <span class="math inlin
 ##           power = 0.475779
 ## 
 ## NOTE: n is number in each group</code></pre>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" title="1">f4 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span>)<span class="op">/</span>sigma4</a>
-<a class="sourceLine" id="cb345-2" title="2"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">f =</span> f4,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1">f4 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">sum</span>((mui<span class="op">-</span>mug)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span>)<span class="op">/</span>sigma4</a>
+<a class="sourceLine" id="cb345-2" data-line-number="2"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">4</span>,<span class="dt">f =</span> f4,<span class="dt">n=</span><span class="dv">15</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <pre><code>## 
 ##      Balanced one-way analysis of variance power calculation 
 ## 
@@ -2460,27 +2460,27 @@ where <span class="math inline">\(y_{ij}\)</span> is the <span class="math inlin
 <li>Use simulation to calculate the power of the study using 15 subjects per group assuming that the standard deviations for the four methods are not equal, but are as shown in the table above, and that the distribution of observations in each group is normal. A random sample of size <span class="math inline">\(n\)</span> from a <span class="math inline">\(N(\mu,\sigma^2)\)</span> can be generated in R using the function <code>rnorm(n,mu,sigma)</code>.</li>
 </ol>
 <p>The power is approximately 33% (results will vary).</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" title="1">NSIM &lt;-<span class="st"> </span><span class="dv">10000</span></a>
-<a class="sourceLine" id="cb347-2" title="2">res &lt;-<span class="st"> </span><span class="kw">numeric</span>(NSIM)</a>
-<a class="sourceLine" id="cb347-3" title="3"></a>
-<a class="sourceLine" id="cb347-4" title="4">mu1 &lt;-<span class="st"> </span><span class="dv">15</span>; mu2 &lt;-<span class="st"> </span><span class="fl">14.5</span>;mu3 &lt;-<span class="st"> </span><span class="fl">12.5</span>; mu4 &lt;-<span class="st"> </span><span class="fl">15.3</span></a>
-<a class="sourceLine" id="cb347-5" title="5">sigma1 &lt;-<span class="st"> </span><span class="dv">6</span>; sigma2 &lt;-<span class="st"> </span><span class="dv">4</span>; sigma3 &lt;-<span class="st"> </span><span class="fl">3.5</span>;sigma4 &lt;-<span class="st"> </span><span class="dv">3</span>; </a>
-<a class="sourceLine" id="cb347-6" title="6">n &lt;-<span class="st"> </span><span class="dv">15</span> </a>
-<a class="sourceLine" id="cb347-7" title="7"></a>
-<a class="sourceLine" id="cb347-8" title="8"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>NSIM){</a>
-<a class="sourceLine" id="cb347-9" title="9"></a>
-<a class="sourceLine" id="cb347-10" title="10">y1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n,mu1,sigma1)</a>
-<a class="sourceLine" id="cb347-11" title="11">y2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n,mu2,sigma2)</a>
-<a class="sourceLine" id="cb347-12" title="12">y3 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n,mu3,sigma3)</a>
-<a class="sourceLine" id="cb347-13" title="13">y4 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n,mu4,sigma4)</a>
-<a class="sourceLine" id="cb347-14" title="14"></a>
-<a class="sourceLine" id="cb347-15" title="15">y &lt;-<span class="st"> </span><span class="kw">c</span>(y1,y2,y3,y4)</a>
-<a class="sourceLine" id="cb347-16" title="16">trt &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,n),<span class="kw">rep</span>(<span class="dv">2</span>,n),<span class="kw">rep</span>(<span class="dv">3</span>,n),<span class="kw">rep</span>(<span class="dv">4</span>,n)))</a>
-<a class="sourceLine" id="cb347-17" title="17">m &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>trt)</a>
-<a class="sourceLine" id="cb347-18" title="18">res[i] &lt;-<span class="st"> </span><span class="kw">anova</span>(m)[<span class="dv">1</span>,<span class="dv">5</span>] <span class="co"># p-value of F test</span></a>
-<a class="sourceLine" id="cb347-19" title="19">}</a>
-<a class="sourceLine" id="cb347-20" title="20"></a>
-<a class="sourceLine" id="cb347-21" title="21"><span class="kw">sum</span>(res<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span>NSIM</a></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" data-line-number="1">NSIM &lt;-<span class="st"> </span><span class="dv">10000</span></a>
+<a class="sourceLine" id="cb347-2" data-line-number="2">res &lt;-<span class="st"> </span><span class="kw">numeric</span>(NSIM)</a>
+<a class="sourceLine" id="cb347-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb347-4" data-line-number="4">mu1 &lt;-<span class="st"> </span><span class="dv">15</span>; mu2 &lt;-<span class="st"> </span><span class="fl">14.5</span>;mu3 &lt;-<span class="st"> </span><span class="fl">12.5</span>; mu4 &lt;-<span class="st"> </span><span class="fl">15.3</span></a>
+<a class="sourceLine" id="cb347-5" data-line-number="5">sigma1 &lt;-<span class="st"> </span><span class="dv">6</span>; sigma2 &lt;-<span class="st"> </span><span class="dv">4</span>; sigma3 &lt;-<span class="st"> </span><span class="fl">3.5</span>;sigma4 &lt;-<span class="st"> </span><span class="dv">3</span>; </a>
+<a class="sourceLine" id="cb347-6" data-line-number="6">n &lt;-<span class="st"> </span><span class="dv">15</span> </a>
+<a class="sourceLine" id="cb347-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb347-8" data-line-number="8"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>NSIM){</a>
+<a class="sourceLine" id="cb347-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb347-10" data-line-number="10">y1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n,mu1,sigma1)</a>
+<a class="sourceLine" id="cb347-11" data-line-number="11">y2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n,mu2,sigma2)</a>
+<a class="sourceLine" id="cb347-12" data-line-number="12">y3 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n,mu3,sigma3)</a>
+<a class="sourceLine" id="cb347-13" data-line-number="13">y4 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n,mu4,sigma4)</a>
+<a class="sourceLine" id="cb347-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb347-15" data-line-number="15">y &lt;-<span class="st"> </span><span class="kw">c</span>(y1,y2,y3,y4)</a>
+<a class="sourceLine" id="cb347-16" data-line-number="16">trt &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,n),<span class="kw">rep</span>(<span class="dv">2</span>,n),<span class="kw">rep</span>(<span class="dv">3</span>,n),<span class="kw">rep</span>(<span class="dv">4</span>,n)))</a>
+<a class="sourceLine" id="cb347-17" data-line-number="17">m &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>trt)</a>
+<a class="sourceLine" id="cb347-18" data-line-number="18">res[i] &lt;-<span class="st"> </span><span class="kw">anova</span>(m)[<span class="dv">1</span>,<span class="dv">5</span>] <span class="co"># p-value of F test</span></a>
+<a class="sourceLine" id="cb347-19" data-line-number="19">}</a>
+<a class="sourceLine" id="cb347-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb347-21" data-line-number="21"><span class="kw">sum</span>(res<span class="op">&lt;=</span><span class="fl">0.05</span>)<span class="op">/</span>NSIM</a></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>What does part (b) tell you about the assumption of a common within group variance in calculating power for an ANOVA experiment? Explain.</li>
 </ol>
@@ -2493,7 +2493,7 @@ where <span class="math inline">\(y_{ij}\)</span> is the <span class="math inlin
 </ol>
 <p>It doesn’t really make sense to consider all possible treatment pairs since the primary question is to compare placebo to all the new treatments. Nevertheless, both Bonferroni and Tukey make these comparisons plus other comparisons.</p>
 <p>Treatment 4 is significantly different from placebo in an unadjusted comparison, but this difference becomes non-significant after adjusting for multiple comparisons using both Tukey and Bonferroni. The reason that Tukey and Bonferroni give different p-values compared to the unadjusted is because both Tukey and Bonferroni ensure that the family-wise type I error rate remains at 5%, and the unadjusted family-wise type I error rate is <span class="math inline">\(1-(1-.05)^6=0.26\)</span>.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" title="1"><span class="kw">TukeyHSD</span>(<span class="kw">aov</span>(y<span class="op">~</span><span class="kw">as.factor</span>(trt),<span class="dt">data =</span> q2data))</a></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1"><span class="kw">TukeyHSD</span>(<span class="kw">aov</span>(y<span class="op">~</span><span class="kw">as.factor</span>(trt),<span class="dt">data =</span> q2data))</a></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -2507,7 +2507,7 @@ where <span class="math inline">\(y_{ij}\)</span> is the <span class="math inlin
 ## 3-2 0.02953673 -0.632736356 0.6918098 0.9994544
 ## 4-2 0.56473516 -0.092652737 1.2221231 0.1205489
 ## 4-3 0.53519843 -0.118741276 1.1891381 0.1511693</code></pre>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" title="1"><span class="kw">pairwise.t.test</span>(q2data<span class="op">$</span>y,<span class="kw">as.factor</span>(q2data<span class="op">$</span>trt),<span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" data-line-number="1"><span class="kw">pairwise.t.test</span>(q2data<span class="op">$</span>y,<span class="kw">as.factor</span>(q2data<span class="op">$</span>trt),<span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using t tests with pooled SD 
 ## 
@@ -2519,7 +2519,7 @@ where <span class="math inline">\(y_{ij}\)</span> is the <span class="math inlin
 ## 4 0.063 0.163 0.212
 ## 
 ## P value adjustment method: bonferroni</code></pre>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" title="1"><span class="kw">pairwise.t.test</span>(q2data<span class="op">$</span>y,<span class="kw">as.factor</span>(q2data<span class="op">$</span>trt),<span class="dt">p.adjust.method =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1"><span class="kw">pairwise.t.test</span>(q2data<span class="op">$</span>y,<span class="kw">as.factor</span>(q2data<span class="op">$</span>trt),<span class="dt">p.adjust.method =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using t tests with pooled SD 
 ## 

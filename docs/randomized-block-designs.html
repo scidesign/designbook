@@ -78,7 +78,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -736,39 +736,39 @@ SS_{T}&amp;=SS_{Treat}+SS_{Blocks}+SS_E
 <div id="penicillin-manufacturing-example" class="section level3">
 <h3><span class="header-section-number">9.2.2</span> Penicillin Manufacturing Example</h3>
 <p>The block averages are:</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" title="1">block.ave &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">split</span>(tab0404<span class="op">$</span>y,tab0404<span class="op">$</span>blend),mean)</a>
-<a class="sourceLine" id="cb354-2" title="2">block.ave</a></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" data-line-number="1">block.ave &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">split</span>(tab0404<span class="op">$</span>y,tab0404<span class="op">$</span>blend),mean)</a>
+<a class="sourceLine" id="cb354-2" data-line-number="2">block.ave</a></code></pre></div>
 <pre><code> 1  2  3  4  5 
 92 83 85 88 82 </code></pre>
 <p>The treatment averages are:</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" title="1">trt.ave &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">split</span>(tab0404<span class="op">$</span>y,tab0404<span class="op">$</span>treatment),mean)</a>
-<a class="sourceLine" id="cb356-2" title="2">trt.ave</a></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" data-line-number="1">trt.ave &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">split</span>(tab0404<span class="op">$</span>y,tab0404<span class="op">$</span>treatment),mean)</a>
+<a class="sourceLine" id="cb356-2" data-line-number="2">trt.ave</a></code></pre></div>
 <pre><code> A  B  C  D 
 84 85 89 86 </code></pre>
 <p>The grand average is:</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" title="1">grand.ave &lt;-<span class="st"> </span><span class="kw">mean</span>(tab0404<span class="op">$</span>y)</a>
-<a class="sourceLine" id="cb358-2" title="2">grand.ave</a></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1">grand.ave &lt;-<span class="st"> </span><span class="kw">mean</span>(tab0404<span class="op">$</span>y)</a>
+<a class="sourceLine" id="cb358-2" data-line-number="2">grand.ave</a></code></pre></div>
 <pre><code>[1] 86</code></pre>
 <p>The block deviations from the grand average and the sum of squares of block deviations are:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" title="1">block.devs &lt;-<span class="st"> </span>block.ave<span class="op">-</span>grand.ave</a>
-<a class="sourceLine" id="cb360-2" title="2">block.devs</a></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1">block.devs &lt;-<span class="st"> </span>block.ave<span class="op">-</span>grand.ave</a>
+<a class="sourceLine" id="cb360-2" data-line-number="2">block.devs</a></code></pre></div>
 <pre><code> 1  2  3  4  5 
  6 -3 -1  2 -4 </code></pre>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" title="1"><span class="kw">sum</span>(block.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">4</span></a></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" data-line-number="1"><span class="kw">sum</span>(block.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">4</span></a></code></pre></div>
 <pre><code>[1] 264</code></pre>
 <p>The treatment deviations from the grand average and the sum of squares of treatment deviations are:</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" title="1">treatment.devs &lt;-<span class="st"> </span>trt.ave<span class="op">-</span>grand.ave</a>
-<a class="sourceLine" id="cb364-2" title="2">treatment.devs</a></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" data-line-number="1">treatment.devs &lt;-<span class="st"> </span>trt.ave<span class="op">-</span>grand.ave</a>
+<a class="sourceLine" id="cb364-2" data-line-number="2">treatment.devs</a></code></pre></div>
 <pre><code> A  B  C  D 
 -2 -1  3  0 </code></pre>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" title="1"><span class="kw">sum</span>(treatment.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span></a></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" data-line-number="1"><span class="kw">sum</span>(treatment.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span></a></code></pre></div>
 <pre><code>[1] 70</code></pre>
 <p>The sum of squares of deviations from the grand average are:</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1">all.devs &lt;-<span class="st"> </span>tab0404<span class="op">$</span>y<span class="op">-</span>grand.ave</a>
-<a class="sourceLine" id="cb368-2" title="2"><span class="kw">sum</span>(all.devs<span class="op">^</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" data-line-number="1">all.devs &lt;-<span class="st"> </span>tab0404<span class="op">$</span>y<span class="op">-</span>grand.ave</a>
+<a class="sourceLine" id="cb368-2" data-line-number="2"><span class="kw">sum</span>(all.devs<span class="op">^</span><span class="dv">2</span>)</a></code></pre></div>
 <pre><code>[1] 560</code></pre>
 <p>So, the error sum of squares is:</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" title="1"><span class="kw">sum</span>(all.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">-</span><span class="kw">sum</span>(treatment.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span><span class="op">-</span><span class="kw">sum</span>(block.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">4</span></a></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" data-line-number="1"><span class="kw">sum</span>(all.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">-</span><span class="kw">sum</span>(treatment.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">5</span><span class="op">-</span><span class="kw">sum</span>(block.devs<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span><span class="dv">4</span></a></code></pre></div>
 <pre><code>[1] 226</code></pre>
 <p>Would <span class="math inline">\(SS_E\)</span> increase or decrease if blocking was not incorporated into the design? <span class="math inline">\(SS_E\)</span> would increase since the extra variation would not be incorporated into <span class="math inline">\(SS_{Treat}\)</span> so it must be incorporated into <span class="math inline">\(SS_E\)</span>.</p>
 </div>
@@ -786,8 +786,8 @@ SS_{T}&amp;=SS_{Treat}+SS_{Blocks}+SS_E
 <p>and assuming that <span class="math inline">\(\epsilon_{ij}^{\prime}\)</span> were approximately independent and identically distributed the response <span class="math inline">\(y_{ij}^{\prime}=log(y_{ij})\)</span> could be analyzed using a linear model in which the interaction would disappear.</p>
 <p>Interactions often belong to two categories: (a) transformable interactions, which are eliminated by transformation of the original data, and (b) nontransfromable such as a treatment -blend interaction that cannot be eliminated via a transformation.</p>
 <p>The ANOVA table for a randomized block design can be obtained by fitting a linear model and extracting the ANOVA table. Using R the penicillin example has ANOVA table</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" title="1">pen.model &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment)<span class="op">+</span><span class="kw">as.factor</span>(blend),<span class="dt">data =</span> tab0404)</a>
-<a class="sourceLine" id="cb372-2" title="2"><span class="kw">anova</span>(pen.model)</a></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" data-line-number="1">pen.model &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment)<span class="op">+</span><span class="kw">as.factor</span>(blend),<span class="dt">data =</span> tab0404)</a>
+<a class="sourceLine" id="cb372-2" data-line-number="2"><span class="kw">anova</span>(pen.model)</a></code></pre></div>
 <pre><code>Analysis of Variance Table
 
 Response: y
@@ -799,7 +799,7 @@ Residuals            12    226  18.833
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>If we further assume that <span class="math inline">\(\epsilon_{ij} \sim N(0,\sigma^2)\)</span> then <span class="math inline">\(MS_{Treat}/MS_{E} \sim F_{a-1,(a-1)(b-1)}, MS_{Blocks} \sim F_{b-1,(a-1)(b-1)}.\)</span></p>
 <p>Suppose that the blends (blocks) were not included in the model.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" title="1"><span class="kw">anova</span>(<span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment),<span class="dt">data =</span> tab0404))</a></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" data-line-number="1"><span class="kw">anova</span>(<span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment),<span class="dt">data =</span> tab0404))</a></code></pre></div>
 <pre><code>Analysis of Variance Table
 
 Response: y
@@ -812,16 +812,16 @@ Residuals            16    490  30.625               </code></pre>
 <div id="checking-statistical-assumptions" class="section level3">
 <h3><span class="header-section-number">9.3.1</span> Checking statistical assumptions</h3>
 <p>The normality of the residuals can be checked by using a normal quantile plot.</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" title="1">pen.model &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment)<span class="op">+</span><span class="kw">as.factor</span>(blend),<span class="dt">data =</span> tab0404)</a>
-<a class="sourceLine" id="cb376-2" title="2"><span class="kw">qqnorm</span>(pen.model<span class="op">$</span>residuals,<span class="dt">main =</span> <span class="st">&quot;Q-Q Plot for Penicillin Study&quot;</span>);<span class="kw">qqline</span>(pen.model<span class="op">$</span>residuals)</a></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" data-line-number="1">pen.model &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span><span class="kw">as.factor</span>(treatment)<span class="op">+</span><span class="kw">as.factor</span>(blend),<span class="dt">data =</span> tab0404)</a>
+<a class="sourceLine" id="cb376-2" data-line-number="2"><span class="kw">qqnorm</span>(pen.model<span class="op">$</span>residuals,<span class="dt">main =</span> <span class="st">&quot;Q-Q Plot for Penicillin Study&quot;</span>);<span class="kw">qqline</span>(pen.model<span class="op">$</span>residuals)</a></code></pre></div>
 <p><img src="08-blocking_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>The constant variance assumption can be investigated by plotting the predicted values versus the residuals. The predicted (fitted) values are</p>
 <p><span class="math display">\[\hat {y_{ij}}=\bar{y_{i\cdot}}+\bar{y_{\cdot j}}-\bar{y_{\cdot \cdot}}\]</span></p>
 <p>and the residuals are</p>
 <p><span class="math display">\[ y_{ij}-\hat {y_{ij}}.\]</span></p>
 <p>Using R this plot can be obtained.</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb377-1" title="1"><span class="kw">plot</span>(pen.model<span class="op">$</span>fitted.values,pen.model<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Penicillin study&quot;</span>)</a>
-<a class="sourceLine" id="cb377-2" title="2"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb377-1" data-line-number="1"><span class="kw">plot</span>(pen.model<span class="op">$</span>fitted.values,pen.model<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Penicillin study&quot;</span>)</a>
+<a class="sourceLine" id="cb377-2" data-line-number="2"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</a></code></pre></div>
 <p><img src="08-blocking_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 </div>
@@ -1338,8 +1338,8 @@ D
 </table>
 <p>The model and analysis are similar to the randomized block design except that there is an additional blocking factor.</p>
 <p>In R the ANOVA table and treatment effects are obtained.</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" title="1">latinsq.auto &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>additive<span class="op">+</span><span class="kw">as.factor</span>(cars)<span class="op">+</span><span class="kw">as.factor</span>(driver),<span class="dt">data =</span> tab0408)</a>
-<a class="sourceLine" id="cb378-2" title="2"><span class="kw">anova</span>(latinsq.auto)</a></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" data-line-number="1">latinsq.auto &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>additive<span class="op">+</span><span class="kw">as.factor</span>(cars)<span class="op">+</span><span class="kw">as.factor</span>(driver),<span class="dt">data =</span> tab0408)</a>
+<a class="sourceLine" id="cb378-2" data-line-number="2"><span class="kw">anova</span>(latinsq.auto)</a></code></pre></div>
 <pre><code>Analysis of Variance Table
 
 Response: y
@@ -1350,7 +1350,7 @@ as.factor(driver)  3    216  72.000    13.5 0.004466 **
 Residuals          6     32   5.333                    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" title="1"><span class="kw">summary</span>(latinsq.auto)</a></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" data-line-number="1"><span class="kw">summary</span>(latinsq.auto)</a></code></pre></div>
 <pre><code>
 Call:
 lm(formula = y ~ additive + as.factor(cars) + as.factor(driver), 
@@ -1393,10 +1393,10 @@ F-statistic: 5.833 on 9 and 6 DF,  p-value: 0.0219</code></pre>
 <p>Under the assumption that the residuals are independent and <span class="math inline">\(N(0,\sigma^2)\)</span> then under the null hypothesis that there are no differences between between treatments</p>
 <p><span class="math display">\[MS_{Treat}/MS_E \sim F_{3,6}.\]</span></p>
 <p>The statistical assumptions can be checked by plotting: (1) a normal quantile plot of the residuals; and (2) the predicted values versus residuals versus.</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" title="1"><span class="kw">qqnorm</span>(latinsq.auto<span class="op">$</span>residuals,<span class="dt">main =</span> <span class="st">&quot;Q-Q Plot for Automobile Emissions&quot;</span>);<span class="kw">qqline</span>(latinsq.auto<span class="op">$</span>residuals)</a></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" data-line-number="1"><span class="kw">qqnorm</span>(latinsq.auto<span class="op">$</span>residuals,<span class="dt">main =</span> <span class="st">&quot;Q-Q Plot for Automobile Emissions&quot;</span>);<span class="kw">qqline</span>(latinsq.auto<span class="op">$</span>residuals)</a></code></pre></div>
 <p><img src="08-blocking_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb383-1" title="1"><span class="kw">plot</span>(latinsq.auto<span class="op">$</span>fitted.values,latinsq.auto<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Automobile Emissions&quot;</span>)</a>
-<a class="sourceLine" id="cb383-2" title="2"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb383-1" data-line-number="1"><span class="kw">plot</span>(latinsq.auto<span class="op">$</span>fitted.values,latinsq.auto<span class="op">$</span>residuals,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Fitted&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Automobile Emissions&quot;</span>)</a>
+<a class="sourceLine" id="cb383-2" data-line-number="2"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)</a></code></pre></div>
 <p><img src="08-blocking_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
 </div>
 <div id="general-latin-square-designs" class="section level2">
@@ -2253,7 +2253,7 @@ A
 </tbody>
 </table>
 <p>The primary goal is to compare treatments A, B, C, D while blocking for four factors. The levels of each the factors are the 4 rows, 4 columns, 4 Greek letters, and 4 numbers.</p>
-<p>The following example from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005" role="doc-biblioref">2005</a>)</span> illustrates this design.</p>
+<p>The following example from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span> illustrates this design.</p>
 <p>A machine used to test the wearing quality of cloth is to be used to compare the wearing quality of four pieces of cloth on one machine. The response is weight loss in tenths of a milligram when it is rubbed against emery paper for 1000 revolutions of the machine.</p>
 <ul>
 <li>Samples of four different types of cloth (treatments) A, B, C, D are to be compared.
@@ -3172,27 +3172,27 @@ d
 </tbody>
 </table>
 <p>The average weight loss for treatments, holders, positions, emery papers, cycles, and replicates are:</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>treatment),mean) <span class="co"># treatment means</span></a></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" data-line-number="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>treatment),mean) <span class="co"># treatment means</span></a></code></pre></div>
 <pre><code>      A       B       C       D 
 270.000 275.625 279.875 260.375 </code></pre>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>holder),mean) <span class="co"># holder means</span></a></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" data-line-number="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>holder),mean) <span class="co"># holder means</span></a></code></pre></div>
 <pre><code>      1       2       3       4 
 268.875 272.000 274.000 271.000 </code></pre>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb388-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>position),mean) <span class="co"># position means</span></a></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb388-1" data-line-number="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>position),mean) <span class="co"># position means</span></a></code></pre></div>
 <pre><code>      1       2       3       4 
 279.000 257.375 274.375 275.125 </code></pre>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>paper),mean) <span class="co"># paper means</span></a></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" data-line-number="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>paper),mean) <span class="co"># paper means</span></a></code></pre></div>
 <pre><code>     a      b      c      d      e      f      g      h 
 276.00 264.50 278.50 256.00 249.50 295.25 286.75 265.25 </code></pre>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>cycle),mean) <span class="co"># cycle means</span></a></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" data-line-number="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>cycle),mean) <span class="co"># cycle means</span></a></code></pre></div>
 <pre><code>     1      2      3      4      5      6      7      8 
 307.25 248.25 245.00 268.00 301.75 268.00 253.75 279.75 </code></pre>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" title="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>rep),mean) <span class="co"># replicate means</span></a></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" data-line-number="1"><span class="kw">sapply</span>(<span class="kw">split</span>(tab0412<span class="op">$</span>y,tab0412<span class="op">$</span>rep),mean) <span class="co"># replicate means</span></a></code></pre></div>
 <pre><code>       1        2 
 267.1250 275.8125 </code></pre>
 <p>A linear model can be fit so that the ANOVA table and parameter treatment effects can be calculated.</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" title="1">wear.hypsq &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>treatment<span class="op">+</span><span class="kw">as.factor</span>(rep)<span class="op">+</span><span class="kw">as.factor</span>(position)<span class="op">+</span><span class="kw">as.factor</span>(cycle)<span class="op">+</span><span class="kw">as.factor</span>(holder)<span class="op">+</span><span class="kw">as.factor</span>(paper),<span class="dt">data =</span> tab0412)</a>
-<a class="sourceLine" id="cb396-2" title="2"><span class="kw">anova</span>(wear.hypsq)</a></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" data-line-number="1">wear.hypsq &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>treatment<span class="op">+</span><span class="kw">as.factor</span>(rep)<span class="op">+</span><span class="kw">as.factor</span>(position)<span class="op">+</span><span class="kw">as.factor</span>(cycle)<span class="op">+</span><span class="kw">as.factor</span>(holder)<span class="op">+</span><span class="kw">as.factor</span>(paper),<span class="dt">data =</span> tab0412)</a>
+<a class="sourceLine" id="cb396-2" data-line-number="2"><span class="kw">anova</span>(wear.hypsq)</a></code></pre></div>
 <pre><code>Analysis of Variance Table
 
 Response: y
@@ -3383,19 +3383,19 @@ Treatment II
 <li><p>Blocking aims to compare like with like. Using whatever prior knowledge is available about which known features of the experimental units and other aspects of the experimental set-up are strongly associated with potential response. Units are grouped into <em>blocks</em> such that all the units in any one block are likely to give similar responses in the absence of treatment differences. So, it’s appropriate to block use a randomized block design if we know <em>a priori</em> that a factor is strongly associated with the response. In this case we would randomize within each level of the factor separately.</p></li>
 <li><ol style="list-style-type: lower-alpha">
 <li><p>This a randomized block design. It is also ramdomized paired design.</p></li>
-<li><p>The blocking factor is person, since the treatments were randomized within person.</p></li>
+<li>The blocking factor is person, since the treatments were randomized within person.</li>
 <li><p>The data is analysed using R. The data is stored in the data frame <code>q2dat</code>.</p></li>
 </ol></li>
 </ol>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" title="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb398-2" title="2">q2dat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(treatment) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(weight), <span class="dt">sd =</span> <span class="kw">sd</span>(weight))</a></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb398-2" data-line-number="2">q2dat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(treatment) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(weight), <span class="dt">sd =</span> <span class="kw">sd</span>(weight))</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##   treatment  mean    sd
 ##       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1         1  71.7  17.5
 ## 2         2  65.7  10.8</code></pre>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" title="1">q2mod &lt;-<span class="st"> </span><span class="kw">lm</span>(weight <span class="op">~</span><span class="st"> </span>treatment <span class="op">+</span><span class="st"> </span>person, <span class="dt">data =</span> q2dat)</a>
-<a class="sourceLine" id="cb400-2" title="2"><span class="kw">summary</span>(q2mod)</a></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" data-line-number="1">q2mod &lt;-<span class="st"> </span><span class="kw">lm</span>(weight <span class="op">~</span><span class="st"> </span>treatment <span class="op">+</span><span class="st"> </span>person, <span class="dt">data =</span> q2dat)</a>
+<a class="sourceLine" id="cb400-2" data-line-number="2"><span class="kw">summary</span>(q2mod)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = weight ~ treatment + person, data = q2dat)
@@ -3415,7 +3415,7 @@ Treatment II
 ## Residual standard error: 15.02 on 9 degrees of freedom
 ## Multiple R-squared:  0.0874, Adjusted R-squared:  -0.1154 
 ## F-statistic: 0.4309 on 2 and 9 DF,  p-value: 0.6626</code></pre>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" title="1"><span class="kw">anova</span>(q2mod)</a></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" data-line-number="1"><span class="kw">anova</span>(q2mod)</a></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: weight

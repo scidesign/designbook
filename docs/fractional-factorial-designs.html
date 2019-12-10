@@ -78,7 +78,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -374,7 +374,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A <span class="math inline">\(2^k\)</span> full factorial requires <span class="math inline">\(2^k\)</span> runs. Full factorials are seldom used in practice for large k (k&gt;=7). For economic reasons fractional factorial designs, which consist of a fraction of full factorial designs are used. There are criteria to choose “optimal” fractions.</p>
 <div id="example---effect-of-five-factors-on-six-properties-of-film-in-eight-runs" class="section level2">
 <h2><span class="header-section-number">12.1</span> Example - Effect of five factors on six properties of film in eight runs</h2>
-<p>The following example is taken from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005" role="doc-biblioref">2005</a>)</span>.</p>
+<p>The following example is taken from <span class="citation">Box, Hunter, and Hunter (<a href="#ref-bhh2005">2005</a>)</span>.</p>
 <p>Five factors were studied in 8 runs. The factors were:</p>
 <ul>
 <li>Catalyst concentration (A)</li>
@@ -928,22 +928,22 @@ y
 </table>
 <p>The signs of the ABC interaction is used to accommodate factor D. The tests were run in random order. He wanted to achieve a stability value of at least 25.</p>
 <p>The factorial effects and Normal, half-Normal, and Lenth plots are below.</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb452-1" title="1"><span class="kw">library</span>(FrF2)</a>
-<a class="sourceLine" id="cb452-2" title="2">fact.prod &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)</a>
-<a class="sourceLine" id="cb452-3" title="3">fact.prod1 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)</a>
-<a class="sourceLine" id="cb452-4" title="4"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.prod<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb464-1" data-line-number="1"><span class="kw">library</span>(FrF2)</a>
+<a class="sourceLine" id="cb464-2" data-line-number="2">fact.prod &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)</a>
+<a class="sourceLine" id="cb464-3" data-line-number="3">fact.prod1 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>A<span class="op">*</span>B<span class="op">*</span>C<span class="op">*</span>D,<span class="dt">data =</span> tab0602)</a>
+<a class="sourceLine" id="cb464-4" data-line-number="4"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.prod<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>(Intercept)           A           B           C           D         A:B 
       29.25       -5.75       -3.75       -1.25        0.75        0.25 
         A:C         B:C         A:D         B:D         C:D       A:B:C 
        0.75       -0.25          NA          NA          NA          NA 
       A:B:D       A:C:D       B:C:D     A:B:C:D 
          NA          NA          NA          NA </code></pre>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb454-1" title="1"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> F)</a></code></pre></div>
-<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" title="1"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> T)</a></code></pre></div>
-<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-46-2.png" width="672" /></p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb456-1" title="1"><span class="kw">LenthPlot</span>(fact.prod1)</a></code></pre></div>
-<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-46-3.png" width="672" /></p>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb466-1" data-line-number="1"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> F)</a></code></pre></div>
+<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" data-line-number="1"><span class="kw">DanielPlot</span>(fact.prod,<span class="dt">half =</span> T)</a></code></pre></div>
+<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-47-2.png" width="672" /></p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb468-1" data-line-number="1"><span class="kw">LenthPlot</span>(fact.prod1)</a></code></pre></div>
+<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-47-3.png" width="672" /></p>
 <pre><code>    alpha       PSE        ME       SME 
  0.050000  1.125000  4.234638 10.134346 </code></pre>
 <p>Even though the stability never reached the desired level of 25, two important factors, A and B, were identified. This Normal and half-Normal plots indicate the importance of these factors, although factor B is not significant according to the Lenth plot.</p>
@@ -1724,10 +1724,10 @@ y
 </tbody>
 </table>
 <p>The factorial effects are estimated as before.</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" title="1"><span class="kw">library</span>(FrF2)</a>
-<a class="sourceLine" id="cb458-2" title="2">fact.leaf &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)</a>
-<a class="sourceLine" id="cb458-3" title="3">fact.leaf2 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)</a>
-<a class="sourceLine" id="cb458-4" title="4"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.leaf<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb470-1" data-line-number="1"><span class="kw">library</span>(FrF2)</a>
+<a class="sourceLine" id="cb470-2" data-line-number="2">fact.leaf &lt;-<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)</a>
+<a class="sourceLine" id="cb470-3" data-line-number="3">fact.leaf2 &lt;-<span class="st"> </span><span class="kw">aov</span>(y<span class="op">~</span>B<span class="op">*</span>C<span class="op">*</span>D<span class="op">*</span>E<span class="op">*</span>Q,<span class="dt">data =</span> leafspring)</a>
+<a class="sourceLine" id="cb470-4" data-line-number="4"><span class="kw">round</span>(<span class="dv">2</span><span class="op">*</span>fact.leaf<span class="op">$</span>coefficients,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>(Intercept)           B           C           D           E           Q 
       15.27        0.22        0.18        0.03        0.10       -0.26 
         B:C         B:D         C:D         B:E         C:E         D:E 
@@ -1741,12 +1741,12 @@ y
     C:D:E:Q   B:C:D:E:Q 
          NA          NA </code></pre>
 <p>Notice that the factorial effects are missing for effects that are aliased. The Normal, half-Normal, and Lenth plots are below.</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb460-1" title="1"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> F)</a></code></pre></div>
-<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" title="1"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> T)</a></code></pre></div>
-<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-50-2.png" width="672" /></p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb462-1" title="1"><span class="kw">LenthPlot</span>(fact.leaf2,<span class="dt">cex.fac =</span> <span class="fl">0.5</span>)</a></code></pre></div>
-<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-50-3.png" width="672" /></p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb472-1" data-line-number="1"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> F)</a></code></pre></div>
+<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" data-line-number="1"><span class="kw">DanielPlot</span>(fact.leaf,<span class="dt">half =</span> T)</a></code></pre></div>
+<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-51-2.png" width="672" /></p>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb474-1" data-line-number="1"><span class="kw">LenthPlot</span>(fact.leaf2,<span class="dt">cex.fac =</span> <span class="fl">0.5</span>)</a></code></pre></div>
+<p><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-51-3.png" width="672" /></p>
 <pre><code>    alpha       PSE        ME       SME 
 0.0500000 0.0606000 0.1557773 0.3162503 </code></pre>
 </div>

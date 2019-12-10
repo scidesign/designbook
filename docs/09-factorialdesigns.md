@@ -443,7 +443,7 @@ K:C             0.00       0.71    0.00     1.00
 T:K:C           0.25       0.71    0.35     0.73
 ```
 
-The table of contrasts/design matrix for a $2^3$ design is:
+The design matrix for this $2^3$ design is:
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
  <thead>
@@ -533,7 +533,37 @@ The table of contrasts/design matrix for a $2^3$ design is:
 </tbody>
 </table>
 
-If we add the intercept and the dependent variable to the design matrix then we have the following table:
+The model matrix for this $2^3$ design is:
+
+
+```r
+model.matrix(fact.mod)
+```
+
+```
+##    (Intercept)  T  K  C T:K T:C K:C T:K:C
+## 1            1 -1 -1 -1   1   1   1    -1
+## 2            1  1 -1 -1  -1  -1   1     1
+## 3            1 -1 -1  1   1  -1  -1     1
+## 4            1  1 -1  1  -1   1  -1    -1
+## 5            1 -1  1 -1  -1   1  -1     1
+## 6            1  1  1 -1   1  -1  -1    -1
+## 7            1 -1  1  1  -1  -1   1    -1
+## 8            1  1  1  1   1   1   1     1
+## 9            1 -1 -1 -1   1   1   1    -1
+## 10           1  1 -1 -1  -1  -1   1     1
+## 11           1 -1 -1  1   1  -1  -1     1
+## 12           1  1 -1  1  -1   1  -1    -1
+## 13           1 -1  1 -1  -1   1  -1     1
+## 14           1  1  1 -1   1  -1  -1    -1
+## 15           1 -1  1  1  -1  -1   1    -1
+## 16           1  1  1  1   1   1   1     1
+## attr(,"assign")
+## [1] 0 1 2 3 4 5 6 7
+```
+
+
+The table below shows the model matrix with the dependent variable:
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
  <thead>
@@ -724,7 +754,7 @@ x <- seq(-4,4,by = 0.1)
 plot(x,pnorm(x),type = "l")
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 
 So, a test of normality for a set of data is to plot the ordered values $r_{(i)}$ of the data versus $p_i=(i-0.5)/N$.  If the plot has the same S-shape as the normal CDF then this is evidence that the data come from a normal distribution.
@@ -739,7 +769,7 @@ p <- ((1:N)-0.5)/N
 plot(sort(x),p)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 
 We can also construct a normal quantile-quantile plot.  It can be shown that $\Phi(r_{(i)})$ has a uniform distribution on $[0,1]$.  This implies that $E(\Phi(r_{(i)}))=i/(N+1)$ (this is the expected value of the $ith$ order statistic from a uniform distribution over $[0,1]$.  
@@ -761,7 +791,7 @@ p <- (1:N)/(N+1)
 plot(qnorm(p),sort(x))
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
 We usually use the built in function `qqnorm()` (and `qqline()` to add a straight line for comparison) to generate normal Q-Q plots.  Note that R uses a slightly more general version of quantile ($p_i=(1-a)/(N+(1-a)-a)$, where $a = 3/8$, if $N \le 10$, $a = 1/2$, if $N > 10$.
 
@@ -770,7 +800,7 @@ We usually use the built in function `qqnorm()` (and `qqline()` to add a straigh
 qqnorm(x);qqline(x)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 A marked (systematic) deviation of the plot from the straight line would indicate that:
 
@@ -949,7 +979,31 @@ library(FrF2)
 DanielPlot(fact1,half = FALSE,autolab = F, main = "Normal plot of effects from process development study")
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+```
+## Warning in plot.window(...): "autolab" is not a graphical parameter
+```
+
+```
+## Warning in plot.xy(xy, type, ...): "autolab" is not a graphical parameter
+```
+
+```
+## Warning in axis(side = side, at = at, labels = labels, ...): "autolab" is not a
+## graphical parameter
+
+## Warning in axis(side = side, at = at, labels = labels, ...): "autolab" is not a
+## graphical parameter
+```
+
+```
+## Warning in box(...): "autolab" is not a graphical parameter
+```
+
+```
+## Warning in title(...): "autolab" is not a graphical parameter
+```
+
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
 The effects corresponding to `x1, x4, x2:x4, x2` do not fall along the straight line.
 
@@ -977,7 +1031,31 @@ library(FrF2)
 DanielPlot(fact1,half = TRUE,autolab = F, main = "Normal plot of effects from process development study")
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+```
+## Warning in plot.window(...): "autolab" is not a graphical parameter
+```
+
+```
+## Warning in plot.xy(xy, type, ...): "autolab" is not a graphical parameter
+```
+
+```
+## Warning in axis(side = side, at = at, labels = labels, ...): "autolab" is not a
+## graphical parameter
+
+## Warning in axis(side = side, at = at, labels = labels, ...): "autolab" is not a
+## graphical parameter
+```
+
+```
+## Warning in box(...): "autolab" is not a graphical parameter
+```
+
+```
+## Warning in title(...): "autolab" is not a graphical parameter
+```
+
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 ## Lenth’s method: testing significance for experiments without variance estimates
 
@@ -1233,7 +1311,7 @@ library(BsMD)
 LenthPlot(fact1,cex.fac = 0.5)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-33-1.png" width="672" />
 
 ```
    alpha      PSE       ME      SME 
@@ -1703,7 +1781,7 @@ Notice that $\hat{\beta_0}={\bar y}$, $\hat{\beta_1}=\frac{1}{2}{\hat A}$, and $
 </tbody>
 </table>
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-36-1.png" width="672" /><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-36-2.png" width="672" /><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-36-3.png" width="672" /><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-36-4.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-37-1.png" width="672" /><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-37-2.png" width="672" /><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-37-3.png" width="672" /><img src="09-factorialdesigns_files/figure-html/unnamed-chunk-37-4.png" width="672" />
 
 The main effects and interactions are obtained by multiplying the regression coeffcicents by 2 
 
@@ -2525,19 +2603,19 @@ round(2*fact.prod$coefficients,2)
 DanielPlot(fact.prod,half = F)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-46-1.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-47-1.png" width="672" />
 
 ```r
 DanielPlot(fact.prod,half = T)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-46-2.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-47-2.png" width="672" />
 
 ```r
 LenthPlot(fact.prod1)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-46-3.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-47-3.png" width="672" />
 
 ```
     alpha       PSE        ME       SME 
@@ -2917,19 +2995,19 @@ Notice that the factorial effects are missing for effects that are aliased.  The
 DanielPlot(fact.leaf,half = F)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-50-1.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-51-1.png" width="672" />
 
 ```r
 DanielPlot(fact.leaf,half = T)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-50-2.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-51-2.png" width="672" />
 
 ```r
 LenthPlot(fact.leaf2,cex.fac = 0.5)
 ```
 
-<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-50-3.png" width="672" />
+<img src="09-factorialdesigns_files/figure-html/unnamed-chunk-51-3.png" width="672" />
 
 ```
     alpha       PSE        ME       SME 
